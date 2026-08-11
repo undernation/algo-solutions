@@ -104,16 +104,13 @@
 <rect class="l0" x="198" y="90" width="11" height="11" rx="2"><title>2026-03-27 (금) — 0문제</title></rect>
 <rect class="l0" x="198" y="104" width="11" height="11" rx="2"><title>2026-03-28 (토) — 0문제</title></rect>
 <rect class="l2" x="212" y="20" width="11" height="11" rx="2"><title>2026-03-29 (일) — 2문제
-· BOJ 해적선장 코디 못품.
 · BOJ 택배 하차 (못품)</title></rect>
 <rect class="l3" x="212" y="34" width="11" height="11" rx="2"><title>2026-03-30 (월) — 3문제
-· BOJ 해적선장 코디 못품.
 · BOJ 여왕개미 (못품)
 · BOJ 14889  (못품)</title></rect>
 <rect class="l3" x="212" y="48" width="11" height="11" rx="2"><title>2026-03-31 (화) — 3문제
 · BOJ 14889  (못품)
-· BOJ 고대 문명 유적 탐사 (못품)
-· BOJ 공기청정기 문제</title></rect>
+· BOJ 고대 문명 유적 탐사 (못품)</title></rect>
 <rect class="l0" x="212" y="62" width="11" height="11" rx="2"><title>2026-04-01 (수) — 0문제</title></rect>
 <rect class="l0" x="212" y="76" width="11" height="11" rx="2"><title>2026-04-02 (목) — 0문제</title></rect>
 <rect class="l3" x="212" y="90" width="11" height="11" rx="2"><title>2026-04-03 (금) — 3문제
@@ -143,7 +140,16 @@
 · BOJ 19942  (틀림)
 · BOJ 1285  (못품)
 · BOJ 17471  (못품)</title></rect>
-<rect class="l4" x="226" y="62" width="11" height="11" rx="2"><title>2026-04-08 (수) — 10문제</title></rect>
+<rect class="l4" x="226" y="62" width="11" height="11" rx="2"><title>2026-04-08 (수) — 10문제
+· BOJ 3986 
+· BOJ 1629  (못품)
+· BOJ 4375  (못품)
+· BOJ 10828 
+· BOJ 2468 
+· BOJ 14890  (못품)
+· BOJ 1062  (못품)
+· BOJ 1094  (못품)
+· BOJ 2234  (못품)</title></rect>
 <rect class="l4" x="226" y="76" width="11" height="11" rx="2"><title>2026-04-09 (목) — 10문제
 · BOJ 1012  (못품)
 · BOJ 1992  (못품)
@@ -195,9 +201,14 @@
 · BOJ 14501  (못품)
 · BOJ 13144  (못품)
 · BOJ 3273  (틀림)
-· BOJ 1700  (못품)
-· BOJ 아기 고래의 첫 항해 (못품)</title></rect>
-<rect class="l4" x="240" y="76" width="11" height="11" rx="2"><title>2026-04-16 (목) — 7문제</title></rect>
+· BOJ 1700  (못품)</title></rect>
+<rect class="l4" x="240" y="76" width="11" height="11" rx="2"><title>2026-04-16 (목) — 7문제
+· BOJ 14889  (품)
+· BOJ 4179  (못품)
+· BOJ 12869  (못품)
+· BOJ 27866  (품)
+· BOJ 9086  (품)
+· BOJ 10809  (품)</title></rect>
 <rect class="l4" x="240" y="90" width="11" height="11" rx="2"><title>2026-04-17 (금) — 6문제
 · BOJ 16637  (못품)
 · BOJ 12851  (못품)
@@ -250,10 +261,6 @@
 · BOJ 2869 </title></rect>
 <rect class="l4" x="254" y="76" width="11" height="11" rx="2"><title>2026-04-23 (목) — 6문제
 · BOJ 자동차 테스트 (못품)
-· BOJ 순서대로 방문하기 (품)
-· BOJ 자동차 전시장 (못품)
-· BOJ 보안 담당자 (못품)
-· BOJ 성적 평가 (못품)
 · BOJ 5086  (품)</title></rect>
 <rect class="l4" x="254" y="90" width="11" height="11" rx="2"><title>2026-04-24 (금) — 14문제
 · BOJ 1012  (못품)
@@ -266,9 +273,6 @@
 · BOJ 2903  (품)
 · BOJ 1193  (못품)
 · BOJ 성적 평가 (못품)
-· BOJ 도로 보수 로봇 (못품)
-· BOJ 클러스터 업그레이드 (품)
-· BOJ 교차로 (못품)
 · BOJ 9506  (품)</title></rect>
 <rect class="l4" x="254" y="104" width="11" height="11" rx="2"><title>2026-04-25 (토) — 5문제
 · BOJ 1987  (못품)
@@ -289,7 +293,6 @@
 · BOJ 9935  (못품)
 · BOJ 1202  (못품)
 · BOJ 1644  (못품)
-· BOJ 교차로 (못품)
 · BOJ 27323  (품)</title></rect>
 <rect class="l4" x="268" y="48" width="11" height="11" rx="2"><title>2026-04-28 (화) — 9문제
 · BOJ 13248  (못품)
@@ -299,201 +302,78 @@
 · BOJ 1202  (틀림)
 · BOJ 13144  (품)
 · BOJ 교차로 (못품)
-· BOJ 1085  (품)
-· BOJ neetcode 150, no 1 (품)</title></rect>
+· BOJ 1085  (품)</title></rect>
 <rect class="l4" x="268" y="62" width="11" height="11" rx="2"><title>2026-04-29 (수) — 7문제
 · BOJ 15684  (틀림)
 · BOJ 여왕개미 (못품)
 · BOJ 14889  (품)
 · BOJ 19942  (품)
-· BOJ 17471  (품)
-· BOJ 교차로 (못품)
-· BOJ 사물인식 최소 면적 산출 프로그램 (못품)</title></rect>
+· BOJ 17471  (품)</title></rect>
 <rect class="l3" x="268" y="76" width="11" height="11" rx="2"><title>2026-04-30 (목) — 3문제
-· BOJ 출퇴근길 (못품)
-· BOJ 프로그래머스 완주하지 못한 선수 (품)
-· BOJ 프로그래머스 베스트앨범 (품)</title></rect>
+· BOJ 출퇴근길 (못품)</title></rect>
 <rect class="l4" x="268" y="90" width="11" height="11" rx="2"><title>2026-05-01 (금) — 7문제
 · BOJ 1202  (품)
-· BOJ 프로그래머스 타겟 넘버 (품)
-· BOJ 프로그래머스 입국심사 (못품)
-· BOJ 프로그래머스 멀리 뛰기 (못품)
-· BOJ 프로그래머스 모음사전 (품)
-· BOJ 프로그래머스 폰켓몬 (품)
-· BOJ 프로그래머스 퍼즐조각 채우기 (못품)</title></rect>
+· BOJ 프로그래머스 타겟 넘버 (품)</title></rect>
 <rect class="l4" x="268" y="104" width="11" height="11" rx="2"><title>2026-05-02 (토) — 7문제
-· BOJ 여왕개미 (못품)
-· BOJ 프로그래머스 멀리 뛰기 (못품)
-· BOJ 프로그래머스 기능 개발 (품)
-· BOJ K번째수 (품)
-· BOJ 구명보트 (품)
-· BOJ 더 맵게 (품)
-· BOJ 모의고사 (품)</title></rect>
+· BOJ 여왕개미 (못품)</title></rect>
 <rect class="l4" x="282" y="20" width="11" height="11" rx="2"><title>2026-05-03 (일) — 13문제
-· BOJ 여왕개미 (품)
-· BOJ 프로그래머스 입국심사 (못품)
-· BOJ 프로그래머스 퍼즐조각 채우기 (못품)
-· BOJ 게임 맵 최단거리 (품)
-· BOJ 네트워크 (품)
-· BOJ 전화번호 목록 (품)
-· BOJ 올바른 괄호 (품)
-· BOJ 단어변환 (품)
-· BOJ 가장큰수 (못품)
-· BOJ 카펫 (품)
-· BOJ 의상 (품)
-· BOJ 프로세스 (품)
-· BOJ 주식가격 (못품)</title></rect>
+· BOJ 여왕개미 (품)</title></rect>
 <rect class="l4" x="282" y="34" width="11" height="11" rx="2"><title>2026-05-04 (월) — 12문제
 · BOJ 프로그래머스 입국심사 (품)
-· BOJ 프로그래머스 멀리 뛰기 (틀림)
-· BOJ 프로그래머스 모음사전 (품)
-· BOJ 가장큰수 (틀림)
-· BOJ 주식가격 (못품)
-· BOJ 1463  (틀림)
-· BOJ 가장 먼 노드 (품)
-· BOJ 같은 숫자는 싫어 (품)
-· BOJ 소수 찾기 (품)
-· BOJ 다리를 지나는 트럭
-· BOJ H-index
-· BOJ 여행경로 (못품)</title></rect>
+· BOJ 1463  (틀림)</title></rect>
 <rect class="l4" x="282" y="48" width="11" height="11" rx="2"><title>2026-05-05 (화) — 12문제
 · BOJ 1012  (품)
 · BOJ 2910  (못품)
 · BOJ 17298  (품)
 · BOJ 1463  (못품)
-· BOJ 피로도 (틀림)
-· BOJ 여행경로 (품)
-· BOJ 전력망을 둘로 나누기 (품)
-· BOJ 큰수 만들기 (틀림)
-· BOJ 최소 직사각형
-· BOJ 이중우선순위큐
-· BOJ 체육복 (틀림)
-· BOJ 조이스틱 (틀림)</title></rect>
+· BOJ 피로도 (틀림)</title></rect>
 <rect class="l4" x="282" y="62" width="11" height="11" rx="2"><title>2026-05-06 (수) — 11문제
 · BOJ 9935  (틀림)
 · BOJ 1700  (못품)
 · BOJ 1463  (품)
-· BOJ 큰수 만들기 (품)
-· BOJ 순위 (못품)
-· BOJ N으로 표현 (못품)
-· BOJ 정수 삼각형 (못품)
-· BOJ 등굣길 (품)
-· BOJ 아이템 줍기 (못품)
-· BOJ 섬연결하기 (못품)
-· BOJ 단속카메라 (못품)</title></rect>
+· BOJ 큰수 만들기 (품)</title></rect>
 <rect class="l4" x="282" y="76" width="11" height="11" rx="2"><title>2026-05-07 (목) — 14문제
-· BOJ 프로그래머스 베스트앨범 (품)
-· BOJ 프로그래머스 멀리 뛰기 (품)
-· BOJ 프로그래머스 퍼즐조각 채우기 (못품)
-· BOJ 가장큰수 (틀림)
-· BOJ 주식가격 (품)
-· BOJ N으로 표현 (못품)
-· BOJ 정수 삼각형 (품)
-· BOJ 아이템 줍기 (못품)
-· BOJ 섬연결하기 (못품)
-· BOJ 단속카메라 (품)
-· BOJ 야근지수 (품)
-· BOJ 최고의 집합 (품)
-· BOJ 숫자게임 (품)
-· BOJ 셔틀버스 (품)</title></rect>
+· BOJ 프로그래머스 베스트앨범 (품)</title></rect>
 <rect class="l4" x="282" y="90" width="11" height="11" rx="2"><title>2026-05-08 (금) — 12문제
 · BOJ 2910  (품)
-· BOJ 게임 맵 최단거리 (품)
-· BOJ 가장큰수 (품)
-· BOJ 피로도 (품)
-· BOJ 디스크 컨트롤러 (틀림)
-· BOJ H-index (틀림)
-· BOJ 순위 (못품)
-· BOJ 퍼즐 게임 챌린지 (품)
-· BOJ 충돌 위험 찾기 (못품)
-· BOJ 수식 복원하기 (틀림)
-· BOJ 등대 (못품)
-· BOJ 인사고과 (틀림)</title></rect>
+· BOJ 게임 맵 최단거리 (품)</title></rect>
 <rect class="l4" x="282" y="104" width="11" height="11" rx="2"><title>2026-05-09 (토) — 8문제
 · BOJ 17140  (틀림)
 · BOJ 2529  (못품)
-· BOJ 충돌 위험 찾기 (품)
-· BOJ 수식 복원하기 (품)
-· BOJ 석유 시추 (틀림)
-· BOJ 아날로그 시계 (못품)
-· BOJ 수레 움직이기 (못품)
-· BOJ 요격 시스템 (틀림)</title></rect>
+· BOJ 충돌 위험 찾기 (품)</title></rect>
 <rect class="l4" x="296" y="20" width="11" height="11" rx="2"><title>2026-05-10 (일) — 15문제
-· BOJ 디스크 컨트롤러 (틀림)
-· BOJ 다리를 지나는 트럭 (품)
-· BOJ H-index (틀림)
-· BOJ 최소 직사각형 (품)
-· BOJ 체육복 (틀림)
-· BOJ 순위 (틀림)
-· BOJ 등대 (못품)
-· BOJ 인사고과 (못품)
-· BOJ 석유 시추 (품)
-· BOJ 수레 움직이기 (못품)
-· BOJ 모의고사 1회 1번 (품)
-· BOJ 모의고사 1회 2번 (품)
-· BOJ 모의고사 1회 3번 (못품)
-· BOJ 모의고사 1회 4번 (못품)
-· BOJ 기지국 설치 (틀림)</title></rect>
+· BOJ 디스크 컨트롤러 (틀림)</title></rect>
 <rect class="l4" x="296" y="34" width="11" height="11" rx="2"><title>2026-05-11 (월) — 12문제
 · BOJ 1325  (품)
 · BOJ 9935  (틀림)
 · BOJ 1700  (못품)
 · BOJ 디스크 컨트롤러 (품)
-· BOJ 등대 (못품)
 · BOJ 1 번 제출코드 (맞음)
 · BOJ 2 번 제출코드 (맞음)
 · BOJ 3 번 제출코드 (틀림)
 · BOJ 4 번 제출코드 (틀림)
-· BOJ 리코쳇 로봇 (품)
-· BOJ 부대복귀 (품)
 · BOJ 2343 기타레슨 (품)</title></rect>
 <rect class="l4" x="296" y="48" width="11" height="11" rx="2"><title>2026-05-12 (화) — 13문제
 · BOJ 2870  (품)
 · BOJ 3015  (못품)
 · BOJ 9935  (틀림)
 · BOJ 조이스틱 (못품)
-· BOJ 순위 (품)
-· BOJ 아이템 줍기 (품)
-· BOJ 요격 시스템 (틀림)
-· BOJ 3 번 제출코드 (품)
-· BOJ 유연근무제 (품)
-· BOJ 비밀 코드 해독 (품)
-· BOJ 지게차와 크레인 (품)
-· BOJ 홀짝트리 (틀림)
-· BOJ 두 원 사이의 정수 쌍 (틀림)</title></rect>
+· BOJ 3 번 제출코드 (품)</title></rect>
 <rect class="l4" x="296" y="62" width="11" height="11" rx="2"><title>2026-05-13 (수) — 8문제
 · BOJ 9935  (맞음)
-· BOJ 인사고과 (못품)
-· BOJ 수레 움직이기 (못품)
-· BOJ 모의고사 1회 4번 (품)
-· BOJ 연속된 부분 수열의 합 (틀림)
-· BOJ 과제 진행하기 (맞음)
-· BOJ 광물캐기 (맞음)
-· BOJ 당구연습 (맞음)</title></rect>
+· BOJ 인사고과 (못품)</title></rect>
 <rect class="l4" x="296" y="76" width="11" height="11" rx="2"><title>2026-05-14 (목) — 11문제
 · BOJ 9996  (틀림)
 · BOJ 14497  (품)
 · BOJ 1700  (못품)
 · BOJ 모의고사 1회 3번 (못품)
-· BOJ 기지국 설치 (품)
-· BOJ 4 번 제출코드 (못품)
-· BOJ 택배 상자 꺼내기 (품)
-· BOJ 서버 증설 횟수 (품)
-· BOJ 완전범죄 (틀림)
-· BOJ 봉인된 주문 (못품)
-· BOJ 혼자서 하는 틱택토 (틀림)</title></rect>
+· BOJ 4 번 제출코드 (못품)</title></rect>
 <rect class="l4" x="296" y="90" width="11" height="11" rx="2"><title>2026-05-15 (금) — 11문제
 · BOJ 1931  (틀림)
 · BOJ 1644  (못품)
 · BOJ 조이스틱 (못품)
-· BOJ 인사고과 (못품)
-· BOJ 수레 움직이기 (틀림)
-· BOJ 요격 시스템 (맞음)
-· BOJ 두 원 사이의 정수 쌍 (틀림)
-· BOJ 연속된 부분 수열의 합 (틀림)
 · BOJ 15683 감시 (못품)
-· BOJ 2792 보석 상자
-· BOJ 미로탈출 (품)</title></rect>
+· BOJ 2792 보석 상자</title></rect>
 <rect class="l4" x="296" y="104" width="11" height="11" rx="2"><title>2026-05-16 (토) — 4문제
 · BOJ 7795 먹을 것인가 먹힐 것인가 (품)
 · BOJ 1912 연속합 (못품)
@@ -507,58 +387,33 @@
 · BOJ 6236 용돈 관리 (틀림)
 · BOJ 1911 흙길 보수하기 (맞음)
 · BOJ 2565 전깃줄 (틀림)
-· BOJ 15662 톱니바퀴 (틀림)
-· BOJ 연속 펄스 부분 수열의 합 (못품)</title></rect>
+· BOJ 15662 톱니바퀴 (틀림)</title></rect>
 <rect class="l4" x="310" y="34" width="11" height="11" rx="2"><title>2026-05-18 (월) — 11문제
 · BOJ 가장큰수 (틀림)
-· BOJ 주식가격 (품)
-· BOJ H-index (틀림)
-· BOJ 이중우선순위큐 (못품)
 · BOJ 4 번 제출코드 (품)
-· BOJ 완전범죄 (못품)
 · BOJ 6236 용돈 관리 (틀림)
-· BOJ 2565 전깃줄 (맞음)
-· BOJ 바이러스 파이프 (틀림)
-· BOJ 중요한 단어를 스포 방지 (틀림)
-· BOJ 노란불 신호등 (못품)</title></rect>
+· BOJ 2565 전깃줄 (맞음)</title></rect>
 <rect class="l4" x="310" y="48" width="11" height="11" rx="2"><title>2026-05-19 (화) — 13문제
 · BOJ 14888  (맞음)
 · BOJ 2529  (품)
 · BOJ 1781  (틀림)
 · BOJ 체육복 (맞음)
-· BOJ 조이스틱 (못품)
-· BOJ 인사고과 (못품)
-· BOJ 홀짝트리 (못품)
-· BOJ 연속된 부분 수열의 합 (맞음)
-· BOJ 17406  (품)
-· BOJ 무인도 여행 (맞음)
-· BOJ 숫자 변환하기 (틀림)
-· BOJ 시소 짝꿍 (못품)
-· BOJ 택배 배달과 수거하기 (못품)</title></rect>
+· BOJ 17406  (품)</title></rect>
 <rect class="l4" x="310" y="62" width="11" height="11" rx="2"><title>2026-05-20 (수) — 11문제
 · BOJ 12851  (못품)
 · BOJ 1931  (틀림)
 · BOJ 충돌 위험 찾기 (품)
-· BOJ 홀짝트리 (못품)
 · BOJ 2792 보석 상자 (맞음)
-· BOJ 마법의 엘리베이터 (틀림)
-· BOJ 디펜스 게임 (품)
-· BOJ 점 찍기 (품)
-· BOJ 이모티콘 할인행사 (틀림)
 · BOJ 1561 놀이공원 (못품)
 · BOJ 17070 파이프 옮기기1</title></rect>
 <rect class="l4" x="310" y="76" width="11" height="11" rx="2"><title>2026-05-21 (목) — 5문제
 · BOJ 귤 고르기 (맞음)
-· BOJ 문자열 압축 (맞음)
-· BOJ 괄호 변환 (틀림)
-· BOJ 숫자 카드 나누기 (맞음)
 · SWEA 최대상금 SW Expert Academy (못품)</title></rect>
 <rect class="l4" x="310" y="90" width="11" height="11" rx="2"><title>2026-05-22 (금) — 8문제
 · SWEA Flatten SW Expert Academy (품)
 · BOJ 1209 \[S/W 문제해결 기본] 2일차 - Sum (품)
 · BOJ 1213 \[S/W 문제해결 기본] 3일차 - String (품)
 · BOJ 1225 \[S/W 문제해결 기본] 7일차 - 암호생성기 (품)
-· BOJ 싸피 수기 공모집 문제 (틀림)
 · BOJ 싸피 수기 공모집 문제 (틀림)
 · BOJ 1234 \[S/W 문제해결 기본] 10일차 - 비밀번호 (품)
 · BOJ 1860 진기의 최고급 붕어빵 (품)</title></rect>
@@ -731,8 +586,7 @@
 · BOJ 17297  (못품)
 · BOJ 1219  (틀림)
 · BOJ 17611  (못품)
-· BOJ 코디의 향수 공방 (품)
-· BOJ 자물쇠와 열쇠 (못품)</title></rect>
+· BOJ 코디의 향수 공방 (품)</title></rect>
 <rect class="l4" x="366" y="48" width="11" height="11" rx="2"><title>2026-06-16 (화) — 7문제
 · BOJ 3197  (시간초과)
 · BOJ 1280  (못품)
@@ -783,8 +637,7 @@
 · BOJ 9996  (틀림)
 · BOJ 1280  (못품)
 · BOJ 15972  (못품)
-· BOJ 코드트리 등산 게임 (못품)
-· BOJ 코드트리 싸움땅 (품)</title></rect>
+· BOJ 코드트리 등산 게임 (못품)</title></rect>
 <rect class="l4" x="380" y="62" width="11" height="11" rx="2"><title>2026-06-24 (수) — 4문제
 · BOJ 아기 고래의 첫 항해 (품)
 · BOJ 16118  (품)
@@ -796,8 +649,7 @@
 · BOJ 11658  (품)
 · BOJ 코드트리 메신저 (틀림)</title></rect>
 <rect class="l2" x="380" y="90" width="11" height="11" rx="2"><title>2026-06-26 (금) — 2문제
-· BOJ 외벽점검 (못품)
-· BOJ 메두사와 전사들 (못품)</title></rect>
+· BOJ 외벽점검 (못품)</title></rect>
 <rect class="l4" x="380" y="104" width="11" height="11" rx="2"><title>2026-06-27 (토) — 6문제
 · BOJ 9996  (맞음)
 · BOJ 택배 하차 (못품)
@@ -817,8 +669,7 @@
 · BOJ 고대 문명 유적 탐사 (품)
 · BOJ 12869  (틀림)
 · BOJ 13913  (맞음)
-· BOJ 1644  (시간초과)
-· BOJ 외벽점검 (못품)</title></rect>
+· BOJ 1644  (시간초과)</title></rect>
 <rect class="l4" x="394" y="48" width="11" height="11" rx="2"><title>2026-06-30 (화) — 6문제
 · BOJ 13244  (맞음)
 · BOJ 5430  (틀림)
@@ -990,9 +841,10 @@
 · BOJ 2636  (품)
 · SWEA 2477 차량 정비소 (품)
 · SWEA 2383 점심 식사시간 (품)</title></rect>
-<rect class="l2" x="478" y="48" width="11" height="11" rx="2"><title>2026-08-11 (화) — 2문제
+<rect class="l3" x="478" y="48" width="11" height="11" rx="2"><title>2026-08-11 (화) — 3문제
 · SWEA 2382 미생물 격리 (품)
-· SWEA 2117 홈 방범 서비스 (품)</title></rect>
+· SWEA 2117 홈 방범 서비스 (품)
+· BOJ 1159 농구 경기 (품)</title></rect>
 <rect class="l1" x="478" y="62" width="11" height="11" rx="2"><title>2026-08-12 (수) — 1문제
 · BOJ 1159 농구 경기 (품)</title></rect>
 <rect class="l0" x="478" y="76" width="11" height="11" rx="2"><title>2026-08-13 (목) — 0문제</title></rect>
