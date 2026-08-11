@@ -195,11 +195,28 @@ git push
 
 ---
 
-## 6. 현황 유지
-
-`README.md` 하단의 현황 표와 인덱스(`<!-- INDEX_START -->` ~ `<!-- INDEX_END -->`)를
-**커밋 때마다 갱신**한다. 갱신 스크립트:
+## 6. 현황 · 잔디 유지 — **커밋 전 항상 실행**
 
 ```bash
-python _meta/build_index.py
+python _meta/build_index.py      # README 현황표 + 풀이 인덱스
+python _meta/build_heatmap.py    # 코테 잔디 (assets/heatmap.svg)
 ```
+
+### 잔디 동작 방식
+
+| | |
+|---|---|
+| 출력 | `assets/heatmap.svg` → README에서 `![](./assets/heatmap.svg)` 로 표시 |
+| 누적 데이터 | **`_meta/history.json`** (date → 그날 시도 문제 수) |
+| 데이터 병합 | `history.json` **+** 옵시디언 실수노트(있을 때) **+** repo 풀이파일의 `풀이일` — 셋을 합쳐 큰 값 채택 |
+
+> 🔑 **`history.json`이 핵심이다.** 볼트가 없는 PC에서도 잔디가 유지되도록 **repo에 커밋된 누적본**이다.
+> 볼트가 있는 PC에서 돌리면 실수노트 전체 이력이 자동으로 합쳐진다. **절대 삭제하지 말 것.**
+
+- 카운트 정의 = **그날 시도한 문제 수** (데일리 노트의 `solved`와 같은 의미. 못품·틀림 포함)
+- 검증됨: 데일리 `solved` 값과 최근 8일 전부 일치
+- 다크모드는 SVG 내부 `prefers-color-scheme`으로 자동 전환
+- 셀에 마우스 올리면 `날짜 — N문제` 툴팁
+
+> ⚠️ 옵시디언의 `코테 잔디.md`는 **dataviewjs + 히트맵 플러그인** 기반이라 GitHub에서 안 돌아간다.
+> 그래서 별도 SVG 생성 방식을 쓴다. **둘은 같은 데이터(실수노트)를 보므로 수치가 일치해야 정상이다.**
