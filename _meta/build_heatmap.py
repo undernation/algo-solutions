@@ -16,6 +16,7 @@ history.json 형식:
 """
 import os, re, io, json, glob, datetime, sys, html
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HIST = os.path.join(ROOT, "_meta", "history.json")
 ASSETS = os.path.join(ROOT, "assets")
@@ -46,7 +47,17 @@ def load_history() -> dict:
         if isinstance(v, int):                      # 구버전 호환
             out[k] = {"count": v, "items": []}
         else:
-            out[k] = {"count": v.get("count", 0), "items": v.get("items", [])}
+            items = []
+            for it in v.get("items", []):
+                if isinstance(it, dict):
+                    items.append(it)
+                else:                                   # 구버전 문자열
+                    m = re.match(r"(BOJ|SWEA)\s+(\d+)?\s*(.*?)\s*(?:\(([^)]*)\))?$", it)
+                    items.append({"site": m.group(1) if m else "BOJ",
+                                  "no": (m.group(2) or "") if m else "",
+                                  "title": (m.group(3) or "") if m else it,
+                                  "status": (m.group(4) or "?") if m else "?"})
+            out[k] = {"count": v.get("count", 0), "items": items}
     return out
 
 
@@ -87,10 +98,12 @@ def from_vault() -> dict:
             m = DATEL.match(x)
             if m and m.group(1) not in seen:
                 seen[m.group(1)] = head_stat
+        m = re.match(r"(\d+)\s*\.?\s*(.*)", title)
+        no, nm = (m.group(1), m.group(2).strip()) if m else ("", title)
         for d, st in seen.items():
             rec = out.setdefault(d, {"count": 0, "items": []})
             rec["count"] += 1
-            rec["items"].append("%s %s%s" % (site, title, " (%s)" % st if st else ""))
+            rec["items"].append({"site": site, "no": no, "title": nm, "status": st or "?"})
     return out
 
 
@@ -104,11 +117,14 @@ def from_repo() -> dict:
             continue
         d = m.group(1)
         t = re.search(r"^\s*(BOJ|SWEA)\s+(\d+)\s+(.*)$", src, re.M)
-        label = ("%s %s %s" % (t.group(1), t.group(2), t.group(3).strip())
-                 if t else os.path.basename(f))
+        st = re.search(r"결과\s*:\s*(\S+)", src)
+        item = {"site": t.group(1) if t else "BOJ", "no": t.group(2) if t else "",
+                "title": t.group(3).strip() if t else os.path.basename(f),
+                "status": st.group(1) if st else "?",
+                "file": os.path.relpath(f, ROOT).replace(os.sep, "/")}
         rec = out.setdefault(d, {"count": 0, "items": []})
         rec["count"] += 1
-        rec["items"].append(label)
+        rec["items"].append(item)
     return out
 
 
@@ -123,6 +139,15 @@ def merge(base: dict, add: dict) -> dict:
 
 
 # ── 렌더 ───────────────────────────────────────────────────────
+def fmt(it) -> str:
+    """구조화 item -> 표시 문자열"""
+    if isinstance(it, str):
+        return it
+    no = (" " + it["no"]) if it.get("no") else ""
+    st = (" (%s)" % it["status"]) if it.get("status") and it["status"] != "?" else ""
+    return "%s%s %s%s" % (it.get("site", ""), no, it.get("title", ""), st)
+
+
 def level(n):
     return 0 if n <= 0 else 1 if n == 1 else 2 if n == 2 else 3 if n == 3 else 4
 
@@ -137,7 +162,7 @@ def tip(d: datetime.date, rec: dict) -> str:
     head = "%s (%s) — %d문제" % (d.isoformat(), DOW[d.weekday()], rec["count"])
     if not rec["items"]:
         return head
-    return head + "\n" + "\n".join("· " + x for x in rec["items"])
+    return head + "\n" + "\n".join("· " + fmt(x) for x in rec["items"])
 
 
 def render_svg(data, year):
@@ -184,7 +209,8 @@ def render_svg(data, year):
 
 
 def render_html(data, year, total, active, best):
-    """진짜 인터랙티브 버전 — 브라우저로 직접 열면 hover 동작."""
+    """백준 프로필 스타일 대시보드 (GitHub Pages 진입점)."""
+    from _dashboard_tpl import render_dashboard
     g0, weeks = grid(year)
     cells = []
     for w in range(weeks):
@@ -193,45 +219,18 @@ def render_html(data, year, total, active, best):
             if d.year != year:
                 continue
             rec = data.get(d.isoformat(), {"count": 0, "items": []})
-            items = "".join("<li>%s</li>" % html.escape(x) for x in rec["items"])
-            cells.append(
-                '<div class="c l%d" style="grid-column:%d;grid-row:%d" '
-                'data-d="%s (%s)" data-n="%d" data-i=\'%s\'></div>'
-                % (level(rec["count"]), w + 1, dow + 1, d.isoformat(),
-                   DOW[d.weekday()], rec["count"], html.escape(items or "<li>—</li>", quote=True)))
-    return """<!doctype html><html lang="ko"><meta charset="utf-8">
-<title>코테 잔디 %d</title>
-<style>
- :root{--bg:#fff;--fg:#1f2328;--sub:#57606a;--c0:#ebedf0;--c1:#9be9a8;--c2:#40c463;--c3:#30a14e;--c4:#216e39}
- @media(prefers-color-scheme:dark){:root{--bg:#0d1117;--fg:#e6edf3;--sub:#8b949e;--c0:#161b22;--c1:#0e4429;--c2:#006d32;--c3:#26a641;--c4:#39d353}}
- body{background:var(--bg);color:var(--fg);font:14px -apple-system,Segoe UI,sans-serif;padding:28px;margin:0}
- h1{font-size:18px;margin:0 0 4px} .sub{color:var(--sub);font-size:12px;margin-bottom:18px}
- .grid{display:grid;grid-auto-flow:column;grid-template-rows:repeat(7,13px);gap:3px;overflow-x:auto;padding-bottom:8px}
- .c{width:13px;height:13px;border-radius:3px;cursor:pointer}
- .l0{background:var(--c0)}.l1{background:var(--c1)}.l2{background:var(--c2)}.l3{background:var(--c3)}.l4{background:var(--c4)}
- .c:hover{outline:2px solid var(--fg);outline-offset:1px}
- #tip{position:fixed;display:none;background:#1f2328;color:#fff;padding:8px 11px;border-radius:6px;
-      font-size:12px;line-height:1.55;pointer-events:none;z-index:99;box-shadow:0 4px 14px rgba(0,0,0,.35);max-width:340px}
- #tip b{display:block;margin-bottom:4px}#tip ul{margin:0;padding-left:16px}
- .stat{margin-top:18px;color:var(--sub);font-size:12px}
-</style>
-<h1>🌱 코테 잔디 %d</h1>
-<div class="sub">셀에 마우스를 올리면 그날 푼 문제가 보입니다</div>
-<div class="grid">%s</div>
-<div class="stat">총 <b>%d문제</b> · 활동 <b>%d일</b> · 최장 연속 <b>%d일</b></div>
-<div id="tip"></div>
-<script>
-const tip=document.getElementById('tip');
-document.querySelectorAll('.c').forEach(c=>{
-  c.addEventListener('mousemove',e=>{
-    tip.innerHTML='<b>'+c.dataset.d+' — '+c.dataset.n+'문제</b><ul>'+c.dataset.i+'</ul>';
-    tip.style.display='block';
-    const x=Math.min(e.clientX+14,innerWidth-360);
-    tip.style.left=x+'px'; tip.style.top=(e.clientY+16)+'px';
-  });
-  c.addEventListener('mouseleave',()=>tip.style.display='none');
-});
-</script></html>""" % (year, year, "".join(cells), total, active, best)
+            cells.append({"w": w + 1, "r": dow + 1, "d": d.isoformat(),
+                          "dw": DOW[d.weekday()], "n": rec["count"],
+                          "lv": level(rec["count"])})
+    rows = []
+    for dk in sorted(data, reverse=True):
+        for it in data[dk]["items"]:
+            if isinstance(it, str):
+                continue
+            rows.append({"date": dk, "site": it.get("site", ""),
+                         "no": it.get("no", ""), "title": it.get("title", ""),
+                         "status": it.get("status", "?"), "file": it.get("file", "")})
+    return render_dashboard(data, year, total, active, best, cells, rows)
 
 
 def month_details(data, year, months=None):
@@ -253,7 +252,7 @@ def month_details(data, year, months=None):
         rows = ["| 날짜 | 문제 |", "|---|---|"]
         for d in sorted(days, reverse=True):
             dt = datetime.date(*map(int, d.split("-")))
-            items = data[d]["items"] or ["(기록 없음)"]
+            items = [fmt(x) for x in data[d]["items"]] or ["(기록 없음)"]
             rows.append("| **%s** (%s) | %s |"
                         % (d[5:], DOW[dt.weekday()], "<br>".join(items)))
         out.append("<details>\n<summary><b>%s</b> — %d일 / %d문제</summary>\n\n%s\n\n</details>"
@@ -290,8 +289,10 @@ def main():
             streak = 0
         d += datetime.timedelta(days=1)
 
-    io.open(HTML, "w", encoding="utf-8", newline="").write(
-        render_html(data, year, total, active, best))
+    page = render_html(data, year, total, active, best)
+    io.open(HTML, "w", encoding="utf-8", newline="").write(page)
+    # GitHub Pages 진입점 (repo 루트)
+    io.open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8", newline="").write(page)
 
     io.open(FULL, "w", encoding="utf-8", newline="").write(
         "# 🌱 코테 잔디 — 전체 기록 (%d)\n\n"

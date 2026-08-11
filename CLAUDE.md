@@ -13,11 +13,32 @@
 | | |
 |---|---|
 | 소유자 | `undernation` (gmlcjf287@gmail.com) |
-| 공개범위 | **PRIVATE (필수)** |
+| 공개범위 | ⚠️ **현재 PUBLIC** (GitHub Pages 사용 목적) |
 | 원격 | `https://github.com/undernation/algo-solutions.git` (**HTTPS** — SSH 키 미설정) |
+| Pages | https://undernation.github.io/algo-solutions/ (인터랙티브 잔디) |
 
-> 🚨 **절대 public으로 바꾸지 말 것.** SWEA 문제 지문이 포함돼 있다.
-> SSAFY로부터 "private이면 문제 지문 보관 가능"을 확인받은 상태이며, **그 조건이 private 유지다.**
+## 🚨🚨 지문·저작물 취급 규칙 — 최우선
+
+> **현재 repo는 PUBLIC이다. 따라서 문제 지문을 절대 커밋하지 않는다.**
+
+| 항목 | public 상태에서 |
+|---|---|
+| 본인이 작성한 **풀이 코드** | ✅ 가능 (본인 저작물) |
+| 문제 **번호·제목·URL** | ✅ 가능 |
+| **제약조건·시간/메모리 한도·정답률** | ✅ 가능 (사실 정보) |
+| **문제 지문 전문 / 예제 입출력** | ❌ **금지** |
+
+- SWEA 문제 페이지에 **"※ SW Expert 아카데미의 문제를 무단 복제하는 것을 금지합니다."** 고지가 있다.
+- SSAFY로부터 받은 허용 조건은 **"private이면 보관 가능"** 이었다. **지금은 public이므로 그 조건 밖이다.**
+- **지문을 넣어야 한다면 반드시 먼저 private으로 되돌린다:**
+  ```bash
+  gh repo edit --visibility private --accept-visibility-change-consequences
+  ```
+  단 private 전환 시 **GitHub Pages(무료 계정)는 중단**된다.
+- ⚠️ **한 번 public으로 push된 내용은 git 히스토리·포크·캐시에 남는다.** 되돌려도 완전 삭제가 아니다. **넣기 전에 판단할 것.**
+
+> `_meta/fetch_swea.py` 는 지문(`statement`)도 파싱하지만, **public 상태에서는 파일에 기록하지 말 것.**
+> 제약·한도·통계만 사용한다.
 
 ### ⚠️ 이 repo는 "진실의 소스"가 아니다
 
