@@ -1,0 +1,8 @@
+# 생성물 — 매 빌드마다 통째로 바뀌므로 3-way merge 가 의미 없다.
+# rebase/merge 때 항상 "내 쪽"을 채택하고, 어차피 훅이 다시 생성한다.
+index.html          merge=ours -diff
+assets/heatmap.html merge=ours -diff
+assets/heatmap.svg  merge=ours -diff
+HEATMAP.md          merge=ours -diff
+README.md           merge=ours
+_meta/history.json  merge=union
