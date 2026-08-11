@@ -70,6 +70,20 @@ python _meta/fetch_swea.py <contestProbId> --json
 
 ---
 
+## 🌱 코테 잔디
+
+<!-- HEATMAP_START -->
+![코테 잔디](./assets/heatmap.svg)
+
+| 2026년 | |
+|---|---|
+| 총 시도 | **772문제** |
+| 활동일 | **135일** |
+| 최장 연속 | **131일** |
+<!-- HEATMAP_END -->
+
+---
+
 ## 📊 현황
 
 | | |
