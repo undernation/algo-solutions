@@ -1,0 +1,24 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/2075",
+ "no": "2075",
+ "title": "N번째 큰 수",
+ "source_url": "https://www.acmicpc.net/problem/2075",
+ "limits": {
+  "time": "1 초",
+  "memory": "12 MB"
+ },
+ "solved": true,
+ "statement": "N×N의 표에 수 N2개 채워져 있다. 채워진 수에는 한 가지 특징이 있는데, 모든 수는 자신의 한 칸 위에 있는 수보다 크다는 것이다. N=5일 때의 예를 보자.\n\n12\t7\t9\t15\t5\n13\t8\t11\t19\t6\n21\t10\t26\t31\t16\n48\t14\t28\t35\t25\n52\t20\t32\t41\t49\n\n이러한 표가 주어졌을 때, N번째 큰 수를 찾는 프로그램을 작성하시오. 표에 채워진 수는 모두 다르다.",
+ "input_spec": "첫째 줄에 N(1 ≤ N ≤ 1,500)이 주어진다. 다음 N개의 줄에는 각 줄마다 N개의 수가 주어진다. 표에 적힌 수는 -10억보다 크거나 같고, 10억보다 작거나 같은 정수이다.",
+ "output_spec": "첫째 줄에 N번째 큰 수를 출력한다.",
+ "samples": [
+  {
+   "in": "5\n12 7 9 15 5\n13 8 11 19 6\n21 10 26 31 16\n48 14 28 35 25\n52 20 32 41 49",
+   "out": "35"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

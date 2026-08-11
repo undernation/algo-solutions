@@ -1,0 +1,21 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/1943",
+ "no": "1943",
+ "title": "동전 분배",
+ "source_url": "https://www.acmicpc.net/problem/1943",
+ "limits": {
+  "time": "2 초",
+  "memory": "128 MB"
+ },
+ "solved": true,
+ "samples": [
+  {
+   "in": "2\n500 1\n50 1\n3\n100 2\n50 1\n10 5\n3\n1 1\n2 1\n3 1",
+   "out": "0\n1\n1"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

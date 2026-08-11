@@ -1,0 +1,21 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/18352",
+ "no": "18352",
+ "title": "특정 거리의 도시 찾기",
+ "source_url": "https://www.acmicpc.net/problem/18352",
+ "limits": {
+  "time": "2 초",
+  "memory": "256 MB"
+ },
+ "solved": true,
+ "samples": [
+  {
+   "in": "1\n4 4 2 1\n1 2\n1 3\n2 3\n2 4",
+   "out": "1\n4\n예제 입력 2\n4 3 2 1\n1 2\n1 3\n1 4\n예제 출력 2\n-1\n예제 입력 3\n4 4 1 1\n1 2\n1 3\n2 3\n2 4\n예제 출력 3\n2\n3"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

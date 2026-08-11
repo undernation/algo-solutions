@@ -1,0 +1,24 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/11725",
+ "no": "11725",
+ "title": "트리의 부모 찾기",
+ "source_url": "https://www.acmicpc.net/problem/11725",
+ "limits": {
+  "time": "1 초",
+  "memory": "256 MB"
+ },
+ "solved": true,
+ "statement": "루트 없는 트리가 주어진다. 이때, 트리의 루트를 1이라고 정했을 때, 각 노드의 부모를 구하는 프로그램을 작성하시오.",
+ "input_spec": "첫째 줄에 노드의 개수 N (2 ≤ N ≤ 100,000)이 주어진다. 둘째 줄부터 N-1개의 줄에 트리 상에서 연결된 두 정점이 주어진다.",
+ "output_spec": "첫째 줄부터 N-1개의 줄에 각 노드의 부모 노드 번호를 2번 노드부터 순서대로 출력한다.",
+ "samples": [
+  {
+   "in": "1\n7\n1 6\n6 3\n3 5\n4 1\n2 4\n4 7",
+   "out": "1\n4\n6\n1\n3\n1\n4\n예제 입력 2\n12\n1 2\n1 3\n2 4\n3 5\n3 6\n4 7\n4 8\n5 9\n5 10\n6 11\n6 12\n예제 출력 2\n1\n1\n2\n3\n3\n4\n4\n5\n5\n6\n6"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

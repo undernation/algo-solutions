@@ -1,0 +1,24 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/1406",
+ "no": "1406",
+ "title": "에디터",
+ "source_url": "https://www.acmicpc.net/problem/1406",
+ "limits": {
+  "time": "0.3 초",
+  "memory": "512 MB"
+ },
+ "solved": true,
+ "statement": "한 줄로 된 간단한 에디터를 구현하려고 한다. 이 편집기는 영어 소문자만을 기록할 수 있는 편집기로, 최대 600,000글자까지",
+ "input_spec": "첫째 줄에는 초기에 편집기에 입력되어 있는 문자열이 주어진다. 이 문자열은 길이가 N이고, 영어 소문자로만 이루어져 있으며, 길이는 100,000을 넘지 않는다. 둘째 줄에는 입력할 명령어의 개수를 나타내는 정수 M(1 ≤ M ≤ 500,000)이 주어진다. 셋째 줄부터 M개의 줄에 걸쳐 입력할 명령어가 순서대로 주어진다. 명령어는 위의 네 가지 중 하나의 형태로만 주어진다.",
+ "output_spec": "첫째 줄에 모든 명령어를 수행하고 난 후 편집기에 입력되어 있는 문자열을 출력한다.",
+ "samples": [
+  {
+   "in": "1\nabcd\n3\nP x\nL\nP y",
+   "out": "1\nabcdyx\n예제 입력 2\nabc\n9\nL\nL\nL\nL\nL\nP x\nL\nB\nP y\n예제 출력 2\nyxabc\n예제 입력 3\ndmih\n11\nB\nB\nP x\nL\nB\nB\nB\nP y\nD\nD\nP z\n예제 출력 3\nyxz"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

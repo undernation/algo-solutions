@@ -1,0 +1,24 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/2609",
+ "no": "2609",
+ "title": "최대공약수와 최소공배수",
+ "source_url": "https://www.acmicpc.net/problem/2609",
+ "limits": {
+  "time": "1 초",
+  "memory": "128 MB"
+ },
+ "solved": true,
+ "statement": "두 개의 자연수를",
+ "input_spec": "첫째 줄에는 두 개의 자연수가 주어진다. 이 둘은 10,000이하의 자연수이며 사이에 한 칸의 공백이 주어진다.",
+ "output_spec": "첫째 줄에는 입력으로 주어진 두 수의 최대공약수를, 둘째 줄에는 입력으로 주어진 두 수의 최소 공배수를 출력한다.",
+ "samples": [
+  {
+   "in": "24 18",
+   "out": "6\n72"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

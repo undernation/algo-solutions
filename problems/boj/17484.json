@@ -1,0 +1,21 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/17484",
+ "no": "17484",
+ "title": "진우의 달 여행 (Small)",
+ "source_url": "https://www.acmicpc.net/problem/17484",
+ "limits": {
+  "time": "1 초",
+  "memory": "256 MB"
+ },
+ "solved": true,
+ "samples": [
+  {
+   "in": "6 4\n5 8 5 1\n3 5 8 4\n9 77 65 5\n2 1 5 2\n5 98 1 5\n4 95 67 58",
+   "out": "29"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

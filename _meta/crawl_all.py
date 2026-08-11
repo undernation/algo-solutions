@@ -9,6 +9,7 @@
     python _meta/crawl_all.py --site BOJ     # 특정 사이트만
     python _meta/crawl_all.py --limit 30     # 앞에서 N개만
     python _meta/crawl_all.py --force        # 이미 있는 것도 다시
+    python _meta/crawl_all.py --empty        # 지문이 빈 것만 다시 (파서 수정 후 복구)
 
 선행조건: 디버그 크롬(9222) + 코딩살구 로그인
     python C:/Users/solom/crawler.py chrome
@@ -87,7 +88,18 @@ def main():
     todo = targets()
     if only:
         todo = [t for t in todo if t["site"] == only]
-    if not force:
+    if "--empty" in a:
+        # 지문이 비어 저장된 것만 다시 (파서 수정 후 복구용)
+        def empty(t):
+            f = os.path.join(PROB, SUB[t["site"]], t["no"] + ".json")
+            if not os.path.exists(f):
+                return False
+            try:
+                return not (json.load(io.open(f, encoding="utf-8")).get("statement") or "").strip()
+            except Exception:
+                return True
+        todo = [t for t in todo if empty(t)]
+    elif not force:
         todo = [t for t in todo
                 if not os.path.exists(os.path.join(PROB, SUB[t["site"]], t["no"] + ".json"))]
     if lim:

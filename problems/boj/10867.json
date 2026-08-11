@@ -1,0 +1,24 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/10867",
+ "no": "10867",
+ "title": "중복 빼고 정렬하기",
+ "source_url": "https://www.acmicpc.net/problem/10867",
+ "limits": {
+  "time": "1 초",
+  "memory": "256 MB"
+ },
+ "solved": true,
+ "statement": "N개의 정수가 주어진다. 이때, N개의 정수를 오름차순으로 정렬하는 프로그램을 작성하시오. 같은 정수는 한 번만 출력한다.",
+ "input_spec": "첫째 줄에 수의 개수 N (1 ≤ N ≤ 100,000)이 주어진다. 둘째에는 숫자가 주어진다. 이 수는 절댓값이 1,000보다 작거나 같은 정수이다.",
+ "output_spec": "첫째 줄에 수를 오름차순으로 정렬한 결과를 출력한다. 이때, 같은 수는 한 번만 출력한다.",
+ "samples": [
+  {
+   "in": "10\n1 4 2 3 1 4 2 3 1 2",
+   "out": "1 2 3 4"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

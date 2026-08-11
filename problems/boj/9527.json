@@ -1,0 +1,24 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/9527",
+ "no": "9527",
+ "title": "1의 개수 세기",
+ "source_url": "https://www.acmicpc.net/problem/9527",
+ "limits": {
+  "time": "1 초",
+  "memory": "128 MB"
+ },
+ "solved": true,
+ "statement": "두 자연수 A, B가 주어졌을 때, A ≤ x ≤ B를 만족하는 모든 x에 대해 x를 이진수로 표현했을 때 1의 개수의 합을 구하는 프로그램을 작성하시오.\n\n즉, f(x) = x를 이진수로 표현 했을 때 1의 개수라고 정의하고, 아래 식의 결과를 구하자.\n\n\\[\\sum_{x=A}^{B}{f(x)}\\]",
+ "input_spec": "첫 줄에 두 자연수 A, B가 주어진다. (1 ≤ A ≤ B ≤ 1016)",
+ "output_spec": "1의 개수를 세어 출력한다.",
+ "samples": [
+  {
+   "in": "2 12",
+   "out": "21"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

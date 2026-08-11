@@ -1,0 +1,23 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/2675",
+ "no": "2675",
+ "title": "문자열 반복",
+ "source_url": "https://www.acmicpc.net/problem/2675",
+ "limits": {
+  "time": "1 초",
+  "memory": "128 MB"
+ },
+ "solved": true,
+ "statement": "문자열 S를",
+ "input_spec": "첫째 줄에",
+ "samples": [
+  {
+   "in": "2\n3 ABC\n5 /HTP",
+   "out": "AAABBBCCC\n/////HHHHHTTTTTPPPPP"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

@@ -1,0 +1,24 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/11047",
+ "no": "11047",
+ "title": "동전 0",
+ "source_url": "https://www.acmicpc.net/problem/11047",
+ "limits": {
+  "time": "1 초",
+  "memory": "256 MB"
+ },
+ "solved": true,
+ "statement": "준규가 가지고 있는 동전은 총 N종류이고, 각각의 동전을 매우 많이 가지고 있다.\n\n동전을 적절히 사용해서 그 가치의 합을 K로 만들려고 한다. 이때 필요한 동전 개수의 최솟값을 구하는 프로그램을 작성하시오.",
+ "input_spec": "첫째 줄에 N과 K가 주어진다. (1 ≤ N ≤ 10, 1 ≤ K ≤ 100,000,000)\n\n둘째 줄부터 N개의 줄에 동전의 가치 Ai가 오름차순으로 주어진다. (1 ≤ Ai ≤ 1,000,000, A1 = 1, i ≥ 2인 경우에 Ai는 Ai-1의 배수)",
+ "output_spec": "첫째 줄에 K원을 만드는데 필요한 동전 개수의 최솟값을 출력한다.",
+ "samples": [
+  {
+   "in": "1\n10 4200\n1\n5\n10\n50\n100\n500\n1000\n5000\n10000\n50000",
+   "out": "1\n6\n예제 입력 2\n10 4790\n1\n5\n10\n50\n100\n500\n1000\n5000\n10000\n50000\n예제 출력 2\n12"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

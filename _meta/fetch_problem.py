@@ -80,8 +80,12 @@ def parse_cosal(t, url):
     if mw:
         d["label"] = mw.group(1).replace(" ", "")
 
-    d["solved"] = "해결" in sect(t, meta_line, "주차 목록")[:40]
-    body = sect(t, "주차 목록", "테스트 케이스", "코드 제출")
+    # 본문 시작 앵커는 "…목록" 링크 줄이다. 주차 문제는 "주차 목록",
+    # 개념별 전용 문제는 "문자열 · 누적합 · 구현 목록" 처럼 트랙명이 들어간다.
+    ml = re.search(r"\n([^\n]{0,40}목록)\n", t)
+    anchor = ml.group(1) if ml else "주차 목록"
+    d["solved"] = "해결" in sect(t, meta_line, anchor)[:40]
+    body = sect(t, anchor, "테스트 케이스", "코드 제출")
     d["statement"] = clean(sect(body, "", "입력") or body)
     d["input_spec"] = clean(sect(body, "\n입력\n", "\n출력\n"))
     d["output_spec"] = clean(sect(body, "\n출력\n", "테스트 케이스"))

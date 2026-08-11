@@ -1,0 +1,21 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/1309",
+ "no": "1309",
+ "title": "동물원",
+ "source_url": "https://www.acmicpc.net/problem/1309",
+ "limits": {
+  "time": "2 초",
+  "memory": "128 MB"
+ },
+ "solved": true,
+ "samples": [
+  {
+   "in": "4",
+   "out": "41"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

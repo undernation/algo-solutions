@@ -1,0 +1,21 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/12837",
+ "no": "12837",
+ "title": "가계부 (Hard)",
+ "source_url": "https://www.acmicpc.net/problem/12837",
+ "limits": {
+  "time": "1 초",
+  "memory": "512 MB"
+ },
+ "solved": true,
+ "samples": [
+  {
+   "in": "10 6\n1 3 10000\n1 4 -5000\n1 7 -3000\n2 1 10\n1 6 35000\n2 4 10",
+   "out": "2000\n27000"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

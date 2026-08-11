@@ -1,0 +1,24 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/9663",
+ "no": "9663",
+ "title": "N-Queen",
+ "source_url": "https://www.acmicpc.net/problem/9663",
+ "limits": {
+  "time": "10 초",
+  "memory": "128 MB"
+ },
+ "solved": true,
+ "statement": "N-Queen 문제는 크기가 N × N인 체스판 위에 퀸 N개를 서로 공격할 수 없게 놓는 문제이다.\n\nN이 주어졌을 때, 퀸을 놓는 방법의 수를 구하는 프로그램을 작성하시오.",
+ "input_spec": "첫째 줄에 N이 주어진다. (1 ≤ N < 15)",
+ "output_spec": "첫째 줄에 퀸 N개를 서로 공격할 수 없게 놓는 경우의 수를 출력한다.",
+ "samples": [
+  {
+   "in": "8",
+   "out": "92"
+  }
+ ],
+ "private_tc_count": 13,
+ "fetched_at": "2026-08-11"
+}

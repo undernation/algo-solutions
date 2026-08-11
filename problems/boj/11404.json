@@ -1,0 +1,21 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/11404",
+ "no": "11404",
+ "title": "플로이드",
+ "source_url": "https://www.acmicpc.net/problem/11404",
+ "limits": {
+  "time": "1 초",
+  "memory": "256 MB"
+ },
+ "solved": true,
+ "samples": [
+  {
+   "in": "5\n14\n1 2 2\n1 3 3\n1 4 1\n1 5 10\n2 4 2\n3 4 1\n3 5 1\n4 5 3\n3 5 10\n3 1 8\n1 4 2\n5 1 7\n3 4 2\n5 2 4",
+   "out": "0 2 3 1 4\n12 0 15 2 5\n8 5 0 1 1\n10 7 13 0 3\n7 4 10 6 0"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

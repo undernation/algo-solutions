@@ -1,0 +1,24 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/22233",
+ "no": "22233",
+ "title": "가희와 키워드",
+ "source_url": "https://www.acmicpc.net/problem/22233",
+ "limits": {
+  "time": "1.5 초",
+  "memory": "512 MB"
+ },
+ "solved": true,
+ "statement": "가희는 블로그를 운영하고 있습니다. 가희는 블로그에 글을 쓰기 위해, 메모장에 키워드를 적곤 합니다.\n\n지금까지 메모장에 써진 키워드는 모두 서로 다르며, 총 N개가 존재합니다.\n\n가희는 새로운 글을 작성할 때, 최대 10개의 키워드에 대해서 글을 작성합니다.\n\n이 키워드들 중에 메모장에 있었던 키워드는 가희가 글을 쓴 이후, 메모장에서 지워지게 됩니다.\n\n가희는 블로그에 글을 쓰고 나서, 메모장에 있는 키워드 개수가 몇 개인지 알고 싶습니다. 가희를 도와주세요.",
+ "input_spec": "첫 번째 줄에 가희가 메모장에 적은 키워드 개수 N, 가희가 블로그에 쓴 글의 개수 M이 공백으로 구분해서 주어집니다.\n\n2번째 줄부터 N+1번째 줄까지 메모장에 적은 키워드 N개가 주어집니다.\n\nN+2번째 줄부터 N+M+1번째 줄까지, 가희가 쓴 글과 관련된 키워드가, (쉼표)로 구분해서 주어집니다. 공백으로 구분되지 않음을 유의해 주세요.",
+ "output_spec": "x번째 줄에는 x번째 글을 쓰고 난 후에메모장에 남아 있는 키워드의 개수를 출력해 주세요.",
+ "samples": [
+  {
+   "in": "1\n5 2\nmap\nset\ndijkstra\nfloyd\nos\nmap,dijkstra\nmap,floyd",
+   "out": "1\n3\n2\n예제 입력 2\n2 2\ngt26cw\n1211train\nkiwoom,lottegiant\nkbo\n예제 출력 2\n2\n2"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

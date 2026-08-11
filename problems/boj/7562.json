@@ -1,0 +1,23 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/7562",
+ "no": "7562",
+ "title": "나이트의 이동",
+ "source_url": "https://www.acmicpc.net/problem/7562",
+ "limits": {
+  "time": "1 초",
+  "memory": "256 MB"
+ },
+ "solved": true,
+ "statement": "<그림1>\n\n체스판 위에 한 나이트가 놓여져 있다. 나이트가 한 번에 이동할 수 있는 칸은 아래 그림에 나와있다. 나이트가 이동하려고 하는 칸이 주어진다. 나이트는 몇 번 움직이면 이 칸으로 이동할 수 있을까?",
+ "input_spec": "입력의 첫째 줄에는",
+ "samples": [
+  {
+   "in": "3\n8\n0 0\n7 0\n100\n0 0\n30 50\n10\n1 1\n1 1",
+   "out": "5\n28\n0"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

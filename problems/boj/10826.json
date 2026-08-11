@@ -1,0 +1,21 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/10826",
+ "no": "10826",
+ "title": "피보나치 수 4",
+ "source_url": "https://www.acmicpc.net/problem/10826",
+ "limits": {
+  "time": "1 초",
+  "memory": "256 MB"
+ },
+ "solved": true,
+ "samples": [
+  {
+   "in": "10",
+   "out": "55"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

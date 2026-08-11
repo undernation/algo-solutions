@@ -1,0 +1,24 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/1343",
+ "no": "1343",
+ "title": "폴리오미노",
+ "source_url": "https://www.acmicpc.net/problem/1343",
+ "limits": {
+  "time": "2 초",
+  "memory": "128 MB"
+ },
+ "solved": true,
+ "statement": "민식이는 다음과 같은 폴리오미노 2개를 무한개만큼 가지고 있다. AAAA와 BB\n\n이제 '.'와 'X'로 이루어진 보드판이 주어졌을 때, 민식이는 겹침없이 'X'를 모두 폴리오미노로 덮으려고 한다. 이때, '.'는 폴리오미노로 덮으면 안 된다.\n\n폴리오미노로 모두 덮은 보드판을 출력하는 프로그램을 작성하시오.",
+ "input_spec": "첫째 줄에 보드판이 주어진다. 보드판의 크기는 최대 50이다.",
+ "output_spec": "첫째 줄에 사전순으로 가장 앞서는 답을 출력한다. 만약 덮을 수 없으면 -1을 출력한다.",
+ "samples": [
+  {
+   "in": "1\nXXXXXX",
+   "out": "1\nAAAABB\n예제 입력 2\nXX.XX\n예제 출력 2\nBB.BB\n예제 입력 3\nXXXX....XXX.....XX\n예제 출력 3\n-1\n예제 입력 4\nX\n예제 출력 4\n-1\n예제 입력 5\nXX.XXXXXXXXXX..XXXXXXXX...XXXXXX\n예제 출력 5\nBB.AAAAAAAABB..AAAAAAAA...AAAABB"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

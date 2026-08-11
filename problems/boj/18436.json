@@ -1,0 +1,21 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/18436",
+ "no": "18436",
+ "title": "수열과 쿼리 37",
+ "source_url": "https://www.acmicpc.net/problem/18436",
+ "limits": {
+  "time": "1 초",
+  "memory": "512 MB"
+ },
+ "solved": true,
+ "samples": [
+  {
+   "in": "6\n1 2 3 4 5 6\n4\n2 2 5\n3 1 4\n1 5 4\n2 1 6",
+   "out": "2\n2\n4"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

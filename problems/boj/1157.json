@@ -1,0 +1,24 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/1157",
+ "no": "1157",
+ "title": "단어 공부",
+ "source_url": "https://www.acmicpc.net/problem/1157",
+ "limits": {
+  "time": "2 초",
+  "memory": "128 MB"
+ },
+ "solved": true,
+ "statement": "알파벳 대소문자로 된 단어가 주어지면, 이 단어에서 가장 많이 사용된 알파벳이 무엇인지 알아내는 프로그램을 작성하시오. 단, 대문자와 소문자를 구분하지 않는다.",
+ "input_spec": "첫째 줄에 알파벳 대소문자로 이루어진 단어가 주어진다. 주어지는 단어의 길이는 1,000,000을 넘지 않는다.",
+ "output_spec": "첫째 줄에 이 단어에서 가장 많이 사용된 알파벳을 대문자로 출력한다. 단, 가장 많이 사용된 알파벳이 여러 개 존재하는 경우에는?를 출력한다.",
+ "samples": [
+  {
+   "in": "1\nMississipi",
+   "out": "1\n?\n예제 입력 2\nzZa\n예제 출력 2\nZ\n예제 입력 3\nz\n예제 출력 3\nZ\n예제 입력 4\nbaaa\n예제 출력 4\nA"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

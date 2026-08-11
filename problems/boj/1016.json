@@ -1,0 +1,24 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/1016",
+ "no": "1016",
+ "title": "제곱 ㄴㄴ 수",
+ "source_url": "https://www.acmicpc.net/problem/1016",
+ "limits": {
+  "time": "2 초",
+  "memory": "512 MB"
+ },
+ "solved": true,
+ "statement": "어떤 정수 X가 1보다 큰 제곱수로 나누어 떨어지지 않을 때, 그 수를 제곱ㄴㄴ수라고 한다. 제곱수는 정수의 제곱이다. min과 max가 주어지면, min보다 크거나 같고, max보다 작거나 같은 제곱ㄴㄴ수가 몇 개 있는지 출력한다.",
+ "input_spec": "첫째 줄에 두 정수 min과 max가 주어진다.",
+ "output_spec": "첫째 줄에 min보다 크거나 같고, max보다 작거나 같은 제곱ㄴㄴ수의 개수를 출력한다.",
+ "samples": [
+  {
+   "in": "1\n1 10",
+   "out": "1\n7\n예제 입력 2\n15 15\n예제 출력 2\n1\n예제 입력 3\n1 1000\n예제 출력 3\n608"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

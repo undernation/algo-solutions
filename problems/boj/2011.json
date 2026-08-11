@@ -1,0 +1,21 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/2011",
+ "no": "2011",
+ "title": "암호코드",
+ "source_url": "https://www.acmicpc.net/problem/2011",
+ "limits": {
+  "time": "2 초",
+  "memory": "128 MB"
+ },
+ "solved": true,
+ "samples": [
+  {
+   "in": "1\n25114",
+   "out": "1\n6\n예제 입력 2\n1111111111\n예제 출력 2\n89"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

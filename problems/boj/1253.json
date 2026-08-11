@@ -1,0 +1,24 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/1253",
+ "no": "1253",
+ "title": "좋다",
+ "source_url": "https://www.acmicpc.net/problem/1253",
+ "limits": {
+  "time": "2 초",
+  "memory": "256 MB"
+ },
+ "solved": true,
+ "statement": "N개의 수 중에서 어떤 수가 다른 수 두 개의 합으로 나타낼 수 있다면 그 수를 “좋다(GOOD)”고 한다.\n\nN개의 수가 주어지면 그 중에서 좋은 수의 개수는 몇 개인지 출력하라.\n\n수의 위치가 다르면 값이 같아도 다른 수이다.",
+ "input_spec": "첫째 줄에는 수의 개수 N(1 ≤ N ≤ 2,000), 두 번째 줄에는 i번째 수를 나타내는 Ai가 N개 주어진다. (|Ai| ≤ 1,000,000,000, Ai는 정수)",
+ "output_spec": "좋은 수의 개수를 첫 번째 줄에 출력한다.",
+ "samples": [
+  {
+   "in": "10\n1 2 3 4 5 6 7 8 9 10",
+   "out": "8"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

@@ -1,0 +1,24 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/10866",
+ "no": "10866",
+ "title": "덱",
+ "source_url": "https://www.acmicpc.net/problem/10866",
+ "limits": {
+  "time": "0.5 초",
+  "memory": "256 MB"
+ },
+ "solved": true,
+ "statement": "정수를 저장하는 덱(Deque)를 구현한 다음,",
+ "input_spec": "첫째 줄에 주어지는 명령의 수 N (1 ≤ N ≤ 10,000)이 주어진다. 둘째 줄부터 N개의 줄에는 명령이 하나씩 주어진다. 주어지는 정수는 1보다 크거나 같고, 100,000보다 작거나 같다. 문제에 나와있지 않은 명령이 주어지는 경우는 없다.",
+ "output_spec": "출력해야하는 명령이 주어질 때마다, 한 줄에 하나씩 출력한다.",
+ "samples": [
+  {
+   "in": "1\n15\npush_back 1\npush_front 2\nfront\nback\nsize\nempty\npop_front\npop_back\npop_front\nsize\nempty\npop_back\npush_front 3\nempty\nfront",
+   "out": "1\n2\n1\n2\n0\n2\n1\n-1\n0\n1\n-1\n0\n3\n예제 입력 2\n22\nfront\nback\npop_front\npop_back\npush_front 1\nfront\npop_back\npush_back 2\nback\npop_front\npush_front 10\npush_front 333\nfront\nback\npop_back\npop_back\npush_back 20\npush_back 1234\nfront\nback\npop_back\npop_back\n예제 출력 2\n-1\n-1\n-1\n-1\n1\n1\n2\n2\n333\n10\n10\n333\n20\n1234\n1234\n20"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

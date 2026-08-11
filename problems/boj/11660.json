@@ -1,0 +1,21 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/11660",
+ "no": "11660",
+ "title": "구간 합 구하기 5",
+ "source_url": "https://www.acmicpc.net/problem/11660",
+ "limits": {
+  "time": "1 초",
+  "memory": "256 MB"
+ },
+ "solved": true,
+ "samples": [
+  {
+   "in": "1\n4 3\n1 2 3 4\n2 3 4 5\n3 4 5 6\n4 5 6 7\n2 2 3 4\n3 4 3 4\n1 1 4 4",
+   "out": "1\n27\n6\n64\n예제 입력 2\n2 4\n1 2\n3 4\n1 1 1 1\n1 2 1 2\n2 1 2 1\n2 2 2 2\n예제 출력 2\n1\n2\n3\n4"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

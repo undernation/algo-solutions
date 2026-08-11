@@ -1,0 +1,21 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/14621",
+ "no": "14621",
+ "title": "나만 안되는 연애",
+ "source_url": "https://www.acmicpc.net/problem/14621",
+ "limits": {
+  "time": "2 초",
+  "memory": "256 MB"
+ },
+ "solved": true,
+ "samples": [
+  {
+   "in": "5 7\nM W W W M\n1 2 12\n1 3 10\n4 2 5\n5 2 5\n2 5 10\n3 4 3\n5 4 7",
+   "out": "34"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

@@ -1,0 +1,21 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/16933",
+ "no": "16933",
+ "title": "벽 부수고 이동하기 3",
+ "source_url": "https://www.acmicpc.net/problem/16933",
+ "limits": {
+  "time": "2 초",
+  "memory": "512 MB"
+ },
+ "solved": true,
+ "samples": [
+  {
+   "in": "1\n1 4 1\n0010",
+   "out": "1\n5\n예제 입력 2\n1 4 1\n0100\n예제 출력 2\n4\n예제 입력 3\n6 4 1\n0100\n1110\n1000\n0000\n0111\n0000\n예제 출력 3\n15\n예제 입력 4\n6 4 2\n0100\n1110\n1000\n0000\n0111\n0000\n예제 출력 4\n9"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

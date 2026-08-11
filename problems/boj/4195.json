@@ -1,0 +1,23 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/4195",
+ "no": "4195",
+ "title": "친구 네트워크",
+ "source_url": "https://www.acmicpc.net/problem/4195",
+ "limits": {
+  "time": "3 초",
+  "memory": "256 MB"
+ },
+ "solved": true,
+ "statement": "민혁이는 소셜 네트워크 사이트에서 친구를 만드는 것을 좋아하는 친구이다. 우표를 모으는 취미가 있듯이, 민혁이는 소셜 네트워크 사이트에서 친구를 모으는 것이 취미이다.\n\n어떤 사이트의 친구 관계가 생긴 순서대로 주어졌을 때, 두 사람의 친구 네트워크에 몇 명이 있는지 구하는 프로그램을 작성하시오.\n\n친구 네트워크란 친구 관계만으로 이동할 수 있는 사이를 말한다.",
+ "input_spec": "첫째 줄에",
+ "samples": [
+  {
+   "in": "2\n3\nFred Barney\nBarney Betty\nBetty Wilma\n3\nFred Barney\nBetty Wilma\nBarney Betty",
+   "out": "2\n3\n4\n2\n2\n4"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

@@ -1,0 +1,21 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/1916",
+ "no": "1916",
+ "title": "최소비용 구하기",
+ "source_url": "https://www.acmicpc.net/problem/1916",
+ "limits": {
+  "time": "0.5 초",
+  "memory": "128 MB"
+ },
+ "solved": true,
+ "samples": [
+  {
+   "in": "5\n8\n1 2 2\n1 3 3\n1 4 1\n1 5 10\n2 4 2\n3 4 1\n3 5 1\n4 5 3\n1 5",
+   "out": "4"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

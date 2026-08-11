@@ -1,0 +1,21 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/7453",
+ "no": "7453",
+ "title": "합이 0인 네 정수",
+ "source_url": "https://www.acmicpc.net/problem/7453",
+ "limits": {
+  "time": "12 초",
+  "memory": "1024 MB"
+ },
+ "solved": true,
+ "samples": [
+  {
+   "in": "6\n-45 22 42 -16\n-41 -27 56 30\n-36 53 -37 77\n-36 30 -75 -46\n26 -38 -10 62\n-32 -54 -6 45",
+   "out": "5"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

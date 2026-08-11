@@ -1,0 +1,21 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/11505",
+ "no": "11505",
+ "title": "구간 곱 구하기",
+ "source_url": "https://www.acmicpc.net/problem/11505",
+ "limits": {
+  "time": "1 초",
+  "memory": "256 MB"
+ },
+ "solved": true,
+ "samples": [
+  {
+   "in": "1\n5 2 2\n1\n2\n3\n4\n5\n1 3 6\n2 2 5\n1 5 2\n2 3 5",
+   "out": "1\n240\n48\n예제 입력 2\n5 2 2\n1\n2\n3\n4\n5\n1 3 0\n2 2 5\n1 3 6\n2 2 5\n예제 출력 2\n0\n240"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

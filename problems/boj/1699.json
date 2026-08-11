@@ -1,0 +1,21 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/1699",
+ "no": "1699",
+ "title": "제곱수의 합",
+ "source_url": "https://www.acmicpc.net/problem/1699",
+ "limits": {
+  "time": "2 초",
+  "memory": "128 MB"
+ },
+ "solved": true,
+ "samples": [
+  {
+   "in": "1\n7",
+   "out": "1\n4\n예제 입력 2\n1\n예제 출력 2\n1\n예제 입력 3\n4\n예제 출력 3\n1\n예제 입력 4\n11\n예제 출력 4\n3\n예제 입력 5\n13\n예제 출력 5\n2"
+  }
+ ],
+ "private_tc_count": 12,
+ "fetched_at": "2026-08-11"
+}

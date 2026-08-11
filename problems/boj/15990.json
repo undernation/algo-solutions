@@ -1,0 +1,21 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/15990",
+ "no": "15990",
+ "title": "1, 2, 3 더하기 5",
+ "source_url": "https://www.acmicpc.net/problem/15990",
+ "limits": {
+  "time": "1 초",
+  "memory": "512 MB"
+ },
+ "solved": true,
+ "samples": [
+  {
+   "in": "3\n4\n7\n10",
+   "out": "3\n9\n27"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

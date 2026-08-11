@@ -1,0 +1,21 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/2417",
+ "no": "2417",
+ "title": "정수 제곱근",
+ "source_url": "https://www.acmicpc.net/problem/2417",
+ "limits": {
+  "time": "0.4 초",
+  "memory": "128 MB"
+ },
+ "solved": true,
+ "samples": [
+  {
+   "in": "122333444455555",
+   "out": "11060446"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

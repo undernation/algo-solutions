@@ -1,0 +1,24 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/1296",
+ "no": "1296",
+ "title": "팀 이름 정하기",
+ "source_url": "https://www.acmicpc.net/problem/1296",
+ "limits": {
+  "time": "2 초",
+  "memory": "128 MB"
+ },
+ "solved": true,
+ "statement": "연두는 프로그래밍 대회에 나갈 팀 이름을 정하려고 한다. 미신을 믿는 연두는 이환이에게 공식을 하나 받아왔고, 이 공식을 이용해 우승할 확률이 가장 높은 팀 이름을 찾으려고 한다.\n\n이환이가 만든 공식은 사용하려면 먼저 다음 4가지 변수의 값을 계산해야 한다.\n\nL = 연두의 이름과 팀 이름에서 등장하는 L의 개수 O = 연두의 이름과 팀 이름에서 등장하는 O의 개수 V = 연두의 이름과 팀 이름에서 등장하는 V의 개수 E = 연두의 이름과 팀 이름에서 등장하는 E의 개수\n\n그 다음, 위에서 구한 변수를 다음 식에",
+ "input_spec": "첫째 줄에 연두의 영어 이름이 주어진다. 둘째 줄에는 팀 이름 후보의 개수 N이 주어진다. 셋째 줄부터 N개의 줄에 팀 이름이 한 줄에 하나씩 주어진다.\n\n연두의 영어 이름과 팀 이름은 길이는 1보다 크거나 같고, 20보다 작거나 같으며, 알파벳 대문자로만 이루어져 있다. N은 50보다 작거나 같은 자연수이다.",
+ "output_spec": "첫째 줄에 우승할 확률이 가장 높은 팀 이름을 출력한다.",
+ "samples": [
+  {
+   "in": "1\nLOVE\n3\nJACOB\nFRANK\nDANO",
+   "out": "1\nFRANK\n예제 입력 2\nJANE\n4\nTHOMAS\nMICHAEL\nINDY\nLIU\n예제 출력 2\nINDY\n예제 입력 3\nLILLY\n1\nPIERRE\n예제 출력 3\nPIERRE\n예제 입력 4\nMERYLOV\n5\nJOHN\nDAVE\nSTEVE\nJOHN\nDAVE\n예제 출력 4\nDAVE\n예제 입력 5\nLLOL\n4\nBVERON\nCVERON\nAVERON\nDVERON\n예제 출력 5\nAVERON\n예제 입력 6\nVELYLEOCEVE\n5\nYVXHOVE\nLCOKO\nOGWSJVEVEDLE\nWGFVSJEL\nVLOLUVCBLLQVESWHEEKC\n예제 출력 6\nVLOLUVCBLLQVESWHEEKC"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

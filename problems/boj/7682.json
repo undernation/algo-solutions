@@ -1,0 +1,23 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/7682",
+ "no": "7682",
+ "title": "틱택토",
+ "source_url": "https://www.acmicpc.net/problem/7682",
+ "limits": {
+  "time": "1 초",
+  "memory": "128 MB"
+ },
+ "solved": true,
+ "statement": "틱택토 게임은 두 명의 사람이 번갈아가며 말을 놓는 게임이다. 게임판은 3×3 격자판이며, 처음에는 비어 있다. 두 사람은 각각 X 또는 O 말을 번갈아가며 놓는데, 반드시 첫 번째 사람이 X를 놓고 두 번째 사람이 O를 놓는다. 어느 때든지 한 사람의 말이 가로, 세로, 대각선 방향으로 3칸을 잇는 데 성공하면 게임은 즉시 끝난다. 게임판이 가득 차도 게임은 끝난다.\n\n게임판의 상태가 주어지면, 그 상태가 틱택토 게임에서 발생할 수 있는 최종 상태인지를 판별하시오.",
+ "input_spec": "입력은 여러 개의",
+ "samples": [
+  {
+   "in": "XXXOO.XXX\nXOXOXOXOX\nOXOXOXOXO\nXXOOOXXOX\nXO.OX...X\n.XXX.XOOO\nX.OO..X..\nOOXXXOOXO\nend",
+   "out": "invalid\nvalid\ninvalid\nvalid\nvalid\ninvalid\ninvalid\ninvalid"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

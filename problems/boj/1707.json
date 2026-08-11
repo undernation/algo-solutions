@@ -1,0 +1,23 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/1707",
+ "no": "1707",
+ "title": "이분 그래프",
+ "source_url": "https://www.acmicpc.net/problem/1707",
+ "limits": {
+  "time": "2 초",
+  "memory": "256 MB"
+ },
+ "solved": true,
+ "statement": "그래프의 정점의 집합을 둘로 분할하여, 각 집합에 속한 정점끼리는 서로 인접하지 않도록 분할할 수 있을 때, 그러한 그래프를 특별히 이분 그래프 (Bipartite Graph) 라 부른다.\n\n그래프가",
+ "input_spec": "입력은 여러 개의",
+ "samples": [
+  {
+   "in": "2\n3 2\n1 3\n2 3\n4 4\n1 2\n2 3\n3 4\n4 2",
+   "out": "YES\nNO"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

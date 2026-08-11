@@ -1,0 +1,24 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/1076",
+ "no": "1076",
+ "title": "저항",
+ "source_url": "https://www.acmicpc.net/problem/1076",
+ "limits": {
+  "time": "2 초",
+  "memory": "128 MB"
+ },
+ "solved": true,
+ "statement": "전자 제품에는 저항이 들어간다. 저항은 색 3개를 이용해서 그 저항이 몇 옴인지 나타낸다. 처음 색 2개는 저항의 값이고, 마지막 색은 곱해야 하는 값이다. 저항의 값은 다음 표를 이용해서 구한다.\n\n색\t값\t곱\nblack\t0\t1\nbrown\t1\t10\nred\t2\t100\norange\t3\t1,000\nyellow\t4\t10,000\ngreen\t5\t100,000\nblue\t6\t1,000,000\nviolet\t7\t10,000,000\ngrey\t8\t100,000,000\nwhite\t9\t1,000,000,000\n\n예를 들어, 저항의 색이 yellow, violet, red였다면 저항의 값은 4,700이 된다.",
+ "input_spec": "첫째 줄에 첫 번째 색, 둘째 줄에 두 번째 색, 셋째 줄에 세 번째 색이 주어진다. 위의 표에 있는 색만 입력으로 주어진다.",
+ "output_spec": "입력으로 주어진 저항의 저항값을 계산하여 첫째 줄에 출력한다.",
+ "samples": [
+  {
+   "in": "1\nyellow\nviolet\nred",
+   "out": "1\n4700\n예제 입력 2\norange\nred\nblue\n예제 출력 2\n32000000\n예제 입력 3\nwhite\nwhite\nwhite\n예제 출력 3\n99000000000"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

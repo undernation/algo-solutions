@@ -219,7 +219,7 @@ async function probe(u,ms){
 async function connectHub(){
  LOCAL={ok:false};
  for(var i=0,L=["http://localhost:12014","http://127.0.0.1:12014"];i<L.length;i++){
-  var li=await probe(L[i],2500); if(li){LOCAL={url:L[i],ok:true,info:li};break;} }
+  var li=await probe(L[i],6000); if(li){LOCAL={url:L[i],ok:true,info:li};break;} }
  CLOUD={ok:false};
  var cand=[],sv=localStorage.getItem("cloudUrl"); if(sv)cand.push(sv);
  try{var r=await fetch("./_meta/endpoint.json?"+Date.now());

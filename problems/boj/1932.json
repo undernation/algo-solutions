@@ -1,0 +1,21 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/1932",
+ "no": "1932",
+ "title": "정수 삼각형",
+ "source_url": "https://www.acmicpc.net/problem/1932",
+ "limits": {
+  "time": "2 초",
+  "memory": "128 MB"
+ },
+ "solved": true,
+ "samples": [
+  {
+   "in": "5\n7\n3 8\n8 1 0\n2 7 4 4\n4 5 2 6 5",
+   "out": "30"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}
