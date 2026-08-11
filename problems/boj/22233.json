@@ -15,10 +15,14 @@
  "output_spec": "x번째 줄에는 x번째 글을 쓰고 난 후에메모장에 남아 있는 키워드의 개수를 출력해 주세요.",
  "samples": [
   {
-   "in": "1\n5 2\nmap\nset\ndijkstra\nfloyd\nos\nmap,dijkstra\nmap,floyd",
-   "out": "1\n3\n2\n예제 입력 2\n2 2\ngt26cw\n1211train\nkiwoom,lottegiant\nkbo\n예제 출력 2\n2\n2"
+   "in": "5 2\nmap\nset\ndijkstra\nfloyd\nos\nmap,dijkstra\nmap,floyd",
+   "out": "3\n2"
+  },
+  {
+   "in": "2 2\ngt26cw\n1211train\nkiwoom,lottegiant\nkbo",
+   "out": "2\n2"
   }
  ],
  "private_tc_count": 14,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }

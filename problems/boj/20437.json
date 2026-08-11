@@ -15,10 +15,14 @@
  "output_spec": "T개의 줄 동안 문자열 게임의 3번과 4번에서 구한 연속 문자열의 길이를 공백을 사이에 두고 출력한다.\n\n만약 만족하는 연속 문자열이 없을 시 -1을 출력한다.",
  "samples": [
   {
-   "in": "1\n2\nsuperaquatornado\n2\nabcdefghijklmnopqrstuvwxyz\n5",
-   "out": "1\n4 8\n-1\n예제 입력 2\n1\nabaaaba\n3\n예제 출력 2\n3 4"
+   "in": "2\nsuperaquatornado\n2\nabcdefghijklmnopqrstuvwxyz\n5",
+   "out": "4 8\n-1"
+  },
+  {
+   "in": "1\nabaaaba\n3",
+   "out": "3 4"
   }
  ],
  "private_tc_count": 14,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }

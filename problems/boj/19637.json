@@ -15,8 +15,12 @@
  "output_spec": "M개의 줄에 걸쳐 캐릭터의 전투력에 맞는 칭호를 입력 순서대로 출력한다. 어떤 캐릭터의 전투력으로 출력할 수 있는 칭호가 여러 개인 경우 가장 먼저 입력된 칭호 하나만 출력한다.",
  "samples": [
   {
-   "in": "1\n3 8\nWEAK 10000\nNORMAL 100000\nSTRONG 1000000\n0\n9999\n10000\n10001\n50000\n100000\n500000\n1000000",
-   "out": "1\nWEAK\nWEAK\nWEAK\nNORMAL\nNORMAL\nNORMAL\nSTRONG\nSTRONG\n예제 입력 2\n3 5\nB 100\nA 100\nC 1000\n99\n100\n101\n500\n1000\n예제 출력 2\nB\nB\nC\nC\nC"
+   "in": "3 8\nWEAK 10000\nNORMAL 100000\nSTRONG 1000000\n0\n9999\n10000\n10001\n50000\n100000\n500000\n1000000",
+   "out": "WEAK\nWEAK\nWEAK\nNORMAL\nNORMAL\nNORMAL\nSTRONG\nSTRONG"
+  },
+  {
+   "in": "3 5\nB 100\nA 100\nC 1000\n99\n100\n101\n500\n1000",
+   "out": "B\nB\nC\nC\nC"
   }
  ],
  "private_tc_count": 14,

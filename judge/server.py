@@ -39,7 +39,12 @@ TOKEN_FILE = os.path.join(os.path.expanduser("~"), ".algo-hub-token")
 
 
 def load_token():
-    """토큰 파일이 없으면 생성. 공개 엔드포인트 보호용."""
+    """토큰 파일이 없으면 생성. 공개 엔드포인트 보호용.
+
+    ⚠️ 클라우드 허브와 로컬 허브는 각자 파일을 갖는다. 값이 다르면 대시보드는
+    토큰을 하나만 저장하므로 한쪽이 401 이 난다. 반드시 두 허브를 같은 값으로 맞출 것.
+        ssh ubuntu@<VM> 'cat ~/.algo-hub-token'   → 내 PC 의 ~/.algo-hub-token 에 그대로 저장
+    """
     import secrets
     if os.path.exists(TOKEN_FILE):
         t = io.open(TOKEN_FILE, encoding="utf-8").read().strip()
@@ -296,8 +301,12 @@ def save_solution(d):
             "stdout": (c.stdout or "")[-300:] if not committed else ""}
 
 
-def fetch_problem(ref):
-    r = subprocess.run([PY, "_meta/fetch_problem.py", ref, "--print"],
+def fetch_problem(ref, save=False):
+    """ref(URL 또는 BOJ 번호) 크롤링. save=True 면 problems/ 에 저장하고 커밋까지."""
+    argv = [PY, "_meta/fetch_problem.py", ref, "--print"]
+    if save:
+        argv.append("--save")
+    r = subprocess.run(argv,
                        cwd=ROOT, capture_output=True, text=True,
                        encoding="utf-8", errors="replace",
                        env={**os.environ, "PYTHONIOENCODING": "utf-8"})
@@ -312,9 +321,51 @@ def fetch_problem(ref):
                              "로그인된 내 PC의 로컬 허브에서 가져오세요."}
         return {"ok": False, "error": err[-500:]}
     try:
-        return {"ok": True, "problem": json.loads(out[i:])}
+        prob = json.loads(out[i:])
     except Exception as e:
         return {"ok": False, "error": "파싱 실패: %s" % e}
+    res = {"ok": True, "problem": prob}
+    if not save:
+        return res
+
+    # 빈 페이지(로그인 만료·없는 문제)를 저장해 쓰레기 파일을 남기지 않는다.
+    if not prob.get("no") or not (prob.get("statement") or "").strip():
+        junk = os.path.join(ROOT, "problems",
+                            SUB.get(prob.get("site", "BOJ"), "boj"),
+                            "%s.json" % (prob.get("no") or "unknown"))
+        if os.path.exists(junk):
+            try:
+                os.remove(junk)
+            except OSError:
+                pass
+        return {"ok": False,
+                "error": "문제 내용을 못 읽었습니다. 해당 사이트 로그인이 풀렸거나 "
+                         "그 사이트에 없는 문제일 수 있습니다.",
+                "problem": prob}
+
+    # 저장 모드 — 색인 재생성 후 커밋/푸시해서 다른 기기·대시보드에도 반영한다.
+    subprocess.run([PY, "_meta/build_probindex.py"], cwd=ROOT, capture_output=True,
+                   env={**os.environ, "PYTHONIOENCODING": "utf-8"})
+    subprocess.run([PY, "_meta/build_heatmap.py"], cwd=ROOT, capture_output=True,
+                   env={**os.environ, "PYTHONIOENCODING": "utf-8"})
+    git("add", "problems", "_meta", "index.html", "assets", "README.md", "HEATMAP.md")
+    msg = "[문제추가] %s %s %s" % (prob.get("site", ""), prob.get("no", ""),
+                                prob.get("title", ""))
+    c = git("commit", "-m", msg.strip())
+    res["committed"] = c.returncode == 0
+    res["pushed"] = False
+    if res["committed"] and AUTO_PUSH:
+        p = git("push")
+        if p.returncode != 0:
+            git("fetch", "origin")
+            rb = git("rebase", "origin/master")
+            if rb.returncode != 0:
+                git("rebase", "--abort")
+            else:
+                p = git("push")
+        res["pushed"] = p.returncode == 0
+    log("   ➕ %s  commit=%s push=%s" % (msg, res["committed"], res["pushed"]))
+    return res
 
 
 def status():
@@ -431,8 +482,9 @@ class H(BaseHTTPRequestHandler):
 
             if p == "/fetch":
                 ref = body.get("ref") or body.get("url") or str(body.get("no") or "")
-                log("\n▶ 크롤링  %s" % ref[:70])
-                return self._send(200, fetch_problem(ref))
+                sv = bool(body.get("save"))
+                log("\n▶ 크롤링%s  %s" % (" + 저장" if sv else "", ref[:70]))
+                return self._send(200, fetch_problem(ref, save=sv))
         except Exception as e:
             import traceback
             traceback.print_exc()
@@ -466,6 +518,7 @@ def main():
     if TOKEN:
         print("  인증토큰 : %s" % TOKEN)
         print("             (%s)" % TOKEN_FILE)
+        print("             ※ 클라우드 허브와 같은 값이어야 대시보드가 양쪽 다 씁니다")
     else:
         print("  인증     : 꺼짐 (--no-auth)")
     print()

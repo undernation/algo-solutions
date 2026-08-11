@@ -15,10 +15,26 @@
  "output_spec": "첫째 줄에 사전순으로 가장 앞서는 답을 출력한다. 만약 덮을 수 없으면 -1을 출력한다.",
  "samples": [
   {
-   "in": "1\nXXXXXX",
-   "out": "1\nAAAABB\n예제 입력 2\nXX.XX\n예제 출력 2\nBB.BB\n예제 입력 3\nXXXX....XXX.....XX\n예제 출력 3\n-1\n예제 입력 4\nX\n예제 출력 4\n-1\n예제 입력 5\nXX.XXXXXXXXXX..XXXXXXXX...XXXXXX\n예제 출력 5\nBB.AAAAAAAABB..AAAAAAAA...AAAABB"
+   "in": "XXXXXX",
+   "out": "AAAABB"
+  },
+  {
+   "in": "XX.XX",
+   "out": "BB.BB"
+  },
+  {
+   "in": "XXXX....XXX.....XX",
+   "out": "-1"
+  },
+  {
+   "in": "X",
+   "out": "-1"
+  },
+  {
+   "in": "XX.XXXXXXXXXX..XXXXXXXX...XXXXXX",
+   "out": "BB.AAAAAAAABB..AAAAAAAA...AAAABB"
   }
  ],
  "private_tc_count": 14,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }

@@ -245,7 +245,8 @@ def main():
     d["fetched_at"] = datetime.date.today().isoformat()
     d = {k: v for k, v in d.items() if v not in ("", [], {}, None)}
 
-    if "--print" in sys.argv:
+    # --print 는 출력만, --save 를 같이 주면 저장도 한다(대시보드의 "새 문제 추가" 경로).
+    if "--print" in sys.argv and "--save" not in sys.argv:
         print(json.dumps(d, ensure_ascii=False, indent=2))
         return d
 
@@ -255,6 +256,26 @@ def main():
     path = os.path.join(PROB, sub, "%s.json" % key)
     io.open(path, "w", encoding="utf-8", newline="").write(
         json.dumps(d, ensure_ascii=False, indent=1))
+
+    # SWEA 는 표시번호로 역검색이 안 되므로 번호→contestProbId 매핑을 남겨둔다.
+    if d["site"] == "SWEA" and d.get("no"):
+        m = re.search(r"contestProbId=([A-Za-z0-9+/=]+)", d.get("url", ""))
+        if m:
+            ip = os.path.join(ROOT, "_meta", "swea_ids.json")
+            ids = {}
+            if os.path.exists(ip):
+                try:
+                    ids = json.load(io.open(ip, encoding="utf-8"))
+                except Exception:
+                    ids = {}
+            if ids.get(d["no"]) != m.group(1):
+                ids[d["no"]] = m.group(1)
+                io.open(ip, "w", encoding="utf-8", newline="").write(
+                    json.dumps(ids, ensure_ascii=False, indent=1, sort_keys=True))
+
+    if "--print" in sys.argv:
+        print(json.dumps(d, ensure_ascii=False, indent=2))
+        return d
 
     print("✅ %s %s  %s" % (d["site"], d.get("no", ""), d.get("title", "")))
     if d.get("limits"):

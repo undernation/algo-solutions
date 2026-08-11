@@ -88,6 +88,11 @@ Oracle VM
 - VM 은 **deploy key**(`~/.ssh/algo_deploy`, repo에 read-write 등록)로 push 한다.
 - **인증**: 모든 POST 에 `X-Auth-Token` 필요. 토큰은 각 허브의 `~/.algo-hub-token`.
   브라우저는 우측 상단 허브 버튼에서 한 번 입력 → `localStorage` 저장.
+- 🚩 **두 허브의 토큰은 반드시 같은 값이어야 한다.** 대시보드는 토큰을 하나만 저장하므로
+  값이 다르면 한쪽(주로 크롤링용 로컬 허브)이 **401** 을 뱉는다. 새 PC 세팅 시:
+  ```bash
+  ssh -i ~/.ssh/oracle_judge ubuntu@134.185.106.155 'cat ~/.algo-hub-token' > ~/.algo-hub-token
+  ```
 - 서버 로그: `ssh ubuntu@134.185.106.155 'journalctl -u algo-hub -n 50'`
 - SSH 키: `~/.ssh/oracle_judge` (= Downloads 의 `quality-search.key`)
 

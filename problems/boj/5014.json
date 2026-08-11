@@ -15,10 +15,14 @@
  "output_spec": "첫째 줄에 강호가 S층에서 G층으로 가기 위해 눌러야 하는 버튼의 수의 최솟값을 출력한다. 만약, 엘리베이터로 이동할 수 없을 때는 \"use the stairs\"를 출력한다.",
  "samples": [
   {
-   "in": "1\n10 1 10 2 1",
-   "out": "1\n6\n예제 입력 2\n100 2 1 1 0\n예제 출력 2\nuse the stairs"
+   "in": "10 1 10 2 1",
+   "out": "6"
+  },
+  {
+   "in": "100 2 1 1 0",
+   "out": "use the stairs"
   }
  ],
  "private_tc_count": 14,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }

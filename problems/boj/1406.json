@@ -15,10 +15,18 @@
  "output_spec": "첫째 줄에 모든 명령어를 수행하고 난 후 편집기에 입력되어 있는 문자열을 출력한다.",
  "samples": [
   {
-   "in": "1\nabcd\n3\nP x\nL\nP y",
-   "out": "1\nabcdyx\n예제 입력 2\nabc\n9\nL\nL\nL\nL\nL\nP x\nL\nB\nP y\n예제 출력 2\nyxabc\n예제 입력 3\ndmih\n11\nB\nB\nP x\nL\nB\nB\nB\nP y\nD\nD\nP z\n예제 출력 3\nyxz"
+   "in": "abcd\n3\nP x\nL\nP y",
+   "out": "abcdyx"
+  },
+  {
+   "in": "abc\n9\nL\nL\nL\nL\nL\nP x\nL\nB\nP y",
+   "out": "yxabc"
+  },
+  {
+   "in": "dmih\n11\nB\nB\nP x\nL\nB\nB\nB\nP y\nD\nD\nP z",
+   "out": "yxz"
   }
  ],
  "private_tc_count": 14,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }

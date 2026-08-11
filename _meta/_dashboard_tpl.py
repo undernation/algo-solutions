@@ -156,6 +156,13 @@ pre.io{background:var(--soft);border:1px solid var(--bd);border-radius:6px;paddi
  border-radius:5px;padding:9px 11px;max-height:270px;overflow:auto}
 .note{background:var(--soft);border:1px solid var(--bd);border-left:3px solid var(--ac);
  border-radius:5px;padding:11px 14px;font-size:13.5px;color:var(--sub);margin:14px 0}
+/* ── 새 문제 추가 ── */
+#ad{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;z-index:70;padding:60px 20px;overflow:auto}
+#adb{background:var(--panel);border:1px solid var(--bd);border-radius:10px;max-width:560px;margin:0 auto;
+ padding:22px 24px 24px;box-shadow:0 16px 48px rgba(0,0,0,.45)}
+#adb h3{margin:0 0 6px;font-size:18px;font-weight:800}
+#adb code{background:var(--soft);border:1px solid var(--bd2);border-radius:4px;padding:1px 6px;font-size:12px}
+
 /* ── 코드 뷰어 ── */
 #cv{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;z-index:60;padding:28px 20px;overflow:auto}
 #cvb{background:var(--panel);border:1px solid var(--bd);border-radius:10px;max-width:920px;margin:0 auto;
@@ -196,6 +203,22 @@ pre.io{background:var(--soft);border:1px solid var(--bd);border-radius:6px;paddi
       style="border:1px solid var(--bd);border-radius:6px;padding:4px 10px;font-weight:700;font-size:12.5px">원본</a>
    <button class="sm" onclick="closeCode()">닫기</button></span></div>
  <pre id="cvc"></pre></div></div>
+<div id="ad" onclick="if(event.target===this)closeAdd()"><div id="adb">
+ <h3>새 문제 추가</h3>
+ <p class="hint" style="margin:0 0 14px">문제 페이지 <b>링크</b>만 붙여넣으면 됩니다.
+  로그인된 <b>내 PC의 로컬 허브</b>가 켜져 있어야 합니다.</p>
+ <input id="adu" placeholder="문제 URL (또는 백준 번호)" style="width:100%"
+        onkeydown="if(event.key==='Enter')doAdd()">
+ <div class="hint" style="margin-top:8px;line-height:1.9">
+  <code>swexpertacademy.com/…contestProbId=AW…</code><br>
+  <code>cosal.aviss.kr/problems/detail/2618</code> · <code>2618</code><br>
+  <code>school.programmers.co.kr/learn/courses/30/lessons/…</code><br>
+  <code>codetree.ai/…</code>
+ </div>
+ <div class="row"><button class="p" onclick="doAdd()" id="adgo">가져오기</button>
+  <button onclick="closeAdd()">닫기</button></div>
+ <div class="vd" id="adv"></div>
+</div></div>
 <div id="tip"></div>
 
 <script>
@@ -346,7 +369,8 @@ function viewProblems(){
  if(treeDone){return;} treeDone=true;
  $("v-problems").innerHTML=
   '<h2 class="t">문제</h2>'+
-  '<div class="bar"><input class="gr" id="tq" placeholder="번호 · 제목으로 찾기">'+
+  '<div class="bar"><button class="p" onclick="openAdd()">+ 새 문제</button>'+
+  '<input class="gr" id="tq" placeholder="번호 · 제목으로 찾기">'+
   '<select id="tg"><option value="cosal">코딩살구 커리큘럼</option>'+
   '<option value="status">결과별</option><option value="hundred">번호대별</option></select>'+
   '<select id="tf"><option value="">전체 문제</option><option value="mine">내가 푼 것만</option>'+
@@ -466,6 +490,50 @@ function drawStatus(){
   '<th class="s" onclick="sortBy(\'status\')">결과</th><th>코드</th></tr>');
 }
 function sortBy(k){ asc=(k===sortK)?!asc:false; sortK=k; drawStatus(); }
+
+/* ════════ 새 문제 추가 ════════
+   코딩살구 카탈로그에 없는 문제(SWEA·프로그래머스·코드트리 등)를 링크만으로 등록한다.
+   로컬 허브가 크롤링 → problems/*.json 저장 → 색인 재생성 → 커밋/푸시. */
+function openAdd(){ $("ad").style.display="block"; $("adv").style.display="none";
+                    $("adu").value=""; setTimeout(function(){$("adu").focus();},50); }
+function closeAdd(){ $("ad").style.display="none"; }
+function asay(html,cls){var v=$("adv");v.className="vd "+(cls||"info");v.style.display="block";v.innerHTML=html;}
+
+async function doAdd(){
+ var ref=($("adu").value||"").trim();
+ if(!ref) return asay("링크를 입력하세요.","ng");
+ var h=hubFor("fetch");
+ if(!h) return asay("문제 크롤링은 <b>로그인된 내 PC의 로컬 허브</b>가 필요합니다."+
+   "<div class='d'>내 PC에서:\npython judge/server.py</div>","ng");
+ var btn=$("adgo"); btn.disabled=true;
+ asay("가져오는 중… 로그인 세션으로 페이지를 여는 중입니다 (10~30초)");
+ try{
+  var r=await fetch(h.url+"/fetch",{method:"POST",headers:H(),
+        body:JSON.stringify({ref:ref,save:true})});
+  if(r.status===401){btn.disabled=false;return asay("인증 실패 — 우측 상단 허브 버튼에서 토큰을 확인하세요.","ng");}
+  var j=await r.json(); btn.disabled=false;
+  if(!j.ok) return asay("실패: "+esc(j.error||r.status)+
+    (j.needsLocal?"<div class='d'>내 PC에서:\npython judge/server.py</div>":""),"ng");
+  var p=j.problem||{};
+  if(!p.no) return asay("문제 번호를 못 읽었습니다. 링크가 문제 <b>상세 페이지</b>인지 확인하세요.","ng");
+  if(!p.statement && !(p.samples||[]).length)
+    return asay("내용이 비어 있습니다. 해당 사이트에 <b>로그인</b>되어 있는지 확인하세요.","ng");
+
+  /* 색인에 즉시 반영 — 배포를 기다리지 않고 트리·문제페이지에서 바로 보이게 */
+  var k=p.site+"/"+p.no;
+  PIDX[k]={site:p.site,no:p.no,title:p.title||"",label:p.label||"",
+           limits:p.limits||{},tc:p.private_tc_count||0,
+           smp:(p.samples||[]).length,len:(p.statement||"").length,
+           path:"problems/"+({BOJ:"boj",SWEA:"swea",PGS:"programmers",CT:"codetree"}[p.site]||"boj")
+                +"/"+p.no+".json"};
+  treeDone=false; homeDone=false;
+  asay("✅ <b>"+esc(p.site+" "+p.no+" "+(p.title||""))+"</b> 추가됨"+
+       "<div class='d'>지문 "+(p.statement||"").length+"자 · 예제 "+((p.samples||[]).length)+"개"+
+       (p.private_tc_count?" · 비공개TC "+p.private_tc_count+"개":"")+
+       "\ncommit "+(j.committed?"완료":"변경 없음")+"  ·  push "+(j.pushed?"완료":"실패")+"</div>","ok");
+  setTimeout(function(){ closeAdd(); location.hash="#p/"+encodeURIComponent(p.site)+"/"+encodeURIComponent(p.no); },900);
+ }catch(e){ btn.disabled=false; asay("오류: "+esc(e.message),"ng"); }
+}
 
 /* ════════ 코드 뷰어 ════════
    .py 링크를 그냥 걸면 브라우저가 다운로드해 버려서, 받아다 화면에 띄운다. */
@@ -674,7 +742,9 @@ async function doSave(){
 }
 
 document.addEventListener("keydown",function(e){
- if(e.key==="Escape")closeCode();});
+ if(e.key!=="Escape")return;
+ if($("ad").style.display==="block"){closeAdd();return;}
+ closeCode();});
 go();
 connectHub();
 </script></html>"""

@@ -15,10 +15,14 @@
  "output_spec": "출력해야하는 명령이 주어질 때마다, 한 줄에 하나씩 출력한다.",
  "samples": [
   {
-   "in": "1\n14\npush 1\npush 2\ntop\nsize\nempty\npop\npop\npop\nsize\nempty\npop\npush 3\nempty\ntop",
-   "out": "1\n2\n2\n0\n2\n1\n-1\n0\n1\n-1\n0\n3\n예제 입력 2\n7\npop\ntop\npush 123\ntop\npop\ntop\npop\n예제 출력 2\n-1\n-1\n123\n123\n-1\n-1"
+   "in": "14\npush 1\npush 2\ntop\nsize\nempty\npop\npop\npop\nsize\nempty\npop\npush 3\nempty\ntop",
+   "out": "2\n2\n0\n2\n1\n-1\n0\n1\n-1\n0\n3"
+  },
+  {
+   "in": "7\npop\ntop\npush 123\ntop\npop\ntop\npop",
+   "out": "-1\n-1\n123\n123\n-1\n-1"
   }
  ],
  "private_tc_count": 12,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }

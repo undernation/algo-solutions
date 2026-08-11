@@ -15,10 +15,14 @@
  "output_spec": "첫 줄에 햄버거를 먹을 수 있는 최대 사람 수를 나타낸다.",
  "samples": [
   {
-   "in": "1\n20 1\nHHPHPPHHPPHPPPHPHPHP",
-   "out": "1\n8\n예제 입력 2\n20 2\nHHHHHPPPPPHPHPHPHHHP\n예제 출력 2\n7"
+   "in": "20 1\nHHPHPPHHPPHPPPHPHPHP",
+   "out": "8"
+  },
+  {
+   "in": "20 2\nHHHHHPPPPPHPHPHPHHHP",
+   "out": "7"
   }
  ],
  "private_tc_count": 14,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }

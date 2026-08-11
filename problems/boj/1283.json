@@ -15,10 +15,14 @@
  "output_spec": "N개의 줄에 각 옵션을 출력하는데 단축키로 지정된 알파벳은 좌우에 [] 괄호를 씌워서 표현한다.",
  "samples": [
   {
-   "in": "1\n5\nNew\nOpen\nSave\nSave As\nSave All",
-   "out": "1\n[N]ew\n[O]pen\n[S]ave\nSave [A]s\nSa[v]e All\n예제 입력 2\n8\nNew window\nNew file\nCopy\nUndo\nFormat\nFont\nCut\nPaste\n예제 출력 2\n[N]ew window\nNew [f]ile\n[C]opy\n[U]ndo\nF[o]rmat\nFon[t]\nCut\n[P]aste"
+   "in": "5\nNew\nOpen\nSave\nSave As\nSave All",
+   "out": "[N]ew\n[O]pen\n[S]ave\nSave [A]s\nSa[v]e All"
+  },
+  {
+   "in": "8\nNew window\nNew file\nCopy\nUndo\nFormat\nFont\nCut\nPaste",
+   "out": "[N]ew window\nNew [f]ile\n[C]opy\n[U]ndo\nF[o]rmat\nFon[t]\nCut\n[P]aste"
   }
  ],
  "private_tc_count": 14,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }
