@@ -1,0 +1,25 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/13144",
+ "no": "13144",
+ "title": "List of Unique Numbers",
+ "source_url": "https://www.acmicpc.net/problem/13144",
+ "limits": {
+  "time": "1 초",
+  "memory": "32 MB"
+ },
+ "label": "5-H",
+ "solved": true,
+ "statement": "길이가 N인 수열이 주어질 때, 수열에서 연속한 1개 이상의 수를 뽑았을 때 같은 수가 여러 번 등장하지 않는 경우의 수를 구하는 프로그램을 작성하여라.",
+ "input_spec": "첫 번째 줄에는 수열의 길이 N이 주어진다. (1 ≤ N ≤ 100,000)\n\n두 번째 줄에는 수열을 나타내는 N개의 정수가 주어진다. 수열에 나타나는 수는 모두 1 이상 100,000 이하이다.",
+ "output_spec": "조건을 만족하는 경우의 수를 출력한다.",
+ "samples": [
+  {
+   "in": "1\n5\n1 2 3 4 5",
+   "out": "1\n15\n예제 입력 2\n5\n1 2 3 1 2\n예제 출력 2\n12\n예제 입력 3\n5\n1 1 1 1 1\n예제 출력 3\n5"
+  }
+ ],
+ "private_tc_count": 15,
+ "fetched_at": "2026-08-11"
+}

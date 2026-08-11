@@ -230,7 +230,21 @@ def render_html(data, year, total, active, best):
             rows.append({"date": dk, "site": it.get("site", ""),
                          "no": it.get("no", ""), "title": it.get("title", ""),
                          "status": it.get("status", "?"), "file": it.get("file", "")})
-    return render_dashboard(data, year, total, active, best, cells, rows)
+    # 크롤링된 문제 자료 색인 + 코딩살구 전체 문제 카탈로그
+    probs, cat = {"count": 0, "items": {}}, []
+    try:
+        pi = os.path.join(ROOT, "problems", "index.json")
+        if os.path.exists(pi):
+            probs = json.load(io.open(pi, encoding="utf-8"))
+    except Exception:
+        pass
+    try:
+        cl = os.path.join(ROOT, "_meta", "cosal_list.json")
+        if os.path.exists(cl):
+            cat = json.load(io.open(cl, encoding="utf-8")).get("items", [])
+    except Exception:
+        pass
+    return render_dashboard(data, year, total, active, best, cells, rows, probs, cat)
 
 
 def month_details(data, year, months=None):

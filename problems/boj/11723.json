@@ -1,0 +1,25 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/11723",
+ "no": "11723",
+ "title": "집합",
+ "source_url": "https://www.acmicpc.net/problem/11723",
+ "limits": {
+  "time": "1.5 초",
+  "memory": "4 MB"
+ },
+ "label": "4-I",
+ "solved": true,
+ "statement": "비어있는 공집합 S가 주어졌을 때, 아래 연산을 수행하는 프로그램을 작성하시오.\n\n- add x: S에 x를 추가한다. (1 ≤ x ≤ 20) S에 x가 이미 있는 경우에는 연산을 무시한다.\n\n- remove x: S에서 x를 제거한다. (1 ≤ x ≤ 20) S에 x가 없는 경우에는 연산을 무시한다.\n\n- check x: S에 x가 있으면 1을, 없으면 0을 출력한다. (1 ≤ x ≤ 20)\n\n- toggle x: S에 x가 있으면 x를 제거하고, 없으면 x를 추가한다. (1 ≤ x ≤ 20)\n\n- all: S를 {1, 2,..., 20} 으로 바꾼다.\n\n- empty: S를 공집합으로 바꾼다.",
+ "input_spec": "첫째 줄에 수행해야 하는 연산의 수 M (1 ≤ M ≤ 3,000,000)이 주어진다.\n\n둘째 줄부터 M개의 줄에 수행해야 하는 연산이 한 줄에 하나씩 주어진다.",
+ "output_spec": "check 연산이 주어질때마다, 결과를 출력한다.",
+ "samples": [
+  {
+   "in": "26\nadd 1\nadd 2\ncheck 1\ncheck 2\ncheck 3\nremove 2\ncheck 1\ncheck 2\ntoggle 3\ncheck 1\ncheck 2\ncheck 3\ncheck 4\nall\ncheck 10\ncheck 20\ntoggle 10\nremove 20\ncheck 10\ncheck 20\nempty\ncheck 1\ntoggle 1\ncheck 1\ntoggle 1\ncheck 1",
+   "out": "1\n1\n0\n1\n0\n1\n0\n1\n0\n1\n1\n0\n0\n0\n1\n0"
+  }
+ ],
+ "private_tc_count": 23,
+ "fetched_at": "2026-08-11"
+}

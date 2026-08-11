@@ -1,0 +1,21 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/2805",
+ "no": "2805",
+ "title": "나무 자르기",
+ "source_url": "https://www.acmicpc.net/problem/2805",
+ "limits": {
+  "time": "1 초",
+  "memory": "256 MB"
+ },
+ "solved": true,
+ "samples": [
+  {
+   "in": "1\n4 7\n20 15 10 17",
+   "out": "1\n15\n예제 입력 2\n5 20\n4 42 40 26 46\n예제 출력 2\n36"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

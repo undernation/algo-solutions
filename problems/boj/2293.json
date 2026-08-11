@@ -1,0 +1,25 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/2293",
+ "no": "2293",
+ "title": "동전 1",
+ "source_url": "https://www.acmicpc.net/problem/2293",
+ "limits": {
+  "time": "0.5 초",
+  "memory": "4 MB"
+ },
+ "label": "7-H",
+ "solved": true,
+ "statement": "n가지 종류의 동전이 있다. 각각의 동전이 나타내는 가치는 다르다. 이 동전을 적당히 사용해서, 그 가치의 합이 k원이 되도록 하고 싶다. 그 경우의 수를 구하시오. 각각의 동전은 몇 개라도 사용할 수 있다.\n\n사용한 동전의 구성이 같은데, 순서만 다른 것은 같은 경우이다.",
+ "input_spec": "첫째 줄에 n, k가 주어진다. (1 ≤ n ≤ 100, 1 ≤ k ≤ 10,000) 다음 n개의 줄에는 각각의 동전의 가치가 주어진다. 동전의 가치는 100,000보다 작거나 같은 자연수이다.",
+ "output_spec": "첫째 줄에 경우의 수를 출력한다. 경우의 수는 231보다 작다.",
+ "samples": [
+  {
+   "in": "3 10\n1\n2\n5",
+   "out": "10"
+  }
+ ],
+ "private_tc_count": 15,
+ "fetched_at": "2026-08-11"
+}

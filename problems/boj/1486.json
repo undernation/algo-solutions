@@ -1,0 +1,25 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/1486",
+ "no": "1486",
+ "title": "등산",
+ "source_url": "https://www.acmicpc.net/problem/1486",
+ "limits": {
+  "time": "2 초",
+  "memory": "128 MB"
+ },
+ "label": "8-M",
+ "solved": true,
+ "statement": "세준이는 등산광이다. 세준이는 높은 곳에서 도시를 내려다 보는 것을 좋아한다. 하지만, 겁이 많은 세준이는 어두워지기 전에 호텔로 내려오려고 한다.\n\n세준이가 가려고하는 산의 지도가",
+ "input_spec": "첫째 줄에 산의 세로크기 N과 가로크기 M 그리고, T와 D가 주어진다. N과 M은 25보다 작거나 같은 자연수이다. 둘째 줄부터 N개의 줄에 지도가 주어진다. T는 52보다 작거나 같은 자연수이고, D는 1,000,000보다 작거나 같은 자연수이다.",
+ "output_spec": "첫째 줄에 세준이가 갈 수 있는 가장 높은 곳의 높이를 출력한다.",
+ "samples": [
+  {
+   "in": "1\n6 6 6 36\nAABCDE\nGJIHGF\nMKLMNO\nSTSRQP\nYUVWXY\nedcbaZ",
+   "out": "1\n30\n예제 입력 2\n2 2 3 10000\nAD\nJG\n예제 출력 2\n9\n예제 입력 3\n2 2 3 29\nAD\nJG\n예제 출력 3\n6\n예제 입력 4\n7 4 5 14\nBCDE\nAJKF\nAIHG\nAAAA\nAOMK\nAQSI\nACEG\n예제 출력 4\n10\n예제 입력 5\n7 4 5 57\nBCDE\nAJKF\nAIHG\nAAAA\nAOMK\nAQSI\nACEG\n예제 출력 5\n18\n예제 입력 6\n1 7 3 1000\nABCDEFK\n예제 출력 6\n5\n예제 입력 7\n8 9 4 50\nTRRVUXefk\nbSNMOWcff\nbRPNNQZip\nXSRUTVcfj\nWbZQPXZbV\nXdYSRWVOP\nfeedVVcZR\nXhfdZZefg\n예제 출력 7\n28"
+  }
+ ],
+ "private_tc_count": 16,
+ "fetched_at": "2026-08-11"
+}

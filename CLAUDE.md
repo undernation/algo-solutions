@@ -53,6 +53,72 @@
 
 ---
 
+## 0-2. 사이트 · 허브 구조 (2026-08-11 구축)
+
+### 🌐 대시보드 — https://undernation.github.io/algo-solutions/
+
+`index.html` (= `assets/heatmap.html`) 하나짜리 SPA. 해시 라우팅 4화면:
+
+| 경로 | 화면 |
+|---|---|
+| `#home` | 통계 카드 + 잔디(호버 툴팁) + 최근 제출 |
+| `#problems` | **폴더 트리** — 코딩살구 커리큘럼(주차별 8 / 개념별 8트랙) |
+| `#status` | 제출 현황 표 (검색·필터·정렬) |
+| `#p/<site>/<no>` | **문제 페이지** — 백준식 제한표·지문·예제 + 코드 에디터 + 채점/저장 |
+
+### 🖥️ 허브 서버 2개 — 역할이 다르다
+
+| | 어디 | 무엇 | 켜져 있나 |
+|---|---|---|---|
+| **CLOUD** | Oracle VM `134.185.106.155` | **채점 · 저장/커밋/푸시** | 항상 (systemd) |
+| **LOCAL** | 내 PC `localhost:12014` | **문제 크롤링(/fetch)** | 내가 켤 때만 |
+
+> 🔑 **왜 나눴나**: 코딩살구·SWEA·프로그래머스 모두 **로그인 세션**이 있어야 문제를 읽을 수 있다.
+> (cosal API 는 비로그인 시 **401**, 페이지는 SPA.) 클라우드엔 브라우저도 세션도 없으므로 **크롤링은 원천적으로 불가**.
+> 대신 **미리 크롤링해 `problems/*.json` 으로 커밋**해 두면, 이후엔 클라우드만으로 문제 보기·채점이 된다.
+
+```
+Oracle VM
+├─ algo-hub.service       채점 + git commit/push       :12014 (localhost only)
+├─ algo-tunnel.service    cloudflared quick tunnel     → https://xxx.trycloudflare.com
+└─ algo-endpoint.timer    5분마다 터널 URL 을 _meta/endpoint.json 에 커밋
+```
+
+- 대시보드는 `_meta/endpoint.json` 을 읽어 **터널 URL 이 바뀌어도 자동 추적**한다.
+- VM 은 **deploy key**(`~/.ssh/algo_deploy`, repo에 read-write 등록)로 push 한다.
+- **인증**: 모든 POST 에 `X-Auth-Token` 필요. 토큰은 각 허브의 `~/.algo-hub-token`.
+  브라우저는 우측 상단 허브 버튼에서 한 번 입력 → `localStorage` 저장.
+- 서버 로그: `ssh ubuntu@134.185.106.155 'journalctl -u algo-hub -n 50'`
+- SSH 키: `~/.ssh/oracle_judge` (= Downloads 의 `quality-search.key`)
+
+### 📦 문제 자료 파이프라인
+
+```
+_meta/crawl_cosal_list.py   코딩살구 전체 목록  → _meta/cosal_list.json   (513문제, 주차·개념 섹션)
+_meta/crawl_all.py          지문·예제 일괄 수집 → problems/<site>/<no>.json
+_meta/build_probindex.py    색인 생성          → problems/index.json
+_meta/build_heatmap.py      잔디 + 대시보드    → index.html
+```
+
+> Pages 는 디렉터리 목록을 안 주므로 **`problems/index.json` 색인이 반드시 있어야** 트리가 뜬다.
+> 새로 크롤링했으면 `build_probindex.py` → `build_heatmap.py` 순서로 돌린다.
+
+**선행조건**: 디버그 크롬 + 코딩살구 로그인
+```bash
+python C:/Users/solom/crawler.py chrome
+python _meta/crawl_cosal_list.py     # 목록 (2~3분)
+python _meta/crawl_all.py            # 지문 (문제당 ~4.5초)
+python _meta/build_probindex.py && python _meta/build_heatmap.py
+```
+
+### ⚠️ SWEA 는 번호로 역검색이 안 된다
+
+표시번호(2382) ≠ `contestProbId`(AWXR…). 목록 페이지도 JS 렌더라 자동 매핑 실패.
+→ `_meta/swea_ids.json` 에 `{"2382": "AWXRQm6q…"}` 를 채워야 자동 크롤링 대상이 된다.
+→ 없으면 대시보드에서 **문제 다시 가져오기** 클릭 시 URL 을 물어본다.
+
+---
+
 ## 1. 환경 (PC마다 다를 수 있음)
 
 ### 경로 — 먼저 존재 확인부터
@@ -83,6 +149,11 @@ git config user.name  "undernation"
 git config user.email "gmlcjf287@gmail.com"
 
 python _meta/install_hooks.py          # ★ pre-commit 훅 (PC마다 1회)
+
+# 문제 크롤링·로컬 채점을 쓰려면
+pip install playwright && playwright install chromium
+python C:/Users/solom/crawler.py chrome        # 디버그 크롬(9222) — 각 사이트 로그인
+python judge/server.py                         # 로컬 허브 :12014 (시작 로그에 토큰 출력)
 ```
 
 > 🚩 **SSH로 push하면 실패한다** (`Permission denied`). 반드시 **HTTPS + `gh auth setup-git`**.
@@ -220,6 +291,13 @@ git push
 | SWEA가 로그인 페이지로 튐 | 세션 만료 → 사용자에게 로그인 요청 (자주 끊김) |
 | 한글 깨짐 / `UnicodeEncodeError` | 앞에 `PYTHONIOENCODING=utf-8` |
 | `review_queue.py`가 이상하게 동작 | **반드시 `C:/Users/solom` 에서 실행** (한글 경로 인코딩) |
+| 대시보드가 "허브 꺼짐" | 클라우드는 `curl https://<터널>/` 로 확인. 로컬은 `python judge/server.py` |
+| 허브 호출이 **401** | 토큰 불일치 → 우측 상단 허브 버튼에서 재입력 (`~/.algo-hub-token`) |
+| 터널 URL 이 바뀜 | 정상(quick tunnel). `algo-endpoint.timer` 가 5분 내 `_meta/endpoint.json` 갱신 |
+| `/fetch` 가 `needsLocal` | 클라우드엔 브라우저·세션 없음 → **내 PC 로컬 허브**에서 실행 |
+| 문제 클릭 시 "자료 없음" | 아직 안 받은 문제 → `python _meta/crawl_all.py` 후 `build_probindex.py`+`build_heatmap.py` |
+| 트리가 비어 있음 | `problems/index.json` 또는 `_meta/cosal_list.json` 누락 → 위 파이프라인 재실행 |
+| SWEA 를 번호로 가져오기 실패 | 정상. `contestProbId` 필요 → URL 을 직접 입력하거나 `_meta/swea_ids.json` 채우기 |
 | 옵시디언에 오늘 기록이 없음 | **싱크 지연** — 파일 mtime 확인하고, 없으면 사용자에게 알림 |
 
 ---
@@ -239,8 +317,9 @@ git push
 
 수동 실행이 필요하면:
 ```bash
-python _meta/build_heatmap.py    # 코테 잔디 (assets/heatmap.svg)
+python _meta/build_heatmap.py    # 잔디 + 대시보드(index.html)
 python _meta/build_index.py      # README 현황표 + 풀이 인덱스
+python _meta/build_probindex.py  # 문제 자료 색인(problems/index.json)
 ```
 
 ### 잔디 동작 방식

@@ -1,0 +1,21 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/2908",
+ "no": "2908",
+ "title": "상수",
+ "source_url": "https://www.acmicpc.net/problem/2908",
+ "limits": {
+  "time": "1 초",
+  "memory": "128 MB"
+ },
+ "solved": true,
+ "samples": [
+  {
+   "in": "1\n734 893",
+   "out": "1\n437\n예제 입력 2\n221 231\n예제 출력 2\n132\n예제 입력 3\n839 237\n예제 출력 3\n938"
+  }
+ ],
+ "private_tc_count": 14,
+ "fetched_at": "2026-08-11"
+}

@@ -1,0 +1,24 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/3687",
+ "no": "3687",
+ "title": "성냥개비",
+ "source_url": "https://www.acmicpc.net/problem/3687",
+ "limits": {
+  "time": "1 초",
+  "memory": "128 MB"
+ },
+ "label": "7-Y",
+ "solved": true,
+ "statement": "성냥개비는 숫자를 나타내기에 아주 이상적인 도구이다. 보통 십진수를 성냥개비로 표현하는 방법은 다음과 같다.\n\n성냥개비의 개수가 주어졌을 때, 성냥개비를 모두 사용해서 만들 수 있는 가장 작은 수와 큰 수를 찾는 프로그램을 작성하시오.",
+ "input_spec": "첫째 줄에",
+ "samples": [
+  {
+   "in": "4\n3\n6\n7\n15",
+   "out": "7 7\n6 111\n8 711\n108 7111111"
+  }
+ ],
+ "private_tc_count": 26,
+ "fetched_at": "2026-08-11"
+}

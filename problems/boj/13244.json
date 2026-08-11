@@ -1,0 +1,25 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/13244",
+ "no": "13244",
+ "title": "Tree",
+ "source_url": "https://www.acmicpc.net/problem/13244",
+ "limits": {
+  "time": "2 초",
+  "memory": "512 MB"
+ },
+ "label": "4-K",
+ "solved": true,
+ "statement": "One of the most important data structures in computer science is the tree. You already dealt with binary trees in the qualification round. This problem is about general trees.\n\nTrees are the subset of graphs that have the following 3 properties:\n\n- It is connected: for every node you can reach every other node following edges.\n\n- If an edge is removed, the graph is no longer connected. That is, some nodes cannot be reached anymore.\n\n- When an edge is added between two existing nodes A and B, a cycle is created. There is a cycle if there is more than one way to go from A to B.\n\nYour task is to decide if a given graph is a tree or not.",
+ "input_spec": "The first line will contain an integer T representing the number of graphs to check. There will be at most 10 graphs in each test case.\n\nEach of the graph will be represented as follows:\n\nThe first line will contain an integer N with the number of nodes in the graph. The number of nodes will be between 1 and 1,000. The identifier of each node will be an integer from 1 to N.\n\nThe next line will contain an integer M with the number of edges in the graph. There will be at most 106 edges.\n\nThe next M lines will contain 2 integers A and B each. These are the two nodes connected by an edge.\n\nThe total sum of M in all test cases is at most 106.",
+ "output_spec": "For each graph, a single line with “tree” if the graph represents a tree or “graph“ otherwise.",
+ "samples": [
+  {
+   "in": "1\n2\n4\n3\n2 1\n3 4\n1 3\n3\n3\n1 2\n1 2\n3 2",
+   "out": "1\ntree\ngraph\n예제 입력 2\n2\n7\n5\n7 2\n2 4\n4 3\n5 6\n6 1\n7\n6\n7 2\n2 4\n4 3\n4 5\n6 5\n1 6\n예제 출력 2\ngraph\ntree"
+  }
+ ],
+ "private_tc_count": 16,
+ "fetched_at": "2026-08-11"
+}

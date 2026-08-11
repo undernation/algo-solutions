@@ -1,0 +1,25 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/15353",
+ "no": "15353",
+ "title": "큰 수 A+B (2)",
+ "source_url": "https://www.acmicpc.net/problem/15353",
+ "limits": {
+  "time": "1 초",
+  "memory": "256 MB"
+ },
+ "label": "4-N",
+ "solved": true,
+ "statement": "두 정수 A와 B를",
+ "input_spec": "첫째 줄에 A와 B가 주어진다. (0 < A,B < 1010000)",
+ "output_spec": "첫째 줄에 A+B를 출력한다.",
+ "samples": [
+  {
+   "in": "9223372036854775807 9223372036854775808",
+   "out": "18446744073709551615"
+  }
+ ],
+ "private_tc_count": 26,
+ "fetched_at": "2026-08-11"
+}

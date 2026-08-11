@@ -18,6 +18,7 @@ PY=$(command -v python || command -v python3)
 [ -z "$PY" ] && { echo "[hook] python 없음 — 건너뜀"; exit 0; }
 
 export PYTHONIOENCODING=utf-8
+"$PY" _meta/build_probindex.py >/dev/null 2>&1 || echo "[hook] 문제색인 생성 실패(무시)"
 "$PY" _meta/build_heatmap.py >/dev/null 2>&1 || echo "[hook] heatmap 생성 실패(무시)"
 "$PY" _meta/build_index.py   >/dev/null 2>&1 || echo "[hook] index 생성 실패(무시)"
 

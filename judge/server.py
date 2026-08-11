@@ -270,7 +270,13 @@ def fetch_problem(ref):
     out = (r.stdout or "").strip()
     i = out.find("{")
     if i < 0:
-        return {"ok": False, "error": (r.stderr or out or "")[:300]}
+        err = (r.stderr or out or "")
+        low = err.lower()
+        if "playwright" in low or "executable doesn't exist" in low:
+            return {"ok": False, "needsLocal": True,
+                    "error": "이 허브에는 브라우저·로그인 세션이 없어 크롤링할 수 없습니다. "
+                             "로그인된 내 PC의 로컬 허브에서 가져오세요."}
+        return {"ok": False, "error": err[-500:]}
     try:
         return {"ok": True, "problem": json.loads(out[i:])}
     except Exception as e:

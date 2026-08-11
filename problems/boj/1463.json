@@ -1,0 +1,21 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/1463",
+ "no": "1463",
+ "title": "1로 만들기",
+ "source_url": "https://www.acmicpc.net/problem/1463",
+ "limits": {
+  "time": "0.15 초",
+  "memory": "128 MB"
+ },
+ "solved": true,
+ "samples": [
+  {
+   "in": "1\n2",
+   "out": "1\n1\n예제 입력 2\n10\n예제 출력 2\n3"
+  }
+ ],
+ "private_tc_count": 12,
+ "fetched_at": "2026-08-11"
+}

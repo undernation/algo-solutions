@@ -1,0 +1,24 @@
+{
+ "site": "BOJ",
+ "platform": "코딩살구",
+ "url": "https://cosal.aviss.kr/problems/detail/3653",
+ "no": "3653",
+ "title": "영화 수집",
+ "source_url": "https://www.acmicpc.net/problem/3653",
+ "limits": {
+  "time": "1 초",
+  "memory": "256 MB"
+ },
+ "label": "8-J",
+ "solved": true,
+ "statement": "상근이는 영화 DVD 수집가이다. 상근이는 그의 DVD 콜렉션을 쌓아 보관한다.\n\n보고 싶은 영화가 있을 때는, DVD의 위치를 찾은 다음 쌓아놓은 콜렉션이 무너지지 않게 조심스럽게 DVD를 뺀다. 영화를 다 본 이후에는 가장 위에 놓는다.\n\n상근이는 DVD가 매우 많기 때문에, 영화의 위치를 찾는데 시간이 너무 오래 걸린다. 각 DVD의 위치는, 찾으려는 DVD의 위에 있는 영화의 개수만 알면 쉽게 구할 수 있다. 각 영화는 DVD 표지에 붙어있는 숫자로 쉽게 구별할 수 있다.\n\n각 영화의 위치를 기록하는 프로그램을 작성하시오. 상근이가 영화를 한 편 볼 때마다 그 DVD의 위에 몇 개의 DVD가 있었는지를 구해야 한다.",
+ "input_spec": "첫째 줄에",
+ "samples": [
+  {
+   "in": "2\n3 3\n3 1 1\n5 3\n4 4 5",
+   "out": "2 1 0\n3 0 4"
+  }
+ ],
+ "private_tc_count": 26,
+ "fetched_at": "2026-08-11"
+}
