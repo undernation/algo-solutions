@@ -249,16 +249,29 @@ def save_solution(d):
     git("add", "-A")
     c = git("commit", "-m", msg)
     committed = c.returncode == 0
-    pushed = False
+    pushed, perr = False, ""
     if committed and AUTO_PUSH:
         p = git("push")
         pushed = p.returncode == 0
         if not pushed:
-            log("   ⚠️ push 실패:", (p.stderr or "")[:200])
+            # 다른 PC·Actions 가 먼저 올렸으면 non-fast-forward 로 거절된다.
+            # fetch 후 rebase 하고 한 번만 재시도한다.
+            log("   ↻ push 거절 — rebase 후 재시도")
+            git("fetch", "origin")
+            rb = git("rebase", "origin/master")
+            if rb.returncode != 0:
+                git("rebase", "--abort")
+                perr = "rebase 충돌 — 수동 해결 필요"
+            else:
+                p = git("push")
+                pushed = p.returncode == 0
+                perr = "" if pushed else (p.stderr or "")[-300:]
+            if not pushed:
+                log("   ⚠️ push 실패:", perr[:200])
 
     log("   💾 %s  commit=%s push=%s" % (rel, committed, pushed))
     return {"ok": True, "file": rel, "message": msg,
-            "committed": committed, "pushed": pushed,
+            "committed": committed, "pushed": pushed, "pushError": perr,
             "stdout": (c.stdout or "")[-300:] if not committed else ""}
 
 

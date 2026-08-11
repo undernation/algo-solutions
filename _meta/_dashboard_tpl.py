@@ -594,10 +594,13 @@ async function doSave(){
   if(r.status===401)return say("인증 실패 — 허브 버튼에서 토큰을 확인하세요.","ng");
   var j=await r.json();
   if(!j.ok)return say("실패: "+esc(j.error),"ng");
-  say("✅ 저장됨 <code>"+esc(j.file)+"</code>"+
+  say((j.pushed?"✅ 저장 + 푸시 완료":"⚠️ 저장은 됐지만 푸시 실패")+" <code>"+esc(j.file)+"</code>"+
       "<div class='d'>commit "+(j.committed?"완료":"변경 없음")+
       "  ·  push "+(j.pushed?"완료":"실패")+
-      "\n\nGitHub Pages 배포에 1~2분 걸립니다. 새로고침하면 반영됩니다.</div>","ok");
+      (j.pushed ? "\n\nGitHub Pages 배포에 1~2분 걸립니다. 새로고침하면 반영됩니다."
+                : "\n\n"+esc(j.pushError||"원인 불명")+
+                  "\n코드는 허브에 커밋돼 있어 유실되지 않습니다.")+
+      "</div>", j.pushed?"ok":"ng");
  }catch(e){say("오류: "+esc(e.message),"ng");}
 }
 

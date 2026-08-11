@@ -42,6 +42,31 @@ def clean(s):
     return re.sub(r"\n{3,}", "\n\n", s or "").strip()
 
 
+def parse_samples(tc):
+    """'예제 입력 1 … 예제 출력 1 … 예제 입력 2 …' 블록을 쌍으로 분리.
+
+    예제가 1개면 번호가 없고("예제 입력"), 2개 이상이면 번호가 붙는다("예제 입력 1").
+    번호를 데이터로 잘못 삼키거나 다음 예제를 뒤에 이어붙이지 않도록 헤딩 기준으로 자른다.
+    """
+    if not tc:
+        return []
+    heads = list(re.finditer(r"(?m)^[ \t]*예제[ \t]*(입력|출력)[ \t]*(\d*)[ \t]*$", tc))
+    if not heads:
+        return []
+    blocks = []
+    for i, h in enumerate(heads):
+        end = heads[i + 1].start() if i + 1 < len(heads) else len(tc)
+        blocks.append((h.group(1), h.group(2) or "1", tc[h.end():end].strip("\n").rstrip()))
+    ins, outs = {}, {}
+    for kind, idx, body in blocks:
+        (ins if kind == "입력" else outs)[idx] = body
+    out = []
+    for idx in sorted(ins, key=lambda x: int(x) if x.isdigit() else 0):
+        if ins[idx].strip():
+            out.append({"in": ins[idx], "out": outs.get(idx, "")})
+    return out
+
+
 def open_page(url, wait=2600):
     from playwright.sync_api import sync_playwright
     pw = sync_playwright().start()
@@ -91,9 +116,7 @@ def parse_cosal(t, url):
     d["output_spec"] = clean(sect(body, "\n출력\n", "테스트 케이스"))
 
     tc = sect(t, "테스트 케이스", "프라이빗 테스트케이스", "코드 제출")
-    si = clean(sect(tc, "예제 입력", "예제 출력"))
-    so = clean(sect(tc, "예제 출력", "프라이빗", "코드 제출"))
-    d["samples"] = [{"in": si, "out": so}] if si else []
+    d["samples"] = parse_samples(tc)
 
     mp = re.search(r"프라이빗 테스트케이스\s*\n?\s*(\d+)\s*개", t)
     if mp:

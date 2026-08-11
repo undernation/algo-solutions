@@ -10,6 +10,9 @@
   "memory": "128 MB"
  },
  "solved": true,
+ "statement": "무한 수열 A는 다음과 같다.\n\nA0 = 1 Ai = A⌊i/P⌋ + A⌊i/Q⌋ (i ≥ 1)\n\nN, P와 Q가 주어질 때, AN을 구하는 프로그램을 작성하시오.",
+ "input_spec": "첫째 줄에 3개의 정수 N, P, Q가 주어진다.",
+ "output_spec": "첫째 줄에 AN을 출력한다.",
  "samples": [
   {
    "in": "1\n7 2 3",
@@ -17,5 +20,5 @@
   }
  ],
  "private_tc_count": 14,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }
