@@ -156,6 +156,17 @@ pre.io{background:var(--soft);border:1px solid var(--bd);border-radius:6px;paddi
  border-radius:5px;padding:9px 11px;max-height:270px;overflow:auto}
 .note{background:var(--soft);border:1px solid var(--bd);border-left:3px solid var(--ac);
  border-radius:5px;padding:11px 14px;font-size:13.5px;color:var(--sub);margin:14px 0}
+/* ── 코드 뷰어 ── */
+#cv{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;z-index:60;padding:28px 20px;overflow:auto}
+#cvb{background:var(--panel);border:1px solid var(--bd);border-radius:10px;max-width:920px;margin:0 auto;
+ box-shadow:0 16px 48px rgba(0,0,0,.45);overflow:hidden}
+#cvh{display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--hdr);
+ border-bottom:1px solid var(--bd);font-weight:700;font-size:14px}
+#cvh .p{font-family:ui-monospace,Consolas,monospace;font-weight:600;color:var(--sub);font-size:13px}
+#cvh .sp{margin-left:auto;display:flex;gap:6px}
+#cvc{margin:0;padding:16px 18px;font-family:ui-monospace,SFMono-Regular,Consolas,"D2Coding",monospace;
+ font-size:13px;line-height:1.65;white-space:pre;overflow:auto;max-height:72vh;tab-size:4}
+#cvc .cm{color:var(--sub)}
 #tip{position:fixed;display:none;background:#1f2328;color:#fff;padding:9px 12px;border-radius:6px;
  font-size:12.5px;line-height:1.65;pointer-events:none;z-index:99;box-shadow:0 6px 22px rgba(0,0,0,.45);max-width:340px}
 #tip b{display:block;margin-bottom:4px}#tip ul{margin:0;padding-left:16px}
@@ -178,6 +189,13 @@ pre.io{background:var(--soft);border:1px solid var(--bd);border-radius:6px;paddi
  <div id="v-status" class="hide"></div>
  <div id="v-p" class="hide"></div>
 </main>
+<div id="cv" onclick="if(event.target===this)closeCode()"><div id="cvb">
+ <div id="cvh"><span id="cvt"></span><span class="p" id="cvp"></span>
+  <span class="sp"><button class="sm" onclick="copyCode()" id="cvcp">복사</button>
+   <a class="sm" id="cvraw" href="#" target="_blank" rel="noopener"
+      style="border:1px solid var(--bd);border-radius:6px;padding:4px 10px;font-weight:700;font-size:12.5px">원본</a>
+   <button class="sm" onclick="closeCode()">닫기</button></span></div>
+ <pre id="cvc"></pre></div></div>
 <div id="tip"></div>
 
 <script>
@@ -191,6 +209,9 @@ function rc(s){return "r-"+(SC[s]||"un");}
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){
  return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
 function key(r){return r.site+"/"+r.no;}
+/* toISOString() 은 UTC 라 KST 오전엔 어제 날짜가 나온다. 반드시 로컬 기준으로. */
+function today(){var d=new Date();
+ return new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,10);}
 function $(i){return document.getElementById(i);}
 
 /* 동일 문제 묶기 */
@@ -314,7 +335,8 @@ function tbl(rows){
     '<td class="l"><a href="#p/'+encodeURIComponent(r.site)+'/'+encodeURIComponent(r.no)+'">'+
       esc(t||"(제목 없음)")+'</a></td>'+
     '<td class="'+rc(r.status)+'">'+esc(r.status)+'</td>'+
-    '<td>'+(r.file?'<a href="./'+esc(r.file)+'">보기</a>':'<span style="color:var(--mute)">—</span>')+'</td></tr>';
+    '<td>'+(r.file?'<span class="lnk" style="color:var(--ac);cursor:pointer" onclick="openCode(\''+
+      esc(r.file)+'\')">보기</span>':'<span style="color:var(--mute)">—</span>')+'</td></tr>';
   }).join("")+'</tbody></table>';
 }
 
@@ -445,6 +467,38 @@ function drawStatus(){
 }
 function sortBy(k){ asc=(k===sortK)?!asc:false; sortK=k; drawStatus(); }
 
+/* ════════ 코드 뷰어 ════════
+   .py 링크를 그냥 걸면 브라우저가 다운로드해 버려서, 받아다 화면에 띄운다. */
+var CVTEXT="";
+function closeCode(){$("cv").style.display="none";}
+async function openCode(file){
+ $("cv").style.display="block";
+ $("cvt").textContent="코드";
+ $("cvp").textContent=file;
+ $("cvraw").href="./"+file;
+ $("cvc").textContent="불러오는 중…";
+ CVTEXT="";
+ try{
+  var r=await fetch("./"+file+"?"+Date.now());
+  if(!r.ok){$("cvc").textContent="불러오기 실패 ("+r.status+")";return;}
+  var t=await r.text(); CVTEXT=t;
+  /* 파일 상단 독스트링은 흐리게, 본문 코드는 그대로 */
+  var m=t.match(/^(["']{3}[\s\S]*?["']{3})\s*\n([\s\S]*)$/);
+  $("cvc").innerHTML = m
+    ? '<span class="cm">'+esc(m[1])+'</span>\n\n'+esc(m[2])
+    : esc(t);
+  var lines=(m?m[2]:t).split("\n").length;
+  $("cvt").textContent="코드 · "+lines+"줄";
+ }catch(e){$("cvc").textContent="오류: "+e.message;}
+}
+function copyCode(){
+ var t=CVTEXT;
+ var m=t.match(/^["']{3}[\s\S]*?["']{3}\s*\n([\s\S]*)$/);
+ navigator.clipboard.writeText(m?m[1]:t).then(function(){
+  var b=$("cvcp"); b.textContent="복사됨"; setTimeout(function(){b.textContent="복사";},1400);
+ },function(){ $("cvcp").textContent="복사 실패"; });
+}
+
 /* ════════ 문제 페이지 ════════ */
 var CUR={};
 async function viewProblem(site,no){
@@ -458,14 +512,13 @@ async function viewProblem(site,no){
   '<div class="ptitle"><span class="b b-'+site+'">'+esc(site)+'</span>'+esc(no)+
    (title?'&nbsp; '+esc(title):'')+'</div>'+
   '<div id="pinfo"></div><div id="pbody"><div class="note">문제 자료를 불러오는 중…</div></div>'+
-  '<div class="sec-h">제출 이력</div><div class="panel">'+
-   (subs.length? tbl(subs).replace(/<th style="text-align:left">문제<\/th>/,'<th style="text-align:left">문제</th>')
-               : '<div class="empty">제출 기록이 없습니다.</div>')+'</div>'+
+  '<div class="sec-h">제출 이력</div><div class="panel" id="phist">'+
+   (subs.length? tbl(subs) : '<div class="empty">제출 기록이 없습니다.</div>')+'</div>'+
   '<div class="sec-h">코드 제출</div>'+
   '<textarea id="ed" class="mono" spellcheck="false" placeholder="여기에 Python 코드를 붙여넣으세요"></textarea>'+
   '<div class="bar" style="margin-top:10px">'+
    '<select id="pst"><option>품</option><option>맞음</option><option>못품</option><option>틀림</option><option>시간초과</option></select>'+
-   '<input id="pd" type="date" style="flex:0 0 158px" value="'+new Date().toISOString().slice(0,10)+'">'+
+   '<input id="pd" type="date" style="flex:0 0 158px" value="'+today()+'">'+
    '<button class="p" onclick="doJudge()">채점</button>'+
    '<button onclick="doSave()">저장 &amp; 커밋</button>'+
    '<button class="sm" style="margin-left:auto" onclick="doFetch()" id="rf">문제 다시 가져오기</button>'+
@@ -495,6 +548,8 @@ async function viewProblem(site,no){
 function renderProblem(p,site,no){
  CUR.prob=p;
  var subs=BYPROB[site+"/"+no]||[];
+ if($("phist")) $("phist").innerHTML =
+   subs.length? tbl(subs) : '<div class="empty">제출 기록이 없습니다.</div>';
  var lim=(p&&p.limits)||{};
  $("pinfo").innerHTML='<table class="lim"><thead><tr>'+
   '<th>시간 제한</th><th>메모리 제한</th><th>제출</th><th>최근 결과</th>'+
@@ -594,6 +649,20 @@ async function doSave(){
   if(r.status===401)return say("인증 실패 — 허브 버튼에서 토큰을 확인하세요.","ng");
   var j=await r.json();
   if(!j.ok)return say("실패: "+esc(j.error),"ng");
+  /* 낙관적 갱신 — Pages 재배포(1~2분)를 기다리지 않고 화면에 먼저 반영한다.
+     새로고침하면 서버가 생성한 진짜 데이터로 대체된다. */
+  var nr={date:$("pd").value,site:CUR.site,no:CUR.no,
+          title:bestTitle(CUR.site+"/"+CUR.no),status:$("pst").value,file:j.file||""};
+  var kk=key(nr);
+  D.rows=D.rows.filter(function(r){return !(key(r)===kk&&r.date===nr.date);});
+  D.rows.unshift(nr);
+  BYPROB[kk]=(BYPROB[kk]||[]).filter(function(r){return r.date!==nr.date;});
+  BYPROB[kk].unshift(nr);
+  BYPROB[kk].sort(function(a,b){return b.date.localeCompare(a.date);});
+  (byDate[nr.date]=byDate[nr.date]||[]).unshift(nr);
+  stDone=false; treeDone=false; homeDone=false;   /* 다음 진입 시 다시 그림 */
+  renderProblem(CUR.prob,CUR.site,CUR.no);        /* 제출 이력 즉시 갱신 */
+
   say((j.pushed?"✅ 저장 + 푸시 완료":"⚠️ 저장은 됐지만 푸시 실패")+" <code>"+esc(j.file)+"</code>"+
       "<div class='d'>commit "+(j.committed?"완료":"변경 없음")+
       "  ·  push "+(j.pushed?"완료":"실패")+
@@ -604,6 +673,8 @@ async function doSave(){
  }catch(e){say("오류: "+esc(e.message),"ng");}
 }
 
+document.addEventListener("keydown",function(e){
+ if(e.key==="Escape")closeCode();});
 go();
 connectHub();
 </script></html>"""

@@ -128,13 +128,42 @@ def from_repo() -> dict:
     return out
 
 
+def _ikey(it):
+    """item 동일성 판정 키. 문자열 item(구버전)은 원문 그대로."""
+    if isinstance(it, str):
+        return it.strip()
+    return "%s/%s" % (it.get("site", ""), it.get("no", ""))
+
+
 def merge(base: dict, add: dict) -> dict:
+    """날짜별로 item 을 (site, no) 기준 합집합으로 병합.
+
+    예전엔 count 가 큰 쪽 items 로 통째로 갈아끼웠는데, 그러면
+    같은 날 실수노트 2건 + 허브 저장 1건 일 때 허브 저장분이 통째로 사라졌다.
+    (실제 사고: 2026-08-11 BOJ 1159 가 대시보드에 안 뜸)
+    정보가 더 많은 item(제목·상태·파일 있는 쪽)을 우선 채택한다.
+    """
+    def score(it):
+        if isinstance(it, str):
+            return 0
+        return ((1 if it.get("title") else 0) +
+                (1 if it.get("status") and it["status"] != "?" else 0) +
+                (1 if it.get("file") else 0))
+
     for k, v in add.items():
         cur = base.setdefault(k, {"count": 0, "items": []})
-        if v["count"] >= cur["count"]:
-            cur["count"] = v["count"]
-            if v["items"]:
-                cur["items"] = v["items"]
+        seen = {}
+        order = []
+        for it in list(cur["items"]) + list(v["items"]):
+            key = _ikey(it)
+            if key not in seen:
+                seen[key] = it
+                order.append(key)
+            elif score(it) > score(seen[key]):
+                seen[key] = it
+        cur["items"] = [seen[k2] for k2 in order]
+        # items 없이 count 만 있는 구버전 기록도 있으므로 셋 중 최대값을 쓴다.
+        cur["count"] = max(len(cur["items"]), cur["count"], v["count"])
     return base
 
 

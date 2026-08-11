@@ -16,10 +16,18 @@
  "output_spec": "종이에서 찾은 숫자의 개수를 M이라고 하면, 출력은 M줄로 이루어져야 한다. 각 줄에는 종이에서 찾은 숫자를 하나씩 출력해야 한다. 이때, 비내림차순으로 출력해야 한다. 비내림차순은 내림차순의 반대인 경우인데, 다음 수가 앞의 수보다 크거나 같은 경우를 말한다.",
  "samples": [
   {
-   "in": "1\n2\nlo3za4\n01",
-   "out": "1\n1\n3\n4\n예제 입력 2\n4\n43silos0\nzita002\nle2sim\n231233\n예제 출력 2\n0\n2\n2\n43\n231233\n예제 입력 3\n4\n01bond\n02james007\n03bond\n04austinpowers000\n예제 출력 3\n0\n1\n2\n3\n4\n7"
+   "in": "2\nlo3za4\n01",
+   "out": "1\n3\n4"
+  },
+  {
+   "in": "4\n43silos0\nzita002\nle2sim\n231233",
+   "out": "0\n2\n2\n43\n231233"
+  },
+  {
+   "in": "4\n01bond\n02james007\n03bond\n04austinpowers000",
+   "out": "0\n1\n2\n3\n4\n7"
   }
  ],
  "private_tc_count": 26,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }

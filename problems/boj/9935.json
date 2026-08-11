@@ -16,10 +16,14 @@
  "output_spec": "첫째 줄에 모든 폭발이 끝난 후 남은 문자열을 출력한다.",
  "samples": [
   {
-   "in": "1\nmirkovC4nizCC44\nC4",
-   "out": "1\nmirkovniz\n예제 입력 2\n12ab112ab2ab\n12ab\n예제 출력 2\nFRULA"
+   "in": "mirkovC4nizCC44\nC4",
+   "out": "mirkovniz"
+  },
+  {
+   "in": "12ab112ab2ab\n12ab",
+   "out": "FRULA"
   }
  ],
  "private_tc_count": 24,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }

@@ -16,10 +16,14 @@
  "output_spec": "총 N개의 줄에 걸쳐서, 입력으로 주어진 i번째 파일 이름이 패턴과 일치하면 \"DA\", 일치하지 않으면 \"NE\"를 출력한다.\n\n참고로, \"DA\"는 크로아티어어로 \"YES\"를, \"NE\"는 \"NO\"를 의미한다.",
  "samples": [
   {
-   "in": "1\n3\na*d\nabcd\nanestonestod\nfacebook",
-   "out": "1\nDA\nDA\nNE\n예제 입력 2\n6\nh*n\nhuhovdjestvarnomozedocisvastan\nhonijezakon\natila\nje\nbio\nhun\n예제 출력 2\nDA\nDA\nNE\nNE\nNE\nDA"
+   "in": "3\na*d\nabcd\nanestonestod\nfacebook",
+   "out": "DA\nDA\nNE"
+  },
+  {
+   "in": "6\nh*n\nhuhovdjestvarnomozedocisvastan\nhonijezakon\natila\nje\nbio\nhun",
+   "out": "DA\nDA\nNE\nNE\nNE\nDA"
   }
  ],
  "private_tc_count": 26,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }

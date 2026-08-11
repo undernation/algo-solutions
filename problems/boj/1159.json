@@ -16,10 +16,14 @@
  "output_spec": "상근이가 선수 다섯 명을 선발할 수 없는 경우에는 \"PREDAJA\" (따옴표 없이)를 출력한다. PREDAJA는 크로아티아어로 항복을 의미한다. 선발할 수 있는 경우에는 가능한 성의 첫 글자를 사전순으로 공백없이 모두 출력한다.",
  "samples": [
   {
-   "in": "1\n18\nbabic\nkeksic\nboric\nbukic\nsarmic\nbalic\nkruzic\nhrenovkic\nbeslic\nboksic\nkrafnic\npecivic\nklavirkovic\nkukumaric\nsunkic\nkolacic\nkovacic\nprijestolonasljednikovi",
-   "out": "1\nbk\n예제 입력 2\n6\nmichael\njordan\nlebron\njames\nkobe\nbryant\n예제 출력 2\nPREDAJA"
+   "in": "18\nbabic\nkeksic\nboric\nbukic\nsarmic\nbalic\nkruzic\nhrenovkic\nbeslic\nboksic\nkrafnic\npecivic\nklavirkovic\nkukumaric\nsunkic\nkolacic\nkovacic\nprijestolonasljednikovi",
+   "out": "bk"
+  },
+  {
+   "in": "6\nmichael\njordan\nlebron\njames\nkobe\nbryant",
+   "out": "PREDAJA"
   }
  ],
  "private_tc_count": 26,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }

@@ -16,10 +16,22 @@
  "output_spec": "첫째 줄에 문제의 정답을 출력한다. 만약 불가능할 때는 \"I'm Sorry Hansoo\"를 출력한다. 정답이 여러 개일 경우에는 사전순으로 앞서는 것을 출력한다.",
  "samples": [
   {
-   "in": "1\nAABB",
-   "out": "1\nABBA\n예제 입력 2\nAAABB\n예제 출력 2\nABABA\n예제 입력 3\nABACABA\n예제 출력 3\nAABCBAA\n예제 입력 4\nABCD\n예제 출력 4\nI'm Sorry Hansoo"
+   "in": "AABB",
+   "out": "ABBA"
+  },
+  {
+   "in": "AAABB",
+   "out": "ABABA"
+  },
+  {
+   "in": "ABACABA",
+   "out": "AABCBAA"
+  },
+  {
+   "in": "ABCD",
+   "out": "I'm Sorry Hansoo"
   }
  ],
  "private_tc_count": 24,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }

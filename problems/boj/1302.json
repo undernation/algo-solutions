@@ -15,10 +15,26 @@
  "output_spec": "첫째 줄에 가장 많이 팔린 책의 제목을 출력한다. 만약 가장 많이 팔린 책이 여러 개일 경우에는 사전 순으로 가장 앞서는 제목을 출력한다.",
  "samples": [
   {
-   "in": "1\n5\ntop\ntop\ntop\ntop\nkimtop",
-   "out": "1\ntop\n예제 입력 2\n9\ntable\nchair\ntable\ntable\nlamp\ndoor\nlamp\ntable\nchair\n예제 출력 2\ntable\n예제 입력 3\n6\na\na\na\nb\nb\nb\n예제 출력 3\na\n예제 입력 4\n8\nicecream\npeanuts\npeanuts\nchocolate\ncandy\nchocolate\nicecream\napple\n예제 출력 4\nchocolate\n예제 입력 5\n1\nsoul\n예제 출력 5\nsoul"
+   "in": "5\ntop\ntop\ntop\ntop\nkimtop",
+   "out": "top"
+  },
+  {
+   "in": "9\ntable\nchair\ntable\ntable\nlamp\ndoor\nlamp\ntable\nchair",
+   "out": "table"
+  },
+  {
+   "in": "6\na\na\na\nb\nb\nb",
+   "out": "a"
+  },
+  {
+   "in": "8\nicecream\npeanuts\npeanuts\nchocolate\ncandy\nchocolate\nicecream\napple",
+   "out": "chocolate"
+  },
+  {
+   "in": "1\nsoul",
+   "out": "soul"
   }
  ],
  "private_tc_count": 14,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }

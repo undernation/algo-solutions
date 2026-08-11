@@ -16,10 +16,14 @@
  "output_spec": "첫째 줄에 팰린드롬이면 1, 아니면 0을 출력한다.",
  "samples": [
   {
-   "in": "1\nlevel",
-   "out": "1\n1\n예제 입력 2\nbaekjoon\n예제 출력 2\n0"
+   "in": "level",
+   "out": "1"
+  },
+  {
+   "in": "baekjoon",
+   "out": "0"
   }
  ],
  "private_tc_count": 25,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }

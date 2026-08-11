@@ -16,10 +16,26 @@
  "output_spec": "문자열 S가 \"pi\", \"ka\", \"chu\"를 이어 붙여서 만들 수 있으면 \"YES\"를 아니면 \"NO\"를 출력한다.",
  "samples": [
   {
-   "in": "1\npikapi",
-   "out": "1\nYES\n예제 입력 2\npipikachu\n예제 출력 2\nYES\n예제 입력 3\npikaqiu\n예제 출력 3\nNO\n예제 입력 4\npiika\n예제 출력 4\nNO\n예제 입력 5\nchupikachupipichu\n예제 출력 5\nYES"
+   "in": "pikapi",
+   "out": "YES"
+  },
+  {
+   "in": "pipikachu",
+   "out": "YES"
+  },
+  {
+   "in": "pikaqiu",
+   "out": "NO"
+  },
+  {
+   "in": "piika",
+   "out": "NO"
+  },
+  {
+   "in": "chupikachupipichu",
+   "out": "YES"
   }
  ],
  "private_tc_count": 14,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }

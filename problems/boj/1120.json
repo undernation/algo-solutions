@@ -15,10 +15,26 @@
  "output_spec": "A와 B의 길이가 같으면서, A와 B의 차이를 최소가 되도록 했을 때, 그 차이를 출력하시오.",
  "samples": [
   {
-   "in": "1\nadaabc aababbc",
-   "out": "1\n2\n예제 입력 2\nhello xello\n예제 출력 2\n1\n예제 입력 3\nkoder topcoder\n예제 출력 3\n1\n예제 입력 4\nabc topabcoder\n예제 출력 4\n0\n예제 입력 5\ngiorgi igroig\n예제 출력 5\n6"
+   "in": "adaabc aababbc",
+   "out": "2"
+  },
+  {
+   "in": "hello xello",
+   "out": "1"
+  },
+  {
+   "in": "koder topcoder",
+   "out": "1"
+  },
+  {
+   "in": "abc topabcoder",
+   "out": "0"
+  },
+  {
+   "in": "giorgi igroig",
+   "out": "6"
   }
  ],
  "private_tc_count": 14,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }

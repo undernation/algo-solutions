@@ -240,8 +240,29 @@ def save_solution(d):
                 encoding="utf-8", newline="").write(
             json.dumps(redact(d["problem"]), ensure_ascii=False, indent=1))
 
+    # history.json 에 직접 기록.
+    # 예전엔 build_heatmap 이 .py 헤더의 '풀이일' 을 긁는 것에만 의존했는데,
+    # 같은 날 다른 기록이 있으면 병합에서 밀려 사라졌다. 여기서 확실히 남긴다.
+    try:
+        hp = os.path.join(ROOT, "_meta", "history.json")
+        hist = json.load(io.open(hp, encoding="utf-8")) if os.path.exists(hp) else {}
+        day = d.get("date") or datetime.date.today().isoformat()
+        rec = hist.setdefault(day, {"count": 0, "items": []})
+        item = {"site": site, "no": no, "title": title,
+                "status": d.get("status") or "품", "file": rel}
+        items = [x for x in rec["items"]
+                 if not (isinstance(x, dict) and x.get("site") == site and str(x.get("no")) == no)]
+        items.append(item)
+        rec["items"] = items
+        rec["count"] = max(len(items), rec.get("count", 0))
+        io.open(hp, "w", encoding="utf-8", newline="").write(
+            json.dumps(hist, ensure_ascii=False, indent=1, sort_keys=True))
+        log("   📝 history.json %s (%d건)" % (day, rec["count"]))
+    except Exception as e:
+        log("   ⚠️ history 기록 실패:", str(e)[:150])
+
     # 잔디/인덱스 갱신
-    for s in ("_meta/build_heatmap.py", "_meta/build_index.py"):
+    for s in ("_meta/build_probindex.py", "_meta/build_heatmap.py", "_meta/build_index.py"):
         subprocess.run([PY, s], cwd=ROOT, capture_output=True,
                        env={**os.environ, "PYTHONIOENCODING": "utf-8"})
 

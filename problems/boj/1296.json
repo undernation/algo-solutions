@@ -15,10 +15,30 @@
  "output_spec": "첫째 줄에 우승할 확률이 가장 높은 팀 이름을 출력한다.",
  "samples": [
   {
-   "in": "1\nLOVE\n3\nJACOB\nFRANK\nDANO",
-   "out": "1\nFRANK\n예제 입력 2\nJANE\n4\nTHOMAS\nMICHAEL\nINDY\nLIU\n예제 출력 2\nINDY\n예제 입력 3\nLILLY\n1\nPIERRE\n예제 출력 3\nPIERRE\n예제 입력 4\nMERYLOV\n5\nJOHN\nDAVE\nSTEVE\nJOHN\nDAVE\n예제 출력 4\nDAVE\n예제 입력 5\nLLOL\n4\nBVERON\nCVERON\nAVERON\nDVERON\n예제 출력 5\nAVERON\n예제 입력 6\nVELYLEOCEVE\n5\nYVXHOVE\nLCOKO\nOGWSJVEVEDLE\nWGFVSJEL\nVLOLUVCBLLQVESWHEEKC\n예제 출력 6\nVLOLUVCBLLQVESWHEEKC"
+   "in": "LOVE\n3\nJACOB\nFRANK\nDANO",
+   "out": "FRANK"
+  },
+  {
+   "in": "JANE\n4\nTHOMAS\nMICHAEL\nINDY\nLIU",
+   "out": "INDY"
+  },
+  {
+   "in": "LILLY\n1\nPIERRE",
+   "out": "PIERRE"
+  },
+  {
+   "in": "MERYLOV\n5\nJOHN\nDAVE\nSTEVE\nJOHN\nDAVE",
+   "out": "DAVE"
+  },
+  {
+   "in": "LLOL\n4\nBVERON\nCVERON\nAVERON\nDVERON",
+   "out": "AVERON"
+  },
+  {
+   "in": "VELYLEOCEVE\n5\nYVXHOVE\nLCOKO\nOGWSJVEVEDLE\nWGFVSJEL\nVLOLUVCBLLQVESWHEEKC",
+   "out": "VLOLUVCBLLQVESWHEEKC"
   }
  ],
  "private_tc_count": 14,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }

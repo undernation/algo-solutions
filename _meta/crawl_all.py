@@ -10,6 +10,7 @@
     python _meta/crawl_all.py --limit 30     # 앞에서 N개만
     python _meta/crawl_all.py --force        # 이미 있는 것도 다시
     python _meta/crawl_all.py --empty        # 지문이 빈 것만 다시 (파서 수정 후 복구)
+    python _meta/crawl_all.py --bad          # 예제가 오염된 것만 다시
 
 선행조건: 디버그 크롬(9222) + 코딩살구 로그인
     python C:/Users/solom/crawler.py chrome
@@ -88,17 +89,29 @@ def main():
     todo = targets()
     if only:
         todo = [t for t in todo if t["site"] == only]
-    if "--empty" in a:
-        # 지문이 비어 저장된 것만 다시 (파서 수정 후 복구용)
-        def empty(t):
+    if "--empty" in a or "--bad" in a:
+        # 파서 수정 후 복구용.
+        #   --empty : 지문이 비어 저장된 것
+        #   --bad   : 예제에 "예제 입력/출력" 헤딩이 섞여 오염된 것
+        want_empty, want_bad = "--empty" in a, "--bad" in a
+
+        def broken(t):
             f = os.path.join(PROB, SUB[t["site"]], t["no"] + ".json")
             if not os.path.exists(f):
                 return False
             try:
-                return not (json.load(io.open(f, encoding="utf-8")).get("statement") or "").strip()
+                d = json.load(io.open(f, encoding="utf-8"))
             except Exception:
                 return True
-        todo = [t for t in todo if empty(t)]
+            if want_empty and not (d.get("statement") or "").strip():
+                return True
+            if want_bad:
+                txt = "".join((s.get("in", "") + s.get("out", ""))
+                              for s in (d.get("samples") or []))
+                if "예제" in txt:
+                    return True
+            return False
+        todo = [t for t in todo if broken(t)]
     elif not force:
         todo = [t for t in todo
                 if not os.path.exists(os.path.join(PROB, SUB[t["site"]], t["no"] + ".json"))]

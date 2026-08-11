@@ -16,10 +16,18 @@
  "output_spec": "첫째 줄에 문제에서 주어진 걸리는 날을 출력한다.",
  "samples": [
   {
-   "in": "1\n10 2\n.L\n..\nXX\nXX\nXX\nXX\nXX\nXX\n..\n.L",
-   "out": "1\n3\n예제 입력 2\n4 11\n..XXX...X..\n.X.XXX...L.\n....XXX..X.\nX.L..XXX...\n예제 출력 2\n2\n예제 입력 3\n8 17\n...XXXXXX..XX.XXX\n....XXXXXXXXX.XXX\n...XXXXXXXXXXXX..\n..XXXXX.LXXXXXX..\n.XXXXXX..XXXXXX..\nXXXXXXX...XXXX...\n..XXXXX...XXX....\n....XXXXX.XXXL...\n예제 출력 3\n2"
+   "in": "10 2\n.L\n..\nXX\nXX\nXX\nXX\nXX\nXX\n..\n.L",
+   "out": "3"
+  },
+  {
+   "in": "4 11\n..XXX...X..\n.X.XXX...L.\n....XXX..X.\nX.L..XXX...",
+   "out": "2"
+  },
+  {
+   "in": "8 17\n...XXXXXX..XX.XXX\n....XXXXXXXXX.XXX\n...XXXXXXXXXXXX..\n..XXXXX.LXXXXXX..\n.XXXXXX..XXXXXX..\nXXXXXXX...XXXX...\n..XXXXX...XXX....\n....XXXXX.XXXL...",
+   "out": "2"
   }
  ],
  "private_tc_count": 27,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }

@@ -15,10 +15,26 @@
  "output_spec": "첫째 줄에 패턴을 출력하면 된다.",
  "samples": [
   {
-   "in": "1\n3\nconfig.sys\nconfig.inf\nconfigures",
-   "out": "1\nconfig????\n예제 입력 2\n2\ncontest.txt\ncontext.txt\n예제 출력 2\nconte?t.txt\n예제 입력 3\n3\nc.user.mike.programs\nc.user.nike.programs\nc.user.rice.programs\n예제 출력 3\nc.user.?i?e.programs\n예제 입력 4\n4\na\na\nb\nb\n예제 출력 4\n?\n예제 입력 5\n1\nonlyonefile\n예제 출력 5\nonlyonefile"
+   "in": "3\nconfig.sys\nconfig.inf\nconfigures",
+   "out": "config????"
+  },
+  {
+   "in": "2\ncontest.txt\ncontext.txt",
+   "out": "conte?t.txt"
+  },
+  {
+   "in": "3\nc.user.mike.programs\nc.user.nike.programs\nc.user.rice.programs",
+   "out": "c.user.?i?e.programs"
+  },
+  {
+   "in": "4\na\na\nb\nb",
+   "out": "?"
+  },
+  {
+   "in": "1\nonlyonefile",
+   "out": "onlyonefile"
   }
  ],
  "private_tc_count": 14,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }

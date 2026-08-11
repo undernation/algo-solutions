@@ -16,9 +16,9 @@
  "samples": [
   {
    "in": "a\ntv\nptoui\nbontres\nzoggax\nwiinq\neep\nhouctuh\nend",
-   "out": "'의 형태에 기반하여 품질을 평가하여라.\n\n테스트 케이스\n예제 입력\na\ntv\nptoui\nbontres\nzoggax\nwiinq\neep\nhouctuh\nend\n예제 출력\n<a> is acceptable.\n<tv> is not acceptable.\n<ptoui> is not acceptable.\n<bontres> is not acceptable.\n<zoggax> is not acceptable.\n<wiinq> is not acceptable.\n<eep> is acceptable.\n<houctuh> is acceptable."
+   "out": "<a> is acceptable.\n<tv> is not acceptable.\n<ptoui> is not acceptable.\n<bontres> is not acceptable.\n<zoggax> is not acceptable.\n<wiinq> is not acceptable.\n<eep> is acceptable.\n<houctuh> is acceptable."
   }
  ],
  "private_tc_count": 16,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }

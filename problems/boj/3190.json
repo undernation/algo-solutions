@@ -16,10 +16,18 @@
  "output_spec": "첫째 줄에 게임이 몇 초에 끝나는지 출력한다.",
  "samples": [
   {
-   "in": "1\n6\n3\n3 4\n2 5\n5 3\n3\n3 D\n15 L\n17 D",
-   "out": "1\n9\n예제 입력 2\n10\n4\n1 2\n1 3\n1 4\n1 5\n4\n8 D\n10 D\n11 D\n13 L\n예제 출력 2\n21\n예제 입력 3\n10\n5\n1 5\n1 3\n1 2\n1 6\n1 7\n4\n8 D\n10 D\n11 D\n13 L\n예제 출력 3\n13"
+   "in": "6\n3\n3 4\n2 5\n5 3\n3\n3 D\n15 L\n17 D",
+   "out": "9"
+  },
+  {
+   "in": "10\n4\n1 2\n1 3\n1 4\n1 5\n4\n8 D\n10 D\n11 D\n13 L",
+   "out": "21"
+  },
+  {
+   "in": "10\n5\n1 5\n1 3\n1 2\n1 6\n1 7\n4\n8 D\n10 D\n11 D\n13 L",
+   "out": "13"
   }
  ],
  "private_tc_count": 26,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }

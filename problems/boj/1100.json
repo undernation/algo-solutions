@@ -15,10 +15,22 @@
  "output_spec": "첫째 줄에 문제의 정답을 출력한다.",
  "samples": [
   {
-   "in": "1\n.F.F...F\nF...F.F.\n...F.F.F\nF.F...F.\n.F...F..\nF...F.F.\n.F.F.F.F\n..FF..F.",
-   "out": "1\n1\n예제 입력 2\n........\n........\n........\n........\n........\n........\n........\n........\n예제 출력 2\n0\n예제 입력 3\nFFFFFFFF\nFFFFFFFF\nFFFFFFFF\nFFFFFFFF\nFFFFFFFF\nFFFFFFFF\nFFFFFFFF\nFFFFFFFF\n예제 출력 3\n32\n예제 입력 4\n........\n..F.....\n.....F..\n.....F..\n........\n........\n.......F\n.F......\n예제 출력 4\n2"
+   "in": ".F.F...F\nF...F.F.\n...F.F.F\nF.F...F.\n.F...F..\nF...F.F.\n.F.F.F.F\n..FF..F.",
+   "out": "1"
+  },
+  {
+   "in": "........\n........\n........\n........\n........\n........\n........\n........",
+   "out": "0"
+  },
+  {
+   "in": "FFFFFFFF\nFFFFFFFF\nFFFFFFFF\nFFFFFFFF\nFFFFFFFF\nFFFFFFFF\nFFFFFFFF\nFFFFFFFF",
+   "out": "32"
+  },
+  {
+   "in": "........\n..F.....\n.....F..\n.....F..\n........\n........\n.......F\n.F......",
+   "out": "2"
   }
  ],
  "private_tc_count": 14,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }

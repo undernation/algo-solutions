@@ -16,10 +16,34 @@
  "output_spec": "첫째 줄에 세준이가 갈 수 있는 가장 높은 곳의 높이를 출력한다.",
  "samples": [
   {
-   "in": "1\n6 6 6 36\nAABCDE\nGJIHGF\nMKLMNO\nSTSRQP\nYUVWXY\nedcbaZ",
-   "out": "1\n30\n예제 입력 2\n2 2 3 10000\nAD\nJG\n예제 출력 2\n9\n예제 입력 3\n2 2 3 29\nAD\nJG\n예제 출력 3\n6\n예제 입력 4\n7 4 5 14\nBCDE\nAJKF\nAIHG\nAAAA\nAOMK\nAQSI\nACEG\n예제 출력 4\n10\n예제 입력 5\n7 4 5 57\nBCDE\nAJKF\nAIHG\nAAAA\nAOMK\nAQSI\nACEG\n예제 출력 5\n18\n예제 입력 6\n1 7 3 1000\nABCDEFK\n예제 출력 6\n5\n예제 입력 7\n8 9 4 50\nTRRVUXefk\nbSNMOWcff\nbRPNNQZip\nXSRUTVcfj\nWbZQPXZbV\nXdYSRWVOP\nfeedVVcZR\nXhfdZZefg\n예제 출력 7\n28"
+   "in": "6 6 6 36\nAABCDE\nGJIHGF\nMKLMNO\nSTSRQP\nYUVWXY\nedcbaZ",
+   "out": "30"
+  },
+  {
+   "in": "2 2 3 10000\nAD\nJG",
+   "out": "9"
+  },
+  {
+   "in": "2 2 3 29\nAD\nJG",
+   "out": "6"
+  },
+  {
+   "in": "7 4 5 14\nBCDE\nAJKF\nAIHG\nAAAA\nAOMK\nAQSI\nACEG",
+   "out": "10"
+  },
+  {
+   "in": "7 4 5 57\nBCDE\nAJKF\nAIHG\nAAAA\nAOMK\nAQSI\nACEG",
+   "out": "18"
+  },
+  {
+   "in": "1 7 3 1000\nABCDEFK",
+   "out": "5"
+  },
+  {
+   "in": "8 9 4 50\nTRRVUXefk\nbSNMOWcff\nbRPNNQZip\nXSRUTVcfj\nWbZQPXZbV\nXdYSRWVOP\nfeedVVcZR\nXhfdZZefg",
+   "out": "28"
   }
  ],
  "private_tc_count": 16,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }
