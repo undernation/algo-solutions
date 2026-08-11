@@ -38,6 +38,53 @@ TOKEN = ""
 TOKEN_FILE = os.path.join(os.path.expanduser("~"), ".algo-hub-token")
 
 
+# ── 기기 속도 보정 ────────────────────────────────────────────
+# 채점기가 도는 하드웨어는 제각각이다(내 PC vs 오라클 E2.1.Micro 는 실측 8.7배 차이).
+# 문제의 C++ 기준 제한을 그대로 쓰면 느린 기기에서 멀쩡한 풀이가 시간초과로 찍힌다.
+# 그래서 벤치를 한 번 돌려 '기준 기기 대비 몇 배 느린가'를 구해 제한에 곱한다.
+#   허용시간 = 문제제한 x PY_MULT x speed_factor
+# 결과는 캐시해 매 기동마다 다시 재지 않는다.
+PY_MULT = 3.0          # Python 이 C++ 대비 필요로 하는 배수
+BENCH_REF = 1.0        # 기준 기기의 _bench.py 합계(초)
+BENCH_FILE = os.path.join(os.path.expanduser("~"), ".algo-hub-bench")
+SPEED = 1.0
+
+
+def measure_speed():
+    """_bench.py 합계로 기준 대비 배율 산출(캐시)."""
+    if os.path.exists(BENCH_FILE):
+        try:
+            v = float(io.open(BENCH_FILE, encoding="utf-8").read().strip())
+            if v > 0:
+                return max(1.0, v / BENCH_REF)
+        except Exception:
+            pass
+    r = subprocess.run([PY, os.path.join(ROOT, "judge", "_bench.py")],
+                       cwd=ROOT, capture_output=True, text=True,
+                       encoding="utf-8", errors="replace",
+                       env={**os.environ, "PYTHONIOENCODING": "utf-8"})
+    m = re.search(r"합계\s+([\d.]+)\s*초", r.stdout or "")
+    if not m:
+        return 1.0
+    v = float(m.group(1))
+    try:
+        io.open(BENCH_FILE, "w", encoding="utf-8", newline="").write(str(v))
+    except OSError:
+        pass
+    return max(1.0, v / BENCH_REF)
+
+
+def allowed_time(limit_sec):
+    """문제 제한(초) -> 이 기기에서 허용할 실행시간(초)."""
+    try:
+        t = float(limit_sec or 0)
+    except (TypeError, ValueError):
+        t = 0.0
+    if t <= 0:
+        t = 2.0
+    return round(t * PY_MULT * SPEED, 1)
+
+
 def load_token():
     """토큰 파일이 없으면 생성. 공개 엔드포인트 보호용.
 
@@ -378,6 +425,7 @@ def status():
         if os.path.isdir(d):
             n += len([f for f in os.listdir(d) if f.endswith(".py")])
     return {"ok": True, "service": "algo-hub", "language": "python", "authRequired": bool(TOKEN),
+            "speedFactor": round(SPEED, 2), "pyMult": PY_MULT,
             "python": sys.version.split()[0], "repo": ROOT,
             "branch": br, "ahead": ah, "dirty": dirty, "solutions": n,
             "autoPush": AUTO_PUSH,
@@ -459,7 +507,7 @@ class H(BaseHTTPRequestHandler):
             if p in ("/judge", ""):
                 cases = body.get("testCases") or []
                 try:
-                    tl = float(body.get("timeLimit") or 0) or 5.0
+                    tl = allowed_time(body.get("timeLimit"))
                 except (TypeError, ValueError):
                     tl = 5.0
                 log("\n▶ 채점  problemId=%s  TC %d개  제한 %ss"
@@ -474,7 +522,7 @@ class H(BaseHTTPRequestHandler):
                 cases = body.get("cases") or []
                 log("\n▶ 실행  TC %d개" % len(cases))
                 return self._send(200, judge(body.get("code") or "", cases, 0,
-                                             float(body.get("timeLimit") or 5) * 3 + 2))
+                                             allowed_time(body.get("timeLimit"))))
 
             if p == "/save":
                 log("\n▶ 저장  %s %s %s" % (body.get("site"), body.get("no"), body.get("title")))
@@ -508,6 +556,8 @@ def main():
     global TOKEN
     PY, PORT, VERBOSE, AUTO_PUSH = a.python, a.port, not a.quiet, not a.no_push
     TOKEN = "" if a.no_auth else load_token()
+    global SPEED
+    SPEED = measure_speed()
 
     print("=" * 64)
     print("  🐍 algo-hub  로컬 서버 (채점 + repo 저장)")
@@ -515,6 +565,7 @@ def main():
     print("  포트    : %d" % PORT)
     print("  repo    : %s" % ROOT)
     print("  자동푸시 : %s" % ("ON" if AUTO_PUSH else "OFF"))
+    print("  속도보정 : x%.1f  (1초 제한 -> %.1f초 허용)" % (SPEED, allowed_time(1)))
     if TOKEN:
         print("  인증토큰 : %s" % TOKEN)
         print("             (%s)" % TOKEN_FILE)

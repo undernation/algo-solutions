@@ -671,17 +671,26 @@ async function doFetch(){
       ((j.problem.samples||[]).length)+"개","ok");
  }catch(e){say("오류: "+esc(e.message),"ng");}
 }
+/* 문제의 시간 제한(초). 허브가 Python 보정으로 ×3+2 를 더 준다. */
+function probTL(){
+ var t=((CUR.prob||{}).limits||{}).time||"";
+ var m=String(t).match(/([\d.]+)/);
+ var v=m?parseFloat(m[1]):0;
+ return (v>0&&v<=20)?v:2;
+}
 async function doJudge(){
  var h=needHub("judge"); if(!h)return;
  var code=$("ed").value;
  if(!code.trim())return say("코드를 입력하세요.","ng");
  var cases=((CUR.prob||{}).samples||[]).map(function(s){return {input:s["in"],output:s.out};});
  if(!cases.length)return say("예제가 없어 채점할 수 없습니다. 먼저 문제 자료를 가져오세요.","ng");
- say("채점 중… ("+cases.length+"케이스)");
+ var sf=(h.info&&h.info.speedFactor)||1, pm=(h.info&&h.info.pyMult)||3;
+ say("채점 중… "+cases.length+"케이스 · 제한 "+probTL()+"초 → 허용 "+
+     (probTL()*pm*sf).toFixed(1)+"초 (Python x"+pm+", 기기보정 x"+sf.toFixed(1)+")");
  try{
   var r=await fetch(h.url+"/judge",{method:"POST",headers:H(),
    body:JSON.stringify({problemId:CUR.no,sourceCode:code,testCases:cases,
-    publicTestCaseCount:cases.length,timeLimit:5})});
+    publicTestCaseCount:cases.length,timeLimit:probTL()})});
   if(r.status===401)return say("인증 실패 — 허브 버튼에서 토큰을 확인하세요.","ng");
   var j=await r.json(); CUR.verdict=j;
   var s=j.summary||{}, ok=j.verdict==="accepted";
