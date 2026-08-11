@@ -1,0 +1,49 @@
+name: 잔디 · 인덱스 자동 갱신
+
+on:
+  push:
+    branches: [master, main]
+    paths:                      # 풀이/데이터가 바뀔 때만
+      - 'boj/**'
+      - 'swea/**'
+      - '_meta/history.json'
+      - '_meta/build_heatmap.py'
+      - '_meta/build_index.py'
+      - '.github/workflows/heatmap.yml'
+  schedule:
+    - cron: '0 16 * * *'        # 매일 UTC 16:00 = KST 01:00
+  workflow_dispatch:            # 수동 실행 버튼
+
+permissions:
+  contents: write
+
+concurrency:
+  group: heatmap
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 잔디 · 인덱스 생성
+        run: |
+          python _meta/build_heatmap.py
+          python _meta/build_index.py
+
+      - name: 변경분 커밋
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- README.md assets/ _meta/history.json; then
+            echo "변경 없음 — 커밋 생략"
+            exit 0
+          fi
+          git add README.md assets/ _meta/history.json
+          git commit -m "chore: 잔디·인덱스 자동 갱신 ($(date -u +%Y-%m-%d))"
+          git push
