@@ -8,8 +8,6 @@ on:
       - 'swea/**'
       - '_meta/history.json'
       - '_meta/build_heatmap.py'
-      - 'problems/**'
-      - '_meta/cosal_list.json'
       - '_meta/build_index.py'
       - '.github/workflows/heatmap.yml'
   schedule:

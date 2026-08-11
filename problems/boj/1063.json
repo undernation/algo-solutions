@@ -15,10 +15,30 @@
  "output_spec": "첫째 줄에 킹의 마지막 위치, 둘째 줄에 돌의 마지막 위치를 출력한다.",
  "samples": [
   {
-   "in": "1\nA1 A2 5\nB\nL\nLB\nRB\nLT",
-   "out": "1\nA1\nA2\n예제 입력 2\nA1 H8 1\nT\n예제 출력 2\nA2\nH8\n예제 입력 3\nA1 A2 1\nT\n예제 출력 3\nA2\nA3\n예제 입력 4\nA1 A2 2\nT\nR\n예제 출력 4\nB2\nA3\n예제 입력 5\nA8 B7 18\nRB\nRB\nRB\nRB\nRB\nRB\nRB\nRB\nRB\nRB\nRB\nRB\nRB\nRB\nRB\nRB\nRB\nRB\n예제 출력 5\nG2\nH1\n예제 입력 6\nC1 B1 3\nL\nT\nLB\n예제 출력 6\nB2\nA1"
+   "in": "A1 A2 5\nB\nL\nLB\nRB\nLT",
+   "out": "A1\nA2"
+  },
+  {
+   "in": "A1 H8 1\nT",
+   "out": "A2\nH8"
+  },
+  {
+   "in": "A1 A2 1\nT",
+   "out": "A2\nA3"
+  },
+  {
+   "in": "A1 A2 2\nT\nR",
+   "out": "B2\nA3"
+  },
+  {
+   "in": "A8 B7 18\nRB\nRB\nRB\nRB\nRB\nRB\nRB\nRB\nRB\nRB\nRB\nRB\nRB\nRB\nRB\nRB\nRB\nRB",
+   "out": "G2\nH1"
+  },
+  {
+   "in": "C1 B1 3\nL\nT\nLB",
+   "out": "B2\nA1"
   }
  ],
  "private_tc_count": 14,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }

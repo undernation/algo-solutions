@@ -15,10 +15,14 @@
  "output_spec": "화은이의 단어장에 들어 있는 단어를 단어장의 앞에 위치한 단어부터 한 줄에 한 단어씩 순서대로 출력한다.",
  "samples": [
   {
-   "in": "1\n7 4\napple\nant\nsand\napple\nappend\nsand\nsand",
-   "out": "1\nsand\napple\nappend\n예제 입력 2\n12 5\nappearance\nappend\nattendance\nswim\nswift\nswift\nswift\nmouse\nwallet\nmouse\nice\nage\n예제 출력 2\nswift\nmouse\nappearance\nattendance\nappend\nwallet"
+   "in": "7 4\napple\nant\nsand\napple\nappend\nsand\nsand",
+   "out": "sand\napple\nappend"
+  },
+  {
+   "in": "12 5\nappearance\nappend\nattendance\nswim\nswift\nswift\nswift\nmouse\nwallet\nmouse\nice\nage",
+   "out": "swift\nmouse\nappearance\nattendance\nappend\nwallet"
   }
  ],
  "private_tc_count": 14,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }

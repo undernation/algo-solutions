@@ -49,5 +49,13 @@ def main():
     print("   해제하려면 이 파일을 지우거나 git commit --no-verify")
 
 
+def setup_merge_driver():
+    """.gitattributes 의 merge=ours 가 동작하려면 드라이버 등록이 필요하다(PC마다 1회)."""
+    import subprocess
+    subprocess.run(["git", "config", "merge.ours.driver", "true"], cwd=ROOT)
+    print("✅ merge=ours 드라이버 등록 (생성물 충돌 방지)")
+
+
 if __name__ == "__main__":
     main()
+    setup_merge_driver()
