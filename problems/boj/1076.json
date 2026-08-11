@@ -15,10 +15,18 @@
  "output_spec": "입력으로 주어진 저항의 저항값을 계산하여 첫째 줄에 출력한다.",
  "samples": [
   {
-   "in": "1\nyellow\nviolet\nred",
-   "out": "1\n4700\n예제 입력 2\norange\nred\nblue\n예제 출력 2\n32000000\n예제 입력 3\nwhite\nwhite\nwhite\n예제 출력 3\n99000000000"
+   "in": "yellow\nviolet\nred",
+   "out": "4700"
+  },
+  {
+   "in": "orange\nred\nblue",
+   "out": "32000000"
+  },
+  {
+   "in": "white\nwhite\nwhite",
+   "out": "99000000000"
   }
  ],
  "private_tc_count": 14,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }
