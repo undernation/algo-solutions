@@ -1,8 +1,20 @@
 # algo-solutions
 
-코딩테스트 풀이 아카이브 — **개인 학습용 (private)**
+코딩테스트 풀이 아카이브 — 개인 학습용
 
-> ⚠️ SWEA 문제 자료 포함. **private 유지 필수** — 공개 전환 금지.
+# 👉 [**대시보드 열기 — undernation.github.io/algo-solutions**](https://undernation.github.io/algo-solutions/)
+
+> 잔디 · 풀이 목록 · **문제 보기 / 코드 채점 / 저장** 전부 여기서 된다.
+> 문제 제목을 클릭하면 지문·예제·제출 이력이 열리고, 그 자리에서 코드를 채점하고 커밋할 수 있다.
+
+| 어디서 | 주소 |
+|---|---|
+| 🌐 **대시보드** | **https://undernation.github.io/algo-solutions/** |
+| 🖥️ 허브 서버 (클라우드) | 대시보드가 [`_meta/endpoint.json`](_meta/endpoint.json) 을 읽어 **자동 연결** |
+| 💻 허브 서버 (로컬) | `python judge/server.py` → `http://localhost:12014` |
+
+**처음 한 번만**: 대시보드 상단 **[설정]** → 인증 토큰 입력 (서버 시작 로그 또는 `~/.algo-hub-token`).
+이후 브라우저에 저장되어 자동 연결된다.
 
 ---
 
@@ -77,18 +89,17 @@ python _meta/fetch_swea.py <contestProbId> --json
 
 | 2026년 | |
 |---|---|
-| 총 시도 | **773문제** |
-| 활동일 | **136일** |
-| 최장 연속 | **132일** |
+| 총 시도 | **772문제** |
+| 활동일 | **135일** |
+| 최장 연속 | **131일** |
 
 > 🖱️ **날짜별 문제를 보려면** → 아래 월별 목록을 펼치거나, [전체 기록](./HEATMAP.md) · 마우스 hover는 [`assets/heatmap.html`](./assets/heatmap.html) 을 브라우저로
 
 <details>
-<summary><b>2026-08</b> — 12일 / 25문제</summary>
+<summary><b>2026-08</b> — 11일 / 24문제</summary>
 
 | 날짜 | 문제 |
 |---|---|
-| **08-12** (수) | BOJ 2618 경찰차 (품) |
 | **08-11** (화) | SWEA 2382 미생물 격리 (품)<br>SWEA 2117 홈 방범 서비스 (품) |
 | **08-10** (월) | BOJ 2636  (품)<br>SWEA 2477 차량 정비소 (품)<br>SWEA 2383 점심 식사시간 (품) |
 | **08-09** (일) | SWEA 4128 요리사 (품)<br>SWEA 4123 숫자 만들기 (품) |

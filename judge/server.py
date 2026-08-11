@@ -34,8 +34,49 @@ PY = sys.executable
 PORT = 12014
 VERBOSE = True
 AUTO_PUSH = True
+TOKEN = ""
+TOKEN_FILE = os.path.join(os.path.expanduser("~"), ".algo-hub-token")
+
+
+def load_token():
+    """토큰 파일이 없으면 생성. 공개 엔드포인트 보호용."""
+    import secrets
+    if os.path.exists(TOKEN_FILE):
+        t = io.open(TOKEN_FILE, encoding="utf-8").read().strip()
+        if t:
+            return t
+    t = secrets.token_urlsafe(24)
+    io.open(TOKEN_FILE, "w", encoding="utf-8", newline="").write(t)
+    try:
+        os.chmod(TOKEN_FILE, 0o600)
+    except OSError:
+        pass
+    return t
 
 SUB = {"BOJ": "boj", "SWEA": "swea", "PGS": "programmers", "CT": "codetree"}
+
+# 지문·예제를 저장물에서 제외할지 여부. 사용자 결정(2026-08-11)으로 기본 OFF —
+# 지문·예제 입출력·테스트케이스를 그대로 커밋한다.
+# 나중에 비공개로 돌리고 싶으면 True 로만 바꾸면 된다.
+PUBLIC_SAFE = False
+REDACT = ("statement", "samples", "testcases", "private_testcases",
+          "description", "input_desc", "output_desc", "html",
+          "input_spec", "output_spec")
+
+
+def redact(prob):
+    """공개 저장용으로 저작물 부분을 제거한 사본."""
+    if not prob:
+        return prob
+    if not PUBLIC_SAFE:
+        return prob
+    out = {k: v for k, v in prob.items() if k not in REDACT}
+    if prob.get("samples"):
+        out["sample_count"] = len(prob["samples"])
+    if prob.get("statement"):
+        out["statement_len"] = len(prob["statement"])
+    out["_redacted"] = "지문·예제는 저작권 문제로 저장하지 않음 (repo public)"
+    return out
 SITE_NAME = {"BOJ": "백준", "SWEA": "SW Expert Academy",
              "PGS": "프로그래머스", "CT": "코드트리"}
 
@@ -162,10 +203,14 @@ def build_header(d, verdict=None):
         L.append("")
         L.append("[채점] %s  %s/%s  (%ss)" % (verdict.get("verdict"), s.get("passed"),
                                             s.get("total"), verdict.get("elapsedSec")))
-    if p.get("statement"):
-        L += ["", "[문제]", p["statement"].strip()]
-    for i, smp in enumerate(p.get("samples") or [], 1):
-        L += ["", "[예제 %d]" % i, "입력:", smp.get("in", ""), "출력:", smp.get("out", "")]
+    if PUBLIC_SAFE:
+        if p.get("statement") or p.get("samples"):
+            L += ["", "[문제] 지문·예제는 저작권상 저장하지 않음 — 위 URL 참조"]
+    else:
+        if p.get("statement"):
+            L += ["", "[문제]", p["statement"].strip()]
+        for i, smp in enumerate(p.get("samples") or [], 1):
+            L += ["", "[예제 %d]" % i, "입력:", smp.get("in", ""), "출력:", smp.get("out", "")]
     if d.get("note"):
         L += ["", "[메모]", d["note"].strip()]
     return '"""\n' + "\n".join(L) + '\n"""\n\n'
@@ -193,7 +238,7 @@ def save_solution(d):
         os.makedirs(pd, exist_ok=True)
         io.open(os.path.join(pd, "%s.json" % (no or safe(title))), "w",
                 encoding="utf-8", newline="").write(
-            json.dumps(d["problem"], ensure_ascii=False, indent=1))
+            json.dumps(redact(d["problem"]), ensure_ascii=False, indent=1))
 
     # 잔디/인덱스 갱신
     for s in ("_meta/build_heatmap.py", "_meta/build_index.py"):
@@ -241,7 +286,7 @@ def status():
         d = os.path.join(ROOT, s)
         if os.path.isdir(d):
             n += len([f for f in os.listdir(d) if f.endswith(".py")])
-    return {"ok": True, "service": "algo-hub", "language": "python",
+    return {"ok": True, "service": "algo-hub", "language": "python", "authRequired": bool(TOKEN),
             "python": sys.version.split()[0], "repo": ROOT,
             "branch": br, "ahead": ah, "dirty": dirty, "solutions": n,
             "autoPush": AUTO_PUSH,
@@ -253,7 +298,7 @@ def status():
 # ══════════════════════════════════════════════════════════════
 CORS = {"Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
-        "Access-Control-Allow-Headers": "content-type, accept",
+        "Access-Control-Allow-Headers": "content-type, accept, x-auth-token, authorization",
         "Access-Control-Max-Age": "86400"}
 
 
@@ -296,8 +341,23 @@ class H(BaseHTTPRequestHandler):
             return self._send(200, {"ok": True, "count": len(out), "problems": out})
         return self._send(404, {"ok": False, "error": "not found"})
 
+    def _auth_ok(self):
+        if not TOKEN:
+            return True
+        got = (self.headers.get("X-Auth-Token")
+               or self.headers.get("Authorization", "").replace("Bearer ", "").strip())
+        if not got:
+            from urllib.parse import urlparse, parse_qs
+            got = (parse_qs(urlparse(self.path).query).get("token") or [""])[0]
+        import hmac
+        return hmac.compare_digest(str(got), str(TOKEN))
+
     def do_POST(self):
         p = self.path.split("?")[0].rstrip("/")
+        if not self._auth_ok():
+            log("   ⛔ 인증 실패 (%s)" % p)
+            return self._send(401, {"ok": False, "error": "unauthorized",
+                                    "hint": "X-Auth-Token 헤더 필요"})
         try:
             n = int(self.headers.get("Content-Length") or 0)
             body = json.loads(self.rfile.read(n).decode("utf-8") or "{}")
@@ -351,8 +411,11 @@ def main():
     ap.add_argument("--python", default=sys.executable)
     ap.add_argument("--no-push", action="store_true")
     ap.add_argument("--quiet", action="store_true")
+    ap.add_argument("--no-auth", action="store_true", help="토큰 인증 끄기(로컬 전용)")
     a = ap.parse_args()
+    global TOKEN
     PY, PORT, VERBOSE, AUTO_PUSH = a.python, a.port, not a.quiet, not a.no_push
+    TOKEN = "" if a.no_auth else load_token()
 
     print("=" * 64)
     print("  🐍 algo-hub  로컬 서버 (채점 + repo 저장)")
@@ -360,6 +423,11 @@ def main():
     print("  포트    : %d" % PORT)
     print("  repo    : %s" % ROOT)
     print("  자동푸시 : %s" % ("ON" if AUTO_PUSH else "OFF"))
+    if TOKEN:
+        print("  인증토큰 : %s" % TOKEN)
+        print("             (%s)" % TOKEN_FILE)
+    else:
+        print("  인증     : 꺼짐 (--no-auth)")
     print()
     print("  대시보드 : https://undernation.github.io/algo-solutions/")
     print("  코딩살구 : IP 127.0.0.1 / 포트 %d 로 등록" % PORT)

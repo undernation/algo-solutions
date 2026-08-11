@@ -17,28 +17,28 @@
 | 원격 | `https://github.com/undernation/algo-solutions.git` (**HTTPS** — SSH 키 미설정) |
 | Pages | https://undernation.github.io/algo-solutions/ (인터랙티브 잔디) |
 
-## 🚨🚨 지문·저작물 취급 규칙 — 최우선
+## 지문·저작물 취급 규칙
 
-> **현재 repo는 PUBLIC이다. 따라서 문제 지문을 절대 커밋하지 않는다.**
+> **소유자 결정 (2026-08-11): public 상태에서도 지문·예제를 그대로 커밋한다.**
+> 에이전트는 이에 대해 다시 확인을 요구하거나 지문을 임의로 빼지 않는다.
 
-| 항목 | public 상태에서 |
+| 항목 | 저장 |
 |---|---|
-| 본인이 작성한 **풀이 코드** | ✅ 가능 (본인 저작물) |
-| 문제 **번호·제목·URL** | ✅ 가능 |
-| **제약조건·시간/메모리 한도·정답률** | ✅ 가능 (사실 정보) |
-| **문제 지문 전문 / 예제 입출력** | ❌ **금지** |
+| 본인이 작성한 **풀이 코드** | ✅ |
+| 문제 **번호·제목·URL** | ✅ |
+| **제약조건·시간/메모리 한도·정답률** | ✅ |
+| **문제 지문 전문 · 예제 입출력** | ✅ (소유자 결정) |
+| **비공개 테스트케이스** | ✅ (크롤링되면 그대로) |
 
-- SWEA 문제 페이지에 **"※ SW Expert 아카데미의 문제를 무단 복제하는 것을 금지합니다."** 고지가 있다.
-- SSAFY로부터 받은 허용 조건은 **"private이면 보관 가능"** 이었다. **지금은 public이므로 그 조건 밖이다.**
-- **지문을 넣어야 한다면 반드시 먼저 private으로 되돌린다:**
+- 구현 위치: `judge/server.py` 의 **`PUBLIC_SAFE = False`** (기본값).
+  나중에 지문을 빼고 싶으면 **이 값만 `True`** 로 바꾸면 `build_header`와 `problems/*.json` 양쪽에서 자동 제거된다.
+- 참고로만 남겨둔 사실: SWEA 문제 페이지에는 *"※ SW Expert 아카데미의 문제를 무단 복제하는 것을 금지합니다."* 고지가 있고,
+  SSAFY가 준 허용 조건은 *"private이면 보관 가능"* 이었다. **소유자가 위험을 인지한 상태에서 public 저장을 선택했다.**
+- ⚠️ 한 번 public으로 push된 내용은 히스토리·포크·캐시에 남는다. 되돌리려면 히스토리 재작성이 필요하다.
+- 비공개로 돌리려면:
   ```bash
-  gh repo edit --visibility private --accept-visibility-change-consequences
+  gh repo edit --visibility private --accept-visibility-change-consequences   # ※ 무료 계정은 Pages 중단
   ```
-  단 private 전환 시 **GitHub Pages(무료 계정)는 중단**된다.
-- ⚠️ **한 번 public으로 push된 내용은 git 히스토리·포크·캐시에 남는다.** 되돌려도 완전 삭제가 아니다. **넣기 전에 판단할 것.**
-
-> `_meta/fetch_swea.py` 는 지문(`statement`)도 파싱하지만, **public 상태에서는 파일에 기록하지 말 것.**
-> 제약·한도·통계만 사용한다.
 
 ### ⚠️ 이 repo는 "진실의 소스"가 아니다
 
