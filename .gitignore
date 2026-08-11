@@ -4,3 +4,4 @@ __pycache__/
 .DS_Store
 judge/_server.log
 live.html
+_meta/_crawl*.log
