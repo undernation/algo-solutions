@@ -15,10 +15,14 @@
  "output_spec": "영석이가 세로로 읽은 순서대로 글자들을 출력한다. 이때, 글자들을 공백 없이 연속해서 출력한다.",
  "samples": [
   {
-   "in": "1\nABCDE\nabcde\n01234\nFGHIJ\nfghij",
-   "out": "1\nAa0FfBb1GgCc2HhDd3IiEe4Jj\n예제 입력 2\nAABCDD\nafzz\n09121\na8EWg6\nP5h3kx\n예제 출력 2\nAa0aPAf985Bz1EhCz2W3D1gkD6x"
+   "in": "ABCDE\nabcde\n01234\nFGHIJ\nfghij",
+   "out": "Aa0FfBb1GgCc2HhDd3IiEe4Jj"
+  },
+  {
+   "in": "AABCDD\nafzz\n09121\na8EWg6\nP5h3kx",
+   "out": "Aa0aPAf985Bz1EhCz2W3D1gkD6x"
   }
  ],
  "private_tc_count": 14,
- "fetched_at": "2026-08-11"
+ "fetched_at": "2026-08-12"
 }
