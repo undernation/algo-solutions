@@ -52,15 +52,23 @@ repo            : <이 파일이 있는 폴더>
 ### 최초 1회 세팅 (새 PC)
 
 ```bash
-gh auth login          # 이미 되어 있으면 생략
-gh auth setup-git      # ★ HTTPS 인증 (SSH 키 없음)
+gh auth login                          # 이미 되어 있으면 생략
+gh auth setup-git                      # ★ HTTPS 인증 (SSH 키 없음)
+gh auth refresh -s workflow -h github.com   # ★ .github/workflows 수정하려면 필수
+
 git clone https://github.com/undernation/algo-solutions.git
 cd algo-solutions
 git config user.name  "undernation"
 git config user.email "gmlcjf287@gmail.com"
+
+python _meta/install_hooks.py          # ★ pre-commit 훅 (PC마다 1회)
 ```
 
 > 🚩 **SSH로 push하면 실패한다** (`Permission denied`). 반드시 **HTTPS + `gh auth setup-git`**.
+> 🚩 **`.github/workflows/` 파일을 push하려면 토큰에 `workflow` 스코프가 필요하다.**
+> 없으면 `refusing to allow an OAuth App to create or update workflow ... without workflow scope` 에러.
+> `gh auth refresh -s workflow` 는 **브라우저 인증이 필요**하므로 사용자에게 요청해야 한다.
+> (백그라운드로 실행해 일회용 코드를 읽어서 전달하면 편하다. 절대 짧은 timeout으로 끊지 말 것 — 코드가 죽는다.)
 
 ### 작업 시작 전 항상
 
@@ -195,11 +203,23 @@ git push
 
 ---
 
-## 6. 현황 · 잔디 유지 — **커밋 전 항상 실행**
+## 6. 현황 · 잔디 — **자동화되어 있음**
 
+수동으로 돌릴 일은 거의 없다. **2중 자동화**가 걸려 있다:
+
+| | 어디서 | 언제 | 데이터 |
+|---|---|---|---|
+| **pre-commit 훅** | 로컬 PC | **커밋할 때마다** | `history.json` + **실수노트** + repo 파일 (완전) |
+| **GitHub Actions** | GitHub 서버 | 매일 **KST 01:00** + `boj//swea//history.json` push + 수동 | `history.json` + repo 파일 (실수노트 접근 불가) |
+
+- 훅 설치: `python _meta/install_hooks.py` (**PC마다 1회**. `.git/hooks`는 push 안 됨)
+- Actions 수동 실행: `gh workflow run heatmap.yml`
+- 훅이 실패해도 **커밋을 막지 않는다** (`exit 0`)
+
+수동 실행이 필요하면:
 ```bash
-python _meta/build_index.py      # README 현황표 + 풀이 인덱스
 python _meta/build_heatmap.py    # 코테 잔디 (assets/heatmap.svg)
+python _meta/build_index.py      # README 현황표 + 풀이 인덱스
 ```
 
 ### 잔디 동작 방식
