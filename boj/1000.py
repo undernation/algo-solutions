@@ -7,4 +7,4 @@ https://www.acmicpc.net/problem/1000
 
 import sys
 print(sys.stdin.read().strip())
-# 시각 검증 1
+# 시각 검증 2
