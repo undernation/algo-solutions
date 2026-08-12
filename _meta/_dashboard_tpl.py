@@ -67,6 +67,12 @@ h3.t{font-size:15px;font-weight:700;margin:26px 0 10px}
 
 /* ── 잔디 ── */
 .gwrap{overflow-x:auto;padding-bottom:4px}
+.hmwrap{display:flex;gap:6px;width:max-content}
+.dowcol{display:grid;grid-template-rows:repeat(7,12px);gap:3px;margin-top:18px;
+ font-size:9.5px;color:var(--sub);line-height:12px;text-align:right;padding-right:2px}
+.hmcol{display:flex;flex-direction:column;gap:4px}
+.months{position:relative;height:14px}
+.months span{position:absolute;font-size:10.5px;color:var(--sub);white-space:nowrap;top:0}
 .grid{display:grid;grid-auto-flow:column;grid-template-rows:repeat(7,12px);gap:3px;width:max-content}
 .c{width:12px;height:12px;border-radius:2px;cursor:pointer}
 .l0{background:var(--c0)}.l1{background:var(--c1)}.l2{background:var(--c2)}.l3{background:var(--c3)}.l4{background:var(--c4)}
@@ -375,12 +381,24 @@ function viewHome(){
     return '<div class="st"><div class="v '+c[2]+'">'+c[1]+'</div><div class="k">'+c[0]+'</div></div>';
    }).join("")+'</div>'+
   '<div class="panel"><div class="hd">잔디<span class="r">마지막 갱신 '+D.built+'</span></div>'+
-  '<div class="bd"><div class="gwrap"><div class="grid" id="grid"></div></div>'+
+  '<div class="bd"><div class="gwrap"><div class="hmwrap">'+
+  '<div class="dowcol"><span></span><span>월</span><span></span><span>수</span>'+
+   '<span></span><span>금</span><span></span></div>'+
+  '<div class="hmcol"><div class="months" id="months"></div>'+
+  '<div class="grid" id="grid"></div></div></div></div>'+
   '<div class="lg">Less<i class="l0"></i><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i>More</div>'+
   '</div></div>'+
   '<div class="panel"><div class="hd">최근 제출<span class="r"><a href="#status">전체 보기 →</a></span></div>'+
   tbl(D.rows.slice(0,15))+'</div>';
- var g=$("grid"),tip=$("tip");
+ var g=$("grid"),tip=$("tip"),mo=$("months");
+ var MN=["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"];
+ D.cells.forEach(function(c){
+  if(!c.m) return;
+  var sp=document.createElement("span");
+  sp.textContent=MN[c.m-1];
+  sp.style.left=((c.w-1)*15)+"px";     /* 셀 12px + gap 3px */
+  mo.appendChild(sp);
+ });
  D.cells.forEach(function(c){
   var el=document.createElement("div");
   el.className="c l"+c.lv; el.style.gridColumn=c.w; el.style.gridRow=c.r;

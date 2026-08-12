@@ -282,7 +282,9 @@ def render_html(data, year, total, active, best):
             if d.year != year:
                 continue
             rec = data.get(d.isoformat(), {"count": 0, "items": []})
+            # 그 달이 시작되는 주 열에 월 라벨을 달아준다(GitHub 잔디와 같은 방식)
             cells.append({"w": w + 1, "r": dow + 1, "d": d.isoformat(),
+                          "m": (d.month if d.day <= 7 and dow == 0 else 0),
                           "dw": DOW[d.weekday()], "n": rec["count"],
                           "lv": level(rec["count"])})
     rows = []

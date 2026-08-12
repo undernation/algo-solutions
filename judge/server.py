@@ -205,6 +205,14 @@ def log(*a):
         print(*a, flush=True)
 
 
+KST = datetime.timezone(datetime.timedelta(hours=9))
+
+
+def today_kst():
+    """오늘 날짜(KST). 클라우드 VM 은 UTC 라 새벽 0~9시에 하루 밀린다."""
+    return datetime.datetime.now(KST).date().isoformat()
+
+
 def iso_now():
     return (datetime.datetime.now(datetime.timezone.utc)
             .isoformat(timespec="milliseconds").replace("+00:00", "Z"))
@@ -215,6 +223,42 @@ def iso_now():
 # ══════════════════════════════════════════════════════════════
 def norm(s):
     return "\n".join(l.rstrip() for l in (s or "").replace("\r\n", "\n").split("\n")).rstrip()
+
+
+NUM = re.compile(r"^[+-]?(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?$")
+EPS_ABS, EPS_REL = 1e-9, 1e-6
+
+
+def same(got, want):
+    """정답 비교. 문자열이 같으면 통과.
+
+    다르면 토큰 단위로 보되, 양쪽 다 수치인 토큰은 허용오차 안이면 같다고 본다.
+    실수를 출력하는 문제(예: BOJ 1344 축구 → 0.5265618908306351)를 정확일치로만
+    보면 맞는 풀이가 오답으로 찍힌다. 정수만 있는 출력은 문자열 비교와 동일하게
+    동작하므로(값이 다르면 오차 검사도 실패) 판정이 느슨해지지 않는다.
+    """
+    g, w = norm(got), norm(want)
+    if g == w:
+        return True
+    gt, wt = g.split(), w.split()
+    if not gt or len(gt) != len(wt):
+        return False
+    saw_float = False
+    for a, b in zip(gt, wt):
+        if a == b:
+            continue
+        if not (NUM.match(a) and NUM.match(b)):
+            return False
+        try:
+            fa, fb = float(a), float(b)
+        except ValueError:
+            return False
+        if abs(fa - fb) > max(EPS_ABS, EPS_REL * abs(fb)):
+            return False
+        saw_float = True
+    # 실수 오차 때문에 다른 경우에만 통과시킨다. 줄바꿈/공백 배치만 다른 출력은
+    # 예전처럼 오답으로 둔다(느슨해지면 형식 실수를 못 잡는다).
+    return saw_float
 
 
 def run_one(path, data, tl):
@@ -279,7 +323,7 @@ def judge(src, cases, pub=0, tl=5.0):
             st, got, el, err = run_one(tmp.name, din, tl)
             tot_el += el
             kind = "public" if i < pub else "private"
-            if st == "ok" and norm(got) == norm(want):
+            if st == "ok" and same(got, want):
                 passed += 1
                 detail.append({"index": i, "kind": kind, "status": "passed",
                                "elapsed": round(el, 3)})
@@ -326,7 +370,7 @@ def build_header(d, verdict=None):
     if d.get("url"):
         L.append(d["url"])
     L.append("")
-    L.append("풀이일 : %s   결과: %s" % (d.get("date") or datetime.date.today().isoformat(),
+    L.append("풀이일 : %s   결과: %s" % (d.get("date") or today_kst(),
                                      d.get("status") or "품"))
     p = d.get("problem") or {}
     lim = p.get("limits") or {}
@@ -387,7 +431,7 @@ def save_solution(d):
     try:
         hp = os.path.join(ROOT, "_meta", "history.json")
         hist = json.load(io.open(hp, encoding="utf-8")) if os.path.exists(hp) else {}
-        day = d.get("date") or datetime.date.today().isoformat()
+        day = d.get("date") or today_kst()
         rec = hist.setdefault(day, {"count": 0, "items": []})
         item = {"site": site, "no": no, "title": title,
                 "status": d.get("status") or "품", "file": rel}
@@ -474,7 +518,7 @@ def save_note(d):
     if not no:
         return {"ok": False, "error": "no 가 필요합니다"}
     mode = d.get("mode") or "append"
-    date = (d.get("date") or datetime.date.today().isoformat()).strip()
+    date = (d.get("date") or today_kst()).strip()
     status = (d.get("status") or "").strip()
     title = (d.get("title") or "").strip()
 
