@@ -4311,13 +4311,20 @@
   ]
  },
  "2026-08-12": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
-    "site": "SWEA",
     "no": "2115",
-    "title": "벌꿀채취",
-    "status": "품"
+    "site": "SWEA",
+    "status": "품",
+    "title": "벌꿀채취"
+   },
+   {
+    "file": "boj/10822.py",
+    "no": "10822",
+    "site": "BOJ",
+    "status": "품",
+    "title": "더하기"
    }
   ]
  }
