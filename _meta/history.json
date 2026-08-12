@@ -4314,11 +4314,11 @@
   "count": 2,
   "items": [
    {
-    "site": "SWEA",
+    "file": "swea/2115_[모의SW역량테스트]벌꿀채취.py",
     "no": "2115",
-    "title": "[모의 SW 역량테스트] 벌꿀채취",
+    "site": "SWEA",
     "status": "품",
-    "file": "swea/2115_[모의SW역량테스트]벌꿀채취.py"
+    "title": "[모의 SW 역량테스트] 벌꿀채취"
    },
    {
     "elapsed": 0.52,
@@ -4326,10 +4326,7 @@
     "no": "2112",
     "passed": 1,
     "site": "SWEA",
-    "no": "2115",
-    "title": "[모의 SW 역량테스트] 벌꿀채취",
     "status": "품",
-    "file": "swea/2115_[모의SW역량테스트]벌꿀채취.py"
     "title": "[모의 SW 역량테스트] 보호 필름",
     "total": 1,
     "verdict": "accepted"

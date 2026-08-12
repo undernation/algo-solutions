@@ -5,4 +5,6 @@ assets/heatmap.html merge=ours -diff
 assets/heatmap.svg  merge=ours -diff
 HEATMAP.md          merge=ours -diff
 README.md           merge=ours
-_meta/history.json  merge=union
+# ⚠️ history.json 에 merge=union 을 걸었다가 JSON 이 깨진 사고가 있었다(2026-08-12).
+# union 은 양쪽 줄을 그냥 이어붙여서, 서로 다른 항목의 키가 뒤섞인 잘못된 JSON 이 된다.
+# 기본 3-way merge 를 쓰고 충돌하면 눈에 보이게 둔다.

@@ -610,10 +610,10 @@ function inline(t){
          .replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
 }
 
-var NOTE={text:"", editing:false, open:false};
+var NOTE={text:"", editing:false, open:false, draft:""};
 
 async function loadNote(site,no){
- NOTE={text:"",editing:false,open:false};
+ NOTE={text:"",editing:false,open:false,draft:""};
  var m=PIDX[site+"/"+no];
  var paths=[];
  if(m&&m.note) paths.push(m.note);
@@ -626,25 +626,10 @@ async function loadNote(site,no){
 
 function drawNote(){
  var el=$("pnote"); if(!el)return;
- if(NOTE.editing){
-  el.innerHTML=
-   '<div class="row" style="margin:0 0 8px">'+
-    '<input id="ndate" type="date" style="flex:0 0 158px" value="'+esc($("pd")?$("pd").value:today())+'">'+
-    '<select id="nst"><option>틀림</option><option>못품</option><option>시간초과</option>'+
-     '<option>품</option><option>맞음</option></select>'+
-    '<span class="hint" style="margin:0 0 0 4px">마크다운으로 씁니다. 같은 날짜면 그 항목을 갱신합니다.</span>'+
-   '</div>'+
-   '<textarea id="nbody" class="mono" spellcheck="false" placeholder="무엇을 틀렸는지, 왜 그랬는지…"></textarea>'+
-   '<div class="row">'+
-    '<button class="p" onclick="saveNote()">메모 저장</button>'+
-    '<button onclick="NOTE.editing=false;drawNote()">취소</button>'+
-    '<button class="sm" style="margin-left:auto" onclick="editWhole()">전체 편집</button>'+
-   '</div>';
-  var t=$("nbody"); setTimeout(function(){t&&t.focus();},50);
-  return;
- }
+ /* 입력창은 항상 열어둔다(버튼을 누를 필요 없음).
+    다만 지난 메모는 다시 풀러 온 경우 스포가 되므로 접어둔 채로 위에 놓는다. */
+ var draft=$("nbody")?$("nbody").value:(NOTE.draft||"");
  var has=!!NOTE.text.trim();
- /* 다시 풀러 온 경우 지난 메모가 먼저 보이면 스포가 된다. 기본으로 접어둔다. */
  var cnt=(NOTE.text.match(/^####\s/gm)||[]).length;
  el.innerHTML=
   (has
@@ -652,11 +637,21 @@ function drawNote(){
         '<summary><span class="ar">▶</span>지난 복기 메모 '+
         (cnt?cnt+"건":"")+' <span class="sp">클릭해서 펼치기</span></summary>'+
         '<div class="mdbody">'+md(NOTE.text)+'</div></details>'
-    : '<div class="note">아직 복기 메모가 없습니다. 틀린 이유·다음에 볼 것을 적어두면 문제와 함께 커밋됩니다.</div>')+
-  '<div class="row"><button onclick="NOTE.editing=true;drawNote()">'+
-   (has?"메모 추가":"메모 쓰기")+'</button>'+
-  (has?'<button class="sm" onclick="editWhole()">전체 편집</button>':'')+
+    : '')+
+  '<div class="row" style="margin:'+(has?"12px":"0")+' 0 8px">'+
+   '<input id="ndate" type="date" style="flex:0 0 158px" value="'+esc($("pd")?$("pd").value:today())+'">'+
+   '<select id="nst"><option>틀림</option><option>못품</option><option>시간초과</option>'+
+    '<option>품</option><option>맞음</option></select>'+
+   '<span class="hint" style="margin:0 0 0 4px">마크다운. 같은 날짜면 그 항목을 갱신합니다.</span>'+
+  '</div>'+
+  '<textarea id="nbody" class="mono" spellcheck="false" '+
+   'placeholder="무엇을 틀렸는지, 왜 그랬는지…"></textarea>'+
+  '<div class="row">'+
+   '<button class="p" onclick="saveNote()">메모 저장</button>'+
+   (has?'<button class="sm" style="margin-left:auto" onclick="editWhole()">전체 편집</button>':'')+
   '</div>';
+ if(draft) $("nbody").value=draft;
+ $("nbody").oninput=function(){ NOTE.draft=this.value; };
 }
 
 function editWhole(){
@@ -665,7 +660,7 @@ function editWhole(){
   '<div class="hint" style="margin:0 0 8px">파일 전체를 직접 편집합니다 (notes/…/'+esc(CUR.no)+'.md)</div>'+
   '<textarea id="nbody" class="mono" spellcheck="false"></textarea>'+
   '<div class="row"><button class="p" onclick="saveNote(true)">전체 저장</button>'+
-  '<button onclick="NOTE.editing=false;drawNote()">취소</button></div>';
+  '<button onclick="drawNote()">취소</button></div>';
  $("nbody").value=NOTE.text;
 }
 
@@ -686,7 +681,7 @@ async function saveNote(whole){
   if(r.status===401)return nsay("인증 실패 — 허브 버튼에서 토큰을 확인하세요.","ng");
   var j=await r.json();
   if(!j.ok)return nsay("실패: "+esc(j.error||r.status),"ng");
-  NOTE.text=j.text||body; NOTE.editing=false; NOTE.open=true;  /* 방금 쓴 건 보여준다 */
+  NOTE.text=j.text||body; NOTE.editing=false; NOTE.open=true; NOTE.draft="";  /* 방금 쓴 건 보여준다 */
   if(PIDX[CUR.site+"/"+CUR.no]) PIDX[CUR.site+"/"+CUR.no].note=j.file;
   treeDone=false;
   drawNote();
@@ -1038,9 +1033,11 @@ async function doJudge(){
       " &nbsp; "+s.passed+"/"+s.total+" &nbsp;·&nbsp; "+j.elapsedSec+"초"+
       (d?"<div class='d'>"+esc(d)+"</div>":""), ok?"ok":"ng");
   if(ok){ $("pst").value="품"; }
-  else if(!NOTE.editing){        /* 틀렸을 때 바로 복기 메모를 쓰도록 열어준다 */
-    NOTE.editing=true; drawNote();
-    var st=$("nst"); if(st) st.value = (j.verdict==="time_limit_exceeded")?"시간초과":"틀림";
+  else{                          /* 틀렸으면 메모 상태를 맞춰주고 입력창으로 보낸다 */
+    var st=$("nst");
+    if(st) st.value = (j.verdict==="time_limit_exceeded")?"시간초과":"틀림";
+    var nb=$("nbody");
+    if(nb&&!nb.value.trim()) setTimeout(function(){ nb.focus(); }, 200);
   }
  }catch(e){say("오류: "+esc(e.message),"ng");}
 }
