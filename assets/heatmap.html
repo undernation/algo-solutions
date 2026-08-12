@@ -475,10 +475,21 @@ function drawTree(){
 
  var order=["BOJ","SWEA","PGS","CT"];
  var html=order.filter(function(s){return tree[s];}).map(function(site){
+  /* 폴더 순서도 사이트와 같게. 개념별 트랙 이름은 숫자가 없어 가나다순으로 밀리므로,
+     각 폴더에서 가장 앞선 항목의 노출 순서(ord)를 폴더의 정렬 키로 쓴다. */
+  function fkey(f){
+    var m=1e9;
+    tree[site][f].forEach(function(x){ if(x.ord<m) m=x.ord; });
+    return m;
+  }
   var folders=Object.keys(tree[site]).sort(function(a,b){
     var pa=a.indexOf("주차별/")===0?0:a.indexOf("개념별/")===0?1:2;
     var pb=b.indexOf("주차별/")===0?0:b.indexOf("개념별/")===0?1:2;
     if(pa!==pb)return pa-pb;
+    if(mode==="cosal"){
+      var ka=fkey(a), kb=fkey(b);
+      if(ka!==kb) return ka-kb;
+    }
     var na=parseInt(a.replace(/\D*/,"")),nb=parseInt(b.replace(/\D*/,""));
     if(!isNaN(na)&&!isNaN(nb)&&na!==nb)return na-nb;
     return a.localeCompare(b,"ko");});
