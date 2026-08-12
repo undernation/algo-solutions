@@ -856,7 +856,6 @@ async function viewProblem(site,no){
   '<div id="pinfo"></div><div id="pbody"><div class="note">문제 자료를 불러오는 중…</div></div>'+
   '<div class="sec-h">제출 이력</div><div class="panel" id="phist">'+
    (subs.length? tbl(subs) : '<div class="empty">제출 기록이 없습니다.</div>')+'</div>'+
-  '<div class="sec-h">복기 메모</div><div id="pnote"></div><div class="vd" id="nv"></div>'+
   '<div class="sec-h">코드 제출</div>'+
   '<textarea id="ed" class="mono" spellcheck="false" placeholder="여기에 Python 코드를 붙여넣으세요"></textarea>'+
   '<div class="bar" style="margin-top:10px">'+
@@ -868,7 +867,8 @@ async function viewProblem(site,no){
    '<button onclick="doSave()">저장 &amp; 커밋</button>'+
    '<button class="sm" style="margin-left:auto" onclick="doFetch()" id="rf">문제 다시 가져오기</button>'+
    '<button class="sm" onclick="askDelProb(\''+esc(site)+'\',\''+esc(no)+'\')">문제 자료 삭제</button>'+
-  '</div><div class="vd" id="pv"></div>';
+  '</div><div class="vd" id="pv"></div>'+
+  '<div class="sec-h">복기 메모</div><div id="pnote"></div><div class="vd" id="nv"></div>';
 
  /* 저장된 코드 자동 로드 */
  var withFile=subs.filter(function(s){return s.file;})[0];
