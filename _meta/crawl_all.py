@@ -148,6 +148,7 @@ def main():
                     txt = pg.evaluate("() => document.body.innerText") or ""
                     parser = fp.parse_cosal if t["site"] == "BOJ" else fp.parse_swea
                     d = parser(txt, pg.url)
+                    fp.apply_images(pg, d)      # 지문 중간 그림 수집 + [[IMG:n]] 마커
                     if t["site"] == "SWEA":
                         # 페이지 예제는 잘린 미리보기 → 공식 sample_input/output 을 받는다.
                         cid = re.search(r"contestProbId=([A-Za-z0-9+/=]+)", t["url"])

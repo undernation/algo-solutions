@@ -8,6 +8,11 @@ http://localhost:12014 를 직접 호출한다.
 실행:
     python judge/server.py
     python judge/server.py --port 12014 --no-push
+    python judge/server.py --runner /opt/pypy3.9-v7.3.9-linux64/bin/pypy3
+
+제출 코드는 PyPy 로 실행한다(있으면 자동 탐색). 백준·코딩살구의 시간 제한이
+사실상 C++/PyPy 기준이라, CPython 으로 채점하면 실제 제출 결과와 어긋난다.
+서버 자신과 크롤러·빌더는 계속 CPython 을 쓴다(playwright 의존).
 
 엔드포인트
     GET  /            서버 상태 (대시보드가 살아있는지 확인용)
@@ -31,7 +36,37 @@ import os, re, io, sys, json, glob, time, subprocess, tempfile, argparse, dateti
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PY = sys.executable
+PY = sys.executable          # 내부 스크립트(크롤러·빌더)용 — playwright 등이 필요해 CPython 고정
+RUNNER = sys.executable      # 제출 코드 채점용 — PyPy 가 있으면 자동으로 그것을 쓴다
+RUNNER_NAME = "CPython"
+
+
+def find_runner(explicit=""):
+    """제출 코드를 실행할 인터프리터를 고른다.
+
+    백준·코딩살구의 시간 제한은 사실상 C++/PyPy 기준이라, 채점도 PyPy 로 해야
+    실제 제출 결과와 어긋나지 않는다. 없으면 CPython 으로 조용히 내려간다.
+    """
+    import shutil
+    cands = [explicit] if explicit else ["pypy3", "pypy3.9", "pypy"]
+    for c in cands:
+        p = c if os.path.isabs(c) else shutil.which(c)
+        if not p:
+            continue
+        try:
+            r = subprocess.run([p, "-VV"], capture_output=True, text=True, timeout=20,
+                               encoding="utf-8", errors="replace")
+            out = (r.stdout or "") + (r.stderr or "")
+            if r.returncode == 0:
+                m = re.search(r"PyPy\s+([\d.]+)", out)
+                return p, ("PyPy %s" % m.group(1)) if m else "CPython"
+        except Exception:
+            continue
+    if explicit:
+        raise SystemExit("❌ 지정한 러너를 찾을 수 없습니다: %s" % explicit)
+    return sys.executable, "CPython %s" % sys.version.split()[0]
+
+
 PORT = 12014
 VERBOSE = True
 AUTO_PUSH = True
@@ -60,7 +95,7 @@ def measure_speed():
                 return max(1.0, v / BENCH_REF)
         except Exception:
             pass
-    r = subprocess.run([PY, os.path.join(ROOT, "judge", "_bench.py")],
+    r = subprocess.run([RUNNER, os.path.join(ROOT, "judge", "_bench.py")],
                        cwd=ROOT, capture_output=True, text=True,
                        encoding="utf-8", errors="replace",
                        env={**os.environ, "PYTHONIOENCODING": "utf-8"})
@@ -154,7 +189,7 @@ def norm(s):
 def run_one(path, data, tl):
     t0 = time.perf_counter()
     try:
-        p = subprocess.run([PY, path],
+        p = subprocess.run([RUNNER, path],
                            input=data if data.endswith("\n") else data + "\n",
                            capture_output=True, text=True, timeout=tl,
                            encoding="utf-8", errors="replace")
@@ -168,17 +203,39 @@ def run_one(path, data, tl):
     return "ok", p.stdout, el, ""
 
 
+def syntax_error(src):
+    """러너(PyPy) 기준 문법 검사. 문제 없으면 빈 문자열."""
+    t = tempfile.NamedTemporaryFile("w", suffix=".py", delete=False, encoding="utf-8")
+    t.write(src)
+    t.close()
+    try:
+        r = subprocess.run(
+            [RUNNER, "-c",
+             "import sys;compile(open(sys.argv[1],encoding='utf-8').read(),'<solution>','exec')",
+             t.name],
+            capture_output=True, text=True, timeout=30, encoding="utf-8", errors="replace")
+        if r.returncode == 0:
+            return ""
+        lines = [x for x in (r.stderr or "").strip().split("\n") if x.strip()]
+        return " / ".join(lines[-2:])[:300] or "문법 오류"
+    except Exception:
+        return ""
+    finally:
+        try:
+            os.unlink(t.name)
+        except OSError:
+            pass
+
+
 def judge(src, cases, pub=0, tl=5.0):
     if not (src or "").strip():
         return {"ok": False, "error": "빈 소스코드", "verdict": "compile_error"}
-    try:
-        compile(src, "<solution>", "exec")
-    except SyntaxError as e:
+    err = syntax_error(src)
+    if err:
         return {"ok": True, "verdict": "compile_error",
                 "summary": {"passed": 0, "total": len(cases), "firstFailedIndex": 0},
                 "judgedAt": iso_now(), "elapsedSec": 0.0,
-                "detail": [{"index": 0, "status": "compile_error",
-                            "message": "%s (line %s)" % (e.msg, e.lineno)}]}
+                "detail": [{"index": 0, "status": "compile_error", "message": err}]}
 
     tmp = tempfile.NamedTemporaryFile("w", suffix=".py", delete=False, encoding="utf-8")
     tmp.write(src)
@@ -550,6 +607,7 @@ def status():
             n += len([f for f in os.listdir(d) if f.endswith(".py")])
     return {"ok": True, "service": "algo-hub", "language": "python", "authRequired": bool(TOKEN),
             "speedFactor": round(SPEED, 2), "pyMult": PY_MULT,
+            "runner": RUNNER_NAME,
             "python": sys.version.split()[0], "repo": ROOT,
             "branch": br, "ahead": ah, "dirty": dirty, "solutions": n,
             "autoPush": AUTO_PUSH,
@@ -681,11 +739,13 @@ def main():
     ap.add_argument("--no-push", action="store_true")
     ap.add_argument("--quiet", action="store_true")
     ap.add_argument("--no-auth", action="store_true", help="토큰 인증 끄기(로컬 전용)")
+    ap.add_argument("--runner", default="", help="제출 코드 실행 인터프리터 (기본: pypy3 자동탐색)")
     a = ap.parse_args()
     global TOKEN
     PY, PORT, VERBOSE, AUTO_PUSH = a.python, a.port, not a.quiet, not a.no_push
     TOKEN = "" if a.no_auth else load_token()
-    global SPEED
+    global RUNNER, RUNNER_NAME, SPEED
+    RUNNER, RUNNER_NAME = find_runner(a.runner)
     SPEED = measure_speed()
 
     print("=" * 64)
@@ -693,6 +753,8 @@ def main():
     print("=" * 64)
     print("  포트    : %d" % PORT)
     print("  repo    : %s" % ROOT)
+    print("  채점러너 : %s" % RUNNER_NAME)
+    print("             %s" % RUNNER)
     print("  자동푸시 : %s" % ("ON" if AUTO_PUSH else "OFF"))
     print("  속도보정 : x%.1f  (1초 제한 -> %.1f초 허용)" % (SPEED, allowed_time(1)))
     if TOKEN:
