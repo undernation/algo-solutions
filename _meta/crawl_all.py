@@ -45,6 +45,16 @@ def targets():
             out.append({"site": "BOJ", "no": no, "title": it.get("title", ""),
                         "url": fp.COSAL % no})
 
+    # ② SWEA 매핑에 등록된 문제 전부 (내가 아직 안 푼 추천 세트도 포함)
+    ip = os.path.join(ROOT, "_meta", "swea_ids.json")
+    if os.path.exists(ip):
+        for no, cid in sorted(json.load(io.open(ip, encoding="utf-8")).items(),
+                              key=lambda kv: int(kv[0]) if kv[0].isdigit() else 0):
+            if ("SWEA", no) in seen:
+                continue
+            seen.add(("SWEA", no))
+            out.append({"site": "SWEA", "no": no, "title": "", "url": fp.SWEA % cid})
+
     out += _from_history(seen)
     return out
 

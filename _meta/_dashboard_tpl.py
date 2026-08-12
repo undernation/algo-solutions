@@ -159,6 +159,22 @@ pre.io{background:var(--soft);border:1px solid var(--bd);border-radius:6px;paddi
  border-radius:5px;padding:9px 11px;max-height:270px;overflow:auto}
 .note{background:var(--soft);border:1px solid var(--bd);border-left:3px solid var(--ac);
  border-radius:5px;padding:11px 14px;font-size:13.5px;color:var(--sub);margin:14px 0}
+/* ── 복기 메모 ── */
+.mdbody{background:var(--panel);border:1px solid var(--bd);border-radius:8px;padding:4px 20px 16px}
+.mdbody .mdh{margin:20px 0 8px;font-weight:800;letter-spacing:-.2px}
+.mdbody .mdh2{font-size:18px;padding-bottom:6px;border-bottom:1px solid var(--bd)}
+.mdbody .mdh4{font-size:14.5px;color:var(--ac);margin-top:22px}
+.mdbody p{margin:7px 0;line-height:1.85}
+.mdbody ul,.mdbody ol{margin:7px 0 7px 4px;padding-left:20px}
+.mdbody li{margin:3px 0;line-height:1.8}
+.mdbody code{background:var(--soft);border:1px solid var(--bd2);border-radius:4px;padding:1px 5px;font-size:12.5px}
+.mdbody pre.mdcode{background:var(--soft);border:1px solid var(--bd);border-radius:6px;padding:12px 14px;
+ overflow-x:auto;font-size:12.5px;line-height:1.6;white-space:pre}
+.mdbody pre.mdcode code{background:none;border:0;padding:0}
+.mdbody blockquote{margin:8px 0;padding:6px 14px;border-left:3px solid var(--bd);color:var(--sub)}
+.mdbody hr{border:0;border-top:1px solid var(--bd);margin:16px 0}
+#nbody{width:100%;min-height:180px;font-size:13.5px;line-height:1.65;white-space:pre-wrap;resize:vertical}
+
 /* ── 삭제 확인 ── */
 #dc{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;z-index:90;padding:80px 20px;overflow:auto}
 #dcb{background:var(--panel);border:1px solid var(--bd);border-radius:10px;max-width:480px;margin:0 auto;
@@ -426,7 +442,7 @@ function drawTree(){
  var items=keys.map(function(k){
    var s=k.split("/"), last=lastOf(k), c=CATIDX[k]||{};
    return {k:k, site:s[0], no:s.slice(1).join("/"), title:bestTitle(k),
-           sec:c.section||"", has:!!PIDX[k],
+           sec:c.section||"", has:!!PIDX[k], note:!!((PIDX[k]||{}).note),
            status:last?last.status:"", tries:(BYPROB[k]||[]).length};
   }).filter(function(it){
    if(q && (it.no+" "+it.title).toLowerCase().indexOf(q)<0) return false;
@@ -472,7 +488,8 @@ function drawTree(){
       return '<div class="leaf"><span class="id">'+esc(it.no)+'</span>'+
        '<a class="nm" href="#p/'+encodeURIComponent(it.site)+'/'+encodeURIComponent(it.no)+'">'+
         esc(it.title||"(제목 없음)")+'</a>'+
-       (it.has?'<span class="doc" title="문제 자료 있음">📄</span>':'')+
+       (it.has?'<span class="doc" title="문제 자료 있음">&#128196;</span>':'')+
+       (it.note?'<span class="doc" title="복기 메모 있음">&#128221;</span>':'')+
        (it.tries>1?'<span class="doc">'+it.tries+'회</span>':'')+
        '<span class="rs '+rc(it.status)+'">'+esc(it.status||"")+'</span></div>';
      }).join("")+'</div></details>';
@@ -518,6 +535,123 @@ function drawStatus(){
   '<th class="s" onclick="sortBy(\'status\')">결과</th><th>코드</th><th></th></tr>');
 }
 function sortBy(k){ asc=(k===sortK)?!asc:false; sortK=k; drawStatus(); }
+
+/* ════════ 복기 메모 ════════
+   실수노트와 같은 구조(## 문제 / #### 날짜 (상태) / 본문)로 notes/<site>/<no>.md 에 쌓는다.
+   외부 라이브러리를 못 쓰므로(CSP) 필요한 만큼만 마크다운을 직접 렌더링한다. */
+function md(src){
+ var s=esc(src||"");
+ var out=[], fence=null, buf=[], list=null;
+ function flush(){ if(list){out.push("</"+list+">");list=null;} }
+ s.split("\n").forEach(function(ln){
+  var f=ln.match(/^```(\w*)\s*$/);
+  if(f){ if(fence===null){fence=f[1]||"";buf=[];} else {flush();
+          out.push('<pre class="mdcode">'+buf.join("\n")+"</pre>");fence=null;} return; }
+  if(fence!==null){ buf.push(ln); return; }
+  if(/^\s*$/.test(ln)){ flush(); return; }
+  var h=ln.match(/^(#{1,6})\s+(.*)$/);
+  if(h){ flush(); var lv=Math.min(h[1].length+1,6);
+         out.push("<h"+lv+' class="mdh mdh'+h[1].length+'">'+inline(h[2])+"</h"+lv+">"); return; }
+  if(/^\s*([-*_])\s*\1\s*\1[\s-*_]*$/.test(ln)){ flush(); out.push("<hr>"); return; }
+  var q=ln.match(/^>\s?(.*)$/);
+  if(q){ flush(); out.push('<blockquote>'+inline(q[1])+"</blockquote>"); return; }
+  var ul=ln.match(/^\s*[-*+]\s+(.*)$/);
+  if(ul){ if(list!=="ul"){flush();out.push("<ul>");list="ul";} out.push("<li>"+inline(ul[1])+"</li>"); return; }
+  var ol=ln.match(/^\s*\d+\.\s+(.*)$/);
+  if(ol){ if(list!=="ol"){flush();out.push("<ol>");list="ol";} out.push("<li>"+inline(ol[1])+"</li>"); return; }
+  flush(); out.push("<p>"+inline(ln)+"</p>");
+ });
+ if(fence!==null&&buf.length) out.push('<pre class="mdcode">'+buf.join("\n")+"</pre>");
+ flush();
+ return out.join("");
+}
+function inline(t){
+ return t.replace(/`([^`]+)`/g,'<code>$1</code>')
+         .replace(/\*\*([^*]+)\*\*/g,"<b>$1</b>")
+         .replace(/(^|\W)\*([^*]+)\*/g,"$1<i>$2</i>")
+         .replace(/~~([^~]+)~~/g,"<s>$1</s>")
+         .replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
+}
+
+var NOTE={text:"", editing:false};
+
+async function loadNote(site,no){
+ NOTE={text:"",editing:false};
+ var m=PIDX[site+"/"+no];
+ var paths=[];
+ if(m&&m.note) paths.push(m.note);
+ paths.push("notes/"+({BOJ:"boj",SWEA:"swea",PGS:"programmers",CT:"codetree"}[site]||"boj")+"/"+no+".md");
+ for(var i=0;i<paths.length;i++){
+  try{ var r=await fetch("./"+paths[i]+"?"+Date.now()); if(r.ok){NOTE.text=await r.text();break;} }catch(e){}
+ }
+ drawNote();
+}
+
+function drawNote(){
+ var el=$("pnote"); if(!el)return;
+ if(NOTE.editing){
+  el.innerHTML=
+   '<div class="row" style="margin:0 0 8px">'+
+    '<input id="ndate" type="date" style="flex:0 0 158px" value="'+esc($("pd")?$("pd").value:today())+'">'+
+    '<select id="nst"><option>틀림</option><option>못품</option><option>시간초과</option>'+
+     '<option>품</option><option>맞음</option></select>'+
+    '<span class="hint" style="margin:0 0 0 4px">마크다운으로 씁니다. 같은 날짜면 그 항목을 갱신합니다.</span>'+
+   '</div>'+
+   '<textarea id="nbody" class="mono" spellcheck="false" placeholder="무엇을 틀렸는지, 왜 그랬는지…"></textarea>'+
+   '<div class="row">'+
+    '<button class="p" onclick="saveNote()">메모 저장</button>'+
+    '<button onclick="NOTE.editing=false;drawNote()">취소</button>'+
+    '<button class="sm" style="margin-left:auto" onclick="editWhole()">전체 편집</button>'+
+   '</div><div class="vd" id="nv"></div>';
+  var t=$("nbody"); setTimeout(function(){t&&t.focus();},50);
+  return;
+ }
+ el.innerHTML=
+  (NOTE.text.trim()
+    ? '<div class="mdbody">'+md(NOTE.text)+"</div>"
+    : '<div class="note">아직 복기 메모가 없습니다. 틀린 이유·다음에 볼 것을 적어두면 문제와 함께 커밋됩니다.</div>')+
+  '<div class="row"><button onclick="NOTE.editing=true;drawNote()">'+
+   (NOTE.text.trim()?"메모 추가":"메모 쓰기")+'</button>'+
+  (NOTE.text.trim()?'<button class="sm" onclick="editWhole()">전체 편집</button>':'')+
+  '</div>';
+}
+
+function editWhole(){
+ var el=$("pnote");
+ el.innerHTML=
+  '<div class="hint" style="margin:0 0 8px">파일 전체를 직접 편집합니다 (notes/…/'+esc(CUR.no)+'.md)</div>'+
+  '<textarea id="nbody" class="mono" spellcheck="false"></textarea>'+
+  '<div class="row"><button class="p" onclick="saveNote(true)">전체 저장</button>'+
+  '<button onclick="NOTE.editing=false;drawNote()">취소</button></div>'+
+  '<div class="vd" id="nv"></div>';
+ $("nbody").value=NOTE.text;
+}
+
+function nsay(html,cls){var v=$("nv");if(!v)return;v.className="vd "+(cls||"info");v.style.display="block";v.innerHTML=html;}
+
+async function saveNote(whole){
+ var h=hubFor("save");
+ if(!h) return nsay("허브가 꺼져 있습니다. 우측 상단 허브 버튼을 확인하세요.","ng");
+ var body=($("nbody").value||"");
+ if(!body.trim()&&!whole) return nsay("내용을 입력하세요.","ng");
+ nsay("저장 중…");
+ try{
+  var r=await fetch(h.url+"/note",{method:"POST",headers:H(),body:JSON.stringify({
+    site:CUR.site,no:CUR.no,title:bestTitle(CUR.site+"/"+CUR.no),
+    date:whole?"":($("ndate")?$("ndate").value:today()),
+    status:whole?"":($("nst")?$("nst").value:""),
+    body:body, mode:whole?"replace":"append"})});
+  if(r.status===401)return nsay("인증 실패 — 허브 버튼에서 토큰을 확인하세요.","ng");
+  var j=await r.json();
+  if(!j.ok)return nsay("실패: "+esc(j.error||r.status),"ng");
+  NOTE.text=j.text||body; NOTE.editing=false;
+  if(PIDX[CUR.site+"/"+CUR.no]) PIDX[CUR.site+"/"+CUR.no].note=j.file;
+  treeDone=false;
+  drawNote();
+  nsay("✅ 저장됨 <code>"+esc(j.file)+"</code> · commit "+(j.committed?"완료":"변경 없음")+
+       " · push "+(j.pushed?"완료":"실패"), j.pushed?"ok":"ng");
+ }catch(e){ nsay("오류: "+esc(e.message),"ng"); }
+}
 
 /* ════════ 삭제 ════════
    되돌릴 수 없으므로 무엇이 지워지는지 팝업에 그대로 적고 한 번 더 확인받는다. */
@@ -680,6 +814,7 @@ async function viewProblem(site,no){
   '<div id="pinfo"></div><div id="pbody"><div class="note">문제 자료를 불러오는 중…</div></div>'+
   '<div class="sec-h">제출 이력</div><div class="panel" id="phist">'+
    (subs.length? tbl(subs) : '<div class="empty">제출 기록이 없습니다.</div>')+'</div>'+
+  '<div class="sec-h">복기 메모</div><div id="pnote"></div>'+
   '<div class="sec-h">코드 제출</div>'+
   '<textarea id="ed" class="mono" spellcheck="false" placeholder="여기에 Python 코드를 붙여넣으세요"></textarea>'+
   '<div class="bar" style="margin-top:10px">'+
@@ -710,6 +845,7 @@ async function viewProblem(site,no){
  }
  if(location.hash.indexOf("#p/")!==0) return;   // 그새 다른 화면으로 이동
  renderProblem(p, site, no);
+ loadNote(site, no);
 }
 
 /* 지문의 [[IMG:n]] 자리표시를 실제 그림으로 바꾼다. 파일이 없으면 표시만 지운다. */
@@ -837,7 +973,11 @@ async function doJudge(){
   say((ok?"✅ <b>맞았습니다</b>":"❌ <b>"+esc(j.verdict)+"</b>")+
       " &nbsp; "+s.passed+"/"+s.total+" &nbsp;·&nbsp; "+j.elapsedSec+"초"+
       (d?"<div class='d'>"+esc(d)+"</div>":""), ok?"ok":"ng");
-  if(ok)$("pst").value="품";
+  if(ok){ $("pst").value="품"; }
+  else if(!NOTE.editing){        /* 틀렸을 때 바로 복기 메모를 쓰도록 열어준다 */
+    NOTE.editing=true; drawNote();
+    var st=$("nst"); if(st) st.value = (j.verdict==="time_limit_exceeded")?"시간초과":"틀림";
+  }
  }catch(e){say("오류: "+esc(e.message),"ng");}
 }
 async function doSave(){

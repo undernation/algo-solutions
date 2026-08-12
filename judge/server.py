@@ -20,6 +20,7 @@ http://localhost:12014 를 직접 호출한다.
     POST /run         임의 코드 + 케이스 채점  {code, cases:[{in,out}]}
     POST /save        풀이 저장 + git commit/push
     POST /fetch       문제 크롤링 (fetch_problem.py 위임)
+    POST /note        복기 메모 저장 {site, no, date, status, body, mode}
     POST /delete      풀이기록/문제자료 삭제 {kind, site, no, date?}
     GET  /problems    저장된 문제 목록
 
@@ -436,6 +437,91 @@ def save_solution(d):
             "stdout": (c.stdout or "")[-300:] if not committed else ""}
 
 
+def note_path(site, no):
+    return os.path.join(ROOT, "notes", SUB.get(site, "boj"), "%s.md" % no)
+
+
+def read_note(site, no):
+    p = note_path(site, no)
+    return io.open(p, encoding="utf-8").read() if os.path.exists(p) else ""
+
+
+def save_note(d):
+    """복기 메모 저장. 실수노트와 같은 구조로 날짜별 항목을 쌓는다.
+
+        ## BOJ 2618 경찰차
+        #### 2026-08-12 (틀림)
+        본문…
+        #### 2026-08-13 (품)
+        본문…
+
+    mode="append"(기본)  같은 날짜 항목이 있으면 그 본문을 교체, 없으면 뒤에 추가
+    mode="replace"       파일 전체를 body 로 덮어씀(직접 편집용)
+    """
+    site = (d.get("site") or "BOJ").upper()
+    no = str(d.get("no") or "").strip()
+    body = (d.get("body") or "").rstrip()
+    if not no:
+        return {"ok": False, "error": "no 가 필요합니다"}
+    mode = d.get("mode") or "append"
+    date = (d.get("date") or datetime.date.today().isoformat()).strip()
+    status = (d.get("status") or "").strip()
+    title = (d.get("title") or "").strip()
+
+    p = note_path(site, no)
+    os.makedirs(os.path.dirname(p), exist_ok=True)
+    cur = read_note(site, no)
+
+    if mode == "replace":
+        text = body + "\n"
+    else:
+        head = ("## %s %s %s" % (site, no, title)).rstrip()
+        if not cur.strip():
+            cur = head + "\n"
+        elif not cur.lstrip().startswith("##"):
+            cur = head + "\n\n" + cur
+        hdr = "#### %s%s" % (date, (" (%s)" % status) if status else "")
+        # 같은 날짜 항목이 이미 있으면 그 구간만 교체
+        pat = re.compile(r"(?m)^####\s*" + re.escape(date) + r"[^\n]*\n")
+        m = pat.search(cur)
+        if m:
+            nxt = re.compile(r"(?m)^####\s").search(cur, m.end())
+            end = nxt.start() if nxt else len(cur)
+            cur = cur[:m.start()] + hdr + "\n" + body + "\n\n" + cur[end:]
+        else:
+            cur = cur.rstrip() + "\n\n" + hdr + "\n" + body + "\n"
+        text = re.sub(r"\n{4,}", "\n\n\n", cur).rstrip() + "\n"
+
+    if not body.strip() and mode == "append":
+        return {"ok": False, "error": "메모 내용이 비어 있습니다"}
+
+    io.open(p, "w", encoding="utf-8", newline="").write(text)
+    rel = os.path.relpath(p, ROOT).replace(os.sep, "/")
+
+    subprocess.run([PY, "_meta/build_probindex.py"], cwd=ROOT, capture_output=True,
+                   env={**os.environ, "PYTHONIOENCODING": "utf-8"})
+    git("add", "notes", "problems")
+    c = git("commit", "-m", "[메모] %s %s %s" % (site, no, date))
+    committed = c.returncode == 0
+    pushed, perr = False, ""
+    if committed and AUTO_PUSH:
+        p2 = git("push")
+        pushed = p2.returncode == 0
+        if not pushed:
+            git("fetch", "origin")
+            rb = git("rebase", "origin/master")
+            if rb.returncode != 0:
+                git("rebase", "--abort")
+                perr = "rebase 충돌 — 수동 해결 필요"
+            else:
+                p2 = git("push")
+                pushed = p2.returncode == 0
+                perr = "" if pushed else (p2.stderr or "")[-300:]
+    log("   📝 %s  commit=%s push=%s" % (rel, committed, pushed))
+    return {"ok": True, "file": rel, "text": text,
+            "committed": committed, "pushed": pushed, "pushError": perr}
+
+
 def delete_item(d):
     """풀이 기록 / 문제 자료 삭제.
 
@@ -641,7 +727,7 @@ def status():
             "python": sys.version.split()[0], "repo": ROOT,
             "branch": br, "ahead": ah, "dirty": dirty, "solutions": n,
             "autoPush": AUTO_PUSH,
-            "endpoints": ["/judge", "/run", "/save", "/fetch", "/delete", "/problems"]}
+            "endpoints": ["/judge", "/run", "/save", "/fetch", "/note", "/delete", "/problems"]}
 
 
 # ══════════════════════════════════════════════════════════════
@@ -739,6 +825,11 @@ class H(BaseHTTPRequestHandler):
                 return self._send(200, judge(body.get("code") or "", cases, 0,
                                              allowed_time(body.get("timeLimit"),
                                                           bool(body.get("langAdjusted")))))
+
+            if p == "/note":
+                log("\n▶ 메모  %s %s %s" % (body.get("site"), body.get("no"),
+                                          body.get("date") or ""))
+                return self._send(200, save_note(body))
 
             if p == "/delete":
                 log("\n▶ 삭제  %s %s %s %s" % (body.get("kind"), body.get("site"),

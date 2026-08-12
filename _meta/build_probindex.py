@@ -25,7 +25,9 @@ def main():
             continue
         site = d.get("site") or SITE.get(sub, sub.upper())
         no = str(d.get("no") or os.path.splitext(os.path.basename(f))[0])
+        note = os.path.join(ROOT, "notes", sub, "%s.md" % no)
         out["%s/%s" % (site, no)] = {
+            "note": ("notes/%s/%s.md" % (sub, no)) if os.path.exists(note) else "",
             "site": site, "no": no,
             "title": d.get("title", ""),
             "label": d.get("label", ""),
