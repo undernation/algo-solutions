@@ -1349,8 +1349,21 @@ async function doJudge(){
    return "#"+(x.index+1)+(x.kind==="private"?"(히든)":"")+"  "+x.status+
     (x.expected!=null?"\n  기대 ▸ "+x.expected+"\n  실제 ▸ "+x.got:"")+
     (x.stderr?"\n  "+x.stderr.split("\n").slice(-3).join("\n  "):"");}).join("\n\n");
+  /* 백준과 같은 표기 — 시간 제한은 '케이스마다' 걸리므로 합계가 아니라
+     가장 오래 걸린 케이스를 보여준다. 합계만 띄우면 제한을 넘긴 것처럼 보인다
+     (11655: 28케이스 합계 6.9초, 실제로는 케이스당 0.2초대). */
+  var els=(j.detail||[]).map(function(x){return x.elapsed;})
+            .filter(function(v){return typeof v==="number";});
+  var mx=els.length?Math.max.apply(null,els):null;
+  var tl=j.allowedTime||j.limit||null;
+  var warn=(mx!=null&&tl&&mx>tl*0.8);
+  var tstr=(mx!=null)
+    ? "<span"+(warn?" style='color:var(--wr);font-weight:700'":"")+">최대 "+mx.toFixed(3)+"초</span>"
+      +(tl?" / 허용 "+tl+"초":"")
+      +" <span class='hint'>(합계 "+j.elapsedSec+"초, "+s.total+"케이스)</span>"
+    : j.elapsedSec+"초";
   say((ok?"✅ <b>맞았습니다</b>":"❌ <b>"+esc(j.verdict)+"</b>")+
-      " &nbsp; "+s.passed+"/"+s.total+" &nbsp;·&nbsp; "+j.elapsedSec+"초"+
+      " &nbsp; "+s.passed+"/"+s.total+" &nbsp;·&nbsp; "+tstr+
       (d?"<div class='d'>"+esc(d)+"</div>":""), ok?"ok":"ng");
   if(ok){ $("pst").value="품"; }
   else{                          /* 틀렸으면 메모 상태를 맞춰주고 입력창으로 보낸다 */

@@ -345,7 +345,9 @@ def judge(src, cases, pub=0, tl=5.0):
             pass
     if passed == len(cases) and cases:
         verdict = "accepted"
-    return {"ok": True, "verdict": verdict,
+    # allowedTime: 케이스 하나에 허용한 시간. 대시보드가 "최대 x초 / 허용 y초"로
+    # 보여준다. elapsedSec 는 전 케이스 합계라 이것만 띄우면 제한을 넘긴 것처럼 보인다.
+    return {"ok": True, "verdict": verdict, "allowedTime": tl,
             "summary": {"passed": passed, "total": len(cases),
                         "firstFailedIndex": first_fail},
             "judgedAt": iso_now(), "elapsedSec": round(tot_el, 3), "detail": detail}
