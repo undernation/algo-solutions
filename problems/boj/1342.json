@@ -32,5 +32,63 @@
   }
  ],
  "private_tc_count": 14,
+ "private_testcases": [
+  {
+   "in": "q",
+   "out": "1"
+  },
+  {
+   "in": "tt",
+   "out": "0"
+  },
+  {
+   "in": "mnmmompmqm",
+   "out": "0"
+  },
+  {
+   "in": "srrtrsrtr",
+   "out": "6"
+  },
+  {
+   "in": "abacadaea",
+   "out": "24"
+  },
+  {
+   "in": "pqprpsptpu",
+   "out": "720"
+  },
+  {
+   "in": "bcabacacb",
+   "out": "174"
+  },
+  {
+   "in": "ccbbaa",
+   "out": "30"
+  },
+  {
+   "in": "zyzxzwzy",
+   "out": "54"
+  },
+  {
+   "in": "cjdjebfhgi",
+   "out": "1451520"
+  },
+  {
+   "in": "kzkyzxwvut",
+   "out": "584640"
+  },
+  {
+   "in": "gghhgghhgh",
+   "out": "2"
+  },
+  {
+   "in": "nmoqpnmoqp",
+   "out": "39480"
+  },
+  {
+   "in": "efegefefeg",
+   "out": "44"
+  }
+ ],
  "fetched_at": "2026-08-12"
 }

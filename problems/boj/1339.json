@@ -32,5 +32,63 @@
   }
  ],
  "private_tc_count": 14,
+ "private_testcases": [
+  {
+   "in": "1\nQ",
+   "out": "9"
+  },
+  {
+   "in": "1\nPLZQWKMT",
+   "out": "98765432"
+  },
+  {
+   "in": "10\nSSSSSSSS\nSSSSSSSS\nSSSSSSSS\nSSSSSSSS\nSSSSSSSS\nSSSSSSSS\nSSSSSSSS\nSSSSSSSS\nSSSSSSST\nSSSSSSTS",
+   "out": "999999979"
+  },
+  {
+   "in": "3\nTQ\nQTR\nRQTT",
+   "out": "10834"
+  },
+  {
+   "in": "4\nABCDEFGH\nBADCFEHG\nCDABGHEF\nDCBAHGFE",
+   "out": "333315554"
+  },
+  {
+   "in": "10\nQ\nQ\nQ\nQ\nQ\nQ\nQ\nQ\nQ\nZQQQQQQQ",
+   "out": "98888960"
+  },
+  {
+   "in": "3\nABCDEFGH\nHIG\nJ",
+   "out": "98765736"
+  },
+  {
+   "in": "10\nABCDEFGH\nABCDEFGI\nABCDEFGJ\nABCDEFHI\nABCDEFHJ\nABCDEFIJ\nABCDEGHI\nABCDEGHJ\nABCDEGIJ\nABCDEHIJ",
+   "out": "987653705"
+  },
+  {
+   "in": "7\nRSTUVWXY\nZYXWVUTS\nRZ\nSVX\nZ\nWYRT\nXZS",
+   "out": "183957705"
+  },
+  {
+   "in": "10\nMOUNTAIN\nMOUNTAIN\nMOUNTAIN\nMOUNTAIN\nMOUNTAIN\nMOUNTAIN\nMOUNTAIN\nMOUNTAIN\nMOUNTAIN\nMOUNTAIN",
+   "out": "987654360"
+  },
+  {
+   "in": "8\nK\nLM\nNOP\nQRST\nKLMNO\nPQRSTK\nLMNOPQR\nSTKLMNOP",
+   "out": "106709623"
+  },
+  {
+   "in": "3\nXPQR\nYPQR\nY",
+   "out": "18539"
+  },
+  {
+   "in": "10\nPXXXXXXX\nQXXXXXXX\nQXXXXXXX\nQXXXXXXX\nQXXXXXXX\nRXXXXXXX\nRXXXXXXX\nRXXXXXXX\nRXXXXXXX\nRXXXXXXX",
+   "out": "907777770"
+  },
+  {
+   "in": "10\nKL\nLM\nMN\nNO\nOP\nPQ\nQR\nRS\nST\nTK",
+   "out": "495"
+  }
+ ],
  "fetched_at": "2026-08-12"
 }

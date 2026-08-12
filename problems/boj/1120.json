@@ -36,5 +36,63 @@
   }
  ],
  "private_tc_count": 14,
+ "private_testcases": [
+  {
+   "in": "q w",
+   "out": "1"
+  },
+  {
+   "in": "m efjfggbbjkcaegblleajjedbjhdfffdgjdlgajlgiaehfegfmk",
+   "out": "0"
+  },
+  {
+   "in": "abcdefghij zzzzzzzzzzzzzzzzzzzzabcdefghix",
+   "out": "1"
+  },
+  {
+   "in": "pqrstuvwx pqrstuvwykkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",
+   "out": "1"
+  },
+  {
+   "in": "ahovcjqxelszgnubipwdkryfmtahovcjqxelszgnubipwdkryf aubvpwqkrlfmgahbvcwqxrlsmgnhbicwdxrysmtnhoicjdxeys",
+   "out": "33"
+  },
+  {
+   "in": "aqrst azzzzaqqqqbqrstazzzz",
+   "out": "1"
+  },
+  {
+   "in": "abcabcabcabcabcabcabcabca xzyxzyxzyxzyxzyxzyxzyxzyxzyxzyxzyxzyxzyxzyxzyxzyxz",
+   "out": "25"
+  },
+  {
+   "in": "abcabdabf abcabcabcabcabcabcabcabcabcabcabcabc",
+   "out": "2"
+  },
+  {
+   "in": "mnopq zzzzzzzzzzmnoprzzzzzzzzzz",
+   "out": "1"
+  },
+  {
+   "in": "adgjmpsvybehknqtwzcfiloruxadgj qadgjmzsvybehznqtwzcfilozuxadgj",
+   "out": "3"
+  },
+  {
+   "in": "scdsfgsijsbc ssssssssssssssssssssssssssssssssssssssss",
+   "out": "8"
+  },
+  {
+   "in": "afkpuzejotydinsxchmrwbglqvafkpuzejotydinsxchmrwbg mafkpuzezotydinsxchmzwbglqvafkpuyejotydinsxchzrwbg",
+   "out": "4"
+  },
+  {
+   "in": "abcdefghijklmnopqrstuvwxyz aaaaaaaaaaaaaaaaaabczefghijklmnopqrstavwxyzaaaaaaa",
+   "out": "2"
+  },
+  {
+   "in": "grape prgqxgrapeqxprgqzzaa",
+   "out": "0"
+  }
+ ],
  "fetched_at": "2026-08-12"
 }

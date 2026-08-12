@@ -43,5 +43,63 @@
  "images": [
   "problems/boj/img/1063_1.webp"
  ],
+ "private_testcases": [
+  {
+   "in": "B2 A1 12\nLB\nLB\nL\nB\nLB\nB\nR\nLB\nL\nB\nT\nLB",
+   "out": "A3\nA1"
+  },
+  {
+   "in": "D7 D8 10\nT\nT\nRT\nLT\nL\nL\nT\nLT\nL\nL",
+   "out": "B8\nA8"
+  },
+  {
+   "in": "G4 H4 10\nR\nRT\nR\nB\nB\nR\nRB\nT\nT\nR",
+   "out": "H5\nH2"
+  },
+  {
+   "in": "H8 G7 12\nR\nT\nRT\nRB\nLT\nL\nLB\nR\nR\nT\nRT\nR",
+   "out": "H8\nH7"
+  },
+  {
+   "in": "A1 C3 12\nL\nB\nLB\nLT\nRB\nT\nR\nRT\nB\nLB\nL\nB",
+   "out": "A1\nD4"
+  },
+  {
+   "in": "E4 F5 1\nRT",
+   "out": "F5\nG6"
+  },
+  {
+   "in": "A1 B2 50\nRT\nRT\nRT\nRT\nRT\nRT\nRT\nRT\nB\nB\nB\nB\nB\nB\nR\nT\nT\nT\nT\nT\nT\nT\nL\nRT\nLT\nR\nR\nRB\nT\nLT\nL\nL\nL\nL\nL\nL\nL\nB\nB\nB\nB\nB\nB\nB\nB\nRT\nRT\nRT\nRT\nRT",
+   "out": "F6\nH8"
+  },
+  {
+   "in": "H8 A1 50\nR\nT\nRT\nRB\nLT\nR\nT\nRT\nRB\nLT\nR\nT\nRT\nRB\nLT\nR\nT\nRT\nRB\nLT\nR\nT\nRT\nRB\nLT\nR\nT\nRT\nRB\nLT\nR\nT\nRT\nRB\nLT\nR\nT\nRT\nRB\nLT\nR\nT\nRT\nRB\nLT\nR\nT\nRT\nRB\nLT",
+   "out": "H8\nA1"
+  },
+  {
+   "in": "B4 A4 15\nL\nLT\nB\nB\nB\nB\nL\nLB\nR\nLB\nL\nB\nRB\nL\nR",
+   "out": "C1\nA1"
+  },
+  {
+   "in": "C3 D4 12\nRT\nLB\nRT\nLB\nRT\nRT\nLB\nLB\nRT\nRT\nRT\nLB",
+   "out": "E5\nG7"
+  },
+  {
+   "in": "B5 A5 15\nL\nLT\nB\nB\nL\nLB\nRB\nL\nT\nLB\nLT\nB\nB\nB\nB",
+   "out": "A2\nA1"
+  },
+  {
+   "in": "D4 E5 24\nRT\nR\nLT\nL\nRB\nB\nLB\nT\nRT\nT\nLB\nB\nR\nLT\nL\nRB\nT\nL\nRT\nR\nR\nRT\nB\nLB",
+   "out": "F5\nG5"
+  },
+  {
+   "in": "G7 H8 14\nRT\nR\nT\nLT\nR\nLB\nLB\nLB\nLB\nLB\nLB\nLB\nB\nB",
+   "out": "A1\nH8"
+  },
+  {
+   "in": "F6 G7 14\nRT\nRT\nT\nR\nRB\nT\nB\nT\nLT\nR\nL\nRB\nRT\nR",
+   "out": "H7\nH8"
+  }
+ ],
  "fetched_at": "2026-08-12"
 }

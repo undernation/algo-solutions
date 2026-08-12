@@ -20,5 +20,63 @@
   }
  ],
  "private_tc_count": 14,
+ "private_testcases": [
+  {
+   "in": "YYYYY\nYYYYY\nYYYYY\nYYYYY\nYYYYY",
+   "out": "0"
+  },
+  {
+   "in": "SSSYY\nYYYYY\nYYYYY\nYYYYY\nYYYYY",
+   "out": "0"
+  },
+  {
+   "in": "SSSSS\nSSSSS\nSSSSS\nSSSSS\nSSSSS",
+   "out": "3546"
+  },
+  {
+   "in": "YYYYY\nYYSYY\nYSSSY\nYYYYY\nYYYYY",
+   "out": "180"
+  },
+  {
+   "in": "YYYYY\nYYYYY\nSSSSS\nYYYYY\nYYYYY",
+   "out": "349"
+  },
+  {
+   "in": "YYSYY\nYYSYY\nYYSYY\nYYSYY\nYYSYY",
+   "out": "349"
+  },
+  {
+   "in": "SYYYY\nYSYYY\nYYSYY\nYYYSY\nYYYYS",
+   "out": "16"
+  },
+  {
+   "in": "SSYYY\nSYYYY\nYYYYY\nYYYYS\nYYYSS",
+   "out": "0"
+  },
+  {
+   "in": "SYYYS\nYYYYY\nYYYYY\nYYYYY\nSYYYS",
+   "out": "0"
+  },
+  {
+   "in": "SSSSS\nSYYYS\nSYYYS\nSYYYS\nSSSSS",
+   "out": "920"
+  },
+  {
+   "in": "SSSSS\nSYYYY\nSYYYY\nYYYYY\nYYYYY",
+   "out": "187"
+  },
+  {
+   "in": "SYSYS\nYSYSY\nSYSYS\nYSYSY\nSYSYS",
+   "out": "1798"
+  },
+  {
+   "in": "SSSSS\nSSSSS\nSSYSS\nSSSSS\nSSSSS",
+   "out": "3546"
+  },
+  {
+   "in": "SSSYY\nYYSYY\nSSSYY\nSYYYY\nSSSYY",
+   "out": "1345"
+  }
+ ],
  "fetched_at": "2026-08-12"
 }

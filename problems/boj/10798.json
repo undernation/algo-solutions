@@ -24,5 +24,63 @@
   }
  ],
  "private_tc_count": 14,
+ "private_testcases": [
+  {
+   "in": "A\nb\n0\nZ\n9",
+   "out": "Ab0Z9"
+  },
+  {
+   "in": "ABCDEFGHIJKLMNO\nPQRSTUVWXYZabcd\nefghijklmnopqrs\ntuvwxyz01234567\n89ABCDEFGHIJKLM",
+   "out": "APet8BQfu9CRgvADShwBETixCFUjyDGVkzEHWl0FIXm1GJYn2HKZo3ILap4JMbq5KNcr6LOds7M"
+  },
+  {
+   "in": "ABCDEFGHIJKLMNO\na\nb\nc\nd",
+   "out": "AabcdBCDEFGHIJKLMNO"
+  },
+  {
+   "in": "a\nb\nc\nd\nABCDEFGHIJKLMNO",
+   "out": "abcdABCDEFGHIJKLMNO"
+  },
+  {
+   "in": "A\nbc\ndef\nGHIJ\n01234",
+   "out": "AbdG0ceH1fI2J34"
+  },
+  {
+   "in": "ABCDEFGHIJKLMNO\nabcdefghijkl\n012345678\nMNOPQR\nstu",
+   "out": "Aa0MsBb1NtCc2OuDd3PEe4QFf5RGg6Hh7Ii8JjKkLlMNO"
+  },
+  {
+   "in": "SameLine123\nSameLine123\nSameLine123\nSameLine123\nSameLine123",
+   "out": "SSSSSaaaaammmmmeeeeeLLLLLiiiiinnnnneeeee111112222233333"
+  },
+  {
+   "in": "12345\n67890\n09876\n54321\n13579",
+   "out": "1605127943388354972750619"
+  },
+  {
+   "in": "AaAaAa\naAaAaA\nBbBbBb\nbBbBbB\nCcCcCc",
+   "out": "AaBbCaAbBcAaBbCaAbBcAaBbCaAbBc"
+  },
+  {
+   "in": "ABCDEFGHIJ\nabcdefghij\nX\nKLMNOPQRST\nklmnopqrst",
+   "out": "AaXKkBbLlCcMmDdNnEeOoFfPpGgQqHhRrIiSsJjTt"
+  },
+  {
+   "in": "z\nzz\nzzz\nzzzzzzzzzz\nzzzzzzzzzzzzzzz",
+   "out": "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
+  },
+  {
+   "in": "ABCDEFGHIJKLMNO\nz\nabcdefghijklmno\ny\n012345678901234",
+   "out": "Azay0Bb1Cc2Dd3Ee4Ff5Gg6Hh7Ii8Jj9Kk0Ll1Mm2Nn3Oo4"
+  },
+  {
+   "in": "AAAAB\naaaab\n0000C\nBBBBc\nbbbb1",
+   "out": "Aa0BbAa0BbAa0BbAa0BbBbCc1"
+  },
+  {
+   "in": "Bidx2uFpePbsOru\nrW4e\nghryTFQHlxIG\nTbVaBOTypJ\nbbs3",
+   "out": "BrgTbiWhbbd4rVsxeya32TBuFOFQTpHyelpPxJbIsGOru"
+  }
+ ],
  "fetched_at": "2026-08-12"
 }

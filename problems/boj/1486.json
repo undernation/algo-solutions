@@ -45,5 +45,71 @@
   }
  ],
  "private_tc_count": 16,
+ "private_testcases": [
+  {
+   "in": "1 1 1 10\nA",
+   "out": "0"
+  },
+  {
+   "in": "1 2 1 2\nAB",
+   "out": "1"
+  },
+  {
+   "in": "1 2 0 10\nAC",
+   "out": "0"
+  },
+  {
+   "in": "2 2 2 10\nAB\nBC",
+   "out": "2"
+  },
+  {
+   "in": "2 3 3 6\nABC\nCBA",
+   "out": "2"
+  },
+  {
+   "in": "1 2 60 3000\nAz",
+   "out": "51"
+  },
+  {
+   "in": "3 1 2 4\nA\nC\nE",
+   "out": "0"
+  },
+  {
+   "in": "11 14 52 881932\nzKXUSampbUUvAY\nPVJoQnVLYWPCaO\nVzposPJdXViFif\nQURCIQpAQQfirz\nZCdUPZAygjYZAr\nAAVXAdzcggemVU\nsGQPFrhRZNuUQz\nlGuUrZdSxCWVSL\nQbdjiJDehUdOHT\nFdzVCiZmgwsaVW\nPBtUUQoghRKfyu",
+   "out": "51"
+  },
+  {
+   "in": "2 2 4 4\nAC\nBC",
+   "out": "2"
+  },
+  {
+   "in": "1 1 10 578998\nJ",
+   "out": "9"
+  },
+  {
+   "in": "25 25 10 35937\nhYOPIjrLSewPiegFsgMJJySvH\nSNTQWyGwjoeTuudsrncvfmoqn\nsMMKVqtpdeETtkXOHToIgHZwz\nKWmYjSlRLTvBNSVgIyGSRIqGy\nBbzUhnUibUpUyJKuredEwwBcr\ngxuwDNrOrSxqmBbzNVcjILzwU\nDibZYBJraLUqlyydYtiAOPJRJ\nRnNdYdGYoHaMyquAGqOlHjNAJ\nKHkSaIPUfMsOvyRyOwFPEDWQe\nXwnqMnGAPKMaqeZrmNmSqPpFs\nCchbBRhogcwjoYqJpBXEMwmpC\nOmsJuVifRZwKVsTxkFasvLIOO\nUKzgNylQKvUZgbcqaKMgNyFUB\nJjpNUZEDstZpsDKZtbiYaUMwP\nmoJCKkPjAARJRkMqBfyNZFiVh\naTFWKETVaikBXgEnaWrOvzcBG\niVuEFxKIKiRkoKrQCmFbEYxrK\niSjxevxJbWxLnmhYzVyZuIsZT\nalRakDqmfezRVPsMJYaSOCgNM\nJFpHIGplqKIGgenZAlnOYvxEl\nHczqTeAnfLerAzmXRqpUXTJUE\nOUMxawhzsCxHxGEixoFnyNMxl\nCAbGLYcoJPcMVnEpuVrlEOPYN\npyAwqlwXpeuxGJYkqkrDBQkrv\nRXqzElQLDopuqopkNzXifkuPA",
+   "out": "33"
+  },
+  {
+   "in": "3 7 1 534\nBLaBcUc\njEIHwPI\nYpIyvCX",
+   "out": "1"
+  },
+  {
+   "in": "12 11 6 2114\nzSeMRfHJMaD\nYxnlRrFibmV\nCimlfLhNSdw\nfDmyYKQvMHM\ngqdKzfNybmc\nGvkrVoYjNPH\nVuvohlLFHKQ\nMMmRmXoaNut\nREOIZBtIwyc\nSJmanMIGknc\nWXKjgIYrxVE\nSMWXEswoPBC",
+   "out": "51"
+  },
+  {
+   "in": "1 2 3 9\nAD",
+   "out": "0"
+  },
+  {
+   "in": "3 1 4 16\nA\nE\nI",
+   "out": "0"
+  },
+  {
+   "in": "7 5 52 419432\nymtol\nLbCqU\nKdJxY\nQpMWr\nCHtVl\ncdyMY\nVdpMy",
+   "out": "50"
+  }
+ ],
  "fetched_at": "2026-08-12"
 }

@@ -20,5 +20,63 @@
   }
  ],
  "private_tc_count": 14,
+ "private_testcases": [
+  {
+   "in": "Y 2\nY 3\nY 4\nY 5\nY 6",
+   "out": "906"
+  },
+  {
+   "in": "R 5\nR 6\nR 7\nR 8\nR 9",
+   "out": "909"
+  },
+  {
+   "in": "R 3\nB 3\nY 3\nG 3\nR 7",
+   "out": "803"
+  },
+  {
+   "in": "R 5\nY 5\nB 5\nG 7\nY 7",
+   "out": "757"
+  },
+  {
+   "in": "R 2\nY 2\nB 2\nG 9\nY 9",
+   "out": "729"
+  },
+  {
+   "in": "G 1\nG 3\nG 5\nG 7\nG 9",
+   "out": "609"
+  },
+  {
+   "in": "R 4\nB 5\nY 6\nG 7\nR 8",
+   "out": "508"
+  },
+  {
+   "in": "R 7\nY 7\nG 7\nR 2\nR 5",
+   "out": "407"
+  },
+  {
+   "in": "R 5\nY 5\nY 4\nG 9\nB 4",
+   "out": "354"
+  },
+  {
+   "in": "R 2\nB 2\nR 8\nY 8\nG 1",
+   "out": "382"
+  },
+  {
+   "in": "R 6\nY 2\nB 6\nB 3\nG 4",
+   "out": "206"
+  },
+  {
+   "in": "R 1\nR 2\nB 4\nB 8\nY 5",
+   "out": "108"
+  },
+  {
+   "in": "R 1\nB 2\nY 3\nG 4\nR 6",
+   "out": "106"
+  },
+  {
+   "in": "R 1\nB 2\nY 3\nG 4\nB 5",
+   "out": "505"
+  }
+ ],
  "fetched_at": "2026-08-12"
 }

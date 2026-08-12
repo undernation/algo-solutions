@@ -36,5 +36,63 @@
   }
  ],
  "private_tc_count": 14,
+ "private_testcases": [
+  {
+   "in": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+   "out": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABB"
+  },
+  {
+   "in": ".XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.",
+   "out": ".AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA."
+  },
+  {
+   "in": ".",
+   "out": "."
+  },
+  {
+   "in": "..................................................",
+   "out": ".................................................."
+  },
+  {
+   "in": "XX..XX..XX..XX..XX..XX...XX.XX...XX...XX.XX...XX",
+   "out": "BB..BB..BB..BB..BB..BB...BB.BB...BB...BB.BB...BB"
+  },
+  {
+   "in": "XXXX..XXXX..XXXX.XXXX.XXXX..XXXX..XXXX..XXXX.XXXX",
+   "out": "AAAA..AAAA..AAAA.AAAA.AAAA..AAAA..AAAA..AAAA.AAAA"
+  },
+  {
+   "in": ".XXXXXX.XXXXXX..XXXXXX.XXXXXX..",
+   "out": ".AAAABB.AAAABB..AAAABB.AAAABB.."
+  },
+  {
+   "in": "XXXXXXXXXX.XXXXXXXXXXXXXX..XX",
+   "out": "AAAAAAAABB.AAAAAAAAAAAABB..BB"
+  },
+  {
+   "in": "XXXX.XXX....XXXXXX.XXXXX.XX",
+   "out": "-1"
+  },
+  {
+   "in": "..XXXX.XXXXXXXX...XXXXXX.XXXXXXX",
+   "out": "-1"
+  },
+  {
+   "in": "X.XXXX..XXXXXX.XX",
+   "out": "-1"
+  },
+  {
+   "in": "XX.XX.XXXX.XX.XX.XXXX..XX.XX",
+   "out": "BB.BB.AAAA.BB.BB.AAAA..BB.BB"
+  },
+  {
+   "in": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+   "out": "-1"
+  },
+  {
+   "in": "XX.XXXX.XXXXXX.XXXXXXXX.XXXXXXXXXX",
+   "out": "BB.AAAA.AAAABB.AAAAAAAA.AAAAAAAABB"
+  }
+ ],
  "fetched_at": "2026-08-12"
 }

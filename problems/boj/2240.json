@@ -21,5 +21,111 @@
   }
  ],
  "private_tc_count": 26,
+ "private_testcases": [
+  {
+   "in": "5 0\n1\n1\n2\n2\n1",
+   "out": "3"
+  },
+  {
+   "in": "5 1\n2\n2\n2\n2\n2",
+   "out": "5"
+  },
+  {
+   "in": "6 3\n1\n2\n1\n2\n1\n2",
+   "out": "5"
+  },
+  {
+   "in": "8 2\n1\n1\n2\n2\n2\n1\n1\n2",
+   "out": "7"
+  },
+  {
+   "in": "1 0\n2",
+   "out": "0"
+  },
+  {
+   "in": "6 3\n2\n2\n1\n1\n2\n2",
+   "out": "6"
+  },
+  {
+   "in": "1 18\n1",
+   "out": "1"
+  },
+  {
+   "in": "1000 30\n1\n1\n1\n2\n2\n2\n2\n1\n1\n2\n2\n1\n2\n1\n2\n1\n2\n2\n2\n2\n2\n1\n2\n2\n2\n1\n1\n1\n1\n2\n2\n2\n1\n1\n2\n2\n2\n2\n1\n1\n1\n2\n1\n1\n2\n1\n1\n1\n2\n2\n1\n1\n1\n1\n2\n2\n1\n2\n2\n2\n2\n1\n2\n2\n1\n1\n2\n2\n1\n2\n2\n2\n2\n2\n1\n1\n1\n2\n1\n2\n2\n2\n2\n1\n1\n1\n2\n1\n2\n2\n1\n2\n1\n2\n2\n2\n1\n2\n2\n2\n2\n2\n1\n1\n1\n2\n2\n1\n2\n2\n1\n2\n2\n2\n1\n1\n1\n2\n1\n2\n2\n2\n2\n2\n2\n2\n1\n2\n2\n1\n1\n1\n1\n1\n1\n2\n1\n1\n2\n2\n2\n1\n1\n2\n2\n2\n1\n1\n1\n1\n1\n1\n1\n1\n1\n2\n2\n2\n2\n1\n2\n2\n2\n2\n1\n2\n2\n2\n1\n2\n1\n1\n2\n1\n1\n2\n1\n1\n1\n1\n2\n2\n2\n1\n1\n2\n2\n1\n1\n2\n2\n2\n1\n1\n2\n2\n2\n1\n1\n2\n1\n2\n1\n2\n1\n1\n2\n2\n1\n2\n1\n2\n2\n1\n1\n2\n1\n2\n1\n1\n2\n1\n1\n1\n2\n2\n1\n1\n2\n2\n2\n2\n2\n1\n1\n2\n1\n1\n1\n1\n2\n2\n1\n2\n2\n1\n2\n2\n1\n1\n2\n1\n2\n2\n2\n1\n1\n2\n1\n1\n1\n2\n2\n2\n2\n1\n1\n2\n1\n2\n2\n2\n1\n1\n2\n2\n1\n1\n1\n1\n2\n1\n1\n1\n1\n2\n2\n1\n1\n1\n2\n2\n1\n1\n2\n1\n2\n1\n2\n2\n2\n1\n2\n2\n2\n2\n2\n2\n2\n2\n2\n1\n2\n1\n1\n1\n2\n1\n1\n2\n1\n2\n1\n1\n1\n1\n1\n1\n2\n2\n1\n2\n2\n2\n2\n1\n1\n2\n2\n1\n1\n2\n1\n1\n1\n1\n2\n1\n2\n2\n2\n2\n2\n1\n2\n1\n2\n2\n1\n1\n2\n2\n2\n2\n1\n2\n1\n2\n2\n1\n1\n1\n1\n1\n2\n2\n1\n2\n1\n1\n1\n2\n2\n1\n2\n1\n2\n1\n1\n1\n1\n2\n2\n1\n2\n2\n1\n2\n2\n1\n2\n1\n2\n1\n1\n1\n1\n2\n1\n2\n2\n2\n1\n1\n2\n1\n1\n2\n1\n2\n1\n2\n2\n2\n1\n2\n1\n1\n2\n2\n2\n2\n1\n2\n2\n1\n1\n1\n1\n2\n1\n1\n2\n2\n1\n2\n1\n2\n2\n2\n2\n1\n2\n1\n2\n2\n1\n2\n2\n1\n2\n2\n1\n1\n1\n2\n1\n2\n2\n2\n2\n2\n2\n1\n1\n2\n1\n2\n1\n1\n2\n1\n2\n2\n1\n2\n2\n1\n1\n1\n1\n2\n2\n1\n1\n1\n2\n2\n1\n1\n1\n2\n2\n1\n2\n2\n2\n2\n2\n1\n2\n2\n1\n2\n2\n1\n1\n1\n1\n1\n1\n1\n2\n2\n1\n1\n2\n1\n2\n1\n1\n2\n2\n2\n2\n2\n1\n2\n1\n1\n2\n2\n1\n1\n1\n1\n1\n1\n1\n1\n2\n1\n2\n1\n1\n2\n1\n2\n1\n1\n1\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n2\n1\n2\n2\n2\n1\n2\n2\n1\n2\n2\n2\n1\n2\n2\n2\n1\n2\n2\n1\n1\n1\n1\n2\n1\n2\n2\n1\n1\n2\n2\n2\n2\n1\n2\n1\n1\n1\n1\n1\n1\n2\n1\n1\n2\n1\n2\n1\n2\n1\n2\n2\n1\n2\n2\n1\n1\n2\n2\n2\n1\n2\n2\n1\n1\n2\n2\n1\n1\n1\n1\n2\n2\n2\n1\n2\n1\n2\n2\n2\n1\n1\n2\n1\n1\n1\n2\n1\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n2\n2\n1\n2\n1\n2\n2\n1\n1\n1\n2\n1\n1\n2\n2\n1\n1\n2\n2\n1\n2\n1\n2\n2\n1\n2\n2\n1\n1\n1\n1\n1\n2\n1\n2\n1\n2\n1\n1\n2\n1\n2\n2\n2\n1\n2\n2\n2\n1\n1\n2\n2\n2\n1\n1\n1\n1\n2\n2\n2\n2\n1\n1\n1\n1\n2\n1\n2\n2\n1\n2\n1\n2\n2\n2\n1\n1\n1\n2\n2\n1\n2\n2\n2\n1\n2\n1\n2\n1\n1\n2\n2\n2\n1\n1\n1\n1\n2\n1\n1\n1\n2\n1\n2\n1\n1\n1\n1\n2\n1\n2\n2\n1\n2\n1\n1\n1\n1\n1\n2\n2\n1\n1\n2\n1\n2\n2\n1\n2\n2\n1\n1\n2\n2\n1\n2\n1\n2\n2\n2\n2\n2\n2\n1\n1\n1\n2\n2\n1\n1\n1\n1\n1\n1\n2\n1\n1\n1\n2\n1\n1\n1\n2\n1\n2\n1\n1\n1\n2\n2\n1\n1\n2\n2\n2\n2\n1\n2\n2\n2\n2\n1\n1\n1\n2\n1\n2\n2\n2\n2\n2\n2\n1\n2\n2\n1\n2\n2\n1\n1\n1\n2\n2\n2\n1\n2\n1\n1\n2\n2\n2\n2\n1\n2\n1\n2\n1\n1\n2\n2\n2\n2\n2\n2\n1\n1\n2\n1\n2\n2\n2\n1\n2\n2\n1\n1\n2\n2\n2\n2\n2\n2\n2\n1\n2\n2\n2\n2\n1\n2\n2\n1\n2\n2\n1\n1\n2\n1\n2\n1\n1\n1\n1\n2\n2\n2\n1\n1\n1\n1\n1\n1\n2\n1\n2\n1\n2\n1\n1\n2\n1\n1\n2\n2\n1\n1\n2\n1\n2\n1\n1\n1\n1\n1\n1\n2\n2\n1\n2\n2\n1\n2\n1\n1\n2\n2\n2\n2\n1\n2\n2\n1\n1\n1\n1\n2\n2\n1\n2\n2\n1\n1\n2\n2\n1\n1\n1\n1\n2",
+   "out": "650"
+  },
+  {
+   "in": "14 27\n2\n2\n2\n1\n1\n2\n1\n2\n1\n1\n2\n1\n2\n1",
+   "out": "14"
+  },
+  {
+   "in": "57 22\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1",
+   "out": "57"
+  },
+  {
+   "in": "127 24\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1",
+   "out": "76"
+  },
+  {
+   "in": "126 3\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n2\n2\n2",
+   "out": "126"
+  },
+  {
+   "in": "6 30\n1\n1\n2\n2\n1\n1",
+   "out": "6"
+  },
+  {
+   "in": "397 3\n2\n2\n2\n1\n1\n1\n1\n1\n1\n1\n2\n2\n2\n2\n1\n1\n2\n1\n2\n2\n1\n2\n2\n1\n2\n2\n1\n2\n1\n2\n1\n1\n2\n1\n2\n1\n1\n1\n2\n2\n2\n2\n2\n1\n1\n2\n2\n2\n2\n1\n2\n1\n1\n2\n2\n1\n2\n2\n1\n1\n2\n1\n1\n2\n1\n1\n2\n2\n2\n1\n1\n1\n2\n1\n1\n2\n1\n1\n1\n1\n1\n1\n2\n2\n2\n2\n1\n1\n1\n1\n1\n1\n2\n2\n2\n2\n2\n2\n1\n2\n2\n1\n2\n1\n1\n1\n1\n1\n2\n1\n1\n1\n1\n1\n1\n2\n2\n2\n2\n1\n2\n1\n2\n2\n1\n1\n2\n2\n1\n2\n2\n2\n1\n2\n2\n1\n2\n1\n1\n1\n1\n2\n2\n1\n1\n1\n2\n1\n1\n2\n1\n2\n2\n1\n2\n1\n1\n1\n1\n1\n1\n1\n2\n2\n1\n2\n2\n1\n1\n1\n2\n2\n2\n2\n1\n2\n1\n2\n1\n2\n1\n2\n2\n1\n2\n2\n2\n1\n2\n2\n1\n1\n1\n2\n2\n1\n2\n2\n1\n1\n1\n2\n2\n1\n2\n1\n1\n1\n2\n2\n2\n1\n2\n2\n2\n2\n2\n1\n1\n2\n2\n1\n1\n1\n2\n2\n2\n2\n1\n1\n2\n2\n2\n2\n1\n1\n2\n1\n2\n2\n2\n1\n2\n2\n1\n1\n2\n1\n2\n2\n1\n2\n2\n1\n1\n1\n1\n2\n2\n2\n1\n2\n1\n1\n1\n1\n1\n2\n1\n1\n2\n2\n1\n2\n2\n2\n1\n2\n1\n1\n1\n1\n2\n2\n1\n1\n2\n2\n2\n2\n2\n2\n2\n1\n1\n2\n1\n1\n2\n2\n2\n2\n1\n1\n2\n1\n1\n1\n1\n2\n1\n1\n2\n1\n2\n1\n2\n2\n2\n2\n1\n1\n1\n1\n1\n1\n2\n2\n2\n2\n2\n2\n2\n1\n2\n2\n2\n1\n1\n2\n2\n2\n2\n2\n2\n2\n2\n1\n2\n2\n2\n2\n1\n1\n2\n1\n2\n2\n1\n2\n1\n2\n2\n2\n2\n2\n1\n2\n1\n1\n1\n1\n2\n1\n2\n1\n1\n2\n1\n1\n2\n1\n2\n2\n2\n2\n1\n2\n2\n1\n1\n2\n2\n1\n2\n1\n2",
+   "out": "230"
+  },
+  {
+   "in": "29 0\n2\n2\n1\n1\n2\n1\n1\n1\n1\n2\n2\n1\n1\n2\n1\n1\n1\n1\n2\n2\n2\n2\n1\n1\n2\n2\n2\n2\n1",
+   "out": "15"
+  },
+  {
+   "in": "1 11\n2",
+   "out": "1"
+  },
+  {
+   "in": "1000 30\n2\n2\n2\n1\n2\n2\n2\n1\n2\n2\n1\n1\n2\n1\n1\n1\n1\n1\n1\n1\n1\n2\n2\n2\n1\n1\n1\n2\n2\n1\n2\n1\n2\n1\n2\n2\n2\n1\n2\n1\n2\n1\n1\n2\n2\n2\n2\n1\n1\n2\n2\n1\n2\n1\n1\n1\n1\n1\n1\n1\n2\n2\n2\n1\n1\n2\n2\n1\n1\n2\n2\n1\n1\n1\n1\n2\n1\n1\n2\n2\n1\n1\n2\n1\n2\n2\n1\n2\n1\n1\n2\n2\n2\n2\n2\n1\n2\n2\n1\n1\n1\n1\n1\n2\n1\n2\n2\n1\n2\n2\n2\n2\n1\n1\n1\n1\n1\n1\n2\n1\n2\n1\n2\n1\n2\n1\n1\n2\n2\n1\n2\n1\n1\n1\n2\n1\n1\n1\n1\n2\n1\n1\n2\n2\n1\n1\n1\n1\n1\n1\n1\n1\n2\n2\n1\n2\n1\n2\n1\n2\n1\n1\n2\n2\n1\n1\n1\n2\n2\n2\n1\n2\n2\n1\n2\n2\n1\n1\n2\n1\n2\n2\n2\n1\n2\n2\n2\n2\n1\n2\n2\n1\n1\n2\n2\n1\n1\n1\n2\n2\n1\n2\n2\n2\n2\n1\n1\n1\n1\n2\n2\n1\n1\n1\n1\n2\n2\n1\n2\n1\n1\n1\n2\n2\n2\n2\n1\n2\n2\n1\n1\n1\n1\n1\n1\n1\n2\n1\n1\n1\n2\n1\n2\n2\n1\n2\n2\n2\n2\n2\n1\n1\n2\n1\n1\n2\n1\n2\n1\n1\n2\n1\n2\n2\n2\n2\n2\n2\n2\n2\n2\n1\n2\n2\n2\n2\n2\n2\n2\n2\n2\n1\n1\n2\n1\n2\n1\n1\n1\n1\n2\n1\n2\n2\n1\n2\n2\n1\n2\n1\n2\n1\n2\n2\n2\n2\n1\n1\n1\n1\n2\n2\n2\n1\n1\n1\n1\n1\n1\n1\n1\n2\n1\n1\n1\n2\n2\n2\n1\n1\n1\n2\n2\n1\n2\n1\n2\n1\n1\n2\n2\n1\n1\n1\n1\n1\n1\n2\n1\n2\n2\n1\n2\n1\n1\n1\n1\n1\n2\n1\n1\n2\n2\n1\n2\n1\n1\n2\n1\n1\n2\n2\n2\n1\n1\n2\n2\n2\n1\n1\n2\n1\n1\n2\n2\n1\n2\n1\n2\n1\n1\n2\n2\n1\n1\n1\n1\n1\n1\n1\n1\n1\n2\n2\n1\n2\n1\n1\n2\n2\n1\n1\n2\n2\n1\n1\n1\n2\n1\n2\n1\n1\n2\n2\n2\n1\n2\n1\n2\n2\n1\n1\n1\n1\n2\n2\n1\n2\n1\n1\n2\n1\n1\n2\n2\n1\n2\n2\n1\n1\n2\n2\n2\n1\n1\n1\n1\n2\n1\n2\n1\n2\n2\n2\n1\n2\n1\n2\n1\n2\n2\n1\n1\n1\n1\n2\n2\n2\n2\n2\n1\n1\n1\n1\n1\n1\n2\n1\n2\n2\n1\n1\n2\n2\n1\n2\n2\n2\n2\n1\n1\n1\n1\n1\n2\n1\n2\n1\n1\n2\n2\n2\n1\n2\n2\n2\n1\n2\n1\n1\n1\n1\n1\n2\n1\n2\n2\n2\n1\n2\n2\n2\n1\n2\n2\n1\n2\n1\n2\n2\n1\n1\n1\n1\n2\n2\n1\n1\n1\n2\n1\n2\n1\n2\n1\n1\n2\n1\n2\n2\n1\n2\n1\n1\n2\n1\n2\n1\n1\n1\n2\n2\n2\n2\n2\n1\n2\n2\n2\n2\n1\n2\n2\n1\n1\n2\n1\n1\n1\n2\n1\n1\n2\n2\n1\n1\n1\n2\n2\n2\n2\n1\n1\n2\n2\n2\n2\n2\n2\n1\n2\n2\n1\n1\n2\n1\n2\n1\n1\n2\n1\n2\n2\n1\n2\n2\n1\n1\n1\n2\n1\n1\n2\n2\n1\n1\n2\n2\n1\n2\n1\n2\n2\n1\n2\n2\n2\n2\n1\n1\n2\n1\n2\n2\n1\n1\n1\n1\n1\n2\n1\n2\n1\n2\n1\n2\n2\n1\n1\n2\n2\n1\n2\n2\n2\n1\n1\n2\n1\n2\n2\n2\n1\n2\n2\n2\n1\n2\n1\n2\n1\n2\n2\n2\n2\n1\n1\n1\n2\n1\n1\n1\n1\n1\n1\n1\n2\n1\n2\n2\n2\n2\n2\n2\n1\n1\n2\n1\n2\n2\n2\n1\n1\n2\n2\n2\n1\n1\n1\n2\n2\n2\n2\n2\n2\n2\n1\n1\n2\n1\n1\n2\n1\n2\n1\n1\n2\n2\n1\n2\n1\n1\n2\n2\n2\n1\n1\n2\n2\n1\n2\n1\n1\n1\n1\n2\n1\n2\n1\n1\n2\n1\n1\n2\n2\n1\n2\n2\n1\n1\n1\n1\n1\n2\n1\n2\n2\n2\n2\n1\n2\n1\n2\n2\n2\n1\n1\n1\n1\n2\n2\n1\n1\n1\n1\n2\n2\n1\n1\n2\n1\n1\n1\n1\n2\n1\n2\n2\n2\n1\n1\n1\n1\n1\n2\n1\n1\n1\n2\n2\n1\n1\n1\n2\n1\n1\n1\n2\n2\n1\n2\n2\n2\n1\n1\n1\n1\n2\n2\n2\n2\n2\n1\n1\n2\n2\n2\n2\n1\n1\n2\n1\n2\n1\n2\n1\n1\n2\n2\n2\n2\n1\n2\n1\n2\n1\n1\n2\n1\n1\n1\n1\n2\n1\n2\n1\n1\n1\n2\n1\n1\n2\n1\n2\n1\n1\n2\n2\n1\n1\n1\n1\n1\n2\n2\n2\n2\n2\n2\n2\n1\n1\n2\n1\n2\n2\n2\n2\n2\n2\n1\n1\n2\n2\n1\n2\n1\n1\n2\n1\n1\n2\n1\n2\n1\n1\n2\n2\n1\n2\n1\n2\n1\n1\n2\n1\n2\n2\n1\n1\n2\n1\n2\n1\n1\n1\n2\n2\n1\n1\n2\n2\n2\n1\n2\n1\n1\n1\n1\n1\n2\n1\n1\n1\n2\n2\n1\n1\n2\n1\n1\n1\n2\n1\n1\n1\n2\n1\n2\n1\n1\n1\n1\n2\n1\n2\n1\n1\n1\n2",
+   "out": "653"
+  },
+  {
+   "in": "173 23\n2\n1\n1\n1\n1\n2\n1\n2\n2\n1\n1\n2\n2\n2\n2\n2\n2\n1\n2\n1\n2\n2\n1\n2\n2\n1\n2\n1\n1\n2\n1\n1\n1\n1\n1\n2\n2\n2\n2\n2\n2\n2\n2\n1\n1\n1\n1\n2\n2\n1\n1\n2\n1\n1\n2\n1\n1\n2\n1\n2\n1\n1\n2\n1\n2\n1\n1\n2\n2\n2\n1\n1\n2\n1\n2\n2\n2\n1\n1\n2\n1\n1\n1\n2\n2\n1\n2\n1\n1\n2\n1\n1\n1\n1\n1\n1\n1\n1\n2\n1\n1\n1\n1\n1\n1\n2\n2\n1\n2\n2\n2\n1\n2\n1\n2\n1\n2\n1\n2\n2\n2\n1\n1\n2\n1\n1\n2\n2\n1\n2\n1\n2\n2\n2\n2\n1\n2\n1\n2\n2\n2\n2\n2\n2\n2\n1\n1\n2\n2\n1\n1\n1\n2\n1\n1\n1\n2\n1\n1\n2\n2\n2\n2\n2\n2\n1\n2\n2\n1\n1\n2\n1\n1",
+   "out": "141"
+  },
+  {
+   "in": "172 6\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1",
+   "out": "172"
+  },
+  {
+   "in": "108 25\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2",
+   "out": "67"
+  },
+  {
+   "in": "11 3\n1\n1\n1\n1\n1\n1\n1\n1\n2\n2\n2",
+   "out": "11"
+  },
+  {
+   "in": "13 30\n1\n1\n2\n1\n1\n1\n2\n1\n2\n2\n1\n1\n1",
+   "out": "13"
+  },
+  {
+   "in": "421 20\n2\n1\n2\n2\n1\n2\n2\n1\n2\n2\n1\n2\n2\n2\n2\n1\n2\n2\n1\n1\n2\n2\n2\n2\n1\n1\n2\n2\n2\n1\n2\n1\n2\n1\n1\n1\n1\n1\n1\n2\n2\n1\n1\n1\n2\n2\n2\n2\n2\n1\n2\n2\n2\n1\n2\n1\n2\n2\n1\n2\n1\n1\n1\n2\n1\n2\n2\n1\n1\n2\n1\n1\n2\n1\n1\n1\n2\n1\n2\n2\n1\n2\n2\n2\n1\n1\n1\n1\n1\n2\n1\n2\n1\n2\n2\n1\n1\n2\n1\n1\n1\n1\n1\n2\n1\n1\n1\n2\n2\n1\n1\n1\n1\n1\n1\n2\n1\n2\n1\n2\n2\n2\n1\n1\n2\n2\n2\n2\n1\n2\n1\n1\n2\n2\n1\n2\n1\n2\n2\n1\n2\n2\n2\n2\n1\n2\n2\n2\n1\n1\n1\n1\n2\n1\n2\n1\n2\n2\n2\n1\n2\n2\n2\n2\n1\n1\n1\n2\n2\n2\n2\n1\n1\n1\n2\n2\n2\n1\n2\n2\n1\n1\n1\n1\n1\n1\n2\n2\n2\n2\n2\n2\n1\n1\n1\n1\n2\n2\n2\n2\n2\n1\n1\n2\n1\n2\n2\n1\n1\n2\n2\n2\n1\n2\n1\n2\n2\n1\n2\n2\n1\n2\n1\n1\n2\n2\n2\n1\n1\n2\n1\n2\n2\n2\n1\n1\n1\n2\n1\n1\n1\n2\n2\n2\n2\n1\n2\n1\n1\n2\n1\n1\n1\n1\n2\n1\n1\n1\n1\n2\n1\n1\n2\n2\n2\n1\n2\n1\n1\n1\n1\n1\n1\n1\n1\n2\n1\n1\n2\n1\n1\n2\n1\n1\n2\n1\n1\n2\n1\n1\n2\n2\n2\n1\n1\n2\n1\n2\n2\n2\n2\n2\n2\n1\n2\n2\n2\n2\n2\n1\n1\n2\n1\n2\n1\n2\n1\n1\n1\n2\n2\n2\n2\n1\n1\n2\n2\n1\n2\n2\n1\n1\n2\n1\n1\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n2\n2\n1\n1\n1\n1\n2\n1\n1\n2\n1\n1\n2\n1\n2\n1\n2\n2\n2\n1\n2\n2\n2\n2\n1\n2\n2\n1\n2\n2\n2\n2\n1\n2\n2\n1\n1\n1\n1\n2\n2\n2\n2\n1\n2\n1\n2\n1\n1\n2\n1\n1\n1\n2\n2\n1\n2\n1\n1\n2\n1\n2\n1\n1\n2\n2\n1\n1\n1\n1\n2\n1\n1\n1\n2\n2",
+   "out": "293"
+  },
+  {
+   "in": "55 0\n1\n1\n2\n2\n1\n2\n2\n1\n1\n1\n2\n2\n1\n2\n2\n2\n2\n1\n2\n1\n1\n1\n1\n2\n1\n2\n2\n1\n1\n1\n2\n2\n2\n1\n2\n1\n1\n2\n1\n1\n2\n2\n1\n2\n2\n2\n1\n2\n2\n2\n2\n2\n1\n2\n2",
+   "out": "24"
+  },
+  {
+   "in": "1 5\n2",
+   "out": "1"
+  },
+  {
+   "in": "1000 30\n1\n2\n2\n2\n1\n2\n2\n1\n1\n2\n1\n2\n2\n2\n2\n1\n1\n1\n2\n2\n2\n1\n2\n1\n2\n1\n2\n1\n2\n2\n2\n2\n1\n2\n1\n2\n1\n1\n1\n2\n2\n1\n2\n2\n2\n2\n1\n1\n2\n1\n2\n1\n1\n2\n1\n1\n2\n1\n1\n2\n2\n2\n1\n1\n2\n2\n1\n1\n2\n2\n1\n1\n1\n1\n1\n1\n2\n2\n2\n1\n1\n1\n2\n2\n2\n1\n1\n1\n2\n2\n2\n1\n2\n1\n1\n2\n2\n2\n2\n1\n1\n1\n2\n2\n1\n2\n1\n2\n2\n2\n2\n2\n1\n2\n1\n1\n2\n1\n2\n1\n2\n1\n1\n1\n2\n1\n1\n1\n1\n1\n1\n1\n1\n2\n2\n1\n2\n2\n2\n2\n2\n1\n1\n2\n1\n1\n2\n1\n2\n2\n1\n2\n1\n2\n1\n2\n2\n2\n2\n2\n2\n1\n1\n2\n2\n1\n2\n2\n1\n1\n1\n2\n2\n2\n1\n1\n1\n2\n2\n1\n1\n2\n2\n2\n2\n2\n1\n1\n2\n1\n2\n1\n1\n2\n1\n1\n1\n2\n1\n2\n2\n2\n2\n2\n2\n2\n1\n2\n2\n1\n2\n1\n1\n2\n1\n1\n1\n2\n2\n2\n1\n2\n1\n1\n1\n2\n2\n2\n2\n1\n2\n2\n2\n2\n2\n1\n1\n2\n2\n1\n2\n1\n2\n2\n2\n2\n1\n1\n2\n1\n1\n2\n1\n1\n2\n2\n2\n2\n2\n1\n2\n1\n2\n2\n2\n1\n1\n1\n2\n2\n1\n1\n1\n2\n2\n1\n2\n2\n1\n2\n2\n2\n2\n2\n2\n2\n1\n2\n2\n1\n1\n2\n2\n2\n1\n1\n2\n1\n2\n2\n1\n2\n1\n1\n1\n1\n2\n2\n1\n1\n1\n2\n1\n2\n2\n2\n2\n2\n2\n1\n1\n2\n1\n1\n1\n1\n1\n1\n2\n2\n2\n1\n1\n2\n2\n1\n2\n2\n2\n2\n1\n2\n2\n2\n1\n2\n2\n1\n2\n2\n1\n2\n2\n2\n1\n1\n2\n1\n2\n2\n2\n1\n2\n1\n2\n1\n1\n1\n1\n1\n1\n2\n2\n1\n1\n1\n2\n2\n1\n2\n1\n2\n2\n2\n2\n1\n2\n2\n1\n2\n1\n2\n1\n1\n2\n2\n2\n1\n2\n2\n2\n2\n2\n2\n2\n2\n1\n1\n1\n2\n1\n1\n1\n2\n2\n2\n1\n2\n1\n2\n2\n1\n2\n1\n2\n1\n1\n2\n1\n2\n1\n2\n2\n1\n1\n1\n2\n2\n2\n1\n1\n1\n2\n2\n1\n2\n2\n2\n1\n2\n2\n1\n2\n1\n2\n1\n1\n2\n1\n1\n1\n2\n2\n2\n1\n1\n1\n1\n2\n1\n1\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n2\n1\n2\n2\n1\n1\n2\n2\n2\n2\n2\n1\n1\n1\n1\n2\n2\n2\n1\n1\n1\n2\n2\n2\n2\n1\n1\n1\n2\n2\n1\n2\n2\n1\n1\n1\n2\n1\n2\n2\n1\n2\n1\n2\n2\n1\n1\n1\n2\n2\n2\n2\n2\n2\n1\n1\n2\n2\n2\n1\n1\n1\n1\n2\n1\n2\n2\n1\n1\n2\n1\n1\n1\n2\n1\n2\n2\n1\n2\n2\n1\n2\n1\n2\n1\n1\n2\n2\n1\n2\n1\n2\n1\n1\n1\n1\n1\n1\n2\n1\n1\n1\n2\n2\n1\n1\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n1\n1\n1\n2\n2\n2\n1\n2\n1\n2\n2\n1\n2\n2\n2\n2\n1\n1\n1\n2\n2\n1\n1\n1\n1\n1\n2\n2\n1\n1\n1\n1\n1\n2\n2\n2\n1\n2\n1\n2\n2\n1\n1\n1\n2\n2\n1\n2\n2\n2\n1\n2\n2\n1\n1\n2\n1\n2\n2\n2\n1\n2\n2\n1\n2\n2\n2\n2\n1\n2\n1\n2\n1\n1\n1\n1\n2\n1\n2\n1\n1\n2\n2\n1\n1\n2\n2\n1\n2\n2\n2\n1\n1\n1\n2\n2\n2\n2\n2\n2\n2\n1\n1\n1\n2\n2\n1\n1\n1\n2\n1\n1\n2\n2\n2\n2\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n1\n2\n1\n2\n2\n1\n1\n2\n1\n1\n2\n2\n2\n2\n1\n1\n2\n2\n2\n1\n1\n1\n1\n2\n2\n2\n1\n1\n1\n2\n1\n2\n2\n1\n1\n1\n2\n1\n1\n2\n1\n2\n2\n2\n1\n2\n1\n2\n2\n2\n2\n1\n1\n1\n2\n2\n1\n2\n2\n2\n1\n1\n2\n1\n2\n1\n1\n1\n2\n2\n1\n1\n2\n2\n2\n1\n2\n1\n2\n2\n2\n1\n2\n1\n1\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n2\n1\n2\n1\n2\n2\n2\n1\n1\n1\n2\n2\n2\n2\n2\n2\n2\n1\n2\n1\n2\n1\n2\n2\n1\n1\n2\n2\n2\n2\n2\n1\n1\n1\n2\n1\n2\n2\n1\n1\n1\n1\n2\n1\n1\n1\n2\n1\n1\n1\n2\n1\n2\n2\n1\n2\n1\n2\n2\n1\n2\n1\n2\n1\n2\n2\n1\n1\n1\n1\n2\n1\n1\n2\n1\n1\n2\n1\n2\n1\n2\n1\n1\n2\n2\n2\n1\n1\n1\n1\n1\n2\n2\n1\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n2\n1\n1\n1\n2\n2\n2\n1\n2\n1\n2\n1\n1\n2\n1\n2\n2\n1\n2\n1\n2\n1\n2\n1\n1\n1\n2\n2\n1\n2\n1\n1\n1\n1\n2\n1\n2\n2\n2\n1\n1\n1\n2\n2\n1\n1\n2\n1\n1\n2\n2\n2\n1\n1\n1\n2\n2\n2\n1\n1\n1\n2\n1\n1\n1\n1",
+   "out": "641"
+  }
+ ],
  "fetched_at": "2026-08-12"
 }

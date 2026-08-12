@@ -20,5 +20,71 @@
   }
  ],
  "private_tc_count": 16,
+ "private_testcases": [
+  {
+   "in": "a\ntv\nend",
+   "out": "<a> is acceptable.\n<tv> is not acceptable."
+  },
+  {
+   "in": "ptoui\nbontres\nend",
+   "out": "<ptoui> is not acceptable.\n<bontres> is not acceptable."
+  },
+  {
+   "in": "aei\nxxy\nend",
+   "out": "<aei> is not acceptable.\n<xxy> is not acceptable."
+  },
+  {
+   "in": "oo\nhello\nend",
+   "out": "<oo> is acceptable.\n<hello> is not acceptable."
+  },
+  {
+   "in": "aeiou\nbcd\ntree\nend",
+   "out": "<aeiou> is not acceptable.\n<bcd> is not acceptable.\n<tree> is acceptable."
+  },
+  {
+   "in": "ae\nabc\nbb\nee\nend",
+   "out": "<ae> is acceptable.\n<abc> is acceptable.\n<bb> is not acceptable.\n<ee> is acceptable."
+  },
+  {
+   "in": "jmxl\nttu\nqytnmk\nv\nend",
+   "out": "<jmxl> is not acceptable.\n<ttu> is not acceptable.\n<qytnmk> is not acceptable.\n<v> is not acceptable."
+  },
+  {
+   "in": "kepuy\naao\nuuuh\nend",
+   "out": "<kepuy> is acceptable.\n<aao> is not acceptable.\n<uuuh> is not acceptable."
+  },
+  {
+   "in": "uuup\nend",
+   "out": "<uuup> is not acceptable."
+  },
+  {
+   "in": "ooa\nklyczvqj\nend",
+   "out": "<ooa> is not acceptable.\n<klyczvqj> is not acceptable."
+  },
+  {
+   "in": "zgy\neeet\naaab\nk\niiit\nuuuy\nend",
+   "out": "<zgy> is not acceptable.\n<eeet> is not acceptable.\n<aaab> is not acceptable.\n<k> is not acceptable.\n<iiit> is not acceptable.\n<uuuy> is not acceptable."
+  },
+  {
+   "in": "eeo\naaaz\nf\ntybymcth\nend",
+   "out": "<eeo> is not acceptable.\n<aaaz> is not acceptable.\n<f> is not acceptable.\n<tybymcth> is not acceptable."
+  },
+  {
+   "in": "yjmvf\nsakuva\nqgjm\naaa\noooh\neeo\nliqu\nhblg\nend",
+   "out": "<yjmvf> is not acceptable.\n<sakuva> is acceptable.\n<qgjm> is not acceptable.\n<aaa> is not acceptable.\n<oooh> is not acceptable.\n<eeo> is not acceptable.\n<liqu> is acceptable.\n<hblg> is not acceptable."
+  },
+  {
+   "in": "zuxugu\nzaxefaj\nbp\nbbe\nrvpqrf\nend",
+   "out": "<zuxugu> is acceptable.\n<zaxefaj> is acceptable.\n<bp> is not acceptable.\n<bbe> is not acceptable.\n<rvpqrf> is not acceptable."
+  },
+  {
+   "in": "eeep\nygwlrw\nend",
+   "out": "<eeep> is not acceptable.\n<ygwlrw> is not acceptable."
+  },
+  {
+   "in": "h\nbbo\nxsrzkbvd\nend",
+   "out": "<h> is not acceptable.\n<bbo> is not acceptable.\n<xsrzkbvd> is not acceptable."
+  }
+ ],
  "fetched_at": "2026-08-12"
 }

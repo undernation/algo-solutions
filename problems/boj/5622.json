@@ -27,5 +27,63 @@
  "images": [
   "problems/boj/img/5622_1.webp"
  ],
+ "private_testcases": [
+  {
+   "in": "AB",
+   "out": "6"
+  },
+  {
+   "in": "ZZZZZZZZZZZZZZZ",
+   "out": "150"
+  },
+  {
+   "in": "AAAAAAAAAAAAAAA",
+   "out": "45"
+  },
+  {
+   "in": "PQRSPQRSPQRSPQR",
+   "out": "120"
+  },
+  {
+   "in": "PQRSWXYZPQRSWXY",
+   "out": "134"
+  },
+  {
+   "in": "ADGJMPTW",
+   "out": "52"
+  },
+  {
+   "in": "CFILOSVZ",
+   "out": "52"
+  },
+  {
+   "in": "MOZ",
+   "out": "24"
+  },
+  {
+   "in": "ABZ",
+   "out": "16"
+  },
+  {
+   "in": "SSSSSSSSSSSSSSS",
+   "out": "120"
+  },
+  {
+   "in": "ABCDEFGHIJKLMNO",
+   "out": "75"
+  },
+  {
+   "in": "LMNOPQRSTUVWXYZ",
+   "out": "126"
+  },
+  {
+   "in": "AZ",
+   "out": "13"
+  },
+  {
+   "in": "ABCPQRSDEFWXYZA",
+   "out": "96"
+  }
+ ],
  "fetched_at": "2026-08-12"
 }

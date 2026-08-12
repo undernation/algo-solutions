@@ -104,8 +104,10 @@ def main():
             if not (s.get("in") or "").strip() or not (s.get("out") or "").strip():
                 bad("%s 예제 입출력 빔" % rel)
         for h in (d.get("private_testcases") or []):
-            if not (h.get("in") or "").strip() or not (h.get("out") or "").strip():
-                bad("%s 히든TC 입출력 빔" % rel)
+            # 출력이 비는 건 정상일 수 있다(조건 만족 결과가 없거나 push 만 하는 케이스).
+            # 입력이 통째로 비면 파싱 사고다.
+            if not (h.get("in") or ""):
+                bad("%s 히든TC 입력이 빔" % rel)
         # 이미지
         imgs = [x for x in (d.get("images") or []) if x]
         for rel_img in imgs:

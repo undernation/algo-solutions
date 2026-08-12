@@ -23,5 +23,63 @@
  "images": [
   "problems/boj/img/1991_1.webp"
  ],
+ "private_testcases": [
+  {
+   "in": "1\nA . .",
+   "out": "A\nA\nA"
+  },
+  {
+   "in": "8\nA B .\nB C .\nC D .\nD E .\nE F .\nF G .\nG H .\nH . .",
+   "out": "ABCDEFGH\nHGFEDCBA\nHGFEDCBA"
+  },
+  {
+   "in": "8\nA . B\nB . C\nC . D\nD . E\nE . F\nF . G\nG . H\nH . .",
+   "out": "ABCDEFGH\nABCDEFGH\nHGFEDCBA"
+  },
+  {
+   "in": "2\nA B .\nB . .",
+   "out": "AB\nBA\nBA"
+  },
+  {
+   "in": "2\nA . B\nB . .",
+   "out": "AB\nAB\nBA"
+  },
+  {
+   "in": "26\nA B C\nB D E\nC F G\nD H I\nE J K\nF L M\nG N O\nH P Q\nI R S\nJ T U\nK V W\nL X Y\nM Z .\nN . .\nO . .\nP . .\nQ . .\nR . .\nS . .\nT . .\nU . .\nV . .\nW . .\nX . .\nY . .\nZ . .",
+   "out": "ABDHPQIRSEJTUKVWCFLXYMZGNO\nPHQDRISBTJUEVKWAXLYFZMCNGO\nPQHRSIDTUJVWKEBXYLZMFNOGCA"
+  },
+  {
+   "in": "15\nH . .\nE J K\nM . .\nC F G\nI . .\nD H I\nO . .\nF L M\nK . .\nB D E\nG N O\nN . .\nA B C\nJ . .\nL . .",
+   "out": "ABDHIEJKCFLMGNO\nHDIBJEKALFMCNGO\nHIDJKEBLMFNOGCA"
+  },
+  {
+   "in": "7\nA B E\nB C D\nC . .\nD . .\nE F G\nF . .\nG . .",
+   "out": "ABCDEFG\nCBDAFEG\nCDBFGEA"
+  },
+  {
+   "in": "26\nA B .\nB . C\nC D .\nD . E\nE F .\nF . G\nG H .\nH . I\nI J .\nJ . K\nK L .\nL . M\nM N .\nN . O\nO P .\nP . Q\nQ R .\nR . S\nS T .\nT . U\nU V .\nV . W\nW X .\nX . Y\nY Z .\nZ . .",
+   "out": "ABCDEFGHIJKLMNOPQRSTUVWXYZ\nBDFHJLNPRTVXZYWUSQOMKIGECA\nZYXWVUTSRQPONMLKJIHGFEDCBA"
+  },
+  {
+   "in": "15\nA B C\nB D E\nC F G\nD H I\nE J K\nF L M\nG N O\nH . .\nI . .\nJ . .\nK . .\nL . .\nM . .\nN . .\nO . .",
+   "out": "ABDHIEJKCFLMGNO\nHDIBJEKALFMCNGO\nHIDJKEBLMFNOGCA"
+  },
+  {
+   "in": "26\nA . B\nB . C\nC . D\nD . E\nE . F\nF . G\nG . H\nH . I\nI . J\nJ . K\nK . L\nL . M\nM . N\nN . O\nO . P\nP . Q\nQ . R\nR . S\nS . T\nT . U\nU . V\nV . W\nW . X\nX . Y\nY . Z\nZ . .",
+   "out": "ABCDEFGHIJKLMNOPQRSTUVWXYZ\nABCDEFGHIJKLMNOPQRSTUVWXYZ\nZYXWVUTSRQPONMLKJIHGFEDCBA"
+  },
+  {
+   "in": "7\nA B C\nB D E\nC F G\nD . .\nE . .\nF . .\nG . .",
+   "out": "ABDECFG\nDBEAFCG\nDEBFGCA"
+  },
+  {
+   "in": "12\nA B L\nB C .\nC D .\nD E .\nE F .\nF G .\nG H .\nH I .\nI J .\nJ K .\nK . .\nL . .",
+   "out": "ABCDEFGHIJKL\nKJIHGFEDCBAL\nKJIHGFEDCBLA"
+  },
+  {
+   "in": "20\nA B .\nB C .\nC D .\nD E .\nE F .\nF G .\nG H .\nH I .\nI J .\nJ K .\nK L .\nL M .\nM N .\nN O .\nO P .\nP Q .\nQ R .\nR S .\nS T .\nT . .",
+   "out": "ABCDEFGHIJKLMNOPQRST\nTSRQPONMLKJIHGFEDCBA\nTSRQPONMLKJIHGFEDCBA"
+  }
+ ],
  "fetched_at": "2026-08-12"
 }

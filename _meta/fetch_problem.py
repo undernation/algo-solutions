@@ -126,11 +126,32 @@ EXT = {"image/png": "png", "image/jpeg": "jpg", "image/gif": "gif",
        "image/webp": "webp", "image/svg+xml": "svg"}
 
 
+# 코딩살구 이미지는 loading="lazy" 라, 화면 밖 이미지는 naturalWidth 가 0 이다.
+# 그 상태로 수집하면 조용히 빠진다(실제로 19236·19238·20061 이 6→2, 7→2, 11→4 장으로 줄었다).
+# 먼저 스크롤해 전부 로드시킨 뒤 수집한다.
+LOAD_IMGS_JS = r"""async () => {
+  const imgs = [...document.querySelectorAll('img')];
+  imgs.forEach(i => { i.loading = 'eager'; i.scrollIntoView({block:'center'}); });
+  window.scrollTo(0, 0);
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  for (let k = 0; k < 20; k++) {
+    const pending = imgs.filter(i => !i.complete || i.naturalWidth === 0).length;
+    if (!pending) break;
+    await wait(250);
+  }
+  return imgs.filter(i => i.naturalWidth > 0).length;
+}"""
+
+
 def collect_images(pg, site, no):
     """본문을 [[IMG:n]] 마커가 박힌 텍스트로 만들고 이미지 파일을 저장.
 
     반환 (text, [상대경로...]). 컨테이너를 못 찾으면 ("", []).
     """
+    try:
+        pg.evaluate(LOAD_IMGS_JS)          # lazy 이미지 전부 로드될 때까지
+    except Exception:
+        pass
     got, imgs, text = None, [], ""
     for sel in STMT_ROOT.get(site) or []:
         try:
@@ -203,13 +224,46 @@ PRIV_JS = r"""() => {
 }"""
 
 
-def fetch_private_tc(pg):
-    """'모두 보기'를 눌러 프라이빗 테스트케이스를 펼친 뒤 수집."""
-    try:
-        pg.click("text=모두 보기", timeout=8000)
-        pg.wait_for_timeout(2600)
-    except Exception:
-        pass                                  # 이미 펼쳐졌거나 버튼이 없으면 그대로 진행
+# 원문 HTML 을 받아 브라우저 안에서 파싱한다.
+#
+# 처음에는 "모두 보기"를 눌러 DOM 을 펼친 뒤 긁었는데, 테스트케이스가 큰 문제에서
+# 브라우저가 통째로 멈췄다(BOJ 2792 는 원문만 12.9MB — 이걸 DOM 노드로 렌더링하면
+# 죽는다). 데이터는 어차피 서버 렌더링된 HTML 에 이미 들어 있으므로,
+# fetch 로 원문만 받아 정규식으로 뽑는다. 렌더링이 없어 크기와 무관하게 빠르다.
+# 12.9MB 문자열을 파이썬으로 옮기지 않도록 파싱까지 브라우저에서 끝낸다.
+PRIV_FETCH_JS = r"""async (no) => {
+  const r = await fetch('/problems/detail/' + no, {credentials: 'include'});
+  if (!r.ok) return JSON.stringify({err: 'HTTP ' + r.status});
+  const t = await r.text();
+  const ins = {}, outs = {};
+  const re = /class="salgu-panel-label">프라이빗\s*(입력|출력)\s*(\d+)<\/div>[\s\S]*?<pre class="salgu-plain-block[^"]*">([\s\S]*?)<\/pre>/g;
+  let m;
+  while ((m = re.exec(t)) !== null) {
+    const v = m[3]
+      .replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+      .replace(/&quot;/g, '"').replace(/&#x27;/g, "'").replace(/&amp;/g, '&')
+      // 공백만 있는 입력(BOJ 1152 단어의 개수 등)이 통째로 지워지지 않게 개행만 정리한다
+      .replace(/\r\n/g, '\n').replace(/\n+$/, '');
+    (m[1] === '입력' ? ins : outs)[m[2]] = v;
+  }
+  const out = [];
+  Object.keys(ins).sort((a, b) => (+a) - (+b)).forEach(k => {
+    if (ins[k] !== undefined && outs[k] !== undefined) out.push({in: ins[k], out: outs[k]});
+  });
+  return JSON.stringify({tc: out, size: t.length});
+}"""
+
+
+def fetch_private_tc(pg, no=None):
+    """프라이빗 테스트케이스 수집. no 를 주면 원문 HTML 방식(권장)."""
+    if no:
+        try:
+            d = json.loads(pg.evaluate(PRIV_FETCH_JS, str(no)))
+            if d.get("tc"):
+                return d["tc"]
+        except Exception:
+            pass
+    # 폴백 — 이미 펼쳐진 DOM 에서 긁기(작은 문제에서만 안전)
     try:
         return json.loads(pg.evaluate(PRIV_JS))
     except Exception:
@@ -447,7 +501,7 @@ def main():
         d = parser(t, pg.url)
         apply_images(pg, d)
         if d.get("site") == "BOJ" and d.get("private_tc_count"):
-            d["private_testcases"] = fetch_private_tc(pg)
+            d["private_testcases"] = fetch_private_tc(pg, d.get("no"))
         # SWEA 는 공식 테스트케이스 파일을 받아 채점 가능한 형태로 만든다.
         if d.get("site") == "SWEA":
             m = re.search(r"contestProbId=([A-Za-z0-9+/=]+)", pg.url)

@@ -24,5 +24,63 @@
   }
  ],
  "private_tc_count": 14,
+ "private_testcases": [
+  {
+   "in": "1\nzz yy xx ww vv",
+   "out": "[z]z yy xx ww vv"
+  },
+  {
+   "in": "4\nAlpha\nalpha\nALPHA\naLpHa",
+   "out": "[A]lpha\na[l]pha\nAL[P]HA\naLp[H]a"
+  },
+  {
+   "in": "5\na\nb\nc\nd\nax by cz dw ev",
+   "out": "[a]\n[b]\n[c]\n[d]\nax by cz dw [e]v"
+  },
+  {
+   "in": "4\nab\nba\naab\nbba",
+   "out": "[a]b\n[b]a\naab\nbba"
+  },
+  {
+   "in": "8\nsun\nsunny\nsundry\nsunset\nsunday\nsundae\nsunlit\nsunk",
+   "out": "[s]un\ns[u]nny\nsu[n]dry\nsuns[e]t\nsun[d]ay\nsund[a]e\nsun[l]it\nsun[k]"
+  },
+  {
+   "in": "30\naa\nbb\ncc\ndd\nee\nff\ngg\nhh\nii\njj\nkk\nll\nmm\nnn\noo\npp\nqq\nrr\nss\ntt\naa bb cc dd uu\naa bb cc dd vv\naa bb cc dd ww\naa bb cc dd xx\naa bb cc dd yy\naa bb cc dd zz\nabc def ghi jkl mno\nzyxwvutsrq ponmlkjihg\nq\naaaaaaaaaa bbbbbbbbbb cccccccccc dddddddddd eeeeeeeeee",
+   "out": "[a]a\n[b]b\n[c]c\n[d]d\n[e]e\n[f]f\n[g]g\n[h]h\n[i]i\n[j]j\n[k]k\n[l]l\n[m]m\n[n]n\n[o]o\n[p]p\n[q]q\n[r]r\n[s]s\n[t]t\naa bb cc dd [u]u\naa bb cc dd [v]v\naa bb cc dd [w]w\naa bb cc dd [x]x\naa bb cc dd [y]y\naa bb cc dd [z]z\nabc def ghi jkl mno\nzyxwvutsrq ponmlkjihg\nq\naaaaaaaaaa bbbbbbbbbb cccccccccc dddddddddd eeeeeeeeee"
+  },
+  {
+   "in": "3\nab\nba\naba abab abababc",
+   "out": "[a]b\n[b]a\naba abab ababab[c]"
+  },
+  {
+   "in": "6\ntab tab tab\ntab tab tab\ntab tab tab\ntab tab tab\ntab tab tab\ntab tab tab",
+   "out": "[t]ab tab tab\nt[a]b tab tab\nta[b] tab tab\ntab tab tab\ntab tab tab\ntab tab tab"
+  },
+  {
+   "in": "6\np\nq\nr\ns\nt\npqr st puv",
+   "out": "[p]\n[q]\n[r]\n[s]\n[t]\npqr st p[u]v"
+  },
+  {
+   "in": "6\na\nj\nz\nk\nabcdefghij klmnopqrst uvwxyzabcd efghijklmn opqrstuvwx\njjjjjjjjjj kkkkkkkkkk aaaaaaaaaa zzzzzzzzzz jjjjjjjjjj",
+   "out": "[a]\n[j]\n[z]\n[k]\nabcdefghij klmnopqrst [u]vwxyzabcd efghijklmn opqrstuvwx\njjjjjjjjjj kkkkkkkkkk aaaaaaaaaa zzzzzzzzzz jjjjjjjjjj"
+  },
+  {
+   "in": "5\nqr\nq\nrs\ns\nr",
+   "out": "[q]r\nq\n[r]s\n[s]\nr"
+  },
+  {
+   "in": "6\nx\ny\nxg yh\nxh yg\nw\nwx wy wz",
+   "out": "[x]\n[y]\nx[g] yh\nx[h] yg\n[w]\nwx wy w[z]"
+  },
+  {
+   "in": "7\nquiz\nQuiz\nQUIZ\nuk\nUk\nUK\nqUiZ",
+   "out": "[q]uiz\nQ[u]iz\nQU[I]Z\nu[k]\nUk\nUK\nqUi[Z]"
+  },
+  {
+   "in": "30\nbamhc b jnnakjk\nmdlejjai\nifkik ai\nmla jjn cclmbjmmg bi\nbnileincn nednagl iadnanjm da cdjba\nkgfagam\nkeffahcan\ndflkgaci efkdm\ne lfh emfbb khdak ilglnleacc\nahfkl\nka\ndiifliaijf ichmegbk n\nhfeaageljl ddeadngb cghja\ndhlnlhk l acbmeba dflchhmdjl ghbel\nkal\nnfh cil lk ig gndnik\ndbdifhm kkclkanj hfd\njmjde l\nglcbkhfck lebfidfa hc\nmb l jegick fidiegmf\nhebe lkekc ga eedahlhec\nhf cfnmnabg\nflikbbd kjmad\ndaee eakbijdia fiee mndnh\nkecclil afge b elklhmh\nckggbfbe f agbakhda\nj hdgk lb anbmmjjiid edmmlfkf\naffh nkiembdi eibeibidbc akikjij mhj\nkb bhi\neng cle",
+   "out": "[b]amhc b jnnakjk\n[m]dlejjai\n[i]fkik ai\nmla [j]jn cclmbjmmg bi\nbnileincn [n]ednagl iadnanjm da cdjba\n[k]gfagam\nk[e]ffahcan\n[d]flkgaci efkdm\ne [l]fh emfbb khdak ilglnleacc\n[a]hfkl\nka\ndii[f]liaijf ichmegbk n\n[h]feaageljl ddeadngb cghja\ndhlnlhk l acbmeba dflchhmdjl [g]hbel\nkal\nnfh [c]il lk ig gndnik\ndbdifhm kkclkanj hfd\njmjde l\nglcbkhfck lebfidfa hc\nmb l jegick fidiegmf\nhebe lkekc ga eedahlhec\nhf cfnmnabg\nflikbbd kjmad\ndaee eakbijdia fiee mndnh\nkecclil afge b elklhmh\nckggbfbe f agbakhda\nj hdgk lb anbmmjjiid edmmlfkf\naffh nkiembdi eibeibidbc akikjij mhj\nkb bhi\neng cle"
+  }
+ ],
  "fetched_at": "2026-08-12"
 }

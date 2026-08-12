@@ -28,5 +28,63 @@
   }
  ],
  "private_tc_count": 14,
+ "private_testcases": [
+  {
+   "in": "black\nblack\nblack",
+   "out": "0"
+  },
+  {
+   "in": "black\nblack\nwhite",
+   "out": "0"
+  },
+  {
+   "in": "white\ngrey\nblack",
+   "out": "98"
+  },
+  {
+   "in": "black\nviolet\norange",
+   "out": "7000"
+  },
+  {
+   "in": "red\nbrown\ngrey",
+   "out": "2100000000"
+  },
+  {
+   "in": "red\nred\ngrey",
+   "out": "2200000000"
+  },
+  {
+   "in": "grey\nwhite\nwhite",
+   "out": "89000000000"
+  },
+  {
+   "in": "red\nred\nred",
+   "out": "2200"
+  },
+  {
+   "in": "grey\ngrey\ngrey",
+   "out": "8800000000"
+  },
+  {
+   "in": "blue\nbrown\nblack",
+   "out": "61"
+  },
+  {
+   "in": "white\nred\nwhite",
+   "out": "92000000000"
+  },
+  {
+   "in": "grey\ngreen\nblue",
+   "out": "85000000"
+  },
+  {
+   "in": "black\nbrown\nbrown",
+   "out": "10"
+  },
+  {
+   "in": "violet\nblack\ngreen",
+   "out": "7000000"
+  }
+ ],
  "fetched_at": "2026-08-12"
 }

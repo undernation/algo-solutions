@@ -33,5 +33,103 @@
   }
  ],
  "private_tc_count": 24,
+ "private_testcases": [
+  {
+   "in": "AAABC",
+   "out": "I'm Sorry Hansoo"
+  },
+  {
+   "in": "AABBCC",
+   "out": "ABCCBA"
+  },
+  {
+   "in": "ABCDDCBA",
+   "out": "ABCDDCBA"
+  },
+  {
+   "in": "ZZZAAAABB",
+   "out": "AABZZZBAA"
+  },
+  {
+   "in": "RRRRRRRRRRRRRRRRRRR",
+   "out": "RRRRRRRRRRRRRRRRRRR"
+  },
+  {
+   "in": "XXXXXX",
+   "out": "XXXXXX"
+  },
+  {
+   "in": "FFFFXFF",
+   "out": "FFFXFFF"
+  },
+  {
+   "in": "M",
+   "out": "M"
+  },
+  {
+   "in": "MBBZMBYAZBYBYAZZAYMMYYMYZYZBABBAAAMMMZMYZAAYZBMAZB",
+   "out": "AAAAABBBBBMMMMMYYYYYZZZZZZZZZZYYYYYMMMMMBBBBBAAAAA"
+  },
+  {
+   "in": "KRKFXFFMXKFRFFKRMRMFFKKMRR",
+   "out": "FFFFKKKMMRRRXXRRRMMKKKFFFF"
+  },
+  {
+   "in": "SLXSZXXYSXEXLWLXXEXZWSZWEXEWYESYSEHESW",
+   "out": "I'm Sorry Hansoo"
+  },
+  {
+   "in": "XZQXXQQTXXTWQZXXQXZQQZQQZQZXQXQWXZZQXTZZQZXXWQX",
+   "out": "I'm Sorry Hansoo"
+  },
+  {
+   "in": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+   "out": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
+  },
+  {
+   "in": "DDTDDDDTTTDD",
+   "out": "DDDDTTTTDDDD"
+  },
+  {
+   "in": "CCCUUCCUCCCUUUCUU",
+   "out": "CCCCUUUUCUUUUCCCC"
+  },
+  {
+   "in": "D",
+   "out": "D"
+  },
+  {
+   "in": "YBYZAZBBYMYAAMYAMZYMBZAABYMYBMMMAYZBZBZBMAZYAMBZAZ",
+   "out": "AAAAABBBBBMMMMMYYYYYZZZZZZZZZZYYYYYMMMMMBBBBBAAAAA"
+  },
+  {
+   "in": "JQUKJWWQJXQXKJQXJKJWQXUKQKXUWXKWUQWQ",
+   "out": "JJJKKKQQQQUUWWWXXXXXXWWWUUQQQQKKKJJJ"
+  },
+  {
+   "in": "RFFFQFFFQQFQQ",
+   "out": "I'm Sorry Hansoo"
+  },
+  {
+   "in": "WWMWWMWMWAAMWGWWAGGAAM",
+   "out": "I'm Sorry Hansoo"
+  },
+  {
+   "in": "BBBBBBBBBB",
+   "out": "BBBBBBBBBB"
+  },
+  {
+   "in": "QQQQQQQQ",
+   "out": "QQQQQQQQ"
+  },
+  {
+   "in": "IEUEEJJUSISIJIJISEUSJEJUSSJUSISJESUEJJS",
+   "out": "EEEIIIJJJJJSSSSSUUUEUUUSSSSSJJJJJIIIEEE"
+  },
+  {
+   "in": "I",
+   "out": "I"
+  }
+ ],
  "fetched_at": "2026-08-12"
 }

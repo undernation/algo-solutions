@@ -20,5 +20,63 @@
   }
  ],
  "private_tc_count": 14,
+ "private_testcases": [
+  {
+   "in": "zyx",
+   "out": "zyx"
+  },
+  {
+   "in": "bdac",
+   "out": "badc"
+  },
+  {
+   "in": "facge",
+   "out": "afceg"
+  },
+  {
+   "in": "acefcebd",
+   "out": "abecfecd"
+  },
+  {
+   "in": "dbfabacdb",
+   "out": "abafbdcbd"
+  },
+  {
+   "in": "feaeadc",
+   "out": "aeaefdc"
+  },
+  {
+   "in": "ebdaedcedea",
+   "out": "adbecdeaede"
+  },
+  {
+   "in": "aaaaaaacbabacbaba",
+   "out": "aaaaaaaababcababc"
+  },
+  {
+   "in": "zzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+   "out": "zzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
+  },
+  {
+   "in": "aabbcddcbccdb",
+   "out": "aabbbdccbcddc"
+  },
+  {
+   "in": "dacbabaadaadbca",
+   "out": "aababcadaadacbd"
+  },
+  {
+   "in": "zkktnfyrsflokayc",
+   "out": "akolfsryfntkkzyc"
+  },
+  {
+   "in": "bbbbbabababaaabbbaabababbababbaaabbbbbbabbaaaaabba",
+   "out": "aaaaabbabbbbbbaaabbababbababaabbbaaababababbbbbbab"
+  },
+  {
+   "in": "afwhdqdyipzmmqdymbewsjcbmukzmkqbqhwftnuhiddsfouxax",
+   "out": "aaxuofsddihuntfwhqbqkmzkumbcjswebmydqmmzpiydqdhwfx"
+  }
+ ],
  "fetched_at": "2026-08-12"
 }

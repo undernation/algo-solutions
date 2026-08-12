@@ -20,5 +20,111 @@
   }
  ],
  "private_tc_count": 26,
+ "private_testcases": [
+  {
+   "in": "1\n3\na hat\nb hat\nc face",
+   "out": "5"
+  },
+  {
+   "in": "1\n1\na mask",
+   "out": "1"
+  },
+  {
+   "in": "1\n4\na hat\nb face\nc face\nd hat",
+   "out": "8"
+  },
+  {
+   "in": "1\n5\na head\nb head\nc body\nd legs\ne legs",
+   "out": "17"
+  },
+  {
+   "in": "1\n2\na a\nb b",
+   "out": "3"
+  },
+  {
+   "in": "3\n0\n3\na head\nb head\nc eye\n4\naa face\nbb face\ncc body\ndd body",
+   "out": "0\n5\n8"
+  },
+  {
+   "in": "5\n5\nturban headgear\nhat headgear\nsweater headgear\nskirt headgear\njeans headgear\n1\nheadband face\n2\nheels footwear\nshoes footwear\n4\nsocks footwear\nnecklace footwear\ncap footwear\nboots footwear\n2\nglasses hand\nsunglasses hand",
+   "out": "5\n1\n2\n4\n2"
+  },
+  {
+   "in": "1\n4\nhoodie outerwear\ncap accessory\nscarf face\nbracelet footwear",
+   "out": "15"
+  },
+  {
+   "in": "2\n30\ncap bottom\nheadband outerwear\njacket face\nlens bottom\nring outerwear\njeans face\nskirt bottom\nsneakers outerwear\nscarf face\nsocks bottom\nsweater outerwear\ntshirt face\nsandals bottom\nshirt outerwear\nhoodie face\nwatch bottom\nbracelet outerwear\ncoat face\npants bottom\nheels outerwear\nmakeup face\nshoes bottom\nglasses outerwear\nboots face\nnecklace bottom\ndress outerwear\nhat face\nbelt bottom\nsunglasses outerwear\nmask face\n20\nmask face\nturban accessory\nmakeup outerwear\njacket eyewear\nsneakers footwear\nlens top\nscarf face\nboots accessory\nsocks outerwear\ncoat eyewear\nbracelet footwear\ncap top\nnecklace face\nheadband accessory\nshirt outerwear\nring eyewear\nwatch footwear\ndress top\npants face\nheels accessory",
+   "out": "1330\n6399"
+  },
+  {
+   "in": "100\n4\ncap hand\nlens headgear\nsocks face\nsandals hand\n0\n2\nlens face\nturban face\n2\nsunglasses bottom\nglasses bottom\n1\nshoes top\n5\nsneakers eyewear\nsweater top\nskirt hand\njacket eyewear\nmask top\n5\nshoes neck\nboots face\ncap top\ntshirt bottom\nsunglasses neck\n0\n1\nmakeup bottom\n5\nhoodie eyewear\npants accessory\nmakeup eyewear\ngloves accessory\nhat eyewear\n3\nheadband top\nglasses top\njacket top\n4\ncoat headgear\nsocks outerwear\nring face\nwatch top\n2\nsunglasses outerwear\npants hand\n5\ncoat face\npants face\nsandals face\nmask face\nheels face\n3\nsocks accessory\nheadband face\ngloves accessory\n0\n5\nmask accessory\nglasses accessory\nsneakers accessory\nshoes accessory\nnecklace accessory\n3\nhoodie accessory\nsunglasses outerwear\nboots hand\n2\nheels headgear\nmakeup eyewear\n2\nmask top\nglasses top\n0\n0\n0\n2\nglasses accessory\nboots face\n5\nwatch footwear\nheels headgear\npants bottom\ncoat eyewear\nnecklace footwear\n5\ndress bottom\nbracelet bottom\nmask bottom\ncap bottom\nsunglasses bottom\n0\n5\nboots eyewear\nshirt hand\nring face\nshoes outerwear\ndress footwear\n2\nheadband bottom\nshirt bottom\n2\njacket neck\ngloves neck\n4\nnecklace face\nmakeup eyewear\nbracelet footwear\nbelt top\n4\nsneakers top\nsweater hand\npants headgear\nbracelet top\n3\nnecklace headgear\nhat bottom\ncap headgear\n2\nhat bottom\nsunglasses bottom\n0\n1\nbracelet face\n5\ntshirt top\nmakeup footwear\nheadband headgear\nboots face\nshirt accessory\n5\nmask footwear\nsweater neck\nmakeup face\nskirt bottom\nbelt eyewear\n1\nsneakers top\n0\n2\ncap accessory\nskirt eyewear\n0\n4\njeans hand\nsunglasses neck\nsocks accessory\nheadband hand\n2\nskirt top\nturban top\n1\nnecklace neck\n2\nsunglasses face\nhoodie neck\n2\nhoodie neck\nring neck\n0\n4\nwatch neck\nlens top\ntshirt footwear\nskirt neck\n1\nscarf outerwear\n2\ncap outerwear\nbracelet hand\n4\nmask hand\nnecklace bottom\nwatch top\nbracelet hand\n3\nheels face\nscarf face\njeans face\n1\nheadband face\n1\nboots face\n5\nbracelet accessory\nhat hand\nshirt outerwear\nsandals neck\nmask accessory\n4\nturban outerwear\ndress headgear\nshoes hand\ncap outerwear\n4\nsandals top\nglasses accessory\njacket top\nshirt accessory\n3\nhat outerwear\nscarf outerwear\nbracelet outerwear\n4\nskirt bottom\ncoat headgear\nsocks accessory\nheadband eyewear\n0\n2\nshirt outerwear\nskirt outerwear\n3\nturban neck\nsweater headgear\ntshirt neck\n3\nshirt headgear\ntshirt top\nsandals headgear\n1\njeans eyewear\n2\nscarf face\ncap face\n0\n2\nnecklace neck\nsandals neck\n4\nsocks top\nshoes face\npants top\nscarf face\n2\nbracelet accessory\nheels eyewear\n3\nhoodie neck\njeans neck\nbelt neck\n5\ndress hand\nshirt headgear\nmakeup eyewear\nheels neck\njeans outerwear\n3\nsocks top\ncoat neck\ncap face\n3\nheels footwear\nsunglasses hand\nturban accessory\n3\nbracelet top\njacket top\ncoat top\n1\nhoodie accessory\n3\njacket outerwear\nturban eyewear\ntshirt outerwear\n1\nbelt face\n3\ncoat footwear\nsunglasses footwear\njeans footwear\n3\nbracelet face\nglasses face\nshirt face\n0\n4\ntshirt footwear\ndress outerwear\ncoat neck\nhoodie footwear\n3\npants face\nmakeup face\nwatch face\n5\nhoodie neck\nmask outerwear\nbelt eyewear\nskirt face\nbracelet neck\n0\n1\nglasses footwear\n5\nbelt neck\npants outerwear\ngloves headgear\nmakeup bottom\nring neck\n1\npants neck\n4\npants headgear\nhat headgear\njacket headgear\nwatch headgear\n2\nbracelet headgear\nturban face\n5\nhoodie top\ncap accessory\nhat headgear\nwatch top\nsneakers accessory\n3\nboots bottom\nhat footwear\nturban bottom\n0\n0\n1\nlens neck\n0\n2\nhat top\nwatch accessory\n4\ndress eyewear\nmask outerwear\nbracelet headgear\nmakeup face\n0\n1\njacket hand",
+   "out": "11\n0\n2\n2\n1\n17\n23\n0\n1\n11\n3\n15\n3\n5\n5\n0\n5\n7\n3\n2\n0\n0\n0\n3\n23\n5\n0\n31\n2\n2\n15\n11\n5\n2\n0\n1\n31\n31\n1\n0\n3\n0\n11\n2\n1\n3\n2\n0\n11\n1\n3\n11\n3\n1\n1\n23\n11\n8\n3\n15\n0\n2\n5\n5\n1\n2\n0\n2\n8\n3\n3\n31\n7\n7\n3\n1\n5\n1\n3\n3\n0\n11\n3\n23\n0\n1\n23\n1\n4\n3\n17\n5\n0\n0\n1\n0\n3\n15\n0\n1"
+  },
+  {
+   "in": "1\n10\nnecklace face\nring face\njeans face\ndress face\nmakeup face\njacket face\nsocks face\nmask face\nshoes face\nsandals face",
+   "out": "10"
+  },
+  {
+   "in": "7\n0\n9\nheels face\nnecklace top\nwatch face\nsocks top\ngloves face\nhoodie top\nmakeup face\ndress top\nboots face\n1\njacket neck\n2\nsneakers eyewear\nbracelet face\n2\njeans headgear\nshirt outerwear\n10\nhoodie neck\ndress footwear\nmask top\njeans accessory\ncap outerwear\nlens face\ncoat bottom\nnecklace neck\nheadband footwear\nsneakers top\n6\nshoes neck\nbelt neck\ngloves neck\nsandals neck\nsneakers neck\ndress neck",
+   "out": "0\n29\n1\n3\n3\n431\n6"
+  },
+  {
+   "in": "1\n0",
+   "out": "0"
+  },
+  {
+   "in": "4\n4\nmask eyewear\nsocks eyewear\nlens eyewear\nskirt eyewear\n3\nheadband face\nmask face\nshirt face\n4\njacket face\nsandals face\ncoat face\nsunglasses face\n5\ntshirt bottom\nboots bottom\nnecklace bottom\nskirt bottom\ncoat bottom",
+   "out": "4\n3\n4\n5"
+  },
+  {
+   "in": "2\n4\nskirt top\ndress outerwear\nglasses neck\nscarf hand\n5\nsneakers face\nmakeup accessory\ntshirt headgear\ngloves hand\nboots neck",
+   "out": "15\n31"
+  },
+  {
+   "in": "2\n22\nscarf neck\nglasses footwear\njacket face\nhoodie hand\nring top\npants outerwear\nsocks headgear\nbracelet bottom\nlens eyewear\nsweater accessory\ntshirt neck\ndress footwear\nmakeup face\nheadband hand\nboots top\ncap outerwear\nwatch headgear\nhat bottom\nheels eyewear\ncoat accessory\nsandals neck\njeans footwear\n19\nheels bottom\nsocks face\nbelt neck\npants headgear\nmakeup hand\njeans outerwear\njacket top\nsunglasses bottom\ngloves face\nglasses neck\nboots headgear\nbracelet hand\nskirt outerwear\nnecklace top\nshoes bottom\nmask face\nshirt neck\nring headgear\nturban hand",
+   "out": "104975\n9215"
+  },
+  {
+   "in": "100\n3\nmask accessory\nsandals bottom\nhat top\n0\n2\ncoat footwear\nhoodie face\n1\nsocks footwear\n4\nmask neck\nhat bottom\nshoes headgear\nring neck\n4\nheels top\nscarf top\ndress top\nturban top\n4\ngloves headgear\nbracelet headgear\nglasses headgear\nsocks headgear\n0\n0\n0\n5\nlens neck\nbelt hand\nheadband neck\nshoes hand\nglasses neck\n4\nscarf bottom\nglasses bottom\njacket bottom\nbracelet bottom\n5\ntshirt face\nshoes bottom\nnecklace footwear\npants outerwear\nboots face\n0\n3\nshoes face\nsunglasses footwear\nhat accessory\n4\nsocks neck\nsneakers footwear\nshoes outerwear\ncoat neck\n3\nbracelet top\nshirt top\nbelt top\n3\nsandals hand\nheadband hand\nwatch hand\n5\ndress bottom\ntshirt hand\nsweater bottom\nturban hand\nshoes bottom\n3\nboots top\njeans footwear\nhoodie top\n1\nshirt neck\n1\nnecklace accessory\n3\njacket bottom\nshirt face\nnecklace bottom\n2\nskirt face\nbracelet footwear\n1\ncap face\n5\nsocks face\nsweater neck\ncap hand\nhoodie footwear\nsunglasses accessory\n1\nsweater eyewear\n2\nglasses footwear\nsocks footwear\n1\nturban hand\n5\npants outerwear\nshoes neck\nsunglasses face\nshirt headgear\ncap footwear\n3\ntshirt face\nring footwear\nboots bottom\n3\nwatch hand\nnecklace outerwear\nbracelet hand\n0\n3\nsocks outerwear\nheels eyewear\ncoat face\n5\nscarf headgear\nsocks neck\nglasses headgear\nskirt neck\nheels headgear\n5\njacket eyewear\nlens footwear\nsweater eyewear\ndress footwear\nwatch eyewear\n3\ncoat top\nbracelet hand\nmask top\n4\nskirt face\nshirt neck\nmask outerwear\nlens headgear\n1\nheels outerwear\n2\nscarf eyewear\nshirt eyewear\n3\ndress outerwear\ncap outerwear\ngloves outerwear\n3\nring headgear\nmask headgear\njeans headgear\n3\nskirt eyewear\nmask bottom\nheadband eyewear\n2\nshoes accessory\npants footwear\n1\nsunglasses eyewear\n5\nshoes eyewear\nturban face\nsocks hand\ncap accessory\ngloves eyewear\n2\nhat neck\nglasses face\n0\n4\nhoodie face\nheadband bottom\nnecklace hand\nshirt headgear\n3\ndress eyewear\nsneakers eyewear\nshirt eyewear\n3\nbelt face\njacket face\nscarf face\n0\n1\nskirt headgear\n1\nturban headgear\n3\nsocks bottom\nhat top\nshirt bottom\n5\ncap eyewear\npants headgear\ngloves outerwear\nheadband eyewear\nsocks headgear\n2\nskirt headgear\nheels neck\n2\nheadband footwear\nscarf hand\n0\n0\n0\n0\n2\nboots hand\nmakeup eyewear\n2\ncap footwear\nsocks bottom\n3\nheels face\nbelt face\nsandals face\n4\nsocks hand\npants top\nsunglasses hand\nlens top\n0\n2\nheels headgear\nsocks headgear\n3\nturban bottom\nsocks bottom\nskirt bottom\n5\nturban eyewear\nsocks eyewear\nmakeup eyewear\nbracelet eyewear\nheadband eyewear\n2\nglasses headgear\nsandals headgear\n0\n4\nmakeup top\nsweater outerwear\nlens hand\ngloves footwear\n1\nbelt accessory\n3\nwatch hand\nscarf hand\nbelt hand\n4\nwatch outerwear\npants bottom\nsandals accessory\nhat hand\n1\nglasses top\n0\n3\nheadband face\nturban footwear\nlens accessory\n0\n5\nsunglasses face\nboots neck\nheels accessory\njacket hand\nbracelet top\n4\nwatch eyewear\nsneakers hand\ndress top\nshoes eyewear\n3\nglasses footwear\nhat accessory\nbelt headgear\n2\ntshirt neck\nnecklace accessory\n0\n1\ndress outerwear\n1\ngloves top\n0\n2\nbracelet footwear\nsocks outerwear\n4\nshirt footwear\njacket hand\nlens footwear\ncoat hand\n2\njacket hand\nsneakers hand\n3\nsweater top\nturban top\nhoodie top\n1\njacket eyewear\n2\nsocks top\nturban top\n0\n0\n1\nbelt footwear\n3\nsandals bottom\nscarf top\nheadband bottom\n3\nmakeup outerwear\nsneakers accessory\nhoodie hand\n3\njacket footwear\nskirt eyewear\ncoat footwear",
+   "out": "7\n0\n3\n1\n11\n4\n4\n0\n0\n0\n11\n4\n23\n0\n7\n11\n3\n3\n11\n5\n1\n1\n5\n3\n1\n31\n1\n2\n1\n31\n7\n5\n0\n7\n11\n11\n5\n15\n1\n2\n3\n3\n5\n3\n1\n23\n3\n0\n15\n3\n3\n0\n1\n1\n5\n17\n3\n3\n0\n0\n0\n0\n3\n3\n3\n8\n0\n2\n3\n5\n2\n0\n15\n1\n3\n15\n1\n0\n7\n0\n31\n11\n7\n3\n0\n1\n1\n0\n3\n8\n2\n3\n1\n2\n0\n0\n1\n5\n7\n5"
+  },
+  {
+   "in": "1\n10\nboots bottom\ndress bottom\nmask bottom\nhoodie bottom\npants bottom\nbracelet bottom\nheadband bottom\nshirt bottom\nring bottom\nwatch bottom",
+   "out": "10"
+  },
+  {
+   "in": "8\n6\nhoodie hand\ndress top\ncoat hand\nscarf top\nturban hand\nmakeup top\n3\ngloves face\nscarf face\nglasses face\n4\nshoes neck\nsocks eyewear\nnecklace headgear\nlens neck\n1\nsunglasses hand\n4\nhat bottom\nsweater outerwear\nhoodie bottom\nsocks outerwear\n5\nsocks hand\nlens top\nnecklace hand\ncoat top\nheels hand\n6\nbracelet bottom\nnecklace headgear\nskirt bottom\nmask headgear\nlens bottom\ngloves headgear\n7\nheels eyewear\nskirt eyewear\nturban eyewear\nsweater eyewear\nsneakers eyewear\nlens eyewear\nsandals eyewear",
+   "out": "15\n3\n11\n1\n8\n11\n15\n7"
+  },
+  {
+   "in": "5\n0\n0\n0\n0\n0",
+   "out": "0\n0\n0\n0\n0"
+  },
+  {
+   "in": "5\n2\nheels hand\nlens hand\n4\nsunglasses footwear\npants footwear\nsandals footwear\ndress footwear\n4\njacket headgear\nsunglasses headgear\ndress headgear\nsweater headgear\n1\ngloves bottom\n2\nshoes accessory\nring accessory",
+   "out": "2\n4\n4\n1\n2"
+  },
+  {
+   "in": "1\n2\npants hand\nlens outerwear",
+   "out": "3"
+  },
+  {
+   "in": "2\n28\nglasses footwear\nsocks bottom\nskirt face\nlens neck\ntshirt eyewear\ngloves accessory\nsunglasses outerwear\ncap footwear\ndress bottom\nring face\njeans neck\ncoat eyewear\nmakeup accessory\nmask outerwear\nshirt footwear\nscarf bottom\nheels face\nhat neck\nnecklace eyewear\nheadband accessory\nsweater outerwear\nsandals footwear\nwatch bottom\nshoes face\njacket neck\nturban eyewear\nbracelet accessory\nboots outerwear\n18\nring hand\ndress face\nheadband headgear\ncap hand\nheels face\npants headgear\ngloves hand\nshoes face\nbelt headgear\nnecklace hand\ntshirt face\nsweater headgear\nshirt hand\nmakeup face\nmask headgear\nhat hand\nsandals face\nwatch headgear",
+   "out": "78124\n342"
+  },
+  {
+   "in": "100\n1\ncoat hand\n1\nscarf accessory\n3\nshoes eyewear\npants accessory\nring eyewear\n0\n3\nskirt accessory\nsweater outerwear\nglasses face\n1\nnecklace face\n0\n1\nhoodie bottom\n5\nsneakers accessory\nwatch footwear\nglasses bottom\njeans accessory\nboots footwear\n1\ntshirt face\n0\n0\n3\nheadband top\nsneakers headgear\ntshirt bottom\n3\nring neck\nshirt top\nhoodie hand\n1\ncoat hand\n5\nwatch bottom\nmask footwear\nturban bottom\nsocks footwear\nsunglasses bottom\n1\nturban eyewear\n2\nskirt top\nscarf top\n3\nsweater top\nring top\njeans top\n4\ntshirt footwear\nlens bottom\nboots footwear\nturban bottom\n1\ncoat headgear\n5\nmask bottom\nmakeup hand\nbracelet face\nheadband footwear\nring bottom\n3\nglasses bottom\nsandals eyewear\nhoodie bottom\n4\nskirt footwear\ndress headgear\nsandals face\njeans top\n4\nmakeup bottom\nring headgear\nheels bottom\ndress headgear\n2\nwatch outerwear\npants hand\n4\nwatch accessory\nnecklace accessory\nheels accessory\nshoes accessory\n1\nsweater accessory\n0\n2\nshoes accessory\nsweater top\n2\nheadband accessory\nwatch neck\n4\nsneakers accessory\nturban neck\npants outerwear\nscarf eyewear\n0\n1\nboots footwear\n0\n2\nsandals eyewear\nlens eyewear\n4\njacket hand\nboots face\ngloves footwear\nhoodie accessory\n0\n3\njacket neck\njeans neck\nwatch neck\n5\nsweater top\nheels bottom\nsocks eyewear\ndress accessory\nlens footwear\n3\nnecklace hand\nshoes hand\nheadband hand\n4\nheels eyewear\ngloves outerwear\nnecklace eyewear\nheadband outerwear\n0\n0\n5\ncoat footwear\ncap footwear\nring footwear\nsweater footwear\njeans footwear\n0\n0\n2\nheadband eyewear\nsandals eyewear\n3\nwatch accessory\nmask footwear\nlens face\n0\n0\n4\ncap eyewear\njacket bottom\nlens eyewear\nheels bottom\n5\nheadband bottom\njacket eyewear\nnecklace headgear\nlens bottom\ncoat eyewear\n4\nmask face\ngloves accessory\ndress bottom\ncap face\n5\nnecklace neck\ncap headgear\nheels top\nturban neck\nlens headgear\n3\nscarf accessory\nsneakers neck\nskirt hand\n3\njacket eyewear\nmask accessory\nskirt outerwear\n2\njacket footwear\nwatch footwear\n2\nskirt neck\nglasses neck\n2\nsandals face\nsneakers face\n4\nshirt eyewear\nmask outerwear\nlens eyewear\npants outerwear\n2\njacket outerwear\nbracelet bottom\n4\nturban face\nheels footwear\ndress face\nshirt footwear\n2\nhat accessory\nbracelet accessory\n3\nwatch face\nsandals outerwear\nheadband face\n4\nshoes footwear\nsunglasses footwear\nwatch footwear\nsneakers footwear\n5\nturban neck\nwatch footwear\ntshirt bottom\nbelt hand\nlens neck\n1\nnecklace outerwear\n1\nbracelet eyewear\n3\nskirt neck\nboots bottom\nsunglasses face\n3\nsneakers eyewear\njacket top\ncoat eyewear\n3\nshoes neck\nhat neck\nsunglasses neck\n4\nwatch outerwear\nsandals outerwear\ngloves outerwear\ncap outerwear\n2\njeans neck\njacket neck\n1\nnecklace hand\n5\njeans eyewear\nbracelet headgear\nturban accessory\ncap top\njacket eyewear\n3\nsneakers top\nsunglasses top\npants top\n0\n1\nskirt neck\n4\nbelt face\ntshirt accessory\nsocks hand\nsandals face\n2\nscarf footwear\nshirt eyewear\n4\ncap outerwear\nbracelet face\nsocks bottom\nmask hand\n5\nscarf top\nhat outerwear\nheels headgear\nnecklace neck\nturban top\n0\n1\nsocks headgear\n4\ncoat top\nmask bottom\nnecklace top\njeans bottom\n5\nshoes footwear\ncap neck\nlens footwear\nnecklace neck\nheadband footwear\n1\ncap face\n4\nlens hand\nnecklace top\nheels hand\ncoat top\n3\nbelt accessory\nhoodie accessory\nskirt accessory\n2\nbelt outerwear\nsweater face\n1\ngloves eyewear\n3\nscarf neck\nsneakers neck\ndress neck\n0\n2\njacket accessory\nshoes accessory\n2\ndress accessory\njeans face\n5\ndress footwear\nshoes hand\nsandals footwear\nboots hand\nmask footwear\n0\n0\n3\ntshirt footwear\nskirt outerwear\npants hand",
+   "out": "1\n1\n5\n0\n7\n1\n0\n1\n17\n1\n0\n0\n7\n7\n1\n11\n1\n2\n3\n8\n1\n23\n5\n15\n8\n3\n4\n1\n0\n3\n3\n15\n0\n1\n0\n2\n15\n0\n3\n31\n3\n8\n0\n0\n5\n0\n0\n2\n7\n0\n0\n8\n17\n11\n17\n7\n7\n2\n2\n2\n8\n3\n8\n2\n5\n4\n23\n1\n1\n7\n5\n3\n4\n2\n1\n23\n3\n0\n1\n11\n3\n15\n23\n0\n1\n8\n11\n1\n8\n3\n3\n1\n3\n0\n2\n3\n11\n0\n0\n7"
+  },
+  {
+   "in": "1\n8\nmakeup accessory\nglasses accessory\njacket accessory\nturban accessory\nsunglasses accessory\nscarf accessory\nnecklace accessory\ncap accessory",
+   "out": "8"
+  },
+  {
+   "in": "5\n9\nshirt neck\npants top\ncoat footwear\ndress bottom\ntshirt neck\nsunglasses top\nboots footwear\nhoodie bottom\nskirt neck\n3\nsandals top\nboots eyewear\nshirt outerwear\n8\ncoat hand\nturban top\ncap neck\nbracelet footwear\nscarf bottom\nshirt accessory\nring face\nskirt eyewear\n2\ncoat eyewear\nheadband bottom\n7\nscarf neck\ncoat eyewear\nshirt neck\nhoodie eyewear\nsandals neck\nhat eyewear\nsocks neck",
+   "out": "107\n7\n255\n3\n19"
+  }
+ ],
  "fetched_at": "2026-08-12"
 }

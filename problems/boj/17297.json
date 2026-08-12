@@ -29,5 +29,63 @@
   }
  ],
  "private_tc_count": 14,
+ "private_testcases": [
+  {
+   "in": "5",
+   "out": "i"
+  },
+  {
+   "in": "6",
+   "out": "Messi Messi Gimossi"
+  },
+  {
+   "in": "14",
+   "out": "Messi Messi Gimossi"
+  },
+  {
+   "in": "2",
+   "out": "e"
+  },
+  {
+   "in": "13",
+   "out": "i"
+  },
+  {
+   "in": "6677",
+   "out": "M"
+  },
+  {
+   "in": "3715",
+   "out": "M"
+  },
+  {
+   "in": "497150364",
+   "out": "i"
+  },
+  {
+   "in": "613538869",
+   "out": "i"
+  },
+  {
+   "in": "485738844",
+   "out": "s"
+  },
+  {
+   "in": "509566392",
+   "out": "Messi Messi Gimossi"
+  },
+  {
+   "in": "278108255",
+   "out": "s"
+  },
+  {
+   "in": "114706270",
+   "out": "Messi Messi Gimossi"
+  },
+  {
+   "in": "1036420864",
+   "out": "o"
+  }
+ ],
  "fetched_at": "2026-08-12"
 }

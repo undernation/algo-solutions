@@ -39,5 +39,63 @@
  "images": [
   "problems/boj/img/1331_1.webp"
  ],
+ "private_testcases": [
+  {
+   "in": "A1\nC2\nE1\nF3\nE5\nC6\nA5\nC4\nB6\nA4\nB2\nD1\nF2\nD3\nF4\nE6\nC5\nA6\nB4\nA2\nC1\nE2\nD4\nF5\nD6\nB5\nA3\nB1\nC3\nE4\nF6\nD5\nE3\nF1\nD2\nB3",
+   "out": "Valid"
+  },
+  {
+   "in": "A1\nC2\nE1\nF3\nE5\nC6\nA5\nB3\nC1\nA2\nB4\nA6\nC5\nE6\nF4\nD3\nF2\nD1\nB2\nA4\nB6\nD5\nF6\nE4\nD6\nF5\nD4\nE2\nC3\nB5\nA3\nB1\nD2\nF1\nE3\nC4",
+   "out": "Invalid"
+  },
+  {
+   "in": "A1\nC2\nE1\nF3\nE5\nC6\nA5\nC4\nB6\nA4\nB2\nD1\nA1\nC2\nE1\nF3\nE5\nC6\nA5\nC4\nB6\nA4\nB2\nD1\nA1\nC2\nE1\nF3\nE5\nC6\nA5\nC4\nB6\nA4\nB2\nD1",
+   "out": "Invalid"
+  },
+  {
+   "in": "A1\nC2\nE1\nF3\nE5\nC6\nA5\nC4\nB6\nA4\nB2\nD1\nF2\nD3\nF4\nE6\nC5\nA6\nA2\nB4\nC1\nE2\nD4\nF5\nD6\nB5\nA3\nB1\nC3\nE4\nF6\nD5\nE3\nF1\nD2\nB3",
+   "out": "Invalid"
+  },
+  {
+   "in": "E1\nC2\nA1\nF3\nE5\nC6\nA5\nC4\nB6\nA4\nB2\nD1\nF2\nD3\nF4\nE6\nC5\nA6\nB4\nA2\nC1\nE2\nD4\nF5\nD6\nB5\nA3\nB1\nC3\nE4\nF6\nD5\nE3\nF1\nD2\nB3",
+   "out": "Invalid"
+  },
+  {
+   "in": "A1\nC2\nE1\nF3\nE5\nC6\nA5\nC4\nB6\nA4\nB2\nD1\nF2\nD3\nF4\nE6\nC5\nA6\nB4\nA2\nC1\nE2\nD4\nF5\nD6\nB5\nA3\nB1\nC3\nE4\nF6\nD5\nD2\nF1\nE3\nB3",
+   "out": "Invalid"
+  },
+  {
+   "in": "D4\nD4\nD4\nD4\nD4\nD4\nD4\nD4\nD4\nD4\nD4\nD4\nD4\nD4\nD4\nD4\nD4\nD4\nD4\nD4\nD4\nD4\nD4\nD4\nD4\nD4\nD4\nD4\nD4\nD4\nD4\nD4\nD4\nD4\nD4\nD4",
+   "out": "Invalid"
+  },
+  {
+   "in": "B1\nC3\nE4\nF6\nD5\nE3\nF1\nD2\nB3\nA1\nC2\nE1\nF3\nE5\nC6\nA5\nC4\nB6\nA4\nB2\nD1\nF2\nD3\nF4\nE6\nC5\nA6\nB4\nA2\nC1\nE2\nD4\nF5\nD6\nB5\nA3",
+   "out": "Valid"
+  },
+  {
+   "in": "B3\nD2\nF1\nE3\nD5\nF6\nE4\nC3\nB1\nA3\nB5\nD6\nF5\nD4\nE2\nC1\nA2\nB4\nA6\nC5\nE6\nF4\nD3\nF2\nD1\nB2\nA4\nB6\nC4\nA5\nC6\nE5\nF3\nE1\nC2\nA1",
+   "out": "Valid"
+  },
+  {
+   "in": "A1\nC2\nE1\nF3\nE5\nB5\nA5\nC4\nB6\nA4\nB2\nD1\nF2\nD3\nF4\nE6\nC5\nA6\nB4\nA2\nC1\nE2\nD4\nF5\nD6\nC6\nA3\nB1\nC3\nE4\nF6\nD5\nE3\nF1\nD2\nB3",
+   "out": "Invalid"
+  },
+  {
+   "in": "A1\nC2\nE1\nF3\nE5\nC6\nA5\nC4\nB6\nA4\nB2\nD1\nF2\nD3\nF4\nE6\nC5\nA1\nB4\nA2\nC1\nE2\nD4\nF5\nD6\nB5\nA3\nB1\nC3\nE4\nF6\nD5\nE3\nF1\nD2\nB3",
+   "out": "Invalid"
+  },
+  {
+   "in": "D4\nE6\nF4\nE2\nC1\nA2\nC3\nA4\nB6\nD5\nF6\nE4\nF2\nD1\nB2\nC4\nA5\nC6\nE5\nF3\nE1\nD3\nB4\nA6\nC5\nB3\nA1\nC2\nE3\nF1\nD2\nB1\nA3\nB5\nD6\nF5",
+   "out": "Valid"
+  },
+  {
+   "in": "A1\nC2\nA1\nC2\nA1\nC2\nA1\nC2\nA1\nC2\nA1\nC2\nA1\nC2\nA1\nC2\nA1\nC2\nA1\nC2\nA1\nC2\nA1\nC2\nA1\nC2\nA1\nC2\nA1\nC2\nA1\nC2\nA1\nC2\nA1\nC2",
+   "out": "Invalid"
+  },
+  {
+   "in": "F1\nD2\nB1\nA3\nB5\nD6\nF5\nD4\nE6\nF4\nE2\nC1\nA2\nC3\nA4\nB6\nD5\nF6\nE4\nF2\nD1\nB2\nC4\nA5\nC6\nE5\nF3\nE1\nD3\nB4\nA6\nC5\nB3\nA1\nC2\nE3",
+   "out": "Valid"
+  }
+ ],
  "fetched_at": "2026-08-12"
 }

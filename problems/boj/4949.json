@@ -21,5 +21,71 @@
   }
  ],
  "private_tc_count": 16,
+ "private_testcases": [
+  {
+   "in": "([])\n.",
+   "out": "yes"
+  },
+  {
+   "in": "([)]\n.",
+   "out": "no"
+  },
+  {
+   "in": "(()[[]])([])\n.",
+   "out": "yes"
+  },
+  {
+   "in": "]\n.",
+   "out": "no"
+  },
+  {
+   "in": "So when I die (the [first] I will see in (heaven) is a score list).\n.",
+   "out": "yes"
+  },
+  {
+   "in": "[(]).\nA (B [C] D) E.\nA (B [C) D].\nNo brackets here.\n.",
+   "out": "no\nyes\nno\nyes"
+  },
+  {
+   "in": ")\nyz(c\n([)]\n())\n.",
+   "out": "no\nno\nno\nno"
+  },
+  {
+   "in": "ccy]az\n.",
+   "out": "no"
+  },
+  {
+   "in": "so when i (was) [young] me.\nso when i (was) [young] me.\nso when i (was) [young] me.\nx(x\n.",
+   "out": "yes\nyes\nyes\nno"
+  },
+  {
+   "in": "([])\n([])\n([])\nso when i (was) [young] me.\nso when i (was) [young] me.\n.",
+   "out": "yes\nyes\nyes\nyes\nyes"
+  },
+  {
+   "in": "azy yac [y [)c()zc))ac[)[y[\n([])\n([])\n([])\n(\n.",
+   "out": "no\nyes\nyes\nyes\nno"
+  },
+  {
+   "in": "z)xbyy[b[xxx][]cb\n())\nz\n([)]\n([)]\n.",
+   "out": "no\nno\nyes\nno\nno"
+  },
+  {
+   "in": "so when i (was) [young] me.\n(c  ayy]\n())\nso when i (was) [young] me.\n(()\n.",
+   "out": "yes\nno\nno\nyes\nno"
+  },
+  {
+   "in": "([])\n([)]\nso when i (was) [young] me.\n[(cx(\n.",
+   "out": "yes\nno\nyes\nno"
+  },
+  {
+   "in": "so when i (was) [young] me.\n]z[cby(zx(c)[z](ay\n([])\n.",
+   "out": "yes\nno\nyes"
+  },
+  {
+   "in": ")\n[\n.",
+   "out": "no\nno"
+  }
+ ],
  "fetched_at": "2026-08-12"
 }

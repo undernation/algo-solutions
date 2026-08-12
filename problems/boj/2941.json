@@ -36,5 +36,63 @@
   }
  ],
  "private_tc_count": 14,
+ "private_testcases": [
+  {
+   "in": "a",
+   "out": "1"
+  },
+  {
+   "in": "dz=",
+   "out": "1"
+  },
+  {
+   "in": "ddz=",
+   "out": "2"
+  },
+  {
+   "in": "dz",
+   "out": "2"
+  },
+  {
+   "in": "ljljljljljljljljljljljljljljljljljljljljljljljljljljljljljljljljljljljljljljljljljljljljljljljljljlj",
+   "out": "50"
+  },
+  {
+   "in": "abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghij",
+   "out": "100"
+  },
+  {
+   "in": "ljnj",
+   "out": "2"
+  },
+  {
+   "in": "nlj",
+   "out": "2"
+  },
+  {
+   "in": "abz=",
+   "out": "3"
+  },
+  {
+   "in": "c=c-c=c-",
+   "out": "4"
+  },
+  {
+   "in": "dz=dz=dz=dz=dz=dz=dz=dz=dz=dz=dz=dz=dz=dz=dz=dz=dz=dz=dz=dz=dz=dz=dz=dz=dz=dz=dz=dz=dz=dz=dz=dz=dz=a",
+   "out": "34"
+  },
+  {
+   "in": "d-z=",
+   "out": "2"
+  },
+  {
+   "in": "s=z=",
+   "out": "2"
+  },
+  {
+   "in": "c=c-dz=d-ljnjs=z=",
+   "out": "8"
+  }
+ ],
  "fetched_at": "2026-08-12"
 }

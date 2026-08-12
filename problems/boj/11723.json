@@ -21,5 +21,99 @@
   }
  ],
  "private_tc_count": 23,
+ "private_testcases": [
+  {
+   "in": "10\nadd 1\ncheck 1\ncheck 2\nremove 1\ncheck 1\ntoggle 2\ncheck 2\nall\ncheck 20\nempty",
+   "out": "1\n0\n0\n1\n1"
+  },
+  {
+   "in": "8\nadd 3\nadd 3\ncheck 3\ntoggle 3\ncheck 3\ntoggle 3\ncheck 3\ncheck 4",
+   "out": "1\n0\n1\n0"
+  },
+  {
+   "in": "9\nall\nremove 10\ncheck 10\ncheck 9\nempty\ncheck 9\nadd 20\ncheck 20\ncheck 1",
+   "out": "0\n1\n0\n1\n0"
+  },
+  {
+   "in": "7\nadd 5\nremove 5\nremove 5\ncheck 5\ntoggle 5\ncheck 5\ncheck 6",
+   "out": "0\n1\n0"
+  },
+  {
+   "in": "11\nadd 1\nadd 2\nadd 20\ncheck 20\ntoggle 20\ncheck 20\nall\ncheck 15\nempty\ncheck 1\ncheck 20",
+   "out": "1\n0\n1\n0\n0"
+  },
+  {
+   "in": "12\ncheck 1\nadd 1\nadd 20\ncheck 20\ntoggle 1\ncheck 1\nall\ncheck 7\nremove 20\ncheck 20\nempty\ncheck 7",
+   "out": "0\n1\n0\n1\n0\n0"
+  },
+  {
+   "in": "12\nall\ntoggle 10\ntoggle 11\ntoggle 19\ntoggle 15\ntoggle 1\ntoggle 19\ntoggle 18\nempty\ncheck 19\ncheck 13\ncheck 9",
+   "out": "0\n0\n0"
+  },
+  {
+   "in": "24\ntoggle 1\ntoggle 20\nadd 20\nremove 16\ncheck 20\nremove 20\nremove 6\ntoggle 20\ncheck 1\ncheck 20\ncheck 1\nremove 1\ntoggle 14\ncheck 7\nadd 7\ntoggle 1\ncheck 20\ntoggle 20\nremove 1\nadd 20\nadd 20\ncheck 20\ntoggle 20\ntoggle 14",
+   "out": "1\n1\n1\n1\n0\n1\n1"
+  },
+  {
+   "in": "214\nall\ncheck 4\nempty\ncheck 13\ncheck 6\ncheck 16\ncheck 20\nall\ncheck 20\nempty\nall\nempty\ncheck 18\ncheck 9\ncheck 13\ncheck 2\ncheck 18\nall\nempty\nall\ncheck 20\ncheck 3\nempty\ncheck 12\ncheck 13\ncheck 2\nall\ncheck 13\ncheck 16\ncheck 1\ncheck 3\nempty\ncheck 1\ncheck 15\ncheck 2\ncheck 12\ncheck 13\nall\ncheck 3\ncheck 7\ncheck 20\nempty\ncheck 19\ncheck 17\ncheck 15\ncheck 15\ncheck 15\nall\ncheck 14\ncheck 8\nempty\ncheck 19\nall\nempty\ncheck 11\ncheck 16\ncheck 18\nall\ncheck 13\ncheck 8\ncheck 16\ncheck 10\nempty\ncheck 9\ncheck 11\nall\ncheck 10\ncheck 3\ncheck 9\ncheck 10\nempty\ncheck 10\ncheck 19\ncheck 20\ncheck 13\nall\nempty\ncheck 19\ncheck 3\ncheck 8\nall\ncheck 6\ncheck 6\ncheck 13\ncheck 2\nempty\ncheck 2\ncheck 2\ncheck 3\ncheck 13\ncheck 6\nall\ncheck 1\ncheck 8\ncheck 9\ncheck 8\ncheck 5\nempty\nall\ncheck 11\ncheck 10\nempty\ncheck 11\nall\nempty\ncheck 19\ncheck 6\nall\nempty\ncheck 13\ncheck 18\nall\ncheck 6\ncheck 2\ncheck 5\ncheck 4\nempty\ncheck 8\ncheck 3\nall\ncheck 20\ncheck 20\ncheck 18\ncheck 19\nempty\ncheck 18\ncheck 1\ncheck 9\ncheck 11\nall\ncheck 12\ncheck 5\ncheck 13\ncheck 17\ncheck 12\nempty\ncheck 17\ncheck 10\ncheck 13\ncheck 11\ncheck 10\nall\ncheck 10\ncheck 11\ncheck 3\ncheck 2\ncheck 5\nempty\ncheck 6\ncheck 3\nall\ncheck 12\ncheck 18\ncheck 13\ncheck 9\nempty\ncheck 11\ncheck 17\ncheck 15\nall\nempty\ncheck 10\nall\ncheck 13\ncheck 10\nempty\ncheck 3\ncheck 19\ncheck 16\ncheck 11\ncheck 18\nall\ncheck 1\ncheck 18\nempty\ncheck 14\ncheck 15\ncheck 8\ncheck 15\nall\ncheck 10\ncheck 9\ncheck 16\ncheck 17\ncheck 3\nempty\ncheck 13\nall\nempty\ncheck 7\nall\ncheck 1\nempty\nall\ncheck 11\ncheck 2\ncheck 13\nempty\ncheck 18\ncheck 9\ncheck 6\nall\ncheck 15\nempty\ncheck 20\ncheck 16\ncheck 9\nall\ncheck 19\ncheck 12\nempty\ncheck 17\ncheck 1\ncheck 19",
+   "out": "1\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n1\n1\n0\n0\n0\n1\n1\n1\n1\n0\n0\n0\n0\n0\n1\n1\n1\n0\n0\n0\n0\n0\n1\n1\n0\n0\n0\n0\n1\n1\n1\n1\n0\n0\n1\n1\n1\n1\n0\n0\n0\n0\n0\n0\n0\n1\n1\n1\n1\n0\n0\n0\n0\n0\n1\n1\n1\n1\n1\n1\n1\n0\n0\n0\n0\n0\n1\n1\n1\n1\n0\n0\n1\n1\n1\n1\n0\n0\n0\n0\n1\n1\n1\n1\n1\n0\n0\n0\n0\n0\n1\n1\n1\n1\n1\n0\n0\n1\n1\n1\n1\n0\n0\n0\n0\n1\n1\n0\n0\n0\n0\n0\n1\n1\n0\n0\n0\n0\n1\n1\n1\n1\n1\n0\n0\n1\n1\n1\n1\n0\n0\n0\n1\n0\n0\n0\n1\n1\n0\n0\n0"
+  },
+  {
+   "in": "72\nremove 13\nempty\ncheck 10\nadd 7\nremove 9\ncheck 18\nall\nall\ntoggle 3\nremove 3\nadd 19\nempty\nall\nall\nall\nremove 17\ntoggle 2\nadd 3\ncheck 1\ncheck 8\ntoggle 10\ntoggle 1\nremove 17\ncheck 8\ncheck 18\nremove 20\nall\ncheck 7\nremove 10\nadd 14\nall\nremove 20\nadd 2\nadd 8\ntoggle 2\nall\nadd 19\nempty\nadd 7\ntoggle 17\nall\nadd 18\nremove 13\ntoggle 15\nadd 15\nremove 20\nempty\ntoggle 15\nadd 14\nremove 18\nempty\nadd 20\nadd 11\nall\ntoggle 5\nall\ncheck 18\nremove 11\ncheck 9\nremove 1\nadd 20\nempty\nremove 5\ncheck 10\nadd 17\nremove 9\nempty\nremove 13\nremove 19\ncheck 20\nempty\ntoggle 7",
+   "out": "0\n0\n1\n1\n1\n1\n1\n1\n1\n0\n0"
+  },
+  {
+   "in": "13\nremove 9\nremove 4\nremove 8\nremove 1\ncheck 6\ncheck 12\ncheck 18\nremove 18\ncheck 8\nremove 9\ncheck 7\ncheck 19\nremove 16",
+   "out": "0\n0\n0\n0\n0\n0"
+  },
+  {
+   "in": "19\nall\ntoggle 7\ntoggle 10\ntoggle 5\ntoggle 18\ntoggle 9\ntoggle 20\ntoggle 15\nempty\ncheck 18\ncheck 6\ncheck 8\ncheck 5\ncheck 8\ncheck 13\ncheck 3\ncheck 8\ncheck 4\ncheck 4",
+   "out": "0\n0\n0\n0\n0\n0\n0\n0\n0\n0"
+  },
+  {
+   "in": "28\nremove 10\ncheck 20\ncheck 1\ncheck 20\nremove 2\nadd 20\ntoggle 20\nremove 4\nadd 20\nremove 1\ntoggle 20\nadd 1\ncheck 20\nadd 20\ncheck 20\nadd 1\nremove 1\nremove 1\nremove 1\nadd 20\ntoggle 5\ntoggle 1\ncheck 11\nadd 8\ncheck 20\nremove 16\ntoggle 13\ncheck 20",
+   "out": "0\n0\n0\n0\n1\n0\n1\n1"
+  },
+  {
+   "in": "270\nall\ncheck 3\ncheck 11\ncheck 17\nempty\ncheck 16\ncheck 12\ncheck 4\ncheck 20\ncheck 6\nall\ncheck 1\ncheck 14\ncheck 13\ncheck 1\ncheck 3\nempty\ncheck 13\ncheck 17\ncheck 2\ncheck 9\nall\ncheck 16\ncheck 1\nempty\ncheck 20\ncheck 19\nall\ncheck 12\ncheck 14\ncheck 2\ncheck 1\ncheck 14\nempty\ncheck 18\ncheck 7\ncheck 3\ncheck 4\nall\nempty\ncheck 6\ncheck 2\ncheck 17\ncheck 1\nall\nempty\ncheck 9\ncheck 3\ncheck 7\ncheck 19\ncheck 20\nall\ncheck 9\nempty\ncheck 11\ncheck 5\ncheck 17\ncheck 6\ncheck 17\nall\ncheck 20\ncheck 6\ncheck 17\nempty\nall\ncheck 1\ncheck 20\nempty\ncheck 14\ncheck 16\ncheck 19\nall\ncheck 10\ncheck 3\nempty\nall\nempty\ncheck 13\ncheck 20\nall\ncheck 10\ncheck 11\ncheck 19\ncheck 18\ncheck 12\nempty\ncheck 5\ncheck 20\nall\ncheck 16\ncheck 5\ncheck 17\nempty\ncheck 15\ncheck 7\ncheck 15\ncheck 5\nall\nempty\ncheck 20\ncheck 1\ncheck 9\nall\ncheck 12\ncheck 12\ncheck 6\ncheck 3\nempty\ncheck 11\ncheck 5\ncheck 18\ncheck 5\nall\ncheck 11\ncheck 10\ncheck 6\nempty\ncheck 9\ncheck 9\nall\ncheck 16\ncheck 5\ncheck 18\ncheck 17\ncheck 13\nempty\ncheck 11\ncheck 10\ncheck 20\ncheck 5\ncheck 16\nall\ncheck 7\ncheck 5\ncheck 14\ncheck 3\nempty\nall\nempty\ncheck 20\ncheck 5\nall\ncheck 12\ncheck 6\ncheck 1\ncheck 2\nempty\ncheck 4\ncheck 5\nall\ncheck 14\ncheck 7\ncheck 7\ncheck 2\nempty\ncheck 20\ncheck 15\ncheck 14\ncheck 13\nall\ncheck 6\ncheck 2\ncheck 6\ncheck 2\ncheck 16\nempty\ncheck 19\ncheck 15\ncheck 12\nall\ncheck 7\ncheck 9\ncheck 1\ncheck 13\ncheck 16\nempty\nall\ncheck 1\ncheck 12\ncheck 13\nempty\ncheck 12\ncheck 9\ncheck 4\ncheck 10\nall\nempty\ncheck 4\ncheck 17\ncheck 11\nall\ncheck 19\ncheck 8\ncheck 5\ncheck 19\nempty\ncheck 18\ncheck 20\ncheck 1\ncheck 14\nall\ncheck 14\ncheck 7\nempty\nall\ncheck 19\ncheck 10\ncheck 6\nempty\ncheck 17\ncheck 14\ncheck 8\nall\ncheck 3\ncheck 9\ncheck 18\ncheck 14\ncheck 6\nempty\ncheck 16\ncheck 17\nall\ncheck 1\ncheck 17\ncheck 3\ncheck 12\nempty\ncheck 10\nall\ncheck 3\ncheck 17\ncheck 11\nempty\ncheck 9\ncheck 16\ncheck 19\nall\ncheck 7\ncheck 6\ncheck 14\ncheck 18\ncheck 19\nempty\ncheck 19\ncheck 1\nall\ncheck 14\ncheck 13\ncheck 6\nempty\ncheck 4\ncheck 16\ncheck 3\nall\ncheck 3\ncheck 3\nempty\ncheck 6\nall\nempty\ncheck 19\ncheck 2\ncheck 14\ncheck 17\nall\ncheck 1\ncheck 13\nempty\ncheck 18\ncheck 16",
+   "out": "1\n1\n1\n0\n0\n0\n0\n0\n1\n1\n1\n1\n1\n0\n0\n0\n0\n1\n1\n0\n0\n1\n1\n1\n1\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n1\n1\n1\n1\n1\n0\n0\n0\n1\n1\n0\n0\n1\n1\n1\n1\n1\n0\n0\n1\n1\n1\n0\n0\n0\n0\n0\n0\n0\n1\n1\n1\n1\n0\n0\n0\n0\n1\n1\n1\n0\n0\n1\n1\n1\n1\n1\n0\n0\n0\n0\n0\n1\n1\n1\n1\n0\n0\n1\n1\n1\n1\n0\n0\n1\n1\n1\n1\n0\n0\n0\n0\n1\n1\n1\n1\n1\n0\n0\n0\n1\n1\n1\n1\n1\n1\n1\n1\n0\n0\n0\n0\n0\n0\n0\n1\n1\n1\n1\n0\n0\n0\n0\n1\n1\n1\n1\n1\n0\n0\n0\n1\n1\n1\n1\n1\n0\n0\n1\n1\n1\n1\n0\n1\n1\n1\n0\n0\n0\n1\n1\n1\n1\n1\n0\n0\n1\n1\n1\n0\n0\n0\n1\n1\n0\n0\n0\n0\n0\n1\n1\n0\n0"
+  },
+  {
+   "in": "327\nempty\nempty\ntoggle 6\nadd 3\nadd 5\nall\ntoggle 12\ntoggle 5\ncheck 20\nadd 4\ntoggle 9\nremove 2\nall\nall\nempty\nremove 9\nremove 12\nremove 3\nremove 8\nadd 6\nall\nall\nall\nall\nadd 1\nempty\nempty\nadd 16\ncheck 2\ncheck 9\ntoggle 13\nempty\nempty\ntoggle 13\nadd 7\nadd 1\nempty\nempty\nall\nadd 10\nempty\nremove 16\ncheck 1\nadd 16\nadd 17\ncheck 14\nremove 16\nall\nempty\ntoggle 6\nall\ntoggle 4\ncheck 18\ntoggle 11\nadd 15\ncheck 14\ncheck 18\nadd 11\nall\ntoggle 10\ntoggle 20\nempty\nremove 5\nadd 20\nall\nempty\ncheck 10\nempty\nall\nempty\nall\nremove 6\nremove 17\ncheck 8\nadd 12\ncheck 5\nall\ntoggle 9\nempty\nall\nremove 17\ntoggle 18\nadd 7\ncheck 1\nall\ncheck 10\ncheck 1\nremove 13\nempty\nempty\nall\ntoggle 7\ntoggle 2\nall\nall\nall\nremove 12\nadd 14\ntoggle 13\nempty\ncheck 5\ntoggle 14\nempty\nremove 18\nadd 13\nempty\nempty\ncheck 14\ntoggle 12\ntoggle 9\ntoggle 6\ntoggle 17\ncheck 18\nremove 19\nremove 16\ntoggle 9\ntoggle 18\ncheck 14\nadd 17\nremove 15\ncheck 4\nall\ntoggle 10\ntoggle 9\ncheck 1\nadd 8\nadd 18\nremove 3\nremove 11\ntoggle 14\nempty\nempty\nall\nempty\nall\nempty\nadd 4\nremove 10\nremove 12\nadd 14\nadd 10\nremove 10\ntoggle 14\ncheck 19\nadd 3\ntoggle 13\nadd 5\ntoggle 2\nall\nadd 1\ntoggle 16\nadd 11\nremove 1\nadd 13\nadd 15\nempty\ntoggle 19\ntoggle 19\nall\nempty\nremove 7\nadd 2\nadd 19\nempty\nall\nremove 17\nall\nadd 20\nempty\nall\ncheck 17\ntoggle 10\nempty\nadd 7\nall\nall\nall\nremove 15\nadd 11\nremove 1\ncheck 19\nempty\nempty\ncheck 4\ntoggle 20\nremove 12\nempty\ntoggle 4\ntoggle 17\ncheck 16\ncheck 18\nall\nadd 20\nremove 2\ntoggle 17\ncheck 4\nempty\nadd 13\nremove 7\nadd 10\nall\ntoggle 6\ntoggle 3\ncheck 5\nremove 8\ntoggle 14\ncheck 17\nremove 10\nadd 18\nremove 13\ntoggle 4\ncheck 13\ntoggle 4\nadd 19\nempty\nall\nall\ncheck 9\ncheck 8\ntoggle 6\nadd 20\nadd 9\nall\nremove 8\nadd 1\nempty\nall\nremove 16\nremove 2\ntoggle 5\nadd 10\nempty\ntoggle 13\ntoggle 2\nadd 17\nempty\nremove 4\nempty\nadd 18\nadd 1\nadd 18\ncheck 20\ntoggle 20\nall\ncheck 5\nall\nadd 10\nall\nadd 18\nadd 5\nempty\ncheck 20\nadd 19\nremove 5\ncheck 10\nempty\nall\nadd 6\ntoggle 13\nall\nempty\nremove 13\nadd 4\nremove 4\nadd 13\nremove 14\ntoggle 6\nempty\ntoggle 10\nall\nremove 7\nadd 6\nempty\ntoggle 13\nempty\nremove 7\nremove 18\nadd 14\nadd 8\nremove 7\ntoggle 8\ntoggle 13\nall\ntoggle 2\nadd 15\ntoggle 12\nadd 18\nadd 10\nadd 16\nremove 18\ncheck 10\nadd 6\nall\nremove 12\nempty\nadd 7\nadd 3\nall\nremove 20\nempty\ncheck 7\nremove 20\nall\nadd 11\nempty\ncheck 8\ncheck 12\ntoggle 6\nadd 4\nadd 14\ntoggle 13\ntoggle 13\nempty\nremove 8\nempty\ncheck 18\ntoggle 5\nremove 14\nremove 15\nremove 1\nempty\ncheck 16\nempty\nremove 1\nall\ncheck 8\ncheck 1",
+   "out": "1\n0\n0\n0\n0\n1\n1\n1\n0\n1\n1\n1\n1\n1\n0\n0\n0\n0\n0\n1\n0\n1\n1\n0\n0\n0\n1\n1\n1\n0\n1\n1\n0\n1\n0\n0\n1\n0\n0\n0\n0\n0\n1\n1"
+  },
+  {
+   "in": "16\nremove 5\nremove 20\nremove 14\nremove 14\ncheck 3\ncheck 2\nremove 1\ncheck 18\ncheck 8\ncheck 12\nremove 7\ncheck 9\nremove 17\nremove 2\ncheck 17\nremove 11",
+   "out": "0\n0\n0\n0\n0\n0\n0"
+  },
+  {
+   "in": "14\nall\ntoggle 19\ntoggle 10\ntoggle 13\ntoggle 10\ntoggle 20\ntoggle 1\ntoggle 13\ntoggle 13\nempty\ncheck 2\ncheck 20\ncheck 6\ncheck 10",
+   "out": "0\n0\n0\n0"
+  },
+  {
+   "in": "30\ncheck 4\nadd 1\nadd 18\ntoggle 19\ntoggle 1\nadd 3\nremove 1\nremove 8\ncheck 1\nadd 1\nremove 1\ncheck 20\nadd 20\ntoggle 20\ntoggle 20\nremove 20\ncheck 6\nremove 1\nremove 20\ncheck 1\ncheck 20\nadd 12\nremove 4\nremove 20\ncheck 20\ntoggle 20\ncheck 1\ncheck 17\ntoggle 1\ntoggle 20",
+   "out": "0\n0\n0\n0\n0\n0\n0\n0\n0"
+  },
+  {
+   "in": "271\nall\ncheck 12\ncheck 14\ncheck 19\ncheck 8\nempty\nall\ncheck 12\ncheck 8\nempty\ncheck 10\nall\ncheck 20\ncheck 13\ncheck 16\nempty\ncheck 19\ncheck 3\nall\nempty\ncheck 11\ncheck 13\ncheck 15\ncheck 12\ncheck 20\nall\ncheck 15\ncheck 14\ncheck 10\ncheck 12\ncheck 13\nempty\ncheck 2\ncheck 2\ncheck 3\ncheck 13\ncheck 5\nall\ncheck 17\ncheck 20\ncheck 13\nempty\ncheck 1\ncheck 14\nall\ncheck 4\nempty\nall\ncheck 9\nempty\ncheck 13\ncheck 10\ncheck 10\nall\nempty\ncheck 4\ncheck 3\nall\ncheck 18\ncheck 3\ncheck 15\ncheck 15\ncheck 8\nempty\ncheck 12\ncheck 2\ncheck 9\ncheck 16\ncheck 17\nall\nempty\ncheck 14\ncheck 12\ncheck 13\nall\ncheck 10\ncheck 12\nempty\nall\ncheck 4\ncheck 18\nempty\ncheck 10\ncheck 4\ncheck 1\ncheck 2\nall\ncheck 20\nempty\ncheck 5\ncheck 1\ncheck 20\ncheck 4\nall\ncheck 11\ncheck 16\ncheck 9\nempty\ncheck 3\ncheck 8\ncheck 4\ncheck 6\nall\ncheck 10\nempty\ncheck 2\ncheck 5\ncheck 3\ncheck 9\nall\ncheck 6\ncheck 13\ncheck 13\ncheck 7\nempty\ncheck 8\ncheck 16\ncheck 11\nall\nempty\ncheck 8\ncheck 14\ncheck 11\ncheck 16\ncheck 19\nall\ncheck 16\ncheck 2\ncheck 6\ncheck 13\ncheck 19\nempty\ncheck 5\nall\ncheck 13\ncheck 20\ncheck 6\ncheck 15\ncheck 13\nempty\nall\ncheck 14\ncheck 9\ncheck 16\nempty\nall\nempty\ncheck 15\nall\nempty\nall\ncheck 18\ncheck 7\ncheck 16\nempty\ncheck 17\nall\nempty\ncheck 7\nall\ncheck 15\ncheck 2\nempty\nall\nempty\nall\nempty\ncheck 3\ncheck 6\ncheck 1\ncheck 3\ncheck 15\nall\ncheck 17\ncheck 7\nempty\ncheck 17\ncheck 20\ncheck 18\nall\ncheck 3\ncheck 4\nempty\ncheck 11\ncheck 7\ncheck 8\nall\ncheck 2\nempty\ncheck 17\nall\ncheck 1\ncheck 12\ncheck 11\ncheck 17\nempty\ncheck 10\ncheck 16\ncheck 9\ncheck 15\nall\ncheck 11\ncheck 15\nempty\ncheck 14\nall\nempty\ncheck 13\nall\ncheck 20\ncheck 20\ncheck 15\nempty\ncheck 3\ncheck 8\ncheck 5\nall\ncheck 10\ncheck 16\ncheck 2\nempty\ncheck 13\ncheck 6\ncheck 5\nall\ncheck 9\ncheck 8\nempty\ncheck 17\nall\nempty\ncheck 1\ncheck 6\nall\nempty\ncheck 7\ncheck 6\ncheck 14\nall\ncheck 1\ncheck 3\ncheck 1\ncheck 10\nempty\ncheck 17\ncheck 7\ncheck 11\ncheck 20\ncheck 15\nall\ncheck 19\ncheck 15\ncheck 17\ncheck 10\ncheck 14\nempty\ncheck 4\ncheck 12\ncheck 12\nall\ncheck 19\ncheck 12\ncheck 11\ncheck 6\ncheck 10\nempty\ncheck 6\ncheck 2\ncheck 4\ncheck 18\ncheck 19",
+   "out": "1\n1\n1\n1\n1\n1\n0\n1\n1\n1\n0\n0\n0\n0\n0\n0\n0\n1\n1\n1\n1\n1\n0\n0\n0\n0\n0\n1\n1\n1\n0\n0\n1\n1\n0\n0\n0\n0\n0\n1\n1\n1\n1\n1\n0\n0\n0\n0\n0\n0\n0\n0\n1\n1\n1\n1\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n1\n1\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n1\n1\n1\n0\n0\n0\n0\n0\n0\n0\n0\n1\n1\n1\n1\n1\n0\n1\n1\n1\n1\n1\n1\n1\n1\n0\n1\n1\n1\n0\n0\n1\n1\n0\n0\n0\n0\n0\n1\n1\n0\n0\n0\n1\n1\n0\n0\n0\n1\n0\n1\n1\n1\n1\n0\n0\n0\n0\n1\n1\n0\n0\n1\n1\n1\n0\n0\n0\n1\n1\n1\n0\n0\n0\n1\n1\n0\n0\n0\n0\n0\n0\n1\n1\n1\n1\n0\n0\n0\n0\n0\n1\n1\n1\n1\n1\n0\n0\n0\n1\n1\n1\n1\n1\n0\n0\n0\n0\n0"
+  },
+  {
+   "in": "291\nempty\nadd 9\nremove 9\nempty\ncheck 6\nremove 16\nremove 2\nadd 15\ncheck 6\nadd 7\ntoggle 13\nall\nall\nremove 12\nall\nempty\ntoggle 3\nall\ncheck 4\nremove 11\nremove 12\nadd 3\nremove 7\ntoggle 16\ntoggle 2\nempty\ntoggle 3\nremove 13\ncheck 17\nall\nadd 14\nempty\ncheck 19\ncheck 16\nremove 1\nall\ncheck 7\nempty\nall\nall\ntoggle 3\nall\nadd 8\nall\nempty\nempty\nempty\ncheck 2\ncheck 5\nremove 14\nremove 13\nempty\ncheck 20\nempty\ntoggle 17\nadd 14\nall\nall\ncheck 10\nremove 6\ntoggle 19\nremove 18\nadd 1\ncheck 19\nadd 20\nempty\ncheck 17\nall\nadd 19\ntoggle 8\ncheck 2\nall\nremove 4\nadd 16\ntoggle 2\nremove 6\ncheck 10\nremove 16\ntoggle 1\nadd 14\nadd 6\ntoggle 14\ncheck 17\nremove 16\nremove 11\nall\ntoggle 16\nadd 9\ntoggle 11\ntoggle 9\nempty\nempty\nremove 7\nempty\nempty\nall\ncheck 12\nempty\ncheck 1\ncheck 20\ncheck 8\nadd 13\nremove 18\nempty\nremove 8\nadd 2\ncheck 17\ntoggle 9\ncheck 3\nempty\nadd 15\nremove 19\nempty\ncheck 20\ntoggle 15\ncheck 8\ntoggle 7\ncheck 6\nadd 18\nremove 11\nall\nempty\nadd 15\ntoggle 10\nadd 7\nremove 10\nall\nempty\ncheck 7\nadd 7\ncheck 2\nremove 14\nall\nremove 19\nall\nadd 15\nadd 9\nall\ncheck 10\ntoggle 20\ntoggle 7\nall\nempty\nall\nempty\nempty\nadd 18\nremove 17\ncheck 12\nempty\ntoggle 12\nremove 19\nremove 20\nempty\ntoggle 6\ncheck 11\nempty\nall\nall\ntoggle 20\nall\nadd 6\ncheck 13\ncheck 20\nall\ntoggle 4\nadd 19\nadd 7\nremove 10\nall\nadd 14\nall\nempty\nadd 6\nadd 7\nempty\nempty\nremove 15\nempty\ntoggle 4\ncheck 15\ntoggle 13\nall\ncheck 16\nadd 12\nadd 8\nadd 3\nremove 11\nadd 2\nempty\nempty\nempty\nremove 3\nremove 16\ntoggle 5\nadd 18\nremove 8\ncheck 9\ntoggle 18\ncheck 6\nempty\nempty\nremove 14\ncheck 8\nall\nall\nadd 17\nremove 4\nremove 6\ntoggle 2\nremove 10\nadd 11\nremove 9\nremove 7\ncheck 20\nall\nempty\nadd 8\nall\nadd 1\nadd 15\nremove 20\nremove 4\nadd 7\nall\ncheck 1\nadd 8\nadd 20\nremove 9\nadd 14\nall\nempty\nadd 18\ncheck 8\nempty\ncheck 9\nremove 9\ncheck 11\nadd 4\ncheck 3\ntoggle 10\nempty\ntoggle 8\nadd 3\nempty\ntoggle 15\nall\nremove 2\ntoggle 4\nremove 4\nremove 15\nremove 18\ncheck 7\nempty\ntoggle 9\nall\ncheck 18\ncheck 6\ntoggle 5\nall\ncheck 9\ncheck 11\nadd 13\nall\nremove 19\ncheck 19\nremove 1\nempty\nremove 14\nadd 4\ncheck 10\ncheck 12\nadd 9\ntoggle 19\nremove 1\ntoggle 8\nall\ntoggle 10\nall\nremove 18\nall\nadd 11\ntoggle 17\nempty\ntoggle 15\ncheck 13\nremove 13\nremove 20\nall\nempty\nempty",
+   "out": "0\n0\n1\n0\n0\n0\n1\n0\n0\n0\n1\n0\n0\n1\n1\n1\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n1\n1\n0\n1\n0\n0\n0\n1\n1\n0\n0\n0\n0\n1\n1\n1\n1\n1\n0\n0\n0\n0"
+  },
+  {
+   "in": "15\ncheck 9\ncheck 18\nremove 12\nremove 11\nremove 11\nremove 8\nremove 19\ncheck 4\nremove 18\nremove 9\ncheck 17\nremove 7\nremove 17\nremove 9\ncheck 18",
+   "out": "0\n0\n0\n0\n0"
+  },
+  {
+   "in": "15\nall\ntoggle 14\ntoggle 16\ntoggle 9\nempty\ncheck 20\ncheck 1\ncheck 14\ncheck 7\ncheck 11\ncheck 8\ncheck 15\ncheck 15\ncheck 3\ncheck 3",
+   "out": "0\n0\n0\n0\n0\n0\n0\n0\n0\n0"
+  },
+  {
+   "in": "23\ntoggle 5\nremove 18\nadd 20\nadd 18\ncheck 1\ntoggle 1\nremove 2\ncheck 12\ncheck 12\ncheck 20\ncheck 1\nremove 1\ntoggle 1\nadd 20\nadd 20\nadd 20\nadd 14\ntoggle 20\ntoggle 20\nadd 1\nremove 20\ntoggle 17\ncheck 20",
+   "out": "0\n0\n0\n1\n1\n0"
+  }
+ ],
  "fetched_at": "2026-08-12"
 }

@@ -29,5 +29,111 @@
   }
  ],
  "private_tc_count": 26,
+ "private_testcases": [
+  {
+   "in": "3 4\nantatica\nantarctica\nantaztica",
+   "out": "0"
+  },
+  {
+   "in": "3 5\nantatica\nantarctica\nantaztica",
+   "out": "1"
+  },
+  {
+   "in": "4 6\nantarctica\nantabtica\nantadtica\nantaxtica",
+   "out": "1"
+  },
+  {
+   "in": "5 7\nantabtica\nantabxtica\nantaxtica\nantaetica\nantaytica",
+   "out": "3"
+  },
+  {
+   "in": "3 26\nantarctica\nantahellotica\nantacartica",
+   "out": "3"
+  },
+  {
+   "in": "5 8\nantabtica\nantabdtica\nantabdetica\nantaxyztica\nantabctica",
+   "out": "4"
+  },
+  {
+   "in": "14 5\nantaffftica\nantaytica\nantaeeetica\nantantica\nantaaainctatica\nantalltica\nantactcctntica\nantatica\nantacncinnitica\nantagtica\nantaaiitatica\nantataatica\nantacinnctica\nantaootica",
+   "out": "8"
+  },
+  {
+   "in": "23 26\nantacjrtgqwtica\nantabpwzotica\nantalbwdtica\nantaelatica\nantadkcgqeatica\nantaqmzfrtica\nantatica\nantanctica\nantaqtica\nantajjrhtica\nantawocdqtica\nantaktica\nantahotica\nantaoxnsptica\nantalxnlydtica\nantafbcjwtica\nantawynztica\nantaeqwgjtica\nantahpfgrtica\nantacrmxdtica\nantathpjsitica\nantabcptica\nantanjoijltica",
+   "out": "23"
+  },
+  {
+   "in": "44 8\nantatapptica\nantatpctica\nantatttica\nantattxttica\nantactica\nantartica\nantarrtica\nantaxrixptica\nantarxpxnxptica\nantaaanptica\nantaccpacratica\nantaaatica\nantaccittica\nantapptntica\nantatica\nantaratica\nantanctica\nantataitxtica\nantatriantica\nantaxnpntica\nantapctninttica\nantapctica\nantatxncrrtica\nantacriitica\nantattica\nantacxrcxtica\nantaaxrrxatica\nantanrptica\nantaritica\nantapxircctica\nantaiactrtica\nantacrtica\nantacptica\nantapititnntica\nantartirpcctica\nantarpnnatica\nantaaxtica\nantattttica\nantatrcnptica\nantaaxncrtica\nantaiatica\nantacrprittica\nantaxptica\nantaxirtica",
+   "out": "44"
+  },
+  {
+   "in": "50 13\nantaetica\nantawlatluatica\nantaiasuntica\nantacntica\nantadaitica\nantaedczstica\nantaletica\nantaactica\nantasctica\nantazututica\nantazuntetica\nantaiulinztica\nantawslazuntica\nantacctica\nantaalzzvltica\nantatica\nantadtica\nantazttlntica\nantanstica\nantavczdcwvtica\nantavtica\nantavzdetica\nantacscstica\nantautica\nantantatica\nantazaveewltica\nantavcutica\nantazacnztica\nantatniweatica\nantazwltvtica\nantavddltica\nantaztattica\nantacstica\nantaztica\nantacvtica\nantanvelslstica\nantalvvavtica\nantaeuadvtica\nantaawctwletica\nantaatica\nantawntica\nantaivwtudtica\nantaaavutica\nantazenustica\nantaiaistica\nantasntaddtica\nantawzwtica\nantaitica\nantacvdtica\nantavztica",
+   "out": "50"
+  },
+  {
+   "in": "3 6\nantaactica\nantatctica\nantatica",
+   "out": "3"
+  },
+  {
+   "in": "20 10\nantabbbtica\nantaddddtica\nantaeeeetica\nantaffftica\nantaggggtica\nantahhhhtica\nantajjjtica\nantakktica\nantalllltica\nantamtica\nantaootica\nantapppptica\nantaqqtica\nantarrtica\nantasssstica\nantauuuutica\nantavvvtica\nantawtica\nantaxxtica\nantayytica",
+   "out": "5"
+  },
+  {
+   "in": "19 2\nantactica\nantattatictica\nantancnntica\nantatntica\nantatica\nantaiinacatica\nantaticaitica\nantacicnnnitica\nantatintntica\nantattactitica\nantattica\nantaaantica\nantaitcittatica\nantaaitica\nantatanantica\nantatacntica\nantatcnacttica\nantaitica\nantacitatica",
+   "out": "0"
+  },
+  {
+   "in": "11 5\nantartica\nantaddddtica\nantaaiccnitica\nantaaanatica\nantahtica\nantawwtica\nantaicntaatica\nantaiiainaitica\nantaccctaitica\nantatica\nantaytica",
+   "out": "6"
+  },
+  {
+   "in": "47 26\nantaetica\nantaeuiacjtica\nantapkxtica\nantalabcirktica\nantauvtjvxntica\nantactica\nantayuhtica\nantavvqlstica\nantaotica\nantaucazawtica\nantalkktica\nantaolkttica\nantaodtica\nantacsawpujtica\nantawceesttica\nantatica\nantajzidnrtica\nantagtica\nantaqtica\nantakslgkbntica\nantabmotegetica\nantacovstica\nantayoehtica\nantaltqiecgtica\nantaexbgtica\nantantica\nantahsiltica\nantaxyzatica\nantawpoahtica\nantatsrdibtica\nantaogtbmtica\nantagqivsldtica\nantaahtctica\nantattica\nantaptica\nantasxitica\nantadtaqtica\nantafztica\nantadwoczwdtica\nantaytica\nantaiwtica\nantahnsvkvutica\nantarntica\nantaatica\nantatptica\nantaljtica\nantabpejkbvtica",
+   "out": "47"
+  },
+  {
+   "in": "46 14\nantanvtica\nantavtwtica\nantawbtica\nantavbyhtica\nantaotica\nantawgvtica\nantancwxxitica\nantahaxxtica\nantavuixitica\nantayocttica\nantaiynatica\nantabctica\nantatica\nantavuyxcwtica\nantagtica\nantauvbgtica\nantauthtica\nantaiutvgcutica\nantaaaiotica\nantabcaantica\nantagaxtnotica\nantautica\nantautotica\nantahntica\nantagitntica\nantauxvagtica\nantaowytica\nantaauootica\nantayghovtica\nantacichntica\nantaytygbtica\nantavnaiatica\nantahtica\nantaagtica\nantacxcgtica\nantauwgtica\nantavxtica\nantawihtica\nantawctica\nantaiybtitica\nantaxxcnhtica\nantabbioutntica\nantaxxtica\nantaitica\nantavtica\nantaxuntica",
+   "out": "46"
+  },
+  {
+   "in": "14 5\nantawwwwtica\nantavvtica\nantasssstica\nantanaaintica\nantannactintica\nantaotica\nantactica\nantatittictica\nantatctaccatica\nantahhhhtica\nantataccttica\nantainntica\nantatica\nantabbbbtica",
+   "out": "8"
+  },
+  {
+   "in": "23 26\nantalbwdtica\nantathpjsitica\nantawynztica\nantahpfgrtica\nantabpwzotica\nantaeqwgjtica\nantaelatica\nantajjrhtica\nantacjrtgqwtica\nantadkcgqeatica\nantaktica\nantaqtica\nantawocdqtica\nantahotica\nantabcptica\nantaqmzfrtica\nantacrmxdtica\nantanctica\nantafbcjwtica\nantatica\nantalxnlydtica\nantaoxnsptica\nantanjoijltica",
+   "out": "23"
+  },
+  {
+   "in": "44 8\nantariarptttica\nantapaiaicctica\nantaipttica\nantainpptica\nantappictica\nantatrpraitica\nantairtcptica\nantaratica\nantanncptica\nantatrtica\nantaxptica\nantarxpxcxptica\nantanxrrxntica\nantaantirtica\nantarntica\nantarpccntica\nantatraatica\nantarrtica\nantacrptica\nantairanctica\nantacttica\nantapxartttica\nantaxcpctica\nantapticacitica\nantapttica\nantatxrtxtica\nantanxtica\nantattaitica\nantaiitica\nantaiiitica\nantaantica\nantattpntrntica\nantattica\nantainaixtica\nantatptica\nantanntica\nantaxraxptica\nantatica\nantaitica\nantartica\nantaxartica\nantaiixitica\nantaixctrrtica\nantanxctrtica",
+   "out": "44"
+  },
+  {
+   "in": "50 13\nantauelcdtica\nantadccstica\nantatatica\nantatwttica\nantadvetica\nantawiisatica\nantawtsidtica\nantawlduutstica\nantanesnawtica\nantavztica\nantaaduszsztica\nantatsliseltica\nantalldetica\nantazailcctica\nantaltvitsutica\nantadtica\nantavzvztica\nantatzslweatica\nantaucvwztica\nantaiantultica\nantadwtica\nantandtiectica\nantawlvawtica\nantaaztica\nantantica\nantawilitica\nantawtica\nantaclntica\nantavdctica\nantavvtica\nantadwcutica\nantalswwdstica\nantaweietica\nantasddldtica\nantawuaeztica\nantanlnztica\nantactica\nantalvtica\nantanlzeatica\nantasutica\nantaltica\nantaweaiutica\nantadvwcvtdtica\nantatica\nantavatica\nantavdtica\nantaailtica\nantazvtica\nantautica\nantaetica",
+   "out": "50"
+  },
+  {
+   "in": "3 6\nantanttica\nantaittica\nantatica",
+   "out": "3"
+  },
+  {
+   "in": "19 2\nantaaitaiintica\nantaiatnatica\nantaiiniattica\nantaincnctica\nantatatcccatica\nantaictica\nantactcctica\nantaitcntitica\nantaiintiatica\nantannctica\nantataintica\nantaatica\nantanatica\nantattica\nantaintctica\nantaiacictica\nantatica\nantaaacntntica\nantaitica",
+   "out": "0"
+  },
+  {
+   "in": "11 5\nantarrrrtica\nantayyytica\nantaaanacnatica\nantaatcinntica\nantaggggtica\nantajjjjtica\nantanncntica\nantatttinatica\nantanattcatica\nantatica\nantavvtica",
+   "out": "6"
+  },
+  {
+   "in": "47 26\nantavvqlstica\nantaucazawtica\nantaogtbmtica\nantahnsvkvutica\nantaolkttica\nantawceesttica\nantagtica\nantabpejkbvtica\nantasxitica\nantajzidnrtica\nantaiwtica\nantaptica\nantaljtica\nantadtaqtica\nantarntica\nantaeuiacjtica\nantawpoahtica\nantacovstica\nantaqtica\nantaexbgtica\nantayuhtica\nantacsawpujtica\nantaytica\nantantica\nantaahtctica\nantaodtica\nantalkktica\nantahsiltica\nantaotica\nantadwoczwdtica\nantauvtjvxntica\nantaxyzatica\nantaatica\nantayoehtica\nantactica\nantatsrdibtica\nantafztica\nantatptica\nantattica\nantalabcirktica\nantabmotegetica\nantatica\nantaltqiecgtica\nantakslgkbntica\nantapkxtica\nantagqivsldtica\nantaetica",
+   "out": "47"
+  },
+  {
+   "in": "46 14\nantaauivgtutica\nantawbtica\nantanuootica\nantaxxtica\nantabttica\nantactwxxatica\nantatxtgtica\nantaaycntica\nantaowytica\nantagnxicotica\nantauiotica\nantagtica\nantawgvtica\nantauvbgtica\nantavuyxtwtica\nantaaybiatica\nantaxxtchtica\nantabtnnctica\nantawttica\nantagaictica\nantavcnantica\nantawahtica\nantabbaouictica\nantahnxxtica\nantangtica\nantauxvngtica\nantavuaxatica\nantayiygbtica\nantaotica\nantayotitica\nantavbyhtica\nantauihtica\nantaatica\nantahtica\nantaviwtica\nantatathctica\nantacvtica\nantannaotica\nantauwgtica\nantatica\nantayghovtica\nantavtica\nantavxtica\nantautica\nantaxuctica\nantahctica",
+   "out": "46"
+  },
+  {
+   "in": "50 16\nantarlmtica\nantamomaprxtica\nantarddtica\nantatsmvxngtica\nantasgttica\nantawcsxxiatica\nantarpsptica\nantaimcwtica\nantasitica\nantacixtica\nantaootica\nantalcatica\nantascacjxtica\nantamtica\nantatvpmvxttica\nantavctica\nantamtltica\nantadtica\nantarlxtica\nantapvxitica\nantalmxmatica\nantaiwnttica\nantaajwlmnntica\nantaoxtica\nantantica\nantatciatvvtica\nantanidacttica\nantasmcmtica\nantawpplwitica\nantatlasitica\nantaotica\nantagptica\nantanrxvldtica\nantajxwtica\nantalmjvtica\nantalstica\nantactica\nantalvtica\nantawjvjntica\nantaggltica\nantaiwsnsstica\nantaxojjxtica\nantaoctopmitica\nantatica\nantadlmgwtica\nantaitica\nantadncxcnxtica\nantanvgctica\nantavtparstica\nantaljatica",
+   "out": "44"
+  }
+ ],
  "fetched_at": "2026-08-12"
 }
