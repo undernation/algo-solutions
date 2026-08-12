@@ -406,11 +406,85 @@ def judge(src, cases, pub=0, tl=5.0, total_time=False):
 # repo 저장
 # ══════════════════════════════════════════════════════════════
 def git(*args, check=False):
-    r = subprocess.run(["git"] + list(args), cwd=ROOT,
+    # 서버에는 붙은 터미널이 없다. rebase --continue 등이 에디터를 열면 그대로 멈춘다.
+    env = {**os.environ, "GIT_EDITOR": "true", "GIT_TERMINAL_PROMPT": "0"}
+    r = subprocess.run(["git"] + list(args), cwd=ROOT, env=env,
                        capture_output=True, text=True, encoding="utf-8", errors="replace")
     if check and r.returncode != 0:
         raise RuntimeError((r.stderr or r.stdout or "")[:400])
     return r
+
+
+HIST_REL = "_meta/history.json"
+
+
+def sync_before_write():
+    """저장을 시작하기 전에 원격을 따라잡는다.
+
+    예전엔 커밋한 뒤에야 push 가 거절되는 걸 알고 rebase 를 시도했는데,
+    history.json 이 충돌해 rebase --abort 로 끝나면서 저장이 통째로
+    GitHub 에 안 올라갔다(로컬엔 남아 사용자는 성공한 줄 안다).
+    작업트리가 깨끗할 때 미리 당겨두면 대부분의 분기를 예방한다.
+    """
+    if git("status", "--porcelain").stdout.strip():
+        return False                       # 뭔가 작업 중 — 건드리지 않는다
+    git("fetch", "origin")
+    return git("merge", "--ff-only", "origin/master").returncode == 0
+
+
+def union_history(ours_text, theirs_text):
+    """충돌한 history.json 두 벌을 (날짜 → (site,no)) 합집합으로 합친다.
+
+    한쪽을 버리면 다른 PC 에서 올린 기록이 사라진다. 항목이 더 많은(=정보가
+    더 붙은) 쪽을 남기고, 없는 것은 그대로 가져온다.
+    """
+    a = json.loads(ours_text or "{}")
+    b = json.loads(theirs_text or "{}")
+    out = dict(a)
+    for day, v in b.items():
+        cur = out.setdefault(day, {"count": 0, "items": []})
+        seen = {}
+        order = []
+        for it in list(cur.get("items") or []) + list(v.get("items") or []):
+            k = it if isinstance(it, str) else "%s/%s" % (it.get("site"), it.get("no"))
+            if k not in seen:
+                seen[k] = it
+                order.append(k)
+            elif isinstance(it, dict) and isinstance(seen[k], dict):
+                merged = dict(seen[k])
+                for kk, vv in it.items():
+                    if vv and not merged.get(kk):
+                        merged[kk] = vv
+                seen[k] = merged
+        cur["items"] = [seen[k] for k in order]
+        cur["count"] = max(len(cur["items"]), cur.get("count", 0), v.get("count", 0))
+    return json.dumps({k: out[k] for k in sorted(out)},
+                      ensure_ascii=False, indent=1, sort_keys=True)
+
+
+def resolve_conflicts():
+    """rebase 충돌을 자동 해소한다. 해소 못 하면 False.
+
+    history.json 만 합쳐 주면 된다. index.html·잔디 등 나머지 생성물은
+    .gitattributes 의 merge=ours 로 이미 자동 해결된다.
+    """
+    bad = [x for x in git("diff", "--name-only", "--diff-filter=U").stdout.split("\n") if x.strip()]
+    if not bad:
+        return True
+    if bad != [HIST_REL]:
+        log("   ⚠️ 자동 해소 불가한 충돌:", ", ".join(bad)[:200])
+        return False
+    try:
+        ours = git("show", ":2:" + HIST_REL).stdout
+        theirs = git("show", ":3:" + HIST_REL).stdout
+        io.open(os.path.join(ROOT, HIST_REL), "w", encoding="utf-8",
+                newline="").write(union_history(ours, theirs))
+        git("add", HIST_REL)
+        log("   ♻️ history.json 충돌을 합집합으로 해소")
+        return True
+    except Exception as e:
+        log("   ⚠️ history 병합 실패:", str(e)[:160])
+        return False
 
 
 def safe(s, n=40):
@@ -467,6 +541,10 @@ def save_solution(d):
         return {"ok": False, "error": "문제 번호나 제목이 필요합니다"}
     if no and not re.fullmatch(r"[A-Za-z0-9_-]{1,12}", no):
         return {"ok": False, "error": "문제 번호 형식이 이상합니다: %r" % no[:20]}
+
+    # 쓰기 전에 원격을 따라잡아 둔다(분기 예방). 실패해도 저장은 계속한다.
+    if AUTO_PUSH:
+        sync_before_write()
 
     name = no if (sub == "boj" and no) else ("%s_%s" % (no, safe(title)) if no else safe(title))
     rel = "%s/%s.py" % (sub, name)
@@ -546,10 +624,17 @@ def save_solution(d):
         pushed = p.returncode == 0
         if not pushed:
             # 다른 PC·Actions 가 먼저 올렸으면 non-fast-forward 로 거절된다.
-            # fetch 후 rebase 하고 한 번만 재시도한다.
+            # fetch 후 rebase 하고 재시도한다. history.json 은 충돌이 잦아
+            # (양쪽이 파일 전체를 다시 쓴다) 자동으로 합집합 병합한다.
             log("   ↻ push 거절 — rebase 후 재시도")
             git("fetch", "origin")
             rb = git("rebase", "origin/master")
+            for _ in range(6):             # 밀린 커밋이 여럿일 수 있다
+                if rb.returncode == 0:
+                    break
+                if not resolve_conflicts():
+                    break
+                rb = git("rebase", "--continue")
             if rb.returncode != 0:
                 git("rebase", "--abort")
                 perr = "rebase 충돌 — 수동 해결 필요"
