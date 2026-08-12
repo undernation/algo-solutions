@@ -135,12 +135,16 @@ _meta/build_heatmap.py      잔디 + 대시보드    → index.html
 > Pages 는 디렉터리 목록을 안 주므로 **`problems/index.json` 색인이 반드시 있어야** 트리가 뜬다.
 > 새로 크롤링했으면 `build_probindex.py` → `build_heatmap.py` 순서로 돌린다.
 
-**선행조건**: 디버그 크롬 + 코딩살구 로그인
+**선행조건**: 디버그 크롬 + 각 사이트 로그인
 ```bash
-python C:/Users/solom/crawler.py chrome
-python _meta/crawl_cosal_list.py     # 목록 (2~3분)
-python _meta/crawl_all.py            # 지문 (문제당 ~4.5초)
+python _meta/debug_chrome.py         # 로그인용 크롬(9222). --check 로 확인만
+#   → 뜨는 창에서 코딩살구 / SWEA 로그인 (프로필에 남아 다음에도 유지)
+python _meta/crawl_cosal_list.py     # 코딩살구 전체 목록 (2~3분)
+python _meta/crawl_all.py            # 지문·예제·이미지 (문제당 ~5초)
+python _meta/crawl_all.py --htc      # 히든 테스트케이스
+python _meta/sync_tc.py              # 전체 TC 를 채점 서버로
 python _meta/build_probindex.py && python _meta/build_heatmap.py
+python _meta/selfcheck.py            # 이상 없나 확인
 ```
 
 ### ⚠️ SWEA 는 번호로 역검색이 안 된다
@@ -148,6 +152,30 @@ python _meta/build_probindex.py && python _meta/build_heatmap.py
 표시번호(2382) ≠ `contestProbId`(AWXR…). 목록 페이지도 JS 렌더라 자동 매핑 실패.
 → `_meta/swea_ids.json` 에 `{"2382": "AWXRQm6q…"}` 를 채워야 자동 크롤링 대상이 된다.
 → 없으면 대시보드에서 **문제 다시 가져오기** 클릭 시 URL 을 물어본다.
+
+### 🧰 스크립트 한눈에 (전부 repo 안에 있다)
+
+| 파일 | 하는 일 |
+|---|---|
+| `_meta/debug_chrome.py` | 크롤링용 **디버그 크롬(9222)** 실행. 평소 크롬과 프로필 분리 |
+| `_meta/crawl_cosal_list.py` | 코딩살구 전체 문제 **목록** → `cosal_list.json` |
+| `_meta/crawl_all.py` | 지문·예제·이미지·히든TC **수집** (`--htc --empty --bad --force --site --limit`) |
+| `_meta/fetch_problem.py` | URL/번호 하나로 **단건 크롤링** (4개 사이트) |
+| `_meta/map_swea_ids.py` | SWEA 번호 → `contestProbId` 매핑 |
+| `_meta/sync_tc.py` | 전체 테스트케이스를 **채점 서버로 업로드** |
+| `_meta/build_probindex.py` | 문제 **색인** → `problems/index.json` |
+| `_meta/build_heatmap.py` | 잔디 + **대시보드**(`index.html`) 생성 |
+| `_meta/build_index.py` | README 현황표 |
+| `_meta/install_hooks.py` | pre-commit 훅 + 커밋 이메일 + merge 드라이버 (**새 PC 1회**) |
+| `_meta/publish_endpoint.py` | 터널 URL 을 `endpoint.json` 에 publish (서버에서 timer 로) |
+| `_meta/selfcheck.py` | **저장소 자체 점검** — 조용히 망가지는 것 탐지 |
+| `judge/server.py` | 허브 서버(채점·저장·크롤링·메모·삭제·TC) |
+| `judge/_bench.py` | 기기 속도 벤치(시간 보정에 사용) |
+
+> 📌 `C:/Users/solom/crawler.py` 는 **SSAFY 강의자료 전용**이고 이 repo 와 무관하다.
+> (파일 자체에 "외부 공유 금지" 고지가 있어 public repo 에 넣지 않았다.)
+> 이 repo 에 필요한 디버그 크롬 기능만 `_meta/debug_chrome.py` 로 따로 두었다.
+> `C:/Users/solom/review_queue.py` 도 옵시디언 볼트 전용이라 repo 밖이다.
 
 ---
 
@@ -184,7 +212,7 @@ python _meta/install_hooks.py          # ★ pre-commit 훅 (PC마다 1회)
 
 # 문제 크롤링·로컬 채점을 쓰려면
 pip install playwright && playwright install chromium
-python C:/Users/solom/crawler.py chrome        # 디버그 크롬(9222) — 각 사이트 로그인
+python _meta/debug_chrome.py        # 디버그 크롬(9222) — 각 사이트 로그인
 python judge/server.py                         # 로컬 허브 :12014 (시작 로그에 토큰 출력)
 ```
 
@@ -269,7 +297,7 @@ def solution(...):
 ### ② SWEA면 메타 조회
 
 ```bash
-python C:/Users/solom/crawler.py chrome     # 디버그 크롬 (9222) — SWEA 로그인 필요
+python _meta/debug_chrome.py     # 디버그 크롬 (9222) — SWEA 로그인 필요
 python _meta/fetch_swea.py <contestProbId> --json
 ```
 - `contestProbId`는 문제 URL의 쿼리파라미터. 사용자가 URL을 안 주면 **물어본다** (번호로 역검색 불가)
@@ -324,7 +352,7 @@ git push
 | 증상 | 원인 / 해결 |
 |---|---|
 | `git push` 시 `Permission denied (publickey)` | SSH 키 없음 → `gh auth setup-git` 후 remote를 **HTTPS**로 |
-| `ECONNREFUSED 127.0.0.1:9222` | 디버그 크롬 꺼짐 → `python C:/Users/solom/crawler.py chrome` |
+| `ECONNREFUSED 127.0.0.1:9222` | 디버그 크롬 꺼짐 → `python _meta/debug_chrome.py` |
 | SWEA가 로그인 페이지로 튐 | 세션 만료 → 사용자에게 로그인 요청 (자주 끊김) |
 | 한글 깨짐 / `UnicodeEncodeError` | 앞에 `PYTHONIOENCODING=utf-8` |
 | `review_queue.py`가 이상하게 동작 | **반드시 `C:/Users/solom` 에서 실행** (한글 경로 인코딩) |

@@ -21,13 +21,60 @@
 ## 📁 구조
 
 ```
-boj/     백준
-swea/    SW Expert Academy
-_meta/   도구
-  fetch_swea.py     SWEA 문제 메타 자동 추출
+boj/  swea/        제출한 풀이 코드      <번호>_<제목>.py
+problems/          문제 자료 (지문·예제·이미지·히든TC 일부)
+notes/             복기 메모 (마크다운)
+judge/server.py    허브 서버 — 채점·저장·크롤링·메모
+_meta/             도구 · 색인 · 대시보드 템플릿
 ```
 
-**파일명**: `<번호>_<제목>.py` (예: `swea/4012_요리사.py`)
+---
+
+## 🛠 사용법
+
+### 매일 쓰는 것 — 브라우저만 있으면 됨
+
+[대시보드](https://undernation.github.io/algo-solutions/)에서 문제 열고 → 코드 붙여넣고 → **채점** → **저장 & 커밋**.
+처음 한 번만 우측 상단 허브 버튼에서 토큰을 넣으면 된다. 채점·저장은 **클라우드 허브**가 하므로 PC를 켜둘 필요가 없다.
+
+### 새 문제를 추가할 때 (내 PC에서)
+
+로그인 세션이 필요해 이때만 로컬에서 돌린다.
+
+```bash
+python _meta/debug_chrome.py      # 로그인용 크롬(9222) — 뜨면 코딩살구·SWEA 로그인
+python _meta/crawl_all.py         # 지문·예제·이미지
+python _meta/crawl_all.py --htc   # 히든 테스트케이스
+python _meta/sync_tc.py           # 전체 TC 를 채점 서버로
+python _meta/build_probindex.py && python _meta/build_heatmap.py
+python _meta/selfcheck.py         # 이상 없나 점검
+```
+
+> 대시보드의 **+ 새 문제** 버튼에 URL 만 붙여넣어도 된다 (로컬 허브가 켜져 있을 때).
+
+### 새 PC 세팅
+
+```bash
+gh auth login && gh auth setup-git
+git clone https://github.com/undernation/algo-solutions.git && cd algo-solutions
+python _meta/install_hooks.py     # 훅 + 커밋 이메일 + merge 드라이버
+pip install playwright && playwright install chromium   # 크롤링을 할 경우만
+```
+
+### 주요 스크립트
+
+| 파일 | 하는 일 |
+|---|---|
+| `_meta/debug_chrome.py` | 크롤링용 디버그 크롬 실행 (`--check` 로 확인만) |
+| `_meta/crawl_all.py` | 문제 수집 `--htc --empty --bad --force --site --limit` |
+| `_meta/fetch_problem.py` | URL/번호 하나로 단건 크롤링 |
+| `_meta/sync_tc.py` | 전체 테스트케이스를 채점 서버로 업로드 |
+| `_meta/build_heatmap.py` | 잔디 + 대시보드 생성 |
+| `_meta/selfcheck.py` | 저장소 자체 점검 |
+| `judge/server.py` | 허브 서버 (`--runner`, `--no-push`, `--port`) |
+
+> 테스트케이스는 **repo(200KB 보기용)** 와 **채점 서버(전체)** 로 나뉜다.
+> 큰 것은 문제 페이지에서 필요할 때만 받아온다. 자세한 건 [CLAUDE.md](CLAUDE.md).
 
 ---
 
