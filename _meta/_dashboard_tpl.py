@@ -91,6 +91,22 @@ tbody tr:hover{background:var(--soft)}
 td.l{text-align:left}
 td.n{font-variant-numeric:tabular-nums;color:var(--sub);font-size:13px}
 .empty{padding:38px;text-align:center;color:var(--sub);font-size:14px}
+/* .hint 는 여러 곳에서 쓰이는데 정의가 없어 본문 크기로 나오고 있었다. */
+.hint{font-size:12.5px;color:var(--sub);line-height:1.7}
+.kbd{margin-left:auto;align-self:center;white-space:nowrap}
+
+/* ── 재도전 큐 ──
+   ⚠️ 제목·유형을 일부러 감춘다. 무엇을 쓸 문제인지 판별하는 것까지가 훈련이다. */
+.rqwrap{display:flex;flex-direction:column;gap:2px}
+.rq{display:flex;align-items:center;gap:10px;padding:7px 10px;border-radius:6px;
+    text-decoration:none;color:var(--fg);font-size:13.5px}
+.rq:hover{background:var(--bd2)}
+.rq b{font-variant-numeric:tabular-nums;min-width:62px}
+.rq .rqd{color:var(--sub);font-size:12.5px;font-variant-numeric:tabular-nums}
+.rq .rqg{margin-left:auto;color:var(--wr);font-weight:700;font-size:12.5px;
+         font-variant-numeric:tabular-nums}
+.rq .rqt{color:var(--sub);font-size:12px;min-width:56px;text-align:right}
+@media(max-width:560px){.rq .rqt{display:none}}
 
 /* ── 배지 ── */
 .b{display:inline-block;padding:1px 8px;border-radius:11px;font-size:11.5px;font-weight:700;white-space:nowrap;line-height:1.6}
@@ -417,6 +433,53 @@ function go(){
 }
 window.addEventListener("hashchange",go);
 
+/* ════════ 재도전 큐 ════════
+   "오늘 뭐 복기하지"를 옵시디언 없이 브라우저에서 바로 잡기 위한 것.
+
+   🚩 유형 스포 금지 — 번호와 마지막 시도일만 보여준다. **제목도 감춘다**:
+   "가장 긴 증가하는 부분 수열" 같은 제목은 그 자체로 답을 알려주기 때문이다.
+   무엇을 쓸 문제인지 판별하는 것까지가 훈련이다. */
+function daysAgo(d,t){
+ return Math.round((Date.parse(t+"T00:00:00")-Date.parse(d+"T00:00:00"))/86400000);
+}
+var RQOPEN=false, RQN=8;
+function reviewQueue(){
+ var t=today(),out=[];
+ Object.keys(BYPROB).forEach(function(k){
+  var rs=BYPROB[k]; if(!rs||!rs.length) return;
+  var last=rs[0];
+  /* 마지막 시도가 통과면 큐에서 뺀다(졸업). 그 전에 몇 번 틀렸든 상관없다. */
+  if(last.status==="품"||last.status==="맞음") return;
+  if(!last.no||!last.date) return;
+  out.push({site:last.site,no:last.no,date:last.date,
+            days:daysAgo(last.date,t),tries:rs.length});
+ });
+ out.sort(function(a,b){ return b.days-a.days || a.no.localeCompare(b.no); });
+ return out;
+}
+function rqHTML(){
+ var q=reviewQueue();
+ if(!q.length) return '<div class="panel" id="rqbox"><div class="hd">재도전 큐</div>'+
+   '<div class="bd"><div class="empty">재도전할 문제가 없습니다.</div></div></div>';
+ var rows=q.slice(0,RQOPEN?q.length:RQN).map(function(x){
+  return '<a class="rq" href="#p/'+encodeURIComponent(x.site)+'/'+encodeURIComponent(x.no)+'">'+
+   '<span class="b b-'+esc(x.site)+'">'+esc(x.site)+'</span>'+
+   '<b>'+esc(x.no)+'</b>'+
+   '<span class="rqd">'+esc(x.date)+'</span>'+
+   '<span class="rqg">'+x.days+'일 전</span>'+
+   '<span class="rqt">'+x.tries+'회</span></a>';
+ }).join("");
+ return '<div class="panel" id="rqbox"><div class="hd">재도전 큐'+
+  '<span class="r">'+q.length+'문제 · 오래 묵은 순</span></div>'+
+  '<div class="bd"><div class="rqwrap">'+rows+'</div>'+
+  (q.length>RQN?'<button class="sm" style="margin-top:10px" onclick="rqToggle()">'+
+    (RQOPEN?'접기':'전체 '+q.length+'개 보기')+'</button>':'')+
+  '<div class="hint" style="margin-top:10px">아직 통과하지 못한 문제, 마지막 시도가 오래된 순. '+
+  '<b>제목과 유형은 일부러 감췄다</b> — 무엇을 쓸지 판별하는 것까지가 훈련.</div>'+
+  '</div></div>';
+}
+function rqToggle(){ RQOPEN=!RQOPEN; var el=$("rqbox"); if(el) el.outerHTML=rqHTML(); }
+
 /* ════════ 대시보드 ════════ */
 var homeDone=false;
 function viewHome(){
@@ -432,6 +495,7 @@ function viewHome(){
   '<div class="stats">'+cards.map(function(c){
     return '<div class="st"><div class="v '+c[2]+'">'+c[1]+'</div><div class="k">'+c[0]+'</div></div>';
    }).join("")+'</div>'+
+  rqHTML()+
   '<div class="panel"><div class="hd">잔디<span class="r">마지막 갱신 '+D.built+'</span></div>'+
   '<div class="bd"><div class="gwrap"><div class="hmwrap">'+
   '<div class="dowcol"><span></span><span>월</span><span></span><span>수</span>'+
@@ -1033,12 +1097,15 @@ async function viewProblem(site,no){
    '<input id="pd" type="date" style="flex:0 0 158px" value="'+today()+'">'+
    '<label class="hint" style="display:flex;align-items:center;gap:5px;margin:0">'+
      '<input type="checkbox" id="useh" checked style="width:auto;min-width:0">히든 TC 포함</label>'+
-   '<button class="p" onclick="doJudge()">채점</button>'+
-   '<button onclick="doSave()">저장 &amp; 커밋</button>'+
+   '<button class="p" onclick="doJudge()" title="Ctrl+Enter">채점</button>'+
+   '<button onclick="doSave()" title="Ctrl+S">저장 &amp; 커밋</button>'+
+   '<span class="hint kbd">Ctrl+Enter 채점 · Ctrl+S 저장 · Tab / Shift+Tab 들여쓰기</span>'+
    '<button class="sm" style="margin-left:auto" onclick="doFetch()" id="rf">문제 다시 가져오기</button>'+
    '<button class="sm" onclick="askDelProb(\''+esc(site)+'\',\''+esc(no)+'\')">문제 자료 삭제</button>'+
   '</div><div class="vd" id="pv"></div>'+
   '<div class="sec-h">복기 메모</div><div id="pnote"></div><div class="vd" id="nv"></div>';
+
+ wireEd($("ed"));
 
  /* 저장된 코드 자동 로드 */
  var withFile=subs.filter(function(s){return s.file;})[0];
@@ -1201,6 +1268,58 @@ function probTL(){
 function probLangAdjusted(){
  return !!(((CUR.prob||{}).limits)||{}).time_sec;
 }
+
+/* ════════ 코드 에디터 키 처리 ════════
+   textarea 기본 동작으로는 Tab 이 포커스를 옮겨 버려서 파이썬을 손볼 수가 없다.
+   들여쓰기가 문법인 언어라 Tab/Shift+Tab, 줄바꿈 들여쓰기 유지가 사실상 필수. */
+var TABW="    ";
+
+/* execCommand 를 쓰면 Ctrl+Z 실행취소 이력이 유지된다(폐기 예정이나 전 브라우저 동작).
+   막히면 value 직접 조작으로 내려간다 — 이때는 되돌리기가 한 단계 끊긴다. */
+function edInsert(el,text){
+ el.focus();
+ var ok=false;
+ try{ ok=document.execCommand("insertText",false,text); }catch(e){ ok=false; }
+ if(!ok){
+  var s=el.selectionStart,e2=el.selectionEnd;
+  el.value=el.value.slice(0,s)+text+el.value.slice(e2);
+  el.selectionStart=el.selectionEnd=s+text.length;
+ }
+}
+
+function edKey(e){
+ var el=e.target;
+ if(e.key==="Tab"){
+  e.preventDefault();
+  var s=el.selectionStart,en=el.selectionEnd,v=el.value;
+  var ls=v.lastIndexOf("\n",s-1)+1;            /* 선택이 걸친 첫 줄의 머리 */
+  var le=v.indexOf("\n",en); if(le<0) le=v.length;
+  var multi=(v.slice(s,en).indexOf("\n")>=0);
+  if(!multi&&!e.shiftKey){ edInsert(el,TABW); return; }
+  var delta=0;
+  var nb=v.slice(ls,le).split("\n").map(function(L){
+   if(e.shiftKey){
+    var m=L.match(/^( {1,4}|\t)/);
+    if(!m) return L;
+    delta-=m[1].length; return L.slice(m[1].length);
+   }
+   if(!multi&&!L) return L;                    /* 빈 줄은 건드리지 않는다 */
+   delta+=TABW.length; return TABW+L;
+  }).join("\n");
+  el.selectionStart=ls; el.selectionEnd=le;
+  edInsert(el,nb);
+  if(multi){ el.selectionStart=ls; el.selectionEnd=ls+nb.length; }
+  else { el.selectionStart=el.selectionEnd=Math.max(ls,s+delta); }
+  return;
+ }
+ /* ⚠️ Enter 자동 들여쓰기는 일부러 넣지 않았다.
+    execCommand 로 줄바꿈+공백을 끼워 넣으면 크롬이 그 타이핑 구간 전체를
+    되돌리기 한 단위로 묶어 버려서, Ctrl+Z 한 번에 친 것이 통째로 날아갔다
+    (대조 실험: 핸들러 없는 메모창은 단계적으로 취소됨).
+    Tab 이 생긴 이상 Enter 뒤 Tab 한 번이면 되므로, 이력 보존을 택했다. */
+}
+function wireEd(el){ if(el) el.onkeydown=edKey; }
+
 async function doJudge(){
  await hubReady();
  var h=needHub("judge"); if(!h)return;
@@ -1292,6 +1411,13 @@ async function doSave(){
 }
 
 document.addEventListener("keydown",function(e){
+ var mod=e.ctrlKey||e.metaKey;
+ /* 문제 페이지에서만: Ctrl+Enter 채점 / Ctrl+S 저장&커밋.
+    반복 채점이 잦아 마우스로 버튼을 왕복하는 비용이 크다. */
+ if(mod&&!e.altKey&&location.hash.indexOf("#p/")===0){
+  if(e.key==="Enter"){ e.preventDefault(); doJudge(); return; }
+  if(e.key==="s"||e.key==="S"){ e.preventDefault(); doSave(); return; }
+ }
  if(e.key!=="Escape")return;
  if($("dc").style.display==="block"){closeDel();return;}
  if($("ad").style.display==="block"){closeAdd();return;}
