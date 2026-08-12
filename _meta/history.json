@@ -4340,7 +4340,7 @@
   ]
  },
  "2026-08-12": {
-  "count": 6,
+  "count": 7,
   "items": [
    {
     "file": "swea/2115_[모의SW역량테스트]벌꿀채취.py",
@@ -4389,6 +4389,17 @@
     "status": "품",
     "title": "알파벳 찾기",
     "total": 15,
+    "verdict": "accepted"
+   },
+   {
+    "elapsed": 7.711,
+    "file": "boj/15686.py",
+    "no": "15686",
+    "passed": 30,
+    "site": "BOJ",
+    "status": "품",
+    "title": "치킨 배달",
+    "total": 30,
     "verdict": "accepted"
    }
   ]
