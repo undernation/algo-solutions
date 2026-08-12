@@ -4332,15 +4332,11 @@
     "verdict": "accepted"
    },
    {
-    "elapsed": 0.271,
     "file": "boj/10822.py",
     "no": "10822",
-    "passed": 1,
     "site": "BOJ",
     "status": "품",
-    "title": "더하기",
-    "total": 1,
-    "verdict": "accepted"
+    "title": "더하기"
    }
   ]
  }

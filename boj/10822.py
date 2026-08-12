@@ -5,8 +5,6 @@ https://cosal.aviss.kr/problems/detail/10822
 풀이일 : 2026-08-12   결과: 품
 한도   : time 1 초 / memory 256 MB
 
-[채점] accepted  1/1  (0.271s)
-
 [문제]
 숫자와 콤마로만 이루어진 문자열 S가 주어진다. 이때, S에 포함되어있는 자연수의 합을 구하는 프로그램을 작성하시오.
 
