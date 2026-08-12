@@ -123,6 +123,17 @@ Oracle VM
 > ⚠️ **`_meta/tc_store/` 를 커밋하지 말 것.** .gitignore 에 있다. 실수로 넣으면
 > repo 가 다시 500MB 를 넘고 Pages 가 죽는다.
 
+### 🧹 히스토리 재작성 (2026-08-12, 1회 발생)
+
+TC 를 200KB 로 줄이기 **전에** 올렸던 거대 blob(2493 26.8MB, 12015 19.7MB 등)이
+히스토리에 남아 **clone 이 206MB** 였다. `git filter-repo --strip-blobs-bigger-than 1M`
+으로 제거하고 force push 했다.
+
+- 결과: clone **206MB → 48MB**, `.git` 208MB → 17MB. 커밋 75개·파일 969개·트리 해시 **모두 동일**(내용 변화 0).
+- 커밋 SHA 는 전부 바뀌었다. **재작성 이전 클론은 pull 이 안 되므로** `git reset --hard origin/master` 또는 재clone.
+- GitHub 잔디·작성자 연결은 유지됨(재계산 후 확인).
+- ⚠️ 다시 할 일이 없도록 **큰 파일을 애초에 커밋하지 말 것**. 위 tc_store 경고가 그래서 있다.
+
 ### 📦 문제 자료 파이프라인
 
 ```
@@ -351,6 +362,7 @@ git push
 
 | 증상 | 원인 / 해결 |
 |---|---|
+| `git pull` 이 `unrelated histories` / 계속 충돌 | **2026-08-12 히스토리 재작성** 이전의 낡은 클론이다 → `git reset --hard origin/master` 하거나 다시 clone |
 | `git push` 시 `Permission denied (publickey)` | SSH 키 없음 → `gh auth setup-git` 후 remote를 **HTTPS**로 |
 | `ECONNREFUSED 127.0.0.1:9222` | 디버그 크롬 꺼짐 → `python _meta/debug_chrome.py` |
 | SWEA가 로그인 페이지로 튐 | 세션 만료 → 사용자에게 로그인 요청 (자주 끊김) |
@@ -361,6 +373,7 @@ git push
 | 터널 URL 이 바뀜 | 정상(quick tunnel). `algo-endpoint.timer` 가 5분 내 `_meta/endpoint.json` 갱신 |
 | `/fetch` 가 `needsLocal` | 클라우드엔 브라우저·세션 없음 → **내 PC 로컬 허브**에서 실행 |
 | 문제 클릭 시 "자료 없음" | 아직 안 받은 문제 → `python _meta/crawl_all.py` 후 `build_probindex.py`+`build_heatmap.py` |
+| 지문이 **문장 중간에서 잘림** | 섹션 경계를 `"입력"` 처럼 맨글자로 자르면 본문의 "…을 **입력**받아" 에서 끊긴다. 경계는 반드시 `"\n입력\n"`. 복구는 `crawl_all.py --empty` (30자 미만도 대상) |
 | 트리가 비어 있음 | `problems/index.json` 또는 `_meta/cosal_list.json` 누락 → 위 파이프라인 재실행 |
 | SWEA 를 번호로 가져오기 실패 | 정상. `contestProbId` 필요 → URL 을 직접 입력하거나 `_meta/swea_ids.json` 채우기 |
 | 옵시디언에 오늘 기록이 없음 | **싱크 지연** — 파일 mtime 확인하고, 없으면 사용자에게 알림 |
