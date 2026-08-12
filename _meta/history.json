@@ -4351,7 +4351,7 @@
   ]
  },
  "2026-08-12": {
-  "count": 7,
+  "count": 8,
   "items": [
    {
     "file": "swea/2115_[모의SW역량테스트]벌꿀채취.py",
@@ -4412,6 +4412,14 @@
     "title": "치킨 배달",
     "total": 30,
     "verdict": "accepted"
+   },
+   {
+    "at": "20:04:27",
+    "file": "boj/1000.py",
+    "no": "1000",
+    "site": "BOJ",
+    "status": "품",
+    "title": "A+B"
    }
   ]
  }
