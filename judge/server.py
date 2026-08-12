@@ -589,11 +589,19 @@ def save_note(d):
 # 브라우저가 문제 하나 보려고 28MB 를 받아야 한다.
 # 그래서 repo 에는 200KB 로 줄인 보기용만 두고, 전체는 채점 서버에만 둔다.
 #   ~/algo-tc/<sub>/<no>.json   {"samples":[...], "private":[...]}
+# 서버(클라우드)는 ~/algo-tc, 내 PC 는 repo 의 _meta/tc_store 를 그대로 쓴다
+# (564MB 를 두 벌 두지 않기 위해).
 TC_STORE = os.path.join(os.path.expanduser("~"), "algo-tc")
+TC_STORE_ALT = os.path.join(ROOT, "_meta", "tc_store")
 
 
-def tc_path(site, no):
-    return os.path.join(TC_STORE, SUB.get(site, "boj"), "%s.json" % no)
+def tc_path(site, no, write=False):
+    sub = SUB.get(site, "boj")
+    primary = os.path.join(TC_STORE, sub, "%s.json" % no)
+    if write or os.path.exists(primary):
+        return primary
+    alt = os.path.join(TC_STORE_ALT, sub, "%s.json" % no)
+    return alt if os.path.exists(alt) else primary
 
 
 def load_stored_tc(site, no):
@@ -612,12 +620,15 @@ def tc_info(site, no):
     if not d:
         return {"ok": True, "stored": False}
     pv = d.get("private") or []
+    cases = [{"i": i, "in": len(t.get("in", "")), "out": len(t.get("out", ""))}
+             for i, t in enumerate(pv)]
     return {"ok": True, "stored": True,
             "samples": len(d.get("samples") or []), "private": len(pv),
-            "bytes": sum(len(t.get("in", "")) + len(t.get("out", "")) for t in pv)}
+            "bytes": sum(c["in"] + c["out"] for c in cases),
+            "cases": cases}
 
 
-def tc_preview(site, no, idx, limit=200_000):
+def tc_preview(site, no, idx, limit=200_000, full=False):
     """케이스 하나를 미리보기용으로 잘라서 준다(브라우저 표시용)."""
     d = load_stored_tc(site, no)
     if not d:
@@ -627,6 +638,10 @@ def tc_preview(site, no, idx, limit=200_000):
         return {"ok": False, "error": "범위를 벗어난 인덱스"}
     t = pv[idx]
     a, b = t.get("in", ""), t.get("out", "")
+    if full:
+        return {"ok": True, "index": idx, "total": len(pv),
+                "in": a, "out": b, "inFull": len(a), "outFull": len(b),
+                "truncated": False}
     return {"ok": True, "index": idx, "total": len(pv),
             "in": a[:limit], "out": b[:limit],
             "inFull": len(a), "outFull": len(b),
@@ -639,7 +654,7 @@ def tc_upload(d):
     no = str(d.get("no") or "").strip()
     if not no or not re.fullmatch(r"[A-Za-z0-9_-]{1,12}", no):
         return {"ok": False, "error": "문제 번호가 이상합니다"}
-    p = tc_path(site, no)
+    p = tc_path(site, no, write=True)
     os.makedirs(os.path.dirname(p), exist_ok=True)
     body = {"site": site, "no": no,
             "samples": d.get("samples") or [], "private": d.get("private") or []}
@@ -856,8 +871,8 @@ def status():
             "autoPush": AUTO_PUSH,
             "endpoints": ["/judge", "/run", "/save", "/fetch", "/note",
                           "/tc", "/tcupload", "/delete", "/problems"],
-            "tcStore": (len(glob.glob(os.path.join(TC_STORE, "*", "*.json")))
-                        if os.path.isdir(TC_STORE) else 0)}
+            "tcStore": (len(glob.glob(os.path.join(TC_STORE, "*", "*.json"))) +
+                        len(glob.glob(os.path.join(TC_STORE_ALT, "*", "*.json"))))}
 
 
 # ══════════════════════════════════════════════════════════════
@@ -973,7 +988,10 @@ class H(BaseHTTPRequestHandler):
                 site = (body.get("site") or "BOJ").upper()
                 no = str(body.get("no") or "")
                 if body.get("index") is not None:
-                    return self._send(200, tc_preview(site, no, int(body["index"])))
+                    return self._send(200, tc_preview(
+                        site, no, int(body["index"]),
+                        limit=int(body.get("limit") or 200_000),
+                        full=bool(body.get("full"))))
                 return self._send(200, tc_info(site, no))
 
             if p == "/tcupload":

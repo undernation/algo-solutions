@@ -175,6 +175,10 @@ pre.io{background:var(--soft);border:1px solid var(--bd);border-radius:6px;paddi
  border-radius:5px;padding:9px 11px;max-height:270px;overflow:auto}
 .note{background:var(--soft);border:1px solid var(--bd);border-left:3px solid var(--ac);
  border-radius:5px;padding:11px 14px;font-size:13.5px;color:var(--sub);margin:14px 0}
+.bigrow{display:flex;align-items:center;gap:10px;padding:7px 12px;border:1px solid var(--bd);
+ border-radius:7px;margin:6px 0;background:var(--panel);font-size:13px}
+.bigrow .sz{color:var(--sub);font-size:12.5px;flex:1}
+
 /* ── 테스트케이스 패널 (코딩살구 스타일) ── */
 .tcp{border:1px solid var(--bd);border-radius:8px;overflow:hidden;margin:10px 0;background:var(--panel)}
 .tcp .head{display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--hdr);
@@ -636,6 +640,84 @@ function drawStatus(){
 }
 function sortBy(k){ asc=(k===sortK)?!asc:false; sortK=k; drawStatus(); }
 
+/* ════════ 서버 보관 테스트케이스 ════════
+   용량이 큰 케이스는 repo 에 싣지 않는다(BOJ 2493 은 한 케이스가 4.4MB).
+   목록만 보여주고, 누르면 그때 서버에서 받아온다. */
+function fmtSize(b){
+ return b >= 1e6 ? (b/1e6).toFixed(1)+" MB"
+      : b >= 1e3 ? Math.round(b/1e3)+" KB" : b+" B";
+}
+
+async function loadBigTC(site,no){
+ var el=$("bigtc"); if(!el)return;
+ var h=hubFor("save");
+ if(!h){ el.innerHTML='<div class="note">허브가 꺼져 있어 목록을 못 가져옵니다.</div>'; return; }
+ try{
+  var r=await fetch(h.url+"/tc",{method:"POST",headers:H(),
+        body:JSON.stringify({site:site,no:no})});
+  if(r.status===401){
+    el.innerHTML='<div class="note">인증 실패 — 우측 상단 <b>허브 버튼</b>에서 토큰을 확인하세요.</div>';
+    return;
+  }
+  var j=await r.json();
+  if(!j.stored){ el.innerHTML='<div class="note">서버에 보관된 케이스가 없습니다.</div>'; return; }
+  var shown=((CUR.prob||{}).private_testcases||[]).length;
+  var rest=(j.cases||[]).slice(shown);
+  if(!rest.length){ el.innerHTML='<div class="note">전부 위에 표시되어 있습니다.</div>'; return; }
+  el.innerHTML=
+   '<div class="hint" style="margin:0 0 8px">채점에는 아래 케이스도 전부 사용됩니다. '+
+   '보고 싶은 것만 눌러서 받아오세요.</div>'+
+   rest.map(function(c){
+     var tot=c["in"]+c.out;
+     return '<div class="bigrow" id="bg'+c.i+'">'+
+       '<span class="tcnum">'+(c.i+1)+'</span>'+
+       '<span class="sz">입력 '+fmtSize(c["in"])+' · 출력 '+fmtSize(c.out)+'</span>'+
+       '<button class="sm" onclick="showBigTC('+c.i+')">보기</button>'+
+       '<button class="sm" onclick="dlBigTC('+c.i+')">파일로 저장</button>'+
+       '</div>';
+   }).join("");
+ }catch(e){ el.innerHTML='<div class="note">목록을 못 가져왔습니다: '+esc(e.message)+'</div>'; }
+}
+
+async function fetchBigTC(i, full){
+ var h=hubFor("save"); if(!h) return null;
+ var r=await fetch(h.url+"/tc",{method:"POST",headers:H(),
+       body:JSON.stringify({site:CUR.site,no:CUR.no,index:i,full:!!full})});
+ if(!r.ok) return null;
+ return await r.json();
+}
+
+async function showBigTC(i){
+ var row=$("bg"+i); if(!row)return;
+ var old=row.innerHTML;
+ row.insertAdjacentHTML("beforeend",'<span class="hint">받는 중…</span>');
+ var j=await fetchBigTC(i,false);
+ if(!j||!j.ok){ row.innerHTML=old+'<span class="hint" style="color:var(--no)">실패</span>'; return; }
+ var box=document.createElement("div");
+ box.innerHTML=tcPanel("프라이빗", i+1, {"in":j["in"], out:j.out})+
+   (j.truncated?'<div class="hint">표시는 앞부분만 잘랐습니다 (원본 입력 '+
+     fmtSize(j.inFull)+'). 전체는 <b>파일로 저장</b>을 쓰세요.</div>':'');
+ row.innerHTML=old;
+ row.parentNode.insertBefore(box, row.nextSibling);
+}
+
+async function dlBigTC(i){
+ var row=$("bg"+i);
+ var btns=row?row.querySelectorAll("button"):[];
+ if(btns.length) btns[1].textContent="받는 중…";
+ var j=await fetchBigTC(i,true);
+ if(btns.length) btns[1].textContent="파일로 저장";
+ if(!j||!j.ok) return;
+ var name=CUR.site+"_"+CUR.no+"_TC"+(i+1);
+ [["in",j["in"]],["out",j.out]].forEach(function(kv){
+  var blob=new Blob([kv[1]],{type:"text/plain;charset=utf-8"});
+  var a=document.createElement("a");
+  a.href=URL.createObjectURL(blob); a.download=name+"."+kv[0]+".txt";
+  document.body.appendChild(a); a.click();
+  setTimeout(function(){URL.revokeObjectURL(a.href); a.remove();}, 1000);
+ });
+}
+
 /* ════════ 복기 메모 ════════
    실수노트와 같은 구조(## 문제 / #### 날짜 (상태) / 본문)로 notes/<site>/<no>.md 에 쌓는다.
    외부 라이브러리를 못 쓰므로(CSP) 필요한 만큼만 마크다운을 직접 렌더링한다. */
@@ -948,6 +1030,7 @@ async function viewProblem(site,no){
  if(location.hash.indexOf("#p/")!==0) return;   // 그새 다른 화면으로 이동
  renderProblem(p, site, no);
  loadNote(site, no);
+ loadBigTC(site, no);
 }
 
 /* 지문의 [[IMG:n]] 자리표시를 실제 그림으로 바꾼다. 파일이 없으면 표시만 지운다. */
@@ -1032,6 +1115,11 @@ function renderProblem(p,site,no){
           '(BOJ 2493 은 한 케이스가 4MB). <b>채점에는 서버 보관본으로 전부 사용</b>됩니다.'
         : '')+'</div>'+
      htc.map(function(s,i){ return tcPanel("프라이빗", i+1, s); }).join("")+
+     (p.private_tc_omitted
+       ? '<div class="sec-h" style="font-size:15px;margin:22px 0 8px">'+
+         '용량이 커서 서버에 있는 케이스</div>'+
+         '<div id="bigtc"><div class="hint">허브에 연결되면 목록이 뜹니다.</div></div>'
+       : '')+
      '</div></details>';
  }
  if(p.constraints&&p.constraints.length)
