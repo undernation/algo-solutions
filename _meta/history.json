@@ -4311,7 +4311,7 @@
   ]
  },
  "2026-08-12": {
-  "count": 2,
+  "count": 3,
   "items": [
    {
     "file": "swea/2115_[모의SW역량테스트]벌꿀채취.py",
@@ -4328,6 +4328,17 @@
     "site": "SWEA",
     "status": "품",
     "title": "[모의 SW 역량테스트] 보호 필름",
+    "total": 1,
+    "verdict": "accepted"
+   },
+   {
+    "elapsed": 0.271,
+    "file": "boj/10822.py",
+    "no": "10822",
+    "passed": 1,
+    "site": "BOJ",
+    "status": "품",
+    "title": "더하기",
     "total": 1,
     "verdict": "accepted"
    }
