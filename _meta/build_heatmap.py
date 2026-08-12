@@ -343,7 +343,10 @@ def month_details(data, year, months=None):
 
 # ── main ───────────────────────────────────────────────────────
 def main():
-    year = 2026
+    # 올해를 자동으로 쓴다. 해가 바뀌면 잔디도 따라 넘어간다.
+    # (KST 기준 — 빌드가 UTC 서버에서 돌아도 새해 첫날 하루가 밀리지 않게)
+    KST = datetime.timezone(datetime.timedelta(hours=9))
+    year = datetime.datetime.now(KST).year
     if "--year" in sys.argv:
         year = int(sys.argv[sys.argv.index("--year") + 1])
 

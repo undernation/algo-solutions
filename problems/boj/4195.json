@@ -19,5 +19,56 @@
   }
  ],
  "private_tc_count": 14,
- "fetched_at": "2026-08-12"
+ "private_testcases": [
+  {
+   "in": "1\n1\nAnn Bob",
+   "out": "2"
+  },
+  {
+   "in": "1\n3\nAnn Bob\nBob Ann\nAnn Bob",
+   "out": "2\n2\n2"
+  },
+  {
+   "in": "2\n1\nAnn Bob\n2\nAnn Cat\nCat Dan",
+   "out": "2\n2\n3"
+  },
+  {
+   "in": "1\n6\nua ub\nub uc\nuc ud\nud ue\nue uf\nuf ug",
+   "out": "2\n3\n4\n5\n6\n7"
+  },
+  {
+   "in": "1\n3\naa ab\nac ad\nab ac",
+   "out": "2\n2\n4"
+  },
+  {
+   "in": "1\n2\na zzzzzzzzzzzzzzzzzzzz\nzzzzzzzzzzzzzzzzzzzz b",
+   "out": "2\n3"
+  },
+  {
+   "in": "1\n3\nAnn ann\nANN Ann\naNn ann",
+   "out": "2\n3\n4"
+  },
+  {
+   "in": "1\n2\nSolo Solo\nSolo Pal",
+   "out": "1\n2"
+  },
+  {
+   "in": "1\n11\nla lb\nlb lc\nlc ld\nld le\nle lf\nra rb\nrb rc\nrc rd\nrd re\nre rf\nla ra",
+   "out": "2\n3\n4\n5\n6\n2\n3\n4\n5\n6\n12"
+  },
+  {
+   "in": "1\n5\nKim Lee\nKim Lee\nKim Lee\nKim Lee\nKim Lee",
+   "out": "2\n2\n2\n2\n2"
+  },
+  {
+   "in": "2\n5\nua ub\nub uc\nuc ud\nud ue\nue uf\n5\nua ub\nub uc\nuc ud\nud ue\nue uf",
+   "out": "2\n3\n4\n5\n6\n2\n3\n4\n5\n6"
+  },
+  {
+   "in": "1\n8\nhub sa\nhub sb\nhub sc\nhub sd\nhub se\nhub sf\nhub sg\nhub sh",
+   "out": "2\n3\n4\n5\n6\n7\n8\n9"
+  }
+ ],
+ "fetched_at": "2026-08-12",
+ "private_tc_omitted": 2
 }

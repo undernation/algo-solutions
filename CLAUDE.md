@@ -96,6 +96,33 @@ Oracle VM
 - 서버 로그: `ssh ubuntu@134.185.106.155 'journalctl -u algo-hub -n 50'`
 - SSH 키: `~/.ssh/oracle_judge` (= Downloads 의 `quality-search.key`)
 
+### 💾 테스트케이스는 두 곳에 나뉘어 있다 (중요)
+
+코딩살구의 히든 TC 는 실제 채점용이라 매우 크다. **BOJ 2493 탑은 한 케이스가 4.4MB**
+(N ≤ 500,000, 높이 8자리) 이고 문제 전체로 28MB 다. 전부 repo 에 넣었더니
+`problems/` 가 **565MB** 가 되어 **GitHub Pages 빌드가 실패**했고, 브라우저는 문제 하나
+보려고 28MB 를 받아야 했다.
+
+| 어디 | 무엇 | 용량 |
+|---|---|---|
+| **repo** `problems/` | 문제당 **200KB 로 줄인 보기용** (커밋됨) | 20MB |
+| **채점 서버** `~/algo-tc/` | **전체 테스트케이스** (git 밖) | 564MB |
+| 로컬 `_meta/tc_store/` | 서버로 올릴 원본 (**gitignore**) | 564MB |
+
+- 케이스를 자르지 않는다(자르면 채점에 못 쓴다). 통째로 들어가는 것까지만 담고
+  나머지는 `private_tc_omitted` 에 개수만 남긴다. 상한은 `fetch_problem.py` 의 `PRIV_CAP`.
+- **채점은 전체본으로 한다.** 대시보드가 `useStoredTC: true` 만 보내면 서버가
+  `~/algo-tc/<sub>/<no>.json` 을 읽어 채점한다. 브라우저는 케이스를 올리지 않는다.
+- 서버로 올리기:
+  ```bash
+  python _meta/sync_tc.py            # 없는 것만
+  python _meta/sync_tc.py --force    # 전부 다시
+  ```
+- 관련 엔드포인트: `POST /tc` (정보·미리보기), `POST /tcupload` (업로드)
+
+> ⚠️ **`_meta/tc_store/` 를 커밋하지 말 것.** .gitignore 에 있다. 실수로 넣으면
+> repo 가 다시 500MB 를 넘고 Pages 가 죽는다.
+
 ### 📦 문제 자료 파이프라인
 
 ```

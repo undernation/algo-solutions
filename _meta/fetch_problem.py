@@ -254,6 +254,26 @@ PRIV_FETCH_JS = r"""async (no) => {
 }"""
 
 
+# 문제 하나가 담을 히든 TC 총 바이트 상한.
+# 상한이 없으면 BOJ 2493(탑) 하나가 28MB 가 되어 problems/ 가 565MB 까지 불었고,
+# GitHub Pages 빌드가 실패했다. 브라우저가 문제 하나 보려고 28MB 를 받는 것도 말이 안 된다.
+# 케이스는 자르지 않고(자르면 채점에 못 쓴다) 통째로 들어가는 것까지만 담는다.
+PRIV_CAP = 200_000
+
+
+def cap_private_tc(tc, cap=PRIV_CAP):
+    """상한까지 케이스를 담고, 남은 개수를 함께 돌려준다."""
+    keep, used, omitted = [], 0, 0
+    for t in tc:
+        sz = len(t.get("in", "")) + len(t.get("out", ""))
+        if used + sz <= cap:
+            keep.append(t)
+            used += sz
+        else:
+            omitted += 1
+    return keep, omitted
+
+
 def fetch_private_tc(pg, no=None):
     """프라이빗 테스트케이스 수집. no 를 주면 원문 HTML 방식(권장)."""
     if no:
@@ -501,7 +521,10 @@ def main():
         d = parser(t, pg.url)
         apply_images(pg, d)
         if d.get("site") == "BOJ" and d.get("private_tc_count"):
-            d["private_testcases"] = fetch_private_tc(pg, d.get("no"))
+            tc, om = cap_private_tc(fetch_private_tc(pg, d.get("no")))
+            d["private_testcases"] = tc
+            if om:
+                d["private_tc_omitted"] = om
         # SWEA 는 공식 테스트케이스 파일을 받아 채점 가능한 형태로 만든다.
         if d.get("site") == "SWEA":
             m = re.search(r"contestProbId=([A-Za-z0-9+/=]+)", pg.url)

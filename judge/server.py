@@ -20,6 +20,8 @@ http://localhost:12014 를 직접 호출한다.
     POST /run         임의 코드 + 케이스 채점  {code, cases:[{in,out}]}
     POST /save        풀이 저장 + git commit/push
     POST /fetch       문제 크롤링 (fetch_problem.py 위임)
+    POST /tc          보관된 전체 테스트케이스 정보/미리보기 {site, no, index?}
+    POST /tcupload    전체 테스트케이스 업로드 {site, no, samples, private}
     POST /note        복기 메모 저장 {site, no, date, status, body, mode}
     POST /delete      풀이기록/문제자료 삭제 {kind, site, no, date?}
     GET  /problems    저장된 문제 목록
@@ -581,6 +583,72 @@ def save_note(d):
             "committed": committed, "pushed": pushed, "pushError": perr}
 
 
+# ── 전체 테스트케이스 보관소 ────────────────────────────────
+# 코딩살구의 히든 TC 는 실제 채점용이라 매우 크다(BOJ 2493 탑 = 28MB, 50만 개 숫자).
+# repo 에 넣으면 problems/ 가 565MB 가 되어 GitHub Pages 빌드가 실패하고,
+# 브라우저가 문제 하나 보려고 28MB 를 받아야 한다.
+# 그래서 repo 에는 200KB 로 줄인 보기용만 두고, 전체는 채점 서버에만 둔다.
+#   ~/algo-tc/<sub>/<no>.json   {"samples":[...], "private":[...]}
+TC_STORE = os.path.join(os.path.expanduser("~"), "algo-tc")
+
+
+def tc_path(site, no):
+    return os.path.join(TC_STORE, SUB.get(site, "boj"), "%s.json" % no)
+
+
+def load_stored_tc(site, no):
+    """보관된 전체 테스트케이스. 없으면 None."""
+    p = tc_path(site, no)
+    if not os.path.exists(p):
+        return None
+    try:
+        return json.load(io.open(p, encoding="utf-8"))
+    except Exception:
+        return None
+
+
+def tc_info(site, no):
+    d = load_stored_tc(site, no)
+    if not d:
+        return {"ok": True, "stored": False}
+    pv = d.get("private") or []
+    return {"ok": True, "stored": True,
+            "samples": len(d.get("samples") or []), "private": len(pv),
+            "bytes": sum(len(t.get("in", "")) + len(t.get("out", "")) for t in pv)}
+
+
+def tc_preview(site, no, idx, limit=200_000):
+    """케이스 하나를 미리보기용으로 잘라서 준다(브라우저 표시용)."""
+    d = load_stored_tc(site, no)
+    if not d:
+        return {"ok": False, "error": "보관된 테스트케이스가 없습니다"}
+    pv = d.get("private") or []
+    if not (0 <= idx < len(pv)):
+        return {"ok": False, "error": "범위를 벗어난 인덱스"}
+    t = pv[idx]
+    a, b = t.get("in", ""), t.get("out", "")
+    return {"ok": True, "index": idx, "total": len(pv),
+            "in": a[:limit], "out": b[:limit],
+            "inFull": len(a), "outFull": len(b),
+            "truncated": len(a) > limit or len(b) > limit}
+
+
+def tc_upload(d):
+    """로컬에서 크롤링한 전체 TC 를 보관소에 저장."""
+    site = (d.get("site") or "BOJ").upper()
+    no = str(d.get("no") or "").strip()
+    if not no or not re.fullmatch(r"[A-Za-z0-9_-]{1,12}", no):
+        return {"ok": False, "error": "문제 번호가 이상합니다"}
+    p = tc_path(site, no)
+    os.makedirs(os.path.dirname(p), exist_ok=True)
+    body = {"site": site, "no": no,
+            "samples": d.get("samples") or [], "private": d.get("private") or []}
+    io.open(p, "w", encoding="utf-8", newline="").write(
+        json.dumps(body, ensure_ascii=False))
+    return {"ok": True, "path": os.path.relpath(p, TC_STORE).replace(os.sep, "/"),
+            "private": len(body["private"])}
+
+
 def delete_item(d):
     """풀이 기록 / 문제 자료 삭제.
 
@@ -786,7 +854,10 @@ def status():
             "python": sys.version.split()[0], "repo": ROOT,
             "branch": br, "ahead": ah, "dirty": dirty, "solutions": n,
             "autoPush": AUTO_PUSH,
-            "endpoints": ["/judge", "/run", "/save", "/fetch", "/note", "/delete", "/problems"]}
+            "endpoints": ["/judge", "/run", "/save", "/fetch", "/note",
+                          "/tc", "/tcupload", "/delete", "/problems"],
+            "tcStore": (len(glob.glob(os.path.join(TC_STORE, "*", "*.json")))
+                        if os.path.isdir(TC_STORE) else 0)}
 
 
 # ══════════════════════════════════════════════════════════════
@@ -863,6 +934,19 @@ class H(BaseHTTPRequestHandler):
         try:
             if p in ("/judge", ""):
                 cases = body.get("testCases") or []
+                # useStoredTC: 브라우저가 거대한 TC 를 올리지 않고, 서버가 보관본으로 채점한다.
+                nstored = 0
+                if body.get("useStoredTC"):
+                    st = load_stored_tc((body.get("site") or "BOJ").upper(),
+                                        str(body.get("problemId") or ""))
+                    if st:
+                        pub = [{"input": c.get("in", ""), "output": c.get("out", "")}
+                               for c in (st.get("samples") or [])]
+                        prv = [{"input": c.get("in", ""), "output": c.get("out", "")}
+                               for c in (st.get("private") or [])]
+                        cases = pub + prv
+                        nstored = len(prv)
+                        body["publicTestCaseCount"] = len(pub)
                 try:
                     tl = allowed_time(body.get("timeLimit"),
                                       bool(body.get("langAdjusted")))
@@ -884,6 +968,16 @@ class H(BaseHTTPRequestHandler):
                 return self._send(200, judge(body.get("code") or "", cases, 0,
                                              allowed_time(body.get("timeLimit"),
                                                           bool(body.get("langAdjusted")))))
+
+            if p == "/tc":
+                site = (body.get("site") or "BOJ").upper()
+                no = str(body.get("no") or "")
+                if body.get("index") is not None:
+                    return self._send(200, tc_preview(site, no, int(body["index"])))
+                return self._send(200, tc_info(site, no))
+
+            if p == "/tcupload":
+                return self._send(200, tc_upload(body))
 
             if p == "/note":
                 log("\n▶ 메모  %s %s %s" % (body.get("site"), body.get("no"),

@@ -19,5 +19,60 @@
   }
  ],
  "private_tc_count": 14,
- "fetched_at": "2026-08-12"
+ "private_testcases": [
+  {
+   "in": "80808\n0",
+   "out": "yes"
+  },
+  {
+   "in": "1\n2\n99998\n99999\n0",
+   "out": "yes\nyes\nno\nyes"
+  },
+  {
+   "in": "9\n10\n11\n99\n100\n101\n999\n1000\n1001\n9999\n10000\n10001\n99999\n0",
+   "out": "yes\nno\nyes\nyes\nno\nyes\nyes\nno\nyes\nyes\nno\nyes\nyes"
+  },
+  {
+   "in": "70\n230\n4560\n78900\n99990\n12340\n50\n600\n7000\n80000\n0",
+   "out": "no\nno\nno\nno\nno\nno\nno\nno\nno\nno"
+  },
+  {
+   "in": "5\n77\n818\n6006\n45654\n99999\n1\n2332\n70907\n0",
+   "out": "yes\nyes\nyes\nyes\nyes\nyes\nyes\nyes\nyes"
+  },
+  {
+   "in": "98789\n4\n12345\n7\n56765\n2\n40004\n8\n13579\n1\n0",
+   "out": "yes\nyes\nno\nyes\nyes\nyes\nyes\nyes\nno\nyes"
+  },
+  {
+   "in": "31413\n31414\n31415\n31416\n31417\n31418\n31419\n0",
+   "out": "yes\nno\nno\nno\nno\nno\nno"
+  },
+  {
+   "in": "23456\n23457\n23458\n23459\n23460\n23461\n23462\n23432\n0",
+   "out": "no\nno\nno\nno\nno\nno\nno\nyes"
+  },
+  {
+   "in": "66\n676\n6776\n67876\n67\n677\n6777\n67875\n0",
+   "out": "yes\nyes\nyes\nyes\nno\nno\nno\nno"
+  },
+  {
+   "in": "51315\n51325\n52315\n5115\n5125\n535\n545\n5005\n5015\n0",
+   "out": "yes\nno\nno\nyes\nno\nyes\nyes\nyes\nno"
+  },
+  {
+   "in": "13531\n13531\n13532\n13532\n13531\n13532\n13531\n13531\n0",
+   "out": "yes\nyes\nno\nno\nyes\nno\nyes\nyes"
+  },
+  {
+   "in": "20\n50\n702\n907\n1002\n5005\n60006\n10203\n30203\n30103\n0",
+   "out": "no\nno\nno\nno\nno\nyes\nyes\nno\nyes\nyes"
+  },
+  {
+   "in": "12345\n54321\n1234\n4321\n123\n321\n12\n21\n13831\n13831\n0",
+   "out": "no\nno\nno\nno\nno\nno\nno\nno\nyes\nyes"
+  }
+ ],
+ "fetched_at": "2026-08-12",
+ "private_tc_omitted": 1
 }

@@ -29,5 +29,96 @@
   }
  ],
  "private_tc_count": 27,
- "fetched_at": "2026-08-12"
+ "private_testcases": [
+  {
+   "in": "1 2\nLL",
+   "out": "0"
+  },
+  {
+   "in": "1 3\nLXL",
+   "out": "1"
+  },
+  {
+   "in": "2 3\nLXX\nXXL",
+   "out": "1"
+  },
+  {
+   "in": "4 5\nLXXX.\nXXXXX\n....X\nXXXXL",
+   "out": "1"
+  },
+  {
+   "in": "5 5\nLXXXX\nXXXXX\nXX.XX\nXXXXX\nXXXXL",
+   "out": "2"
+  },
+  {
+   "in": "3 3\nLXX\nX.X\nXXL",
+   "out": "1"
+  },
+  {
+   "in": "16 20\n....................\n....................\n....................\n....................\n.....XXXXXXXXXX.....\n.....XXXXXXXXXX.....\n.....XXXXXXXXLX.....\n.....XXXXXXXXXX.....\n.....XXXXXXXXXX.....\n.....XXXXXXXXXX.....\n.....XXXXXXXXXX.....\n.....XXXXXXXXXX.....\n............L.......\n....................\n....................\n....................",
+   "out": "1"
+  },
+  {
+   "in": "7 20\n..........LXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXL.........",
+   "out": "3"
+  },
+  {
+   "in": "2 2\nL.\n.L",
+   "out": "0"
+  },
+  {
+   "in": "36 9\n..X..X.XX\n.X.X.X...\n..XXXXXX.\nXX..XX...\nXX...XXX.\nX..X..X..\nXX...XX..\n.X.....X.\nXXX.X..XX\nX....XX..\nX.X....X.\nX.XX.X..X\n...XX.X.X\n.X..XX.X.\nXXXX....X\n..XXX.X..\n..X.X.X..\n.XXX.X..X\nX..X.XXXX\n.........\nX...X..X.\n.XX...XXX\nXX.....XX\nXXX..XX.X\n.......X.\n...XXXXXX\n...X...X.\n.X..X.X.X\n.XXXX..X.\n....XX...\n..X.XX.X.\n....X....\n.......XX\nX..X.....\nXXXXXX.L.\n.XX.XXL.X",
+   "out": "0"
+  },
+  {
+   "in": "7 20\nL...................\n....................\n....................\n....................\n....................\n....................\n....L...............",
+   "out": "0"
+  },
+  {
+   "in": "8 15\n............L..\n...............\n...XXXXXXXX....\n...XXXXXXXX....\n...XXXXXXXX....\n...XXXXXXXL....\n...............\n...............",
+   "out": "0"
+  },
+  {
+   "in": "18 20\n..........LXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXL.........",
+   "out": "8"
+  },
+  {
+   "in": "7 31\nX..XX.....XXXX.....XXX...XX....\n.X....X...X....X...X.X...XXXX..\nX..XX...XX.....X..XX.X..XXX.XX.\n.X.X...XX..X..XXLX.X..X..X.....\nXXX....X............XX..XXX.XL.\n...XX...X..X....XX...X.X..X.X.X\n.XXX..X..X..X.......X..X.XXX.XX",
+   "out": "1"
+  },
+  {
+   "in": "9 16\n................\n................\n................\n..L.............\n................\n................\n..........L.....\n................\n................",
+   "out": "0"
+  },
+  {
+   "in": "24 21\n.....................\n.....................\n.....................\n.....................\n.....................\nL....................\n.....LXXXXXXXXX......\n.....XXXXXXXXXX......\n.....XXXXXXXXXX......\n.....XXXXXXXXXX......\n.....XXXXXXXXXX......\n.....XXXXXXXXXX......\n.....XXXXXXXXXX......\n.....XXXXXXXXXX......\n.....XXXXXXXXXX......\n.....XXXXXXXXXX......\n.....XXXXXXXXXX......\n.....XXXXXXXXXX......\n.....................\n.....................\n.....................\n.....................\n.....................\n.....................",
+   "out": "0"
+  },
+  {
+   "in": "9 13\n......LXXXXXX\nXXXXXXXXXXXXX\nXXXXXXXXXXXXX\nXXXXXXXXXXXXX\nXXXXXXXXXXXXX\nXXXXXXXXXXXXX\nXXXXXXXXXXXXX\nXXXXXXXXXXXXX\nXXXXXXL......",
+   "out": "4"
+  },
+  {
+   "in": "25 31\n...X.X.....X.X..XXXXXX..X.X..XX\n.XXXX.XX.X..X.XX.....X.X....X..\n..X.....X.XXX.XXXXX..XX.X..X...\n.XXX..X..XX...X..X.....X.XX..X.\n.X.XX.......XX.XX.XXX.X..X.XXX.\nX..X..X...X.X.X.....XX..XX..X.X\nX.XX..XX.XX.XXXXX..XX.XX.L...XX\n.XX..X.XX.XXXX.XX.X.X.XX.XX.X.X\n....X.X.X..X..XX...X..X..X.....\n...X....XXX...XX.X.XXX.......X.\n.XXXX.X..XX.X....XX......XXX.X.\n.X.X..........X....X.....XX..X.\nXX.XX..X..X.X.X...XXXX...X.....\n....XX.X.X..X..XX..XX..X.X.X.X.\nXX.X..XXX..XX..XX........X.....\nX...X.X...X.....X....XX..X.XXXX\nXX.XX..X....XX...X.X.X..XX..X.X\nX....XX....X...XX..X...XX..X...\n.X...XX.X....XXX...X...X.XX..X.\n..X.X.....XX....X....X.XX.XXXX.\nXXX..XX.X.X.....X.XX...X..X...X\nX...XX...X...XX..X.X.X..XXX..XX\nX.......XXXX..X....XXX..XXX...X\n.X..XXX...XX..X.....X..X.....X.\n..X......X..X..XXXXXXX..X.X.L..",
+   "out": "1"
+  },
+  {
+   "in": "6 3\n...\n...\n..L\n...\n..L\n...",
+   "out": "0"
+  },
+  {
+   "in": "10 17\n.................\n.........L.......\n....XXXXXXXX.....\n....XXXXXXXX.....\n....XXXXXXXX.....\n....XXXXXXXX.....\n.L..XXXXXXXX.....\n.................\n.................\n.................",
+   "out": "0"
+  },
+  {
+   "in": "16 24\n............LXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXL...........",
+   "out": "7"
+  },
+  {
+   "in": "26 33\n.X..X..X..X.X..XXXXXXX...XXX.X.XX\nX.XX.X....X...X.X.X.X......X.XX.X\nX.X..X.X..XX.XX.X..X...XXXX.XX..X\n.X...XX.....XX.X..X...XX.X.XXX...\nX.XXX.....X.XX.X.XX....X.X.X.XXXX\n...X..XX..XX......XXXX..X.......X\n..X......X..X.X.X.XXXX..X..X....X\n...X.......X......XX.....XX..X..X\n...XX.....X.XX.X..X..X..X.X...X.X\nX.X..X...X..XX...X....XX..X.X....\n.X.XX.XXX...XX...XXX..X.XXX...X.X\n...X.X.X.....XX.XX.X.X..X..X.....\nX..X.....X....X...XX..XXX..XXXX.X\nXXXXX..XXX.X.....X..XX..X...X...X\n.X...X....X.X....X..X....X.X....X\n....X.X..X...XXX........X...X..X.\n....X..X...X...XX.....X...XX.X.XX\nX....XXX.X....X..XX.X.XX..X...X.X\nXX..X.X.....X..X..XX....L.X.X....\nX.....X...XXXX.XXX...XXX..X....X.\nXX.X..X....XXX..XX..X....XXXX....\nX.XX.X.......XXXX.X......X.....X.\n.XXXX...XX.X...XX.X..X..XX.X...XX\nLX...X.X.X.XXX...XXX....XXX...XXX\nX........XXXX.X....XXXX.........X\nX....X...X.....X...X.....X.......",
+   "out": "1"
+  }
+ ],
+ "fetched_at": "2026-08-12",
+ "private_tc_omitted": 5
 }

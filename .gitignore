@@ -5,3 +5,6 @@ __pycache__/
 judge/_server.log
 live.html
 _meta/_crawl*.log
+
+# 전체 테스트케이스는 repo 가 아니라 채점 서버에 둔다(용량)
+_meta/tc_store/

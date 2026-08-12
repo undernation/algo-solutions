@@ -24,5 +24,60 @@
   }
  ],
  "private_tc_count": 14,
- "fetched_at": "2026-08-12"
+ "private_testcases": [
+  {
+   "in": "1 1\nq\nq",
+   "out": "0"
+  },
+  {
+   "in": "1 1\n7q\nq7,7q7,qq",
+   "out": "1"
+  },
+  {
+   "in": "6 5\nab1\ncd2\nef3\ngh4\nij5\nkl6\nab1,cd2,ef3\ngh4,ij5,kl6\nab1,gh4\nkl6\nzz9,ab1,cd2,ef3,gh4,ij5,kl6",
+   "out": "3\n0\n0\n0\n0"
+  },
+  {
+   "in": "4 7\nalpha\nbeta\ngamma\ndelta\nalpha,beta\nalpha,beta\nbeta,alpha\ngamma\ngamma,alpha\ndelta,beta,gamma,alpha\ndelta",
+   "out": "2\n2\n2\n1\n1\n0\n0"
+  },
+  {
+   "in": "12 3\n00kw\n01kw\n02kw\n03kw\n04kw\n05kw\n06kw\n07kw\n08kw\n09kw\n0akw\n0bkw\n00kw,01kw,02kw,03kw,04kw,05kw,06kw,07kw,08kw,09kw\n02kw,03kw,04kw,05kw,06kw,07kw,08kw,09kw,0akw,0bkw\n02sx,02tx,02ux,02vx,02wx,02xx,02yx,02zx,030x,031x",
+   "out": "2\n0\n0"
+  },
+  {
+   "in": "5 8\none\ntwo\nthree\nfour\nfive\nnine\ntwo\ntwo\nfive\none\nzero\nfour\nthree",
+   "out": "5\n4\n4\n3\n2\n2\n1\n0"
+  },
+  {
+   "in": "8 5\na\nz\n0\n9\nabcdefghij\nzzzzzzzzzz\n0123456789\n9876543210\na,abcdefghij\n0123456789,0\n9,z,zzzzzzzzzz\nb,y,1,bcdefghijk\n9876543210",
+   "out": "6\n4\n1\n1\n0"
+  },
+  {
+   "in": "5 5\nlast1\nlast2\nlast3\nlast4\nlast5\n0000no,0001no,0002no,0003no,last1\n0004no,0005no,0006no,0007no,last2\n0008no,0009no,000ano,000bno,last3\n000cno,000dno,000eno,000fno,last4\n000gno,000hno,000ino,000jno,last5",
+   "out": "4\n3\n2\n1\n0"
+  },
+  {
+   "in": "5 5\nhead1\nhead2\nhead3\nhead4\nhead5\nhead1,0000nx,0001nx,0002nx,0003nx\nhead2,0004nx,0005nx,0006nx,0007nx\nhead3,0008nx,0009nx,000anx,000bnx\nhead4,000cnx,000dnx,000enx,000fnx\nhead5,000gnx,000hnx,000inx,000jnx",
+   "out": "4\n3\n2\n1\n0"
+  },
+  {
+   "in": "10 5\na\naa\naaa\naaaa\naaaaa\naaaaaa\naaaaaaa\naaaaaaaa\naaaaaaaaa\naaaaaaaaaa\naa\naaaaa,aaaaaaaaaa\naaaa\na\naaaaaaaaa,aaaaaaa,aaa",
+   "out": "9\n7\n6\n5\n2"
+  },
+  {
+   "in": "8 5\n0\n00\n000\n7\n07\n007\n0070\n70\n07\n00,0070\n0,007,70\n0000,77,700\n7",
+   "out": "7\n5\n2\n2\n1"
+  },
+  {
+   "in": "16 5\n00030\n0002t\n0002m\n0002f\n00028\n00021\n0001u\n0001n\n0001g\n00019\n00012\n0000v\n0000o\n0000h\n0000a\n00003\n00003,00030\n0001n\n0000a,0000h,0002m,0002t\n0001g,0001u\n0000o,0000v,00012,00019,00021,00028,0002f",
+   "out": "14\n13\n9\n7\n0"
+  },
+  {
+   "in": "36 24\nmm00\nmm01\nmm02\nmm03\nmm04\nmm05\nmm06\nmm07\nmm08\nmm09\nmm0a\nmm0b\nmm0c\nmm0d\nmm0e\nmm0f\nmm0g\nmm0h\nmm0i\nmm0j\nmm0k\nmm0l\nmm0m\nmm0n\nmm0o\nmm0p\nmm0q\nmm0r\nmm0s\nmm0t\nmm0u\nmm0v\nmm0w\nmm0x\nmm0y\nmm0z\nxx00,xx01,xx02\nxx03,xx04,xx05\nxx06,xx07,xx08\nxx09,xx0a,xx0b\nxx0c,xx0d,xx0e\nxx0f,xx0g,xx0h\nxx0i,xx0j,xx0k\nxx0l,xx0m,xx0n\nxx0o,xx0p,xx0q\nxx0r,xx0s,xx0t\nxx0u,xx0v,xx0w\nxx0x,xx0y,xx0z\nmm00,mm01,mm02\nmm03,mm04,mm05\nmm06,mm07,mm08\nmm09,mm0a,mm0b\nmm0c,mm0d,mm0e\nmm0f,mm0g,mm0h\nmm0i,mm0j,mm0k\nmm0l,mm0m,mm0n\nmm0o,mm0p,mm0q\nmm0r,mm0s,mm0t\nmm0u,mm0v,mm0w\nmm0x,mm0y,mm0z",
+   "out": "36\n36\n36\n36\n36\n36\n36\n36\n36\n36\n36\n36\n33\n30\n27\n24\n21\n18\n15\n12\n9\n6\n3\n0"
+  }
+ ],
+ "fetched_at": "2026-08-12",
+ "private_tc_omitted": 1
 }

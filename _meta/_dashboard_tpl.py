@@ -1026,7 +1026,11 @@ function renderProblem(p,site,no){
      '히든 테스트케이스 '+htc.length+'개 <span class="sp">클릭해서 펼치기</span></summary>'+
      '<div style="padding:14px 16px">'+
      '<div class="hint" style="margin:0 0 10px">실제 채점에 쓰이는 케이스입니다. '+
-      '풀기 전에 보면 스포가 될 수 있어요.</div>'+
+      '풀기 전에 보면 스포가 될 수 있어요.'+
+      (p.private_tc_omitted
+        ? '<br>용량이 큰 '+p.private_tc_omitted+'개는 여기 싣지 않았습니다'+
+          '(BOJ 2493 은 한 케이스가 4MB). <b>채점에는 서버 보관본으로 전부 사용</b>됩니다.'
+        : '')+'</div>'+
      htc.map(function(s,i){ return tcPanel("프라이빗", i+1, s); }).join("")+
      '</div></details>';
  }
@@ -1088,18 +1092,24 @@ async function doJudge(){
  var pub=(P.samples||[]).map(function(s){return {input:s["in"],output:s.out};});
  var hid=useH?((P.private_testcases||[]).map(function(s){return {input:s["in"],output:s.out};})):[];
  var cases=pub.concat(hid);
- if(!cases.length)return say("예제가 없어 채점할 수 없습니다. 먼저 문제 자료를 가져오세요.","ng");
+ /* 히든 TC 는 실제 채점용이라 매우 크다(BOJ 2493 = 28MB). repo 에는 200KB 로 줄인
+    보기용만 두고, 채점은 서버가 보관한 전체본으로 한다. 브라우저는 아무것도 안 올린다. */
+ var useStored = useH && !!(P.private_tc_omitted || (P.private_tc_count||0) > hid.length);
+ if(!cases.length && !useStored)
+   return say("예제가 없어 채점할 수 없습니다. 먼저 문제 자료를 가져오세요.","ng");
  var sf=(h.info&&h.info.speedFactor)||1;
  var pm=(h.info&&h.info.pyMult)||2, pa=(h.info&&h.info.pyAdd)||0;
  var la=probLangAdjusted();
  var allow=(la?probTL():(probTL()*pm+pa))*sf;
- say("채점 중… "+cases.length+"케이스"+(hid.length?" (예제 "+pub.length+" + 히든 "+hid.length+")":"")+
+ say("채점 중… "+(useStored?("서버 보관 전체 TC ("+(P.private_tc_count||"?")+"개)")
+       :(cases.length+"케이스"+(hid.length?" (예제 "+pub.length+" + 히든 "+hid.length+")":"")))+
      " · 제한 "+probTL()+"초 → 허용 "+allow.toFixed(1)+"초"+
      (la?" (문제가 Python 기준으로 명시 · 기기보정 x"+sf.toFixed(2)+")"
         :" (x"+pm+"+"+pa+" · 기기보정 x"+sf.toFixed(2)+")"));
  try{
   var r=await fetch(h.url+"/judge",{method:"POST",headers:H(),
-   body:JSON.stringify({problemId:CUR.no,sourceCode:code,testCases:cases,
+   body:JSON.stringify({problemId:CUR.no,site:CUR.site,sourceCode:code,
+    testCases:useStored?[]:cases, useStoredTC:useStored,
     publicTestCaseCount:pub.length,timeLimit:probTL(),
     langAdjusted:probLangAdjusted()})});
   if(r.status===401)return say("인증 실패 — 허브 버튼에서 토큰을 확인하세요.","ng");
