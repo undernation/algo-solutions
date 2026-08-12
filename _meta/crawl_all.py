@@ -126,7 +126,10 @@ def main():
                 d = json.load(io.open(f, encoding="utf-8"))
             except Exception:
                 return True
-            if want_empty and not (d.get("statement") or "").strip():
+            # 지문이 아예 비었거나, 잘려서 토막만 남은 것도 복구 대상.
+            # (본문의 "…을 입력받아" 에서 끊기던 버그로 9건이 20자 안팎만 저장됐었다.
+            #  정상 문제는 최소 33자였으므로 30자를 경계로 둔다.)
+            if want_empty and len((d.get("statement") or "").strip()) < 30:
                 return True
             if want_bad:
                 txt = "".join((s.get("in", "") + s.get("out", ""))

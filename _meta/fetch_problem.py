@@ -348,7 +348,9 @@ def parse_cosal(t, url):
     anchor = ml.group(1) if ml else "주차 목록"
     d["solved"] = "해결" in sect(t, meta_line, anchor)[:40]
     body = sect(t, anchor, "테스트 케이스", "코드 제출")
-    d["statement"] = clean(sect(body, "", "입력") or body)
+    # ⚠️ 경계는 반드시 "입력" 만 있는 줄이어야 한다. 그냥 "입력" 으로 자르면
+    # 본문의 "…을 입력받아" 같은 표현에서 끊긴다(10828·10845·2675 등 9건 실제 사고).
+    d["statement"] = clean(sect(body, "", "\n입력\n") or body)
     d["input_spec"] = clean(sect(body, "\n입력\n", "\n출력\n"))
     d["output_spec"] = clean(sect(body, "\n출력\n", "테스트 케이스"))
 
