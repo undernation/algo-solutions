@@ -797,12 +797,17 @@ async function doFetch(){
  }catch(e){say("오류: "+esc(e.message),"ng");}
 }
 /* 문제의 시간 제한(초). 허브가 Python 보정으로 ×3+2 를 더 준다. */
+/* 문제의 시간 제한(초)과, 그것이 이미 Python 기준인지 여부.
+   SWEA 는 "Python의 경우 10초"처럼 언어별로 명시하므로 추가 보정을 하면 안 된다. */
 function probTL(){
  var L=((CUR.prob||{}).limits)||{};
- if(L.time_sec>0) return L.time_sec;          /* SWEA 등 문장형 한도에서 파싱해둔 값 */
+ if(L.time_sec>0) return L.time_sec;
  var m=String(L.time||"").match(/([\d.]+)/);
  var v=m?parseFloat(m[1]):0;
  return (v>0&&v<=20)?v:2;
+}
+function probLangAdjusted(){
+ return !!(((CUR.prob||{}).limits)||{}).time_sec;
 }
 async function doJudge(){
  var h=needHub("judge"); if(!h)return;
@@ -810,13 +815,18 @@ async function doJudge(){
  if(!code.trim())return say("코드를 입력하세요.","ng");
  var cases=((CUR.prob||{}).samples||[]).map(function(s){return {input:s["in"],output:s.out};});
  if(!cases.length)return say("예제가 없어 채점할 수 없습니다. 먼저 문제 자료를 가져오세요.","ng");
- var sf=(h.info&&h.info.speedFactor)||1, pm=(h.info&&h.info.pyMult)||3;
- say("채점 중… "+cases.length+"케이스 · 제한 "+probTL()+"초 → 허용 "+
-     (probTL()*pm*sf).toFixed(1)+"초 (Python x"+pm+", 기기보정 x"+sf.toFixed(1)+")");
+ var sf=(h.info&&h.info.speedFactor)||1;
+ var pm=(h.info&&h.info.pyMult)||2, pa=(h.info&&h.info.pyAdd)||0;
+ var la=probLangAdjusted();
+ var allow=(la?probTL():(probTL()*pm+pa))*sf;
+ say("채점 중… "+cases.length+"케이스 · 제한 "+probTL()+"초 → 허용 "+allow.toFixed(1)+"초"+
+     (la?" (문제가 Python 기준으로 명시 · 기기보정 x"+sf.toFixed(2)+")"
+        :" (x"+pm+"+"+pa+" · 기기보정 x"+sf.toFixed(2)+")"));
  try{
   var r=await fetch(h.url+"/judge",{method:"POST",headers:H(),
    body:JSON.stringify({problemId:CUR.no,sourceCode:code,testCases:cases,
-    publicTestCaseCount:cases.length,timeLimit:probTL()})});
+    publicTestCaseCount:cases.length,timeLimit:probTL(),
+    langAdjusted:probLangAdjusted()})});
   if(r.status===401)return say("인증 실패 — 허브 버튼에서 토큰을 확인하세요.","ng");
   var j=await r.json(); CUR.verdict=j;
   var s=j.summary||{}, ok=j.verdict==="accepted";

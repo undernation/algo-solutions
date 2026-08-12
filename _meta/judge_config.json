@@ -1,0 +1,15 @@
+{
+ "_설명": "채점 허용시간 계산 설정. 여기 값만 바꾸면 모든 허브에 적용된다(서버 재시작 필요).",
+ "_공식": "허용시간 = (문제제한 x pyMult + pyAdd) x machineFactor",
+ "_주의": [
+  "BOJ/코딩살구의 표기 제한은 C++ 기준이다. 코딩살구는 언어별 추가시간을 제공하지 않고,",
+  "백준 본 사이트는 서비스 종료라 공식 배수를 확인할 수 없었다.",
+  "따라서 pyMult/pyAdd 는 '확인된 사실'이 아니라 이 채점기의 정책값이다. 자유롭게 조정할 것.",
+  "SWEA 처럼 문제에 'Python의 경우 N초'가 명시된 경우에는 그 값을 그대로 쓰고",
+  "pyMult/pyAdd 를 적용하지 않는다(limits.time_sec, langAdjusted=true)."
+ ],
+ "pyMult": 2.0,
+ "pyAdd": 1.0,
+ "machineFactor": null,
+ "_machineFactor": "null 이면 judge/_bench.py 로 자동 측정(기준 1.0초 대비 배율). 숫자를 넣으면 고정."
+}

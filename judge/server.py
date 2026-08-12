@@ -80,10 +80,34 @@ TOKEN_FILE = os.path.join(os.path.expanduser("~"), ".algo-hub-token")
 # 그래서 벤치를 한 번 돌려 '기준 기기 대비 몇 배 느린가'를 구해 제한에 곱한다.
 #   허용시간 = 문제제한 x PY_MULT x speed_factor
 # 결과는 캐시해 매 기동마다 다시 재지 않는다.
-PY_MULT = 3.0          # Python 이 C++ 대비 필요로 하는 배수
+PY_MULT = 2.0          # PyPy 가 C++ 기준 제한 대비 받는 배수 (정책값 — 아래 설명)
+PY_ADD = 1.0           # 가산 초
 BENCH_REF = 1.0        # 기준 기기의 _bench.py 합계(초)
 BENCH_FILE = os.path.join(os.path.expanduser("~"), ".algo-hub-bench")
+CONFIG_FILE = os.path.join(ROOT, "_meta", "judge_config.json")
 SPEED = 1.0
+
+
+def load_config():
+    """_meta/judge_config.json 에서 pyMult/pyAdd/machineFactor 를 읽는다.
+
+    ⚠️ pyMult/pyAdd 는 '백준이 이렇게 준다'는 확인된 사실이 아니다.
+       코딩살구는 언어별 추가시간을 제공하지 않고(C++ 단일 기준),
+       백준 본 사이트는 서비스 종료라 공식 배수를 확인할 수 없었다.
+       이 채점기의 정책값이므로 설정 파일에서 자유롭게 바꾼다.
+    """
+    global PY_MULT, PY_ADD
+    fixed = None
+    if os.path.exists(CONFIG_FILE):
+        try:
+            c = json.load(io.open(CONFIG_FILE, encoding="utf-8"))
+            PY_MULT = float(c.get("pyMult", PY_MULT))
+            PY_ADD = float(c.get("pyAdd", PY_ADD))
+            mf = c.get("machineFactor")
+            fixed = float(mf) if mf not in (None, "", False) else None
+        except Exception as e:
+            log("⚠️ judge_config.json 읽기 실패:", str(e)[:120])
+    return fixed
 
 
 def measure_speed():
@@ -110,15 +134,21 @@ def measure_speed():
     return max(1.0, v / BENCH_REF)
 
 
-def allowed_time(limit_sec):
-    """문제 제한(초) -> 이 기기에서 허용할 실행시간(초)."""
+def allowed_time(limit_sec, lang_adjusted=False):
+    """문제 제한(초) -> 이 기기에서 허용할 실행시간(초).
+
+    lang_adjusted=True 면 그 제한이 이미 Python/PyPy 기준이라는 뜻이다
+    (예: SWEA 의 "Python의 경우 10초"). 이때는 언어 보정을 다시 적용하지 않고
+    기기 속도 보정만 곱한다. 안 그러면 10초 문제에 46초를 주게 된다.
+    """
     try:
         t = float(limit_sec or 0)
     except (TypeError, ValueError):
         t = 0.0
     if t <= 0:
         t = 2.0
-    return round(t * PY_MULT * SPEED, 1)
+    base = t if lang_adjusted else (t * PY_MULT + PY_ADD)
+    return round(base * SPEED, 1)
 
 
 def load_token():
@@ -606,7 +636,7 @@ def status():
         if os.path.isdir(d):
             n += len([f for f in os.listdir(d) if f.endswith(".py")])
     return {"ok": True, "service": "algo-hub", "language": "python", "authRequired": bool(TOKEN),
-            "speedFactor": round(SPEED, 2), "pyMult": PY_MULT,
+            "speedFactor": round(SPEED, 2), "pyMult": PY_MULT, "pyAdd": PY_ADD,
             "runner": RUNNER_NAME,
             "python": sys.version.split()[0], "repo": ROOT,
             "branch": br, "ahead": ah, "dirty": dirty, "solutions": n,
@@ -689,7 +719,8 @@ class H(BaseHTTPRequestHandler):
             if p in ("/judge", ""):
                 cases = body.get("testCases") or []
                 try:
-                    tl = allowed_time(body.get("timeLimit"))
+                    tl = allowed_time(body.get("timeLimit"),
+                                      bool(body.get("langAdjusted")))
                 except (TypeError, ValueError):
                     tl = 5.0
                 log("\n▶ 채점  problemId=%s  TC %d개  제한 %ss"
@@ -706,7 +737,8 @@ class H(BaseHTTPRequestHandler):
                 cases = body.get("cases") or []
                 log("\n▶ 실행  TC %d개" % len(cases))
                 return self._send(200, judge(body.get("code") or "", cases, 0,
-                                             allowed_time(body.get("timeLimit"))))
+                                             allowed_time(body.get("timeLimit"),
+                                                          bool(body.get("langAdjusted")))))
 
             if p == "/delete":
                 log("\n▶ 삭제  %s %s %s %s" % (body.get("kind"), body.get("site"),
@@ -748,7 +780,8 @@ def main():
     TOKEN = "" if a.no_auth else load_token()
     global RUNNER, RUNNER_NAME, SPEED
     RUNNER, RUNNER_NAME = find_runner(a.runner)
-    SPEED = measure_speed()
+    fixed = load_config()
+    SPEED = fixed if fixed else measure_speed()
 
     print("=" * 64)
     print("  🐍 algo-hub  로컬 서버 (채점 + repo 저장)")
@@ -758,7 +791,9 @@ def main():
     print("  채점러너 : %s" % RUNNER_NAME)
     print("             %s" % RUNNER)
     print("  자동푸시 : %s" % ("ON" if AUTO_PUSH else "OFF"))
-    print("  속도보정 : x%.1f  (1초 제한 -> %.1f초 허용)" % (SPEED, allowed_time(1)))
+    print("  허용식   : (제한 x %.1f + %.1f) x 기기보정 %.2f" % (PY_MULT, PY_ADD, SPEED))
+    print("             1초 제한 -> %.1f초  |  언어별 제한 명시 시 -> 제한 x %.2f"
+          % (allowed_time(1), SPEED))
     if TOKEN:
         print("  인증토큰 : %s" % TOKEN)
         print("             (%s)" % TOKEN_FILE)
