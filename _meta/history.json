@@ -4311,7 +4311,7 @@
   ]
  },
  "2026-08-12": {
-  "count": 4,
+  "count": 3,
   "items": [
    {
     "file": "swea/2115_[모의SW역량테스트]벌꿀채취.py",
@@ -4341,13 +4341,6 @@
     "title": "더하기",
     "total": 1,
     "verdict": "accepted"
-   },
-   {
-    "file": "boj/1000.py",
-    "no": "1000",
-    "site": "BOJ",
-    "status": "품",
-    "title": "이메일확인용"
    }
   ]
  }
