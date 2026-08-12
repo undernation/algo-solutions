@@ -142,6 +142,9 @@ button.sm{padding:4px 10px;font-size:12.5px}
 .smp{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
 @media(max-width:700px){.smp{grid-template-columns:1fr}}
 .smp .t{font-size:14px;font-weight:700;margin-bottom:6px}
+.body img{max-width:100%;height:auto;display:block;margin:14px 0;border:1px solid var(--bd);
+ border-radius:6px;background:#fff;cursor:zoom-in}
+.body img:hover{border-color:var(--ac)}
 pre.io{background:var(--soft);border:1px solid var(--bd);border-radius:6px;padding:12px 14px;
  margin:0;font-size:13.5px;line-height:1.65;overflow-x:auto;white-space:pre;max-height:340px}
 .crumb{font-size:13px;color:var(--sub);margin-bottom:10px}
@@ -613,6 +616,23 @@ async function viewProblem(site,no){
  renderProblem(p, site, no);
 }
 
+/* 지문의 [[IMG:n]] 자리표시를 실제 그림으로 바꾼다. 파일이 없으면 표시만 지운다. */
+function withImages(text,p){
+ var imgs=(p&&p.images)||[];
+ return esc(text).replace(/\[\[IMG:(\d+)\]\]/g, function(_,k){
+   var src=imgs[parseInt(k,10)-1];
+   if(!src) return "";
+   return '<img src="./'+esc(src)+'" alt="그림 '+esc(k)+'" loading="lazy" '+
+          'onclick="openImg(this.src)">';
+ });
+}
+function openImg(src){
+ $("cv").style.display="block";
+ $("cvt").textContent="그림"; $("cvp").textContent="";
+ $("cvraw").href=src; CVTEXT="";
+ $("cvc").innerHTML='<img src="'+esc(src)+'" style="max-width:100%;height:auto;display:block">';
+}
+
 function renderProblem(p,site,no){
  CUR.prob=p;
  var subs=BYPROB[site+"/"+no]||[];
@@ -637,7 +657,7 @@ function renderProblem(p,site,no){
   return;
  }
  var h='';
- if(p.statement) h+='<div class="sec-h">문제</div><div class="body">'+esc(p.statement)+'</div>';
+ if(p.statement) h+='<div class="sec-h">문제</div><div class="body">'+withImages(p.statement,p)+'</div>';
  if(p.input_spec)  h+='<div class="sec-h">입력</div><div class="body">'+esc(p.input_spec)+'</div>';
  if(p.output_spec) h+='<div class="sec-h">출력</div><div class="body">'+esc(p.output_spec)+'</div>';
  (p.samples||[]).forEach(function(s,i){

@@ -134,18 +134,40 @@ def main():
             for i, t in enumerate(todo, 1):
                 try:
                     pg.goto(t["url"], wait_until="networkidle", timeout=60_000)
-                    pg.wait_for_timeout(1500)
-                    if any(k in pg.url.lower() for k in ("login", "sign_in")):
-                        print("  [%d/%d] %s %s  ❌ 로그인 필요 — 중단"
-                              % (i, len(todo), t["site"], t["no"]), flush=True)
-                        break
+                    pg.wait_for_timeout(1500 if t["site"] == "BOJ" else 2200)
+                    if any(k in pg.url.lower() for k in ("loginpage", "sign_in")):
+                        # 연속 요청이 많으면 일시적으로 로그인 페이지로 튄다. 한 번 쉬고 재시도.
+                        time.sleep(8)
+                        pg.goto(t["url"], wait_until="networkidle", timeout=60_000)
+                        pg.wait_for_timeout(2000)
+                        if any(k in pg.url.lower() for k in ("loginpage", "sign_in")):
+                            ng += 1
+                            print("  [%d/%d] %s %-6s ⚠️ 로그인 페이지로 튐 — 건너뜀"
+                                  % (i, len(todo), t["site"], t["no"]), flush=True)
+                            continue
                     txt = pg.evaluate("() => document.body.innerText") or ""
                     parser = fp.parse_cosal if t["site"] == "BOJ" else fp.parse_swea
                     d = parser(txt, pg.url)
+                    if t["site"] == "SWEA":
+                        # 페이지 예제는 잘린 미리보기 → 공식 sample_input/output 을 받는다.
+                        cid = re.search(r"contestProbId=([A-Za-z0-9+/=]+)", t["url"])
+                        if cid:
+                            d["samples"] = fp.fetch_swea_tc(pg, cid.group(1)) or []
+                        tl = fp.swea_time_limit((d.get("limits") or {}).get("time"))
+                        if tl:
+                            d.setdefault("limits", {})["time_sec"] = tl
                     if not d.get("title") and not d.get("statement"):
                         ng += 1
                         print("  [%d/%d] %s %-6s ⚠️ 내용 없음" % (i, len(todo), t["site"], t["no"]),
                               flush=True)
+                        continue
+                    # 번호 대조 — SWEA 는 ID 매핑이 틀리면 엉뚱한 문제를 저장하게 된다.
+                    got_no = str(d.get("no") or "").strip()
+                    if got_no and got_no != t["no"]:
+                        ng += 1
+                        print("  [%d/%d] %s %-6s ❌ 번호 불일치 → 페이지는 %s (%s) — 건너뜀"
+                              % (i, len(todo), t["site"], t["no"], got_no,
+                                 (d.get("title") or "")[:20]), flush=True)
                         continue
                     d["fetched_at"] = datetime.date.today().isoformat()
                     if t["title"] and not d.get("title"):

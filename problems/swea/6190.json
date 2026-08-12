@@ -1,0 +1,30 @@
+{
+ "site": "SWEA",
+ "platform": "SW Expert Academy",
+ "url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWcPjEuKAFgDFAU4",
+ "no": "6190",
+ "title": "정곤이의 단조 증가하는 수 D3",
+ "level": "Master",
+ "stats": {
+  "participants": "4,258",
+  "submissions": "12,175",
+  "accepted": "3,657",
+  "accept_rate": "30.04",
+  "point": "100"
+ },
+ "limits": {
+  "time": "50개 테스트케이스를 합쳐서 C의 경우 1초 / C++의 경우 1초 / Java의 경우 2초 / Python의 경우 4초",
+  "memory": "힙, 정적 메모리 합쳐서 500MB 이내, 스택 메모리 1MB 이내",
+  "time_sec": 4.0
+ },
+ "statement": "정곤이는 자신이 엄청난 수학자임을 증명하기 위해, 어떤 규칙 만족하는 수를 찾아보기로 했다.\n\n그 규칙은 단조 증가하는 수인데, 각 숫자의 자릿수가 단순하게 증가하는 수를 말한다.\n\n어떤 k자리 수 X = d1d2…dk 가 d1 ≤ d2 ≤ … ≤ dk 를 만족하면 단조 증가하는 수이다.\n\n예를 들어 111566, 233359는 단조 증가하는 수이고, 12343, 999888은 단조 증가하는 수가 아니다.\n\n양의 정수 N 개 A1, …, AN이 주어진다.\n\n 1 ≤ i < j ≤ N 인 두 i, j에 대해, Ai x Aj값이 단조 증가하는 수인 것들을 구하고 그 중의 최댓값을 출력하는 프로그램을 작성하라.",
+ "input_spec": "첫 번째 줄에 테스트 케이스의 수 T가 주어진다.\n\n각 테스트 케이스의 첫 번째 줄에는 하나의 정수 N(1 ≤N ≤ 1,000) 이 주어진다.\n\n두 번째 줄에는 N개의 정수 A1, …, AN(1 ≤ Ai ≤ 30,000) 이 공백 하나로 구분되어 주어진다.",
+ "output_spec": "각 테스트 케이스마다 단조 증가하는 수인 Ai x Aj중에서 그 최댓값을 출력한다.\n\n만약 Ai x Aj중에서 단조 증가하는 수가 없다면 -1을 출력한다.",
+ "samples": [
+  {
+   "in": "1\n4\n2 4 7 10",
+   "out": "#1 28"
+  }
+ ],
+ "fetched_at": "2026-08-12"
+}

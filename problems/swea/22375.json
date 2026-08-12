@@ -1,0 +1,29 @@
+{
+ "site": "SWEA",
+ "platform": "SW Expert Academy",
+ "url": "https://swexpertacademy.com/main/code/userProblem/userProblemDetail.do?fromProbList=N&deleteYn=N&contestProbId=AZHA7Cn6ZgsDFAQP&topPath=code&lastPath=problemDetail&secondPath=problem&menuBreakDown=swea.code.menu&menuBreakDown=swea.code.problem.menu&menuDesc=swea.code.desc&menuDesc=swea.code.problem.desc&contextPath=%2Fmain&locale=ko-kr%2Cko%3Bq%3D0.9%2Cen-us%3Bq%3D0.8%2Cen%3Bq%3D0.7&serverName=localhost&localeLanguage=ko_KR&localeLanguage2=Ko_KR&remoteAddr=175.213.163.17&scripts=%2Fjs%2Finit%2Fjquery-debug.js&scripts=%2Fjs%2Finit%2Fjquery-ui.js&scripts=%2Fjs%2Finit%2Fjquery.validate.js&scripts=%2Fjs%2Fcommon.js&NOTICE_NEW_COUNT=0&ssoLogin=false&hasSDPAdminLinkAuth=false&systemAdmin=false&backendAdmin=false&isTechBlogManager=false&CURRENT_MENU_AUTHORIZATION=READ&CURRENT_MENU_AUTHORIZATION=UPDATE&CURRENT_MENU_AUTHORIZATION=EXECUTE&CURRENT_MENU_AUTHORIZATION=DOWNLOAD&logoMainfileName=logo_company.png",
+ "no": "22375",
+ "title": "스위치 조작 D1",
+ "stats": {
+  "participants": "576",
+  "submissions": "488",
+  "accepted": "446",
+  "accept_rate": "91.39",
+  "point": "50"
+ },
+ "limits": {
+  "time": "10개 테스트케이스를 합쳐서 C/C++의 경우 1초 / Java의 경우 1초",
+  "memory": "힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내",
+  "time_sec": 1.0
+ },
+ "statement": "N개의 전등이 설치되어 있다. 각 전등은 1번부터 N번까지 번호가 붙어있고, i번 스위치를 조작하면 i번부터 N번까지의 전등의 켜짐/꺼짐 상태가 반대가 된다고 한다. 모든 전등의 현재 상태와 스위치 조작 후 상태가 주어지면 최소 몇 개의 스위치를 조작해야 하는지 알아내는 프로그램을 만드시오.\n\n전등이 켜진 상태는 1, 꺼진 상태는 0으로 주어진다.\n예를 들어 현재 상태 A가 0 0 0이고, 조작 후 상태 B가 0 1 0인 경우,\n\n초기상태가  0 0 0 이므로,\n2번 스위치를 조작해 0 1 1인 상태를 만들고,\n3번 스위치를 조작해 0 1 0인 상태를 만들 수 있으므로, 최소 2번의 조작이 필요하다.",
+ "input_spec": "첫 줄에 테스트케이스 개수 T, 다음 줄 부터 케이스 별로 스위치 개수 N, 다음 두 줄에 조작 전 스위치 상태 Ai와 조작 후 상태 Bi가 각각 N개씩 주어진다.\n(1<=T<=10, 1<=N<=100)",
+ "output_spec": "#과 케이스번호, 빈칸으로 구분된 답을 출력한다.",
+ "samples": [
+  {
+   "in": "3\n3\n0 0 0\n0 1 0\n5\n0 1 1 0 0\n0 0 0 1 1\n10\n1 1 1 1 1 0 0 0 1 1\n1 1 0 1 1 0 1 1 0 0",
+   "out": "#1 2\n#2 1\n#3 3"
+  }
+ ],
+ "fetched_at": "2026-08-12"
+}

@@ -1,0 +1,31 @@
+{
+ "site": "SWEA",
+ "platform": "SW Expert Academy",
+ "url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWGsRbk6AQIDFAVW",
+ "no": "3499",
+ "title": "퍼펙트 셔플 D3",
+ "level": "Master",
+ "stats": {
+  "participants": "5,616",
+  "submissions": "6,817",
+  "accepted": "4,873",
+  "accept_rate": "71.48",
+  "point": "100"
+ },
+ "limits": {
+  "time": "8개 테스트케이스를 합쳐서 C의 경우 1초 / C++의 경우 1초 / Java의 경우 2초 / Python의 경우 4초",
+  "memory": "힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내",
+  "time_sec": 4.0
+ },
+ "statement": "카드를 퍼펙트 셔플 한다는 것은, 카드 덱을 정확히 절반으로 나누고 나눈 것들에서 교대로 카드를 뽑아 새로운 덱을 만드는 것을 의미한다. \n\n정확한 방식은 다음 그림과 같다.\n\nN개의 카드가 있는 덱이 주어질 때 이를 퍼펙트 셔플하면 어떤 순서가 되는지 출력하는 프로그램을 작성하라.\n\n만약 N이 홀수이면, 교대로 놓을 때 먼저 놓는 쪽에 한 장이 더 들어가게 하면 된다.",
+ "input_spec": "첫 번째 줄에 테스트 케이스의 수 T가 주어진다.\n\n각 테스트 케이스의 첫 번째 줄에는 자연수 N(1 ≤ N ≤ 1,000)이 주어진다.\n\n두 번째 줄에는 덱에 카드가 놓인 순서대로 N개의 카드 이름이 공백으로 구분되어 주어진다.\n\n카드의 이름은 알파벳 대문자와 ‘-’만으로 이루어져 있으며, 길이는 80이하이다.",
+ "output_spec": "각 테스트 케이스마다 주어진 덱을 퍼펙트 셔플한 결과를 한 줄에 카드 이름을 공백으로 구분하여 출력한다.",
+ "samples": [
+  {
+   "in": "3\n6\nA B C D E F\n4\nJACK QUEEN KING ACE\n5\nALAKIR ALEXSTRASZA DR-BOOM LORD-JARAXXUS AVIANA",
+   "out": "#1 A D B E C F\n#2 JACK KING QUEEN ACE\n#3 ALAKIR LORD-JARAXXUS ALEXSTRASZA AVIANA DR-BOOM"
+  }
+ ],
+ "testcase_file": "sample_input.txt / sample_output.txt (다운로드로 수집)",
+ "fetched_at": "2026-08-12"
+}

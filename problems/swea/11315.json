@@ -1,0 +1,31 @@
+{
+ "site": "SWEA",
+ "platform": "SW Expert Academy",
+ "url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXaSUPYqPYMDFASQ",
+ "no": "11315",
+ "title": "오목 판정 D3",
+ "level": "Master",
+ "stats": {
+  "participants": "5,849",
+  "submissions": "10,244",
+  "accepted": "4,233",
+  "accept_rate": "41.32",
+  "point": "100"
+ },
+ "limits": {
+  "time": "100개 테스트케이스를 합쳐서 C의 경우 1초 / C++의 경우 1초 / Java의 경우 2초 / Python의 경우 2초",
+  "memory": "힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내",
+  "time_sec": 2.0
+ },
+ "statement": "N X N 크기의 판이 있다. 판의 각 칸에는 돌이 있거나 없을 수 있다. 돌이 가로, 세로, 대각선 중 하나의 방향으로 다섯 개 이상 연속한 부분이 있는지 없는지 판정하는 프로그램을 작성하라.",
+ "input_spec": "첫 번째 줄에 테스트 케이스의 수 T가 주어진다.\n\n각 테스트 케이스의 첫 번째 줄에는 하나의 정수 N(5 ≤ N ≤ 20)이 주어진다.\n\n다음 N개의 줄의 각 줄에는 길이 N인 문자열이 주어진다. 각 문자는 ‘o’또는 ‘.’으로, ‘o’는 돌이 있는 칸을 의미하고, ‘.’는 돌이 없는 칸을 의미한다.",
+ "output_spec": "각 테스트 케이스 마다 돌이 다섯 개 이상 연속한 부분이 있으면 “YES”를, 아니면 “NO”를 출력한다.",
+ "samples": [
+  {
+   "in": "4\n5\n....o\n...o.\n..o..\n.o...\no....\n5\n...o.\nooooo\n...o.\n...o.\n.....\n5\n.o.oo\noo.oo\n.oo..\n.o...\n.o...\n5\n.o.o.\no.o.o\n.o.o.\no.o.o\n.o.o.",
+   "out": "#1 YES\n#2 YES\n#3 YES\n#4 NO"
+  }
+ ],
+ "testcase_file": "sample_input.txt / sample_output.txt (다운로드로 수집)",
+ "fetched_at": "2026-08-12"
+}

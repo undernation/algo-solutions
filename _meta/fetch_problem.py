@@ -67,6 +67,126 @@ def parse_samples(tc):
     return out
 
 
+# ── 지문 이미지 ────────────────────────────────────────────────
+# 지문 중간의 그림(격자·다이어그램)이 빠지면 문제를 못 읽는 경우가 많다.
+# 본문 컨테이너를 DOM 으로 훑어 텍스트에 [[IMG:n]] 자리표시를 심고,
+# 이미지 바이트는 로그인 세션으로 받아 problems/<site>/img/ 에 저장한다.
+# 사이트별 본문 컨테이너 후보(앞에서부터 시도). SWEA 의 .problem_box 는
+# 껍데기(45자)뿐이고 실제 지문·그림은 .box4 안에 있다.
+STMT_ROOT = {
+    "BOJ": [".salgu-description"],                  # 코딩살구
+    "SWEA": [".box4", ".problem_box", ".tabcon"],   # SW Expert Academy
+}
+
+WALK_JS = r"""(sel) => {
+  const root = document.querySelector(sel);
+  if (!root) return JSON.stringify({text: "", imgs: []});
+  const imgs = [];
+  const BLOCK = /^(P|DIV|BR|TR|LI|H[1-6]|TABLE|FIGURE|SECTION|UL|OL|PRE)$/;
+  const walk = (n) => {
+    if (n.nodeType === 3) return n.nodeValue || "";
+    if (n.nodeType !== 1) return "";
+    const tag = n.tagName;
+    if (tag === "SCRIPT" || tag === "STYLE" || tag === "NOSCRIPT") return "";
+    if (tag === "IMG") {
+      const w = n.naturalWidth || 0, h = n.naturalHeight || 0;
+      if (w < 60 || h < 40) return "";
+      const src = n.getAttribute("src") || "";
+      if (/profileImage|avatar|icon|logo/i.test(src)) return "";
+      imgs.push({src: src, w: w, h: h});
+      return "\n[[IMG:" + imgs.length + "]]\n";
+    }
+    let s = "";
+    for (const c of n.childNodes) s += walk(c);
+    if (BLOCK.test(tag)) s += "\n";
+    return s;
+  };
+  return JSON.stringify({text: walk(root), imgs: imgs});
+}"""
+
+# 이미지 바이트를 세션 쿠키로 받아 base64 로 넘긴다(자산 다운로드도 인증이 필요).
+GRAB_JS = r"""async (srcs) => {
+  const out = [];
+  for (const s of srcs) {
+    try {
+      if (s.startsWith("data:")) { out.push(s); continue; }
+      const r = await fetch(s, {credentials: "include"});
+      if (!r.ok) { out.push(""); continue; }
+      const b = await r.blob();
+      const d = await new Promise(res => {
+        const f = new FileReader(); f.onload = () => res(f.result); f.readAsDataURL(b);
+      });
+      out.push(d);
+    } catch (e) { out.push(""); }
+  }
+  return JSON.stringify(out);
+}"""
+
+EXT = {"image/png": "png", "image/jpeg": "jpg", "image/gif": "gif",
+       "image/webp": "webp", "image/svg+xml": "svg"}
+
+
+def collect_images(pg, site, no):
+    """본문을 [[IMG:n]] 마커가 박힌 텍스트로 만들고 이미지 파일을 저장.
+
+    반환 (text, [상대경로...]). 컨테이너를 못 찾으면 ("", []).
+    """
+    got, imgs, text = None, [], ""
+    for sel in STMT_ROOT.get(site) or []:
+        try:
+            g = json.loads(pg.evaluate(WALK_JS, sel))
+        except Exception:
+            continue
+        if g.get("imgs"):                      # 그림이 잡히는 컨테이너를 채택
+            got, imgs = g, g["imgs"]
+            text = clean(re.sub(r"[ \t]+\n", "\n", g.get("text") or ""))
+            break
+        if got is None and (g.get("text") or "").strip():
+            got = g
+            text = clean(re.sub(r"[ \t]+\n", "\n", g.get("text") or ""))
+    if not imgs:
+        return text, []
+    try:
+        datas = json.loads(pg.evaluate(GRAB_JS, [i["src"] for i in imgs]))
+    except Exception:
+        return text, []
+
+    sub = {"BOJ": "boj", "SWEA": "swea", "PGS": "programmers", "CT": "codetree"}.get(site, "boj")
+    outdir = os.path.join(PROB, sub, "img")
+    os.makedirs(outdir, exist_ok=True)
+    paths = []
+    import base64
+    for i, d in enumerate(datas, 1):
+        if not d or not d.startswith("data:"):
+            paths.append("")
+            continue
+        head, _, b64 = d.partition(",")
+        mime = head[5:].split(";")[0]
+        ext = EXT.get(mime, "png")
+        rel = "problems/%s/img/%s_%d.%s" % (sub, no, i, ext)
+        try:
+            with open(os.path.join(ROOT, rel), "wb") as f:
+                f.write(base64.b64decode(b64))
+            paths.append(rel)
+        except Exception:
+            paths.append("")
+    return text, paths
+
+
+def apply_images(pg, d):
+    """수집한 이미지·마커 지문을 문제 dict 에 반영(그림이 없으면 아무것도 안 함)."""
+    if not d.get("no"):
+        return
+    txt, paths = collect_images(pg, d.get("site", ""), str(d["no"]))
+    if not any(paths):
+        return
+    d["images"] = paths
+    # 마커가 박힌 본문에서 지문 구간만 다시 잘라 쓴다(입력/출력 설명은 기존 값 유지).
+    body = sect(txt, "", "[제약사항]", "[입력]", "\n입력\n") or txt
+    if body and "[[IMG:" in body:
+        d["statement"] = clean(body)
+
+
 def open_page(url, wait=2600):
     from playwright.sync_api import sync_playwright
     pw = sync_playwright().start()
@@ -154,7 +274,14 @@ def parse_swea(t, url):
     mm = re.search(r"\[제약사항\](.*?)(?:\[입력\]|\Z)", t, re.S)
     if mm:
         d["constraints"] = [x.strip() for x in mm.group(1).split("\n") if x.strip()]
-    d["statement"] = clean(sect(t, "무단 복제하는 것을 금지합니다.", "[제약사항]", "[입력]"))
+    # 지문 시작 앵커: 저작권 고지가 있는 페이지도 없는 페이지도 있다.
+    # 없으면 "메모리 : …" 줄 다음부터를 본문으로 본다.
+    st = clean(sect(t, "무단 복제하는 것을 금지합니다.", "[제약사항]", "[입력]"))
+    if not st:
+        mm = re.search(r"메모리\s*:\s*[^\n]*\n", t)
+        if mm:
+            st = clean(sect(t[mm.end():], "", "[제약사항]", "[입력]"))
+    d["statement"] = st
     d["input_spec"] = clean(sect(t, "[입력]", "[출력]"))
     d["output_spec"] = clean(sect(t, "[출력]", "입력\n", "sample_input"))
     # 페이지에 보이는 예제는 "…" 로 잘린 미리보기이고, 뒤에 주석·다운로드 버튼·
@@ -275,6 +402,7 @@ def main():
             raise SystemExit("❌ 로그인 필요: %s" % pg.url[:80])
         t = pg.evaluate("() => document.body.innerText") or ""
         d = parser(t, pg.url)
+        apply_images(pg, d)
         # SWEA 는 공식 테스트케이스 파일을 받아 채점 가능한 형태로 만든다.
         if d.get("site") == "SWEA":
             m = re.search(r"contestProbId=([A-Za-z0-9+/=]+)", pg.url)

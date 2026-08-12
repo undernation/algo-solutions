@@ -1,0 +1,29 @@
+{
+ "site": "SWEA",
+ "platform": "SW Expert Academy",
+ "url": "https://swexpertacademy.com/main/code/userProblem/userProblemDetail.do?fromProbList=N&deleteYn=N&contestProbId=AY3FFOTaN7EDFAXh&topPath=code&lastPath=problemDetail&secondPath=problem&menuBreakDown=swea.code.menu&menuBreakDown=swea.code.problem.menu&menuDesc=swea.code.desc&menuDesc=swea.code.problem.desc&contextPath=%2Fmain&locale=ko-kr%2Cko%3Bq%3D0.9%2Cen-us%3Bq%3D0.8%2Cen%3Bq%3D0.7&serverName=localhost&localeLanguage=ko_KR&localeLanguage2=Ko_KR&remoteAddr=175.213.163.17&scripts=%2Fjs%2Finit%2Fjquery-debug.js&scripts=%2Fjs%2Finit%2Fjquery-ui.js&scripts=%2Fjs%2Finit%2Fjquery.validate.js&scripts=%2Fjs%2Fcommon.js&NOTICE_NEW_COUNT=0&ssoLogin=false&hasSDPAdminLinkAuth=false&systemAdmin=false&backendAdmin=false&isTechBlogManager=false&CURRENT_MENU_AUTHORIZATION=READ&CURRENT_MENU_AUTHORIZATION=UPDATE&CURRENT_MENU_AUTHORIZATION=EXECUTE&CURRENT_MENU_AUTHORIZATION=DOWNLOAD&logoMainfileName=logo_company.png",
+ "no": "20230",
+ "title": "풍선팡 보너스게임2 D2",
+ "stats": {
+  "participants": "302",
+  "submissions": "168",
+  "accepted": "150",
+  "accept_rate": "89.29",
+  "point": "50"
+ },
+ "limits": {
+  "time": "10개 테스트케이스를 합쳐서 C/C++의 경우 1초 / Java의 경우 1초",
+  "memory": "힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내",
+  "time_sec": 1.0
+ },
+ "statement": "틈틈이 풍선게임을 하던 김싸피는 새로운 보너스 스테이지에 도달했다. 보너스 스테이지의 규칙은 다음과 같다.\n\n숫자가 써진 풍선이 NxN 격자의 각 칸에 고정되어 있다.\n어떤 풍선을 터트리면 같은 행과 열의 풍선이 모두 터진다.\n예를 들어, <그림 1>과 같은 스테이지에서, <그림 2>처럼 2가 써진 풍선을 터트리면 같은 행과 열의 풍선이 모두 터지고, 이때 터진 풍선에 있던 숫자의 합은 8이다.\n\n풍선을 잘 골라 터트리면 최대 점수를 얻을 수 있다. 보너스 스테이지가 주어지면 얻을 수 있는 최대 점수를 출력하라.",
+ "input_spec": "첫 줄에 스테이지의 개수 T가 주어진다. 다음 줄부터 각 스테이지 별로, 첫 줄에 격자의 크기 N, 다음 줄부터 N개씩의 숫자가 N줄에 걸쳐 주어진다.\n\n(3 <= N <= 10, 1 <= Aij<= N)",
+ "output_spec": "각 스테이지 별로 한 줄에 #과 스테이지 번호, 빈칸과 최대 점수를 출력한다.",
+ "samples": [
+  {
+   "in": "3\n4\n1 1 1 1\n1 2 1 1\n1 1 1 1\n1 1 1 1\n5\n3 3 2 2 3\n2 4 5 2 3\n4 2 1 2 4\n1 3 5 3 3\n1 4 5 2 3\n5\n1 3 5 2 3\n2 2 5 5 5\n3 4 2 1 1\n1 5 2 5 4\n5 2 3 4 1",
+   "out": "#1 8\n#2 30\n#3 33"
+  }
+ ],
+ "fetched_at": "2026-08-12"
+}

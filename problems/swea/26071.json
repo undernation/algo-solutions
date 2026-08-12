@@ -1,0 +1,29 @@
+{
+ "site": "SWEA",
+ "platform": "SW Expert Academy",
+ "url": "https://swexpertacademy.com/main/code/userProblem/userProblemDetail.do?fromProbList=N&deleteYn=N&contestProbId=AZwmCVWq3uLHBIT3&topPath=code&lastPath=problemDetail&secondPath=problem&menuBreakDown=swea.code.menu&menuBreakDown=swea.code.problem.menu&menuDesc=swea.code.desc&menuDesc=swea.code.problem.desc&contextPath=%2Fmain&locale=ko-kr%2Cko%3Bq%3D0.9%2Cen-us%3Bq%3D0.8%2Cen%3Bq%3D0.7&serverName=localhost&localeLanguage=ko_KR&localeLanguage2=Ko_KR&remoteAddr=175.213.163.17&scripts=%2Fjs%2Finit%2Fjquery-debug.js&scripts=%2Fjs%2Finit%2Fjquery-ui.js&scripts=%2Fjs%2Finit%2Fjquery.validate.js&scripts=%2Fjs%2Fcommon.js&NOTICE_NEW_COUNT=0&ssoLogin=false&hasSDPAdminLinkAuth=false&systemAdmin=false&backendAdmin=false&isTechBlogManager=false&CURRENT_MENU_AUTHORIZATION=READ&CURRENT_MENU_AUTHORIZATION=UPDATE&CURRENT_MENU_AUTHORIZATION=EXECUTE&CURRENT_MENU_AUTHORIZATION=DOWNLOAD&logoMainfileName=logo_company.png",
+ "no": "26071",
+ "title": "블록 제거 게임 D4",
+ "stats": {
+  "participants": "118",
+  "submissions": "66",
+  "accepted": "50",
+  "accept_rate": "75.76",
+  "point": "50"
+ },
+ "limits": {
+  "time": "10개 테스트케이스를 합쳐서 C/C++의 경우 1초 / Java의 경우 1초",
+  "memory": "힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내",
+  "time_sec": 1.0
+ },
+ "statement": "[문제 설명]\n\n숫자가 적힌 N개의 블록이 일렬로 나란히 놓여 있다.\n\n플레이어에게는 해머와 N번의 타격 기회가 주어진다. 한 번 타격할 때마다 블록 하나를 깰 수 있다. 블록이 동시에 2개 이상 깨지는 경우는 없다.\n\n점수 계산 규칙은 다음과 같다.\n\n- 점수는 0점에서 시작한다.\n- 블록이 깨지면, 좌와 우로 이웃한 블록에 적힌 두 숫자의 곱만큼 점수를 얻는다.\n- 좌와 우 중 한쪽에만 이웃 블록이 있는 경우, 이웃한 블록에 적힌 숫자만큼 점수를 얻는다.\n- 이웃 블록이 하나도 없는 경우 (마지막 남은 블록), 해당 블록에 적힌 숫자만큼 점수를 얻는다.\n\n블록 하나가 깨지면, 남은 블록들이 빈 자리 없이 양 옆으로 붙어 새로운 배치를 형성한다.\n\nN개의 블록에 적힌 숫자가 주어질 때, 모든 블록을 깨서 얻을 수 있는 최대 점수를 구하는 프로그램을 작성하라.\n\n \n\n[예제 설명]\n\n블록 4개: [1, 2, 3, 4] 최적의 순서로 깨서 최대의 점수는 얻는 과정은 다음과 같다.\n\n그래서 다음과 같이 테스트케이스 #1의 정답은 20이다.\n\n[제약 사항]\n- 블록의 개수 N은 1 이상 10 이하의 정수이다. (1 ≤ N ≤ 10)\n- 각 블록에 적힌 숫자 K_i는 1 이상 1,000 이하의 정수이다. (1 ≤ K_i ≤ 1000)\n- 블록이 동시에 2개 이상 깨지는 경우는 없다.",
+ "input_spec": "- 첫째 줄에 테스트 케이스의 개수 T가 주어진다. (1 ≤ T ≤ 50)\n- 각 테스트 케이스의 첫째 줄에 블록의 개수 N이 주어진다.\n- 둘째 줄에 블록에 적힌 숫자 K_1, K_2, …, K_N이 공백으로 구분되어 주어진다.",
+ "output_spec": "각 테스트 케이스마다 #T 최대점수 형식으로 출력한다. (T는 테스트 케이스 번호)",
+ "samples": [
+  {
+   "in": "10\n4\n1 2 3 4\n5\n3 10 1 2 5\n7\n12 48 28 21 67 75 85\n8\n245 108 162 400 274 358 366 166\n10\n866 919 840 944 761 895 701 912 848 799\n1\n500\n3\n5 8 3\n6\n414 390 205 614 184 236\n9\n255 137 779 89 258 747 393 544 701\n2\n100 200",
+   "out": "#1 20\n#2 100\n#3 16057\n#4 561630\n#5 6455522\n#6 500\n#7 25\n#8 737092\n#9 2637791\n#10 400"
+  }
+ ],
+ "fetched_at": "2026-08-12"
+}

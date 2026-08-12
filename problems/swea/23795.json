@@ -1,0 +1,29 @@
+{
+ "site": "SWEA",
+ "platform": "SW Expert Academy",
+ "url": "https://swexpertacademy.com/main/code/userProblem/userProblemDetail.do?fromProbList=N&deleteYn=N&contestProbId=AZU7flp6n8XHBIRK&topPath=code&lastPath=problemDetail&secondPath=problem&menuBreakDown=swea.code.menu&menuBreakDown=swea.code.problem.menu&menuDesc=swea.code.desc&menuDesc=swea.code.problem.desc&contextPath=%2Fmain&locale=ko-kr%2Cko%3Bq%3D0.9%2Cen-us%3Bq%3D0.8%2Cen%3Bq%3D0.7&serverName=localhost&localeLanguage=ko_KR&localeLanguage2=Ko_KR&remoteAddr=175.213.163.17&scripts=%2Fjs%2Finit%2Fjquery-debug.js&scripts=%2Fjs%2Finit%2Fjquery-ui.js&scripts=%2Fjs%2Finit%2Fjquery.validate.js&scripts=%2Fjs%2Fcommon.js&NOTICE_NEW_COUNT=0&ssoLogin=false&hasSDPAdminLinkAuth=false&systemAdmin=false&backendAdmin=false&isTechBlogManager=false&CURRENT_MENU_AUTHORIZATION=READ&CURRENT_MENU_AUTHORIZATION=UPDATE&CURRENT_MENU_AUTHORIZATION=EXECUTE&CURRENT_MENU_AUTHORIZATION=DOWNLOAD&logoMainfileName=logo_company.png",
+ "no": "23795",
+ "title": "우주 괴물 D1",
+ "stats": {
+  "participants": "560",
+  "submissions": "639",
+  "accepted": "475",
+  "accept_rate": "74.33",
+  "point": "50"
+ },
+ "limits": {
+  "time": "10개 테스트케이스를 합쳐서 C/C++의 경우 1초 / Java의 경우 1초",
+  "memory": "힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내",
+  "time_sec": 1.0
+ },
+ "statement": "NxN개의 칸으로 나눠진 구역에 우주 괴물 한 마리가 침입했다. 괴물은 상하좌우로 광선을 발사하며, 벽에 막히지 않으면 광선은 계속 뻗어 나간다. 괴물의 광선이 닿지 않는 안전한 빈 칸의 수를 구하라.\n\n그림1. 안전한 칸이 9칸인 경우의 예",
+ "input_spec": "첫 줄에 테스트케이스 개수 T, 다음 줄부터 첫 줄에 N, 다음 줄부터 빈칸으로 구분된 N 칸의 정보가 N개의 줄에 걸쳐 제공된다. 각 칸은 0 (빈칸) 1(벽) 괴물(2) 중의 하나이다. (5<=N<=15)",
+ "output_spec": "#과 테스트케이스 번호, 빈칸에 이어 답을 출력한다.",
+ "samples": [
+  {
+   "in": "1\n5\n0 0 0 1 0\n1 0 1 1 0\n0 0 1 0 2\n1 0 0 0 0\n1 1 1 1 0",
+   "out": "#1 9"
+  }
+ ],
+ "fetched_at": "2026-08-12"
+}

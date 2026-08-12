@@ -1,0 +1,29 @@
+{
+ "site": "SWEA",
+ "platform": "SW Expert Academy",
+ "url": "https://swexpertacademy.com/main/code/userProblem/userProblemDetail.do?fromProbList=N&deleteYn=N&contestProbId=AZFkKmLa1zEDFAQW&topPath=code&lastPath=problemDetail&secondPath=problem&menuBreakDown=swea.code.menu&menuBreakDown=swea.code.problem.menu&menuDesc=swea.code.desc&menuDesc=swea.code.problem.desc&contextPath=%2Fmain&locale=ko-kr%2Cko%3Bq%3D0.9%2Cen-us%3Bq%3D0.8%2Cen%3Bq%3D0.7&serverName=localhost&localeLanguage=ko_KR&localeLanguage2=Ko_KR&remoteAddr=175.213.163.17&scripts=%2Fjs%2Finit%2Fjquery-debug.js&scripts=%2Fjs%2Finit%2Fjquery-ui.js&scripts=%2Fjs%2Finit%2Fjquery.validate.js&scripts=%2Fjs%2Fcommon.js&NOTICE_NEW_COUNT=0&ssoLogin=false&hasSDPAdminLinkAuth=false&systemAdmin=false&backendAdmin=false&isTechBlogManager=false&CURRENT_MENU_AUTHORIZATION=READ&CURRENT_MENU_AUTHORIZATION=UPDATE&CURRENT_MENU_AUTHORIZATION=EXECUTE&CURRENT_MENU_AUTHORIZATION=DOWNLOAD&logoMainfileName=logo_company.png",
+ "no": "21936",
+ "title": "길이가 M인 회문 찾기 D1",
+ "stats": {
+  "participants": "186",
+  "submissions": "182",
+  "accepted": "138",
+  "accept_rate": "75.82",
+  "point": "50"
+ },
+ "limits": {
+  "time": "3개 테스트케이스를 합쳐서 C/C++의 경우 1초 / Java의 경우 1초",
+  "memory": "힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내",
+  "time_sec": 1.0
+ },
+ "statement": "길이가 N인 문자열 안에 길이가 M인 회문이 있으면 그 회문을 출력하고, 회문이 없으면 NONE을 출력하는 프로그램을 만드시오.\n(2<=M<=N<100)",
+ "input_spec": "첫 줄에 테스트케이스 개수 T, 다음 줄부터 각 케이스 별로 첫 줄에 N과 M, 다음 줄에 길이가 N인 문자열이 주어진다.",
+ "output_spec": "#과 테스트케이스번호, 빈칸에 이어 회문 또는 NONE을 출력한다.",
+ "samples": [
+  {
+   "in": "3\n5 3\nABCBD\n5 3\nABCDE\n5 3\nABCDC",
+   "out": "#1 BCB\n#2 NONE\n#3 CDC"
+  }
+ ],
+ "fetched_at": "2026-08-12"
+}

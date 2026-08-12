@@ -1,0 +1,30 @@
+{
+ "site": "SWEA",
+ "platform": "SW Expert Academy",
+ "url": "https://swexpertacademy.com/main/code/userProblem/userProblemDetail.do?fromProbList=N&deleteYn=N&contestProbId=AZvmEUAqG6LHBIQE&topPath=code&lastPath=problemDetail&secondPath=problem&menuBreakDown=swea.code.menu&menuBreakDown=swea.code.problem.menu&menuDesc=swea.code.desc&menuDesc=swea.code.problem.desc&contextPath=%2Fmain&locale=ko-kr%2Cko%3Bq%3D0.9%2Cen-us%3Bq%3D0.8%2Cen%3Bq%3D0.7&serverName=localhost&localeLanguage=ko_KR&localeLanguage2=Ko_KR&remoteAddr=175.213.163.17&scripts=%2Fjs%2Finit%2Fjquery-debug.js&scripts=%2Fjs%2Finit%2Fjquery-ui.js&scripts=%2Fjs%2Finit%2Fjquery.validate.js&scripts=%2Fjs%2Fcommon.js&NOTICE_NEW_COUNT=0&ssoLogin=false&hasSDPAdminLinkAuth=false&systemAdmin=false&backendAdmin=false&isTechBlogManager=false&CURRENT_MENU_AUTHORIZATION=READ&CURRENT_MENU_AUTHORIZATION=UPDATE&CURRENT_MENU_AUTHORIZATION=EXECUTE&CURRENT_MENU_AUTHORIZATION=DOWNLOAD&logoMainfileName=logo_company.png",
+ "no": "25985",
+ "title": "숫자열의 최대 곱 D2",
+ "stats": {
+  "participants": "59",
+  "submissions": "40",
+  "accepted": "30",
+  "accept_rate": "75.00",
+  "point": "50"
+ },
+ "limits": {
+  "time": "15개 테스트케이스를 합쳐서 C/C++의 경우 1초 / Java의 경우 1초",
+  "memory": "힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내",
+  "time_sec": 1.0
+ },
+ "statement": "N 개의 숫자로 구성된 숫자열 A와 M 개의 숫자로 구성된 숫자열 B가 있다.\n두 숫자열을 자유롭게 움직여서 서로 마주보는 위치의 숫자들을 곱한 뒤, 그 결과들의 합이 최대가 되도록 하려 한다.\n\n기존의 제약과 달리, 이번에는 더 짧은 숫자열이 긴 숫자열의 양끝을 벗어나는 것을 허용한다.\n단, 두 숫자열이 겹치는 부분이 최소 한 칸 이상은 존재해야 한다.\n\n마주보는 숫자가 없는 경우(범위를 벗어난 경우)는 곱셈에 포함되지 않으며, 서로 마주보는 숫자끼리만 곱하여 더한다.\n\n위의 상황처럼 숫자열 A의 마지막 숫자와 숫자열 B의 첫번째 숫자를 곱할 수 있다.\n\n위의 그림에서는 합이 56이 되어 정답상황이다.\n\n가능한 모든 배치 중에서, 마주보는 숫자들의 곱의 합이 최대가 되는 값을 구하라.\n\n[제약 사항]\n1. N 과 M은 2 이상 20 이하의 정수이다.\n2. 각 숫자열의 원소는 -200 이상 100 이하의 정수이다.\n3. 두 숫자열은 최소 한 칸 이상 겹쳐야 한다.",
+ "input_spec": "가장 첫 줄에는 테스트 케이스의 개수 T가 주어지고, 그 아래로 각 테스트 케이스가 주어진다.\n각 테스트 케이스의 첫 번째 줄에 N 과 M 이 주어지고,\n두 번째 줄에는 숫자열 A가,\n세 번째 줄에는 숫자열 B가 주어진다.",
+ "output_spec": "출력의 각 줄은 '#t'로 시작하고, 공백을 한 칸 둔 다음 정답을 출력한다.\n(t는 테스트 케이스의 번호를 의미하며 1부터 시작한다.)",
+ "samples": [
+  {
+   "in": "3\n3 5\n1 5 3\n3 6 -7 5 4\n2 3\n1 1\n-1 -1 -1\n3 3\n100 -5 -5\n-5 -5 100",
+   "out": "#1 33\n#2 -1\n#3 10000"
+  }
+ ],
+ "testcase_file": "sample_input.txt / sample_output.txt (다운로드로 수집)",
+ "fetched_at": "2026-08-12"
+}

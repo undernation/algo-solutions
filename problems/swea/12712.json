@@ -1,0 +1,28 @@
+{
+ "site": "SWEA",
+ "platform": "SW Expert Academy",
+ "url": "https://swexpertacademy.com/main/code/userProblem/userProblemDetail.do?fromProbList=N&deleteYn=N&contestProbId=AXuARWAqDkQDFARa&topPath=code&lastPath=problemDetail&secondPath=problem&menuBreakDown=swea.code.menu&menuBreakDown=swea.code.problem.menu&menuDesc=swea.code.desc&menuDesc=swea.code.problem.desc&contextPath=%2Fmain&locale=ko-kr%2Cko%3Bq%3D0.9%2Cen-us%3Bq%3D0.8%2Cen%3Bq%3D0.7&serverName=localhost&localeLanguage=ko_KR&localeLanguage2=Ko_KR&remoteAddr=175.213.163.17&scripts=%2Fjs%2Finit%2Fjquery-debug.js&scripts=%2Fjs%2Finit%2Fjquery-ui.js&scripts=%2Fjs%2Finit%2Fjquery.validate.js&scripts=%2Fjs%2Fcommon.js&NOTICE_NEW_COUNT=0&ssoLogin=false&hasSDPAdminLinkAuth=false&systemAdmin=false&backendAdmin=false&isTechBlogManager=false&CURRENT_MENU_AUTHORIZATION=READ&CURRENT_MENU_AUTHORIZATION=UPDATE&CURRENT_MENU_AUTHORIZATION=EXECUTE&CURRENT_MENU_AUTHORIZATION=DOWNLOAD&logoMainfileName=logo_company.png",
+ "no": "12712",
+ "title": "파리퇴치3 D2",
+ "stats": {
+  "participants": "3,836",
+  "submissions": "2,968",
+  "accepted": "2,367",
+  "accept_rate": "79.75",
+  "point": "50"
+ },
+ "limits": {
+  "time": "10개 테스트케이스를 합쳐서 C/C++의 경우 30초 / Java의 경우 30초",
+  "memory": "힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내",
+  "time_sec": 30.0
+ },
+ "statement": "N x N 배열 안의 숫자는 해당 영역에 존재하는 파리의 개체 수를 의미한다.\n\n아래는 N=5 의 예이다.\n\n파리 킬러 스프레이를 한 번만 뿌려 최대한 많은 파리를 잡으려고 한다. 스프레이의 노즐이 + 형태로 되어있어, 스프레이는 + 혹은 x 형태로 분사된다. 스프레이를 M의 세기로 분사하면 노즐의 중심이 향한 칸부터 각 방향으로 M칸의 파리를 잡을 수 있다.\n다음은 M=3 세기로(중심을 포함해 각 방향으로 뿌려지는 칸 수) 스프레이르 분사한 경우 파리가 퇴치되는 칸의 예로, +또는 x 중 하나로 분사된다. 뿌려진 일부가 영역을 벗어나도 상관없다.\n\n한 번에 잡을 수 있는 최대 파리수를 출력하라.\n\n \n\n[제약 사항]\n\n1. N 은 5 이상 15 이하이다.\n2. M은 2 이상 N 이하이다.\n3. 각 영역의 파리 갯수는 30 이하 이다.",
+ "input_spec": "가장 첫 줄에는 테스트 케이스의 개수 T가 주어지고, 그 아래로 각 테스트 케이스가 주어진다.\n각 테스트 케이스의 첫 번째 줄에 N 과 M 이 주어지고,\n다음 N 줄에 걸쳐 N x N 배열이 주어진다.\n\n입력\n\n2\n5 2\n1 3 3 6 7\n8 13 9 12 8\n4 16 11 12 6\n2 4 1 23 2\n9 13 4 7 3\n6 3\n29 21 26 9 5 8\n21 19 8 0 21 19\n9 24 2 11 4 24\n19 29 1 0 21 19\n10 29 6 18 4 3\n29 11 15 3 3 29\n \n\nin1.txt\n다운로드\n출력\n\n#1 64\n#2 157\n\nout1.txt\n다운로드\n 14\n댓글(6)\n0 / 1000자\n등록\n 김민수_1445638 2025-08-10 20:23 댓글\n3 0\n\n M이 중심 포함 값이라고 명시해주면 좋을 것 같아요\n예시의 M=3을 보여주면서 끝에 영역을 벗어나도 된다고 하니 마치 영역을 벗어난 예시처럼 혼선이 옵니다.\n잘 풀어놓고 계속 출력 값 보다 높게 나와서 20분 고민했네요..\n\n 손영록_1416567 2025-08-22 10:42 댓글\n0 0\n\n@김민수_1445638  저만 그런게 아니었네요ㅋㅋ\n\n 유경헌_1147439 2023-12-28 18:59 댓글\n0 0\n\n 어렵네유..\n\n pyjune 2023-12-30 23:35 댓글\n1 0\n\n@유경헌_1147439  수업을 듣고나면 쉬워질겁니다..^^..\n\n 강환석_0835463 2022-08-29 10:06 댓글\n4 0\n\n 이게.... IM? 무서워진다... 통과할 수 있을까?....\n반복문 M번 하고 있었는데, M-1번 했어야 했군요... 이런 내가 IM 통과 할 수 있을까...\n\n 윤대혁_0813271 2022-08-14 18:15 댓글\n1 0\n\n 너무 어렵게 생각한건지 이거 생각보다 많이 어렵네요 ㅋㅋㅋ\n\nAbout\nSW Expert Academy\n포인트와 랭킹\n학습 가이드\nSupport\n공지사항\nFAQ\nQ&A\n사이트 오류 제보\n사이트 맵\n이용 약관 개인정보처리방침 이메일 무단 수집 거부\n\n1366*768 이상 해상도에 최적화되어 있으며 Google Chrome 브라우저를 권장합니다. (Internet Explorer 11 이상 지원)\n\n본 사이트의 콘텐츠는 저작권법의 보호를 받는 바 무단 전재, 복사, 배포 등을 금합니다.\n\nⓒ 2017 SAMSUNG. ALL RIGHTS RESERVED",
+ "samples": [
+  {
+   "in": "2\n5 2\n1 3 3 6 7\n8 13 9 12 8\n4 16 11 12 6\n2 4 1 23 2\n9 13 4 7 3\n6 3\n29 21 26 9 5 8\n21 19 8 0 21 19\n9 24 2 11 4 24\n19 29 1 0 21 19\n10 29 6 18 4 3\n29 11 15 3 3 29",
+   "out": "#1 64\n#2 157"
+  }
+ ],
+ "fetched_at": "2026-08-12"
+}
