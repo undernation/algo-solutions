@@ -409,6 +409,11 @@ def save_solution(d):
     code = d.get("code") or ""
     if not code.strip():
         return {"ok": False, "error": "코드가 비어 있음"}
+    # 번호·제목이 둘 다 없으면 boj/.py 같은 이름 없는 파일이 만들어져 커밋된다.
+    if not no and not (title or "").strip():
+        return {"ok": False, "error": "문제 번호나 제목이 필요합니다"}
+    if no and not re.fullmatch(r"[A-Za-z0-9_-]{1,12}", no):
+        return {"ok": False, "error": "문제 번호 형식이 이상합니다: %r" % no[:20]}
 
     name = no if (sub == "boj" and no) else ("%s_%s" % (no, safe(title)) if no else safe(title))
     rel = "%s/%s.py" % (sub, name)

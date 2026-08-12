@@ -115,12 +115,22 @@ td.n{font-variant-numeric:tabular-nums;color:var(--sub);font-size:13px}
 .tnode .cnt{margin-left:auto;font-weight:600;font-size:12px;color:var(--sub);
  background:var(--soft);border:1px solid var(--bd2);padding:0 8px;border-radius:11px}
 .tkids{margin-left:16px;border-left:1px solid var(--bd2);padding-left:10px}
-.leaf{display:flex;align-items:center;gap:9px;padding:5px 10px;border-radius:6px}
+.leafhead,.leaf{display:grid;grid-template-columns:58px 1fr 46px 42px 92px 56px;
+ align-items:center;gap:10px;padding:5px 10px;border-radius:6px}
+.leafhead{font-size:11px;color:var(--mute);font-weight:700;padding-bottom:3px;
+ border-bottom:1px solid var(--bd2);margin-bottom:2px}
+.leafhead .r,.leaf .r{text-align:right}
 .leaf:hover{background:var(--soft)}
-.leaf .id{font-variant-numeric:tabular-nums;color:var(--sub);font-size:13px;min-width:52px}
-.leaf .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.leaf .rs{font-size:12px;font-weight:700}
-.leaf .doc{font-size:11px;color:var(--mute)}
+.leaf .id{font-variant-numeric:tabular-nums;color:var(--sub);font-size:13px}
+.leaf .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.leaf .rs{font-size:12px;font-weight:700;text-align:right}
+.leaf .dt{font-size:11.5px;color:var(--sub);font-variant-numeric:tabular-nums;text-align:right}
+.leaf .tries{font-size:11px;color:var(--mute);text-align:right}
+.leaf .doc{font-size:11px;color:var(--mute);text-align:center;letter-spacing:1px}
+@media(max-width:700px){
+ .leafhead{display:none}
+ .leaf{grid-template-columns:52px 1fr 44px;grid-auto-rows:min-content}
+ .leaf .dt,.leaf .tries{display:none}}
 
 /* ── 폼 ── */
 .bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
@@ -165,6 +175,21 @@ pre.io{background:var(--soft);border:1px solid var(--bd);border-radius:6px;paddi
  border-radius:5px;padding:9px 11px;max-height:270px;overflow:auto}
 .note{background:var(--soft);border:1px solid var(--bd);border-left:3px solid var(--ac);
  border-radius:5px;padding:11px 14px;font-size:13.5px;color:var(--sub);margin:14px 0}
+/* ── 테스트케이스 패널 (코딩살구 스타일) ── */
+.tcp{border:1px solid var(--bd);border-radius:8px;overflow:hidden;margin:10px 0;background:var(--panel)}
+.tcp .head{display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--hdr);
+ border-bottom:1px solid var(--bd2);font-size:12.5px;font-weight:700;color:var(--sub)}
+.tcp .head .cp{margin-left:auto;border:1px solid var(--bd);background:var(--panel);color:var(--sub);
+ border-radius:5px;padding:2px 9px;font-size:11.5px;font-weight:600;cursor:pointer}
+.tcp .head .cp:hover{border-color:var(--ac);color:var(--ac)}
+.tcp pre{margin:0;padding:11px 13px;font-family:ui-monospace,Consolas,monospace;font-size:12.5px;
+ line-height:1.6;white-space:pre;overflow:auto;max-height:260px}
+.tcgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:760px){.tcgrid{grid-template-columns:1fr}}
+.tcnum{display:inline-block;background:rgba(0,118,192,.12);color:var(--ac);font-weight:800;
+ border-radius:5px;padding:0 7px;font-size:11.5px}
+@media(prefers-color-scheme:dark){.tcnum{background:rgba(88,166,255,.15)}}
+
 /* ── 복기 메모 ── */
 .nfold{border:1px solid var(--bd);border-radius:8px;background:var(--panel)}
 .nfold>summary{cursor:pointer;list-style:none;padding:12px 16px;font-weight:700;font-size:14px;
@@ -289,7 +314,12 @@ var SITENM={BOJ:"백준",SWEA:"SW Expert Academy",PGS:"프로그래머스",CT:"�
 function rc(s){return "r-"+(SC[s]||"un");}
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){
  return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
-function key(r){return r.site+"/"+r.no;}
+/* 실수노트에서 온 기록 중에는 번호가 없는 것이 42개 있다(제목만 있는 항목).
+   번호로만 키를 만들면 그것들이 전부 "BOJ/" 하나로 뭉쳐 트리에 1개로 보인다. */
+function key(r){
+ var no=String(r.no==null?"":r.no).trim();
+ return r.site+"/"+(no||("~"+(r.title||"이름없음")));
+}
 /* toISOString() 은 UTC 라 KST 오전엔 어제 날짜가 나온다. 반드시 로컬 기준으로. */
 function today(){var d=new Date();
  return new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,10);}
@@ -452,7 +482,8 @@ function viewProblems(){
   '<div class="bar"><button class="p" onclick="openAdd()">+ 새 문제</button>'+
   '<input class="gr" id="tq" placeholder="번호 · 제목으로 찾기">'+
   '<select id="tg"><option value="cosal">코딩살구 커리큘럼</option>'+
-  '<option value="status">결과별</option><option value="hundred">번호대별</option></select>'+
+  '<option value="status">결과별</option><option value="hundred">번호대별</option>'+
+  '<option value="recent">최근 푼 순</option></select>'+
   '<select id="tf"><option value="">전체 문제</option><option value="mine">내가 푼 것만</option>'+
   '<option value="todo">안 푼 것만</option><option value="doc">자료 있는 것만</option></select>'+
   '<button class="sm" onclick="expandAll(1)">펼치기</button>'+
@@ -479,6 +510,7 @@ function drawTree(){
    var s=k.split("/"), last=lastOf(k), c=CATIDX[k]||{};
    return {k:k, site:s[0], no:s.slice(1).join("/"), title:bestTitle(k),
            sec:c.section||"", ord:(c.ord===undefined?1e9:c.ord),
+           last:(last?last.date:""),
            has:!!PIDX[k], note:!!((PIDX[k]||{}).note),
            status:last?last.status:"", tries:(BYPROB[k]||[]).length};
   }).filter(function(it){
@@ -495,6 +527,8 @@ function drawTree(){
   if(mode==="cosal")       f = it.sec || (it.tries?"커리큘럼 외 (내가 푼 문제)":"미분류");
   else if(mode==="status") f = (it.status==="품"||it.status==="맞음") ? "푼 문제"
                              : it.status ? "못 푼 문제" : "기록 없음";
+  else if(mode==="recent") f = it.last
+      ? (it.last.slice(0,4)+"년 "+(+it.last.slice(5,7))+"월") : "아직 안 푼 문제";
   else                     f = it.no.match(/^\d+$/) ? (Math.floor(+it.no/1000)+"000번대") : "기타";
   (tree[it.site]=tree[it.site]||{});
   (tree[it.site][f]=tree[it.site][f]||[]).push(it);
@@ -512,10 +546,16 @@ function drawTree(){
   var folders=Object.keys(tree[site]).sort(function(a,b){
     var pa=a.indexOf("주차별/")===0?0:a.indexOf("개념별/")===0?1:2;
     var pb=b.indexOf("주차별/")===0?0:b.indexOf("개념별/")===0?1:2;
-    if(pa!==pb)return pa-pb;
+    if(mode!=="recent"&&pa!==pb)return pa-pb;
     if(mode==="cosal"){
       var ka=fkey(a), kb=fkey(b);
       if(ka!==kb) return ka-kb;
+    }
+    if(mode==="recent"){
+      /* 최신 월부터. "아직 안 푼 문제"는 항상 맨 아래로. */
+      var ea=(a==="아직 안 푼 문제"), eb=(b==="아직 안 푼 문제");
+      if(ea!==eb) return ea?1:-1;
+      return b.localeCompare(a,"ko",{numeric:true});
     }
     var na=parseInt(a.replace(/\D*/,"")),nb=parseInt(b.replace(/\D*/,""));
     if(!isNaN(na)&&!isNaN(nb)&&na!==nb)return na-nb;
@@ -527,22 +567,27 @@ function drawTree(){
    folders.map(function(f){
     /* 코딩살구 커리큘럼은 난이도·주제 흐름대로 배열돼 있어 번호순으로 섞으면 의미가 깨진다.
        커리큘럼 보기에서는 사이트 노출 순서(ord)를 그대로 쓴다. */
-    var list=tree[site][f].sort(mode==="cosal"
-      ? function(a,b){ return (a.ord-b.ord) || ((+a.no||0)-(+b.no||0)); }
-      : function(a,b){ return (+a.no||0)-(+b.no||0); });
+    var list=tree[site][f].sort(
+      mode==="cosal"  ? function(a,b){ return (a.ord-b.ord) || ((+a.no||0)-(+b.no||0)); }
+    : mode==="recent" ? function(a,b){ return (b.last||"").localeCompare(a.last||""); }
+    :                   function(a,b){ return (+a.no||0)-(+b.no||0); });
     var done=list.filter(function(x){return x.status==="품"||x.status==="맞음";}).length;
     var nm=f.indexOf("/")>0?f.split("/")[1]:f;
     var grp=f.indexOf("/")>0?f.split("/")[0]:"";
     return '<details class="tnode"'+(q?" open":"")+'><summary><span class="ar">▶</span>'+
      '📁 '+(grp?'<span style="color:var(--mute);font-weight:600">'+esc(grp)+' /</span> ':'')+esc(nm)+
      '<span class="cnt">'+done+' / '+list.length+'</span></summary><div class="tkids">'+
+     '<div class="leafhead"><span>번호</span><span>제목</span><span>자료</span>'+
+     '<span class="r">시도</span><span class="r">마지막</span><span class="r">결과</span></div>'+
      list.map(function(it){
       return '<div class="leaf"><span class="id">'+esc(it.no)+'</span>'+
        '<a class="nm" href="#p/'+encodeURIComponent(it.site)+'/'+encodeURIComponent(it.no)+'">'+
         esc(it.title||"(제목 없음)")+'</a>'+
-       (it.has?'<span class="doc" title="문제 자료 있음">&#128196;</span>':'')+
-       (it.note?'<span class="doc" title="복기 메모 있음">&#128221;</span>':'')+
-       (it.tries>1?'<span class="doc">'+it.tries+'회</span>':'')+
+       '<span class="doc">'+
+        (it.has?'<span title="지문·예제 있음">&#128196;</span>':'')+
+        (it.note?'<span title="복기 메모 있음">&#128221;</span>':'')+'</span>'+
+       '<span class="tries">'+(it.tries?it.tries+"회":"")+'</span>'+
+       '<span class="dt">'+esc(it.last||"")+'</span>'+
        '<span class="rs '+rc(it.status)+'">'+esc(it.status||"")+'</span></div>';
      }).join("")+'</div></details>';
    }).join("")+'</div></details>';
@@ -922,6 +967,26 @@ function openImg(src){
  $("cvc").innerHTML='<img src="'+esc(src)+'" style="max-width:100%;height:auto;display:block">';
 }
 
+/* 코딩살구처럼 라벨 + 복사 버튼이 달린 입·출력 패널 한 쌍 */
+function tcPanel(kind, n, s){
+ function one(lbl, txt){
+  var id="tc"+(TCSEQ++);
+  return '<div class="tcp"><div class="head">'+
+   '<span class="tcnum">'+esc(String(n))+'</span>'+esc(kind+" "+lbl)+
+   '<button class="cp" onclick="copyTC(\''+id+'\',this)">복사</button></div>'+
+   '<pre id="'+id+'">'+esc(txt||"")+'</pre></div>';
+ }
+ return '<div class="tcgrid">'+one("입력", s["in"])+one("출력", s.out)+'</div>';
+}
+var TCSEQ=1;
+function copyTC(id, btn){
+ var el=$(id); if(!el)return;
+ navigator.clipboard.writeText(el.textContent).then(function(){
+  var t=btn.textContent; btn.textContent="복사됨";
+  setTimeout(function(){btn.textContent=t;},1200);
+ },function(){ btn.textContent="실패"; });
+}
+
 function renderProblem(p,site,no){
  CUR.prob=p;
  var subs=BYPROB[site+"/"+no]||[];
@@ -951,22 +1016,19 @@ function renderProblem(p,site,no){
  if(p.input_spec)  h+='<div class="sec-h">입력</div><div class="body">'+esc(p.input_spec)+'</div>';
  if(p.output_spec) h+='<div class="sec-h">출력</div><div class="body">'+esc(p.output_spec)+'</div>';
  (p.samples||[]).forEach(function(s,i){
-  h+='<div class="sec-h">예제 '+(i+1)+'</div><div class="smp">'+
-     '<div><div class="t">입력</div><pre class="io">'+esc(s["in"])+'</pre></div>'+
-     '<div><div class="t">출력</div><pre class="io">'+esc(s.out)+'</pre></div></div>';
+  h+='<div class="sec-h">예제 '+(i+1)+'</div>'+tcPanel("예제", i+1, s);
  });
  var htc=p.private_testcases||[];
  if(htc.length){
-  /* 답이 먼저 보이면 스포가 되므로 기본 접힘 */
+  /* 답이 먼저 보이면 스포가 되므로 기본 접힘. 펼치면 코딩살구처럼 패널로 보여준다. */
   h+='<div class="sec-h">히든 테스트케이스</div>'+
      '<details class="nfold"><summary><span class="ar">▶</span>'+
      '히든 테스트케이스 '+htc.length+'개 <span class="sp">클릭해서 펼치기</span></summary>'+
      '<div style="padding:14px 16px">'+
-     htc.map(function(s,i){
-       return '<div class="hint">#'+(i+1)+'</div><div class="smp">'+
-              '<div><div class="t">입력</div><pre class="io">'+esc(s["in"])+'</pre></div>'+
-              '<div><div class="t">출력</div><pre class="io">'+esc(s.out)+'</pre></div></div>';
-     }).join("")+'</div></details>';
+     '<div class="hint" style="margin:0 0 10px">실제 채점에 쓰이는 케이스입니다. '+
+      '풀기 전에 보면 스포가 될 수 있어요.</div>'+
+     htc.map(function(s,i){ return tcPanel("프라이빗", i+1, s); }).join("")+
+     '</div></details>';
  }
  if(p.constraints&&p.constraints.length)
   h+='<div class="sec-h">제한</div><div class="body">'+esc(p.constraints.join("\n"))+'</div>';
