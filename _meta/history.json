@@ -4320,21 +4320,5 @@
     "title": "벌꿀채취"
    }
   ]
- },
- "2026-08-15": {
-  "count": 1,
-  "items": [
-   {
-    "elapsed": 0.22,
-    "file": "boj/2577.py",
-    "no": "2577",
-    "passed": 1,
-    "site": "BOJ",
-    "status": "품",
-    "title": "숫자의 개수",
-    "total": 1,
-    "verdict": "accepted"
-   }
-  ]
  }
 }
