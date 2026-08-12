@@ -33,6 +33,7 @@ def main():
             "label": d.get("label", ""),
             "limits": d.get("limits", {}),
             "tc": d.get("private_tc_count", 0),
+            "htc": len(d.get("private_testcases") or []),
             "smp": len(d.get("samples") or []),
             "len": len(d.get("statement") or ""),
             "path": "problems/%s/%s" % (sub, os.path.basename(f)),

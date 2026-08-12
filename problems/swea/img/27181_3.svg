@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 270" width="520" height="270" font-family="sans-serif">
+<text x="16" y="26" font-size="15" fill="#333" font-weight="bold">두 번째 명령 4(착륙 허가)</text>
+<rect x="16" y="56" width="70" height="30" fill="#e8ecf6" stroke="#c9cede"/>
+<text x="51" y="75" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">fid</text>
+<rect x="86" y="56" width="78" height="30" fill="#e8ecf6" stroke="#c9cede"/>
+<text x="125" y="75" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">긴급도</text>
+<rect x="164" y="56" width="62" height="30" fill="#e8ecf6" stroke="#c9cede"/>
+<text x="195" y="75" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">순번</text>
+<rect x="16" y="86" width="70" height="30" fill="#fff3c9" stroke="#c9cede"/>
+<text x="51" y="105" text-anchor="middle" font-size="12" fill="#20242c" font-weight="bold">202</text>
+<rect x="86" y="86" width="78" height="30" fill="#fff3c9" stroke="#c9cede"/>
+<text x="125" y="105" text-anchor="middle" font-size="12" fill="#20242c" font-weight="bold">9</text>
+<rect x="164" y="86" width="62" height="30" fill="#fff3c9" stroke="#c9cede"/>
+<text x="195" y="105" text-anchor="middle" font-size="12" fill="#20242c" font-weight="bold">2</text>
+<text x="234" y="105" font-size="11" font-weight="bold" fill="#1428a0">◀ 착륙</text>
+<rect x="16" y="116" width="70" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="51" y="135" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">505</text>
+<rect x="86" y="116" width="78" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="125" y="135" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">7</text>
+<rect x="164" y="116" width="62" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="195" y="135" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">5</text>
+<rect x="16" y="146" width="70" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="51" y="165" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">303</text>
+<rect x="86" y="146" width="78" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="125" y="165" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">5</text>
+<rect x="164" y="146" width="62" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="195" y="165" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">3</text>
+<rect x="16" y="176" width="70" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="51" y="195" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">404</text>
+<rect x="86" y="176" width="78" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="125" y="195" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">2</text>
+<rect x="164" y="176" width="62" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="195" y="195" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">4</text>
+<text x="16" y="232" font-size="12" fill="#1428a0" font-weight="bold">최대 긴급도 202(9) 착륙 허가 — 재산정 값이 반영됨</text>
+<text x="16" y="254" font-size="12" fill="#9aa0ad">옛 stale 엔트리 (202,3) 는 pop 될 때 버전 검사에서 X 로 폐기</text>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 292" width="560" height="292" font-family="sans-serif">
+<text x="16" y="26" font-size="15" fill="#333" font-weight="bold">명령 5·3·4·5 타임라인</text>
+<circle cx="26" cy="52" r="6" fill="#c0392b"/>
+<line x1="26" y1="60" x2="26" y2="98" stroke="#c9cede" stroke-width="2"/>
+<text x="42" y="50" font-size="12" fill="#c0392b" font-weight="bold">명령 5 (회항)</text>
+<text x="42" y="68" font-size="12" fill="#333">잔여 {303(5), 404(2), 505(7)} → 최저 긴급도 404 회항</text>
+<circle cx="26" cy="106" r="6" fill="#333"/>
+<line x1="26" y1="114" x2="26" y2="152" stroke="#c9cede" stroke-width="2"/>
+<text x="42" y="104" font-size="12" fill="#333" font-weight="bold">명령 3 (철회)</text>
+<text x="42" y="122" font-size="12" fill="#333">303 대기열 이탈 (양쪽 힙에서 무효화)</text>
+<circle cx="26" cy="160" r="6" fill="#1428a0"/>
+<line x1="26" y1="168" x2="26" y2="206" stroke="#c9cede" stroke-width="2"/>
+<text x="42" y="158" font-size="12" fill="#1428a0" font-weight="bold">명령 4 (착륙)</text>
+<text x="42" y="176" font-size="12" fill="#333">잔여 {505} → 505 착륙 허가</text>
+<circle cx="26" cy="214" r="6" fill="#c0392b"/>
+<text x="42" y="212" font-size="12" fill="#c0392b" font-weight="bold">명령 5 (회항)</text>
+<text x="42" y="230" font-size="12" fill="#333">빈 대기열 → -1</text>
+<text x="16" y="274" font-size="12" fill="#333" font-weight="bold">기대 출력: '#1' / 101 / 202 / 404 / 505 / -1</text>
+</svg>

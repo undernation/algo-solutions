@@ -173,6 +173,49 @@ def collect_images(pg, site, no):
     return text, paths
 
 
+# ── 히든(프라이빗) 테스트케이스 ──────────────────────────────
+# 코딩살구는 "모두 보기"를 누르면 프라이빗 테스트케이스를 DOM 에 펼쳐준다
+# (2618 기준 본문 2,312자 → 48,359자). 라벨/블록 쌍으로 뽑는다.
+PRIV_JS = r"""() => {
+  const labels = [...document.querySelectorAll('.salgu-panel-label')];
+  const ins = {}, outs = {};
+  labels.forEach(L => {
+    const t = (L.textContent || '').trim();
+    const m = t.match(/^프라이빗\s*(입력|출력)\s*(\d+)$/);
+    if (!m) return;
+    // 라벨의 부모는 .salgu-copy-head(라벨+복사버튼)라 그 안엔 내용이 없다.
+    // 내용 블록이 나올 때까지 조상을 거슬러 올라간다.
+    let blk = null, node = L;
+    for (let i = 0; i < 4 && node && !blk; i++) {
+      node = node.parentElement;
+      if (node) blk = node.querySelector('.salgu-plain-block');
+    }
+    if (!blk) return;
+    const v = (blk.textContent || '').replace(/\r\n/g, '\n').replace(/\s+$/, '');
+    (m[1] === '입력' ? ins : outs)[m[2]] = v;
+  });
+  const out = [];
+  Object.keys(ins).sort((a, b) => (+a) - (+b)).forEach(k => {
+    if (ins[k] !== undefined && outs[k] !== undefined)
+      out.push({in: ins[k], out: outs[k]});
+  });
+  return JSON.stringify(out);
+}"""
+
+
+def fetch_private_tc(pg):
+    """'모두 보기'를 눌러 프라이빗 테스트케이스를 펼친 뒤 수집."""
+    try:
+        pg.click("text=모두 보기", timeout=8000)
+        pg.wait_for_timeout(2600)
+    except Exception:
+        pass                                  # 이미 펼쳐졌거나 버튼이 없으면 그대로 진행
+    try:
+        return json.loads(pg.evaluate(PRIV_JS))
+    except Exception:
+        return []
+
+
 def apply_images(pg, d):
     """수집한 이미지·마커 지문을 문제 dict 에 반영(그림이 없으면 아무것도 안 함)."""
     if not d.get("no"):
@@ -403,6 +446,8 @@ def main():
         t = pg.evaluate("() => document.body.innerText") or ""
         d = parser(t, pg.url)
         apply_images(pg, d)
+        if d.get("site") == "BOJ" and d.get("private_tc_count"):
+            d["private_testcases"] = fetch_private_tc(pg)
         # SWEA 는 공식 테스트케이스 파일을 받아 채점 가능한 형태로 만든다.
         if d.get("site") == "SWEA":
             m = re.search(r"contestProbId=([A-Za-z0-9+/=]+)", pg.url)

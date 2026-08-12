@@ -1,0 +1,29 @@
+{
+ "site": "SWEA",
+ "platform": "SW Expert Academy",
+ "url": "https://swexpertacademy.com/main/code/userProblem/userProblemDetail.do?fromProbList=N&deleteYn=N&contestProbId=AZiyl6OKpUjHBIP9&topPath=code&lastPath=problemDetail&secondPath=problem&menuBreakDown=swea.code.menu&menuBreakDown=swea.code.problem.menu&menuDesc=swea.code.desc&menuDesc=swea.code.problem.desc&contextPath=%2Fmain&locale=ko-kr%2Cko%3Bq%3D0.9%2Cen-us%3Bq%3D0.8%2Cen%3Bq%3D0.7&serverName=localhost&localeLanguage=ko_KR&localeLanguage2=Ko_KR&remoteAddr=175.213.163.17&scripts=%2Fjs%2Finit%2Fjquery-debug.js&scripts=%2Fjs%2Finit%2Fjquery-ui.js&scripts=%2Fjs%2Finit%2Fjquery.validate.js&scripts=%2Fjs%2Fcommon.js&NOTICE_NEW_COUNT=0&ssoLogin=false&hasSDPAdminLinkAuth=false&systemAdmin=false&backendAdmin=false&isTechBlogManager=false&CURRENT_MENU_AUTHORIZATION=READ&CURRENT_MENU_AUTHORIZATION=UPDATE&CURRENT_MENU_AUTHORIZATION=EXECUTE&CURRENT_MENU_AUTHORIZATION=DOWNLOAD&logoMainfileName=logo_company.png",
+ "no": "25052",
+ "title": "등산로 D2",
+ "stats": {
+  "participants": "239",
+  "submissions": "105",
+  "accepted": "94",
+  "accept_rate": "89.52",
+  "point": "50"
+ },
+ "limits": {
+  "time": "10개 테스트케이스를 합쳐서 C/C++의 경우 1초 / Java의 경우 1초",
+  "memory": "힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내",
+  "time_sec": 1.0
+ },
+ "statement": "높이가 서로 다른 NxN 크기의 영역에서 등산로를 만들고자 한다.\n\n등산로를 만드는 규칙은 다음과 같다.\n\n- 출발은 어디서든 가능하다.\n- 상하좌우로 인접한 영역 중 더 낮은 영역으로만 이동할 수 있다.\n- 더 낮은 영역이 여러 개인 경우 그 중 가장 낮은 곳으로 이동해야 한다.\n\n- 가장 낮은 영역이 2개 이상인 경우는 없다.\n\n- 만약 더 낮은 인접 영역이 없으면 더 이상 이동할 수 없다.\n- 주어진 지도에서 만들 수 있는 가장 긴 등산로의 길이는 얼마인가?\n\n가장 긴 등산로는 여러 개가 만들어질 수 있다.\n\n다음 지도의 경우 노란색이 가장 긴 등산로이다.\n\n길이 11\n\n1\n\n\t\n\n2\n\n\t\n\n3\n\n\t\n\n4\n\n12\n\n\t\n\n13\n\n\t\n\n14\n\n\t\n\n5\n\n11\n\n\t\n\n16\n\n\t\n\n15\n\n\t\n\n6\n\n10\n\n\t\n\n9\n\n\t\n\n8\n\n\t\n\n7\n\n \n\n길이 5\n\n25\n\n\t\n\n14\n\n\t\n\n6\n\n\t\n\n24\n\n\t\n\n5\n\n11\n\n\t\n\n8\n\n\t\n\n16\n\n\t\n\n17\n\n\t\n\n1\n\n12\n\n\t\n\n3\n\n\t\n\n2\n\n\t\n\n22\n\n\t\n\n15\n\n19\n\n\t\n\n7\n\n\t\n\n21\n\n\t\n\n9\n\n\t\n\n18\n\n10\n\n\t\n\n4\n\n\t\n\n13\n\n\t\n\n23\n\n\t\n\n20",
+ "input_spec": "첫 줄에 지도의 개수 T, 다음 줄부터 지도 별로 첫 줄에 지도의 크기 N, N 줄에 걸쳐 각 줄 마다 N개 구역의 높이 정보 Hij가 주어진다.\n(3 ≤ N ≤ 10, 1 ≤ Hij ≤ N*N)",
+ "output_spec": "지도 별로 한 줄에 #과 지도번호, 빈칸에 이어 답을 출력한다.",
+ "samples": [
+  {
+   "in": "3\n3\n7 3 4\n5 8 2\n1 9 6\n4\n1 2 3 4\n12 13 14 5\n11 16 15 6\n10 9 8 7\n5\n25 14 6 24 5\n11 8 16 17 1\n12 3 2 22 15\n19 7 21 9 18\n10 4 13 23 20",
+   "out": "#1 2\n#2 11\n#3 5"
+  }
+ ],
+ "fetched_at": "2026-08-12"
+}

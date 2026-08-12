@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 250" width="600" height="250" font-family="sans-serif">
+<text x="16" y="26" font-size="15" fill="#333" font-weight="bold">TC1 초기 대기열 — 명령 4(착륙 허가)</text>
+<rect x="16" y="56" width="70" height="30" fill="#e8ecf6" stroke="#c9cede"/>
+<text x="51" y="75" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">fid</text>
+<rect x="86" y="56" width="78" height="30" fill="#e8ecf6" stroke="#c9cede"/>
+<text x="125" y="75" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">긴급도</text>
+<rect x="164" y="56" width="62" height="30" fill="#e8ecf6" stroke="#c9cede"/>
+<text x="195" y="75" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">순번</text>
+<rect x="16" y="86" width="70" height="30" fill="#fff3c9" stroke="#c9cede"/>
+<text x="51" y="105" text-anchor="middle" font-size="12" fill="#20242c" font-weight="bold">101</text>
+<rect x="86" y="86" width="78" height="30" fill="#fff3c9" stroke="#c9cede"/>
+<text x="125" y="105" text-anchor="middle" font-size="12" fill="#20242c" font-weight="bold">5</text>
+<rect x="164" y="86" width="62" height="30" fill="#fff3c9" stroke="#c9cede"/>
+<text x="195" y="105" text-anchor="middle" font-size="12" fill="#20242c" font-weight="bold">1</text>
+<text x="234" y="105" font-size="11" font-weight="bold" fill="#1428a0">◀ 착륙</text>
+<rect x="16" y="116" width="70" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="51" y="135" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">202</text>
+<rect x="86" y="116" width="78" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="125" y="135" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">3</text>
+<rect x="164" y="116" width="62" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="195" y="135" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">2</text>
+<rect x="16" y="146" width="70" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="51" y="165" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">303</text>
+<rect x="86" y="146" width="78" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="125" y="165" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">5</text>
+<rect x="164" y="146" width="62" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="195" y="165" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">3</text>
+<rect x="16" y="176" width="70" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="51" y="195" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">404</text>
+<rect x="86" y="176" width="78" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="125" y="195" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">2</text>
+<rect x="164" y="176" width="62" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="195" y="195" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">4</text>
+<rect x="316" y="56" width="250" height="86" rx="8" fill="#f7f9fd" stroke="#c9cede"/>
+<text x="328" y="78" font-size="12.5" font-weight="bold" fill="#1428a0">착륙 허가 (명령 4)</text>
+<text x="328" y="96" font-size="11.5" fill="#333">긴급도 큰 순 → 같으면 순번 작은(선착) 순</text>
+<text x="328" y="118" font-size="12.5" font-weight="bold" fill="#c0392b">회항 (명령 5)</text>
+<text x="328" y="136" font-size="11.5" fill="#333">긴급도 작은 순 → 같으면 순번 큰(후착) 순</text>
+<text x="16" y="232" font-size="12" fill="#1428a0" font-weight="bold">긴급도 5 동점: 101(순번1) vs 303(순번3) → 순번 작은 101 착륙 허가</text>
+</svg>

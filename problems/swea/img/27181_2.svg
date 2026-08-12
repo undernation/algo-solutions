@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 216" width="620" height="216" font-family="sans-serif">
+<text x="16" y="26" font-size="15" fill="#333" font-weight="bold">명령 1(요청 505,긴급도7)·명령 2(재산정 202: 3→9) 후</text>
+<text x="16" y="54" font-size="14" font-weight="bold" fill="#20242c">현재 유효 대기열</text>
+<rect x="16" y="62" width="70" height="30" fill="#e8ecf6" stroke="#c9cede"/>
+<text x="51" y="81" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">fid</text>
+<rect x="86" y="62" width="78" height="30" fill="#e8ecf6" stroke="#c9cede"/>
+<text x="125" y="81" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">긴급도</text>
+<rect x="164" y="62" width="62" height="30" fill="#e8ecf6" stroke="#c9cede"/>
+<text x="195" y="81" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">순번</text>
+<rect x="16" y="92" width="70" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="51" y="111" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">202</text>
+<rect x="86" y="92" width="78" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="125" y="111" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">9</text>
+<rect x="164" y="92" width="62" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="195" y="111" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">2</text>
+<rect x="16" y="122" width="70" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="51" y="141" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">303</text>
+<rect x="86" y="122" width="78" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="125" y="141" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">5</text>
+<rect x="164" y="122" width="62" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="195" y="141" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">3</text>
+<rect x="16" y="152" width="70" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="51" y="171" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">404</text>
+<rect x="86" y="152" width="78" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="125" y="171" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">2</text>
+<rect x="164" y="152" width="62" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="195" y="171" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">4</text>
+<rect x="16" y="182" width="70" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="51" y="201" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">505</text>
+<rect x="86" y="182" width="78" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="125" y="201" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">7</text>
+<rect x="164" y="182" width="62" height="30" fill="#ffffff" stroke="#c9cede"/>
+<text x="195" y="201" text-anchor="middle" font-size="12" fill="#20242c" font-weight="normal">5</text>
+<text x="266" y="74" font-size="12" fill="#333" font-weight="bold">재산정: 202 긴급도 3→9</text>
+<text x="266" y="94" font-size="12" fill="#1428a0">순번 2 는 그대로 유지 (배지)</text>
+<text x="266" y="108" font-size="14" font-weight="bold" fill="#20242c">힙에 남은 옛 엔트리(stale)</text>
+<rect x="266" y="116" width="70" height="30" fill="#e8ecf6" stroke="#c9cede"/>
+<text x="301" y="135" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">fid</text>
+<rect x="336" y="116" width="78" height="30" fill="#e8ecf6" stroke="#c9cede"/>
+<text x="375" y="135" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">긴급도</text>
+<rect x="414" y="116" width="62" height="30" fill="#e8ecf6" stroke="#c9cede"/>
+<text x="445" y="135" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">순번</text>
+<rect x="266" y="146" width="70" height="30" fill="#f2f3f5" stroke="#c9cede"/>
+<text x="301" y="165" text-anchor="middle" font-size="12" fill="#9aa0ad" font-weight="normal"><tspan text-decoration="line-through">202</tspan></text>
+<rect x="336" y="146" width="78" height="30" fill="#f2f3f5" stroke="#c9cede"/>
+<text x="375" y="165" text-anchor="middle" font-size="12" fill="#9aa0ad" font-weight="normal"><tspan text-decoration="line-through">3</tspan></text>
+<rect x="414" y="146" width="62" height="30" fill="#f2f3f5" stroke="#c9cede"/>
+<text x="445" y="165" text-anchor="middle" font-size="12" fill="#9aa0ad" font-weight="normal"><tspan text-decoration="line-through">2</tspan></text>
+<text x="266" y="198" font-size="12" fill="#9aa0ad">옛 (202,긴급도3) 엔트리는 버전 불일치 → 이후 pop 시 폐기</text>
+</svg>

@@ -160,6 +160,16 @@ pre.io{background:var(--soft);border:1px solid var(--bd);border-radius:6px;paddi
 .note{background:var(--soft);border:1px solid var(--bd);border-left:3px solid var(--ac);
  border-radius:5px;padding:11px 14px;font-size:13.5px;color:var(--sub);margin:14px 0}
 /* ── 복기 메모 ── */
+.nfold{border:1px solid var(--bd);border-radius:8px;background:var(--panel)}
+.nfold>summary{cursor:pointer;list-style:none;padding:12px 16px;font-weight:700;font-size:14px;
+ display:flex;align-items:center;gap:9px;user-select:none;border-radius:8px}
+.nfold>summary::-webkit-details-marker{display:none}
+.nfold>summary:hover{background:var(--soft)}
+.nfold>summary .ar{color:var(--mute);font-size:11px;transition:transform .12s}
+.nfold[open]>summary .ar{transform:rotate(90deg)}
+.nfold>summary .sp{margin-left:auto;font-weight:400;font-size:12px;color:var(--sub)}
+.nfold[open]>summary{border-bottom:1px solid var(--bd2);border-radius:8px 8px 0 0}
+.nfold .mdbody{border:0;border-radius:0 0 8px 8px}
 .mdbody{background:var(--panel);border:1px solid var(--bd);border-radius:8px;padding:4px 20px 16px}
 .mdbody .mdh{margin:20px 0 8px;font-weight:800;letter-spacing:-.2px}
 .mdbody .mdh2{font-size:18px;padding-bottom:6px;border-bottom:1px solid var(--bd)}
@@ -267,7 +277,7 @@ button.danger:hover{opacity:.88;color:#fff;border-color:var(--no)}
 var D=__DATA__;
 var PIDX=(D.probs&&D.probs.items)||{};      /* "BOJ/2618" -> {title,label,limits,...} */
 var CAT=D.catalog||[];                      /* 코딩살구 전체 문제 카탈로그 */
-var CATIDX={}; CAT.forEach(function(c){ CATIDX["BOJ/"+c.no]=c; });
+var CATIDX={}; CAT.forEach(function(c,i){ c.ord=i; CATIDX["BOJ/"+c.no]=c; });
 var SC={"품":"ok","맞음":"ok","못품":"no","틀림":"wr","시간초과":"tl"};
 var SITENM={BOJ:"백준",SWEA:"SW Expert Academy",PGS:"프로그래머스",CT:"코드트리"};
 function rc(s){return "r-"+(SC[s]||"un");}
@@ -442,7 +452,8 @@ function drawTree(){
  var items=keys.map(function(k){
    var s=k.split("/"), last=lastOf(k), c=CATIDX[k]||{};
    return {k:k, site:s[0], no:s.slice(1).join("/"), title:bestTitle(k),
-           sec:c.section||"", has:!!PIDX[k], note:!!((PIDX[k]||{}).note),
+           sec:c.section||"", ord:(c.ord===undefined?1e9:c.ord),
+           has:!!PIDX[k], note:!!((PIDX[k]||{}).note),
            status:last?last.status:"", tries:(BYPROB[k]||[]).length};
   }).filter(function(it){
    if(q && (it.no+" "+it.title).toLowerCase().indexOf(q)<0) return false;
@@ -477,7 +488,11 @@ function drawTree(){
    '<span class="b b-'+site+'">'+site+'</span> '+esc(SITENM[site]||site)+
    '<span class="cnt">'+tot+'</span></summary><div class="tkids">'+
    folders.map(function(f){
-    var list=tree[site][f].sort(function(a,b){return (+a.no||0)-(+b.no||0);});
+    /* 코딩살구 커리큘럼은 난이도·주제 흐름대로 배열돼 있어 번호순으로 섞으면 의미가 깨진다.
+       커리큘럼 보기에서는 사이트 노출 순서(ord)를 그대로 쓴다. */
+    var list=tree[site][f].sort(mode==="cosal"
+      ? function(a,b){ return (a.ord-b.ord) || ((+a.no||0)-(+b.no||0)); }
+      : function(a,b){ return (+a.no||0)-(+b.no||0); });
     var done=list.filter(function(x){return x.status==="품"||x.status==="맞음";}).length;
     var nm=f.indexOf("/")>0?f.split("/")[1]:f;
     var grp=f.indexOf("/")>0?f.split("/")[0]:"";
@@ -573,10 +588,10 @@ function inline(t){
          .replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
 }
 
-var NOTE={text:"", editing:false};
+var NOTE={text:"", editing:false, open:false};
 
 async function loadNote(site,no){
- NOTE={text:"",editing:false};
+ NOTE={text:"",editing:false,open:false};
  var m=PIDX[site+"/"+no];
  var paths=[];
  if(m&&m.note) paths.push(m.note);
@@ -602,17 +617,23 @@ function drawNote(){
     '<button class="p" onclick="saveNote()">메모 저장</button>'+
     '<button onclick="NOTE.editing=false;drawNote()">취소</button>'+
     '<button class="sm" style="margin-left:auto" onclick="editWhole()">전체 편집</button>'+
-   '</div><div class="vd" id="nv"></div>';
+   '</div>';
   var t=$("nbody"); setTimeout(function(){t&&t.focus();},50);
   return;
  }
+ var has=!!NOTE.text.trim();
+ /* 다시 풀러 온 경우 지난 메모가 먼저 보이면 스포가 된다. 기본으로 접어둔다. */
+ var cnt=(NOTE.text.match(/^####\s/gm)||[]).length;
  el.innerHTML=
-  (NOTE.text.trim()
-    ? '<div class="mdbody">'+md(NOTE.text)+"</div>"
+  (has
+    ? '<details class="nfold"'+(NOTE.open?" open":"")+' ontoggle="NOTE.open=this.open">'+
+        '<summary><span class="ar">▶</span>지난 복기 메모 '+
+        (cnt?cnt+"건":"")+' <span class="sp">클릭해서 펼치기</span></summary>'+
+        '<div class="mdbody">'+md(NOTE.text)+'</div></details>'
     : '<div class="note">아직 복기 메모가 없습니다. 틀린 이유·다음에 볼 것을 적어두면 문제와 함께 커밋됩니다.</div>')+
   '<div class="row"><button onclick="NOTE.editing=true;drawNote()">'+
-   (NOTE.text.trim()?"메모 추가":"메모 쓰기")+'</button>'+
-  (NOTE.text.trim()?'<button class="sm" onclick="editWhole()">전체 편집</button>':'')+
+   (has?"메모 추가":"메모 쓰기")+'</button>'+
+  (has?'<button class="sm" onclick="editWhole()">전체 편집</button>':'')+
   '</div>';
 }
 
@@ -622,8 +643,7 @@ function editWhole(){
   '<div class="hint" style="margin:0 0 8px">파일 전체를 직접 편집합니다 (notes/…/'+esc(CUR.no)+'.md)</div>'+
   '<textarea id="nbody" class="mono" spellcheck="false"></textarea>'+
   '<div class="row"><button class="p" onclick="saveNote(true)">전체 저장</button>'+
-  '<button onclick="NOTE.editing=false;drawNote()">취소</button></div>'+
-  '<div class="vd" id="nv"></div>';
+  '<button onclick="NOTE.editing=false;drawNote()">취소</button></div>';
  $("nbody").value=NOTE.text;
 }
 
@@ -644,7 +664,7 @@ async function saveNote(whole){
   if(r.status===401)return nsay("인증 실패 — 허브 버튼에서 토큰을 확인하세요.","ng");
   var j=await r.json();
   if(!j.ok)return nsay("실패: "+esc(j.error||r.status),"ng");
-  NOTE.text=j.text||body; NOTE.editing=false;
+  NOTE.text=j.text||body; NOTE.editing=false; NOTE.open=true;  /* 방금 쓴 건 보여준다 */
   if(PIDX[CUR.site+"/"+CUR.no]) PIDX[CUR.site+"/"+CUR.no].note=j.file;
   treeDone=false;
   drawNote();
@@ -814,12 +834,14 @@ async function viewProblem(site,no){
   '<div id="pinfo"></div><div id="pbody"><div class="note">문제 자료를 불러오는 중…</div></div>'+
   '<div class="sec-h">제출 이력</div><div class="panel" id="phist">'+
    (subs.length? tbl(subs) : '<div class="empty">제출 기록이 없습니다.</div>')+'</div>'+
-  '<div class="sec-h">복기 메모</div><div id="pnote"></div>'+
+  '<div class="sec-h">복기 메모</div><div id="pnote"></div><div class="vd" id="nv"></div>'+
   '<div class="sec-h">코드 제출</div>'+
   '<textarea id="ed" class="mono" spellcheck="false" placeholder="여기에 Python 코드를 붙여넣으세요"></textarea>'+
   '<div class="bar" style="margin-top:10px">'+
    '<select id="pst"><option>품</option><option>맞음</option><option>못품</option><option>틀림</option><option>시간초과</option></select>'+
    '<input id="pd" type="date" style="flex:0 0 158px" value="'+today()+'">'+
+   '<label class="hint" style="display:flex;align-items:center;gap:5px;margin:0">'+
+     '<input type="checkbox" id="useh" checked style="width:auto;min-width:0">히든 TC 포함</label>'+
    '<button class="p" onclick="doJudge()">채점</button>'+
    '<button onclick="doSave()">저장 &amp; 커밋</button>'+
    '<button class="sm" style="margin-left:auto" onclick="doFetch()" id="rf">문제 다시 가져오기</button>'+
@@ -878,7 +900,8 @@ function renderProblem(p,site,no){
   '<td>'+esc(lim.time||"—")+'</td><td>'+esc(lim.memory||"—")+'</td>'+
   '<td>'+subs.length+'회</td>'+
   '<td class="'+rc(subs[0]&&subs[0].status)+'">'+esc((subs[0]&&subs[0].status)||"—")+'</td>'+
-  (p&&p.private_tc_count?'<td>'+p.private_tc_count+'개</td>':'')+
+  (p&&p.private_tc_count?'<td>'+p.private_tc_count+'개'+
+     ((p.private_testcases||[]).length?' <span style="color:var(--ok)">(수집됨)</span>':'')+'</td>':'')+
   '<td>'+((p&&(p.source_url||p.url))?'<a href="'+esc(p.source_url||p.url)+'" target="_blank" rel="noopener">열기 ↗</a>':"—")+'</td>'+
   '</tr></tbody></table>';
 
@@ -897,6 +920,19 @@ function renderProblem(p,site,no){
      '<div><div class="t">입력</div><pre class="io">'+esc(s["in"])+'</pre></div>'+
      '<div><div class="t">출력</div><pre class="io">'+esc(s.out)+'</pre></div></div>';
  });
+ var htc=p.private_testcases||[];
+ if(htc.length){
+  /* 답이 먼저 보이면 스포가 되므로 기본 접힘 */
+  h+='<div class="sec-h">히든 테스트케이스</div>'+
+     '<details class="nfold"><summary><span class="ar">▶</span>'+
+     '히든 테스트케이스 '+htc.length+'개 <span class="sp">클릭해서 펼치기</span></summary>'+
+     '<div style="padding:14px 16px">'+
+     htc.map(function(s,i){
+       return '<div class="hint">#'+(i+1)+'</div><div class="smp">'+
+              '<div><div class="t">입력</div><pre class="io">'+esc(s["in"])+'</pre></div>'+
+              '<div><div class="t">출력</div><pre class="io">'+esc(s.out)+'</pre></div></div>';
+     }).join("")+'</div></details>';
+ }
  if(p.constraints&&p.constraints.length)
   h+='<div class="sec-h">제한</div><div class="body">'+esc(p.constraints.join("\n"))+'</div>';
  $("pbody").innerHTML=h||'<div class="note">본문이 비어 있습니다.</div>';
@@ -949,25 +985,31 @@ async function doJudge(){
  var h=needHub("judge"); if(!h)return;
  var code=$("ed").value;
  if(!code.trim())return say("코드를 입력하세요.","ng");
- var cases=((CUR.prob||{}).samples||[]).map(function(s){return {input:s["in"],output:s.out};});
+ /* 히든 테스트케이스가 있으면 예제 + 히든 전부로 채점한다(실제 제출에 가깝다). */
+ var P=CUR.prob||{};
+ var useH=$("useh")?$("useh").checked:true;
+ var pub=(P.samples||[]).map(function(s){return {input:s["in"],output:s.out};});
+ var hid=useH?((P.private_testcases||[]).map(function(s){return {input:s["in"],output:s.out};})):[];
+ var cases=pub.concat(hid);
  if(!cases.length)return say("예제가 없어 채점할 수 없습니다. 먼저 문제 자료를 가져오세요.","ng");
  var sf=(h.info&&h.info.speedFactor)||1;
  var pm=(h.info&&h.info.pyMult)||2, pa=(h.info&&h.info.pyAdd)||0;
  var la=probLangAdjusted();
  var allow=(la?probTL():(probTL()*pm+pa))*sf;
- say("채점 중… "+cases.length+"케이스 · 제한 "+probTL()+"초 → 허용 "+allow.toFixed(1)+"초"+
+ say("채점 중… "+cases.length+"케이스"+(hid.length?" (예제 "+pub.length+" + 히든 "+hid.length+")":"")+
+     " · 제한 "+probTL()+"초 → 허용 "+allow.toFixed(1)+"초"+
      (la?" (문제가 Python 기준으로 명시 · 기기보정 x"+sf.toFixed(2)+")"
         :" (x"+pm+"+"+pa+" · 기기보정 x"+sf.toFixed(2)+")"));
  try{
   var r=await fetch(h.url+"/judge",{method:"POST",headers:H(),
    body:JSON.stringify({problemId:CUR.no,sourceCode:code,testCases:cases,
-    publicTestCaseCount:cases.length,timeLimit:probTL(),
+    publicTestCaseCount:pub.length,timeLimit:probTL(),
     langAdjusted:probLangAdjusted()})});
   if(r.status===401)return say("인증 실패 — 허브 버튼에서 토큰을 확인하세요.","ng");
   var j=await r.json(); CUR.verdict=j;
   var s=j.summary||{}, ok=j.verdict==="accepted";
   var d=(j.detail||[]).filter(function(x){return x.status!=="passed";}).slice(0,3).map(function(x){
-   return "#"+(x.index+1)+"  "+x.status+
+   return "#"+(x.index+1)+(x.kind==="private"?"(히든)":"")+"  "+x.status+
     (x.expected!=null?"\n  기대 ▸ "+x.expected+"\n  실제 ▸ "+x.got:"")+
     (x.stderr?"\n  "+x.stderr.split("\n").slice(-3).join("\n  "):"");}).join("\n\n");
   say((ok?"✅ <b>맞았습니다</b>":"❌ <b>"+esc(j.verdict)+"</b>")+
