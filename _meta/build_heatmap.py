@@ -292,7 +292,9 @@ def render_html(data, year, total, active, best):
                 continue
             rows.append({"date": dk, "site": it.get("site", ""),
                          "no": it.get("no", ""), "title": it.get("title", ""),
-                         "status": it.get("status", "?"), "file": it.get("file", "")})
+                         "status": it.get("status", "?"), "file": it.get("file", ""),
+                         "passed": it.get("passed"), "total": it.get("total"),
+                         "elapsed": it.get("elapsed"), "verdict": it.get("verdict", "")})
     # 크롤링된 문제 자료 색인 + 코딩살구 전체 문제 카탈로그
     probs, cat = {"count": 0, "items": {}}, []
     try:
@@ -387,11 +389,13 @@ def main():
              "[전체 기록](./HEATMAP.md) · 마우스 hover는 [`assets/heatmap.html`](./assets/heatmap.html) 을 브라우저로\n\n"
              "%s" % (year, total, active, best, month_details(data, year, months=2)))
 
+    # README 의 잔디 블록은 사용자 요청으로 제거했다(대시보드에서 보므로 중복).
+    # HEATMAP_START 마커가 남아 있는 저장소에서만 갱신하고, 없으면 건드리지 않는다.
     t = io.open(README, encoding="utf-8").read()
     if "<!-- HEATMAP_START -->" in t:
         t = re.sub(r"<!-- HEATMAP_START -->.*?<!-- HEATMAP_END -->",
                    "<!-- HEATMAP_START -->\n%s\n<!-- HEATMAP_END -->" % block, t, flags=re.S)
-    io.open(README, "w", encoding="utf-8", newline="").write(t)
+        io.open(README, "w", encoding="utf-8", newline="").write(t)
 
     print("✅ 잔디 생성 (%d년)" % year)
     print("   총 %d문제 / 활동 %d일 / 최장연속 %d일" % (total, active, best))

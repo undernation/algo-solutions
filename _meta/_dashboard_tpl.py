@@ -398,10 +398,16 @@ function viewHome(){
  });
 }
 
+/* 채점 결과 셀 — 통과 수/전체를 색으로 구분해 보여준다 */
+function tcCell(r){
+ if(r.total==null) return '<span style="color:var(--mute)">—</span>';
+ var all=(r.passed===r.total);
+ return '<span class="'+(all?"r-ok":"r-no")+'">'+r.passed+' / '+r.total+'</span>';
+}
 function tbl(rows){
  if(!rows.length) return '<div class="empty">기록이 없습니다.</div>';
  return '<table><thead><tr><th>제출일</th><th>사이트</th><th>번호</th>'+
-  '<th style="text-align:left">문제</th><th>결과</th><th>코드</th><th></th></tr></thead><tbody>'+
+  '<th style="text-align:left">문제</th><th>결과</th><th>테스트케이스</th><th>시간</th><th>코드</th><th></th></tr></thead><tbody>'+
   rows.map(function(r){
    var k=key(r), t=r.title||bestTitle(k);
    return '<tr><td class="n">'+r.date+'</td>'+
@@ -410,6 +416,8 @@ function tbl(rows){
     '<td class="l"><a href="#p/'+encodeURIComponent(r.site)+'/'+encodeURIComponent(r.no)+'">'+
       esc(t||"(제목 없음)")+'</a></td>'+
     '<td class="'+rc(r.status)+'">'+esc(r.status)+'</td>'+
+    '<td class="n">'+tcCell(r)+'</td>'+
+    '<td class="n">'+(r.elapsed!=null?(+r.elapsed).toFixed(2)+'초':'<span style="color:var(--mute)">—</span>')+'</td>'+
     '<td>'+(r.file?'<span class="lnk" style="color:var(--ac);cursor:pointer" onclick="openCode(\''+
       esc(r.file)+'\')">보기</span>':'<span style="color:var(--mute)">—</span>')+'</td>'+
     '<td><span class="del" title="이 풀이 기록 삭제" onclick="askDelSub(\''+esc(r.site)+
@@ -538,6 +546,7 @@ function drawStatus(){
   return (!q||(r.no+" "+t).toLowerCase().indexOf(q)>=0)&&(!fs||r.site===fs)&&(!ft||r.status===ft);});
  rs.sort(function(a,b){
   if(sortK==="no")return((+a.no||0)-(+b.no||0))*(asc?1:-1);
+  if(sortK==="elapsed")return(((+a.elapsed)||0)-((+b.elapsed)||0))*(asc?1:-1);
   if(sortK==="title")return (bestTitle(key(a))||"").localeCompare(bestTitle(key(b))||"","ko")*(asc?1:-1);
   return((a[sortK]||"")+"").localeCompare((b[sortK]||"")+"")*(asc?1:-1);});
  $("cnt").textContent=rs.length+"건";
@@ -547,7 +556,9 @@ function drawStatus(){
   '<th class="s" onclick="sortBy(\'site\')">사이트</th>'+
   '<th class="s" onclick="sortBy(\'no\')">번호</th>'+
   '<th class="s" style="text-align:left" onclick="sortBy(\'title\')">문제</th>'+
-  '<th class="s" onclick="sortBy(\'status\')">결과</th><th>코드</th><th></th></tr>');
+  '<th class="s" onclick="sortBy(\'status\')">결과</th>'+
+  '<th>테스트케이스</th><th class="s" onclick="sortBy(\'elapsed\')">시간</th>'+
+  '<th>코드</th><th></th></tr>');
 }
 function sortBy(k){ asc=(k===sortK)?!asc:false; sortK=k; drawStatus(); }
 
@@ -1037,8 +1048,10 @@ async function doSave(){
   if(!j.ok)return say("실패: "+esc(j.error),"ng");
   /* 낙관적 갱신 — Pages 재배포(1~2분)를 기다리지 않고 화면에 먼저 반영한다.
      새로고침하면 서버가 생성한 진짜 데이터로 대체된다. */
-  var nr={date:$("pd").value,site:CUR.site,no:CUR.no,
-          title:bestTitle(CUR.site+"/"+CUR.no),status:$("pst").value,file:j.file||""};
+  var vv=CUR.verdict||{}, vs=vv.summary||{};
+ var nr={date:$("pd").value,site:CUR.site,no:CUR.no,
+         title:bestTitle(CUR.site+"/"+CUR.no),status:$("pst").value,file:j.file||"",
+         passed:vs.passed,total:vs.total,elapsed:vv.elapsedSec,verdict:vv.verdict||""};
   var kk=key(nr);
   D.rows=D.rows.filter(function(r){return !(key(r)===kk&&r.date===nr.date);});
   D.rows.unshift(nr);

@@ -391,6 +391,16 @@ def save_solution(d):
         rec = hist.setdefault(day, {"count": 0, "items": []})
         item = {"site": site, "no": no, "title": title,
                 "status": d.get("status") or "품", "file": rel}
+        # 채점 결과(통과 수 / 전체, 소요 시간)를 제출 기록에 남긴다.
+        v = d.get("verdict") or {}
+        if v:
+            sm = v.get("summary") or {}
+            item["verdict"] = v.get("verdict") or ""
+            if sm.get("total") is not None:
+                item["passed"] = sm.get("passed")
+                item["total"] = sm.get("total")
+            if v.get("elapsedSec") is not None:
+                item["elapsed"] = v.get("elapsedSec")
         items = [x for x in rec["items"]
                  if not (isinstance(x, dict) and x.get("site") == site and str(x.get("no")) == no)]
         items.append(item)
