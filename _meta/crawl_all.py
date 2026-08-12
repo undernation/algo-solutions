@@ -136,6 +136,22 @@ def main():
                               for s in (d.get("samples") or []))
                 if "예제" in txt:
                     return True
+                # SWEA 는 TC 를 파일로 받는데, 세션이 끊기면 로그인/오류 **HTML**
+                # 이 그대로 저장된다(실제 8건). 그 상태로 채점하면 HTML 과 비교해
+                # 무조건 틀린다. 눈에 잘 안 띄므로 여기서 잡는다.
+                head = txt[:1500]
+                if any(k in head for k in ("<!--", "<!DOCTYPE", "<html",
+                                           "link href", "<script", "stylesheet")):
+                    return True
+                # SWEA 정답 파일은 "#1 ..." 형식이다. 아니면 뭔가 잘못 받은 것.
+                if t["site"] == "SWEA":
+                    out = "".join(s.get("out", "") for s in (d.get("samples") or []))
+                    if out.strip() and not re.match(r"\s*#1\b", out):
+                        return True
+                    # 예제가 아예 없는 것도 복구 대상. 단 SWEA 가 파일을 제공하지
+                    # 않는 문제(Not used!)는 아무리 다시 받아도 안 되므로 제외한다.
+                    if not (d.get("samples") or []) and d.get("tc_unavailable") != "notused":
+                        return True
             return False
         todo = [t for t in todo if broken(t)]
     elif not force:
@@ -174,6 +190,17 @@ def main():
                     txt = pg.evaluate("() => document.body.innerText") or ""
                     parser = fp.parse_cosal if t["site"] == "BOJ" else fp.parse_swea
                     d = parser(txt, pg.url)
+                    # ⚠️ SWEA TC 다운로드를 이미지 수집보다 **먼저** 한다.
+                    #    apply_images 가 지연 이미지를 강제로 다 불러오는데, 그 직후
+                    #    contestProbDown.do 를 치면 SWEA 가 error.jsp 로 거절한다
+                    #    (단독 실행은 되는데 크롤에서만 실패하던 원인, 2026-08-12).
+                    if t["site"] == "SWEA":
+                        cid0 = re.search(r"contestProbId=([A-Za-z0-9+/=_-]+)", t["url"])
+                        if cid0:
+                            sm, why = fp.fetch_swea_tc(pg, cid0.group(1))
+                            d["samples"] = sm or []
+                            if why:
+                                d["tc_unavailable"] = why
                     fp.apply_images(pg, d)      # 지문 중간 그림 수집 + [[IMG:n]] 마커
                     if t["site"] == "BOJ" and d.get("private_tc_count"):
                         # "모두 보기"로 펼쳐지는 히든 테스트케이스 — 채점 정확도가 크게 올라간다
@@ -182,10 +209,7 @@ def main():
                         if om:
                             d["private_tc_omitted"] = om
                     if t["site"] == "SWEA":
-                        # 페이지 예제는 잘린 미리보기 → 공식 sample_input/output 을 받는다.
-                        cid = re.search(r"contestProbId=([A-Za-z0-9+/=]+)", t["url"])
-                        if cid:
-                            d["samples"] = fp.fetch_swea_tc(pg, cid.group(1)) or []
+                        # 예제(공식 sample_input/output)는 위에서 이미 받았다.
                         tl = fp.swea_time_limit((d.get("limits") or {}).get("time"))
                         if tl:
                             d.setdefault("limits", {})["time_sec"] = tl

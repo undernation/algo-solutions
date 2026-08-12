@@ -95,8 +95,17 @@ def main():
         if not (d.get("limits") or {}).get("time"):
             warn("%s 시간 제한 없음" % rel)
         ss = d.get("samples") or []
-        if not ss:
+        if not ss and d.get("tc_unavailable") != "notused":
+            # notused = SWEA 가 파일 자체를 안 주는 문제(1770 "Not used!",
+            # 1768 정답이 "not given"). 다시 받아도 안 되므로 경고하지 않는다.
             warn("%s 예제 없음" % rel)
+        # 조용히 망가지는 대표 사례: 세션이 끊겨 다운로드가 로그인/오류 HTML 을
+        # 돌려주는데 그대로 예제로 저장된 것(2026-08-12 에 SWEA 8건).
+        for s in ss[:2]:
+            t = (s.get("in") or "")[:1500]
+            if any(k in t for k in ("<!--", "<!DOCTYPE", "<html", "link href")):
+                bad("%s 예제가 HTML 로 오염됨" % rel)
+                break
         for s in ss:
             blob = (s.get("in") or "") + (s.get("out") or "")
             if "예제" in blob or "댓글" in blob or "다운로드" in blob:

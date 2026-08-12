@@ -23,7 +23,7 @@ ROWS_JS = (
     "() => { const out=[];"
     " document.querySelectorAll('[onclick]').forEach(e=>{"
     "  const oc=e.getAttribute('onclick')||'';"
-    "  const m=oc.match(/fn_move_page\\(['\\\"]([A-Za-z0-9+/=]+)['\\\"]\\)/);"
+    "  const m=oc.match(/fn_move_page\\(['\\\"]([A-Za-z0-9+/=_-]+)['\\\"]\\)/);"
     "  if(!m) return;"
     "  let card=e, txt=(e.innerText||'').trim();"
     "  for(let i=0;i<4&&card&&txt.length<8;i++){card=card.parentElement;"

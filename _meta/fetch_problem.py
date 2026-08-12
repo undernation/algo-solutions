@@ -430,22 +430,51 @@ def fetch_swea_tc(pg, cid):
     SWEA 는 한 파일에 여러 테스트케이스를 담고 출력은 "#k 답" 형식이라,
     파일 전체를 입력 1건 / 출력 1건으로 다루는 것이 실제 채점과 동일하다.
     """
+    # ⚠️ 예전엔 URL 에 &_menuId=...&_menuF=true 를 붙였는데, 그 메뉴 컨텍스트에
+    #    없는 문제(D6 신규·샘플문제 등)는 파일 대신 **페이지 HTML** 이 돌아온다.
+    #    그 HTML 이 그대로 예제로 저장돼 8건이 오염돼 있었다(2026-08-12).
+    #    파라미터를 빼면 정상적으로 attachment 가 온다.
     js = ("async (id) => {"
           " const base='/main/common/contestProb/contestProbDown.do?downType=';"
-          " const q='&contestProbId='+id+'&_menuId=AVtnUz06AA3w6KZN&_menuF=true';"
           " const out={};"
           " for (const k of ['in','out']) {"
-          "   try { const r = await fetch(base+k+q, {credentials:'include'});"
-          "         out[k] = r.ok ? await r.text() : ''; }"
-          "   catch(e) { out[k]=''; } }"
+          "   try { const r = await fetch(base+k+'&contestProbId='+id,"
+          "                              {credentials:'include'});"
+          "         out[k] = r.ok ? await r.text() : ''; out[k+'_u']=r.url; }"
+          "   catch(e) { out[k]=''; out[k+'_u']='ERR'; } }"
           " return JSON.stringify(out); }")
-    try:
-        raw = json.loads(pg.evaluate(js, cid))
-    except Exception:
-        return []
-    si = (raw.get("in") or "").replace("\r\n", "\n").rstrip()
-    so = (raw.get("out") or "").replace("\r\n", "\n").rstrip()
-    return [{"in": si, "out": so}] if (si and so) else []
+
+    def looks_html(t):
+        return any(k in t[:1500] for k in
+                   ("<!--", "<!DOCTYPE", "<html", "link href", "<script"))
+
+    # 연달아 받으면 SWEA 가 identity/anonymous/error.jsp 로 돌려보낸다(레이트 리밋).
+    # 예전엔 그 HTML 을 그대로 예제로 저장해 8건이 오염돼 있었다. 쉬었다 다시 시도한다.
+    for attempt in range(4):
+        try:
+            raw = json.loads(pg.evaluate(js, cid))
+        except Exception:
+            return [], "error"
+        si = (raw.get("in") or "").replace("\r\n", "\n").rstrip()
+        so = (raw.get("out") or "").replace("\r\n", "\n").rstrip()
+        # SWEA 가 파일을 안 주는 경우의 표기들.
+        #   "Not used!"  — 파일 자체가 없음 (1770)
+        #   "not given"  — 입력만 주고 정답은 비공개 (1768 숫자야구, 인터랙티브)
+        # 둘 다 채점에 못 쓰므로 예제로 저장하지 않고 사유를 남긴다.
+        if si.strip().lower() in ("not used!", "not given") or \
+           so.strip().lower() in ("not used!", "not given"):
+            print("   ℹ️ SWEA 가 정답 파일을 제공하지 않는 문제")
+            return [], "notused"
+        blocked = ("error.jsp" in (raw.get("in_u") or "")
+                   or looks_html(si) or looks_html(so))
+        if not blocked and si and so:
+            return [{"in": si, "out": so}], ""
+        if attempt < 3:
+            print("   ↻ TC 다운로드 거절(error.jsp) — %d초 쉬고 재시도"
+                  % (3 * (attempt + 1)))
+            pg.wait_for_timeout(3000 * (attempt + 1))
+    print("   ⚠️ TC 다운로드 실패 — 예제 없이 저장")
+    return [], "error"
 
 
 # ── 프로그래머스 ───────────────────────────────────────────────
@@ -529,9 +558,12 @@ def main():
                 d["private_tc_omitted"] = om
         # SWEA 는 공식 테스트케이스 파일을 받아 채점 가능한 형태로 만든다.
         if d.get("site") == "SWEA":
-            m = re.search(r"contestProbId=([A-Za-z0-9+/=]+)", pg.url)
+            m = re.search(r"contestProbId=([A-Za-z0-9+/=_-]+)", pg.url)
             if m:
-                d["samples"] = fetch_swea_tc(pg, m.group(1)) or d.get("samples") or []
+                sm, why = fetch_swea_tc(pg, m.group(1))
+                d["samples"] = sm or d.get("samples") or []
+                if why:
+                    d["tc_unavailable"] = why
             tl = swea_time_limit((d.get("limits") or {}).get("time"))
             if tl:
                 d.setdefault("limits", {})["time_sec"] = tl
@@ -556,7 +588,7 @@ def main():
 
     # SWEA 는 표시번호로 역검색이 안 되므로 번호→contestProbId 매핑을 남겨둔다.
     if d["site"] == "SWEA" and d.get("no"):
-        m = re.search(r"contestProbId=([A-Za-z0-9+/=]+)", d.get("url", ""))
+        m = re.search(r"contestProbId=([A-Za-z0-9+/=_-]+)", d.get("url", ""))
         if m:
             ip = os.path.join(ROOT, "_meta", "swea_ids.json")
             ids = {}
