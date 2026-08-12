@@ -154,6 +154,30 @@ def allowed_time(limit_sec, lang_adjusted=False):
     return round(base * SPEED, 1)
 
 
+def uses_total_time(site, no, body=None):
+    """이 문제의 시간 제한이 '전 케이스 합계' 기준인가.
+
+    근거는 크롤링해 둔 문제 원문이다. SWEA 는 limits.time 에
+        "10개 테스트케이스를 합쳐서 C++의 경우 10초 / Java 20초 / Python 30초"
+    처럼 적혀 있다. BOJ/코딩살구는 데이터 파일 하나마다라 해당 없음.
+    브라우저가 보낸 값을 그대로 믿지 않고 서버가 원문으로 판단한다
+    (클라이언트만 고쳐도 채점 기준이 흔들리면 안 되므로).
+    """
+    if body is not None and body.get("totalTime") is not None:
+        return bool(body["totalTime"])
+    sub = SUB.get(site, site.lower())      # SUB 는 아래에서 정의된다(호출 시점엔 존재)
+    f = os.path.join(ROOT, "problems", sub, "%s.json" % no)
+    try:
+        d = json.load(io.open(f, encoding="utf-8"))
+        t = str(((d.get("limits") or {}).get("time")) or "")
+        if "합쳐서" in t or "합산" in t:
+            return True
+    except Exception:
+        pass
+    # 원문을 못 찾으면 사이트 관례를 따른다. SWEA 는 합계가 기본이다.
+    return site == "SWEA"
+
+
 def load_token():
     """토큰 파일이 없으면 생성. 공개 엔드포인트 보호용.
 
@@ -304,7 +328,13 @@ def syntax_error(src):
             pass
 
 
-def judge(src, cases, pub=0, tl=5.0):
+def judge(src, cases, pub=0, tl=5.0, total_time=False):
+    """total_time=True 면 제한을 '전 케이스 합계'에 건다(SWEA 방식).
+
+    SWEA 는 문제에 "10개 테스트케이스를 **합쳐서** Python 30초" 처럼 적혀 있어
+    케이스마다 30초를 주면 실제 채점보다 10배 후해진다.
+    BOJ/코딩살구는 데이터 파일 하나마다 제한이 걸리므로 기본값은 False.
+    """
     if not (src or "").strip():
         return {"ok": False, "error": "빈 소스코드", "verdict": "compile_error"}
     err = syntax_error(src)
@@ -322,9 +352,17 @@ def judge(src, cases, pub=0, tl=5.0):
         for i, c in enumerate(cases):
             din = c.get("input", c.get("in", "")) or ""
             want = c.get("output", c.get("out", "")) or ""
-            st, got, el, err = run_one(tmp.name, din, tl)
+            # 합계 방식이면 남은 예산만큼만 준다. 한 케이스가 예산을 다 쓰면
+            # 그 자리에서 시간초과가 나고, 뒤 케이스는 0초라 바로 끊긴다.
+            budget = max(tl - tot_el, 0.0) if total_time else tl
+            if total_time and budget <= 0:
+                st, got, el, err = "time_limit_exceeded", "", 0.0, ""
+            else:
+                st, got, el, err = run_one(tmp.name, din, budget)
             tot_el += el
             kind = "public" if i < pub else "private"
+            if total_time and st == "ok" and tot_el > tl:
+                st = "time_limit_exceeded"      # 합계가 제한을 넘긴 순간 탈락
             if st == "ok" and same(got, want):
                 passed += 1
                 detail.append({"index": i, "kind": kind, "status": "passed",
@@ -345,9 +383,11 @@ def judge(src, cases, pub=0, tl=5.0):
             pass
     if passed == len(cases) and cases:
         verdict = "accepted"
-    # allowedTime: 케이스 하나에 허용한 시간. 대시보드가 "최대 x초 / 허용 y초"로
-    # 보여준다. elapsedSec 는 전 케이스 합계라 이것만 띄우면 제한을 넘긴 것처럼 보인다.
+    # allowedTime: 케이스 하나에 허용한 시간(합계 방식이면 전체 예산).
+    # 대시보드가 "최대 x초 / 허용 y초"로 보여준다. elapsedSec 는 전 케이스 합계라
+    # 케이스별 방식에서 이것만 띄우면 제한을 넘긴 것처럼 보인다.
     return {"ok": True, "verdict": verdict, "allowedTime": tl,
+            "totalTime": bool(total_time),
             "summary": {"passed": passed, "total": len(cases),
                         "firstFailedIndex": first_fail},
             "judgedAt": iso_now(), "elapsedSec": round(tot_el, 3), "detail": detail}
@@ -969,12 +1009,16 @@ class H(BaseHTTPRequestHandler):
                                       bool(body.get("langAdjusted")))
                 except (TypeError, ValueError):
                     tl = 5.0
-                log("\n▶ 채점  problemId=%s  TC %d개  제한 %ss"
-                    % (body.get("problemId"), len(cases), body.get("timeLimit")))
+                tt = uses_total_time((body.get("site") or "BOJ").upper(),
+                                     str(body.get("problemId") or ""), body)
+                log("\n▶ 채점  problemId=%s  TC %d개  제한 %ss%s"
+                    % (body.get("problemId"), len(cases), body.get("timeLimit"),
+                       "  (합계 방식)" if tt else ""))
                 # allowed_time() 이 이미 PY_MULT·기기보정을 반영한 값이다.
                 # 예전 고정식(x3+2)을 여기서 또 곱해 허용시간이 3배로 부풀던 버그가 있었다.
                 r = judge(body.get("sourceCode") or "", cases,
-                          int(body.get("publicTestCaseCount") or 0), tl)
+                          int(body.get("publicTestCaseCount") or 0), tl,
+                          total_time=tt)
                 s = r.get("summary", {})
                 log("◀ %s  %s/%s" % (r.get("verdict"), s.get("passed"), s.get("total")))
                 return self._send(200, r)

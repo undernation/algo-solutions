@@ -1365,12 +1365,20 @@ async function doJudge(){
             .filter(function(v){return typeof v==="number";});
   var mx=els.length?Math.max.apply(null,els):null;
   var tl=j.allowedTime||j.limit||null;
-  var warn=(mx!=null&&tl&&mx>tl*0.8);
-  var tstr=(mx!=null)
-    ? "<span"+(warn?" style='color:var(--wr);font-weight:700'":"")+">최대 "+mx.toFixed(3)+"초</span>"
-      +(tl?" / 허용 "+tl+"초":"")
-      +" <span class='hint'>(합계 "+j.elapsedSec+"초, "+s.total+"케이스)</span>"
-    : j.elapsedSec+"초";
+  var tstr;
+  if(j.totalTime){
+   /* SWEA 는 "N개 테스트케이스를 합쳐서 …초" 라 합계가 곧 판정 기준이다. */
+   var w1=(tl&&j.elapsedSec>tl*0.8);
+   tstr="<span"+(w1?" style='color:var(--wr);font-weight:700'":"")+">합계 "+j.elapsedSec+"초</span>"
+        +(tl?" / 허용 "+tl+"초":"")
+        +" <span class='hint'>("+s.total+"케이스 합산 기준"
+        +(mx!=null?", 최대 "+mx.toFixed(3)+"초":"")+")</span>";
+  }else if(mx!=null){
+   var w2=(tl&&mx>tl*0.8);
+   tstr="<span"+(w2?" style='color:var(--wr);font-weight:700'":"")+">최대 "+mx.toFixed(3)+"초</span>"
+        +(tl?" / 허용 "+tl+"초":"")
+        +" <span class='hint'>(합계 "+j.elapsedSec+"초, "+s.total+"케이스)</span>";
+  }else{ tstr=j.elapsedSec+"초"; }
   say((ok?"✅ <b>맞았습니다</b>":"❌ <b>"+esc(j.verdict)+"</b>")+
       " &nbsp; "+s.passed+"/"+s.total+" &nbsp;·&nbsp; "+tstr+
       (d?"<div class='d'>"+esc(d)+"</div>":""), ok?"ok":"ng");
