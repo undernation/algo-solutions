@@ -64,6 +64,63 @@ def load_history() -> dict:
     return out
 
 
+# 날짜 줄에 "(품)" 같은 괄호 상태가 없고, 바로 다음 줄에 자유 문장으로
+# 결과를 적어 둔 기록이 많다. 예:
+#     #### 2026-04-06
+#     쉽게 풀었음 (못푼문제에서 삭제)
+# 예전엔 이런 걸 전부 "?" 로 흘려서 재도전 큐가 부풀었다(28건).
+#
+# 🚩 이 추론은 **괄호에도 헤딩에도 상태가 전혀 없을 때만** 쓴다.
+# 실수노트 본문은 결과가 아니라 과정을 적은 서술문이라, 판정 근거로 쓰면 크게 틀린다:
+#   1450  "일반 냅색으로 풀었는데 메모리 초과 발생함"      → '풀었' 만 보면 품(실제 틀림)
+#   15972 "답을 봐도 어떻게 풀었는지 이해가 안 간다"       → '풀었'      (실제 못품)
+#   19942 "나름 잘 풀었는데 / 틀린 핵심 이유는…"          → '풀었'      (실제 틀림)
+#   1463  "아직 dp 개념이 박히지 못했다"                → '못했'      (실제 틀림)
+# 실제로 우선순위를 안 두고 돌렸다가 16건이 잘못 뒤집혔다.
+#
+# 판정 순서 — 한 문장에 여러 단어가 섞이기 때문:
+#   "답보고 겨우 풀었다"        → 답을 봤으므로 못품 ("풀었" 보다 앞서 잡아야 함)
+#   "틀림 + 시간초과(15분 초과)"  → 틀림
+#   "시간초과 … 필요성을 못느껴 삭제" → 못푼문제에서 뺐으므로 품 (소유자 판단, 4659)
+# "못푼문제" 의 '푼' 은 '품' 과 다른 글자라 못품 패턴에 걸리지 않는다.
+_VS = [
+    (re.compile(r"답\s*보고|답봄|답\s*을?\s*봄"), "못품"),
+    (re.compile(r"못품|못했|못\s*풀"), "못품"),
+    (re.compile(r"삭제"), "품"),
+    (re.compile(r"틀림|틀렸"), "틀림"),
+    (re.compile(r"시간\s*초과"), "시간초과"),
+    (re.compile(r"풀었|풀렸|해결"), "품"),
+]
+
+
+def infer_status(text: str) -> str:
+    """날짜 줄 뒤에 붙은 자유 문장에서 결과를 읽는다. 못 읽으면 빈 문자열."""
+    for rx, st in _VS:
+        if rx.search(text):
+            return st
+    return ""
+
+
+_STAT = re.compile(r"(못품|시간초과|틀림|맞음|품)")
+
+
+def paren_status(text: str) -> str:
+    """괄호 안 문구에서 상태를 읽는다. "(시간 초과)" 처럼 띄어쓴 것도 받는다.
+
+    다만 공백만 지우고 부분일치를 허용하면 "(푸는시간 초과)"(= 푸는 데 걸린 시간이
+    초과됐다는 본인 표기, 2529)까지 채점 시간초과로 잘못 읽는다. 그래서 상태어가
+    한글 뒤에 이어붙은 경우는 배제한다.
+    """
+    for cand in (text, text.replace(" ", "")):
+        m = _STAT.search(cand or "")
+        if not m:
+            continue
+        if m.start() > 0 and re.match(r"[가-힣]", cand[m.start() - 1]):
+            continue          # 다른 낱말의 꼬리 — 상태어가 아니다
+        return m.group(1)
+    return ""
+
+
 def from_vault() -> dict:
     """실수노트 → 날짜별 {count, items}."""
     path = next((p for p in VAULT_CANDIDATES if os.path.exists(p)), None)
@@ -71,7 +128,9 @@ def from_vault() -> dict:
         return {}
     L = io.open(path, encoding="utf-8").read().split("\n")
     heads = [i for i, l in enumerate(L) if l.startswith("## ")]
-    DATEL = re.compile(r"^\s*(\d{4}-\d{2}-\d{2})\s*$")
+    # 날짜만 있는 줄과 "2026-04-06 (틀림)" 처럼 괄호 상태가 붙은 줄 둘 다 받는다.
+    # (#### 없이 날짜만 적어 둔 초기 기록이 많다)
+    DATEL = re.compile(r"^\s*(\d{4}-\d{2}-\d{2})\s*(?:\(([^)]*)\))?\s*$")
     REC = re.compile(r"^####\s+(\d{4}-\d{2}-\d{2})\s*(?:\(([^)]*)\))?")
     STAT = re.compile(r"(못품|시간초과|틀림|맞음|품)")
     out = {}
@@ -82,28 +141,55 @@ def from_vault() -> dict:
         if not title or title.startswith(("추가", "왜 ", "네 말", "예시")):
             continue
         site = "SWEA" if "expert" in head.lower() else "BOJ"
-        hm = re.search(r"\(([^)]*)\)\s*$", head)
-        head_stat = (STAT.search(hm.group(1)).group(1)
-                     if hm and STAT.search(hm.group(1)) else "")
+        # 헤딩 괄호를 전부 훑어 상태를 찾는다. 마지막 것을 쓴다.
+        #   "## 2869 (품) (python)"   → 품   (끝 괄호만 보면 python 이라 놓쳤다)
+        #   "## 3197 (시간초과) (못품)" → 못품
+        head_stat = ""
+        for g in re.findall(r"\(([^)]*)\)", head):
+            head_stat = paren_status(g) or head_stat
+
+        def tail(i):
+            """날짜 줄 i 다음의 설명 두 줄(빈 줄·코드펜스 제외)을 이어 붙인다."""
+            got, j = [], i + 1
+            while j < e and len(got) < 2:
+                t = L[j].strip()
+                j += 1
+                if not t:
+                    continue
+                if t.startswith("```") or t.startswith("## ") or \
+                        REC.match(L[j - 1]) or DATEL.match(L[j - 1]):
+                    break
+                got.append(t)
+            return " ".join(got)
 
         seen, fence = {}, False
-        for x in L[s + 1:e]:
+        for i in range(s + 1, e):
+            x = L[i]
             if x.strip().startswith("```"):
                 fence = not fence
                 continue
             if fence:
                 continue
-            m = REC.match(x)
-            if m:
-                st = STAT.search(m.group(2) or "")
-                seen[m.group(1)] = st.group(1) if st else head_stat
+            m = REC.match(x) or DATEL.match(x)
+            if not m:
                 continue
-            m = DATEL.match(x)
-            if m and m.group(1) not in seen:
-                seen[m.group(1)] = head_stat
+            # 신뢰 순서: 날짜 줄 괄호(3) > 헤딩 괄호(2) > 다음 줄 자유 문장(1).
+            # 자유 문장은 근거가 아예 없을 때의 마지막 수단이다(위 주석 참고).
+            # 같은 날짜가 두 번 적힌 경우(1486 은 "#### 06-09 (못품)" 과 맨 날짜줄이
+            # 둘 다 있다) 근거가 약한 쪽이 덮어쓰지 않도록 등급으로 막는다.
+            ps = paren_status(m.group(2) or "")
+            if ps:
+                st, rank = ps, 3
+            elif head_stat:
+                st, rank = head_stat, 2
+            else:
+                st, rank = infer_status(tail(i)), 1
+            d0 = m.group(1)
+            if d0 not in seen or rank > seen[d0][1]:
+                seen[d0] = (st, rank)
         m = re.match(r"(\d+)\s*\.?\s*(.*)", title)
         no, nm = (m.group(1), m.group(2).strip()) if m else ("", title)
-        for d, st in seen.items():
+        for d, (st, _rank) in seen.items():
             rec = out.setdefault(d, {"count": 0, "items": []})
             rec["count"] += 1
             rec["items"].append({"site": site, "no": no, "title": nm, "status": st or "?"})
@@ -169,7 +255,33 @@ def apply_tombstones(data: dict, tomb: set) -> dict:
     return data
 
 
-def merge(base: dict, add: dict) -> dict:
+def _fill(a, b, status_first):
+    """같은 문제의 두 기록을 합친다. 어느 쪽 정보도 버리지 않는다.
+
+    통째로 갈아끼우면 허브가 저장한 채점 결과(file·passed·elapsed)가 날아간다.
+    그래서 빈 칸만 채우고, 상태만 우선순위로 고른다.
+    status_first=True 는 "실수노트가 진실의 소스" 라는 규칙을 반영한 것 —
+    캐시(history.json)에 남은 옛 판정보다 방금 읽은 실수노트를 앞세운다.
+    (실제 사고: 15926 이 실수노트에 "(맞음)" 인데 캐시의 "못품" 이 계속 이겼다)
+    """
+    if not isinstance(a, dict):
+        return b if isinstance(b, dict) else a
+    if not isinstance(b, dict):
+        return a
+    out = dict(a)
+    for k, v in b.items():
+        if k != "status" and v and not out.get(k):
+            out[k] = v
+    sa = a.get("status") or "?"
+    sb = b.get("status") or "?"
+    if sb != "?" and (status_first or sa == "?"):
+        out["status"] = sb
+    else:
+        out["status"] = sa if sa != "?" else sb
+    return out
+
+
+def merge(base: dict, add: dict, status_first: bool = False) -> dict:
     """날짜별로 item 을 (site, no) 기준 합집합으로 병합.
 
     예전엔 count 가 큰 쪽 items 로 통째로 갈아끼웠는데, 그러면
@@ -177,24 +289,22 @@ def merge(base: dict, add: dict) -> dict:
     (실제 사고: 2026-08-11 BOJ 1159 가 대시보드에 안 뜸)
     정보가 더 많은 item(제목·상태·파일 있는 쪽)을 우선 채택한다.
     """
-    def score(it):
-        if isinstance(it, str):
-            return 0
-        return ((1 if it.get("title") else 0) +
-                (1 if it.get("status") and it["status"] != "?" else 0) +
-                (1 if it.get("file") else 0))
-
     for k, v in add.items():
         cur = base.setdefault(k, {"count": 0, "items": []})
         seen = {}
         order = []
-        for it in list(cur["items"]) + list(v["items"]):
+        for it in list(cur["items"]):
             key = _ikey(it)
             if key not in seen:
                 seen[key] = it
                 order.append(key)
-            elif score(it) > score(seen[key]):
+        for it in list(v["items"]):
+            key = _ikey(it)
+            if key not in seen:
                 seen[key] = it
+                order.append(key)
+            else:
+                seen[key] = _fill(seen[key], it, status_first)
         cur["items"] = [seen[k2] for k2 in order]
         # items 없이 count 만 있는 구버전 기록도 있으므로 셋 중 최대값을 쓴다.
         cur["count"] = max(len(cur["items"]), cur["count"], v["count"])
@@ -351,7 +461,8 @@ def main():
         year = int(sys.argv[sys.argv.index("--year") + 1])
 
     data = load_history()
-    merge(data, from_vault())
+    # 실수노트가 상태의 진실 소스다(CLAUDE.md). repo 헤더는 보조.
+    merge(data, from_vault(), status_first=True)
     merge(data, from_repo())
     # 사용자가 지운 기록은 코드 파일·실수노트에 남아 있어도 되살리지 않는다.
     apply_tombstones(data, load_tombstones())
