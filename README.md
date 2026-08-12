@@ -133,8 +133,8 @@ python _meta/fetch_swea.py <contestProbId> --json
 
 | | |
 |---|---|
-| 총 풀이 | 6 |
-| BOJ | 4 |
+| 총 풀이 | 7 |
+| BOJ | 5 |
 | SWEA | 2 |
 
 <!-- INDEX_START -->
@@ -145,5 +145,6 @@ python _meta/fetch_swea.py <contestProbId> --json
 | BOJ | [11655](boj/11655.py) | ROT13 | 품 | 2026-08-12 |  |
 | BOJ | [1159](boj/1159.py) | 농구 경기 | 품 | 2026-08-12 |  |
 | BOJ | [10822](boj/10822.py) | 더하기 | 품 | 2026-08-12 |  |
+| BOJ | [10809](boj/10809.py) | 알파벳 찾기 | 품 | 2026-08-12 |  |
 | BOJ | [14891](boj/14891.py) | 톱니바퀴 | 품 | 2026-08-08 |  |
 <!-- INDEX_END -->
