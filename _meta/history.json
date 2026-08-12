@@ -4357,15 +4357,10 @@
     "title": "더하기"
    },
    {
-    "elapsed": 6.899,
-    "file": "boj/11655.py",
-    "no": "11655",
-    "passed": 28,
     "site": "BOJ",
-    "status": "품",
-    "title": "ROT13",
-    "total": 28,
-    "verdict": "accepted"
+    "no": "14891",
+    "title": "",
+    "status": "품"
    }
   ]
  }
