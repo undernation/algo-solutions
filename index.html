@@ -374,6 +374,12 @@ async function connectHub(){
   (TOK?"🔑 토큰 설정됨":"⚠ 토큰 미설정 — 클릭해서 입력");
  return n>0;
 }
+/* 허브 연결은 비동기다. 페이지 렌더가 먼저 끝나면 아직 연결 전이라
+   "허브 꺼짐"으로 오판한다(실제로 사내망 오진단으로 이어졌다).
+   연결 프라미스를 들고 있다가 허브가 필요한 곳에서 기다린다. */
+var HUBREADY=null;
+function hubReady(){ return HUBREADY || (HUBREADY=connectHub()); }
+
 function hubFor(w){ return w==="fetch" ? (LOCAL.ok?LOCAL:(CLOUD.ok?CLOUD:null))
                                        : (CLOUD.ok?CLOUD:(LOCAL.ok?LOCAL:null)); }
 function setupHub(){
@@ -382,7 +388,8 @@ function setupHub(){
  var u=prompt("클라우드 허브 주소\n(비우면 _meta/endpoint.json 에서 자동 탐색)",
               localStorage.getItem("cloudUrl")||"");
  if(u!==null){u=u.trim(); if(u)localStorage.setItem("cloudUrl",u);else localStorage.removeItem("cloudUrl");}
- connectHub();
+ HUBREADY=connectHub();
+ HUBREADY.then(function(){ if(location.hash.indexOf("#p/")===0) loadBigTC(CUR.site,CUR.no); });
 }
 
 /* ════════ 라우팅 ════════ */
@@ -652,6 +659,9 @@ function fmtSize(b){
 
 async function loadBigTC(site,no){
  var el=$("bigtc"); if(!el)return;
+ el.innerHTML='<div class="hint">허브 연결을 기다리는 중…</div>';
+ await hubReady();
+ if(CUR.site!==site||CUR.no!==no) return;      // 그새 다른 문제로 이동
  var h=hubFor("save");
  if(!h){
   el.innerHTML='<div class="note">허브에 연결되지 않아 목록을 못 가져옵니다. '+
@@ -687,6 +697,7 @@ async function loadBigTC(site,no){
 }
 
 async function fetchBigTC(i, full){
+ await hubReady();
  var h=hubFor("save"); if(!h) return null;
  var r=await fetch(h.url+"/tc",{method:"POST",headers:H(),
        body:JSON.stringify({site:CUR.site,no:CUR.no,index:i,full:!!full})});
@@ -819,6 +830,7 @@ function editWhole(){
 function nsay(html,cls){var v=$("nv");if(!v)return;v.className="vd "+(cls||"info");v.style.display="block";v.innerHTML=html;}
 
 async function saveNote(whole){
+ await hubReady();
  var h=hubFor("save");
  if(!h) return nsay("허브가 꺼져 있습니다. 우측 상단 허브 버튼을 확인하세요.","ng");
  var body=($("nbody").value||"");
@@ -880,6 +892,7 @@ function askDelProb(site,no){
 
 async function doDelete(){
  if(!DEL) return;
+ await hubReady();
  var h=hubFor("save");
  if(!h) return dsay("허브가 꺼져 있습니다. 우측 상단 허브 버튼을 확인하세요.","ng");
  $("dcgo").disabled=true; dsay("삭제 중…");
@@ -923,6 +936,7 @@ function asay(html,cls){var v=$("adv");v.className="vd "+(cls||"info");v.style.d
 async function doAdd(){
  var ref=($("adu").value||"").trim();
  if(!ref) return asay("링크를 입력하세요.","ng");
+ await hubReady();
  var h=hubFor("fetch");
  if(!h) return asay("문제 크롤링은 <b>로그인된 내 PC의 로컬 허브</b>가 필요합니다."+
    "<div class='d'>내 PC에서:\npython judge/server.py</div>","ng");
@@ -1144,6 +1158,7 @@ function needHub(w){
  return null;
 }
 async function doFetch(){
+ await hubReady();
  var h=needHub("fetch"); if(!h)return;
  var p=CUR.prob, ref=(p&&(p.url||p.source_url))||CUR.no;
  if(CUR.site!=="BOJ" && !(p&&p.url)){
@@ -1178,6 +1193,7 @@ function probLangAdjusted(){
  return !!(((CUR.prob||{}).limits)||{}).time_sec;
 }
 async function doJudge(){
+ await hubReady();
  var h=needHub("judge"); if(!h)return;
  var code=$("ed").value;
  if(!code.trim())return say("코드를 입력하세요.","ng");
@@ -1227,6 +1243,7 @@ async function doJudge(){
  }catch(e){say("오류: "+esc(e.message),"ng");}
 }
 async function doSave(){
+ await hubReady();
  var h=needHub("save"); if(!h)return;
  var code=$("ed").value;
  if(!code.trim())return say("코드를 입력하세요.","ng");
@@ -1271,5 +1288,5 @@ document.addEventListener("keydown",function(e){
  if($("ad").style.display==="block"){closeAdd();return;}
  closeCode();});
 go();
-connectHub();
+hubReady();
 </script></html>
