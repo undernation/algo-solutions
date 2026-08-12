@@ -49,6 +49,17 @@ def main():
     print("   해제하려면 이 파일을 지우거나 git commit --no-verify")
 
 
+def setup_identity():
+    """커밋 작성자를 GitHub 계정에 연결된 주소로 맞춘다(PC마다 1회).
+
+    다른 주소로 커밋하면 GitHub 가 작성자를 못 알아봐 프로필 잔디에 안 찍힌다.
+    """
+    import subprocess
+    subprocess.run(["git", "config", "user.name", "undernation"], cwd=ROOT)
+    subprocess.run(["git", "config", "user.email", "solomon2752@naver.com"], cwd=ROOT)
+    print("✅ 커밋 작성자: undernation <solomon2752@naver.com>")
+
+
 def setup_merge_driver():
     """.gitattributes 의 merge=ours 가 동작하려면 드라이버 등록이 필요하다(PC마다 1회)."""
     import subprocess
@@ -59,3 +70,4 @@ def setup_merge_driver():
 if __name__ == "__main__":
     main()
     setup_merge_driver()
+    setup_identity()

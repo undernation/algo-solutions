@@ -151,7 +151,7 @@ gh auth refresh -s workflow -h github.com   # ★ .github/workflows 수정하려
 git clone https://github.com/undernation/algo-solutions.git
 cd algo-solutions
 git config user.name  "undernation"
-git config user.email "gmlcjf287@gmail.com"
+git config user.email "solomon2752@naver.com"   # ★ 계정에 연결된 이메일
 
 python _meta/install_hooks.py          # ★ pre-commit 훅 (PC마다 1회)
 
@@ -160,6 +160,11 @@ pip install playwright && playwright install chromium
 python C:/Users/solom/crawler.py chrome        # 디버그 크롬(9222) — 각 사이트 로그인
 python judge/server.py                         # 로컬 허브 :12014 (시작 로그에 토큰 출력)
 ```
+
+> 🚩 **커밋 이메일은 반드시 `solomon2752@naver.com`.** 이게 GitHub 계정 `undernation` 에
+> 연결된 주소다. 다른 주소(예: gmlcjf287@gmail.com)로 커밋하면 GitHub 가 작성자를 못 알아봐
+> **프로필 잔디에 하나도 안 찍힌다.** (2026-08-12 에 실제로 그랬다 — API 로 확인하려면:
+> `gh api repos/undernation/algo-solutions/commits --jq '.[0].author.login'` 이 null 이면 미연결)
 
 > 🚩 **SSH로 push하면 실패한다** (`Permission denied`). 반드시 **HTTPS + `gh auth setup-git`**.
 > 🚩 **`.github/workflows/` 파일을 push하려면 토큰에 `workflow` 스코프가 필요하다.**
