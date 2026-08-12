@@ -157,12 +157,49 @@ def parse_swea(t, url):
     d["statement"] = clean(sect(t, "무단 복제하는 것을 금지합니다.", "[제약사항]", "[입력]"))
     d["input_spec"] = clean(sect(t, "[입력]", "[출력]"))
     d["output_spec"] = clean(sect(t, "[출력]", "입력\n", "sample_input"))
-    si = clean(sect(t, "\n입력\n", "\n출력\n", "sample_input"))
-    so = clean(sect(t, "\n출력\n", "sample_input", "\n목록\n"))
-    d["samples"] = [{"in": si, "out": so}] if si else []
+    # 페이지에 보이는 예제는 "…" 로 잘린 미리보기이고, 뒤에 주석·다운로드 버튼·
+    # 댓글까지 딸려온다. 실제 테스트케이스는 contestProbDown.do 로 받는다.
+    d["samples"] = []
     if "sample_input.txt" in t:
-        d["testcase_file"] = "sample_input.txt (사이트에서 다운로드)"
+        d["testcase_file"] = "sample_input.txt / sample_output.txt (다운로드로 수집)"
     return d
+
+
+def swea_time_limit(text):
+    """SWEA 한도 문장에서 Python 기준 초를 뽑는다.
+
+    예) "50개 테스트케이스를 합쳐서 C의 경우 5초 / ... / Python의 경우 10초" -> 10.0
+    """
+    if not text:
+        return None
+    m = re.search(r"[Pp]ython[^\d]{0,10}([\d.]+)\s*초", text)
+    if not m:
+        m = re.search(r"([\d.]+)\s*초", text)
+    return float(m.group(1)) if m else None
+
+
+def fetch_swea_tc(pg, cid):
+    """SWEA 공식 sample_input/output 을 로그인 세션으로 내려받아 케이스로 변환.
+
+    SWEA 는 한 파일에 여러 테스트케이스를 담고 출력은 "#k 답" 형식이라,
+    파일 전체를 입력 1건 / 출력 1건으로 다루는 것이 실제 채점과 동일하다.
+    """
+    js = ("async (id) => {"
+          " const base='/main/common/contestProb/contestProbDown.do?downType=';"
+          " const q='&contestProbId='+id+'&_menuId=AVtnUz06AA3w6KZN&_menuF=true';"
+          " const out={};"
+          " for (const k of ['in','out']) {"
+          "   try { const r = await fetch(base+k+q, {credentials:'include'});"
+          "         out[k] = r.ok ? await r.text() : ''; }"
+          "   catch(e) { out[k]=''; } }"
+          " return JSON.stringify(out); }")
+    try:
+        raw = json.loads(pg.evaluate(js, cid))
+    except Exception:
+        return []
+    si = (raw.get("in") or "").replace("\r\n", "\n").rstrip()
+    so = (raw.get("out") or "").replace("\r\n", "\n").rstrip()
+    return [{"in": si, "out": so}] if (si and so) else []
 
 
 # ── 프로그래머스 ───────────────────────────────────────────────
@@ -238,6 +275,14 @@ def main():
             raise SystemExit("❌ 로그인 필요: %s" % pg.url[:80])
         t = pg.evaluate("() => document.body.innerText") or ""
         d = parser(t, pg.url)
+        # SWEA 는 공식 테스트케이스 파일을 받아 채점 가능한 형태로 만든다.
+        if d.get("site") == "SWEA":
+            m = re.search(r"contestProbId=([A-Za-z0-9+/=]+)", pg.url)
+            if m:
+                d["samples"] = fetch_swea_tc(pg, m.group(1)) or d.get("samples") or []
+            tl = swea_time_limit((d.get("limits") or {}).get("time"))
+            if tl:
+                d.setdefault("limits", {})["time_sec"] = tl
     finally:
         if pw:
             pw.stop()

@@ -682,8 +682,9 @@ async function doFetch(){
 }
 /* 문제의 시간 제한(초). 허브가 Python 보정으로 ×3+2 를 더 준다. */
 function probTL(){
- var t=((CUR.prob||{}).limits||{}).time||"";
- var m=String(t).match(/([\d.]+)/);
+ var L=((CUR.prob||{}).limits)||{};
+ if(L.time_sec>0) return L.time_sec;          /* SWEA 등 문장형 한도에서 파싱해둔 값 */
+ var m=String(L.time||"").match(/([\d.]+)/);
  var v=m?parseFloat(m[1]):0;
  return (v>0&&v<=20)?v:2;
 }
