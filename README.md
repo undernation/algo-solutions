@@ -86,8 +86,8 @@ python _meta/fetch_swea.py <contestProbId> --json
 
 | | |
 |---|---|
-| 총 풀이 | 4 |
-| BOJ | 2 |
+| 총 풀이 | 5 |
+| BOJ | 3 |
 | SWEA | 2 |
 
 <!-- INDEX_START -->
@@ -97,4 +97,5 @@ python _meta/fetch_swea.py <contestProbId> --json
 | SWEA | [2112](swea/2112_[모의SW역량테스트]보호필름.py) | [모의 SW 역량테스트] 보호 필름 | 품 | 2026-08-12 |  |
 | BOJ | [1159](boj/1159.py) | 농구 경기 | 품 | 2026-08-12 |  |
 | BOJ | [10822](boj/10822.py) | 더하기 | 품 | 2026-08-12 |  |
+| BOJ | [1000](boj/1000.py) | 이메일확인용 | 품 | 2026-08-12 |  |
 <!-- INDEX_END -->
