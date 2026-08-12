@@ -239,6 +239,15 @@ def today_kst():
     return datetime.datetime.now(KST).date().isoformat()
 
 
+def now_kst_time():
+    """제출 시각(KST) "HH:MM:SS". 같은 날 여러 번 제출해도 순서를 알 수 있게.
+
+    예전엔 날짜만 남겨서 하루 안에서는 정렬이 불가능했다(최근 제출 순서가 뒤죽박죽).
+    밀리초까지는 필요 없어 초 단위로 둔다.
+    """
+    return datetime.datetime.now(KST).strftime("%H:%M:%S")
+
+
 def iso_now():
     return (datetime.datetime.now(datetime.timezone.utc)
             .isoformat(timespec="milliseconds").replace("+00:00", "Z"))
@@ -477,13 +486,15 @@ def save_solution(d):
     # history.json 에 직접 기록.
     # 예전엔 build_heatmap 이 .py 헤더의 '풀이일' 을 긁는 것에만 의존했는데,
     # 같은 날 다른 기록이 있으면 병합에서 밀려 사라졌다. 여기서 확실히 남긴다.
+    at = now_kst_time()          # try 안에서 만들면 예외 시 아래 return 에서 터진다
     try:
         hp = os.path.join(ROOT, "_meta", "history.json")
         hist = json.load(io.open(hp, encoding="utf-8")) if os.path.exists(hp) else {}
         day = d.get("date") or today_kst()
         rec = hist.setdefault(day, {"count": 0, "items": []})
         item = {"site": site, "no": no, "title": title,
-                "status": d.get("status") or "품", "file": rel}
+                "status": d.get("status") or "품", "file": rel,
+                "at": at}
         # 채점 결과(통과 수 / 전체, 소요 시간)를 제출 기록에 남긴다.
         v = d.get("verdict") or {}
         if v:
@@ -535,7 +546,7 @@ def save_solution(d):
                 log("   ⚠️ push 실패:", perr[:200])
 
     log("   💾 %s  commit=%s push=%s" % (rel, committed, pushed))
-    return {"ok": True, "file": rel, "message": msg,
+    return {"ok": True, "file": rel, "message": msg, "at": at,
             "committed": committed, "pushed": pushed, "pushError": perr,
             "stdout": (c.stdout or "")[-300:] if not committed else ""}
 

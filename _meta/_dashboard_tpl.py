@@ -345,11 +345,17 @@ function today(){var d=new Date();
  return new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,10);}
 function $(i){return document.getElementById(i);}
 
+/* 제출 순서: 날짜 → 시각. 예전엔 날짜만 봐서 같은 날 안에서는 순서가
+   뒤죽박죽이었다. at 은 허브로 저장한 기록에만 있고(HH:MM:SS),
+   옛 기록·실수노트 유래는 빈 값이라 같은 날이면 뒤로 보낸다. */
+function ord(r){ return r.date+"T"+(r.at||"00:00:00"); }
+function newerFirst(a,b){ return ord(b).localeCompare(ord(a)); }
+D.rows.sort(newerFirst);
+
 /* 동일 문제 묶기 */
 var BYPROB={};
 D.rows.forEach(function(r){ (BYPROB[key(r)]=BYPROB[key(r)]||[]).push(r); });
-Object.keys(BYPROB).forEach(function(k){
- BYPROB[k].sort(function(a,b){return b.date.localeCompare(a.date);}); });
+Object.keys(BYPROB).forEach(function(k){ BYPROB[k].sort(newerFirst); });
 function bestTitle(k){
  var m=PIDX[k]; if(m&&m.title) return m.title;
  var c=CATIDX[k]; if(c&&c.title) return c.title;
@@ -544,7 +550,10 @@ function tbl(rows){
   '<th style="text-align:left">문제</th><th>결과</th><th>테스트케이스</th><th>시간</th><th>코드</th><th></th></tr></thead><tbody>'+
   rows.map(function(r){
    var k=key(r), t=r.title||bestTitle(k);
-   return '<tr><td class="n">'+r.date+'</td>'+
+   /* 시각은 허브로 저장한 기록에만 있다. 시:분까지만 보여준다(초는 정렬용). */
+   var hm=(r.at||"").slice(0,5);
+   return '<tr><td class="n">'+r.date+
+     (hm?'<span class="hint" style="margin-left:6px">'+hm+'</span>':'')+'</td>'+
     '<td><span class="b b-'+r.site+'">'+r.site+'</span></td>'+
     '<td class="n">'+esc(r.no)+'</td>'+
     '<td class="l"><a href="#p/'+encodeURIComponent(r.site)+'/'+encodeURIComponent(r.no)+'">'+
@@ -705,6 +714,8 @@ function drawStatus(){
   var t=r.title||bestTitle(key(r));
   return (!q||(r.no+" "+t).toLowerCase().indexOf(q)>=0)&&(!fs||r.site===fs)&&(!ft||r.status===ft);});
  rs.sort(function(a,b){
+  /* 제출일로 정렬할 땐 시각까지 본다(같은 날 여러 번 제출한 순서). */
+  if(sortK==="date")return ord(a).localeCompare(ord(b))*(asc?1:-1);
   if(sortK==="no")return((+a.no||0)-(+b.no||0))*(asc?1:-1);
   if(sortK==="elapsed")return(((+a.elapsed)||0)-((+b.elapsed)||0))*(asc?1:-1);
   if(sortK==="title")return (bestTitle(key(a))||"").localeCompare(bestTitle(key(b))||"","ko")*(asc?1:-1);
@@ -1410,13 +1421,16 @@ async function doSave(){
   var vv=CUR.verdict||{}, vs=vv.summary||{};
  var nr={date:$("pd").value,site:CUR.site,no:CUR.no,
          title:bestTitle(CUR.site+"/"+CUR.no),status:$("pst").value,file:j.file||"",
-         passed:vs.passed,total:vs.total,elapsed:vv.elapsedSec,verdict:vv.verdict||""};
+         passed:vs.passed,total:vs.total,elapsed:vv.elapsedSec,verdict:vv.verdict||"",
+         /* 서버가 기록한 제출 시각. 없으면 지금 시각으로 대신 채운다. */
+         at:j.at||new Date().toTimeString().slice(0,8)};
   var kk=key(nr);
   D.rows=D.rows.filter(function(r){return !(key(r)===kk&&r.date===nr.date);});
   D.rows.unshift(nr);
+  D.rows.sort(newerFirst);
   BYPROB[kk]=(BYPROB[kk]||[]).filter(function(r){return r.date!==nr.date;});
   BYPROB[kk].unshift(nr);
-  BYPROB[kk].sort(function(a,b){return b.date.localeCompare(a.date);});
+  BYPROB[kk].sort(newerFirst);
   (byDate[nr.date]=byDate[nr.date]||[]).unshift(nr);
   stDone=false; treeDone=false; homeDone=false;   /* 다음 진입 시 다시 그림 */
   renderProblem(CUR.prob,CUR.site,CUR.no);        /* 제출 이력 즉시 갱신 */

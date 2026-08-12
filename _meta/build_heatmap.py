@@ -406,7 +406,9 @@ def render_html(data, year, total, active, best):
                          "no": it.get("no", ""), "title": it.get("title", ""),
                          "status": it.get("status", "?"), "file": it.get("file", ""),
                          "passed": it.get("passed"), "total": it.get("total"),
-                         "elapsed": it.get("elapsed"), "verdict": it.get("verdict", "")})
+                         "elapsed": it.get("elapsed"), "verdict": it.get("verdict", ""),
+                         # 허브로 저장한 기록에만 있다. 옛 기록·실수노트 유래는 빈 값.
+                         "at": it.get("at", "")})
     # 크롤링된 문제 자료 색인 + 코딩살구 전체 문제 카탈로그
     probs, cat = {"count": 0, "items": {}}, []
     try:
