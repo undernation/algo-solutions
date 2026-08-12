@@ -543,8 +543,8 @@ function tbl(rows){
    var k=key(r), t=r.title||bestTitle(k);
    /* 시각은 허브로 저장한 기록에만 있다. 시:분까지만 보여준다(초는 정렬용). */
    var hm=(r.at||"").slice(0,5);
-   return '<tr><td class="n">'+r.date+
-     (hm?'<span class="hint" style="margin-left:6px">'+hm+'</span>':'')+'</td>'+
+   return '<tr><td class="n" style="white-space:nowrap">'+r.date+
+     (hm?' <span class="hint">'+hm+'</span>':'')+'</td>'+
     '<td><span class="b b-'+r.site+'">'+r.site+'</span></td>'+
     '<td class="n">'+esc(r.no)+'</td>'+
     '<td class="l"><a href="#p/'+encodeURIComponent(r.site)+'/'+encodeURIComponent(r.no)+'">'+
