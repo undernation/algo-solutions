@@ -694,8 +694,10 @@ class H(BaseHTTPRequestHandler):
                     tl = 5.0
                 log("\n▶ 채점  problemId=%s  TC %d개  제한 %ss"
                     % (body.get("problemId"), len(cases), body.get("timeLimit")))
+                # allowed_time() 이 이미 PY_MULT·기기보정을 반영한 값이다.
+                # 예전 고정식(x3+2)을 여기서 또 곱해 허용시간이 3배로 부풀던 버그가 있었다.
                 r = judge(body.get("sourceCode") or "", cases,
-                          int(body.get("publicTestCaseCount") or 0), max(tl, 1.0) * 3 + 2)
+                          int(body.get("publicTestCaseCount") or 0), tl)
                 s = r.get("summary", {})
                 log("◀ %s  %s/%s" % (r.get("verdict"), s.get("passed"), s.get("total")))
                 return self._send(200, r)
