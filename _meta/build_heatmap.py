@@ -19,6 +19,9 @@ import os, re, io, json, glob, datetime, sys, html
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HIST = os.path.join(ROOT, "_meta", "history.json")
+# 삭제 표식. 사용자가 지운 기록은 코드 파일이 남아 있어도 되살아나면 안 된다.
+# 형식: ["2026-08-12|BOJ|1159", ...]
+TOMB = os.path.join(ROOT, "_meta", "deleted.json")
 ASSETS = os.path.join(ROOT, "assets")
 SVG = os.path.join(ASSETS, "heatmap.svg")
 HTML = os.path.join(ASSETS, "heatmap.html")
@@ -133,6 +136,37 @@ def _ikey(it):
     if isinstance(it, str):
         return it.strip()
     return "%s/%s" % (it.get("site", ""), it.get("no", ""))
+
+
+def load_tombstones():
+    if not os.path.exists(TOMB):
+        return set()
+    try:
+        return set(json.load(io.open(TOMB, encoding="utf-8")) or [])
+    except Exception:
+        return set()
+
+
+def apply_tombstones(data: dict, tomb: set) -> dict:
+    """삭제 표식에 해당하는 기록을 제거(빈 날짜는 통째로 삭제)."""
+    if not tomb:
+        return data
+    for day in list(data):
+        rec = data[day]
+        keep = []
+        for it in rec.get("items", []):
+            if isinstance(it, dict):
+                k = "%s|%s|%s" % (day, it.get("site", ""), it.get("no", ""))
+                if k in tomb:
+                    continue
+            keep.append(it)
+        gone = len(rec.get("items", [])) - len(keep)
+        if gone:
+            rec["items"] = keep
+            rec["count"] = max(0, rec.get("count", 0) - gone)
+            if not keep and rec["count"] <= 0:
+                data.pop(day, None)
+    return data
 
 
 def merge(base: dict, add: dict) -> dict:
@@ -312,6 +346,8 @@ def main():
     data = load_history()
     merge(data, from_vault())
     merge(data, from_repo())
+    # 사용자가 지운 기록은 코드 파일·실수노트에 남아 있어도 되살리지 않는다.
+    apply_tombstones(data, load_tombstones())
 
     io.open(HIST, "w", encoding="utf-8", newline="").write(
         json.dumps({k: data[k] for k in sorted(data)}, ensure_ascii=False, indent=1))

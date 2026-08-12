@@ -395,6 +395,20 @@ def delete_item(d):
             hist.pop(date, None)
         removed.append("history %s: %s %s" % (date, site, no))
 
+        # 코드 파일의 '풀이일'·실수노트에서 다시 살아나지 않도록 삭제 표식을 남긴다.
+        tp = os.path.join(ROOT, "_meta", "deleted.json")
+        tomb = []
+        if os.path.exists(tp):
+            try:
+                tomb = json.load(io.open(tp, encoding="utf-8")) or []
+            except Exception:
+                tomb = []
+        key = "%s|%s|%s" % (date, site, no)
+        if key not in tomb:
+            tomb.append(key)
+        io.open(tp, "w", encoding="utf-8", newline="").write(
+            json.dumps(sorted(tomb), ensure_ascii=False, indent=1))
+
         # 다른 날짜에도 이 문제 기록이 남아 있는지 확인
         still = any(isinstance(x, dict) and x.get("site") == site and str(x.get("no")) == no
                     for day in hist.values() for x in day.get("items", []))
