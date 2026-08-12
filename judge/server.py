@@ -487,6 +487,21 @@ def save_solution(d):
     # 예전엔 build_heatmap 이 .py 헤더의 '풀이일' 을 긁는 것에만 의존했는데,
     # 같은 날 다른 기록이 있으면 병합에서 밀려 사라졌다. 여기서 확실히 남긴다.
     at = now_kst_time()          # try 안에서 만들면 예외 시 아래 return 에서 터진다
+    # 지웠던 기록을 같은 날 다시 저장하면 삭제 표식을 걷어낸다.
+    # 안 그러면 build_heatmap 의 apply_tombstones 가 매번 지워서 영영 안 뜬다
+    # (실제로 이것 때문에 저장은 성공하는데 목록에 안 나타났다).
+    try:
+        tp = os.path.join(ROOT, "_meta", "deleted.json")
+        if os.path.exists(tp):
+            tomb = json.load(io.open(tp, encoding="utf-8")) or []
+            k = "%s|%s|%s" % (d.get("date") or today_kst(), site, no)
+            if k in tomb:
+                tomb = [x for x in tomb if x != k]
+                io.open(tp, "w", encoding="utf-8", newline="").write(
+                    json.dumps(sorted(tomb), ensure_ascii=False, indent=1))
+                log("   ♻️ 삭제 표식 해제 %s" % k)
+    except Exception as e:
+        log("   ⚠️ 삭제 표식 해제 실패:", str(e)[:120])
     try:
         hp = os.path.join(ROOT, "_meta", "history.json")
         hist = json.load(io.open(hp, encoding="utf-8")) if os.path.exists(hp) else {}
