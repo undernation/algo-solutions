@@ -15,6 +15,7 @@ http://localhost:12014 를 직접 호출한다.
     POST /run         임의 코드 + 케이스 채점  {code, cases:[{in,out}]}
     POST /save        풀이 저장 + git commit/push
     POST /fetch       문제 크롤링 (fetch_problem.py 위임)
+    POST /delete      풀이기록/문제자료 삭제 {kind, site, no, date?}
     GET  /problems    저장된 문제 목록
 
 /save 요청 예
@@ -26,7 +27,7 @@ http://localhost:12014 를 직접 호출한다.
       "verdict": {"verdict":"accepted","summary":{"passed":25,"total":25}}
     }
 """
-import os, re, io, sys, json, time, subprocess, tempfile, argparse, datetime
+import os, re, io, sys, json, glob, time, subprocess, tempfile, argparse, datetime
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -348,6 +349,115 @@ def save_solution(d):
             "stdout": (c.stdout or "")[-300:] if not committed else ""}
 
 
+def delete_item(d):
+    """풀이 기록 / 문제 자료 삭제.
+
+    kind="submission": history.json 에서 (date, site, no) 기록 제거.
+                       그 문제의 마지막 기록이면 코드 파일(boj/1234.py)도 지운다.
+    kind="problem"   : problems/<sub>/<no>.json 과 그 문제의 이미지들을 지운다.
+                       (코딩살구 커리큘럼 문제는 목록에는 남고 '자료 없음' 상태가 된다)
+
+    되돌릴 수 없으므로 무엇을 지웠는지 removed 로 돌려준다.
+    """
+    kind = (d.get("kind") or "").strip()
+    site = (d.get("site") or "").upper()
+    no = str(d.get("no") or "").strip()
+    if kind not in ("submission", "problem"):
+        return {"ok": False, "error": "kind 는 submission 또는 problem 이어야 합니다"}
+    if not site or not no:
+        return {"ok": False, "error": "site/no 가 필요합니다"}
+    sub = SUB.get(site, "boj")
+    removed = []
+
+    if kind == "submission":
+        date = (d.get("date") or "").strip()
+        if not date:
+            return {"ok": False, "error": "date 가 필요합니다"}
+        hp = os.path.join(ROOT, "_meta", "history.json")
+        if not os.path.exists(hp):
+            return {"ok": False, "error": "history.json 없음"}
+        hist = json.load(io.open(hp, encoding="utf-8"))
+        rec = hist.get(date)
+        if not rec:
+            return {"ok": False, "error": "%s 에 기록이 없습니다" % date}
+        keep, gone = [], 0
+        for it in rec.get("items", []):
+            if (isinstance(it, dict) and it.get("site") == site
+                    and str(it.get("no")) == no):
+                gone += 1
+                continue
+            keep.append(it)
+        if not gone:
+            return {"ok": False, "error": "%s 에 %s %s 기록이 없습니다" % (date, site, no)}
+        rec["items"] = keep
+        rec["count"] = max(0, rec.get("count", 0) - gone)
+        if not keep and rec["count"] <= 0:
+            hist.pop(date, None)
+        removed.append("history %s: %s %s" % (date, site, no))
+
+        # 다른 날짜에도 이 문제 기록이 남아 있는지 확인
+        still = any(isinstance(x, dict) and x.get("site") == site and str(x.get("no")) == no
+                    for day in hist.values() for x in day.get("items", []))
+        io.open(hp, "w", encoding="utf-8", newline="").write(
+            json.dumps(hist, ensure_ascii=False, indent=1, sort_keys=True))
+        if not still:
+            for f in glob.glob(os.path.join(ROOT, sub, "%s.py" % no)) + \
+                     glob.glob(os.path.join(ROOT, sub, "%s_*.py" % no)):
+                try:
+                    os.remove(f)
+                    removed.append(os.path.relpath(f, ROOT).replace(os.sep, "/"))
+                except OSError:
+                    pass
+        msg = "[삭제] %s %s 풀이기록 %s" % (site, no, date)
+
+    else:  # problem
+        pj = os.path.join(ROOT, "problems", sub, "%s.json" % no)
+        imgs = []
+        if os.path.exists(pj):
+            try:
+                imgs = json.load(io.open(pj, encoding="utf-8")).get("images") or []
+            except Exception:
+                imgs = []
+            os.remove(pj)
+            removed.append("problems/%s/%s.json" % (sub, no))
+        for rel in imgs:
+            fp = os.path.join(ROOT, rel.replace("/", os.sep))
+            if rel and os.path.exists(fp):
+                try:
+                    os.remove(fp)
+                    removed.append(rel)
+                except OSError:
+                    pass
+        if not removed:
+            return {"ok": False, "error": "삭제할 자료가 없습니다"}
+        msg = "[삭제] %s %s 문제자료" % (site, no)
+
+    for s in ("_meta/build_probindex.py", "_meta/build_heatmap.py", "_meta/build_index.py"):
+        subprocess.run([PY, s], cwd=ROOT, capture_output=True,
+                       env={**os.environ, "PYTHONIOENCODING": "utf-8"})
+
+    git("add", "-A")
+    c = git("commit", "-m", msg)
+    committed = c.returncode == 0
+    pushed, perr = False, ""
+    if committed and AUTO_PUSH:
+        p = git("push")
+        pushed = p.returncode == 0
+        if not pushed:
+            git("fetch", "origin")
+            rb = git("rebase", "origin/master")
+            if rb.returncode != 0:
+                git("rebase", "--abort")
+                perr = "rebase 충돌 — 수동 해결 필요"
+            else:
+                p = git("push")
+                pushed = p.returncode == 0
+                perr = "" if pushed else (p.stderr or "")[-300:]
+    log("   🗑️ %s  (%d개)  commit=%s push=%s" % (msg, len(removed), committed, pushed))
+    return {"ok": True, "removed": removed, "message": msg,
+            "committed": committed, "pushed": pushed, "pushError": perr}
+
+
 def fetch_problem(ref, save=False):
     """ref(URL 또는 BOJ 번호) 크롤링. save=True 면 problems/ 에 저장하고 커밋까지."""
     argv = [PY, "_meta/fetch_problem.py", ref, "--print"]
@@ -429,7 +539,7 @@ def status():
             "python": sys.version.split()[0], "repo": ROOT,
             "branch": br, "ahead": ah, "dirty": dirty, "solutions": n,
             "autoPush": AUTO_PUSH,
-            "endpoints": ["/judge", "/run", "/save", "/fetch", "/problems"]}
+            "endpoints": ["/judge", "/run", "/save", "/fetch", "/delete", "/problems"]}
 
 
 # ══════════════════════════════════════════════════════════════
@@ -523,6 +633,11 @@ class H(BaseHTTPRequestHandler):
                 log("\n▶ 실행  TC %d개" % len(cases))
                 return self._send(200, judge(body.get("code") or "", cases, 0,
                                              allowed_time(body.get("timeLimit"))))
+
+            if p == "/delete":
+                log("\n▶ 삭제  %s %s %s %s" % (body.get("kind"), body.get("site"),
+                                             body.get("no"), body.get("date") or ""))
+                return self._send(200, delete_item(body))
 
             if p == "/save":
                 log("\n▶ 저장  %s %s %s" % (body.get("site"), body.get("no"), body.get("title")))

@@ -159,6 +159,20 @@ pre.io{background:var(--soft);border:1px solid var(--bd);border-radius:6px;paddi
  border-radius:5px;padding:9px 11px;max-height:270px;overflow:auto}
 .note{background:var(--soft);border:1px solid var(--bd);border-left:3px solid var(--ac);
  border-radius:5px;padding:11px 14px;font-size:13.5px;color:var(--sub);margin:14px 0}
+/* ── 삭제 확인 ── */
+#dc{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;z-index:90;padding:80px 20px;overflow:auto}
+#dcb{background:var(--panel);border:1px solid var(--bd);border-radius:10px;max-width:480px;margin:0 auto;
+ padding:22px 24px 20px;box-shadow:0 16px 48px rgba(0,0,0,.5)}
+#dcb h3{margin:0 0 10px;font-size:17px;font-weight:800;color:var(--no)}
+#dcb .what{background:var(--soft);border:1px solid var(--bd);border-left:3px solid var(--no);
+ border-radius:6px;padding:11px 14px;font-size:13.5px;margin:12px 0;line-height:1.8}
+#dcb .what b{font-weight:800}
+#dcb .warn{font-size:12.5px;color:var(--sub);margin-top:4px}
+button.danger{background:var(--no);border-color:var(--no);color:#fff}
+button.danger:hover{opacity:.88;color:#fff;border-color:var(--no)}
+.del{color:var(--sub);cursor:pointer;font-size:12px;padding:2px 6px;border-radius:4px}
+.del:hover{color:var(--no);background:rgba(221,65,36,.1)}
+
 /* ── 새 문제 추가 ── */
 #ad{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;z-index:70;padding:60px 20px;overflow:auto}
 #adb{background:var(--panel);border:1px solid var(--bd);border-radius:10px;max-width:560px;margin:0 auto;
@@ -221,6 +235,15 @@ pre.io{background:var(--soft);border:1px solid var(--bd);border-radius:6px;paddi
  <div class="row"><button class="p" onclick="doAdd()" id="adgo">가져오기</button>
   <button onclick="closeAdd()">닫기</button></div>
  <div class="vd" id="adv"></div>
+</div></div>
+<div id="dc" onclick="if(event.target===this)closeDel()"><div id="dcb">
+ <h3 id="dct">삭제할까요?</h3>
+ <div id="dcw" class="what"></div>
+ <div class="warn">되돌릴 수 없습니다. 삭제 후 자동으로 커밋·푸시됩니다.</div>
+ <div class="row" style="justify-content:flex-end">
+  <button onclick="closeDel()">취소</button>
+  <button class="danger" id="dcgo" onclick="doDelete()">삭제</button></div>
+ <div class="vd" id="dcv"></div>
 </div></div>
 <div id="tip"></div>
 
@@ -352,7 +375,7 @@ function viewHome(){
 function tbl(rows){
  if(!rows.length) return '<div class="empty">기록이 없습니다.</div>';
  return '<table><thead><tr><th>제출일</th><th>사이트</th><th>번호</th>'+
-  '<th style="text-align:left">문제</th><th>결과</th><th>코드</th></tr></thead><tbody>'+
+  '<th style="text-align:left">문제</th><th>결과</th><th>코드</th><th></th></tr></thead><tbody>'+
   rows.map(function(r){
    var k=key(r), t=r.title||bestTitle(k);
    return '<tr><td class="n">'+r.date+'</td>'+
@@ -362,7 +385,9 @@ function tbl(rows){
       esc(t||"(제목 없음)")+'</a></td>'+
     '<td class="'+rc(r.status)+'">'+esc(r.status)+'</td>'+
     '<td>'+(r.file?'<span class="lnk" style="color:var(--ac);cursor:pointer" onclick="openCode(\''+
-      esc(r.file)+'\')">보기</span>':'<span style="color:var(--mute)">—</span>')+'</td></tr>';
+      esc(r.file)+'\')">보기</span>':'<span style="color:var(--mute)">—</span>')+'</td>'+
+    '<td><span class="del" title="이 풀이 기록 삭제" onclick="askDelSub(\''+esc(r.site)+
+      '\',\''+esc(r.no)+'\',\''+esc(r.date)+'\',event)">&#128465;</span></td></tr>';
   }).join("")+'</tbody></table>';
 }
 
@@ -490,9 +515,79 @@ function drawStatus(){
   '<th class="s" onclick="sortBy(\'site\')">사이트</th>'+
   '<th class="s" onclick="sortBy(\'no\')">번호</th>'+
   '<th class="s" style="text-align:left" onclick="sortBy(\'title\')">문제</th>'+
-  '<th class="s" onclick="sortBy(\'status\')">결과</th><th>코드</th></tr>');
+  '<th class="s" onclick="sortBy(\'status\')">결과</th><th>코드</th><th></th></tr>');
 }
 function sortBy(k){ asc=(k===sortK)?!asc:false; sortK=k; drawStatus(); }
+
+/* ════════ 삭제 ════════
+   되돌릴 수 없으므로 무엇이 지워지는지 팝업에 그대로 적고 한 번 더 확인받는다. */
+var DEL=null;
+function closeDel(){ $("dc").style.display="none"; DEL=null; }
+function dsay(html,cls){var v=$("dcv");v.className="vd "+(cls||"info");v.style.display="block";v.innerHTML=html;}
+
+/* 풀이 기록 삭제 */
+function askDelSub(site,no,date,ev){
+ if(ev){ev.stopPropagation();ev.preventDefault();}
+ var k=site+"/"+no, subs=BYPROB[k]||[], last=subs.length<=1;
+ DEL={kind:"submission",site:site,no:no,date:date};
+ $("dct").textContent="풀이 기록을 삭제할까요?";
+ $("dcw").innerHTML=
+   "<b>"+esc(site+" "+no+" "+bestTitle(k))+"</b><br>"+
+   "제출일 <b>"+esc(date)+"</b> 기록이 잔디·제출현황에서 사라집니다."+
+   (last?"<br>이 문제의 <b>마지막 기록</b>이라 저장된 <b>코드 파일도</b> 함께 지워집니다."
+        :"<br>다른 날짜 기록 "+(subs.length-1)+"건과 코드 파일은 그대로 둡니다.");
+ $("dcv").style.display="none"; $("dcgo").disabled=false;
+ $("dc").style.display="block";
+}
+
+/* 문제 자료 삭제 */
+function askDelProb(site,no){
+ var k=site+"/"+no, m=PIDX[k]||{}, inCat=!!CATIDX[k];
+ DEL={kind:"problem",site:site,no:no};
+ $("dct").textContent="문제 자료를 삭제할까요?";
+ $("dcw").innerHTML=
+   "<b>"+esc(site+" "+no+" "+bestTitle(k))+"</b><br>"+
+   "지문·예제"+(m.tc?"·테스트케이스":"")+"·이미지가 지워집니다."+
+   "<br><span style='color:var(--sub)'>풀이 기록과 코드는 그대로 남습니다.</span>"+
+   (inCat?"<br>코딩살구 커리큘럼 문제라 <b>목록에는 남고</b> '자료 없음' 상태가 됩니다."
+         :"<br>커리큘럼 밖 문제라 <b>목록에서도 사라집니다.</b>");
+ $("dcv").style.display="none"; $("dcgo").disabled=false;
+ $("dc").style.display="block";
+}
+
+async function doDelete(){
+ if(!DEL) return;
+ var h=hubFor("save");
+ if(!h) return dsay("허브가 꺼져 있습니다. 우측 상단 허브 버튼을 확인하세요.","ng");
+ $("dcgo").disabled=true; dsay("삭제 중…");
+ try{
+  var r=await fetch(h.url+"/delete",{method:"POST",headers:H(),body:JSON.stringify(DEL)});
+  if(r.status===401){$("dcgo").disabled=false;return dsay("인증 실패 — 토큰을 확인하세요.","ng");}
+  var j=await r.json();
+  if(!j.ok){$("dcgo").disabled=false;return dsay("실패: "+esc(j.error||r.status),"ng");}
+
+  /* 화면에서도 즉시 반영 */
+  var k=DEL.site+"/"+DEL.no;
+  if(DEL.kind==="submission"){
+   D.rows=D.rows.filter(function(x){return !(key(x)===k&&x.date===DEL.date);});
+   BYPROB[k]=(BYPROB[k]||[]).filter(function(x){return x.date!==DEL.date;});
+   if(!BYPROB[k].length) delete BYPROB[k];
+   if(byDate[DEL.date]) byDate[DEL.date]=byDate[DEL.date].filter(function(x){return key(x)!==k;});
+  }else{
+   delete PIDX[k];
+   if(CUR.site===DEL.site&&CUR.no===DEL.no) CUR.prob=null;
+  }
+  stDone=false; treeDone=false; homeDone=false;
+  dsay("✅ 삭제됨<div class='d'>"+esc((j.removed||[]).join("\n"))+
+       "\n\ncommit "+(j.committed?"완료":"변경 없음")+"  ·  push "+(j.pushed?"완료":"실패")+"</div>","ok");
+  var kind=DEL.kind;
+  setTimeout(function(){
+    closeDel();
+    if(location.hash.indexOf("#p/")===0) viewProblem(CUR.site,CUR.no);
+    else go();
+  }, kind==="problem"?900:700);
+ }catch(e){ $("dcgo").disabled=false; dsay("오류: "+esc(e.message),"ng"); }
+}
 
 /* ════════ 새 문제 추가 ════════
    코딩살구 카탈로그에 없는 문제(SWEA·프로그래머스·코드트리 등)를 링크만으로 등록한다.
@@ -593,6 +688,7 @@ async function viewProblem(site,no){
    '<button class="p" onclick="doJudge()">채점</button>'+
    '<button onclick="doSave()">저장 &amp; 커밋</button>'+
    '<button class="sm" style="margin-left:auto" onclick="doFetch()" id="rf">문제 다시 가져오기</button>'+
+   '<button class="sm" onclick="askDelProb(\''+esc(site)+'\',\''+esc(no)+'\')">문제 자료 삭제</button>'+
   '</div><div class="vd" id="pv"></div>';
 
  /* 저장된 코드 자동 로드 */
@@ -773,6 +869,7 @@ async function doSave(){
 
 document.addEventListener("keydown",function(e){
  if(e.key!=="Escape")return;
+ if($("dc").style.display==="block"){closeDel();return;}
  if($("ad").style.display==="block"){closeAdd();return;}
  closeCode();});
 go();
