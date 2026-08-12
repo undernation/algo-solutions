@@ -25,5 +25,111 @@
   }
  ],
  "private_tc_count": 26,
+ "private_testcases": [
+  {
+   "in": "3\na*d\nabcd\nad\naxcd",
+   "out": "DA\nDA\nDA"
+  },
+  {
+   "in": "3\nhe*o\nhello\nheo\nheyyo",
+   "out": "DA\nDA\nDA"
+  },
+  {
+   "in": "4\nabc*xyz\nabcxyz\nabcqrsxyz\nabcxy\naabcxyz",
+   "out": "DA\nDA\nNE\nNE"
+  },
+  {
+   "in": "3\nb*k\nbk\nbook\nkoo",
+   "out": "DA\nDA\nNE"
+  },
+  {
+   "in": "3\npre*suf\npresuf\nprelongsuf\npresu",
+   "out": "DA\nDA\nNE"
+  },
+  {
+   "in": "5\nabc*abc\nabcabc\nabcxabc\nabcab\nxabcabc\nabcabcx",
+   "out": "DA\nDA\nNE\nNE\nNE"
+  },
+  {
+   "in": "5\nkv*civoc\nitgndcivoc\nbfqfbcivoc\nriutvcivoc\nxkwglcivoc\njnzkjcivoc",
+   "out": "NE\nNE\nNE\nNE\nNE"
+  },
+  {
+   "in": "2\no*lzkms\nolzkms\nolzkms",
+   "out": "DA\nDA"
+  },
+  {
+   "in": "4\nydbmzm*osokkllh\nu\nsoylmllr\ngadziyb\nbjvkgtztfwe",
+   "out": "NE\nNE\nNE\nNE"
+  },
+  {
+   "in": "100\nmqskamsbdl*wtsgzn\najddgoajpalirv\nmqskamsbdlrawtsgzn\nmqskamsbdlvjgqwtsgzn\nmqskamsbdlaosbwtsgzn\nmqskamsbdlvlwtsgzn\nhmqsrpfjuxoicmfl\nmqskamsbdlwtsgzn\nmqskamsbdlxqwtsgzn\nmqskamsbdlrewtsgzn\nmqskamsbdleqlwtsgzn\nmqskamsbdldjfwtsgzn\nrlxvpzurkr\nmqskamsbdlawtsgzn\naslpivt\nowmxrcslr\nmqskamsbdlszwtsgzn\nmqskamsbdlbowtsgzn\nedhfgoxagfepbt\nmqskamsbdlylhjwtsgzn\nprjgzrdwpptrbzwlkth\nirgunuel\nxqvazykgrxqbaqco\nmqskamsbdluwtsgzn\nfnrhhmlqlfaxgln\nhlnnatmudzgukzgicf\nmqskamsbdlwtsgzn\nvcvzggigrei\nrmdgm\njrlubfgvph\npgpplvdxfodmhe\nkbnibkazeanrnylykxm\ncljwqoa\nfmqprjbywil\nffndzakgdjewblcoujet\nmqskamsbdlbpcvwtsgzn\nmqskamsbdlkvsbuwtsgzn\nmqskamsbdlmjwtsgzn\ndp\nmqskamsbdljfwgwtsgzn\nmqskamsbdlvyusmwtsgzn\nmqskamsbdlkkapnwtsgzn\nobhvmogqv\nmqskamsbdlwtsgzn\nzshyngupebohpvt\nmqskamsbdlcwtsgzn\ni\nmqskamsbdlmnijowtsgzn\nmqskamsbdlmmfywtsgzn\nmqskamsbdlwtsgzn\nmqskamsbdllltaqwtsgzn\nmqskamsbdljrrwtsgzn\nmqskamsbdlbbwtsgzn\nqnwjwticrmhuyx\nmqskamsbdliowtsgzn\nmqskamsbdlxwtsgzn\nmwtbzuxbltxezzikawx\nmqskamsbdlqcwtsgzn\nmqskamsbdlnwtsgzn\nvhmn\nqz\nmqskamsbdlkfwtsgzn\nmqskamsbdlpxiwtsgzn\nee\nmqskamsbdlqzgwtsgzn\notlj\nmqskamsbdlwtsgzn\nmqskamsbdlyhxoowtsgzn\nmqskamsbdldwtsgzn\nmgnzxdepdvu\nr\nmqskamsbdlbwzagwtsgzn\nxkxquwjgl\nmqskamsbdleahovwtsgzn\nmqskamsbdlpwtsgzn\nlj\nnnpxsvqljeutgstuz\nfzkyceeenfvjvmtb\nuadldqfuzktuypodpg\nubfqcurrzjknelshzv\nh\nmqskamsbdloqxgpwtsgzn\nmqskamsbdlwpwevwtsgzn\nmqskamsbdlawtsgzn\nmqskamsbdlbwtsgzn\nassho\nmqskamsbdlwtsgzn\nmqskamsbdlhvgbxwtsgzn\nlqgchnejrhepqlwpnqui\nh\nmqskamsbdloowtsgzn\nmqskamsbdlcbwtsgzn\nfaknczmacyc\nmqskamsbdlthrwtsgzn\nmqskamsbdlrbtltwtsgzn\nnygmvcqfqsyitpxbq\nmqskamsbdlsrexpwtsgzn\nwaxggwrtyiuhpdod\nrdngucauhqhhvk\nbrujoinbkojjqk\nmqskamsbdlkonywtsgzn",
+   "out": "NE\nDA\nDA\nDA\nDA\nNE\nDA\nDA\nDA\nDA\nDA\nNE\nDA\nNE\nNE\nDA\nDA\nNE\nDA\nNE\nNE\nNE\nDA\nNE\nNE\nDA\nNE\nNE\nNE\nNE\nNE\nNE\nNE\nNE\nDA\nDA\nDA\nNE\nDA\nDA\nDA\nNE\nDA\nNE\nDA\nNE\nDA\nDA\nDA\nDA\nDA\nDA\nNE\nDA\nDA\nNE\nDA\nDA\nNE\nNE\nDA\nDA\nNE\nDA\nNE\nDA\nDA\nDA\nNE\nNE\nDA\nNE\nDA\nDA\nNE\nNE\nNE\nNE\nNE\nNE\nDA\nDA\nDA\nDA\nNE\nDA\nDA\nNE\nNE\nDA\nDA\nNE\nDA\nDA\nNE\nDA\nNE\nNE\nNE\nDA"
+  },
+  {
+   "in": "9\ngtrdbyitdtjeewwkimopokcapswhjetfzqvyfxy*dszquxnonpyscycfhgaynpithxjylqafxucplebpffm\nblgopjmunfbmtwaxcxdgmqjumpbykpljrsnlpetuaurytwmaevpztaqyallgwaemiaucfzbzzkkwejpwrqhrftakowshupquyaqa\nhkpfmrczxdxempxuierbtxxcdaxikitcyidczydxtlazfupykpaeuwrhfkqpdloboamlybaptdkitbncjnkryjyziddrmvkbfged\ntvqabfspihctrnblvothkuqxzblrujlpwbvlicddffqrkosmpuexbcnlzfkzpuauqplrzlgjzpggcjam\nawwflhbsisoosqojhcbvoamrrwyukxocnzwrckxxsvfufzrccbzcsbvoafkqzucmlkqpylexdklcsdveaerotmoscdbhqxlawrm\nfhnyrfcqhrjbrfgqzjbrnzhpnjiadsqhblbaqasseubnstshfggyvcxynirveiwrglbakjyllodjwcndzqblkjycdbzhtf\nrihticuxzxvgsybsynoscpifrqnwhaalbqhrtnpoyjomilmnjvgwnqywtlptpvlbrtatuoogdwykxqlqngdlsdqrfeyzpxky\nvdlyffufyfvruktvsxqrdykxebxzkwomtdylarbjbgdtsvptizakubwcuelckezdqduchmbcsxfhifqiaycjmypdqoy\ngtrdbyitdtjeewwkimopokcapswhjetfzqvyfxyoeqctmvdsddszquxnonpyscycfhgaynpithxjylqafxucplebpffm\ngtrdbyitdtjeewwkimopokcapswhjetfzqvyfxygtdsdwtwqtdszquxnonpyscycfhgaynpithxjylqafxucplebpffm",
+   "out": "NE\nNE\nNE\nNE\nNE\nNE\nNE\nDA\nDA"
+  },
+  {
+   "in": "3\nlcogvxvb*vxvbnjin\nlcogvxvbvxvbnjin\nlcogvxvbbamvxvbnjin\nlcogvxvbayiqvxvbnjin",
+   "out": "DA\nDA\nDA"
+  },
+  {
+   "in": "9\ngb*pgqgu\ngbhvcpgqgu\ngbtbpgqgu\ngbyeerhgtpgqgu\ngbbsffrhjepgqgu\ngbedalfpgqgu\ngbvenktilnmpgqgu\ngbzvbbpgqgu\ngbhkylypgqgu\ngbladountmepgqgu",
+   "out": "DA\nDA\nDA\nDA\nDA\nDA\nDA\nDA\nDA"
+  },
+  {
+   "in": "8\nld*ykci\nldcqijscs\nldokpphmv\ntijzfykci\nhdnruykci\nllgrbykci\nldvpnezzx\nenlhgykci\nufxvlykci",
+   "out": "NE\nNE\nNE\nNE\nNE\nNE\nNE\nNE"
+  },
+  {
+   "in": "2\nbq*q\nbqxq\nbqq",
+   "out": "DA\nDA"
+  },
+  {
+   "in": "5\nlngjxmif*wovfr\njpab\ner\ndxkpabrl\nheqqivlj\nbhco",
+   "out": "NE\nNE\nNE\nNE\nNE"
+  },
+  {
+   "in": "100\nlrde*gwda\nlrdedefgwda\nunbnqhmshyztvukqpv\nunmys\nvusifwvsxrzr\nlrdegwda\nlgbtnynljbsxlo\nlrdejilgwda\nbzndothl\nlrdeasgwda\nrmudeqfasc\nlrdecvgwda\nbt\nlrdextgwda\nlrdegwda\nlrdevgwda\nlrdehgwda\neepduwtcemjoccd\nwjw\nhdgvwsc\nlrdehvkcxgwda\nlrdelrwgwda\nqvxfggq\nlrdeqszjgwda\ngcizwljms\nyueefqpvnwqopdkc\nlrdefbhigwda\nlrdezymoogwda\nlrderhgwda\nvnxfsghy\nlrdegwda\nddmpzljdlst\nlrdemgwda\nkfvhz\nqbbljixt\nsecuzqynbcgyzpefl\nlrdevzuspgwda\nyaojwpu\nlrdegwda\nlrdenpzogwda\naz\nlrdegwda\nlrdegwda\nlrdejpgwda\nmwjvsvonueizqjzpxzn\nlrdentcgwda\nlrdesuxkgwda\nhf\nmuafnkdzhuibhhczjfe\nlrdezgwda\nofqfmjiliwsfrjav\nqflaopwxzrwcjecqhafo\nlrdeortlgwda\nsjmlfxohasyszq\nlrdegwda\naw\nlrdenxgwda\nyrcrmlsdw\nlrdewpxgwda\nm\nlrdefrgwda\nynzqlkrhzanu\nf\nkozpqpxmbcbsiqvrs\nlrdegwda\nnnnusyfvrersy\ncwygeddgis\nplgsjygi\npmja\nlrdedntrbgwda\nlrdepybgwda\njhbfeemgwlhgjthhg\nlrdegwda\nvmzlcjgeyrn\nvgrdopodcvhvpdbcr\nrupxmlddkqciabb\nlrdezgwda\nvmuhaqxsdb\npzxddboodtpv\nkyhkrptyqlrqget\nqfnchhhizmjmqzp\nlrdeljagwda\ndvfwkrwjs\nlrdexcvljgwda\nkeefetvwfehvpwvbr\nlrdewojgwda\nlrdegwda\nlrdeshftogwda\nlrderlgwda\nptyyubmajduzdqp\nlrdeplbvzgwda\nsdgovlbqbzmjg\nlrdesttjgwda\nlrdegwda\ntoqnqfxtepcpmvemudf\nlrdemjagwda\nlrdedpnvwgwda\nlrdellybvgwda\nlrdewcawgwda\npauvpabxtepjbouu\nlrdegwda",
+   "out": "DA\nNE\nNE\nNE\nDA\nNE\nDA\nNE\nDA\nNE\nDA\nNE\nDA\nDA\nDA\nDA\nNE\nNE\nNE\nDA\nDA\nNE\nDA\nNE\nNE\nDA\nDA\nDA\nNE\nDA\nNE\nDA\nNE\nNE\nNE\nDA\nNE\nDA\nDA\nNE\nDA\nDA\nDA\nNE\nDA\nDA\nNE\nNE\nDA\nNE\nNE\nDA\nNE\nDA\nNE\nDA\nNE\nDA\nNE\nDA\nNE\nNE\nNE\nDA\nNE\nNE\nNE\nNE\nDA\nDA\nNE\nDA\nNE\nNE\nNE\nDA\nNE\nNE\nNE\nNE\nDA\nNE\nDA\nNE\nDA\nDA\nDA\nDA\nNE\nDA\nNE\nDA\nDA\nNE\nDA\nDA\nDA\nDA\nNE\nDA"
+  },
+  {
+   "in": "6\nqmltsxcjutzjnormneykoqruafastw*bjmbvrfkkcffgnlzhhxtnslxglwsf\nlpedeatervpakphkwyfuyuepvbkuynfwifshzzlwuzmbsxvzduxiifxutolcathsjjkpqhuycyhtujtvmdfjltulr\nqmltsxcjutzjnormneykoqruafastwtubjmbvrfkkcffgnlzhhxtnslxglwsf\nqmltsxcjutzjnormneykoqruafastwimaxmrebjmbvrfkkcffgnlzhhxtnslxglwsf\nqmltsxcjutzjnormneykoqruafastwxzjexbjmbvrfkkcffgnlzhhxtnslxglwsf\nmeswttgoxkddseinnouuvbzrzqdbyguapccqxkhxyxddijlizexcahlktkrmujjnrhhe\nqmltsxcjutzjnormneykoqruafastwwzayatublbbjmbvrfkkcffgnlzhhxtnslxglwsf",
+   "out": "NE\nDA\nDA\nDA\nNE\nDA"
+  },
+  {
+   "in": "4\nkkpeuib*euibwzv\namolrveolwk\ngypljljcljunwusfzeyk\nkkpeuibiyjeuibwzv\nkkpeuibdhmeuibwzv",
+   "out": "NE\nNE\nDA\nDA"
+  },
+  {
+   "in": "10\nydxzk*cc\nydxzkokcc\nydxzkoxacc\nydxzktadlqnfcc\nydxzkapoqxjutgcc\nydxzklykxuofibcc\nydxzkcc\nydxzkwacc\nydxzkkmaoupcc\nydxzkjojpmxtbjcc\nydxzkzhficc",
+   "out": "DA\nDA\nDA\nDA\nDA\nDA\nDA\nDA\nDA\nDA"
+  },
+  {
+   "in": "2\nqswfb*nluf\nwhxwkzmanluf\ndoyvwymanluf",
+   "out": "NE\nNE"
+  },
+  {
+   "in": "3\nkh*coyivhed\nkhcoyivhed\nkhxcoyivhed\nkhcoyivhed",
+   "out": "DA\nDA\nDA"
+  },
+  {
+   "in": "7\nhzmsu*kwu\nitsqyz\nnytfi\nhyycyt\nxbs\nnaeag\nha\najcxyw",
+   "out": "NE\nNE\nNE\nNE\nNE\nNE\nNE"
+  },
+  {
+   "in": "100\npcdg*asynmrqx\nlgkycqars\nwsiysnzc\nklcfxmmduwhq\npcdgykasynmrqx\npcdgesasynmrqx\nfvfz\npcdgvsvasynmrqx\npcdgndasynmrqx\npcdgonitasynmrqx\njhjcgnlgbjvvhonb\npcdgkazpasynmrqx\nscum\npcdgxwkxasynmrqx\npcdgodkoasynmrqx\npjmvjua\njlwpqwtikvvg\npcdgasynmrqx\npcdgimkftasynmrqx\nrhwivkyg\nhmewrehm\novcsxlpqts\npcdgpjocasynmrqx\npcdgindmeasynmrqx\nnyxdbwm\njxfwrgotcazt\npcdgsphasynmrqx\npcdgeasynmrqx\nxszlybkuzhfmbenzcuk\nvehwcjtdtmw\npcdguasynmrqx\nkod\npcdgzzuyasynmrqx\npcdgfasynmrqx\npcdgwdcgasynmrqx\ntujukudfgwszfzuf\nurgjrhpqrdxwgic\npcdganxyasynmrqx\nkae\npcdgxdasynmrqx\nbwtna\nth\npcdgyluasynmrqx\nwezigua\nkajziohrrzxv\npcdgtdgasynmrqx\nsujplp\npcdgbotdasynmrqx\npcdgnmubasynmrqx\npcjknqowejuqihwyblvb\nngtmmldisgzaz\npcdgvuasynmrqx\ncvdnalfgogdunvt\ntjbwwneanypift\ntpxgxawkcabmictt\nkvnbcjuxuakpiu\nhjyuwlvnzyij\nsmjvxwiqtxlh\npcdgasynmrqx\npcdgrkezsasynmrqx\npcdgasejasynmrqx\ndfmccrnlodidiaxwinwj\naqthucyu\nlfgslphktqjajjrnnebg\nswyduv\npcdgpqzsasynmrqx\npcdglxaruasynmrqx\nsxlqsmcenud\npcdgaglbasynmrqx\nmglvb\npcdgyahgasynmrqx\nmavnnpsltnbjlaj\nfwxxnl\npcdgasynmrqx\nymgzgowonp\npcdgulasynmrqx\nctlxxccjrvhqfhlsqd\ntlusdhh\npcdgmnfasynmrqx\nbz\npcdguasynmrqx\npcdgasynmrqx\nruyqkjuabji\nkvsgdarstkpodbiep\npcdgiuxasynmrqx\npjcygizju\ns\npcdgswtasynmrqx\nhehzdwrcpkwqekvtg\npcdgxkeasynmrqx\nrhxarirl\npcdgtpfrzasynmrqx\npcdgyohxasynmrqx\npcdgkqeqhasynmrqx\npcdgllkepasynmrqx\ngte\npcdgzdiyxasynmrqx\njjepkppv\nacbbxfsuyqnw\npcdgutabsasynmrqx\npcdgyasynmrqx",
+   "out": "NE\nNE\nNE\nDA\nDA\nNE\nDA\nDA\nDA\nNE\nDA\nNE\nDA\nDA\nNE\nNE\nDA\nDA\nNE\nNE\nNE\nDA\nDA\nNE\nNE\nDA\nDA\nNE\nNE\nDA\nNE\nDA\nDA\nDA\nNE\nNE\nDA\nNE\nDA\nNE\nNE\nDA\nNE\nNE\nDA\nNE\nDA\nDA\nNE\nNE\nDA\nNE\nNE\nNE\nNE\nNE\nNE\nDA\nDA\nDA\nNE\nNE\nNE\nNE\nDA\nDA\nNE\nDA\nNE\nDA\nNE\nNE\nDA\nNE\nDA\nNE\nNE\nDA\nNE\nDA\nDA\nNE\nNE\nDA\nNE\nNE\nDA\nNE\nDA\nNE\nDA\nDA\nDA\nDA\nNE\nDA\nNE\nNE\nDA\nDA"
+  },
+  {
+   "in": "6\nivcscelpxlehtvroiitkfjrsycdzswbrmljxqkh*qpsviqyrflcodopjtfcxvopvju\nivcscelpxlehtvroiitkfjrsycdzswbrmljxqkhgqpsviqyrflcodopjtfcxvopvju\nivcscelpxlehtvroiitkfjrsycdzswbrmljxqkhfjsrsmfjyqpsviqyrflcodopjtfcxvopvju\nvozprbdywaalwezinlvlrrzaxmqnuelqadiwzxgwmacfkachktrjemjywjdrcfiktktomxgcxpndbpppbyne\nivcscelpxlehtvroiitkfjrsycdzswbrmljxqkhgzsqpsviqyrflcodopjtfcxvopvju\ngokfmwbbswxnmgukcqlkoysgrotisdsswlxaragfcyrrotsbsokklctcchjytneffebkqtobwjkdlhlgxzbvjo\nahwnyhpcehitvltxifrnmazvprqhfeujylkzgiaenhwtsnrczhlylknhucbttfymdqduynbcfcdmsybwigudnibbzyjzlsepe",
+   "out": "DA\nDA\nNE\nDA\nNE\nNE"
+  },
+  {
+   "in": "5\ndcp*cpf\nbtwotkujihukwadalcn\ndcpaicpf\ndcpvwfcpf\nibatufalc\ndcpczecpf",
+   "out": "NE\nDA\nDA\nNE\nDA"
+  }
+ ],
  "fetched_at": "2026-08-12"
 }

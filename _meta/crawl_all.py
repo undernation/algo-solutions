@@ -11,6 +11,7 @@
     python _meta/crawl_all.py --force        # 이미 있는 것도 다시
     python _meta/crawl_all.py --empty        # 지문이 빈 것만 다시 (파서 수정 후 복구)
     python _meta/crawl_all.py --bad          # 예제가 오염된 것만 다시
+    python _meta/crawl_all.py --htc          # 히든 테스트케이스만 채우기
 
 선행조건: 디버그 크롬(9222) + 코딩살구 로그인
     python C:/Users/solom/crawler.py chrome
@@ -99,7 +100,19 @@ def main():
     todo = targets()
     if only:
         todo = [t for t in todo if t["site"] == only]
-    if "--empty" in a or "--bad" in a:
+    if "--htc" in a:
+        # 히든 테스트케이스가 있다고 표기됐는데 아직 수집 안 된 것만
+        def need_htc(t):
+            f = os.path.join(PROB, SUB[t["site"]], t["no"] + ".json")
+            if not os.path.exists(f):
+                return False
+            try:
+                d = json.load(io.open(f, encoding="utf-8"))
+            except Exception:
+                return False
+            return bool(d.get("private_tc_count")) and not d.get("private_testcases")
+        todo = [t for t in todo if need_htc(t)]
+    elif "--empty" in a or "--bad" in a:
         # 파서 수정 후 복구용.
         #   --empty : 지문이 비어 저장된 것
         #   --bad   : 예제에 "예제 입력/출력" 헤딩이 섞여 오염된 것
@@ -193,9 +206,11 @@ def main():
                             encoding="utf-8", newline="").write(
                         json.dumps(d, ensure_ascii=False, indent=1))
                     okc += 1
-                    print("  [%d/%d] %s %-6s ✅ %-22s 지문%5d자 예제%d"
-                          % (i, len(todo), t["site"], t["no"], (d.get("title") or "")[:22],
-                             len(d.get("statement") or ""), len(d.get("samples") or [])),
+                    htc = len(d.get("private_testcases") or [])
+                    print("  [%d/%d] %s %-6s ✅ %-20s 지문%5d자 예제%d%s"
+                          % (i, len(todo), t["site"], t["no"], (d.get("title") or "")[:20],
+                             len(d.get("statement") or ""), len(d.get("samples") or []),
+                             (" 히든%d" % htc) if htc else ""),
                           flush=True)
                 except Exception as e:
                     ng += 1

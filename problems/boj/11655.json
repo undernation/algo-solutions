@@ -25,5 +25,111 @@
   }
  ],
  "private_tc_count": 26,
+ "private_testcases": [
+  {
+   "in": "Hello World",
+   "out": "Uryyb Jbeyq"
+  },
+  {
+   "in": "Baekjoon Online Judge 123",
+   "out": "Onrxwbba Bayvar Whqtr 123"
+  },
+  {
+   "in": "NOPQRSTUVWXYZABCDEFGHIJKLM",
+   "out": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  },
+  {
+   "in": "abcdefghijklmnopqrstuvwxyz",
+   "out": "nopqrstuvwxyzabcdefghijklm"
+  },
+  {
+   "in": "ROT13 9876543210",
+   "out": "EBG13 9876543210"
+  },
+  {
+   "in": "Az Nn Mm Zz  0 9",
+   "out": "Nm Aa Zz Mm  0 9"
+  },
+  {
+   "in": "XzYyXYXZzxzxXzxYXxxZyYyZYxZ",
+   "out": "KmLlKLKMmkmkKmkLKkkMlLlMLkM"
+  },
+  {
+   "in": "AZaz 09 Mm Nn",
+   "out": "NMnm 09 Zz Aa"
+  },
+  {
+   "in": "Jav   mXufip   TVozB   zNaZID   KTNVX   qpjwlA",
+   "out": "Wni   zKhsvc   GIbmO   mAnMVQ   XGAIK   dcwjyN"
+  },
+  {
+   "in": "turheydnvjxgiazmplcobqwkfs",
+   "out": "gheurlqaiwktvnmzcypbodjxsf"
+  },
+  {
+   "in": "UOKHSXBJPFCWZEVGTDRLMIQAYN",
+   "out": "HBXUFKOWCSPJMRITGQEYZVDNLA"
+  },
+  {
+   "in": "  6 9578  5 2 70 597306 22 2",
+   "out": "  6 9578  5 2 70 597306 22 2"
+  },
+  {
+   "in": "onnNnoonnOmNoompMMPnM",
+   "out": "baaAabbaaBzAbbzcZZCaZ"
+  },
+  {
+   "in": "zXzYxyXyZYyzYxzY",
+   "out": "mKmLklKlMLlmLkmL"
+  },
+  {
+   "in": "0 51 5C",
+   "out": "0 51 5P"
+  },
+  {
+   "in": "i   HoMHvLN   xWMIAKS",
+   "out": "v   UbZUiYA   kJZVNXF"
+  },
+  {
+   "in": "uxwedrcitlsnfgoyvqzhmpabjk",
+   "out": "hkjrqepvgyfastblidmuzcnowx"
+  },
+  {
+   "in": "ZDFAIEOUVNKCTJYRBXQLGHSWMP",
+   "out": "MQSNVRBHIAXPGWLEOKDYTUFJZC"
+  },
+  {
+   "in": "9 58 64  9 988935 29 39 950 49 8  55",
+   "out": "9 58 64  9 988935 29 39 950 49 8  55"
+  },
+  {
+   "in": "ooMMONNOnNPoMnPpPomNoOOMMNo",
+   "out": "bbZZBAABaACbZaCcCbzAbBBZZAb"
+  },
+  {
+   "in": "yxZyZz",
+   "out": "lkMlMm"
+  },
+  {
+   "in": "747N",
+   "out": "747A"
+  },
+  {
+   "in": "TLWZJZW   ExnEswh   lacUwg   nQyZwten   Q   NbgAYQv",
+   "out": "GYJMWMJ   RkaRfju   ynpHjt   aDlMjgra   D   AotNLDi"
+  },
+  {
+   "in": "iqazpkucstxlbefjowgndyhmrv",
+   "out": "vdnmcxhpfgkyorswbjtaqluzei"
+  },
+  {
+   "in": "GEWVPUYAKHBRILXQNCTFJDSMOZ",
+   "out": "TRJICHLNXUOEVYKDAPGSWQFZBM"
+  },
+  {
+   "in": "1 004      4   2 8",
+   "out": "1 004      4   2 8"
+  }
+ ],
  "fetched_at": "2026-08-12"
 }

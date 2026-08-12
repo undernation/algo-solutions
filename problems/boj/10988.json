@@ -25,5 +25,107 @@
   }
  ],
  "private_tc_count": 25,
+ "private_testcases": [
+  {
+   "in": "abba",
+   "out": "1"
+  },
+  {
+   "in": "abcba",
+   "out": "1"
+  },
+  {
+   "in": "abca",
+   "out": "0"
+  },
+  {
+   "in": "z",
+   "out": "1"
+  },
+  {
+   "in": "abcdefghijklmnopqrstuvwxyzzyxwvutsrqponmlkjihgfedcba",
+   "out": "1"
+  },
+  {
+   "in": "hxbuauhlrezpjjmjciullqnhypifxqrodavnpcnzhhzncpnvadorqxfipyhnqlluicjmjjpzerlhuaubxh",
+   "out": "1"
+  },
+  {
+   "in": "aoyuqlcxuxclquyoa",
+   "out": "1"
+  },
+  {
+   "in": "odzxytfkxcnklrgxcwcdxucysnrbrrdoyzmwcqvbsdlccldsbvqcwmzyodrrbrnsycuxdjwcxgrlkncxkftyxzdo",
+   "out": "0"
+  },
+  {
+   "in": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "out": "1"
+  },
+  {
+   "in": "cfvrgxqtopwbeqfjgoasjxmicnfjrcvgnpwswrbhpklnjfudzvuprmfnmzgqnsnkaergpvyjdohgsiomhoqrbbvwutfqnprqbjmn",
+   "out": "0"
+  },
+  {
+   "in": "ijsbeqd",
+   "out": "0"
+  },
+  {
+   "in": "lemjaquihopwhemkcpagyfpjerqdeofuddufoedqrejpfygapckmehwpohiuqajmel",
+   "out": "1"
+  },
+  {
+   "in": "ymy",
+   "out": "1"
+  },
+  {
+   "in": "numwpnlnpqxanchrbiiyspawnhwwwhnwapsyiibrhcpaxqpnlnpwmun",
+   "out": "0"
+  },
+  {
+   "in": "ppppppppppppppppppppppppppppppppppppp",
+   "out": "1"
+  },
+  {
+   "in": "jkezzsnibtsfvzcwnvmfetcwwinkqdecupsdtydebushjhesdtbdydcpnfzxfsxrkydpgvbunbqpjlgdapvuucrldmvhlzumoggt",
+   "out": "0"
+  },
+  {
+   "in": "kkejd",
+   "out": "0"
+  },
+  {
+   "in": "i",
+   "out": "1"
+  },
+  {
+   "in": "ioyydubqsgfwqrigkxzovskxekrzialhygkeaxvcnwwncvxaekgyhlaizrkexksvozxkgirqwfgsqbudyyoi",
+   "out": "1"
+  },
+  {
+   "in": "foyof",
+   "out": "1"
+  },
+  {
+   "in": "qemcapujzhvymhuesqbydxppottjmlxamvbzhshzbvmaxlmtttoppxdybqseuhmyvhzjupacmeq",
+   "out": "0"
+  },
+  {
+   "in": "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+   "out": "1"
+  },
+  {
+   "in": "blbihrnyxtqyrbzkvguczjmqxhsfzmxaxvoiyutinswmxewdfhhmzyvzpwpegbhdpxbmivkkibdwaccobxqtximaxxqrhpdsgqgj",
+   "out": "0"
+  },
+  {
+   "in": "brdfpty",
+   "out": "0"
+  },
+  {
+   "in": "savvntodhuhlduowfvcvnvssyxsczzjcaacjzzcsxyssvnvcvfwoudlhuhdotnvvas",
+   "out": "1"
+  }
+ ],
  "fetched_at": "2026-08-12"
 }

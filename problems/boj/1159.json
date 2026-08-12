@@ -25,5 +25,111 @@
   }
  ],
  "private_tc_count": 26,
+ "private_testcases": [
+  {
+   "in": "5\nab\nac\nad\nae\naf",
+   "out": "a"
+  },
+  {
+   "in": "6\nab\nac\nad\nae\nbf\nbg",
+   "out": "PREDAJA"
+  },
+  {
+   "in": "10\naa\nab\nac\nad\nae\nba\nbb\nbc\nbd\nbe",
+   "out": "ab"
+  },
+  {
+   "in": "4\nza\nzb\nzc\nzd",
+   "out": "PREDAJA"
+  },
+  {
+   "in": "11\nma\nmb\nmc\nmd\nme\nna\nnb\nnc\nnd\nne\nzz",
+   "out": "mn"
+  },
+  {
+   "in": "16\naa\nab\nac\nad\nae\nza\nzb\nzc\nzd\nze\nma\nmb\nmc\nmd\nna\nnb",
+   "out": "az"
+  },
+  {
+   "in": "21\nqmouocqhfeqqnqhwzf\nmryiplizrliexyht\nqglqargumlkicmwyfzunw\naxdzxegdfgoxbpsdshsmamfyilsnp\njmopidpogusrdiorcjvegefbrqxbec\nls\nltqhrsqilapebuyejrx\nlnhyuldrhvifnpbpuvvceslzqv\njrxjdpyplufnjfno\naajdvyanramcpqqt\nlibybs\njb\nmxlnyvzknjijbww\nqdhheuayjqouvwddwmmweebxo\nmlqrkaalzhstkljqjfrrjhnaril\nazbxhgidtddtgv\nqxblgcnahxknmncwa\njvkcf\nsftcsiolqca\naybjbqohkxk\nmwig",
+   "out": "PREDAJA"
+  },
+  {
+   "in": "23\nnokzpjjji\njhpeqz\narypyriyeraogyqhbsuzhntdlfvz\nzzvixiqydhhvhdhxizlysduoxy\ngdukhthdxzzygyrppemtuejkemii\nnqmkitscggmagesikmrfne\njjiyfyebqeymhmueceoier\nawyrnbunp\naeeeysnhhxzwmaflwbr\nzzkbvwrfnzurtkgs\njmickmaabszgdiftmpylvd\nzvvcdrc\nafitdlidpxqiphpnevbk\nahgyufdaoebir\ngossllgfthfuqmgq\nahavadh\ngeejdcilj\naxy\nndh\nzfrmjmdqxnmdui\nafhkfuzisvmrgoeqonzx\nzhnocq\nzrmfhlksczrlvuaabzcsnqgy",
+   "out": "az"
+  },
+  {
+   "in": "1\nivyolmtedtglccrotfmmgojquud",
+   "out": "PREDAJA"
+  },
+  {
+   "in": "26\nrkzzebtyoxbri\nrxceihgllaoeeeqbqk\nrzbvqpvwowulmpshvllkswkcgvuw\nraztvjxhz\nrvtcpmnp\nr\nrcpvtoga\nrnxxdinxztehctlsyvtgryjsbfmw\nrzsltrswssylqvmehnaovsvqtgtf\nrow\nrrsvzhaezliiinddwoovchnuklnp\nraydojasg\nrzc\nrgdnisjffrzsbwvwbvjriq\nrvduohjllnrhhd\nreggcjxtllfljqzwugolpfazebqho\nrbc\nraqmmvodvapwg\nroykujhim\nrpqmirffcfgjoqouy\nruvdy\nrayjeayzxtfbrmjvddvgv\nrnoeorf\nrcrnujptpcgvafttfjorziax\nrjhncvipvrilnaqayznpavcsuipa\nrgucfoykpdgmitb",
+   "out": "r"
+  },
+  {
+   "in": "150\njnxecacewjstuzec\nrsshuzynvecfllbqeorlp\nbrluvbmwxydvcispkpxkcixhukzz\nbbh\nyslryjazprpaxwclvvsrlotc\nzdaagsbsqx\noowfzeoqvmliylagcymy\napsvhphlzziwptbvyjy\nioehiwjegoboaommzlmkiag\nnowqzxubtgervtyubuwwx\nnqftnlngujfllnlxehzapiqeqzr\nhxrhbffnk\nfbrynvrgytqtiskau\nkgjpbxkzuzshhekbnpzmmtgykygztw\nhazwsbxxmxbxelhrgkw\nuogrvpkmriwvqnghucsdskmv\nyrzufnuuiimgjjunbkhnpnh\nyteruhwcihjpxcxtzc\nasotanxu\ndqzpifyrjpc\nbxovxfoplxjqqbbnnixtshihdm\nzkepuzjzmrynqmvdpaybcpr\nhvozbfwjxlulxjtarlli\nevcsbmspaijxouifroldaumrmre\nqatifmukjjhuyatkgtxin\nsgfzdhilehafxnicwfu\nqandokkfwzhljoxkofruqhukt\nbrzafjrbvtrillpicvtxgm\neoezkjuvpyppifestosloj\nhjtedanldrmiwvd\nlpgawjknzvxotiegcqfwvr\nsjllyiaqxwfqutbjztyiln\naygfwydsssaeti\nuibnasascxrtjwvlsuwh\nfxlmbmdahyqsctdh\nevytg\nd\noukfccrnwwmrggmtducnsthgxgixof\nxqvtywbajmigcozllwpnnmngoiysmc\nuzaywtgcf\nbl\nqdhmwtka\nsjrkeexhgztdmxyijikgag\ngvzdxpklben\nt\nonjeivojzlwk\nzccjyspsdrl\nmabdldyfs\noaozkibc\nstdbcacxrdlmqi\njhabwdccimqzinbuesfikakrssodw\ngldfaqififzmpbpmwekicjwz\nuhjqdebyyqsbfyg\np\ndrdjdujcwjb\noak\nxksqkdtbiyygxymvrgitm\nflcebwcaymnjcsed\nkquzwamyxuljsqkkpcdjgotetpfb\nyhopovapgkwerneyjvjwewpagljz\ngvjjzahe\nnzgioreuanitzqdtsmi\nmxrwrktiiybgi\nxtchmnqdymrfrcah\nhklaxyh\ngphktrwggfmb\nnpsduyywqpvq\nspqscbdzahxdnfpxrgqxoxgakfy\nvjaxkta\nmhwtioauiqlbysykijltjoky\nnwvqcdtazdftcbgdkedasjjapzr\nldzvjgoseboxtuptrtyayebuf\nnwkkjdcg\nyuwicxzodh\nwwihtswixvnf\naxcstwgleamf\nnktiuwvaowxayyate\nq\ncyrdkhjdpyvhz\nxzozt\nfslrwnhceqnyijj\ngixhlcdxxzulhc\nthpbmkcziqifkckuy\nzjlkmhzcdechsrwnzjysq\nrmflgruddowcihzmzqiuancydydts\njfyliggkzzl\nsncjssz\ngiojfetv\nbyioyx\nw\nbcpbdwrkhzbalkwlbyacpvrzd\nc\nhkatiwrajdbebik\nnxv\ndewh\nxgbunrubgrddzzdfqxnanuvpdh\nwrholljk\nhbjwp\nxjxgphhlyoybwgshqccnkmm\nujbmrkblvuayboommohnuzaynx\nmiwgwlpjkvd\nssvrtgkfoejbmaxsaofhtpxulofy\ndemirewpvwsrkpjwvmjznzjnmw\nhjyqasowyffuzdhtom\nnt\nabinwazdrfrpcbporinabikhvy\npufszsz\nnqibtnfyfyi\nlifcxlpytcc\nvmcx\nwzxxwjsn\nsnmtznrspysxrycquwork\nkjmagkzxdku\nmjgmdqyszfznjonsac\nqfoa\nwbfoflfwrxoyntjgzoh\nokpoeqfaf\nijkxenuqkgcbtrkppheride\nzvwbfylgmntgodgbsxzklwdrhdlcke\nybcwibalaagexy\ngbfggmilngbeqir\nttnfbjzqhksrd\ntdmcnjdkfyfgxrasadulwewvqgie\npxenjzihbrwnibzrnhljkal\njdgxtqgxfzt\nsilihxxdwypdgpcmmxkciopculfzm\ntzjjtqe\nhygeapbsywctufqbnrg\nabfwptcqvjajggosuwk\nqvgfcyvhvdslpssamjvok\nkte\nuc\nikhkhxdaodynapeyxpzprvzrk\nwzbqxvjycuidxtvmhuzbmauyuwk\nmzcldyobc\nvxpludmepuaasyvceumrp\nxc\njqjds\ntisrbnypycltmqvtcmrnupbrhrgq\nbqtua\nqunbaxzaj\nyqqiwvbvnzpmexwoygqb\nuiudhytfrxmayfkjkatj\nsyyoevpfndquclbq\ntkrknfpgmwvrapyemlh\nnwcuquqxsav\ndfqnncdecidrbeqjlutxwj\nkdgboxzalvgfpgsvfbaipnvmou\nxtqcepgcjqxaxhwscuersajfkpkc\nvpmgp",
+   "out": "abdghjkmnoqstuwxyz"
+  },
+  {
+   "in": "9\nezkemc\nevxituprwpmqxpubqcipzvwlthdixn\nhdgzopzccrpcgjmcovdtsdglevpu\negx\neu\ne\nqouqflcxvsbwlqtbtpabwksq\ne\nliltehttx",
+   "out": "e"
+  },
+  {
+   "in": "50\ndjmszcbfitvhcfgouheezidl\neiyxatykhupracbpwevkyina\nejguzmte\ndklwhevwfiszaf\ndukqqtsjasdjorwkjyybaczdjrolf\nevzrvowpbkpoq\ndzwtakynxlolixxxtggaixmlvtzng\njrriu\nbcsfpidpngojafnhcxjmmnv\nelffuiogclhirljsbcsce\niqsbmjqtdmimd\nbfnsfpyfwaxijulp\ngr\nakrdfsxatewmfrvepllyiopan\neuavbp\nbue\ncqpdorbruhggmjbpqjnipzytxwk\ncagzuyjptbepnrpnqjkagowatlvuen\neqzho\nismlqchgrzowfanyclo\nhlvykasxqrbwytkeeiimxkqtmjps\navekqqw\nhlhejmxrotsi\ni\nhbypcugcnnilhxmt\ndnowyiyfmhruopdvvwwervinno\nhcaamgfrgcyoogntuskb\ncdoaflsydepgznxfvcwgtfmyylgl\ndrdiwyxsbllqfavmj\nirduoftdevcb\nagtwnylzqbnbtamufpyslxfuksi\ngkljwkqy\nbijeeqyepcoin\nehnm\navjwdpfwiiwfxaxcduokwrl\nclscadardnd\ndscblk\ncuszcdnsyzkfehx\nayqlswfdzybzcfygtm\nawlw\narjvjxrsvcnnrmvycbrkho\naegryqdcfuz\nevhpseyhuuiflgunyie\njhmbdheiisujyjomiqdca\njfwdfmgeccmysfn\ngpiuoaohvaeggevfmlpbbifiowmis\ndohyzoderj\nfhsdrbziggfpzhwayukyrmxssd\nbvzgazxmdbvhobuhobzre\njtfgvuxkxue",
+   "out": "abcde"
+  },
+  {
+   "in": "15\ntykinthoaikhvyiatpzfvfrsiz\ncdcfrdmjevukrjucgzx\nrewmr\nsyygqjxvslmf\nhmt\nyt\nyzeid\nfcgnmqmlsafomk\nyyxnrtivunrkizrohmxszorctppy\ntwwm\nbnxalobxmuqlklefvmwtz\nggezopna\nyzxdingum\nggdaiigeooqbwriz\nyxhlnkivpxmkoqnwoyyiaklkacsfzt",
+   "out": "y"
+  },
+  {
+   "in": "23\nvbfrja\npmqmtjhia\nehhiijpbuurnmisk\npfcguvnxjqvskimafbmramj\nbz\newbeyedwfvzbwxcnzywaldto\nvkgxpctwf\nwiscbegapycj\nwovdrerkqzh\nbrqiiigztqi\nhtncncqftsbqcniuuntqmfq\nboiszpgcvrlickogzdqrxwayc\nefxupokbrinujeomcrjiqlnlfrny\npy\nwphrcqdv\npnbkeuzmxcu\nxvkqgcuujg\nedfsivaborboblfetvdpmghup\nbt\nvymdghcwdihjfrcnrtoldwzjsit\nvna\nwoj\nprrkmzpsrsnotlutqywiovkpvmjl",
+   "out": "p"
+  },
+  {
+   "in": "22\nmxkhowyz\nazqf\nx\nzbpdhgjao\navjnf\nub\nzeyjgrtxlneff\nayhqvlaeyqchhb\nztkafnrcvi\naskbcashqkrhopwahyfhzklzkxnq\nupoyubqfrjnniizezdiado\nzlammiwqurkrwakwbm\nztbeznmkdmvnxsyfsbvlxrplnz\nxlcdhwwisbfykfstwbxcprraz\nzauykmeppllurpxmknk\napcipbqmgtruhkjanprgzd\nuskuaiepfpd\nasaavsjcwgzbtnpwf\naqwxatemndtmsormjcdltnoxgsfy\naohsdxglcslmxfqvrbrxkg\nmnsyzgbsegpcdrzkliqazkwm\nasrm",
+   "out": "az"
+  },
+  {
+   "in": "1\nlfphbva",
+   "out": "PREDAJA"
+  },
+  {
+   "in": "11\nbp\nbcugqmyby\nbfcmxmgastgvnczi\nbmogjhwzwqh\nbpxabdqpxxujefru\nbzwfybyohykvkjqnkqjaeiajn\nbouabwpfrtiftcjyeillnuzurdt\nbxwsjtnjednnzyjflxzrxthh\nbnvbmhajznrnpntnryyaujdvnk\nbkrtbpowumwbpjxfk\nbqpmr",
+   "out": "b"
+  },
+  {
+   "in": "150\nyglydzcfmgracjalapujjuofikx\nwkuwbueypduzapwfi\nqx\nldpzfrpbfhzeyvalcltbkww\nbledgbffpbkoicralnwbtd\ncpgmcpxmjkwguhzdaxioatgkfx\nxqyhyepiendhacypkpoxephctmalk\ngynlrillyxmgn\ncl\nyewwblxpufiuwesavpzykhborbr\nelqfwgrkfh\nmczqbjfwmvlod\nzknswqdxjxnrptc\nwolfxxhtholggnchkvwjk\nkk\nntgwvbqencwisudazaoh\nyrzglzzywjptmj\nqapcoyrnybgkapectkgvlctyie\nyqcczaqcgogigu\nyxgioecdabremrq\neue\nzuhpdsezjwepnfkusnpngrd\nwnokfpbnnkshht\nsrwlrjgrulq\nxvrapgdto\nuefltzoqpbujpxbtsceirdjj\netcdoddofxmldbfnkoailivzmexjx\njlxexjsresqtwkvnkfbqlyitdldbz\nyluak\nbwoceoigxdagfzsayixerexeb\nbbpawcdojcniwymguyimomj\ntlgqaxymnlkenndhnbq\nbtsqpmfmxibwa\njh\nghsleiiruavccftpqnawxkosebapm\nmauekpexfyokthtyvddmzdvdcqrdw\nclvemxpll\nxmwlocrgcgwe\nmb\naboj\ndccuqtrtzwdecvoyk\nqufkrcxugtcxtzt\nylcisnfxgxbymnjmhy\nsxkvvgozkwm\nj\nopqzmyowxmymdbwesklgiazaiv\nsgjlwtvcfwudgmgixhysf\nrkrjumybsrsqmvfqwbpqsjysxocqwo\norpcgstxzihpqqxnechnljrejg\ndbicrmojygvgunjieswxwrv\nmfweudasws\nshfpgdvpx\nqkeyobzvijz\nqeworysbjmwrlfzinxbb\nakpzhikt\ni\nscwhzlbiqgothdazqaxaaqmdaw\nxfzpqbcpmfiswwpjwm\nsxheoadeofg\nstzfjeufjfugix\ndlaomgapdscdp\nxdmhrpck\nzhexyselzhjeydynnqkvwol\nijezbwrwli\nydvjhttjfxchgfzyfesjiqee\nnyidtnajpoxtdkqofgheoxdrzcob\npontmhpznlgqccxlnfxgqeka\npssyermkw\nwudojh\nnxivxdogcbwpehqrr\ntkinfzdnqsliyztwvvc\ndokviq\neit\nad\nydxoothfdiubsy\ncvftcbbzddihxfgq\nnnyp\neucikyduql\ntnspfxrtlcu\nkkywtatcthklslbwaepsdaoaw\ngtkydpryurxdkyutz\nf\nfvkhliqal\nmorudrqjkxgjfaicjjqqhi\niebxuhoziutkwy\ng\nbacnvqbkruxgd\nzltuycpfwotornz\ntxcwfjjcfboijcaqajhe\nidp\ne\nkadcyfdrhimufilhigiccjo\nupptowszkgcfnotitii\npsle\nbnjwckbqghug\nppewzoejh\npseztephotiakonottmplyjrnza\nyfwidmddfoe\nrhymzhjizqapzh\nrwozbazwemqajbzepomq\naagkatkbjdtpvksshxewqd\ntiwjajzwromnhwawmmrhzby\nagozhqyuggvlwmkkzedjszubk\nctsekfpuyiqqjtxqwhxkmpk\nyerqmeptohtga\npngptkyyixei\nrcqilxebzqksrdfndeyhqph\ntet\nyjqorqheplkkvkugc\nnxhvawngahduluytejxzkjqhqspzq\nwzeyupmekrwcbtchzhhftyeps\ni\nmblymftadqrbwfya\nrrcyolxygtqcq\nwdktpadxqf\nheikpvpybimeodhbdzdkcoo\nzwgi\nomjxffjqnsqybypqwmekzje\nurrldgm\nfakldhicecbpmjaoraygmht\nkahjgildwxwae\nywgddyfjzoskunvgpmj\noxuscnkptfioscxvnmbktgukto\nmisxhjkhwquqgatzmnodc\nrtgvmvnqrjzlfetmhailoxrkqi\nm\njsjxyybrqhrndghq\nsblfdggjeyvvoucnfmdne\neydfi\ndajvlquedljsftu\ntkvsjrvpyyjyxklrqablz\nncqbleepfrqzplqnjl\nztcfcagguiqxhmdy\nedrzuepvqc\nxrpydifhomykwcqogumkcvhczfurzq\nwykhlmfpnper\nxslaksdqvcysw\nkzvxntu\nqdnrwdlpf\nybobfddkwgcun\nrehweibixoxdpbzzkgcvsno\nwaxgrsbbczaphqqsgocptydttsn\njcqangilhgsejxihtbkk\nsebealfthacowqw\nrydlmprsseuaptygxsdtbhruccob\ntdtgbybkkccxk\nr\nxubmdcspdeqdmngyzvthewflodgulf\nvtxtkyhbpmczucp\nzzrsawokfmabngltuxzw",
+   "out": "abcdeijkmnpqrstwxyz"
+  },
+  {
+   "in": "16\nbhdkvjtmtvdvfrk\ndpyc\naxxdqpcwimx\njsmhxcwpwdkoejewnmbufnljr\ngaos\nqpdyrtfztjleaqyejsjexwpijq\naaeesfesgandoeyln\ncgioddfqiadlvaljjnjvdfcba\nczyytzybptax\naalrusjtot\nanbmhlcppvnatik\ncy\nttatyrumltgjvtnuspp\nazstpnuzrllzpkghluubikr\ni\nawwocfb",
+   "out": "a"
+  },
+  {
+   "in": "37\ngaeednjwlvqfvgscdmwrsdollww\nekmu\ndbxonqklqauhojsigbdwdadvrvin\naurcmcmedjirthhxlmxiiju\nezxcfuyhqhftpciflu\njwqumurarffjburbjddksimfofi\naqiyjlhislj\nelkogywyxchimxxazcwtfvmkqxaf\nhcimmz\ncopyasn\ncsxhknlytlcdajf\nbna\nheiganxrzoceuix\nfedodjbmflnidiyzey\nhtyfyhjfghvebtsphkoqbgd\nbixgbjfgxofcesmilbdcdhxnnpfvak\nbsdbrkyxkuudwnmmp\nerctudkuxkowoyhugddroyoymv\nelgysxrsxpjbuv\njjjisn\nc\niecwdhpqaaghdn\nccrukzmygblypdt\ndtkiuphjxiyzcbddft\ngd\nfmsrrsrq\nceicmzawiwcmyba\nhjkkdevsafbjbroiqvkkc\nepmxoytugltccaebijnuclsvzqci\ndddrdguevpkoksjwqopvafb\ncdcwz\nirhlgrze\nb\nbnpkwvgzcbkoumslsazyifuh\naffcqpfduifzdasnsymfmomdmx\ngiwibutlxfcja\ncpnhrrxyhgefrvbfbalmqrqp",
+   "out": "bce"
+  },
+  {
+   "in": "12\nmtsa\noyjkohdywqeozytuyjzni\nmbeoiomhrpyldmgdojdeq\ngechdorttfigdwozsarrtxupydoo\nrzhzpcfihbnk\nmdicjutpikbqsqscwu\njjcprbjn\nztxbo\nimxmxoybxumujltiasrgxtvhsm\ntyknmwqjzjlsiuyzfcv\nmioemeafchdrpgizgchkujrki\nmfworrvrblrveptgpjckvi",
+   "out": "m"
+  },
+  {
+   "in": "21\njnigpvvtnnvifmujuwvrevqukz\nhicbxaljkmwkjalmtdn\nhxsx\njlsdmeyopugiaamdfcyiiskwfgisvu\nrrmkqdmzcqjetvbjvxbnswbtcbdu\nspfip\nngysxdgqrdbszrcjrmb\nrcwy\ntccnsstgwlpzoask\nrjbtkrdxehnzuiutljfxxpqandul\nhlirbwdxrktglcybssipdvw\njboszrsztmzph\njobgotvjlaxrwdisngghtydyrtvewf\nsbjwbtccsdptrgsoutapj\nsklsygwabscfdxbs\nrot\ntt\nhmfwrzzmvompltc\ntleuvllqmylgnzxmfdfmeigylgwsxs\nsvibhdiruzgfcawpg\ntwzbubtjqkbrtga",
+   "out": "PREDAJA"
+  },
+  {
+   "in": "23\naqqpxicztejkwovscwyea\nvdcthjvcjzojpiwtjqyrxppdub\noewpgh\naknqdqriaayieelinoctguple\nzluoynt\naofnwlc\nzzkoqnffwkepmtlufcbfiwtmyb\naqerhzfcjzezncofhdourt\nawqzimfvdzfmulzblrlbtikndo\naowjtkg\nzlmzikqve\nzdtkujmrvpalgkto\nvdypahqauqlkbgiyai\nzabpmhimecokdyyolmzuivdpaxmni\nzliblssgcshawpjhksbpljzsgi\nbwi\nvghsy\nzxowjhrsnnywseavctastdaucuqbd\naneovbvmuxlxcziarmfa\nvbukbrxwgep\nasmbxylouqwvrzkwixbvuktvzwxjht\nobmyypdt\nzonbatropfvhfrgdrlpffulwlpjoyv",
+   "out": "az"
+  },
+  {
+   "in": "1\ngjikgcbffim",
+   "out": "PREDAJA"
+  },
+  {
+   "in": "17\ncqfbnwjbbpkdalsugotkj\ncvsyyrgutjthteetsner\nc\ncoujbkmgnwuhexx\ncrihjvzoqkfhylnsbgoixjzibu\ncainyuiqblpvsjhc\ncijkinjdeaik\ncmhgkeszmxoiiusberizw\ncpamdpn\ncg\ncqs\ncrtbzrhwqtulfo\ncmpykpslrgazcuodarmys\nchewik\nczxhlzfnhykathklqebijgs\ncjctdhtd\nccswxvljkeln",
+   "out": "c"
+  }
+ ],
  "fetched_at": "2026-08-12"
 }
