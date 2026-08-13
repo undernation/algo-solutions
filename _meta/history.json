@@ -4405,7 +4405,7 @@
   ]
  },
  "2026-08-13": {
-  "count": 4,
+  "count": 5,
   "items": [
    {
     "at": "10:45:53",
@@ -4452,6 +4452,18 @@
     "site": "SWEA",
     "status": "품",
     "title": "[모의 SW 역량테스트] 등산로 조성",
+    "total": 1,
+    "verdict": "accepted"
+   },
+   {
+    "at": "14:09:00",
+    "elapsed": 0.274,
+    "file": "swea/1288_새로운불면증치료법D2.py",
+    "no": "1288",
+    "passed": 1,
+    "site": "SWEA",
+    "status": "품",
+    "title": "새로운 불면증 치료법 D2",
     "total": 1,
     "verdict": "accepted"
    }
