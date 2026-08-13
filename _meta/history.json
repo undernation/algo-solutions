@@ -4405,7 +4405,7 @@
   ]
  },
  "2026-08-13": {
-  "count": 3,
+  "count": 4,
   "items": [
    {
     "at": "10:45:53",
@@ -4440,6 +4440,18 @@
     "site": "SWEA",
     "status": "품",
     "title": "[모의 SW 역량테스트] 수영장",
+    "total": 1,
+    "verdict": "accepted"
+   },
+   {
+    "at": "13:45:57",
+    "elapsed": 0.769,
+    "file": "swea/1949_[모의SW역량테스트]등산로조성.py",
+    "no": "1949",
+    "passed": 1,
+    "site": "SWEA",
+    "status": "품",
+    "title": "[모의 SW 역량테스트] 등산로 조성",
     "total": 1,
     "verdict": "accepted"
    }
