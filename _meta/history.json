@@ -4405,7 +4405,7 @@
   ]
  },
  "2026-08-13": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "10:45:53",
@@ -4416,6 +4416,18 @@
     "site": "SWEA",
     "status": "품",
     "title": "[모의 SW 역량테스트] 디저트 카페",
+    "total": 1,
+    "verdict": "accepted"
+   },
+   {
+    "at": "12:47:41",
+    "elapsed": 0.403,
+    "file": "swea/1953_[모의SW역량테스트]탈주범검거.py",
+    "no": "1953",
+    "passed": 1,
+    "site": "SWEA",
+    "status": "품",
+    "title": "[모의 SW 역량테스트] 탈주범 검거",
     "total": 1,
     "verdict": "accepted"
    }
