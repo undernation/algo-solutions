@@ -6,8 +6,6 @@ https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV1
 한도   : time 100개 테스트케이스를 합쳐서 C++의 경우 1초 / Java의 경우 2초 / Python의 경우 4초 / memory 힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내 / time_sec 4
 난이도 : Master  |  정답률 82.77%
 
-[채점] accepted  1/1  (0.274s)
-
 [문제]
 호석이는 불면증에 걸렸다. 그래서 잠이 안 올 때의 민간요법 중 하나인 양 세기를 하려고 한다.
 
