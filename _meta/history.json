@@ -4405,7 +4405,7 @@
   ]
  },
  "2026-08-13": {
-  "count": 2,
+  "count": 3,
   "items": [
    {
     "at": "10:45:53",
@@ -4428,6 +4428,18 @@
     "site": "SWEA",
     "status": "품",
     "title": "[모의 SW 역량테스트] 탈주범 검거",
+    "total": 1,
+    "verdict": "accepted"
+   },
+   {
+    "at": "13:14:06",
+    "elapsed": 0.232,
+    "file": "swea/1952_[모의SW역량테스트]수영장.py",
+    "no": "1952",
+    "passed": 1,
+    "site": "SWEA",
+    "status": "품",
+    "title": "[모의 SW 역량테스트] 수영장",
     "total": 1,
     "verdict": "accepted"
    }
