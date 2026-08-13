@@ -91,6 +91,12 @@ tbody tr:hover{background:var(--soft)}
 td.l{text-align:left}
 td.n{font-variant-numeric:tabular-nums;color:var(--sub);font-size:13px}
 .empty{padding:38px;text-align:center;color:var(--sub);font-size:14px}
+/* 낡은 탭 알림 — 데이터가 HTML 에 박혀 있어 새로고침 전엔 옛 값이 보인다. */
+#stale{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:60;
+  display:none;gap:10px;align-items:center;padding:10px 14px;border-radius:8px;
+  background:var(--panel);border:1px solid var(--ac);box-shadow:0 6px 22px rgba(0,0,0,.28);
+  font-size:13.5px}
+#stale button{padding:4px 12px}
 /* .hint 는 여러 곳에서 쓰이는데 정의가 없어 본문 크기로 나오고 있었다. */
 .hint{font-size:12.5px;color:var(--sub);line-height:1.7}
 .kbd{margin-left:auto;align-self:center;white-space:nowrap}
@@ -323,6 +329,9 @@ button.danger:hover{opacity:.88;color:#fff;border-color:var(--no)}
  <div class="vd" id="dcv"></div>
 </div></div>
 <div id="tip"></div>
+<div id="stale"><span id="stalemsg"></span>
+ <button class="p" onclick="location.reload()">새로고침</button>
+ <button class="sm" onclick="document.getElementById('stale').style.display='none'">나중에</button></div>
 
 <script>
 var D=__DATA__;
@@ -1457,18 +1466,47 @@ document.addEventListener("keydown",function(e){
  if($("dc").style.display==="block"){closeDel();return;}
  if($("ad").style.display==="block"){closeAdd();return;}
  closeCode();});
+/* ════════ 낡은 탭 감지 ════════
+   통계·잔디 데이터가 index.html 안에 박혀 있어서, 어제 열어둔 탭은 오늘 푼
+   문제를 "0문제 · 색 없음" 으로 조용히 보여준다(실제로 겪음, 2026-08-13).
+   빌드가 남긴 _meta/built.json 의 stamp 와 비교해 다르면 알려준다. */
+async function checkFresh(){
+ try{
+  var r=await fetch("./_meta/built.json?t="+Date.now(),{cache:"no-store"});
+  if(!r.ok) return;
+  var j=await r.json();
+  if(!j.stamp || j.stamp===D.stamp) return;
+  var n=(j.total||0)-(D.total||0);
+  $("stalemsg").innerHTML="이 페이지는 <b>"+esc((D.stamp||"").slice(0,16))+"</b> 기준입니다."
+    +(n>0?" 이후 <b>"+n+"문제</b>가 기록됐어요.":" 새 기록이 있습니다.");
+  $("stale").style.display="flex";
+ }catch(e){}
+}
+document.addEventListener("visibilitychange",function(){
+ if(!document.hidden) checkFresh();          /* 탭으로 돌아올 때마다 확인 */
+});
+
 go();
 hubReady();
+checkFresh();
+setInterval(checkFresh, 300000);              /* 켜둔 채 있어도 5분마다 */
 </script></html>"""
 
 
 def render_dashboard(data, year, total, active, best, cells, rows,
                      probs=None, catalog=None):
+    # ⚠️ KST 기준으로 찍는다. date.today() 를 쓰면 UTC 인 클라우드 VM 에서
+    #    새벽 0~9 시에 하루 밀린 날짜가 박힌다.
+    kst = datetime.timezone(datetime.timedelta(hours=9))
+    now = datetime.datetime.now(kst)
     payload = json.dumps({
         "cells": cells, "rows": rows, "year": year,
         "total": total, "active": active, "best": best,
         "probs": probs or {"count": 0, "items": {}},
         "catalog": catalog or [],
-        "built": datetime.date.today().isoformat(),
+        "built": now.date().isoformat(),
+        # 이 페이지가 만들어진 시점. 브라우저가 _meta/built.json 과 비교해
+        # 열어둔 탭이 낡았는지 스스로 안다(아래 checkFresh).
+        "stamp": now.strftime("%Y-%m-%d %H:%M:%S"),
     }, ensure_ascii=False)
     return TEMPLATE.replace("__DATA__", payload)

@@ -493,6 +493,16 @@ def main():
     # GitHub Pages 진입점 (repo 루트)
     io.open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8", newline="").write(page)
 
+    # 열어둔 탭이 낡았는지 브라우저가 알 수 있게 하는 작은 표식.
+    # 데이터가 index.html 안에 박혀 있어, 어제 열어둔 탭은 오늘 기록을
+    # "0문제 · 색 없음"으로 조용히 보여준다(2026-08-13 실제 사고).
+    # 페이지가 이 파일을 주기적으로 읽어 stamp 가 다르면 새로고침을 권한다.
+    m = re.search(r'"stamp":\s*"([^"]+)"', page)
+    io.open(os.path.join(ROOT, "_meta", "built.json"), "w",
+            encoding="utf-8", newline="").write(
+        json.dumps({"stamp": m.group(1) if m else "",
+                    "total": total, "active": active}, ensure_ascii=False))
+
     io.open(FULL, "w", encoding="utf-8", newline="").write(
         "# 🌱 코테 잔디 — 전체 기록 (%d)\n\n"
         "![](./assets/heatmap.svg)\n\n"
