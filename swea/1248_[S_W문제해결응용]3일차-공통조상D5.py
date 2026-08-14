@@ -6,7 +6,7 @@ https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV1
 한도   : time 10개 테스트케이스를 합쳐서 C++의 경우 10초 / Java의 경우 20초 / Python의 경우 30초 / memory 힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내 / time_sec 30
 난이도 : Master  |  정답률 78.49%
 
-[채점] accepted  1/1  (0.403s)
+[채점] accepted  1/1  (0.413s)
 
 [문제]
 ※ SW Expert 아카데미의 문제를 무단 복제하는 것을 금지합니다.

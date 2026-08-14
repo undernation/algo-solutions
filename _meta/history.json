@@ -4532,7 +4532,7 @@
     "verdict": "accepted"
    },
    {
-    "at": "14:52:08",
+    "at": "14:53:17",
     "attempts": [
      {
       "at": "14:52:08",
@@ -4542,9 +4542,18 @@
       "status": "품",
       "total": 1,
       "verdict": "accepted"
+     },
+     {
+      "at": "14:53:17",
+      "elapsed": 0.413,
+      "file": "swea/1248_[S_W문제해결응용]3일차-공통조상D5.py",
+      "passed": 1,
+      "status": "품",
+      "total": 1,
+      "verdict": "accepted"
      }
     ],
-    "elapsed": 0.403,
+    "elapsed": 0.413,
     "file": "swea/1248_[S_W문제해결응용]3일차-공통조상D5.py",
     "no": "1248",
     "passed": 1,
