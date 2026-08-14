@@ -4477,12 +4477,16 @@
     "title": "이진수 표현 D3"
    },
    {
-    "at": "13:06:39",
+    "at": "13:07:17",
+    "elapsed": 0.578,
     "file": "swea/1873_상호의배틀필드D3.py",
     "no": "1873",
+    "passed": 1,
     "site": "SWEA",
-    "status": "틀림",
-    "title": "상호의 배틀필드 D3"
+    "status": "품",
+    "title": "상호의 배틀필드 D3",
+    "total": 1,
+    "verdict": "accepted"
    }
   ]
  }

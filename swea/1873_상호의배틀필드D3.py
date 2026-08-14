@@ -2,9 +2,11 @@
 SWEA 1873  상호의 배틀필드 D3
 https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5LyE7KD2ADFAXc
 
-풀이일 : 2026-08-14   결과: 틀림
+풀이일 : 2026-08-14   결과: 품
 한도   : time 98개 테스트케이스를 합쳐서 C++의 경우 2초 / Java의 경우 4초 / Python의 경우 8초 / memory 힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내 / time_sec 8
 난이도 : Master  |  정답률 52.57%
+
+[채점] accepted  1/1  (0.578s)
 
 [문제]
 상호는 전차로 시가전을 하는 것을 테마로 한 새로운 게임 “배틀 필드”를 개발하기로 했다.
@@ -3068,9 +3070,11 @@ for test_case in range(1, T + 1):
         nx = cx + dx
         cur_d = direction
         if not (0 <= ny < H and 0 <= nx < W):
+            board[cy][cx] = tanks[cur_d]
             return
         
         if board[ny][nx] in obstacles:
+            board[cy][cx] = tanks[cur_d]
             return
         # 움직일 수 있는 경우
         cur_tank = [ny, nx]
