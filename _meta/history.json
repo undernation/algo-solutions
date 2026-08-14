@@ -4489,7 +4489,7 @@
     "verdict": "wrong_answer"
    },
    {
-    "at": "13:19:46",
+    "at": "13:19:54",
     "attempts": [
      {
       "at": "13:19:46",
@@ -4499,17 +4499,26 @@
       "status": "틀림",
       "total": 10,
       "verdict": "wrong_answer"
+     },
+     {
+      "at": "13:19:54",
+      "elapsed": 0.42,
+      "file": "boj/99999.py",
+      "passed": 10,
+      "status": "품",
+      "total": 10,
+      "verdict": "accepted"
      }
     ],
     "elapsed": 0.42,
     "file": "boj/99999.py",
     "no": "99999",
-    "passed": 3,
+    "passed": 10,
     "site": "BOJ",
-    "status": "틀림",
+    "status": "품",
     "title": "이력 확인용(삭제 예정)",
     "total": 10,
-    "verdict": "wrong_answer"
+    "verdict": "accepted"
    }
   ]
  }
