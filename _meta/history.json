@@ -4466,7 +4466,7 @@
   ]
  },
  "2026-08-14": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "11:34:21",
@@ -4475,6 +4475,18 @@
     "site": "SWEA",
     "status": "품",
     "title": "이진수 표현 D3"
+   },
+   {
+    "at": "13:04:53",
+    "elapsed": 0.597,
+    "file": "swea/1873_상호의배틀필드D3.py",
+    "no": "1873",
+    "passed": 0,
+    "site": "SWEA",
+    "status": "틀림",
+    "title": "상호의 배틀필드 D3",
+    "total": 1,
+    "verdict": "wrong_answer"
    }
   ]
  }
