@@ -4466,7 +4466,7 @@
   ]
  },
  "2026-08-14": {
-  "count": 3,
+  "count": 2,
   "items": [
    {
     "at": "11:34:21",
@@ -4487,38 +4487,6 @@
     "title": "상호의 배틀필드 D3",
     "total": 1,
     "verdict": "wrong_answer"
-   },
-   {
-    "at": "13:19:54",
-    "attempts": [
-     {
-      "at": "13:19:46",
-      "elapsed": 0.42,
-      "file": "boj/99999.py",
-      "passed": 3,
-      "status": "틀림",
-      "total": 10,
-      "verdict": "wrong_answer"
-     },
-     {
-      "at": "13:19:54",
-      "elapsed": 0.42,
-      "file": "boj/99999.py",
-      "passed": 10,
-      "status": "품",
-      "total": 10,
-      "verdict": "accepted"
-     }
-    ],
-    "elapsed": 0.42,
-    "file": "boj/99999.py",
-    "no": "99999",
-    "passed": 10,
-    "site": "BOJ",
-    "status": "품",
-    "title": "이력 확인용(삭제 예정)",
-    "total": 10,
-    "verdict": "accepted"
    }
   ]
  }
