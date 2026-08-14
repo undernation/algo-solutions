@@ -15,7 +15,7 @@
  "limits": {
   "time": "10개 테스트케이스를 합쳐서 C++의 경우 10초 / Java의 경우 20초 / Python의 경우 30초",
   "memory": "힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내",
-  "time_sec": 30.0
+  "time_sec": 30
  },
  "constraints": [
   "고객의 수 N은 2≤N≤10 이다.",
