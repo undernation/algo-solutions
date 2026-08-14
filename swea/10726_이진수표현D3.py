@@ -6,8 +6,6 @@ https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXR
 한도   : time 10000개 테스트케이스를 합쳐서 C의 경우 1초 / C++의 경우 1초 / Java의 경우 2초 / Python의 경우 2초 / memory 힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내 / time_sec 2
 난이도 : Master  |  정답률 59.73%
 
-[채점] accepted  1/1  (0.285s)
-
 [문제]
 정수 N, M 이 주어질 때, M의 이진수 표현의 마지막 N 비트가 모두 1로 켜져 있는지 아닌지를 판별하여 출력하라.
 
