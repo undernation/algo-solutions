@@ -1682,7 +1682,10 @@ async function checkFresh(){
   var r=await fetch("./_meta/built.json?t="+Date.now(),{cache:"no-store"});
   if(!r.ok) return;
   var j=await r.json();
-  if(!j.stamp || j.stamp===D.stamp) return;
+  /* '다르면' 이 아니라 '더 새로우면' 알린다. 예전엔 단순 비교라,
+     built.json 이 index.html 보다 낡기만 해도(rebase 로 짝이 어긋나면 생긴다)
+     팝업이 영원히 안 사라졌다. stamp 는 "YYYY-MM-DD HH:MM:SS" 라 문자열 비교로 충분. */
+  if(!j.stamp || !(j.stamp > (D.stamp||""))) return;
   var n=(j.total||0)-(D.total||0);
   $("stalemsg").innerHTML="이 페이지는 <b>"+esc((D.stamp||"").slice(0,16))+"</b> 기준입니다."
     +(n>0?" 이후 <b>"+n+"문제</b>가 기록됐어요.":" 새 기록이 있습니다.")
