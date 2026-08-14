@@ -4466,7 +4466,7 @@
   ]
  },
  "2026-08-14": {
-  "count": 5,
+  "count": 4,
   "items": [
    {
     "at": "11:34:21",
@@ -4560,29 +4560,6 @@
     "site": "SWEA",
     "status": "품",
     "title": "[S/W 문제해결 응용] 3일차 - 공통조상 D5",
-    "total": 1,
-    "verdict": "accepted"
-   },
-   {
-    "at": "14:55:36",
-    "attempts": [
-     {
-      "at": "14:55:36",
-      "elapsed": 0.1,
-      "file": "boj/99998.py",
-      "passed": 1,
-      "status": "품",
-      "total": 1,
-      "verdict": "accepted"
-     }
-    ],
-    "elapsed": 0.1,
-    "file": "boj/99998.py",
-    "no": "99998",
-    "passed": 1,
-    "site": "BOJ",
-    "status": "품",
-    "title": "반영지연 확인용(삭제 예정)",
     "total": 1,
     "verdict": "accepted"
    }
