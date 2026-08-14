@@ -307,18 +307,20 @@ button.danger:hover{opacity:.88;color:#fff;border-color:var(--no)}
  color:var(--mute);user-select:none;position:sticky;left:0;background:var(--panel)}
 .codebox .cl:hover .ln{background:var(--soft);color:var(--sub)}
 .codebox .lc{white-space:pre;flex:1 1 auto}
-.codebox .t-kw{color:#cf222e;font-weight:600}   /* def class if for ... */
-.codebox .t-bi{color:#6639ba}                   /* print len range ... */
-.codebox .t-fn{color:#8250df;font-weight:600}   /* def/class 뒤의 이름 */
-.codebox .t-str{color:#0a3069}
-.codebox .t-num{color:#0550ae}
-.codebox .t-cm{color:#6e7781;font-style:italic}
-.codebox .t-dec{color:#953800}                  /* @decorator */
-.codebox .t-op{color:#0550ae}
+/* 토큰 색은 전역이다 — 코드 페이지(.codebox)와 복기 메모의 코드블록(.mdcode)이
+   같은 색을 쓴다. 같은 코드가 화면마다 달라 보이면 오히려 헷갈린다. */
+.t-kw{color:#cf222e;font-weight:600}   /* def class if for ... */
+.t-bi{color:#6639ba}                   /* print len range ... */
+.t-fn{color:#8250df;font-weight:600}   /* def/class 뒤의 이름 */
+.t-str{color:#0a3069}
+.t-num{color:#0550ae}
+.t-cm{color:#6e7781;font-style:italic}
+.t-dec{color:#953800}                  /* @decorator */
+.t-op{color:#0550ae}
 @media(prefers-color-scheme:dark){
- .codebox .t-kw{color:#ff7b72} .codebox .t-bi{color:#d2a8ff} .codebox .t-fn{color:#d2a8ff}
- .codebox .t-str{color:#a5d6ff} .codebox .t-num{color:#79c0ff} .codebox .t-cm{color:#8b949e}
- .codebox .t-dec{color:#ffa657} .codebox .t-op{color:#79c0ff}
+ .t-kw{color:#ff7b72} .t-bi{color:#d2a8ff} .t-fn{color:#d2a8ff}
+ .t-str{color:#a5d6ff} .t-num{color:#79c0ff} .t-cm{color:#8b949e}
+ .t-dec{color:#ffa657} .t-op{color:#79c0ff}
 }
 #tip{position:fixed;display:none;background:#1f2328;color:#fff;padding:9px 12px;border-radius:6px;
  font-size:12.5px;line-height:1.65;pointer-events:none;z-index:99;box-shadow:0 6px 22px rgba(0,0,0,.45);max-width:340px}
@@ -702,8 +704,9 @@ function tbl(rows){
     /* 진짜 링크로 둔다 — 새 탭으로 열거나 주소를 공유할 수 있다 */
     '<td>'+(r.file?'<a class="lnk" style="color:var(--ac)" href="#c/'+
       encodeURIComponent(r.file)+'">보기</a>':'<span style="color:var(--mute)">—</span>')+'</td>'+
-    '<td><span class="del" title="이 풀이 기록 삭제" onclick="askDelSub(\''+esc(r.site)+
-      '\',\''+esc(r.no)+'\',\''+esc(r.date)+'\',event)">&#128465;</span></td></tr>';
+    /* at 을 같이 넘겨 '이 회차만' 지운다. 안 넘기면 그날 제출이 통째로 지워진다. */
+    '<td><span class="del" title="이 제출 기록 삭제" onclick="askDelSub(\''+esc(r.site)+
+      '\',\''+esc(r.no)+'\',\''+esc(r.date)+'\',event,\''+esc(r.at||"")+'\')">&#128465;</span></td></tr>';
   }).join("")+'</tbody></table>';
 }
 
@@ -962,6 +965,29 @@ async function dlBigTC(i){
 /* ════════ 복기 메모 ════════
    실수노트와 같은 구조(## 문제 / #### 날짜 (상태) / 본문)로 notes/<site>/<no>.md 에 쌓는다.
    외부 라이브러리를 못 쓰므로(CSP) 필요한 만큼만 마크다운을 직접 렌더링한다. */
+/* md() 는 입력을 통째로 esc() 한 뒤 줄을 나눈다. 코드블록을 색칠하려면
+   토크나이저에 원문을 줘야 하므로 되돌린다(hlOnly 안에서 다시 esc 한다).
+   &amp; 를 마지막에 풀어야 "&amp;lt;" 같은 게 꼬이지 않는다. */
+function unesc(s){
+ return String(s).replace(/&lt;/g,"<").replace(/&gt;/g,">")
+                 .replace(/&quot;/g,'"').replace(/&#39;/g,"'")
+                 .replace(/&amp;/g,"&");
+}
+/* 줄번호 없이 색칠만 — 코드 페이지와 달리 메모 안 코드블록은 짧아서
+   번호가 붙으면 오히려 지저분하다. */
+function hlOnly(src){
+ return pyTokens(String(src==null?"":src).replace(/\r\n?/g,"\n"))
+   .map(function(t){ var e=esc(t[1]);
+     return t[0]?'<span class="'+t[0]+'">'+e+'</span>':e; }).join("");
+}
+function mdcode(lang,lines){
+ var raw=lines.join("\n");
+ /* 언어를 안 적은 블록도 파이썬으로 본다 — 이 저장소는 전부 파이썬이다.
+    text·bash 처럼 명시한 것은 건드리지 않는다. */
+ var py=/^(py|python|python3)?$/i.test(lang||"");
+ return '<pre class="mdcode">'+(py?hlOnly(unesc(raw)):raw)+"</pre>";
+}
+
 function md(src){
  var s=esc(src||"");
  var out=[], fence=null, buf=[], list=null;
@@ -969,7 +995,7 @@ function md(src){
  s.split("\n").forEach(function(ln){
   var f=ln.match(/^```(\w*)\s*$/);
   if(f){ if(fence===null){fence=f[1]||"";buf=[];} else {flush();
-          out.push('<pre class="mdcode">'+buf.join("\n")+"</pre>");fence=null;} return; }
+          out.push(mdcode(fence,buf));fence=null;} return; }
   if(fence!==null){ buf.push(ln); return; }
   if(/^\s*$/.test(ln)){ flush(); return; }
   var h=ln.match(/^(#{1,6})\s+(.*)$/);
@@ -984,7 +1010,7 @@ function md(src){
   if(ol){ if(list!=="ol"){flush();out.push("<ol>");list="ol";} out.push("<li>"+inline(ol[1])+"</li>"); return; }
   flush(); out.push("<p>"+inline(ln)+"</p>");
  });
- if(fence!==null&&buf.length) out.push('<pre class="mdcode">'+buf.join("\n")+"</pre>");
+ if(fence!==null&&buf.length) out.push(mdcode(fence,buf));   /* 닫는 ``` 없이 끝난 경우 */
  flush();
  return out.join("");
 }
@@ -1097,22 +1123,29 @@ function closeDel(){ $("dc").style.display="none"; DEL=null; }
 function dsay(html,cls){var v=$("dcv");v.className="vd "+(cls||"info");v.style.display="block";v.innerHTML=html;}
 
 /* 풀이 기록 삭제 */
-function askDelSub(site,no,date,ev){
+function askDelSub(site,no,date,ev,at){
  if(ev){ev.stopPropagation();ev.preventDefault();}
- /* 삭제는 (문제, 날짜) 단위다. rows 는 재제출마다 한 줄이므로 줄 수로 세면
+ /* 삭제 단위는 '제출 1회'다. rows 는 재제출마다 한 줄이므로 줄 수로 세면
     같은 날 2회 낸 것이 "다른 날짜 기록 1건" 으로 잘못 보인다. 날짜로 센다. */
  var k=site+"/"+no, subs=BYPROB[k]||[], dseen={}, days=[];
  subs.forEach(function(r){ if(!dseen[r.date]){dseen[r.date]=1;days.push(r.date);} });
- var last=days.length<=1;
- var sameDay=subs.filter(function(r){return r.date===date;}).length;
+ var sameDay=subs.filter(function(r){return r.date===date;});
+ /* at 이 있고 그날 회차가 여럿이면 '이 회차만' 지운다.
+    마지막 한 회차를 지우는 것은 그날 기록 자체를 지우는 것과 같다. */
+ var one=!!at && sameDay.length>1;
+ var last=days.length<=1 && !one;
  DEL={kind:"submission",site:site,no:no,date:date};
- $("dct").textContent="풀이 기록을 삭제할까요?";
+ if(one) DEL.at=at;
+ $("dct").textContent=one?"이 제출 회차를 삭제할까요?":"풀이 기록을 삭제할까요?";
  $("dcw").innerHTML=
    "<b>"+esc(site+" "+no+" "+bestTitle(k))+"</b><br>"+
-   "제출일 <b>"+esc(date)+"</b> 기록이 잔디·제출현황에서 사라집니다."+
-   (sameDay>1?"<br>그날 제출 <b>"+sameDay+"회분이 모두</b> 지워집니다.":"")+
-   (last?"<br>이 문제의 <b>마지막 기록</b>이라 저장된 <b>코드 파일도</b> 함께 지워집니다."
-        :"<br>다른 날짜 기록 "+(days.length-1)+"건과 코드 파일은 그대로 둡니다.");
+   (one
+     ? "제출일 <b>"+esc(date)+" "+esc(at.slice(0,5))+"</b> <b>이 회차 하나만</b> 지웁니다."+
+       "<br>같은 날 나머지 "+(sameDay.length-1)+"회분과 코드 파일은 그대로 둡니다."
+     : "제출일 <b>"+esc(date)+"</b> 기록이 잔디·제출현황에서 사라집니다."+
+       (sameDay.length>1?"<br>그날 제출 <b>"+sameDay.length+"회분이 모두</b> 지워집니다.":"")+
+       (last?"<br>이 문제의 <b>마지막 기록</b>이라 저장된 <b>코드 파일도</b> 함께 지워집니다."
+            :"<br>다른 날짜 기록 "+(days.length-1)+"건과 코드 파일은 그대로 둡니다."));
  $("dcv").style.display="none"; $("dcgo").disabled=false;
  $("dc").style.display="block";
 }
@@ -1147,12 +1180,20 @@ async function doDelete(){
   /* 화면에서도 즉시 반영 */
   var k=DEL.site+"/"+DEL.no;
   if(DEL.kind==="submission"){
-   /* 대기분도 같이 버린다. 안 그러면 지운 기록이 새로고침 때마다 되살아난다. */
-   pendDrop(function(x){ return key(x)===k && x.date===DEL.date; });
-   D.rows=D.rows.filter(function(x){return !(key(x)===k&&x.date===DEL.date);});
-   BYPROB[k]=(BYPROB[k]||[]).filter(function(x){return x.date!==DEL.date;});
+   /* at 이 있으면 그 회차 한 줄만, 없으면 그날 기록 전부를 화면에서 뺀다.
+      대기분도 같은 기준으로 버린다(안 그러면 지운 게 새로고침 때 되살아난다). */
+   var hit=DEL.at
+     ? function(x){ return key(x)===k && x.date===DEL.date && (x.at||"")===DEL.at; }
+     : function(x){ return key(x)===k && x.date===DEL.date; };
+   pendDrop(hit);
+   D.rows=D.rows.filter(function(x){return !hit(x);});
+   BYPROB[k]=(BYPROB[k]||[]).filter(function(x){return !hit(x);});
    if(!BYPROB[k].length) delete BYPROB[k];
-   if(byDate[DEL.date]) byDate[DEL.date]=byDate[DEL.date].filter(function(x){return key(x)!==k;});
+   if(byDate[DEL.date]) byDate[DEL.date]=byDate[DEL.date].filter(function(x){return !hit(x);});
+   /* 남은 회차의 "n/m회" 배지를 다시 매긴다 */
+   var rest=(BYPROB[k]||[]).filter(function(x){return x.date===DEL.date;})
+                           .sort(function(a,b){return ord(a).localeCompare(ord(b));});
+   rest.forEach(function(x,i){ x["try"]=i+1; x.tries=rest.length; });
   }else{
    delete PIDX[k];
    if(CUR.site===DEL.site&&CUR.no===DEL.no) CUR.prob=null;

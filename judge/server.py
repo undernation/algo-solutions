@@ -904,6 +904,42 @@ def delete_item(d):
         rec = hist.get(date)
         if not rec:
             return {"ok": False, "error": "%s 에 기록이 없습니다" % date}
+        # at 이 오면 '그 회차 하나'만 지운다. 같은 날 여러 번 제출했을 때
+        # 하나 지우려다 그날 전부가 날아가면 안 된다.
+        at = (d.get("at") or "").strip()
+        if at:
+            tgt = None
+            for it in rec.get("items", []):
+                if (isinstance(it, dict) and it.get("site") == site
+                        and str(it.get("no")) == no):
+                    tgt = it
+                    break
+            if tgt is None:
+                return {"ok": False, "error": "%s 에 %s %s 기록이 없습니다" % (date, site, no)}
+            tries = [a for a in (tgt.get("attempts") or []) if isinstance(a, dict)]
+            left = [a for a in tries if (a.get("at") or "") != at]
+            if len(left) == len(tries):
+                return {"ok": False,
+                        "error": "%s 에 %s 회차 기록이 없습니다" % (date, at)}
+            if left:
+                # 회차가 남았으면 기록은 유지하고 대표값만 최신 회차로 맞춘다.
+                # count(그날 시도한 문제 수)도 그대로다 — 문제는 여전히 풀었으니까.
+                last = sorted(left, key=lambda a: a.get("at") or "")[-1]
+                for k in ("at", "status", "file", "verdict", "passed", "total", "elapsed"):
+                    if last.get(k) is not None:
+                        tgt[k] = last[k]
+                tgt["attempts"] = left
+                io.open(hp, "w", encoding="utf-8", newline="").write(
+                    json.dumps(hist, ensure_ascii=False, indent=1, sort_keys=True))
+                for s in ("_meta/build_probindex.py", "_meta/build_heatmap.py",
+                          "_meta/build_index.py"):
+                    subprocess.run([PY, s], cwd=ROOT, capture_output=True,
+                                   env={**os.environ, "PYTHONIOENCODING": "utf-8"})
+                msg = "[삭제] %s %s %s %s 회차" % (site, no, date, at)
+                return _commit_delete(msg, ["history %s %s: %s %s 회차"
+                                            % (date, site, no, at)])
+            # 마지막 회차였다면 아래 통째 삭제 경로로 내려간다(코드 파일·표식 포함).
+
         keep, gone = [], 0
         for it in rec.get("items", []):
             if (isinstance(it, dict) and it.get("site") == site
@@ -974,6 +1010,11 @@ def delete_item(d):
         subprocess.run([PY, s], cwd=ROOT, capture_output=True,
                        env={**os.environ, "PYTHONIOENCODING": "utf-8"})
 
+    return _commit_delete(msg, removed)
+
+
+def _commit_delete(msg, removed):
+    """삭제 후 커밋·푸시. 회차 하나만 지우는 경로에서도 그대로 쓴다."""
     git("add", "-A")
     c = git("commit", "-m", msg)
     committed = c.returncode == 0
