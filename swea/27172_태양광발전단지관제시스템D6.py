@@ -506,8 +506,8 @@ query의 count1 ≤ count ≤ 5, 범위 내 지점 수 ≥ count 보장
 5
 """
 
+import heapq
 
-# sys.stdin = open("input.txt", "r")
 
 class Point:
     __slots__ = ('x', 'y')          # x: 열(column), y: 행(row)
@@ -524,27 +524,31 @@ class Point:
 #  main 및 입출력 부분은 수정하지 않는 것을 권장한다.
 # =========================================================
 
+
 def init(N, K, graph):
     # TODO: 각 테스트 케이스 시작 시 1회 호출된다.
     #       전역 자료 구조를 반드시 초기화할 것.
-    global tree, board, g_N
-    tree = [[0] * (N + 1) for _ in range(N + 1)]
+    global board, g_N, hqs, lazy, ver, area, g_K
+
     board = [row[:] for row in graph]
     g_N = N
-    def update(y, x, diff):
-        i = y
-        while i <= N:
-            j = x
-            while j <= N:
-                tree[i][j] += diff
-                j += j & -j
-            i += i & -i
-    for i in range(1, N + 1):
-        for j in range(1, N + 1):
-            update(i, j, board[i][j])
+    g_K = K
+    area = N // K
+    lazy = [[0] * area for _ in range(area)]
+    hqs = [[] for _ in range(area * area)]
+    ver = [[0] * N for _ in range(N)]
 
-    
-    pass
+    def check_area(i, j):
+        row = i // g_K
+        col = j // g_K
+
+        return row * area + col
+
+    for i in range(N):
+        for j in range(N):
+            cur_area = check_area(i, j)
+            cur_val = board[i][j]
+            heapq.heappush(hqs[cur_area], [-cur_val, j, i, 0])
 
 
 def set_value(p, value):
@@ -552,62 +556,49 @@ def set_value(p, value):
     # 업데이트,
     cy = p.y
     cx = p.x
-    diff = board[cy][cx] - value
-    board[cy][cx] = value
-    def update(y, x, diff):
-        i = y
-        while i <= g_N:
-            j = x
-            while j <= g_N:
-                tree[i][j] += diff
-                j += j & -j
-            i += i & -i
-    update(cy + 1, cx + 1, diff)
-    pass
+    board[cy][cx] = value - lazy[cy // g_K][cx // g_K]
 
+    def check_area(i, j):
+        row = i // g_K
+        col = j // g_K
+
+        return row * area + col
+
+    cur_area = check_area(cy, cx)
+    cur_ver = ver[cy][cx]
+    heapq.heappush(hqs[cur_area], [-value, cx, cy, cur_ver + 1])
+    ver[cy][cx] += 1
+
+    pass
 
 def get_value(p):
     # TODO: 지점 p의 현재 값을 반환
     cy = p.y
     cx = p.x
-
-    return board[cy][cx]
-
+    # print()
+    # for i in board:
+    #     print(i)
+    # print("lazy")
+    # for i in lazy:
+    #     print(i)
+    return board[cy][cx] + lazy[cy // g_K][cx // g_K]
 
 def update(A, B, num):
     # TODO: [A, B] 범위(구역 정렬 보장)의 모든 지점에 num을 더함
     x1 = A.x
     y1 = A.y
     # A 가 속한 구역의 시작지점 체크해야함.
-    
     x2 = B.x
     y2 = B.y
-    for y in range(y1, y2 + 1):
-        for x in range(x1, x2 + 1):
-            board[y][x] += num
-
-    def update(y, x, diff):
-        if y <= 0 or x <= 0:
-            return
-        i = y + 1
-        while i <= g_N:
-            j = x + 1
-            while j <= g_N:
-                tree[i][j] += diff
-                j += j & -j
-            i += i & -i
-    # x2, y2 까지는 num 만큼 더해주기
-
-    # x1 - 1, y1 - 1 까지는 num 만큼 더해주기
-
-    # x2 - 1, y2 까지는 num 만큼 빼주기
     
-    # x2, y2 - 1 까지는 num 만큼 빼주기
-    update(y2, x2, num)
-    update(y1 - 1, x1 - 1, num)
-    update(y2, x1 - 1, -num)
-    update(y1 - 1, x2, -num)
-    pass
+    # x1 부터 x2 까지 area 만큼 옮겨가면서 넣기
+    #
+    for x in range(x1, x2, g_K):
+        for y in range(y1, y2, g_K):
+            lazy[y // g_K][x // g_K] += num
+    #         print("x, y", x, y)
+    # for i in lazy:
+    #     print(i)
 
 
 def query(A, B, count, result):
@@ -618,24 +609,56 @@ def query(A, B, count, result):
 
     x2 = B.x
     y2 = B.y
-    temp = []
-    for y in range(y1, y2 + 1):
-        for x in range(x1, x2 + 1):
-            temp.append([-board[y][x], x, y])
-    temp.sort()
-    for cnt in range(count):
-        a, x, y = temp[cnt]
-        result[cnt].x = x
-        result[cnt].y = y
+    hq = []
+    def check_area(i, j):
+        row = i // g_K
+        col = j // g_K
 
-    pass
+        return row * area + col
+    cand = []
+    cand2 = []
+    for x in range(x1, x2, g_K):
+        for y in range(y1, y2, g_K):
+            cand.append([y, x])
+            cand2.append(check_area(y, x))
+    cnt = 0
+    pop_list = []
+    for c in cand2:
+        while hqs[c]:
+            value, cx, cy, version = heapq.heappop(hqs[c])
+            if ver[cy][cx] == version:
+                break
+        
+        pop_list.append([value, cy, cx, version, c])
+        heapq.heappush(hq, [value - lazy[cy // g_K][cx // g_K], cx, cy, c])
+
+    while cnt < count:
+        
+        value, cx, cy, c = heapq.heappop(hq)
+        # print("cnt value, cx, cy, c", cnt, value, cx, cy, c)
+        while hqs[c]:
+            value, nx, ny, version = heapq.heappop(hqs[c])
+            if ver[ny][nx] == version:
+                heapq.heappush(hq, [value - lazy[ny // g_K][nx // g_K], nx, ny, c])
+                pop_list.append([value, ny, nx, version, c])
+                break
+        # print(value)
+        result[cnt].x = cx
+        result[cnt].y = cy
+
+        cnt += 1
+
+    for value, cy, cx, version, c in pop_list:
+        heapq.heappush(hqs[c], [value, cx, cy, version])
+
+
 
 # ========= 이하 수정 비권장 (출력 형식 유지) =========
+
 def main():
     out = []
 
     T = int(input())
-
     for tc in range(1, T + 1):
         N, K, M = map(int, input().split())
         graph = [list(map(int, input().split())) for _ in range(N)]
