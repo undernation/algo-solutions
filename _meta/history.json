@@ -4466,7 +4466,7 @@
   ]
  },
  "2026-08-14": {
-  "count": 3,
+  "count": 4,
   "items": [
    {
     "at": "11:34:21",
@@ -4528,6 +4528,29 @@
     "site": "SWEA",
     "status": "품",
     "title": "[S/W 문제해결 응용] 3일차 - 최적 경로 D5",
+    "total": 1,
+    "verdict": "accepted"
+   },
+   {
+    "at": "14:52:08",
+    "attempts": [
+     {
+      "at": "14:52:08",
+      "elapsed": 0.403,
+      "file": "swea/1248_[S_W문제해결응용]3일차-공통조상D5.py",
+      "passed": 1,
+      "status": "품",
+      "total": 1,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.403,
+    "file": "swea/1248_[S_W문제해결응용]3일차-공통조상D5.py",
+    "no": "1248",
+    "passed": 1,
+    "site": "SWEA",
+    "status": "품",
+    "title": "[S/W 문제해결 응용] 3일차 - 공통조상 D5",
     "total": 1,
     "verdict": "accepted"
    }
