@@ -277,6 +277,16 @@ python judge/server.py                         # 로컬 허브 :12014 (시작 �
 git pull --rebase       # 다른 PC에서 올린 게 있을 수 있음
 ```
 
+> 🚩 **rebase 뒤에는 반드시 다시 빌드하고 커밋한다.**
+> ```bash
+> python _meta/build_heatmap.py && git add -A && git commit -m "빌드 산출물 갱신"
+> ```
+> `.gitattributes` 의 `merge=ours` 는 **rebase 에서 방향이 뒤집힌다** —
+> rebase 중에는 upstream 이 "ours" 라서, 내가 방금 만든 `index.html` 이
+> 원격의 옛 것으로 조용히 되돌아간다. 소스는 `_meta/_dashboard_tpl.py` 이므로
+> 다시 빌드하면 복구되지만, **모르고 push 하면 사이트에 변경이 안 나타난다.**
+> (2026-08-14 실제로 겪음 — 코드 페이지 기능이 배포에서 통째로 빠졌다.)
+
 ---
 
 ## 2. 파일 규약
