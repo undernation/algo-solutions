@@ -35,7 +35,7 @@ http://localhost:12014 를 직접 호출한다.
       "verdict": {"verdict":"accepted","summary":{"passed":25,"total":25}}
     }
 """
-import os, re, io, sys, json, glob, time, subprocess, tempfile, argparse, datetime
+import os, re, io, sys, json, glob, time, subprocess, tempfile, argparse, datetime, threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -311,6 +311,36 @@ def run_one(path, data, tl):
     if p.returncode != 0:
         return "runtime_error", p.stdout, el, (p.stderr or "")[-1200:]
     return "ok", p.stdout, el, ""
+
+
+def scratch_run(src, stdin_data, tl):
+    """연습장 실행 — 정답 대조 없이 코드를 돌려 출력만 돌려준다.
+
+    /judge·/run 은 기대출력과 비교해 '틀렸습니다'로 표시하므로, 그냥 찍어보고
+    싶을 때 쓰기 불편했다. 여기서는 stdout/stderr 를 그대로 보여준다.
+    """
+    if not (src or "").strip():
+        return {"ok": False, "error": "빈 코드"}
+    err = syntax_error(src)
+    if err:
+        return {"ok": True, "status": "compile_error", "stdout": "",
+                "stderr": err, "elapsed": 0.0, "runner": RUNNER_NAME}
+    t = tempfile.NamedTemporaryFile("w", suffix=".py", delete=False, encoding="utf-8")
+    t.write(src)
+    t.close()
+    try:
+        st, out, el, se = run_one(t.name, stdin_data or "", tl)
+    finally:
+        try:
+            os.unlink(t.name)
+        except OSError:
+            pass
+    cap = 20000                      # 무한 출력 루프가 브라우저를 죽이지 않게
+    trimmed = len(out) > cap
+    return {"ok": True, "status": st, "stdout": out[:cap], "truncated": trimmed,
+            "outBytes": len(out), "stderr": (se or "")[:4000],
+            "elapsed": round(el, 3), "allowedTime": round(tl, 2),
+            "runner": RUNNER_NAME}
 
 
 def syntax_error(src):
@@ -1019,10 +1049,11 @@ def status():
     return {"ok": True, "service": "algo-hub", "language": "python", "authRequired": bool(TOKEN),
             "speedFactor": round(SPEED, 2), "pyMult": PY_MULT, "pyAdd": PY_ADD,
             "runner": RUNNER_NAME,
-            "python": sys.version.split()[0], "repo": ROOT,
+            # repo 절대경로(/home/<계정>/...)는 익명에게 굳이 알릴 게 아니다.
+            "python": sys.version.split()[0], "repo": os.path.basename(ROOT),
             "branch": br, "ahead": ah, "dirty": dirty, "solutions": n,
             "autoPush": AUTO_PUSH,
-            "endpoints": ["/judge", "/run", "/save", "/fetch", "/note",
+            "endpoints": ["/judge", "/run", "/exec", "/save", "/fetch", "/note",
                           "/tc", "/tcupload", "/delete", "/problems"],
             "tcStore": (len(glob.glob(os.path.join(TC_STORE, "*", "*.json"))) +
                         len(glob.glob(os.path.join(TC_STORE_ALT, "*", "*.json"))))}
@@ -1035,6 +1066,10 @@ CORS = {"Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
         "Access-Control-Allow-Headers": "content-type, accept, x-auth-token, authorization",
         "Access-Control-Max-Age": "86400"}
+
+
+_FAILS = {}                 # ip -> 연속 인증 실패 횟수
+_FAIL_LOCK = threading.Lock()
 
 
 class H(BaseHTTPRequestHandler):
@@ -1062,6 +1097,11 @@ class H(BaseHTTPRequestHandler):
         if p in ("", "/status"):
             return self._send(200, status())
         if p == "/problems":
+            # 지문 자체는 Pages 에 이미 공개돼 있다(소유자 결정). 여기서 막는 이유는
+            # 비밀 유지가 아니라 부하다 — 한 번에 574개 파일을 읽어 18MB 를 만든다.
+            # 대시보드는 이걸 안 쓰고 Pages 의 problems/<sub>/<no>.json 을 직접 읽는다.
+            if not self._auth_ok():
+                return self._reject(p)
             out = []
             for s in ("boj", "swea", "programmers", "codetree"):
                 d = os.path.join(ROOT, "problems", s)
@@ -1076,23 +1116,62 @@ class H(BaseHTTPRequestHandler):
             return self._send(200, {"ok": True, "count": len(out), "problems": out})
         return self._send(404, {"ok": False, "error": "not found"})
 
+    def _client_ip(self):
+        # 터널을 거치면 client_address 는 항상 127.0.0.1 이다. 실제 IP 는
+        # cloudflared 가 넣어주는 CF-Connecting-IP 에 있고, Cloudflare 가
+        # 덮어쓰므로 터널 경유 요청은 이 헤더를 위조할 수 없다.
+        return (self.headers.get("CF-Connecting-IP")
+                or self.headers.get("X-Forwarded-For", "").split(",")[0].strip()
+                or self.client_address[0] or "?")
+
+    def _drain(self):
+        """본문을 읽어 버린다.
+
+        401 을 던지면서 POST 본문을 소켓에 남겨두면 keep-alive 연결이 어긋나
+        '다음' 요청이 엉뚱하게 400 으로 깨진다. 실제로 인증 검사 결과가
+        401/400 으로 번갈아 나와 '인증이 뚫린 것처럼' 보였다.
+        """
+        try:
+            n = int(self.headers.get("Content-Length") or 0)
+        except ValueError:
+            n = 0
+        while n > 0:
+            chunk = self.rfile.read(min(n, 65536))
+            if not chunk:
+                break
+            n -= len(chunk)
+
+    def _reject(self, path):
+        """인증 실패 처리 — 본문 비우고, 반복되면 점점 느리게 답한다."""
+        ip = self._client_ip()
+        with _FAIL_LOCK:
+            n = _FAILS.get(ip, 0) + 1
+            _FAILS[ip] = n
+        self._drain()
+        if n > 3:                       # 토큰 대입 시도를 실질적으로 무의미하게
+            time.sleep(min(0.5 * (2 ** min(n - 3, 5)), 15.0))
+        log("   ⛔ 인증 실패 (%s) from %s  누적 %d회" % (path, ip, n))
+        return self._send(401, {"ok": False, "error": "unauthorized",
+                                "hint": "X-Auth-Token 헤더 필요"})
+
     def _auth_ok(self):
         if not TOKEN:
             return True
+        # 헤더로만 받는다. 예전엔 ?token= 쿼리도 받았는데, URL 은 프록시 로그·
+        # 브라우저 히스토리·Referer 에 그대로 남아 토큰이 새는 통로였다.
         got = (self.headers.get("X-Auth-Token")
                or self.headers.get("Authorization", "").replace("Bearer ", "").strip())
-        if not got:
-            from urllib.parse import urlparse, parse_qs
-            got = (parse_qs(urlparse(self.path).query).get("token") or [""])[0]
         import hmac
-        return hmac.compare_digest(str(got), str(TOKEN))
+        if not hmac.compare_digest(str(got), str(TOKEN)):
+            return False
+        with _FAIL_LOCK:
+            _FAILS.pop(self._client_ip(), None)
+        return True
 
     def do_POST(self):
         p = self.path.split("?")[0].rstrip("/")
         if not self._auth_ok():
-            log("   ⛔ 인증 실패 (%s)" % p)
-            return self._send(401, {"ok": False, "error": "unauthorized",
-                                    "hint": "X-Auth-Token 헤더 필요"})
+            return self._reject(p)
         try:
             n = int(self.headers.get("Content-Length") or 0)
             body = json.loads(self.rfile.read(n).decode("utf-8") or "{}")
@@ -1140,6 +1219,16 @@ class H(BaseHTTPRequestHandler):
                 return self._send(200, judge(body.get("code") or "", cases, 0,
                                              allowed_time(body.get("timeLimit"),
                                                           bool(body.get("langAdjusted")))))
+
+            if p == "/exec":
+                try:
+                    tl = min(max(float(body.get("timeLimit") or 5), 0.5), 30.0)
+                except (TypeError, ValueError):
+                    tl = 5.0
+                log("\n▶ 연습장 실행  제한 %.1fs" % tl)
+                r = scratch_run(body.get("code") or "", body.get("stdin") or "", tl)
+                log("◀ %s  %.3fs" % (r.get("status"), r.get("elapsed") or 0))
+                return self._send(200, r)
 
             if p == "/tc":
                 site = (body.get("site") or "BOJ").upper()
@@ -1193,6 +1282,10 @@ def main():
     ap.add_argument("--quiet", action="store_true")
     ap.add_argument("--no-auth", action="store_true", help="토큰 인증 끄기(로컬 전용)")
     ap.add_argument("--runner", default="", help="제출 코드 실행 인터프리터 (기본: pypy3 자동탐색)")
+    # 예전 기본값은 0.0.0.0 이라 사내망·공용 와이파이에 그대로 노출됐다.
+    # 클라우드는 터널(localhost)로만 들어오고, 로컬은 같은 PC 브라우저가 쓰므로
+    # 127.0.0.1 로 충분하다. LAN 에서 붙어야 하면 --bind 0.0.0.0.
+    ap.add_argument("--bind", default="127.0.0.1", help="바인딩 주소 (기본 127.0.0.1)")
     a = ap.parse_args()
     global TOKEN
     PY, PORT, VERBOSE, AUTO_PUSH = a.python, a.port, not a.quiet, not a.no_push
@@ -1205,7 +1298,7 @@ def main():
     print("=" * 64)
     print("  🐍 algo-hub  로컬 서버 (채점 + repo 저장)")
     print("=" * 64)
-    print("  포트    : %d" % PORT)
+    print("  주소    : %s:%d" % (a.bind, PORT))
     print("  repo    : %s" % ROOT)
     print("  채점러너 : %s" % RUNNER_NAME)
     print("             %s" % RUNNER)
@@ -1225,7 +1318,7 @@ def main():
     print()
     print("  Ctrl+C 종료")
     print("=" * 64)
-    ThreadingHTTPServer(("0.0.0.0", PORT), H).serve_forever()
+    ThreadingHTTPServer((a.bind, PORT), H).serve_forever()
 
 
 if __name__ == "__main__":

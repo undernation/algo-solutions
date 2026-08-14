@@ -187,6 +187,15 @@ pre.io{background:var(--soft);border:1px solid var(--bd);border-radius:6px;paddi
  margin:0;font-size:13.5px;line-height:1.65;overflow-x:auto;white-space:pre;max-height:340px}
 .crumb{font-size:13px;color:var(--sub);margin-bottom:10px}
 #ed{width:100%;min-height:340px;font-size:13.5px;line-height:1.6;white-space:pre;resize:vertical;tab-size:4}
+/* 연습장 — 코드와 입력을 나란히. 좁은 화면에서는 위아래로 쌓인다 */
+.rgrid{display:grid;grid-template-columns:1.7fr 1fr;gap:12px}
+@media(max-width:820px){.rgrid{grid-template-columns:1fr}}
+.rlab{font-size:12.5px;font-weight:700;color:var(--sub);margin-bottom:5px}
+#rcode,#rin{width:100%;min-height:330px;font-size:13.5px;line-height:1.6;
+ white-space:pre;resize:vertical;tab-size:4}
+.rout{background:var(--panel);border:1px solid var(--bd2);border-radius:6px;padding:11px 13px;
+ font-family:ui-monospace,Consolas,monospace;font-size:13px;line-height:1.55;
+ white-space:pre-wrap;word-break:break-all;max-height:460px;overflow:auto;margin:0;color:var(--fg)}
 .vd{padding:12px 15px;border-radius:6px;font-size:14px;margin-top:12px;display:none;border:1px solid}
 .vd.ok{background:rgba(0,161,12,.09);border-color:rgba(0,161,12,.35);color:var(--ok)}
 .vd.ng{background:rgba(221,65,36,.09);border-color:rgba(221,65,36,.35);color:var(--no)}
@@ -286,6 +295,7 @@ button.danger:hover{opacity:.88;color:#fff;border-color:var(--no)}
   <a href="#home" data-v="home">대시보드</a>
   <a href="#problems" data-v="problems">문제</a>
   <a href="#status" data-v="status">제출 현황</a>
+  <a href="#run" data-v="run" id="navrun" class="hide">연습장</a>
  </nav>
  <button class="hubbtn" onclick="setupHub()"><span class="dot" id="hd"></span><span id="hs">확인 중</span></button>
 </div></header>
@@ -295,6 +305,7 @@ button.danger:hover{opacity:.88;color:#fff;border-color:var(--no)}
  <div id="v-problems" class="hide"></div>
  <div id="v-status" class="hide"></div>
  <div id="v-p" class="hide"></div>
+ <div id="v-run" class="hide"></div>
 </main>
 <div id="cv" onclick="if(event.target===this)closeCode()"><div id="cvb">
  <div id="cvh"><span id="cvt"></span><span class="p" id="cvp"></span>
@@ -403,6 +414,7 @@ async function connectHub(){
   if(ci){CLOUD={url:cand[k2].replace(/\/$/,""),ok:true,info:ci};
          localStorage.setItem("cloudUrl",CLOUD.url);break;} }
  var n=(CLOUD.ok?1:0)+(LOCAL.ok?1:0);
+ syncNav();
  $("hd").className="dot "+(n?"on":"off");
  $("hs").textContent = n===2?"허브 2/2" : n===1?(CLOUD.ok?"클라우드만":"내 PC만") : "허브 꺼짐";
  $("hs").parentNode.title =
@@ -424,7 +436,7 @@ function hubFor(w){ return w==="fetch" ? (LOCAL.ok?LOCAL:(CLOUD.ok?CLOUD:null))
                                        : (CLOUD.ok?CLOUD:(LOCAL.ok?LOCAL:null)); }
 function setupHub(){
  var t=prompt("인증 토큰\n\n서버 시작 로그 또는 ~/.algo-hub-token 파일에 있습니다.",TOK||"");
- if(t!==null){TOK=t.trim();localStorage.setItem("hubToken",TOK);}
+ if(t!==null){TOK=t.trim();localStorage.setItem("hubToken",TOK);syncNav();}
  var u=prompt("클라우드 허브 주소\n(비우면 _meta/endpoint.json 에서 자동 탐색)",
               localStorage.getItem("cloudUrl")||"");
  if(u!==null){u=u.trim(); if(u)localStorage.setItem("cloudUrl",u);else localStorage.removeItem("cloudUrl");}
@@ -436,12 +448,16 @@ function setupHub(){
 function go(){
  var h=(location.hash||"#home").slice(1);
  var v=h.split("/")[0]||"home";
- ["home","problems","status","p"].forEach(function(x){ $("v-"+x).className = (x===v?"":"hide"); });
+ ["home","problems","status","p","run"].forEach(function(x){ $("v-"+x).className = (x===v?"":"hide"); });
  Array.prototype.forEach.call(document.querySelectorAll("nav a"),function(a){
-  a.className = (a.dataset.v===v)?"on":""; });
+  var on=(a.dataset.v===v);
+  /* 연습장 링크는 토큰이 있을 때만 보인다. className 을 통째로 쓰면 hide 가 날아간다 */
+  a.className = (a.id==="navrun" && !TOK) ? "hide" : (on?"on":"");
+ });
  if(v==="home")     viewHome();
  else if(v==="problems") viewProblems();
  else if(v==="status")   viewStatus();
+ else if(v==="run")      viewRun();
  else if(v==="p")   viewProblem(h.split("/")[1],h.split("/").slice(2).join("/"));
  else location.hash="#home";
  window.scrollTo(0,0);
@@ -1340,6 +1356,99 @@ function edKey(e){
 }
 function wireEd(el){ if(el) el.onkeydown=edKey; }
 
+/* ════════ 연습장 (#run) ════════
+   문제와 무관하게 코드 + 입력을 넣고 돌려서 출력만 본다.
+   서버 /exec 는 정답 대조를 하지 않으므로 print 디버깅에 그대로 쓸 수 있다.
+
+   🔑 나만 쓴다: /exec 는 다른 POST 와 똑같이 토큰을 요구하고(= 남은 실행 불가),
+   메뉴 링크도 토큰이 저장돼 있을 때만 뜬다. 잔디·문제 열람은 그대로 공개다. */
+function syncNav(){ var a=$("navrun"); if(a&&!TOK) a.className="hide";
+                    else if(a&&a.className==="hide") a.className=""; }
+
+function viewRun(){
+ if($("v-run").dataset.built) return;
+ $("v-run").dataset.built="1";
+ $("v-run").innerHTML=
+  '<div class="sec-h">연습장</div>'+
+  '<div class="note">코드와 입력을 넣고 실행하면 출력이 그대로 나옵니다. '+
+   '정답 대조를 하지 않으므로 <b>print 디버깅·자투리 실험</b>용입니다. '+
+   '내용은 이 브라우저에만 저장되고 repo 에는 커밋되지 않습니다.</div>'+
+  '<div class="rgrid">'+
+   '<div><div class="rlab">코드</div>'+
+    '<textarea id="rcode" class="mono" spellcheck="false" '+
+     'placeholder="import sys\ndata=sys.stdin.read().split()\nprint(data)"></textarea></div>'+
+   '<div><div class="rlab">입력 (stdin)</div>'+
+    '<textarea id="rin" class="mono" spellcheck="false" '+
+     'placeholder="여기에 넣은 내용이 표준입력으로 들어갑니다"></textarea></div>'+
+  '</div>'+
+  '<div class="bar" style="margin-top:10px">'+
+   '<button class="p" onclick="doExec()" title="Ctrl+Enter">실행</button>'+
+   '<label class="hint" style="display:flex;align-items:center;gap:5px;margin:0">제한'+
+    '<input id="rtl" type="number" min="0.5" max="30" step="0.5" value="5" '+
+     'style="width:70px;min-width:0">초</label>'+
+   '<button class="sm" onclick="clearRun()">지우기</button>'+
+   '<span class="hint kbd">Ctrl+Enter 실행 · Tab / Shift+Tab 들여쓰기</span>'+
+  '</div>'+
+  '<div id="rv" class="vd"></div>'+
+  '<div class="rlab" style="margin-top:14px">출력</div>'+
+  '<pre id="rout" class="rout">실행하면 여기에 출력이 나옵니다.</pre>';
+ $("rcode").value=localStorage.getItem("runCode")||"";
+ $("rin").value=localStorage.getItem("runIn")||"";
+ wireEd($("rcode"));
+ /* 새로고침·다른 화면 이동에도 살아남게. 코드가 날아가면 연습장으로 못 쓴다. */
+ $("rcode").oninput=function(){ localStorage.setItem("runCode",this.value); };
+ $("rin").oninput=function(){ localStorage.setItem("runIn",this.value); };
+}
+
+function clearRun(){
+ if(!confirm("코드와 입력을 모두 지울까요?")) return;
+ $("rcode").value=""; $("rin").value="";
+ localStorage.removeItem("runCode"); localStorage.removeItem("runIn");
+ $("rout").textContent="실행하면 여기에 출력이 나옵니다.";
+ $("rv").style.display="none";
+}
+
+function rsay(html,cls){ var v=$("rv"); v.className="vd "+(cls||"info");
+                         v.style.display="block"; v.innerHTML=html; }
+
+async function doExec(){
+ await hubReady();
+ var h=hubFor("judge");
+ if(!h) return rsay("허브가 꺼져 있습니다. 우측 상단 <b>허브 버튼</b>을 확인하세요.","ng");
+ var code=$("rcode").value;
+ if(!code.trim()) return rsay("코드를 입력하세요.","ng");
+ var tl=parseFloat($("rtl").value)||5;
+ rsay("실행 중…","info");
+ $("rout").textContent="…";
+ var t0=Date.now();
+ try{
+  var r=await fetch(h.url+"/exec",{method:"POST",headers:H(),
+   body:JSON.stringify({code:code,stdin:$("rin").value,timeLimit:tl})});
+  if(r.status===401) return rsay("인증 실패 — 우측 상단 허브 버튼에서 토큰을 확인하세요.","ng");
+  var j=await r.json();
+  if(!j.ok) return rsay("실행 실패: "+esc(j.error||"원인 불명"),"ng");
+  var out=j.stdout||"";
+  if(j.truncated) out+="\n\n… 출력이 너무 길어 잘랐습니다 (총 "+j.outBytes.toLocaleString()+"자)";
+  $("rout").textContent = out || "(출력 없음)";
+  var el=(j.elapsed||0).toFixed(3);
+  if(j.status==="ok")
+    rsay("✅ 정상 종료 · "+el+"초 · "+esc(j.runner||"")+
+         (j.stdout?"":" <span class='hint'>(출력 없음)</span>"),"ok");
+  else if(j.status==="time_limit_exceeded")
+    rsay("⏱ 시간 초과 — "+tl+"초 안에 안 끝났습니다.","ng");
+  else if(j.status==="compile_error")
+    rsay("문법 오류<div class='d'>"+esc(j.stderr||"")+"</div>","ng");
+  else
+    rsay("💥 실행 중 오류 · "+el+"초<div class='d'>"+esc(j.stderr||"(stderr 없음)")+"</div>","ng");
+  if(j.stderr && j.status==="ok")
+    $("rout").textContent += "\n\n── stderr ──\n"+j.stderr;
+ }catch(e){
+  rsay("허브 호출 실패: "+esc(e.message||String(e))+
+       " <span class='hint'>("+((Date.now()-t0)/1000).toFixed(1)+"초)</span>","ng");
+  $("rout").textContent="(실행하지 못했습니다)";
+ }
+}
+
 async function doJudge(){
  await hubReady();
  var h=needHub("judge"); if(!h)return;
@@ -1461,6 +1570,9 @@ document.addEventListener("keydown",function(e){
  if(mod&&!e.altKey&&location.hash.indexOf("#p/")===0){
   if(e.key==="Enter"){ e.preventDefault(); doJudge(); return; }
   if(e.key==="s"||e.key==="S"){ e.preventDefault(); doSave(); return; }
+ }
+ if(mod&&!e.altKey&&e.key==="Enter"&&location.hash.indexOf("#run")===0){
+  e.preventDefault(); doExec(); return;
  }
  if(e.key!=="Escape")return;
  if($("dc").style.display==="block"){closeDel();return;}
