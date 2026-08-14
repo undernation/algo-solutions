@@ -286,6 +286,36 @@ button.danger:hover{opacity:.88;color:#fff;border-color:var(--no)}
 #cvc{margin:0;padding:16px 18px;font-family:ui-monospace,SFMono-Regular,Consolas,"D2Coding",monospace;
  font-size:13px;line-height:1.65;white-space:pre;overflow:auto;max-height:72vh;tab-size:4}
 #cvc .cm{color:var(--sub)}
+/* ── 코드 페이지(#c/<파일>): 줄번호 + 파이썬 색칠 ──
+   CDN(highlight.js 등)을 쓰지 않는다. 사내망에서 외부 스크립트가 막히면
+   코드가 통째로 안 보이게 되고, 이 사이트는 파일 하나로 도는 게 원칙이다. */
+.cbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.cbar .ct{font-size:17px;font-weight:800}
+.cbar .cp{font-family:ui-monospace,Consolas,monospace;color:var(--sub);font-size:13px}
+.cbar .csp{margin-left:auto;display:flex;gap:6px;align-items:center}
+.cbar .csp .sm{text-decoration:none}
+.codebox{background:var(--panel);border:1px solid var(--bd);border-radius:8px;
+ padding:14px 0;font-family:ui-monospace,SFMono-Regular,Consolas,"D2Coding",monospace;
+ font-size:13.5px;line-height:1.7;overflow:auto;tab-size:4}
+.codebox .cl{display:flex;align-items:flex-start;padding:0 16px}
+.codebox .cl:hover{background:var(--soft)}
+.codebox .ln{flex:0 0 auto;min-width:3.4em;padding-right:18px;text-align:right;
+ color:var(--mute);user-select:none;position:sticky;left:0;background:var(--panel)}
+.codebox .cl:hover .ln{background:var(--soft);color:var(--sub)}
+.codebox .lc{white-space:pre;flex:1 1 auto}
+.codebox .t-kw{color:#cf222e;font-weight:600}   /* def class if for ... */
+.codebox .t-bi{color:#6639ba}                   /* print len range ... */
+.codebox .t-fn{color:#8250df;font-weight:600}   /* def/class 뒤의 이름 */
+.codebox .t-str{color:#0a3069}
+.codebox .t-num{color:#0550ae}
+.codebox .t-cm{color:#6e7781;font-style:italic}
+.codebox .t-dec{color:#953800}                  /* @decorator */
+.codebox .t-op{color:#0550ae}
+@media(prefers-color-scheme:dark){
+ .codebox .t-kw{color:#ff7b72} .codebox .t-bi{color:#d2a8ff} .codebox .t-fn{color:#d2a8ff}
+ .codebox .t-str{color:#a5d6ff} .codebox .t-num{color:#79c0ff} .codebox .t-cm{color:#8b949e}
+ .codebox .t-dec{color:#ffa657} .codebox .t-op{color:#79c0ff}
+}
 #tip{position:fixed;display:none;background:#1f2328;color:#fff;padding:9px 12px;border-radius:6px;
  font-size:12.5px;line-height:1.65;pointer-events:none;z-index:99;box-shadow:0 6px 22px rgba(0,0,0,.45);max-width:340px}
 #tip b{display:block;margin-bottom:4px}#tip ul{margin:0;padding-left:16px}
@@ -309,6 +339,7 @@ button.danger:hover{opacity:.88;color:#fff;border-color:var(--no)}
  <div id="v-status" class="hide"></div>
  <div id="v-p" class="hide"></div>
  <div id="v-run" class="hide"></div>
+ <div id="v-c" class="hide"></div>
 </main>
 <div id="cv" onclick="if(event.target===this)closeCode()"><div id="cvb">
  <div id="cvh"><span id="cvt"></span><span class="p" id="cvp"></span>
@@ -316,7 +347,7 @@ button.danger:hover{opacity:.88;color:#fff;border-color:var(--no)}
    <a class="sm" id="cvraw" href="#" target="_blank" rel="noopener"
       style="border:1px solid var(--bd);border-radius:6px;padding:4px 10px;font-weight:700;font-size:12.5px">원본</a>
    <button class="sm" onclick="closeCode()">닫기</button></span></div>
- <pre id="cvc"></pre></div></div>
+ <div id="cvc"></div></div></div>
 <div id="ad" onclick="if(event.target===this)closeAdd()"><div id="adb">
  <h3>새 문제 추가</h3>
  <p class="hint" style="margin:0 0 14px">문제 페이지 <b>링크</b>만 붙여넣으면 됩니다.
@@ -498,7 +529,7 @@ function setupHub(){
 function go(){
  var h=(location.hash||"#home").slice(1);
  var v=h.split("/")[0]||"home";
- ["home","problems","status","p","run"].forEach(function(x){ $("v-"+x).className = (x===v?"":"hide"); });
+ ["home","problems","status","p","run","c"].forEach(function(x){ $("v-"+x).className = (x===v?"":"hide"); });
  Array.prototype.forEach.call(document.querySelectorAll("nav a"),function(a){
   var on=(a.dataset.v===v);
   /* 연습장 링크는 토큰이 있을 때만 보인다. className 을 통째로 쓰면 hide 가 날아간다 */
@@ -508,6 +539,7 @@ function go(){
  else if(v==="problems") viewProblems();
  else if(v==="status")   viewStatus();
  else if(v==="run")      viewRun();
+ else if(v==="c")   viewCode(decodeURIComponent(h.split("/").slice(1).join("/")));
  else if(v==="p")   viewProblem(h.split("/")[1],h.split("/").slice(2).join("/"));
  else location.hash="#home";
  window.scrollTo(0,0);
@@ -663,8 +695,9 @@ function tbl(rows){
     '<td class="'+rc(r.status)+'">'+esc(r.status)+'</td>'+
     '<td class="n">'+tcCell(r)+'</td>'+
     '<td class="n">'+(r.elapsed!=null?(+r.elapsed).toFixed(2)+'초':'<span style="color:var(--mute)">—</span>')+'</td>'+
-    '<td>'+(r.file?'<span class="lnk" style="color:var(--ac);cursor:pointer" onclick="openCode(\''+
-      esc(r.file)+'\')">보기</span>':'<span style="color:var(--mute)">—</span>')+'</td>'+
+    /* 진짜 링크로 둔다 — 새 탭으로 열거나 주소를 공유할 수 있다 */
+    '<td>'+(r.file?'<a class="lnk" style="color:var(--ac)" href="#c/'+
+      encodeURIComponent(r.file)+'">보기</a>':'<span style="color:var(--mute)">—</span>')+'</td>'+
     '<td><span class="del" title="이 풀이 기록 삭제" onclick="askDelSub(\''+esc(r.site)+
       '\',\''+esc(r.no)+'\',\''+esc(r.date)+'\',event)">&#128465;</span></td></tr>';
   }).join("")+'</tbody></table>';
@@ -1168,25 +1201,105 @@ async function doAdd(){
    .py 링크를 그냥 걸면 브라우저가 다운로드해 버려서, 받아다 화면에 띄운다. */
 var CVTEXT="";
 function closeCode(){$("cv").style.display="none";}
-async function openCode(file){
- $("cv").style.display="block";
- $("cvt").textContent="코드";
- $("cvp").textContent=file;
- $("cvraw").href="./"+file;
- $("cvc").textContent="불러오는 중…";
+/* ════════ 파이썬 문법 색칠 ════════
+   외부 라이브러리 없이 직접 훑는다(사내망에서 CDN 이 막히는 일이 있다).
+   완벽한 파서가 아니라 '읽기 편할 만큼'이 목표다. */
+var PY_KW={}, PY_BI={};
+("False None True and as assert async await break class continue def del elif else "+
+ "except finally for from global if import in is lambda nonlocal not or pass raise "+
+ "return try while with yield match case").split(" ").forEach(function(w){PY_KW[w]=1;});
+("abs all any bin bool bytes callable chr dict divmod enumerate eval filter float "+
+ "format frozenset getattr hasattr hash hex id input int isinstance issubclass iter "+
+ "len list map max min next object oct open ord pow print range repr reversed round "+
+ "set setattr slice sorted str sum tuple type zip self").split(" ").forEach(function(w){PY_BI[w]=1;});
+
+/* 1 문자열(접두사 r/f/b 포함) 2 주석 3 숫자 4 데코레이터 5 이름 6 공백 7 그 외 */
+/* ⚠️ 삼중따옴표를 리터럴로 쓰면 이 템플릿(파이썬 raw 삼중따옴표 문자열)이
+   거기서 끊긴다. 그래서 ["']{3} 로 적는다(파일 안의 기존 정규식과 같은 방식).
+   여는·닫는 따옴표가 섞이는 경우까지 매치되지만, 정상 파이썬 코드엔 없다. */
+var PY_RE=/((?:[rRbBuUfF]{1,3})?(?:["']{3}[\s\S]*?["']{3}|"(?:\\[\s\S]|[^"\\\n])*"|'(?:\\[\s\S]|[^'\\\n])*'))|(#[^\n]*)|(\b(?:0[xXoObB][0-9a-fA-F_]+|\d[\d_]*(?:\.[\d_]*)?(?:[eE][+-]?\d+)?[jJ]?))|(@[A-Za-z_][\w.]*)|([A-Za-z_]\w*)|(\s+)|([\s\S])/g;
+
+function pyTokens(src){
+ var out=[], m, prev="";
+ PY_RE.lastIndex=0;
+ while((m=PY_RE.exec(src))!==null){
+  if(m[0]===""){ PY_RE.lastIndex++; continue; }      /* 빈 매치 무한루프 방지 */
+  var cls="";
+  if(m[1]!==undefined) cls="t-str";
+  else if(m[2]!==undefined) cls="t-cm";
+  else if(m[3]!==undefined) cls="t-num";
+  else if(m[4]!==undefined) cls="t-dec";
+  else if(m[5]!==undefined){
+   if(PY_KW[m[0]]) cls="t-kw";
+   else if(prev==="def"||prev==="class") cls="t-fn";   /* 정의된 이름 */
+   else if(PY_BI[m[0]]) cls="t-bi";
+  }
+  else if(m[7]!==undefined && /[+\-*/%=<>!&|^~]/.test(m[0])) cls="t-op";
+  if(m[5]!==undefined) prev=m[0];
+  else if(m[6]===undefined) prev="";                  /* 공백은 직전 토큰을 유지 */
+  out.push([cls,m[0]]);
+ }
+ return out;
+}
+
+/* 색칠 결과를 줄 단위로 끊어 줄번호를 붙인다.
+   토큰(특히 여러 줄 문자열)이 줄을 넘어가므로, HTML 을 만든 뒤 자르지 않고
+   토큰을 줄 경계에서 쪼갠 다음 줄마다 span 을 닫는다. */
+function codeHTML(src){
+ /* 저장된 풀이는 CRLF 인 경우가 많다. innerHTML 로 넣으면 HTML 파서가 CR 을
+    개행으로 바꿔 버려서, white-space:pre 안에서 줄마다 빈 줄이 하나씩 더 생긴다.
+    미리 LF 로 통일한다. */
+ src=String(src==null?"":src).replace(/\r\n?/g,"\n");
+ var lines=[[]];
+ pyTokens(src).forEach(function(t){
+  var parts=t[1].split("\n");
+  for(var i=0;i<parts.length;i++){
+   if(i>0) lines.push([]);
+   if(parts[i]!=="") lines[lines.length-1].push([t[0],parts[i]]);
+  }
+ });
+ if(lines.length>1 && !lines[lines.length-1].length) lines.pop();   /* 끝 빈 줄 */
+ return lines.map(function(ln,i){
+  var code=ln.map(function(t){
+   var e=esc(t[1]);
+   return t[0]?'<span class="'+t[0]+'">'+e+'</span>':e;
+  }).join("");
+  return '<div class="cl"><span class="ln">'+(i+1)+'</span>'+
+         '<span class="lc">'+(code||" ")+'</span></div>';
+ }).join("");
+}
+
+/* 코드는 팝업이 아니라 **독립 페이지**(#c/<파일>)로 연다.
+   좁은 모달 안에서 가로로 긴 줄을 읽기가 불편했고, 뒤로가기·주소 공유도 안 됐다.
+   (이미지 미리보기는 그대로 팝업을 쓴다 — 짧게 훑고 닫는 용도라 맞다.) */
+function openCode(file){ location.hash="#c/"+encodeURIComponent(file); }
+
+var codeCur="";
+async function viewCode(file){
+ if(!file){ location.hash="#status"; return; }
+ if(codeCur===file) return;            /* 같은 파일 재진입 시 다시 안 받는다 */
+ codeCur=file;
  CVTEXT="";
+ var back=history.length>1
+   ? '<a class="sm" href="javascript:history.back()">← 뒤로</a>'
+   : '<a class="sm" href="#status">← 제출 현황</a>';
+ $("v-c").innerHTML=
+  '<div class="crumb">'+back+'</div>'+
+  '<div class="cbar"><span class="ct" id="cft">코드</span>'+
+   '<span class="cp">'+esc(file)+'</span>'+
+   '<span class="csp"><button class="sm" id="cvcp" onclick="copyCode()">복사</button>'+
+   '<a class="sm" href="./'+esc(file)+'" target="_blank" rel="noopener">원본</a></span></div>'+
+  '<div id="cvc2" class="codebox">불러오는 중…</div>';
  try{
   var r=await fetch("./"+file+"?"+Date.now());
-  if(!r.ok){$("cvc").textContent="불러오기 실패 ("+r.status+")";return;}
+  if(!r.ok){ $("cvc2").textContent="불러오기 실패 ("+r.status+")"; return; }
   var t=await r.text(); CVTEXT=t;
-  /* 파일 상단 독스트링은 흐리게, 본문 코드는 그대로 */
-  var m=t.match(/^(["']{3}[\s\S]*?["']{3})\s*\n([\s\S]*)$/);
-  $("cvc").innerHTML = m
-    ? '<span class="cm">'+esc(m[1])+'</span>\n\n'+esc(m[2])
-    : esc(t);
-  var lines=(m?m[2]:t).split("\n").length;
-  $("cvt").textContent="코드 · "+lines+"줄";
- }catch(e){$("cvc").textContent="오류: "+e.message;}
+  /* 파일 전체를 그대로 색칠한다. 예전엔 상단 독스트링만 떼어 흐리게 칠했는데,
+     이제 문자열 색이 따로 있어 굳이 나눌 필요가 없고, 줄번호도 실제 파일과
+     어긋나지 않는다. */
+  $("cvc2").innerHTML=codeHTML(t);
+  $("cft").textContent="코드 · "+t.replace(/\r/g,"").replace(/\n$/,"").split("\n").length+"줄";
+ }catch(e){ $("cvc2").textContent="오류: "+e.message; }
 }
 function copyCode(){
  var t=CVTEXT;
@@ -1646,6 +1759,7 @@ async function doSave(){
   BYPROB[kk].sort(newerFirst);
   (byDate[nr.date]=byDate[nr.date]||[]).unshift(nr);
   stDone=false; treeDone=false; homeDone=false;   /* 다음 진입 시 다시 그림 */
+  codeCur="";                                     /* 코드 페이지도 다시 받게 */
   renderProblem(CUR.prob,CUR.site,CUR.no);        /* 제출 이력 즉시 갱신 */
 
   say((j.pushed?"✅ 저장 + 푸시 완료":"⚠️ 저장은 됐지만 푸시 실패")+" <code>"+esc(j.file)+"</code>"+
@@ -1671,6 +1785,10 @@ document.addEventListener("keydown",function(e){
  }
  if(e.key!=="Escape")return;
  if($("dc").style.display==="block"){closeDel();return;}
+ /* 코드는 이제 팝업이 아니라 페이지다 — Esc 는 뒤로가기로 */
+ if($("cv").style.display!=="block" && location.hash.indexOf("#c/")===0){
+  history.back(); return;
+ }
  if($("ad").style.display==="block"){closeAdd();return;}
  closeCode();});
 /* ════════ 낡은 탭 감지 ════════
