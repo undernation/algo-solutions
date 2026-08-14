@@ -252,7 +252,11 @@ pre.io{background:var(--soft);border:1px solid var(--bd);border-radius:6px;paddi
 .mdbody pre.mdcode code{background:none;border:0;padding:0}
 .mdbody blockquote{margin:8px 0;padding:6px 14px;border-left:3px solid var(--bd);color:var(--sub)}
 .mdbody hr{border:0;border-top:1px solid var(--bd);margin:16px 0}
-#nbody{width:100%;min-height:180px;font-size:13.5px;line-height:1.65;white-space:pre-wrap;resize:vertical}
+/* 복기 메모는 길게 쓰는 칸이다. 180px(8줄쯤)이라 쓰는 동안 앞부분이 안 보였다.
+   화면 높이에 맞춰 크게 잡고, 내용이 넘치면 growNote() 가 더 늘린다. */
+#nbody{width:100%;min-height:420px;min-height:min(58vh,660px);
+ font-size:14.5px;line-height:1.75;padding:12px 14px;
+ white-space:pre-wrap;resize:vertical}
 
 /* ── 삭제 확인 ── */
 #dc{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;z-index:90;padding:80px 20px;overflow:auto}
@@ -1033,7 +1037,18 @@ function drawNote(){
    (has?'<button class="sm" style="margin-left:auto" onclick="editWhole()">전체 편집</button>':'')+
   '</div>';
  if(draft) $("nbody").value=draft;
- $("nbody").oninput=function(){ NOTE.draft=this.value; };
+ $("nbody").oninput=function(){ NOTE.draft=this.value; growNote(this); };
+ growNote($("nbody"));
+}
+
+/* 내용 길이에 칸 높이를 맞춘다.
+   처음엔 늘리기만 했더니, 긴 글을 지운 뒤에도 빈 칸이 화면을 다 덮은 채 남았다.
+   height 를 auto 로 되돌린 뒤 다시 재면 줄어들기도 한다.
+   CSS 의 min-height 가 하한이라 짧은 메모에서도 충분히 넓게 유지된다. */
+function growNote(el){
+ if(!el) return;
+ el.style.height="auto";
+ el.style.height=(el.scrollHeight+12)+"px";
 }
 
 function editWhole(){
@@ -1044,6 +1059,8 @@ function editWhole(){
   '<div class="row"><button class="p" onclick="saveNote(true)">전체 저장</button>'+
   '<button onclick="drawNote()">취소</button></div>';
  $("nbody").value=NOTE.text;
+ $("nbody").oninput=function(){ growNote(this); };
+ growNote($("nbody"));
 }
 
 function nsay(html,cls){var v=$("nv");if(!v)return;v.className="vd "+(cls||"info");v.style.display="block";v.innerHTML=html;}
