@@ -515,7 +515,17 @@ function rqToggle(){ RQOPEN=!RQOPEN; var el=$("rqbox"); if(el) el.outerHTML=rqHT
 var homeDone=false;
 function viewHome(){
  if(homeDone)return; homeDone=true;
- function cnt(s){return D.rows.filter(function(r){return r.status===s;}).length;}
+ /* rows 는 '제출 이력'이라 재제출이 여러 줄이다. 통계 카드는 '문제 수' 기준이므로
+    같은 문제·같은 날을 한 번만 센다. 안 그러면 틀렸다 다시 풀어 맞힌 문제가
+    품과 못품 양쪽에 모두 잡혀 숫자가 부푼다. */
+ function cnt(s){
+  var seen={},n=0;
+  D.rows.forEach(function(r){
+   if(r.status!==s)return;
+   var k2=key(r)+"|"+r.date; if(seen[k2])return; seen[k2]=1; n++;
+  });
+  return n;
+ }
  var uniq=Object.keys(BYPROB).length;
  var cards=[["총 시도",D.total,""],["고유 문제",uniq,""],
    ["활동일",D.active+"일",""],["최장 연속",D.best+"일",""],
@@ -550,8 +560,19 @@ function viewHome(){
   var el=document.createElement("div");
   el.className="c l"+c.lv; el.style.gridColumn=c.w; el.style.gridRow=c.r;
   el.onmousemove=function(e){
-   var its=(byDate[c.d]||[]).map(function(r){
-     return "<li>"+esc(r.site+" "+r.no+" "+(r.title||bestTitle(key(r))))+" ("+esc(r.status)+")</li>";
+   /* 툴팁 머리(c.n)는 '문제 수'이므로 목록도 문제 단위로 묶는다.
+      재제출이 여러 줄이라 그냥 펼치면 같은 문제가 회차만큼 반복된다. */
+   var seen={},lis=[];
+   (byDate[c.d]||[]).forEach(function(r){
+     var k2=key(r);
+     if(seen[k2]){ seen[k2].n++; return; }
+     seen[k2]={n:1};
+     lis.push({k:k2,r:r});
+   });
+   var its=lis.map(function(o){
+     var n=seen[o.k].n;
+     return "<li>"+esc(o.r.site+" "+o.r.no+" "+(o.r.title||bestTitle(o.k)))+
+            " ("+esc(o.r.status)+(n>1?", "+n+"회 제출":"")+")</li>";
     }).join("")||"<li>—</li>";
    tip.innerHTML="<b>"+c.d+" ("+c.dw+") — "+c.n+"문제</b><ul>"+its+"</ul>";
    tip.style.display="block";
@@ -577,8 +598,12 @@ function tbl(rows){
    var k=key(r), t=r.title||bestTitle(k);
    /* 시각은 허브로 저장한 기록에만 있다. 시:분까지만 보여준다(초는 정렬용). */
    var hm=(r.at||"").slice(0,5);
+   /* 같은 날 같은 문제를 여러 번 냈으면 회차를 달아 준다.
+      예전엔 재제출이 앞 기록을 덮어써서 이런 줄 자체가 없었다. */
+   var tryb=(r.tries>1)?' <span class="b" style="background:var(--soft);color:var(--sub)">'+
+                        r["try"]+'/'+r.tries+'회</span>':'';
    return '<tr><td class="n" style="white-space:nowrap">'+r.date+
-     (hm?' <span class="hint">'+hm+'</span>':'')+'</td>'+
+     (hm?' <span class="hint">'+hm+'</span>':'')+tryb+'</td>'+
     '<td><span class="b b-'+r.site+'">'+r.site+'</span></td>'+
     '<td class="n">'+esc(r.no)+'</td>'+
     '<td class="l"><a href="#p/'+encodeURIComponent(r.site)+'/'+encodeURIComponent(r.no)+'">'+
@@ -972,14 +997,20 @@ function dsay(html,cls){var v=$("dcv");v.className="vd "+(cls||"info");v.style.d
 /* 풀이 기록 삭제 */
 function askDelSub(site,no,date,ev){
  if(ev){ev.stopPropagation();ev.preventDefault();}
- var k=site+"/"+no, subs=BYPROB[k]||[], last=subs.length<=1;
+ /* 삭제는 (문제, 날짜) 단위다. rows 는 재제출마다 한 줄이므로 줄 수로 세면
+    같은 날 2회 낸 것이 "다른 날짜 기록 1건" 으로 잘못 보인다. 날짜로 센다. */
+ var k=site+"/"+no, subs=BYPROB[k]||[], dseen={}, days=[];
+ subs.forEach(function(r){ if(!dseen[r.date]){dseen[r.date]=1;days.push(r.date);} });
+ var last=days.length<=1;
+ var sameDay=subs.filter(function(r){return r.date===date;}).length;
  DEL={kind:"submission",site:site,no:no,date:date};
  $("dct").textContent="풀이 기록을 삭제할까요?";
  $("dcw").innerHTML=
    "<b>"+esc(site+" "+no+" "+bestTitle(k))+"</b><br>"+
    "제출일 <b>"+esc(date)+"</b> 기록이 잔디·제출현황에서 사라집니다."+
+   (sameDay>1?"<br>그날 제출 <b>"+sameDay+"회분이 모두</b> 지워집니다.":"")+
    (last?"<br>이 문제의 <b>마지막 기록</b>이라 저장된 <b>코드 파일도</b> 함께 지워집니다."
-        :"<br>다른 날짜 기록 "+(subs.length-1)+"건과 코드 파일은 그대로 둡니다.");
+        :"<br>다른 날짜 기록 "+(days.length-1)+"건과 코드 파일은 그대로 둡니다.");
  $("dcv").style.display="none"; $("dcgo").disabled=false;
  $("dc").style.display="block";
 }
@@ -1543,10 +1574,17 @@ async function doSave(){
          /* 서버가 기록한 제출 시각. 없으면 지금 시각으로 대신 채운다. */
          at:j.at||new Date().toTimeString().slice(0,8)};
   var kk=key(nr);
-  D.rows=D.rows.filter(function(r){return !(key(r)===kk&&r.date===nr.date);});
+  /* 같은 날 재제출이면 앞 회차를 지우지 말고 회차를 매겨 함께 남긴다.
+     예전엔 여기서 filter 로 지워, 서버가 제대로 쌓아도 화면에서는
+     직전 제출이 사라진 것처럼 보였다. */
+  var same=D.rows.filter(function(r){return key(r)===kk&&r.date===nr.date;});
+  if(same.length){
+   nr["try"]=same.length+1; nr.tries=same.length+1;
+   same.forEach(function(r,i){ r["try"]=r["try"]||(i+1); r.tries=nr.tries; });
+  }
   D.rows.unshift(nr);
   D.rows.sort(newerFirst);
-  BYPROB[kk]=(BYPROB[kk]||[]).filter(function(r){return r.date!==nr.date;});
+  BYPROB[kk]=(BYPROB[kk]||[]);
   BYPROB[kk].unshift(nr);
   BYPROB[kk].sort(newerFirst);
   (byDate[nr.date]=byDate[nr.date]||[]).unshift(nr);

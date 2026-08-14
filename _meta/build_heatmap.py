@@ -270,8 +270,22 @@ def _fill(a, b, status_first):
         return a
     out = dict(a)
     for k, v in b.items():
-        if k != "status" and v and not out.get(k):
+        if k != "status" and k != "attempts" and v and not out.get(k):
             out[k] = v
+    # 제출 회차는 어느 쪽도 버리지 않고 합집합으로 모은다. 빈 칸 채우기 규칙에
+    # 맡기면 한쪽 attempts 가 이미 있다는 이유로 다른 쪽이 통째로 버려진다.
+    att, seen_at = [], set()
+    for src in (a.get("attempts"), b.get("attempts")):
+        for x in (src or []):
+            if not isinstance(x, dict):
+                continue
+            k2 = (x.get("at") or "", x.get("status") or "")
+            if k2 in seen_at:
+                continue
+            seen_at.add(k2)
+            att.append(x)
+    if att:
+        out["attempts"] = sorted(att, key=lambda x: x.get("at") or "")
     sa = a.get("status") or "?"
     sb = b.get("status") or "?"
     if sb != "?" and (status_first or sa == "?"):
@@ -309,6 +323,44 @@ def merge(base: dict, add: dict, status_first: bool = False) -> dict:
         # items 없이 count 만 있는 구버전 기록도 있으므로 셋 중 최대값을 쓴다.
         cur["count"] = max(len(cur["items"]), cur["count"], v["count"])
     return base
+
+
+def build_rows(data: dict) -> list:
+    """날짜별 기록 → 대시보드용 '제출 이력' 목록(최신 날짜 먼저).
+
+    한 문제를 같은 날 여러 번 냈으면 **회차마다 한 줄**을 만든다.
+    items 는 잔디 count(= 그날 시도한 '문제 수') 때문에 문제당 하나로 묶여 있고,
+    회차는 그 안의 attempts 에 들어 있다. 예전엔 허브가 재제출 때 이전 기록을
+    지우고 새로 넣어서 "틀렸다가 다시 풀어 맞힘" 의 앞부분이 사라졌다.
+    """
+    rows = []
+    for dk in sorted(data, reverse=True):
+        for it in data[dk]["items"]:
+            if isinstance(it, str):
+                continue
+            base = {"date": dk, "site": it.get("site", ""),
+                    "no": it.get("no", ""), "title": it.get("title", ""),
+                    "status": it.get("status", "?"), "file": it.get("file", ""),
+                    "passed": it.get("passed"), "total": it.get("total"),
+                    "elapsed": it.get("elapsed"), "verdict": it.get("verdict", ""),
+                    # 허브로 저장한 기록에만 있다. 옛 기록·실수노트 유래는 빈 값.
+                    "at": it.get("at", "")}
+            att = [x for x in (it.get("attempts") or []) if isinstance(x, dict)]
+            if len(att) < 2:
+                rows.append(base)
+                continue
+            for i, a in enumerate(sorted(att, key=lambda x: x.get("at") or "")):
+                r = dict(base)
+                r.update({"status": a.get("status") or base["status"],
+                          "at": a.get("at") or "",
+                          "file": a.get("file") or base["file"],
+                          "passed": a.get("passed"), "total": a.get("total"),
+                          "elapsed": a.get("elapsed"),
+                          "verdict": a.get("verdict", ""),
+                          # 몇 회차 제출인지. 대시보드가 "2/3회" 배지로 보여준다.
+                          "try": i + 1, "tries": len(att)})
+                rows.append(r)
+    return rows
 
 
 # ── 렌더 ───────────────────────────────────────────────────────
@@ -397,18 +449,7 @@ def render_html(data, year, total, active, best):
                           "m": (d.month if d.day <= 7 and dow == 0 else 0),
                           "dw": DOW[d.weekday()], "n": rec["count"],
                           "lv": level(rec["count"])})
-    rows = []
-    for dk in sorted(data, reverse=True):
-        for it in data[dk]["items"]:
-            if isinstance(it, str):
-                continue
-            rows.append({"date": dk, "site": it.get("site", ""),
-                         "no": it.get("no", ""), "title": it.get("title", ""),
-                         "status": it.get("status", "?"), "file": it.get("file", ""),
-                         "passed": it.get("passed"), "total": it.get("total"),
-                         "elapsed": it.get("elapsed"), "verdict": it.get("verdict", ""),
-                         # 허브로 저장한 기록에만 있다. 옛 기록·실수노트 유래는 빈 값.
-                         "at": it.get("at", "")})
+    rows = build_rows(data)
     # 크롤링된 문제 자료 색인 + 코딩살구 전체 문제 카탈로그
     probs, cat = {"count": 0, "items": {}}, []
     try:

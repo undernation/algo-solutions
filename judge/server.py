@@ -628,11 +628,37 @@ def save_solution(d):
                 item["total"] = sm.get("total")
             if v.get("elapsedSec") is not None:
                 item["elapsed"] = v.get("elapsedSec")
-        items = [x for x in rec["items"]
-                 if not (isinstance(x, dict) and x.get("site") == site and str(x.get("no")) == no)]
-        items.append(item)
-        rec["items"] = items
-        rec["count"] = max(len(items), rec.get("count", 0))
+        # 같은 날 같은 문제를 다시 내면 기록은 하나로 묶되, 제출마다 attempts 에 쌓는다.
+        # 예전엔 이전 기록을 지우고 새로 넣어서 "틀림 → 다시 풀어 품" 의 앞부분이
+        # 흔적 없이 사라졌다(잔디 count 는 '그날 시도한 문제 수'라 묶음은 유지해야 한다).
+        prev = None
+        for x in rec["items"]:
+            if isinstance(x, dict) and x.get("site") == site and str(x.get("no")) == no:
+                prev = x
+                break
+        att = {"at": at, "status": item["status"], "file": rel}
+        for k in ("verdict", "passed", "total", "elapsed"):
+            if item.get(k) is not None:
+                att[k] = item[k]
+        if prev is None:
+            item["attempts"] = [att]
+            rec["items"].append(item)
+        else:
+            # ⚠️ 이름을 hist 로 두지 말 것 — 바깥의 history 딕셔너리를 가려서
+            #    history.json 을 attempts 배열로 통째로 덮어쓴다(실제로 겪음).
+            tries = [a for a in (prev.get("attempts") or []) if isinstance(a, dict)]
+            if not tries:
+                # attempts 가 없던 옛 기록이면 지금 내용을 1회차로 되살려 둔다.
+                old = {k: prev[k] for k in ("at", "status", "file", "verdict",
+                                            "passed", "total", "elapsed")
+                       if prev.get(k) is not None}
+                if old:
+                    tries.append(old)
+            tries.append(att)
+            prev.update(item)          # 문제 대표값은 가장 최근 제출로
+            prev["attempts"] = tries
+        # count 는 '문제 수'다. items 는 문제당 하나이므로 길이가 곧 문제 수.
+        rec["count"] = max(len(rec["items"]), rec.get("count", 0))
         io.open(hp, "w", encoding="utf-8", newline="").write(
             json.dumps(hist, ensure_ascii=False, indent=1, sort_keys=True))
         log("   📝 history.json %s (%d건)" % (day, rec["count"]))
