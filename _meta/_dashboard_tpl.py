@@ -196,6 +196,9 @@ pre.io{background:var(--soft);border:1px solid var(--bd);border-radius:6px;paddi
 .rout{background:var(--panel);border:1px solid var(--bd2);border-radius:6px;padding:11px 13px;
  font-family:ui-monospace,Consolas,monospace;font-size:13px;line-height:1.55;
  white-space:pre-wrap;word-break:break-all;max-height:460px;overflow:auto;margin:0;color:var(--fg)}
+/* 저장은 끝났지만 GitHub Pages 재빌드 전이라 이 브라우저에만 있는 기록 */
+.b.pend{background:rgba(219,138,0,.14);color:#b26a00;border:1px solid rgba(219,138,0,.4)}
+@media(prefers-color-scheme:dark){.b.pend{color:#e8a33d}}
 .vd{padding:12px 15px;border-radius:6px;font-size:14px;margin-top:12px;display:none;border:1px solid}
 .vd.ok{background:rgba(0,161,12,.09);border-color:rgba(0,161,12,.35);color:var(--ok)}
 .vd.ng{background:rgba(221,65,36,.09);border-color:rgba(221,65,36,.35);color:var(--no)}
@@ -370,6 +373,53 @@ function $(i){return document.getElementById(i);}
    옛 기록·실수노트 유래는 빈 값이라 같은 날이면 뒤로 보낸다. */
 function ord(r){ return r.date+"T"+(r.at||"00:00:00"); }
 function newerFirst(a,b){ return ord(b).localeCompare(ord(a)); }
+
+/* ════════ 반영 대기분 (pending) ════════
+   대시보드 데이터는 index.html 안에 박혀 있고, 그건 GitHub Pages 가 다시
+   빌드해야 바뀐다. 저장 직후엔 commit·push 가 끝나도 Pages 는 아직 옛
+   빌드를 내주므로(실측 약 46초, 브라우저 캐시까지 겹치면 더 길다)
+   새로고침하면 방금 낸 기록이 사라진 것처럼 보였다.
+
+   그래서 저장분을 localStorage 에 들고 있다가, 진짜 데이터에 나타날 때까지
+   화면에 얹어 준다. 나타나면 그때 버린다. */
+var PKEY="pendingSubs";
+function pendKey(r){ return key(r)+"|"+r.date+"|"+(r.at||""); }
+function pendLoad(){
+ try{ var a=JSON.parse(localStorage.getItem(PKEY)||"[]"); return a.length?a:[]; }
+ catch(e){ return []; }
+}
+function pendSave(a){
+ try{ localStorage.setItem(PKEY, JSON.stringify(a)); }catch(e){}
+}
+function pendAdd(r){
+ var a=pendLoad();
+ a=a.filter(function(x){ return pendKey(x)!==pendKey(r); });
+ var c=JSON.parse(JSON.stringify(r));
+ c._pend=1; c._ts=Date.now();
+ a.push(c); pendSave(a);
+}
+function pendDrop(pred){ pendSave(pendLoad().filter(function(x){ return !pred(x); })); }
+/* 이미 반영된 것·너무 오래된 것을 걷어내고, 남은 것을 rows 에 얹는다. */
+function pendMerge(){
+ var a=pendLoad();
+ if(!a.length) return 0;
+ var have={};
+ D.rows.forEach(function(r){ have[pendKey(r)]=1; });
+ /* at 이 없던 옛 저장분을 위해 (문제,날짜)까지만 맞는 경우도 반영으로 본다 */
+ var haveDay={};
+ D.rows.forEach(function(r){ haveDay[key(r)+"|"+r.date]=1; });
+ var WEEK=7*24*3600*1000, keep=[];
+ a.forEach(function(x){
+  if(have[pendKey(x)]) return;                       /* 진짜 데이터에 도착 */
+  if(!x.at && haveDay[key(x)+"|"+x.date]) return;
+  if(x._ts && Date.now()-x._ts>WEEK) return;         /* 유령 방지 */
+  keep.push(x);
+ });
+ if(keep.length!==a.length) pendSave(keep);
+ keep.forEach(function(x){ D.rows.push(x); });
+ return keep.length;
+}
+var PENDN=pendMerge();
 D.rows.sort(newerFirst);
 
 /* 동일 문제 묶기 */
@@ -602,6 +652,8 @@ function tbl(rows){
       예전엔 재제출이 앞 기록을 덮어써서 이런 줄 자체가 없었다. */
    var tryb=(r.tries>1)?' <span class="b" style="background:var(--soft);color:var(--sub)">'+
                         r["try"]+'/'+r.tries+'회</span>':'';
+   /* 저장은 됐는데 Pages 재빌드 전이라 이 브라우저에만 있는 줄 */
+   if(r._pend) tryb+=' <span class="b pend" title="저장 완료 · 사이트 반영 대기 중">반영 대기</span>';
    return '<tr><td class="n" style="white-space:nowrap">'+r.date+
      (hm?' <span class="hint">'+hm+'</span>':'')+tryb+'</td>'+
     '<td><span class="b b-'+r.site+'">'+r.site+'</span></td>'+
@@ -1045,6 +1097,8 @@ async function doDelete(){
   /* 화면에서도 즉시 반영 */
   var k=DEL.site+"/"+DEL.no;
   if(DEL.kind==="submission"){
+   /* 대기분도 같이 버린다. 안 그러면 지운 기록이 새로고침 때마다 되살아난다. */
+   pendDrop(function(x){ return key(x)===k && x.date===DEL.date; });
    D.rows=D.rows.filter(function(x){return !(key(x)===k&&x.date===DEL.date);});
    BYPROB[k]=(BYPROB[k]||[]).filter(function(x){return x.date!==DEL.date;});
    if(!BYPROB[k].length) delete BYPROB[k];
@@ -1565,8 +1619,9 @@ async function doSave(){
   if(r.status===401)return say("인증 실패 — 허브 버튼에서 토큰을 확인하세요.","ng");
   var j=await r.json();
   if(!j.ok)return say("실패: "+esc(j.error),"ng");
-  /* 낙관적 갱신 — Pages 재배포(1~2분)를 기다리지 않고 화면에 먼저 반영한다.
-     새로고침하면 서버가 생성한 진짜 데이터로 대체된다. */
+  /* 낙관적 갱신 — Pages 재배포를 기다리지 않고 화면에 먼저 반영한다.
+     ⚠️ 화면에만 얹으면 새로고침하는 순간 사라진다(Pages 가 아직 옛 빌드를
+     내주기 때문). 그래서 아래에서 pendAdd 로 localStorage 에도 남긴다. */
   var vv=CUR.verdict||{}, vs=vv.summary||{};
  var nr={date:$("pd").value,site:CUR.site,no:CUR.no,
          title:bestTitle(CUR.site+"/"+CUR.no),status:$("pst").value,file:j.file||"",
@@ -1582,6 +1637,8 @@ async function doSave(){
    nr["try"]=same.length+1; nr.tries=same.length+1;
    same.forEach(function(r,i){ r["try"]=r["try"]||(i+1); r.tries=nr.tries; });
   }
+  nr._pend=1;                      /* 진짜 데이터에 도착할 때까지 '대기' 표시 */
+  pendAdd(nr);                     /* 새로고침해도 살아남게 저장해 둔다 */
   D.rows.unshift(nr);
   D.rows.sort(newerFirst);
   BYPROB[kk]=(BYPROB[kk]||[]);
@@ -1628,10 +1685,17 @@ async function checkFresh(){
   if(!j.stamp || j.stamp===D.stamp) return;
   var n=(j.total||0)-(D.total||0);
   $("stalemsg").innerHTML="이 페이지는 <b>"+esc((D.stamp||"").slice(0,16))+"</b> 기준입니다."
-    +(n>0?" 이후 <b>"+n+"문제</b>가 기록됐어요.":" 새 기록이 있습니다.");
+    +(n>0?" 이후 <b>"+n+"문제</b>가 기록됐어요.":" 새 기록이 있습니다.")
+    +(PENDN?" <b>방금 저장한 "+PENDN+"건</b>이 사이트에 실렸는지 확인하려면 새로고침하세요.":"");
   $("stale").style.display="flex";
  }catch(e){}
 }
+/* 저장 직후에는 Pages 재빌드(약 1분)를 빨리 알아채도록 자주 확인한다.
+   평소 5분 간격이면 "반영 대기" 배지가 한참 남아 있어 불안해 보인다. */
+if(PENDN){ var pt=setInterval(function(){
+  if(!pendLoad().length){ clearInterval(pt); return; }
+  checkFresh();
+}, 30000); }
 document.addEventListener("visibilitychange",function(){
  if(!document.hidden) checkFresh();          /* 탭으로 돌아올 때마다 확인 */
 });
