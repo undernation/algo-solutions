@@ -4584,5 +4584,33 @@
     "title": "태양광 발전 단지 관제 시스템 D6"
    }
   ]
+ },
+ "2026-08-15": {
+  "count": 1,
+  "items": [
+   {
+    "at": "10:27:03",
+    "attempts": [
+     {
+      "at": "10:27:03",
+      "elapsed": 4.39,
+      "file": "boj/1100.py",
+      "passed": 18,
+      "status": "품",
+      "total": 18,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 4.39,
+    "file": "boj/1100.py",
+    "no": "1100",
+    "passed": 18,
+    "site": "BOJ",
+    "status": "품",
+    "title": "하얀 칸",
+    "total": 18,
+    "verdict": "accepted"
+   }
+  ]
  }
 }
