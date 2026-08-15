@@ -4586,7 +4586,7 @@
   ]
  },
  "2026-08-15": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "10:27:03",
@@ -4609,6 +4609,29 @@
     "status": "품",
     "title": "하얀 칸",
     "total": 18,
+    "verdict": "accepted"
+   },
+   {
+    "at": "14:16:23",
+    "attempts": [
+     {
+      "at": "14:16:23",
+      "elapsed": 5.943,
+      "file": "boj/20057.py",
+      "passed": 20,
+      "status": "품",
+      "total": 20,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 5.943,
+    "file": "boj/20057.py",
+    "no": "20057",
+    "passed": 20,
+    "site": "BOJ",
+    "status": "품",
+    "title": "마법사 상어와 토네이도",
+    "total": 20,
     "verdict": "accepted"
    }
   ]
