@@ -4637,7 +4637,7 @@
   ]
  },
  "2026-08-16": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "12:26:22",
@@ -4660,6 +4660,29 @@
     "status": "품",
     "title": "공항 활주로 관제 시스템 D6",
     "total": 1,
+    "verdict": "accepted"
+   },
+   {
+    "at": "12:44:52",
+    "attempts": [
+     {
+      "at": "12:44:52",
+      "elapsed": 4.571,
+      "file": "boj/2559.py",
+      "passed": 18,
+      "status": "틀림",
+      "total": 18,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 4.571,
+    "file": "boj/2559.py",
+    "no": "2559",
+    "passed": 18,
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "수열",
+    "total": 18,
     "verdict": "accepted"
    }
   ]
