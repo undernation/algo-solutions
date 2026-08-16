@@ -4637,7 +4637,7 @@
   ]
  },
  "2026-08-16": {
-  "count": 2,
+  "count": 3,
   "items": [
    {
     "at": "12:26:22",
@@ -4683,6 +4683,29 @@
     "status": "틀림",
     "title": "수열",
     "total": 18,
+    "verdict": "accepted"
+   },
+   {
+    "at": "12:59:28",
+    "attempts": [
+     {
+      "at": "12:59:28",
+      "elapsed": 4.61,
+      "file": "boj/2941.py",
+      "passed": 19,
+      "status": "품",
+      "total": 19,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 4.61,
+    "file": "boj/2941.py",
+    "no": "2941",
+    "passed": 19,
+    "site": "BOJ",
+    "status": "품",
+    "title": "크로아티아 알파벳",
+    "total": 19,
     "verdict": "accepted"
    }
   ]
