@@ -4637,7 +4637,7 @@
   ]
  },
  "2026-08-16": {
-  "count": 5,
+  "count": 6,
   "items": [
    {
     "at": "12:26:22",
@@ -4737,6 +4737,29 @@
     "site": "BOJ",
     "status": "품",
     "title": "풀이일 : 2026-08-16   결과: 품"
+   },
+   {
+    "at": "13:56:21",
+    "attempts": [
+     {
+      "at": "13:56:21",
+      "elapsed": 8.111,
+      "file": "boj/17140.py",
+      "passed": 20,
+      "status": "품",
+      "total": 20,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 8.111,
+    "file": "boj/17140.py",
+    "no": "17140",
+    "passed": 20,
+    "site": "BOJ",
+    "status": "품",
+    "title": "이차원 배열과 연산",
+    "total": 20,
+    "verdict": "accepted"
    }
   ]
  }
