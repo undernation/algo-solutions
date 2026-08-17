@@ -4777,5 +4777,33 @@
     "title": "연속합"
    }
   ]
+ },
+ "2026-08-17": {
+  "count": 1,
+  "items": [
+   {
+    "at": "12:38:23",
+    "attempts": [
+     {
+      "at": "12:38:23",
+      "elapsed": 0.288,
+      "file": "swea/27183_고속선선로피로도관제시스템D6.py",
+      "passed": 1,
+      "status": "못품",
+      "total": 1,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.288,
+    "file": "swea/27183_고속선선로피로도관제시스템D6.py",
+    "no": "27183",
+    "passed": 1,
+    "site": "SWEA",
+    "status": "못품",
+    "title": "고속선 선로 피로도 관제 시스템 D6",
+    "total": 1,
+    "verdict": "accepted"
+   }
+  ]
  }
 }
