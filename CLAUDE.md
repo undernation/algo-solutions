@@ -413,6 +413,7 @@ git push
 | `review_queue.py`가 이상하게 동작 | **반드시 `C:/Users/solom` 에서 실행** (한글 경로 인코딩) |
 | 저장 직후 **새로고침하면 방금 낸 기록이 없음** | 정상 동작으로 고쳐졌다. 데이터가 `index.html` 에 박혀 있어 **Pages 재빌드(실측 ~46초, 캐시 10분)** 전에는 옛 빌드가 온다. 이제 `localStorage.pendingSubs` 에 들고 있다가 얹어 주고 **"반영 대기" 배지**를 단다. 배지가 안 사라지면 push 실패를 의심 |
 | 지운 기록이 새로고침하면 되살아남 | 대기분(`pendingSubs`)이 안 지워진 경우. 삭제 시 `pendDrop` 이 같이 지운다. 수동 해제는 devtools 에서 `localStorage.removeItem("pendingSubs")` |
+| **커밋했는데 고친 내용이 안 들어감** | 🚩 `build_heatmap.py` 는 돌릴 때마다 `built.json` 타임스탬프가 바뀌어 워킹트리가 절대 깨끗해지지 않는다. 그 잡음을 지우려고 **`git checkout -- .` 을 돌리면 커밋 안 된 `_dashboard_tpl.py` 수정까지 같이 날아간다** (2026-08-17 실제로 겪음 — 메시지만 있고 소스가 빠진 커밋이 push 됐다). **소스를 먼저 커밋하고 나서** pull/rebase/빌드할 것 |
 | 대시보드가 "허브 꺼짐" | 클라우드는 `curl https://<터널>/` 로 확인. 로컬은 `python judge/server.py` |
 | 허브 호출이 **401** | 토큰 불일치 → 우측 상단 허브 버튼에서 재입력 (`~/.algo-hub-token`) |
 | 401 이 **몇 초씩 늦게** 온다 | 정상. 인증 실패가 누적되면 백오프가 걸린다. 올바른 토큰으로 한 번 성공하면 초기화 |
