@@ -27,10 +27,18 @@ TEMPLATE = r"""<!doctype html><html lang="ko"><meta charset="utf-8">
 }}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
+/* 글꼴 — 외부 폰트를 받아오지 않는다(사내망에서 막히면 통째로 깨진다).
+   설치돼 있으면 쓰고 없으면 다음으로 넘어가는 순서로만 짠다.
+   한글: Pretendard > Noto Sans KR > 맑은 고딕. Segoe UI 에는 한글이 없어서
+   라틴 글자만 가져가고 한글은 뒤 폰트로 떨어진다 — 그 자리를 지정해 둔 것이다. */
 body{margin:0;background:var(--bg);color:var(--fg);
- font:15px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Pretendard,"Malgun Gothic",sans-serif}
+ font:15px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Pretendard,
+      "Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif}
 a{color:var(--ac);text-decoration:none}a:hover{text-decoration:underline}
-code,pre,.mono{font-family:ui-monospace,SFMono-Regular,Consolas,"D2Coding",monospace}
+/* 고정폭: Cascadia Mono(윈도우 기본 탑재) > Consolas. 한글 주석은 어느 고정폭에도
+   없으므로 마지막에 한글 폰트를 붙여 제멋대로 떨어지지 않게 한다. */
+code,pre,.mono{font-family:"Cascadia Mono",ui-monospace,SFMono-Regular,Consolas,
+ "D2Coding","Noto Sans KR","Malgun Gothic",monospace}
 
 /* ── 헤더 ── */
 header{border-bottom:1px solid var(--bd);background:var(--panel);position:sticky;top:0;z-index:30}
@@ -264,21 +272,31 @@ pre.io{background:var(--soft);border:1px solid var(--bd);border-radius:6px;paddi
    읽는 화면이 달라 보이면 저장하고 나서 어긋난 느낌이 든다.
    대신 줄 간격만 좁힌다. 읽기용 여백 그대로면 커서가 줄 사이에서 튀어 보인다. */
 #nedit{width:100%;min-height:420px;min-height:min(58vh,660px);
- padding:10px 14px;font-size:14.5px;line-height:1.75;
+ padding:10px 14px 10px 6px;font-size:14.5px;line-height:1.75;
  overflow-y:auto;cursor:text;resize:vertical}
 #nedit:focus-within{border-color:var(--ac)}
-#nedit p{margin:2px 0}
-#nedit ul,#nedit ol{margin:0;padding-left:22px}
-#nedit li{margin:1px 0;line-height:1.75}
-#nedit .mdh{margin:12px 0 4px}
+#nedit ul,#nedit ol{padding-left:22px}
 #nedit .mdh2{padding-bottom:4px}
-#nedit .mdh4{margin-top:14px}
-#nedit blockquote{margin:3px 0}
-#nedit hr{margin:9px 0}
-#nedit pre.mdcode{margin:6px 0}
-#nedit>*:first-child{margin-top:0}
+/* 줄 번호는 원문(.md 파일) 기준이다. 코드블록은 여러 줄이 한 덩어리라
+   그 첫 줄 번호만 보이고 다음 블록에서 번호가 건너뛴다 — 접힌 영역과 같다. */
+.lprow{display:flex;align-items:flex-start;padding:1px 0}
+.lprow:hover>.lpn{color:var(--sub)}
+.lpn{flex:0 0 auto;width:2.5em;margin-right:12px;padding-top:.15em;
+ text-align:right;color:var(--mute);user-select:none;cursor:pointer;
+ font-size:12px;line-height:1.75;font-variant-numeric:tabular-nums}
+.lpn:hover{color:var(--ac)}
+.lprow>.lpb,.lprow>.lpa{flex:1 1 auto;min-width:0}
+/* 번호와 첫 글자를 나란히 두려면 안쪽 여백을 행이 대신 가져야 한다.
+   안 그러면 제목처럼 위 여백이 큰 블록에서 번호만 붕 뜬다. */
+#nedit .lpb>*{margin-top:0;margin-bottom:0}
+#nedit li{margin:0}                    /* .mdbody li 의 3px 이 줄마다 쌓여 헐거워진다 */
+.lprow.h{margin-top:13px}
+#nedit .lprow:first-child{margin-top:0}
+.lprow.code{margin:6px 0}
+/* 코드블록은 <pre> 안쪽 여백(12px)만큼 첫 글자가 내려가 있다 */
+.lprow.code>.lpn{padding-top:13px}
 .lpb{border-radius:4px;padding:0 4px;margin:0 -4px}
-.lpb:hover{background:var(--soft)}
+.lprow:hover>.lpb{background:var(--soft)}
 .lpb.emp{height:1.75em}
 .lpb.ph{color:var(--mute)}
 /* 원문이 드러난 줄. 옅은 배경으로 "여기가 편집 중" 을 표시한다. */
@@ -345,7 +363,9 @@ button.danger:hover{opacity:.88;color:#fff;border-color:var(--no)}
 .t-fn{color:#8250df;font-weight:600}   /* def/class 뒤의 이름 */
 .t-str{color:#0a3069}
 .t-num{color:#0550ae}
-.t-cm{color:#6e7781;font-style:italic}
+/* 주석에 기울임을 쓰지 않는다 — 한글은 이탤릭이 없어 브라우저가 억지로
+   기울여 그리는데, 코드에 한글 주석이 많아 그쪽이 다 뭉개져 보였다. */
+.t-cm{color:#6e7781}
 .t-dec{color:#953800}                  /* @decorator */
 .t-op{color:#0550ae}
 @media(prefers-color-scheme:dark){
@@ -1169,20 +1189,34 @@ function lpFlush(){
  lpOut();
 }
 
+/* 왼쪽 줄 번호를 붙인 한 행. 번호는 .md 파일의 실제 줄 번호다.
+   번호를 눌러도 그 줄로 커서가 가게 한다(줄 끝). */
+function lpRow(inner,ln,cls,i){
+ return '<div class="lprow'+(cls?" "+cls:"")+'">'+
+        '<span class="lpn" data-i="'+i+'">'+ln+"</span>"+inner+"</div>";
+}
 function lpRender(){
  var h=LP.host; if(!h) return;
- var o=[],i;
+ var o=[],i,ln=1;
  if(LP.blocks.length===1&&LP.blocks[0]===""&&LP.act!==0){
-  o.push('<div class="lpb emp ph" data-i="0">무엇을 틀렸는지, 왜 그랬는지…</div>');
+  o.push(lpRow('<div class="lpb emp ph" data-i="0">무엇을 틀렸는지, 왜 그랬는지…</div>',1,"",0));
  } else {
-  for(i=0;i<LP.blocks.length;i++)
-   o.push(i===LP.act
-     ? '<textarea class="lpa'+(lpIsCode(LP.blocks[i])?" code":"")+'" spellcheck="false" rows="1"></textarea>'
-     : lpHTML(LP.blocks[i],i));
+  for(i=0;i<LP.blocks.length;i++){
+   var t=LP.blocks[i], code=lpIsCode(t);
+   o.push(lpRow(
+     i===LP.act
+       ? '<textarea class="lpa'+(code?" code":"")+'" spellcheck="false" rows="1"></textarea>'
+       : lpHTML(t,i),
+     ln,
+     (code?"code":"")+(/^\s*#{1,6}\s/.test(t)?" h":""), i));
+   ln+=(t.match(/\n/g)||[]).length+1;      /* 코드블록은 여러 줄을 한꺼번에 넘긴다 */
+  }
  }
  h.innerHTML=o.join("");
  var ds=h.getElementsByClassName("lpb");
  for(i=0;i<ds.length;i++) ds[i].onclick=lpTap;
+ var ns=h.getElementsByClassName("lpn");
+ for(i=0;i<ns.length;i++) ns[i].onclick=function(){ lpFocus(+this.getAttribute("data-i"),null); };
  var ta=h.getElementsByClassName("lpa")[0];
  if(ta){
   ta.value=LP.blocks[LP.act];
