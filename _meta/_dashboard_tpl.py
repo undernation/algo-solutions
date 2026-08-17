@@ -258,6 +258,37 @@ pre.io{background:var(--soft);border:1px solid var(--bd);border-radius:6px;paddi
  font-size:14.5px;line-height:1.75;padding:12px 14px;
  white-space:pre-wrap;resize:vertical}
 
+/* ── 라이브 프리뷰 (옵시디언 편집 모드와 같은 방식) ──
+   커서가 놓인 줄만 마크다운 원문으로 두고 나머지는 렌더링해서 보여준다.
+   .mdbody 를 같이 걸어 "지난 복기 메모" 와 서식을 공유한다 — 쓰는 화면과
+   읽는 화면이 달라 보이면 저장하고 나서 어긋난 느낌이 든다.
+   대신 줄 간격만 좁힌다. 읽기용 여백 그대로면 커서가 줄 사이에서 튀어 보인다. */
+#nedit{width:100%;min-height:420px;min-height:min(58vh,660px);
+ padding:10px 14px;font-size:14.5px;line-height:1.75;
+ overflow-y:auto;cursor:text;resize:vertical}
+#nedit:focus-within{border-color:var(--ac)}
+#nedit p{margin:2px 0}
+#nedit ul,#nedit ol{margin:0;padding-left:22px}
+#nedit li{margin:1px 0;line-height:1.75}
+#nedit .mdh{margin:12px 0 4px}
+#nedit .mdh2{padding-bottom:4px}
+#nedit .mdh4{margin-top:14px}
+#nedit blockquote{margin:3px 0}
+#nedit hr{margin:9px 0}
+#nedit pre.mdcode{margin:6px 0}
+#nedit>*:first-child{margin-top:0}
+.lpb{border-radius:4px;padding:0 4px;margin:0 -4px}
+.lpb:hover{background:var(--soft)}
+.lpb.emp{height:1.75em}
+.lpb.ph{color:var(--mute)}
+/* 원문이 드러난 줄. 옅은 배경으로 "여기가 편집 중" 을 표시한다. */
+.lpa{display:block;width:100%;border:0;outline:0;resize:none;overflow:hidden;
+ background:rgba(0,118,192,.07);border-radius:4px;padding:0 4px;margin:0 -4px;
+ font:inherit;color:var(--fg);white-space:pre-wrap;min-height:1.75em}
+.lpa.code{font-family:ui-monospace,SFMono-Regular,Consolas,"D2Coding",monospace;
+ font-size:12.5px;line-height:1.6;background:var(--soft)}
+@media(prefers-color-scheme:dark){.lpa{background:rgba(88,166,255,.13)}}
+
 /* ── 삭제 확인 ── */
 #dc{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;z-index:90;padding:80px 20px;overflow:auto}
 #dcb{background:var(--panel);border:1px solid var(--bd);border-radius:10px;max-width:480px;margin:0 auto;
@@ -1002,7 +1033,9 @@ function md(src){
   if(h){ flush(); var lv=Math.min(h[1].length+1,6);
          out.push("<h"+lv+' class="mdh mdh'+h[1].length+'">'+inline(h[2])+"</h"+lv+">"); return; }
   if(/^\s*([-*_])\s*\1\s*\1[\s-*_]*$/.test(ln)){ flush(); out.push("<hr>"); return; }
-  var q=ln.match(/^>\s?(.*)$/);
+  /* 위에서 esc() 를 먼저 돌렸으므로 인용 표시는 이미 "&gt;" 다.
+     ">" 로만 찾으면 블록인용이 영영 안 걸린다(오래 그랬다). 둘 다 받는다. */
+  var q=ln.match(/^(?:&gt;|>)\s?(.*)$/);
   if(q){ flush(); out.push('<blockquote>'+inline(q[1])+"</blockquote>"); return; }
   var ul=ln.match(/^\s*[-*+]\s+(.*)$/);
   if(ul){ if(list!=="ul"){flush();out.push("<ul>");list="ul";} out.push("<li>"+inline(ul[1])+"</li>"); return; }
@@ -1054,17 +1087,20 @@ function drawNote(){
    '<input id="ndate" type="date" style="flex:0 0 158px" value="'+esc($("pd")?$("pd").value:today())+'">'+
    '<select id="nst"><option>틀림</option><option>못품</option><option>시간초과</option>'+
     '<option>품</option><option>맞음</option></select>'+
-   '<span class="hint" style="margin:0 0 0 4px">마크다운. 같은 날짜면 그 항목을 갱신합니다.</span>'+
+   '<span class="hint" style="margin:0 0 0 4px">마크다운 — 엔터를 치면 그 줄이 바로 '+
+    '렌더링됩니다. 같은 날짜면 그 항목을 갱신합니다.</span>'+
   '</div>'+
+  '<div id="nedit" class="mdbody"></div>'+
   '<textarea id="nbody" class="mono" spellcheck="false" '+
    'placeholder="무엇을 틀렸는지, 왜 그랬는지…"></textarea>'+
   '<div class="row">'+
    '<button class="p" onclick="saveNote()">메모 저장</button>'+
+   '<button class="sm" id="lpbt" onclick="lpToggle()">'+(LP.on?"원문 보기":"미리보기")+'</button>'+
    (has?'<button class="sm" style="margin-left:auto" onclick="editWhole()">전체 편집</button>':'')+
   '</div>';
  if(draft) $("nbody").value=draft;
  $("nbody").oninput=function(){ NOTE.draft=this.value; growNote(this); };
- growNote($("nbody"));
+ lpMount($("nedit"),$("nbody"));
 }
 
 /* 내용 길이에 칸 높이를 맞춘다.
@@ -1077,16 +1113,207 @@ function growNote(el){
  el.style.height=(el.scrollHeight+12)+"px";
 }
 
+/* ════════ 라이브 프리뷰 — 옵시디언 편집 모드 방식 ════════
+   커서가 놓인 줄만 마크다운 원문(<textarea>)으로 두고 나머지 줄은 렌더링해 보여준다.
+   엔터를 치면 방금 쓴 줄이 그 자리에서 렌더링되고 아래에 새 줄이 생긴다.
+
+   왜 "줄" 단위인가 — md() 가 이미 줄 단위로 렌더링한다(한 줄 = 문단 하나).
+   블록을 줄로 잡으면 blocks.join("\n") 이 원문과 글자 하나까지 같아져서
+   저장 경로(#nbody → saveNote)가 손대지 않아도 그대로 안전하다.
+   ``` 로 감싼 코드블록만 예외로 여러 줄을 한 덩어리로 묶는다.
+
+   왜 블록마다 진짜 textarea 인가 — contenteditable 로 만들면 한글 조합 도중에
+   DOM 을 갈아끼우는 순간 조합이 끊겨 글자가 깨진다. textarea 는 IME 를 안 건드린다.
+
+   진실의 원본은 여전히 숨겨둔 #nbody 다. 이 편집기는 거기에 써 넣기만 한다.
+   그래서 라이브 프리뷰가 깨져도 "원문 보기" 로 돌리면 예전 동작 그대로다. */
+var LP={on:true, blocks:[""], act:-1, host:null, ta:null};
+try{ LP.on = localStorage.getItem("lpOff")!=="1"; }catch(e){}
+
+function lpIsCode(t){ return /^\s*```/.test(t); }
+
+function lpSplit(src){
+ var ln=String(src==null?"":src).replace(/\r\n?/g,"\n").split("\n"), bl=[], i=0;
+ while(i<ln.length){
+  if(lpIsCode(ln[i])){                       /* 코드블록은 닫힐 때까지 한 덩어리 */
+   var buf=[ln[i++]];
+   while(i<ln.length){ var end=lpIsCode(ln[i]); buf.push(ln[i++]); if(end) break; }
+   bl.push(buf.join("\n"));
+  } else bl.push(ln[i++]);
+ }
+ return bl.length?bl:[""];
+}
+
+function lpHTML(t,i){
+ if(/^\s*$/.test(t)) return '<div class="lpb emp" data-i="'+i+'"></div>';
+ var h=md(t), ol=t.match(/^\s*(\d+)\.\s/);
+ /* 줄마다 <ol> 이 따로 생기므로 번호가 매번 1 로 돌아간다. 사용자가 적은 숫자를 쓴다. */
+ if(ol) h=h.replace("<ol>",'<ol start="'+ol[1]+'">');
+ return '<div class="lpb" data-i="'+i+'">'+h+"</div>";
+}
+
+function lpGrow(el){ if(el){ el.style.height="auto"; el.style.height=el.scrollHeight+"px"; } }
+
+/* 편집 결과를 원본 textarea 로 흘려보낸다. 기존 oninput 을 그대로 불러
+   NOTE.draft 갱신 같은 부수 효과를 한 곳에서만 관리한다. */
+function lpOut(){
+ if(!LP.ta) return;
+ LP.ta.value=LP.blocks.join("\n");
+ if(LP.ta.oninput) LP.ta.oninput.call(LP.ta);
+}
+/* 저장 직전처럼 "지금 값이 정확해야" 하는 순간에 부른다. */
+function lpFlush(){
+ if(!LP.on||!LP.host) return;
+ var ta=LP.host.getElementsByClassName("lpa")[0];
+ if(ta&&LP.act>=0&&LP.act<LP.blocks.length) LP.blocks[LP.act]=ta.value;
+ lpOut();
+}
+
+function lpRender(){
+ var h=LP.host; if(!h) return;
+ var o=[],i;
+ if(LP.blocks.length===1&&LP.blocks[0]===""&&LP.act!==0){
+  o.push('<div class="lpb emp ph" data-i="0">무엇을 틀렸는지, 왜 그랬는지…</div>');
+ } else {
+  for(i=0;i<LP.blocks.length;i++)
+   o.push(i===LP.act
+     ? '<textarea class="lpa'+(lpIsCode(LP.blocks[i])?" code":"")+'" spellcheck="false" rows="1"></textarea>'
+     : lpHTML(LP.blocks[i],i));
+ }
+ h.innerHTML=o.join("");
+ var ds=h.getElementsByClassName("lpb");
+ for(i=0;i<ds.length;i++) ds[i].onclick=lpTap;
+ var ta=h.getElementsByClassName("lpa")[0];
+ if(ta){
+  ta.value=LP.blocks[LP.act];
+  ta.oninput=function(){ LP.blocks[LP.act]=this.value; lpGrow(this); lpOut(); };
+  ta.onkeydown=lpKey;
+  lpGrow(ta);
+ }
+}
+
+function lpFocus(i,pos){
+ LP.act=Math.max(0,Math.min(i,LP.blocks.length-1));
+ lpRender();
+ var ta=LP.host?LP.host.getElementsByClassName("lpa")[0]:null;
+ if(!ta) return;
+ var p=(pos==null)?ta.value.length:Math.max(0,Math.min(pos,ta.value.length));
+ ta.focus();
+ try{ ta.setSelectionRange(p,p); }catch(e){}
+ var r=ta.getBoundingClientRect();
+ if(r.top<64||r.bottom>innerHeight-16) ta.scrollIntoView({block:"center"});
+}
+
+/* 클릭한 지점이 렌더된 글자 몇 번째인지 — 그 자리로 커서를 보내려고 쓴다.
+   못 구하면 -1 (→ 줄 끝으로 보낸다). */
+function lpVis(el,e){
+ var c=null,r,p;
+ if(document.caretRangeFromPoint){ r=document.caretRangeFromPoint(e.clientX,e.clientY);
+  if(r) c={n:r.startContainer,o:r.startOffset}; }
+ else if(document.caretPositionFromPoint){ p=document.caretPositionFromPoint(e.clientX,e.clientY);
+  if(p) c={n:p.offsetNode,o:p.offset}; }
+ if(!c||!c.n) return -1;
+ var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null,false),t,n=0;
+ while((t=w.nextNode())){ if(t===c.n) return n+c.o; n+=t.nodeValue.length; }
+ return -1;
+}
+/* 렌더된 글자 수를 원문 위치로 되돌린다. 줄머리 표식(#, -, 1., >)과 강조 기호
+   (**, *, `, ~~)는 화면에 안 나오므로 세지 않는다. [글](주소) 처럼 정확히
+   맞추기 어려운 것도 있어 "클릭한 근처" 까지가 목표다 — 어차피 다음 키 입력이
+   위치를 정한다. */
+function lpRawPos(raw,vis){
+ if(vis==null||vis<0) return null;
+ var i=0,v=0,m=raw.match(/^(\s*(?:#{1,6}\s+|[-*+]\s+|\d+\.\s+|>\s?))/);
+ if(m) i=m[1].length;
+ while(i<raw.length&&v<vis){
+  var c=raw.charAt(i);
+  if((c==="*"&&raw.charAt(i+1)==="*")||(c==="~"&&raw.charAt(i+1)==="~")){i+=2;continue;}
+  if(c==="*"||c==="`"){i++;continue;}
+  i++;v++;
+ }
+ return i;
+}
+
+function lpTap(e){
+ if(e.target&&e.target.closest&&e.target.closest("a")) return;   /* 링크는 링크대로 */
+ /* 드래그해서 글자를 고른 참이면 편집으로 바꾸지 않는다 — 복사하려던 것이다. */
+ var sel=window.getSelection&&window.getSelection();
+ if(sel&&String(sel)&&!sel.isCollapsed) return;
+ var i=+this.getAttribute("data-i");
+ lpFocus(i, lpRawPos(LP.blocks[i]||"", lpVis(this,e)));
+}
+
+function lpKey(e){
+ var ta=e.target, i=LP.act, a=ta.selectionStart, b=ta.selectionEnd, t=ta.value, bl;
+ if(e.key==="Escape"){ ta.blur(); return; }
+ /* 한글 조합 중의 Enter 는 "조합 확정" 이지 줄바꿈이 아니다. 가로채면 글자가 씹힌다. */
+ if(e.key==="Enter"&&!e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.isComposing&&!lpIsCode(t)){
+  e.preventDefault();
+  var before=t.slice(0,a), after=t.slice(b), pre="";
+  var lm=before.match(/^(\s*)([-*+]|\d+\.)\s+/);
+  if(lm){
+   /* 빈 항목에서 엔터 → 새 줄을 만들지 말고 표식만 지운다(목록 끝내기) */
+   if(!before.slice(lm[0].length).trim()&&!after.trim()){
+    LP.blocks[i]=""; lpOut(); lpFocus(i,0); return;
+   }
+   pre=lm[1]+(/\d/.test(lm[2])?(parseInt(lm[2],10)+1)+".":lm[2])+" ";
+  }
+  bl=LP.blocks.slice(); bl.splice(i,1,before,pre+after);
+  LP.blocks=bl; lpOut(); lpFocus(i+1,pre.length); return;
+ }
+ if(e.key==="Backspace"&&a===0&&b===0&&i>0){                /* 줄 맨 앞에서 지우면 윗줄과 합친다 */
+  e.preventDefault();
+  var prev=LP.blocks[i-1];
+  bl=LP.blocks.slice(); bl.splice(i-1,2,prev+t);
+  LP.blocks=bl; lpOut(); lpFocus(i-1,prev.length); return;
+ }
+ if(e.key==="Delete"&&a===t.length&&b===t.length&&i<LP.blocks.length-1){
+  e.preventDefault();
+  bl=LP.blocks.slice(); bl.splice(i,2,t+LP.blocks[i+1]);
+  LP.blocks=bl; lpOut(); lpFocus(i,t.length); return;
+ }
+ if(e.key==="ArrowUp"&&a===0&&b===0&&i>0){ e.preventDefault(); lpFocus(i-1,null); return; }
+ if(e.key==="ArrowDown"&&a===t.length&&b===t.length&&i<LP.blocks.length-1){
+  e.preventDefault(); lpFocus(i+1,0); return; }
+ if(e.key==="Tab"&&!lpIsCode(t)){                           /* 목록 들여쓰기 */
+  e.preventDefault();
+  var ind=(t.match(/^ +/)||[""])[0].length, d;
+  if(e.shiftKey){ d=-Math.min(2,ind); LP.blocks[i]=t.slice(-d); }
+  else { d=2; LP.blocks[i]="  "+t; }
+  lpOut(); lpFocus(i,a+d); return;
+ }
+}
+
+/* 편집기를 붙인다. 라이브가 꺼져 있으면 예전처럼 통짜 textarea 를 쓴다. */
+function lpMount(host,ta){
+ LP.host=host; LP.ta=ta; LP.act=-1;
+ if(!host||!ta) return;
+ if(!LP.on){ host.style.display="none"; ta.style.display=""; growNote(ta); return; }
+ host.style.display=""; ta.style.display="none";
+ LP.blocks=lpSplit(ta.value);
+ host.onclick=function(e){ if(e.target===host) lpFocus(LP.blocks.length-1,null); };
+ lpRender();
+}
+function lpToggle(){
+ lpFlush();
+ LP.on=!LP.on;
+ try{ localStorage.setItem("lpOff",LP.on?"0":"1"); }catch(e){}
+ lpMount(LP.host,LP.ta);
+ var b=$("lpbt"); if(b) b.textContent=LP.on?"원문 보기":"미리보기";
+}
+
 function editWhole(){
  var el=$("pnote");
  el.innerHTML=
   '<div class="hint" style="margin:0 0 8px">파일 전체를 직접 편집합니다 (notes/…/'+esc(CUR.no)+'.md)</div>'+
+  '<div id="nedit" class="mdbody"></div>'+
   '<textarea id="nbody" class="mono" spellcheck="false"></textarea>'+
   '<div class="row"><button class="p" onclick="saveNote(true)">전체 저장</button>'+
-  '<button onclick="drawNote()">취소</button></div>';
+  '<button class="sm" id="lpbt" onclick="lpToggle()">'+(LP.on?"원문 보기":"미리보기")+'</button>'+
+  '<button style="margin-left:auto" onclick="drawNote()">취소</button></div>';
  $("nbody").value=NOTE.text;
  $("nbody").oninput=function(){ growNote(this); };
- growNote($("nbody"));
+ lpMount($("nedit"),$("nbody"));
 }
 
 function nsay(html,cls){var v=$("nv");if(!v)return;v.className="vd "+(cls||"info");v.style.display="block";v.innerHTML=html;}
@@ -1095,6 +1322,7 @@ async function saveNote(whole){
  await hubReady();
  var h=hubFor("save");
  if(!h) return nsay("허브가 꺼져 있습니다. 우측 상단 허브 버튼을 확인하세요.","ng");
+ lpFlush();                      /* 편집 중이던 줄까지 #nbody 에 반영하고 읽는다 */
  var body=($("nbody").value||"");
  if(!body.trim()&&!whole) return nsay("내용을 입력하세요.","ng");
  nsay("저장 중…");
