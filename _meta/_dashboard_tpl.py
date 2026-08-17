@@ -1188,6 +1188,7 @@ function lpRender(){
   ta.value=LP.blocks[LP.act];
   ta.oninput=function(){ LP.blocks[LP.act]=this.value; lpGrow(this); lpOut(); };
   ta.onkeydown=lpKey;
+  ta.onpaste=lpPaste;
   lpGrow(ta);
  }
 }
@@ -1232,6 +1233,52 @@ function lpRawPos(raw,vis){
   i++;v++;
  }
  return i;
+}
+
+/* 붙여넣은 덩어리가 코드로 보이는가.
+   목록·제목이 절반 이상이면 마크다운 글로 본다 — 들여쓴 하위 목록을
+   코드로 오인해 ``` 로 감싸버리면 안 된다. */
+function lpLooksCode(t){
+ var ls=t.split("\n").filter(function(x){return x.trim();});
+ if(ls.length<2) return false;
+ var mdn=0, code=0, ind=0;
+ ls.forEach(function(x){
+  if(/^\s*(#{1,6}\s|[-*+]\s|\d+\.\s|>\s)/.test(x)) mdn++;
+  if(/^[ \t]+\S/.test(x)) ind++;
+  if(/(^|\s)(def |class |import |from |return|elif |else:|for |while |if |print\(|#include|int |void )|[;{}]\s*$/.test(x)) code++;
+ });
+ if(mdn>=ls.length/2) return false;
+ return ind>0||code>=2;
+}
+
+/* 붙여넣기 — 이게 없으면 여러 줄이 한 블록에 통째로 들어가 영영 안 쪼개진다.
+   (실제로 겪음: 코드 15줄을 붙였더니 파란 편집 상자 하나로 굳어버렸다)
+   넣은 뒤 문서 전체를 다시 줄 단위로 나누고 커서를 붙여넣기 끝으로 돌려놓는다.
+
+   빈 줄에 여러 줄 코드를 붙이면 ``` 로 감싼다. 안 그러면 마크다운이
+   맨 앞 #을 제목으로, 들여쓰기를 공백으로 먹어 코드가 뭉개진다.
+   감싼 결과가 원문 그대로 보이므로 원치 않으면 ``` 두 줄만 지우면 된다. */
+function lpPaste(e){
+ var cd=e.clipboardData||window.clipboardData; if(!cd) return;
+ var txt=String(cd.getData("text")||"").replace(/\r\n?/g,"\n");
+ if(!txt) return;
+ e.preventDefault();
+ var ta=e.target, i=LP.act, a=ta.selectionStart, b=ta.selectionEnd, t=ta.value;
+ if(!t.trim()&&txt.indexOf("\n")>=0&&!/^\s*```/.test(txt)&&lpLooksCode(txt))
+  txt="```python\n"+txt.replace(/\n+$/,"")+"\n```";
+ var whole=LP.blocks.slice();
+ whole[i]=t.slice(0,a)+txt+t.slice(b);
+ var head=whole.slice(0,i).join("\n"); if(i) head+="\n";
+ var caret=head.length+a+txt.length;          /* 문서 전체 기준 커서 위치 */
+ LP.blocks=lpSplit(whole.join("\n"));
+ lpOut();
+ var n=0,k;                                   /* 그 위치가 몇 번째 블록인지 되찾는다 */
+ for(k=0;k<LP.blocks.length;k++){
+  if(caret<=n+LP.blocks[k].length) break;
+  n+=LP.blocks[k].length+1;                   /* join 이 넣은 "\n" 한 글자 */
+ }
+ if(k>=LP.blocks.length){ k=LP.blocks.length-1; n=caret; }
+ lpFocus(k,caret-n);
 }
 
 function lpTap(e){
