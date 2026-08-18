@@ -4840,7 +4840,7 @@
   "count": 1,
   "items": [
    {
-    "at": "15:05:52",
+    "at": "15:23:12",
     "attempts": [
      {
       "at": "15:05:52",
@@ -4850,9 +4850,18 @@
       "status": "못품",
       "total": 1,
       "verdict": "accepted"
+     },
+     {
+      "at": "15:23:12",
+      "elapsed": 0.225,
+      "file": "swea/27185_등산로급수대운영시스템D6.py",
+      "passed": 1,
+      "status": "못품",
+      "total": 1,
+      "verdict": "accepted"
      }
     ],
-    "elapsed": 0.282,
+    "elapsed": 0.225,
     "file": "swea/27185_등산로급수대운영시스템D6.py",
     "no": "27185",
     "passed": 1,

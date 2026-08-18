@@ -6,7 +6,7 @@ https://swexpertacademy.com/main/code/userProblem/userProblemDetail.do?fromProbL
 한도   : time 12개 테스트케이스를 합쳐서 C/C++의 경우 1초 / Java의 경우 6초 / memory 힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내 / time_sec 1
 난이도 : ?  |  정답률 33.33%
 
-[채점] accepted  1/1  (0.282s)
+[채점] accepted  1/1  (0.225s)
 
 [문제]
 국립공원 관리공단은 등산로 입구부터 정상까지 이어지는 탐방로를 따라 늘어선 쉼터에 급수대를 설치·운영하는 관제 시스템을 구축한다. 쉼터는 수시로 신설되거나 폐쇄되며, 예산상 급수대는 일부 쉼터에만 설치할 수 있다.
@@ -685,22 +685,21 @@ def can_do2(arr, padding, K):
     N = len(arr)
 
     cur_idx = 0
+    next_idx = 0
 
     for _ in range(K - 1):
-        cur = arr[cur_idx]
 
-        # 현재 위치 + padding 이하에서 가장 먼 거점
-        new_idx = bisect_right(arr, cur + padding) - 1
+        while (next_idx + 1 < N and
+               arr[next_idx + 1] - arr[cur_idx] <= padding):
+            next_idx += 1
 
-        # 마지막 거점까지 도달
-        if new_idx == N - 1:
+        if next_idx == N - 1:
             return True
 
-        # 한 칸도 못 움직임
-        if new_idx == cur_idx:
+        if next_idx == cur_idx:
             return False
 
-        cur_idx = new_idx
+        cur_idx = next_idx
 
     return cur_idx == N - 1
 # arr = [1, 3, 8 ,10]
