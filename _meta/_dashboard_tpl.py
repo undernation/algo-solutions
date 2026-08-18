@@ -369,10 +369,21 @@ button.danger:hover{opacity:.88;color:#fff;border-color:var(--no)}
 .codebox .hfold>summary:hover{background:var(--soft)}
 .codebox .hfold>summary .ar{color:var(--mute);font-size:10px;transition:transform .12s}
 .codebox .hfold[open]>summary .ar{transform:rotate(90deg)}
-.codebox .hfold>summary .ht{color:var(--fg);font-weight:700;
+/* 제목이 먼저 자리를 갖는다. 좁은 화면에서 우측 안내(nowrap)에 밀려
+   제목이 15px 까지 뭉개지던 것을 flex 배분으로 잡는다. */
+.codebox .hfold>summary .ht{flex:1 1 auto;min-width:0;color:var(--fg);font-weight:700;
  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.codebox .hfold>summary .mt{color:var(--mute);white-space:nowrap}
-.codebox .hfold>summary .sp{margin-left:auto;font-size:12px;color:var(--mute);white-space:nowrap}
+.codebox .hfold>summary .mt{flex:0 0 auto;color:var(--mute);white-space:nowrap}
+.codebox .hfold>summary .sp{flex:0 0 auto;margin-left:auto;
+ font-size:12px;color:var(--mute);white-space:nowrap}
+.codebox .hfold>summary .sp i{font-style:normal}
+/* 폭이 모자라면 덜 중요한 것부터 내린다 — 풀이일·결과, 그다음 안내 문구. */
+@media(max-width:720px){
+ .codebox .hfold>summary .mt{display:none}
+}
+@media(max-width:520px){
+ .codebox .hfold>summary .sp i{display:none}
+}
 .codebox .hfold .hbody{padding-bottom:8px}
 /* 토큰 색은 전역이다 — 코드 페이지(.codebox)와 복기 메모의 코드블록(.mdcode)이
    같은 색을 쓴다. 같은 코드가 화면마다 달라 보이면 오히려 헷갈린다. */
@@ -1700,7 +1711,7 @@ function codeInner(src){
    '<summary><span class="ar">▶</span>'+
      '<span class="ht">'+esc(headTitle(h.head))+'</span>'+
      (meta?'<span class="mt">'+esc(meta)+'</span>':'')+
-     '<span class="sp">머리말 '+h.n+'줄 · 클릭해서 펼치기</span>'+
+     '<span class="sp">머리말 '+h.n+'줄<i> · 클릭해서 펼치기</i></span>'+
    '</summary><div class="hbody"></div></details>'+
    codeHTML(h.body,h.n+1);
 }
