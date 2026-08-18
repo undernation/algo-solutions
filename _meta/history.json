@@ -4837,7 +4837,7 @@
   ]
  },
  "2026-08-18": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "15:23:12",
@@ -4869,6 +4869,29 @@
     "status": "못품",
     "title": "등산로 급수대 운영 시스템 D6",
     "total": 1,
+    "verdict": "accepted"
+   },
+   {
+    "at": "20:57:39",
+    "attempts": [
+     {
+      "at": "20:57:39",
+      "elapsed": 5.831,
+      "file": "boj/17143.py",
+      "passed": 20,
+      "status": "품",
+      "total": 20,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 5.831,
+    "file": "boj/17143.py",
+    "no": "17143",
+    "passed": 20,
+    "site": "BOJ",
+    "status": "품",
+    "title": "낚시왕",
+    "total": 20,
     "verdict": "accepted"
    }
   ]
