@@ -4835,5 +4835,33 @@
     "title": "파이프 옮기기 1"
    }
   ]
+ },
+ "2026-08-18": {
+  "count": 1,
+  "items": [
+   {
+    "at": "15:05:52",
+    "attempts": [
+     {
+      "at": "15:05:52",
+      "elapsed": 0.282,
+      "file": "swea/27185_등산로급수대운영시스템D6.py",
+      "passed": 1,
+      "status": "못품",
+      "total": 1,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.282,
+    "file": "swea/27185_등산로급수대운영시스템D6.py",
+    "no": "27185",
+    "passed": 1,
+    "site": "SWEA",
+    "status": "못품",
+    "title": "등산로 급수대 운영 시스템 D6",
+    "total": 1,
+    "verdict": "accepted"
+   }
+  ]
  }
 }
