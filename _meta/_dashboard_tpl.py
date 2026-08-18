@@ -356,6 +356,24 @@ button.danger:hover{opacity:.88;color:#fff;border-color:var(--no)}
  color:var(--mute);user-select:none;position:sticky;left:0;background:var(--panel)}
 .codebox .cl:hover .ln{background:var(--soft);color:var(--sub)}
 .codebox .lc{white-space:pre;flex:1 1 auto}
+/* ── 파일 맨 위 독스트링 접기 ──
+   문제 지문·검증 기록이 통째로 들어 있어 파일의 70~98% 가 헤더인 풀이가 많다
+   (1873 은 3113줄 중 3045줄). 코드를 보려고 한참 스크롤하던 것을 접어 둔다. */
+.codebox .hfold{border-bottom:1px solid var(--bd2);margin:-14px 0 8px}
+.codebox .hfold>summary{cursor:pointer;list-style:none;user-select:none;
+ display:flex;align-items:baseline;gap:10px;padding:11px 16px;
+ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Pretendard,
+             "Noto Sans KR","Malgun Gothic",sans-serif;
+ font-size:13px;color:var(--sub)}
+.codebox .hfold>summary::-webkit-details-marker{display:none}
+.codebox .hfold>summary:hover{background:var(--soft)}
+.codebox .hfold>summary .ar{color:var(--mute);font-size:10px;transition:transform .12s}
+.codebox .hfold[open]>summary .ar{transform:rotate(90deg)}
+.codebox .hfold>summary .ht{color:var(--fg);font-weight:700;
+ overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.codebox .hfold>summary .mt{color:var(--mute);white-space:nowrap}
+.codebox .hfold>summary .sp{margin-left:auto;font-size:12px;color:var(--mute);white-space:nowrap}
+.codebox .hfold .hbody{padding-bottom:8px}
 /* 토큰 색은 전역이다 — 코드 페이지(.codebox)와 복기 메모의 코드블록(.mdcode)이
    같은 색을 쓴다. 같은 코드가 화면마다 달라 보이면 오히려 헷갈린다. */
 .t-kw{color:#cf222e;font-weight:600}   /* def class if for ... */
@@ -1612,7 +1630,10 @@ function pyTokens(src){
 /* 색칠 결과를 줄 단위로 끊어 줄번호를 붙인다.
    토큰(특히 여러 줄 문자열)이 줄을 넘어가므로, HTML 을 만든 뒤 자르지 않고
    토큰을 줄 경계에서 쪼갠 다음 줄마다 span 을 닫는다. */
-function codeHTML(src){
+function codeHTML(src,start){
+ /* start: 첫 줄에 붙일 번호(기본 1). 헤더를 접어도 아래 코드의 줄번호가
+    실제 파일과 어긋나지 않게 하려고 받는다. */
+ start=start||1;
  /* 저장된 풀이는 CRLF 인 경우가 많다. innerHTML 로 넣으면 HTML 파서가 CR 을
     개행으로 바꿔 버려서, white-space:pre 안에서 줄마다 빈 줄이 하나씩 더 생긴다.
     미리 LF 로 통일한다. */
@@ -1631,9 +1652,57 @@ function codeHTML(src){
    var e=esc(t[1]);
    return t[0]?'<span class="'+t[0]+'">'+e+'</span>':e;
   }).join("");
-  return '<div class="cl"><span class="ln">'+(i+1)+'</span>'+
+  return '<div class="cl"><span class="ln">'+(start+i)+'</span>'+
          '<span class="lc">'+(code||" ")+'</span></div>';
  }).join("");
+}
+
+/* ── 파일 맨 위 독스트링 떼어내기 ──
+   풀이 파일은 지문·검증 기록을 통째로 담은 독스트링으로 시작한다. 그게 파일의
+   대부분이라(1873 은 98%) 코드를 보려면 한참 스크롤해야 했다. 접어 둔다. */
+function splitHead(src){
+ var m=src.match(/^\s*(["']{3})[\s\S]*?\1[ \t]*\n?/);
+ if(!m) return null;
+ var head=m[0], n=(head.match(/\n/g)||[]).length;
+ if(head.slice(-1)!=="\n") n+=1;          /* 개행 없이 파일이 끝나면 한 줄 더 */
+ return {head:head, body:src.slice(head.length), n:n};
+}
+/* 접힌 채로도 어느 문제인지 알아볼 수 있게 첫 줄을 요약에 쓴다. */
+function headTitle(head){
+ var t=head.replace(/^\s*["']{3}/,"").replace(/["']{3}[\s\S]*$/,"").split("\n");
+ for(var i=0;i<t.length;i++) if(t[i].trim()) return t[i].trim();
+ return "파일 머리말";
+}
+/* 풀이일·결과는 접힌 상태에서도 보이는 편이 낫다 — 그거 보려고 펴는 일이 잦다. */
+function headMeta(head){
+ var o=[], d=head.match(/풀이일\s*[:：]\s*([0-9][0-9.\-\/]*)/);
+ var r=head.match(/결과\s*[:：]\s*([^\n(]+)/);
+ if(d) o.push(d[1].trim());
+ if(r) o.push(r[1].trim());
+ return o.join(" · ");
+}
+
+var CVHEAD="";
+/* 헤더 줄은 펼칠 때 그린다. 3천 줄짜리 헤더를 미리 DOM 으로 만들면
+   페이지가 눈에 띄게 늦게 뜬다(실제로 1873 이 그렇다). */
+function headToggle(el){
+ var b=el.getElementsByClassName("hbody")[0];
+ if(el.open && b && !b.firstChild) b.innerHTML=codeHTML(CVHEAD,1);
+}
+/* .codebox 안에 넣을 내용. 헤더가 짧으면(5줄 이하) 굳이 접지 않는다. */
+function codeInner(src){
+ var s=String(src==null?"":src).replace(/\r\n?/g,"\n");
+ var h=splitHead(s);
+ if(!h||h.n<6){ CVHEAD=""; return codeHTML(s,1); }
+ CVHEAD=h.head;
+ var meta=headMeta(h.head);
+ return '<details class="hfold" ontoggle="headToggle(this)">'+
+   '<summary><span class="ar">▶</span>'+
+     '<span class="ht">'+esc(headTitle(h.head))+'</span>'+
+     (meta?'<span class="mt">'+esc(meta)+'</span>':'')+
+     '<span class="sp">머리말 '+h.n+'줄 · 클릭해서 펼치기</span>'+
+   '</summary><div class="hbody"></div></details>'+
+   codeHTML(h.body,h.n+1);
 }
 
 /* 코드는 팝업이 아니라 **독립 페이지**(#c/<파일>)로 연다.
@@ -1661,10 +1730,9 @@ async function viewCode(file){
   var r=await fetch("./"+file+"?"+Date.now());
   if(!r.ok){ $("cvc2").textContent="불러오기 실패 ("+r.status+")"; return; }
   var t=await r.text(); CVTEXT=t;
-  /* 파일 전체를 그대로 색칠한다. 예전엔 상단 독스트링만 떼어 흐리게 칠했는데,
-     이제 문자열 색이 따로 있어 굳이 나눌 필요가 없고, 줄번호도 실제 파일과
-     어긋나지 않는다. */
-  $("cvc2").innerHTML=codeHTML(t);
+  /* 맨 위 독스트링(문제 지문·검증 기록)은 접어 두고 코드부터 보여준다.
+     줄번호는 실제 파일 기준을 유지하므로 펼쳤다 접어도 번호가 흔들리지 않는다. */
+  $("cvc2").innerHTML=codeInner(t);
   $("cft").textContent="코드 · "+t.replace(/\r/g,"").replace(/\n$/,"").split("\n").length+"줄";
  }catch(e){ $("cvc2").textContent="오류: "+e.message; }
 }
