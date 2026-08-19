@@ -52,5 +52,10 @@
  "tc_stored": true,
  "tc_full_bytes": 936886,
  "tc_preview": true,
- "fetched_at": "2026-08-19"
+ "fetched_at": "2026-08-19",
+ "api_style": true,
+ "template": {
+  "main": "import sys\n\nfrom solution import init, add, calculate\n\nCMD_INIT = 100\nCMD_ADD = 200\nCMD_CALC = 300\n\ndef run():\n\tq = int(sys.stdin.readline())\n\tokay = False\n\n\tsCityArr = []\n\teCityArr = []\n\tmLimitArr = []\n\n\tfor i in range(q):\n\t\tcmd = int(sys.stdin.readline().split()[0])\n\n\t\tif cmd == CMD_INIT:\n\t\t\tinputarray = sys.stdin.readline().split()\n\t\t\tn = int(inputarray[1])\n\t\t\tk = int(inputarray[3])\n\t\t\tfor _ in range(k):\n\t\t\t\troad = sys.stdin.readline().split()\n\t\t\t\tsCityArr.append(int(road[1]))\n\t\t\t\teCityArr.append(int(road[3]))\n\t\t\t\tmLimitArr.append(int(road[5]))\n\n\t\t\tinit(n, k, sCityArr, eCityArr, mLimitArr)\n\t\t\tokay = True\n\t\telif cmd == CMD_ADD:\n\t\t\tinputarray = sys.stdin.readline().split()\n\t\t\tsCity = int(inputarray[1])\n\t\t\teCity = int(inputarray[3])\n\t\t\tmLimit = int(inputarray[5])\n\t\t\tadd(sCity, eCity, mLimit)\n\t\telif cmd == CMD_CALC:\n\t\t\tinputarray = sys.stdin.readline().split()\n\t\t\tsCity = int(inputarray[1])\n\t\t\teCity = int(inputarray[3])\n\t\t\tm = int(inputarray[5])\n\t\t\tmStopover = []\n\t\t\tfor _ in range(m):\n\t\t\t\tmStopover.append(int(sys.stdin.readline().split()[1]))\n\n\t\t\tans = int(sys.stdin.readline().split()[1])\n\t\t\tret = calculate(sCity, eCity, m, mStopover)\n\t\t\tif ans != ret:\n\t\t\t\tokay = False\n\t\telse:\n\t\t\tokay = False\n\n\treturn okay\n\n\nif __name__ == '__main__':\n\t#sys.stdin = open('sample_input.txt', 'r')\n\tinputarray = sys.stdin.readline().split()\n\tTC = int(inputarray[0])\n\tMARK = int(inputarray[1])\n\n\tfor testcase in range(1, TC + 1):\n\t\tscore = MARK if run() else 0\n\t\tprint(\"#%d %d\" % (testcase, score), flush = True)",
+  "user": "def init(N, K, sCity, eCity, mLimit):\n\treturn\n\n\ndef add(sCity, eCity, mLimit):\n\treturn\n\n\ndef calculate(sCity, eCity, M, mStopover):\n\treturn"
+ }
 }

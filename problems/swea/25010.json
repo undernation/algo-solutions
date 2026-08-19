@@ -47,5 +47,10 @@
  "tc_stored": true,
  "tc_full_bytes": 519067,
  "tc_preview": true,
- "fetched_at": "2026-08-19"
+ "fetched_at": "2026-08-19",
+ "api_style": true,
+ "template": {
+  "main": "import sys\nfrom solution import init, addKeyword, top5Keyword\n\nCMD_INIT = 100\nCMD_ADD = 200\nCMD_TOP = 300\n\ndef run():\n    Q = int(input())\n    okay = False\n    for q in range(Q):\n        input_iter = iter(input().split())\n        cmd = int(next(input_iter))\n        if cmd == CMD_INIT:\n            N = int(next(input_iter))\n            init(N)\n            okay = True\n        elif cmd == CMD_ADD:\n            mKeyword = next(input_iter)\n            addKeyword(mKeyword)\n        elif cmd == CMD_TOP:\n            mRet = [None for _ in range(5)]\n            user_ans = top5Keyword(mRet)\n            correct_ans = int(next(input_iter))\n            if user_ans != correct_ans:\n                okay = False\n            for i in range(correct_ans):\n                correct_keyword = next(input_iter)\n                if correct_keyword != mRet[i]:\n                    okay = False\n        else:\n            okay = False\n    return okay\n\n\n#sys.stdin = open('sample_input.txt', 'r')\n\nT, MARK = map(int, input().split())\n\nfor tc in range(1, T + 1):\n    score = MARK if run() else 0\n    print(\"#%d %d\" % (tc, score), flush = True)",
+  "user": "from typing import List\n\ndef init(N : int) -> None:\n    pass\ndef addKeyword(mKeyword : str) -> None:\n    pass\n\ndef top5Keyword(mRet : List[str]) -> int:\n    return 0\n"
+ }
 }

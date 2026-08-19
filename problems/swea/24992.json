@@ -54,5 +54,6 @@
  "tc_stored": true,
  "tc_full_bytes": 4069890,
  "tc_preview": true,
- "fetched_at": "2026-08-19"
+ "fetched_at": "2026-08-19",
+ "api_style": true
 }

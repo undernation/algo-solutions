@@ -48,5 +48,10 @@
  "tc_stored": true,
  "tc_full_bytes": 1810437,
  "tc_preview": true,
- "fetched_at": "2026-08-19"
+ "fetched_at": "2026-08-19",
+ "api_style": true,
+ "template": {
+  "main": "import sys\n\nfrom solution import init, add, calculate\n\nCMD_INIT = 100\nCMD_ADD = 200\nCMD_CALC = 300\n\ndef run():\n\tq = int(sys.stdin.readline())\n\tokay = False\n\n\tsBuildingArr = []\n\teBuildingArr = []\n\tmDistArr = []\n\n\tfor i in range(q):\n\t\tcmd = int(sys.stdin.readline())\n\n\t\tif cmd == CMD_INIT:\n\t\t\tinputarray = sys.stdin.readline().split()\n\t\t\tn = int(inputarray[0])\n\t\t\tk = int(inputarray[1])\n\t\t\tfor _ in range(k):\n\t\t\t\troad = sys.stdin.readline().split()\n\t\t\t\tsBuildingArr.append(int(road[0]))\n\t\t\t\teBuildingArr.append(int(road[1]))\n\t\t\t\tmDistArr.append(int(road[2]))\n\n\t\t\tinit(n, k, sBuildingArr, eBuildingArr, mDistArr)\n\t\t\tokay = True\n\t\telif cmd == CMD_ADD:\n\t\t\tinputarray = sys.stdin.readline().split()\n\t\t\tsBuilding = int(inputarray[0])\n\t\t\teBuilding = int(inputarray[1])\n\t\t\tmDist = int(inputarray[2])\n\t\t\tadd(sBuilding, eBuilding, mDist)\n\t\telif cmd == CMD_CALC:\n\t\t\tinputarray = sys.stdin.readline().split()\n\t\t\tm = int(inputarray[0])\n\t\t\tp = int(inputarray[1])\n\t\t\tr = int(inputarray[2])\n\t\t\tmCoffee = []\n\t\t\tfor _ in range(m):\n\t\t\t\tmCoffee.append(int(sys.stdin.readline()))\n\t\t\tmBakery = []\n\t\t\tfor _ in range(p):\n\t\t\t\tmBakery.append(int(sys.stdin.readline()))\n\n\t\t\tans = int(sys.stdin.readline())\n\t\t\tret = calculate(m, mCoffee, p, mBakery, r)\n\t\t\tif ans != ret:\n\t\t\t\tokay = False\n\t\telse:\n\t\t\tokay = False\n\n\treturn okay\n\n\nif __name__ == '__main__':\n\t#sys.stdin = open('sample_input.txt', 'r')\n\tinputarray = sys.stdin.readline().split()\n\tTC = int(inputarray[0])\n\tMARK = int(inputarray[1])\n\n\tfor testcase in range(1, TC + 1):\n\t\tscore = MARK if run() else 0\n\t\tprint(\"#%d %d\" % (testcase, score), flush = True)",
+  "user": "def init(N, K, sBuilding, eBuilding, mDistance):\n\treturn\n\n\ndef add(sBuilding, eBuilding, mDistance):\n\treturn\n\n\ndef calculate(M, mCoffee, P, mBakery, R):\n\treturn 0"
+ }
 }

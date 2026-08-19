@@ -50,5 +50,10 @@
  "tc_stored": true,
  "tc_full_bytes": 867045,
  "tc_preview": true,
- "fetched_at": "2026-08-19"
+ "fetched_at": "2026-08-19",
+ "api_style": true,
+ "template": {
+  "main": "import sys\n\nfrom solution import init, add, remove, calculate\n\nCMD_INIT = 100\nCMD_ADD = 200\nCMD_REMOVE = 300\nCMD_CALC = 400\n\ndef run():\n\tq = int(sys.stdin.readline())\n\tokay = False\n\n\tmIdArr = []\n\tsCityArr = []\n\teCityArr = []\n\tmTimeArr = []\n\n\tfor i in range(q):\n\t\tinputarray = sys.stdin.readline().split()\n\t\tcmd = int(inputarray[0])\n\n\t\tif cmd == CMD_INIT:\n\t\t\tn = int(inputarray[1])\n\t\t\tk = int(inputarray[2])\n\t\t\tfor _ in range(k):\n\t\t\t\troad = sys.stdin.readline().split()\n\t\t\t\tmIdArr.append(int(road[0]))\n\t\t\t\tsCityArr.append(int(road[1]))\n\t\t\t\teCityArr.append(int(road[2]))\n\t\t\t\tmTimeArr.append(int(road[3]))\n\n\t\t\tinit(n, k, mIdArr, sCityArr, eCityArr, mTimeArr)\n\t\t\tokay = True\n\t\telif cmd == CMD_ADD:\n\t\t\tmId = int(inputarray[1])\n\t\t\tsCity = int(inputarray[2])\n\t\t\teCity = int(inputarray[3])\n\t\t\tmTime = int(inputarray[4])\n\t\t\tadd(mId, sCity, eCity, mTime)\n\t\telif cmd == CMD_REMOVE:\n\t\t\tmId = int(inputarray[1])\n\t\t\tremove(mId)\n\t\telif cmd == CMD_CALC:\n\t\t\tsCity = int(inputarray[1])\n\t\t\teCity = int(inputarray[2])\n\t\t\tans = int(inputarray[3])\n\t\t\tret = calculate(sCity, eCity)\n\t\t\tif ans != ret:\n\t\t\t\tokay = False\n\t\telse:\n\t\t\tokay = False\n\n\treturn okay\n\n\nif __name__ == '__main__':\n\t#sys.stdin = open('sample_input.txt', 'r')\n\tinputarray = sys.stdin.readline().split()\n\tTC = int(inputarray[0])\n\tMARK = int(inputarray[1])\n\n\tfor testcase in range(1, TC + 1):\n\t\tscore = MARK if run() else 0\n\t\tprint(\"#%d %d\" % (testcase, score), flush = True)",
+  "user": "def init(N, K, mId, sCity, eCity, mTime):\n\treturn\n\n\ndef add(mId, sCity, eCity, mTime):\n\treturn\n\n\ndef remove(mId):\n\treturn\n\n\ndef calculate(sCity, eCity):\n\treturn 0"
+ }
 }

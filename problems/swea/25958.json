@@ -55,5 +55,10 @@
  "tc_stored": true,
  "tc_full_bytes": 104802,
  "tc_preview": true,
- "fetched_at": "2026-08-19"
+ "fetched_at": "2026-08-19",
+ "api_style": true,
+ "template": {
+  "main": "#import sys\nfrom solution import init, addTower, runSimulation\n\nCMD_ADD = 200\nCMD_RUN = 300\n\ndef run():\n\tokay = False\n\tN = int(input())\n\tmMap = [[0]*N for _ in range(N)]\n\n\tfor y in range(N):\n\t\tinput_iter = iter(input().split())\n\t\tfor x in range(N):\n\t\t\tmMap[y][x] = int(next(input_iter))\n\n\tinit(N, mMap)\n\n\tokay = True\n\tQ = int(input())\n\n\tfor q in range(Q):\n\t\tinput_iter = iter(input().split())\n\t\tcmd = int(next(input_iter))\n\n\t\tif cmd == CMD_ADD:\n\t\t\tmRow = int(next(input_iter))\n\t\t\tmCol = int(next(input_iter))\n\t\t\tmInterval = int(next(input_iter))\n\t\t\taddTower(mRow, mCol, mInterval)\n\n\t\telif cmd == CMD_RUN:\n\t\t\tM = int(next(input_iter))\n\t\t\tmInterval = int(next(input_iter))\n\t\t\tmHP = int(next(input_iter))\n\t\t\tmRetTs = [0 for _ in range(M)]\n\t\t\tmRetHP = [0 for _ in range(M)]\n\n\t\t\trunSimulation(M, mInterval, mHP, mRetTs, mRetHP)\n\n\t\t\tfor i in range(M):\n\t\t\t\tx = int(next(input_iter))\n\t\t\t\tif mRetTs[i] != x:\n\t\t\t\t\tokay = False\n\n\t\t\tfor i in range(M):\n\t\t\t\tx = int(next(input_iter))\n\t\t\t\tif mRetHP[i] != x:\n\t\t\t\t\tokay = False\n\t\telse:\n\t\t\tokay = False\n\n\treturn okay\n\n\n## sys.stdin = open('sample_input.txt', 'r')\n\nT, MARK = map(int, input().split())\n\nfor tc in range(1, T + 1):\n\tscore = MARK if run() else 0\n\tprint(\"#%d %d\" % (tc, score))",
+  "user": "from typing import List\n\ndef init(N : int, mMap : List[List[int]]) -> None:\n    pass\n\ndef addTower(mRow : int, mCol : int, mInterval : int) -> None:\n    pass\n\ndef runSimulation(M : int, mInterval : int, mHP : int, mRetTs : List[int], mRetHP : List[int]) -> None:\n    pass"
+ }
 }

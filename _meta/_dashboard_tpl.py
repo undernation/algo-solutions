@@ -1786,6 +1786,9 @@ async function viewProblem(site,no){
   '<div class="sec-h">제출 이력</div><div class="panel" id="phist">'+
    (subs.length? tbl(subs) : '<div class="empty">제출 기록이 없습니다.</div>')+'</div>'+
   '<div class="sec-h">코드 제출</div>'+
+  /* B형(Pro)은 Main 과 User Code 두 칸이다. 문제 자료를 받아온 뒤에야 알 수
+     있으므로 자리만 잡아 두고 renderProblem 에서 채운다. */
+  '<div id="mainbox"></div>'+
   '<textarea id="ed" class="mono" spellcheck="false" placeholder="여기에 Python 코드를 붙여넣으세요"></textarea>'+
   '<div class="bar" style="margin-top:10px">'+
    '<select id="pst"><option>품</option><option>맞음</option><option>못품</option><option>틀림</option><option>시간초과</option></select>'+
@@ -1808,7 +1811,11 @@ async function viewProblem(site,no){
    var f=await fetch("./"+withFile.file+"?"+Date.now());
    if(f.ok){var t=await f.text();
      var m=t.match(/^["']{3}[\s\S]*?["']{3}\s*\n([\s\S]*)$/);
-     $("ed").value=(m?m[1]:t).replace(/^\s*#\s*──[^\n]*\n/,"");}
+     var body=(m?m[1]:t).replace(/^\s*#\s*──[^\n]*\n/,"");
+     /* B형은 [User + Main] 으로 저장돼 있다. 편집기에는 User 만 되돌린다 —
+        Main 까지 넣으면 채점할 때 또 붙어 두 번 들어간다. */
+     var cut=body.indexOf("# ── Main (수정 불가) ──");
+     $("ed").value=(cut>=0?body.slice(0,cut):body).replace(/\s+$/,"");}
   }catch(e){} }
 
  /* 문제 자료 자동 로드 (미리 크롤링해 둔 것) */
@@ -1957,10 +1964,8 @@ function renderProblem(p,site,no){
        ((p.tc_full_bytes||0)/1e6).toFixed(1)+'MB · 아래 예제는 앞부분만</span></div>';
  }
  if(p.statement) h+='<div class="sec-h">문제</div><div class="body">'+withImages(p.statement,p)+'</div>';
+ /* 제약사항은 아래 "제한" 섹션에서 이미 그린다 — 여기서 또 그리면 두 번 나온다. */
  if(p.examples_text) h+='<div class="sec-h">예제</div><div class="body">'+withImages(p.examples_text,p)+'</div>';
- if(p.constraints&&p.constraints.length)
-   h+='<div class="sec-h">제약사항</div><div class="body">'+
-      withImages(p.constraints.join("\n"),p)+'</div>';
  if(p.input_spec)  h+='<div class="sec-h">입력</div><div class="body">'+esc(p.input_spec)+'</div>';
  if(p.output_spec) h+='<div class="sec-h">출력</div><div class="body">'+esc(p.output_spec)+'</div>';
  (p.samples||[]).forEach(function(s,i){
@@ -1990,6 +1995,39 @@ function renderProblem(p,site,no){
  if(p.constraints&&p.constraints.length)
   h+='<div class="sec-h">제한</div><div class="body">'+esc(p.constraints.join("\n"))+'</div>';
  $("pbody").innerHTML=h||'<div class="note">본문이 비어 있습니다.</div>';
+
+ /* ── B형(Pro): Main + User Code 두 칸 ──
+    Main 은 수정 불가 코드다. 접어서 보여만 주고, 채점할 때 [User + Main] 으로
+    이어 붙여 한 파일로 만든다. */
+ var mb=$("mainbox");
+ if(mb && p && p.api_style){
+  if(p.template && p.template.main){
+   mb.innerHTML=
+    '<div class="hint" style="margin:-4px 0 8px">B형 — 아래 <b>User Code</b> 만 채우면 됩니다. '+
+     '채점·저장할 때 Main 을 자동으로 붙여 한 파일로 만듭니다.</div>'+
+    '<details class="nfold" style="margin-bottom:10px"><summary><span class="ar">▶</span>'+
+     'Main <span class="sp">수정 불가 · 클릭해서 보기</span></summary>'+
+     '<div class="codebox" style="border-radius:0 0 8px 8px">'+
+     codeHTML(p.template.main,1)+'</div></details>';
+   var ed=$("ed");
+   if(ed){
+    ed.placeholder="User Code — 빈 함수를 채우세요";
+    /* 저장된 풀이가 없을 때만 기본 골격을 넣는다(작성 중인 코드를 덮지 않게) */
+    if(!ed.value.trim()) ed.value=p.template.user||"";
+   }
+  }else{
+   mb.innerHTML='<div class="hint" style="margin:-4px 0 8px">B형 — 이 문제는 '+
+    '<b>Python 을 지원하지 않아</b> 기본 코드가 없습니다. C++/Java 로만 제출할 수 있습니다.</div>';
+  }
+ }else if(mb){ mb.innerHTML=""; }
+}
+
+/* B형 채점용 한 파일 만들기 — Main 의 solution import 를 걷어내고 [User + Main]. */
+function mergeB(p, user){
+ var main=((p&&p.template&&p.template.main)||"")
+   .replace(/^\s*from\s+solution\s+import\s+.*$/m, "# (합쳐서 실행하므로 import 제거)");
+ return "# ── User Code ──\n"+(user||"").replace(/\s+$/,"")+
+        "\n\n\n# ── Main (수정 불가) ──\n"+main.replace(/^\n+/,"");
 }
 
 /* ════════ 허브 액션 ════════ */
@@ -2186,6 +2224,8 @@ async function doJudge(){
  var h=needHub("judge"); if(!h)return;
  var code=$("ed").value;
  if(!code.trim())return say("코드를 입력하세요.","ng");
+ /* B형은 User Code 만 적는다 — Main 을 붙여 한 파일로 만들어 보낸다. */
+ if((CUR.prob||{}).api_style && (CUR.prob||{}).template) code=mergeB(CUR.prob, code);
  /* 히든 테스트케이스가 있으면 예제 + 히든 전부로 채점한다(실제 제출에 가깝다). */
  var P=CUR.prob||{};
  var useH=$("useh")?$("useh").checked:true;
@@ -2260,6 +2300,9 @@ async function doSave(){
  var h=needHub("save"); if(!h)return;
  var code=$("ed").value;
  if(!code.trim())return say("코드를 입력하세요.","ng");
+ /* 저장도 합쳐서 남긴다 — 그래야 '내 코드 보기' 에서 User 와 Main 이
+    구분선과 함께 그대로 보이고, 그 파일 하나로 다시 돌려볼 수도 있다. */
+ if((CUR.prob||{}).api_style && (CUR.prob||{}).template) code=mergeB(CUR.prob, code);
  say("저장 중…");
  try{
   var r=await fetch(h.url+"/save",{method:"POST",headers:H(),

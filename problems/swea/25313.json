@@ -53,5 +53,10 @@
  "tc_stored": true,
  "tc_full_bytes": 5057152,
  "tc_preview": true,
- "fetched_at": "2026-08-19"
+ "fetched_at": "2026-08-19",
+ "api_style": true,
+ "template": {
+  "main": "import sys\nfrom solution import init, writeWord, eraseWord\n\nCMD_INIT = 1\nCMD_WRITE = 2\nCMD_ERASE = 3\n\ndef run():\n    query = int(input())\n    ok = False\n    for i in range(query):\n        input_iter = iter(input().split())\n        cmd = int(next(input_iter))\n        if cmd == CMD_INIT:\n            N = int(next(input_iter))\n            M = int(next(input_iter))\n            init(N, M)\n            ok = True\n        elif cmd == CMD_WRITE:\n            mId = int(next(input_iter))\n            mLen = int(next(input_iter))\n            ret = writeWord(mId, mLen)\n            ans = int(next(input_iter))\n            if ans != ret:\n                ok = False\n        elif cmd == CMD_ERASE:\n            mId = int(next(input_iter))\n            ret = eraseWord(mId)\n            ans = int(next(input_iter))\n            if ans != ret:\n                ok = False\n    return ok\n\nif __name__ == '__main__':\n    # sys.stdin = open('sample_input.txt', 'r')\n    inputarray = input().split()\n    TC = int(inputarray[0])\n    MARK = int(inputarray[1])\n    for testcase in range(1, TC + 1):\n        score = MARK if run() else 0\n        print(\"#%d %d\" % (testcase, score), flush=True)",
+  "user": "def init(N:int, M:int) -> None:\n    return\n\ndef writeWord(mId:int, mLen:int) -> int:\n    return -1\n\ndef eraseWord(mId:int) -> int:\n    return -1\n"
+ }
 }

@@ -50,5 +50,10 @@
  "tc_stored": true,
  "tc_full_bytes": 2684583,
  "tc_preview": true,
- "fetched_at": "2026-08-19"
+ "fetched_at": "2026-08-19",
+ "api_style": true,
+ "template": {
+  "main": "import sys\nfrom solution import init, oneYearLater\n\ndef run():\n    n, m, k = map(int, input().split())\n    mIceBlock = []\n    for i in range(n):\n        mIceBlock.append(list(map(int, input().split())))\n\n    mIceGroup = []\n    for i in range(m):\n        mIceGroup.append(list(map(int, input().split())))\n\n    init(n, m, mIceBlock, mIceGroup)\n\n    okay = True\n\n    for q in range(k):\n        user_ans = oneYearLater()\n        correctAns = list(map(int, input().split()))\n        for y in range(n):\n            for x in range(n):\n                if user_ans.heights[y][x] != correctAns[y*n+x]:\n                    okay = False\n\n\n    return okay\n\n\n#sys.stdin = open('sample_input.txt', 'r')\n\nT, MARK = map(int, input().split())\n\nfor tc in range(1, T + 1):\n    score = MARK if run() else 0\n    print(\"#%d %d\" % (tc, score), flush = True)",
+  "user": "from typing import List\n\nclass RESULT:\n    def __init__(self, mHeights : List[List[int]]):\n        self.heights = mHeights\n\ndef init(N : int, M : int, mIceBlock : List[List[int]], mIceGroup : List[List[int]]) -> None:\n    pass\n\ndef oneYearLater() -> RESULT:\n    res = RESULT([[0 for _ in range(100)] for _ in range(100)])\n    return res"
+ }
 }
