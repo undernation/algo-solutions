@@ -139,7 +139,7 @@ def measure_speed():
     return max(1.0, v / BENCH_REF)
 
 
-def allowed_time(limit_sec, lang_adjusted=False):
+def allowed_time(limit_sec, lang_adjusted=False, margin=None):
     """문제 제한(초) -> 이 기기에서 허용할 실행시간(초).
 
     lang_adjusted=True 면 그 제한이 이미 Python/PyPy 기준이라는 뜻이다
@@ -158,7 +158,14 @@ def allowed_time(limit_sec, lang_adjusted=False):
     #   SWEA 24703 어항물채우기 — 제한 8초 / 이 VM 의 pypy3 로 10.31초
     # 그래서 여유를 곱한다. _bench.py 는 이 워크로드를 대변하지 못한다
     # (에라토스테네스·루프 위주라 VM 이 오히려 빠르게 나와 보정이 1.0 으로 깎였다).
-    base = t * NATIVE_MARGIN if lang_adjusted else (t * PY_MULT + PY_ADD)
+    # margin 을 주면 그 값을 쓴다(대시보드에서 채점할 때 조절). 0.5~5 로 묶는다.
+    nm = NATIVE_MARGIN
+    if margin is not None:
+        try:
+            nm = min(5.0, max(0.5, float(margin)))
+        except (TypeError, ValueError):
+            nm = NATIVE_MARGIN
+    base = t * nm if lang_adjusted else (t * PY_MULT + PY_ADD)
     return round(base * SPEED, 1)
 
 
@@ -1292,7 +1299,8 @@ class H(BaseHTTPRequestHandler):
                         body["publicTestCaseCount"] = len(pub)
                 try:
                     tl = allowed_time(body.get("timeLimit"),
-                                      bool(body.get("langAdjusted")))
+                                      bool(body.get("langAdjusted")),
+                                      body.get("timeMargin"))
                 except (TypeError, ValueError):
                     tl = 5.0
                 tt = uses_total_time((body.get("site") or "BOJ").upper(),

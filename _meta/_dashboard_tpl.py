@@ -1795,6 +1795,10 @@ async function viewProblem(site,no){
    '<input id="pd" type="date" style="flex:0 0 158px" value="'+today()+'">'+
    '<label class="hint" style="display:flex;align-items:center;gap:5px;margin:0">'+
      '<input type="checkbox" id="useh" checked style="width:auto;min-width:0">히든 TC 포함</label>'+
+   '<label class="hint" style="display:flex;align-items:center;gap:5px;margin:0" '+
+     'title="문제에 적힌 제한에 곱할 여유. 그 사이트 채점기보다 이 VM 이 느려서 필요하다.">여유 x'+
+     '<input id="tmar" type="number" min="0.5" max="5" step="0.1" value="1.5" '+
+     'style="width:64px;flex:0 0 64px;padding:4px 6px"></label>'+
    '<button class="p" onclick="doJudge()" title="Ctrl+Enter">채점</button>'+
    '<button onclick="doSave()" title="Ctrl+S">저장 &amp; 커밋</button>'+
    '<span class="hint kbd">Ctrl+Enter 채점 · Ctrl+S 저장 · Tab / Shift+Tab 들여쓰기</span>'+
@@ -1999,6 +2003,12 @@ function renderProblem(p,site,no){
  /* ── B형(Pro): Main + User Code 두 칸 ──
     Main 은 수정 불가 코드다. 접어서 보여만 주고, 채점할 때 [User + Main] 으로
     이어 붙여 한 파일로 만든다. */
+ /* 여유 배수 기본값은 허브 설정(judge_config.json 의 nativeMargin)을 따른다.
+    그 값은 실측 근거로 정한 것이다 — SWEA 24703 이 제한 8초인데 이 VM 의
+    pypy3 로 10.31초라 1.5 배(12초)를 준다. 허브가 아직 안 붙었으면 1.5 그대로. */
+ try{ var hh=(CLOUD&&CLOUD.ok&&CLOUD.info)||(LOCAL&&LOCAL.ok&&LOCAL.info)||null;
+      if(hh&&hh.nativeMargin&&$("tmar")) $("tmar").value=hh.nativeMargin; }catch(e){}
+
  var mb=$("mainbox");
  if(mb && p && p.api_style){
   if(p.template && p.template.main){
@@ -2242,7 +2252,8 @@ async function doJudge(){
    return say("예제가 없어 채점할 수 없습니다. 먼저 문제 자료를 가져오세요.","ng");
  var sf=(h.info&&h.info.speedFactor)||1;
  var pm=(h.info&&h.info.pyMult)||2, pa=(h.info&&h.info.pyAdd)||0;
- var nm=(h.info&&h.info.nativeMargin)||1;
+ var nm=parseFloat(($("tmar")||{}).value);
+ if(!(nm>0)) nm=(h.info&&h.info.nativeMargin)||1;
  var la=probLangAdjusted();
  /* 언어별 제한이 명시된 문제라도 그 값은 그 사이트 채점기 기준이라, 이 VM 에서는
     여유(nativeMargin)를 곱한다 — 서버의 allowed_time 과 같은 식이다. */
@@ -2257,7 +2268,7 @@ async function doJudge(){
    body:JSON.stringify({problemId:CUR.no,site:CUR.site,sourceCode:code,
     testCases:useStored?[]:cases, useStoredTC:useStored,
     publicTestCaseCount:pub.length,timeLimit:probTL(),
-    langAdjusted:probLangAdjusted()})});
+    langAdjusted:probLangAdjusted(),timeMargin:nm})});
   if(r.status===401)return say("인증 실패 — 허브 버튼에서 토큰을 확인하세요.","ng");
   var j=await r.json(); CUR.verdict=j;
   var s=j.summary||{}, ok=j.verdict==="accepted";
