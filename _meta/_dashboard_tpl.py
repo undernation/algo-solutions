@@ -1795,8 +1795,11 @@ async function viewProblem(site,no){
    '<input id="pd" type="date" style="flex:0 0 158px" value="'+today()+'">'+
    '<label class="hint" style="display:flex;align-items:center;gap:5px;margin:0">'+
      '<input type="checkbox" id="useh" checked style="width:auto;min-width:0">히든 TC 포함</label>'+
-   '<label class="hint" style="display:flex;align-items:center;gap:5px;margin:0" '+
-     'title="문제에 적힌 제한에 곱할 여유. 그 사이트 채점기보다 이 VM 이 느려서 필요하다.">여유 x'+
+   /* 여유 배수는 '문제가 언어별 제한을 명시한 경우'(SWEA)에만 쓰인다.
+      BOJ·코딩살구는 예전 공식(제한 x pyMult + pyAdd)을 그대로 쓰므로 칸을 숨긴다 —
+      안 그러면 아무 효과 없는 칸이 떠서 헷갈린다. */
+   '<label class="hint" id="tmarw" style="display:none;align-items:center;gap:5px;margin:0" '+
+     'title="문제에 적힌 Python 제한에 곱할 여유. 그 사이트 채점기보다 이 VM 이 느려서 필요하다.">여유 x'+
      '<input id="tmar" type="number" min="0.5" max="5" step="0.1" value="1.5" '+
      'style="width:64px;flex:0 0 64px;padding:4px 6px"></label>'+
    '<button class="p" onclick="doJudge()" title="Ctrl+Enter">채점</button>'+
@@ -2008,6 +2011,12 @@ function renderProblem(p,site,no){
     pypy3 로 10.31초라 1.5 배(12초)를 준다. 허브가 아직 안 붙었으면 1.5 그대로. */
  try{ var hh=(CLOUD&&CLOUD.ok&&CLOUD.info)||(LOCAL&&LOCAL.ok&&LOCAL.info)||null;
       if(hh&&hh.nativeMargin&&$("tmar")) $("tmar").value=hh.nativeMargin; }catch(e){}
+ /* 언어별 제한이 명시된 문제에서만 여유칸을 보인다(BOJ 는 기존 공식 그대로).
+    조건은 probLangAdjusted() 와 같아야 한다 — 서버가 여유를 적용하는 기준이
+    limits.time_sec 이므로, 화면 조건이 더 좁으면 칸은 숨었는데 여유는 걸리는
+    엇갈림이 생긴다. */
+ var tw=$("tmarw");
+ if(tw) tw.style.display=(((p||{}).limits||{}).time_sec ? "flex" : "none");
 
  var mb=$("mainbox");
  if(mb && p && p.api_style){
