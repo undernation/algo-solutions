@@ -1773,7 +1773,10 @@ function copyCode(){
 /* ════════ 문제 페이지 ════════ */
 var CUR={};
 async function viewProblem(site,no){
- site=decodeURIComponent(site||""); no=decodeURIComponent(no||"");
+ /* 색인 키는 "SWEA/25007" 처럼 사이트가 대문자다. 소문자 URL(#p/swea/25007)을
+    직접 치거나 북마크하면 색인에도 안 잡히고 추측 경로도 boj 로 떨어져
+    "자료 없음" 이 조용히 뜬다. 들어오자마자 맞춰 준다. */
+ site=decodeURIComponent(site||"").toUpperCase(); no=decodeURIComponent(no||"");
  var k=site+"/"+no, meta=PIDX[k], subs=BYPROB[k]||[];
  CUR={site:site,no:no,prob:null,verdict:null};
  var title=bestTitle(k);

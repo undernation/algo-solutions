@@ -122,12 +122,15 @@ def main():
         for rel_img in imgs:
             if not os.path.exists(os.path.join(ROOT, rel_img)):
                 bad("%s 이미지 파일 없음: %s" % (rel, rel_img))
-        marks = set(int(m) for m in re.findall(r"\[\[IMG:(\d+)\]\]", d.get("statement") or ""))
+        # 마커는 지문에만 있는 게 아니다. SWEA B형은 그림이 전부 "예제" 절에 붙는다
+        # (24992·24995·25010·25964·26416). statement 만 보면 멀쩡한 걸 경고한다.
+        marked = (d.get("statement") or "") + (d.get("examples_text") or "")
+        marks = set(int(m) for m in re.findall(r"\[\[IMG:(\d+)\]\]", marked))
         if marks and max(marks) > len(d.get("images") or []):
             bad("%s IMG 마커(%d)가 이미지 수(%d)보다 많음"
                 % (rel, max(marks), len(d.get("images") or [])))
         if imgs and not marks:
-            warn("%s 이미지는 있는데 지문에 마커가 없음" % rel)
+            warn("%s 이미지는 있는데 지문·예제 어디에도 마커가 없음" % rel)
 
     # 고아 이미지
     used = set()
@@ -205,13 +208,19 @@ def main():
             try:
                 D = json.loads(m.group(1))
                 rows = D.get("rows") or []
+                # 같은 날 같은 문제가 여러 줄인 건 정상이다 — 2026-08-14 부터
+                # 제출 1회 = 1줄(attempts)로 바뀌었다. "틀림 -> 품" 이 그 예다.
+                # 그래서 결과·시간·파일까지 똑같이 겹칠 때만 의심한다.
                 dup = {}
                 for r in rows:
-                    k = "%s|%s|%s" % (r.get("date"), r.get("site"), r.get("no"))
+                    k = "%s %s|%s|%s|%s회|%s|%s|%s/%s|%s" % (
+                        r.get("date"), r.get("at"), r.get("site"), r.get("no"),
+                        r.get("try"), r.get("status"), r.get("elapsed"),
+                        r.get("passed"), r.get("total"), r.get("file"))
                     dup[k] = dup.get(k, 0) + 1
                 for k, c in dup.items():
                     if c > 1:
-                        bad("대시보드 rows 중복: %s (%d회)" % (k, c))
+                        warn("대시보드 rows 완전 동일 %d줄: %s" % (c, k))
                 nd = len(D.get("probs", {}).get("items", {}))
                 if nd != len(items):
                     warn("index.html 색인(%d) ≠ problems/index.json(%d) — 재빌드 필요"
