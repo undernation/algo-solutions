@@ -2296,8 +2296,15 @@ async function doJudge(){
   if(j.totalTime){
    /* SWEA 는 "N개 테스트케이스를 합쳐서 …초" 라 합계가 곧 판정 기준이다. */
    var w1=(tl&&j.elapsedSec>tl*0.8);
+   /* 이 VM 은 SWEA 채점기보다 느려서 허용시간에 여유를 준다. 그래서 여기서
+      통과해도 원래 제한은 넘겼을 수 있다 — 문제에 적힌 제한을 같이 띄운다.
+      안 그러면 "여기선 붙었는데 실제 시험에서 떨어지는" 것을 모른다. */
+   var raw=probTL();
+   var over=(raw&&j.elapsedSec>raw);
    tstr="<span"+(w1?" style='color:var(--wr);font-weight:700'":"")+">합계 "+j.elapsedSec+"초</span>"
         +(tl?" / 허용 "+tl+"초":"")
+        +(raw?" <span"+(over?" style='color:var(--no);font-weight:700'":" class='hint'")+">"
+             +"· 문제 제한 "+raw+"초"+(over?" 초과":"")+"</span>":"")
         +" <span class='hint'>("+s.total+"케이스 합산 기준"
         +(mx!=null?", 최대 "+mx.toFixed(3)+"초":"")+")</span>";
   }else if(mx!=null){
