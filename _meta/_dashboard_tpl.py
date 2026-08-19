@@ -2242,12 +2242,15 @@ async function doJudge(){
    return say("예제가 없어 채점할 수 없습니다. 먼저 문제 자료를 가져오세요.","ng");
  var sf=(h.info&&h.info.speedFactor)||1;
  var pm=(h.info&&h.info.pyMult)||2, pa=(h.info&&h.info.pyAdd)||0;
+ var nm=(h.info&&h.info.nativeMargin)||1;
  var la=probLangAdjusted();
- var allow=(la?probTL():(probTL()*pm+pa))*sf;
+ /* 언어별 제한이 명시된 문제라도 그 값은 그 사이트 채점기 기준이라, 이 VM 에서는
+    여유(nativeMargin)를 곱한다 — 서버의 allowed_time 과 같은 식이다. */
+ var allow=(la?probTL()*nm:(probTL()*pm+pa))*sf;
  say("채점 중… "+(useStored?("서버 보관 전체 TC ("+(P.private_tc_count||"?")+"개)")
        :(cases.length+"케이스"+(hid.length?" (예제 "+pub.length+" + 히든 "+hid.length+")":"")))+
      " · 제한 "+probTL()+"초 → 허용 "+allow.toFixed(1)+"초"+
-     (la?" (문제가 Python 기준으로 명시 · 기기보정 x"+sf.toFixed(2)+")"
+     (la?" (Python 기준 명시 x"+nm+" 여유 · 기기보정 x"+sf.toFixed(2)+")"
         :" (x"+pm+"+"+pa+" · 기기보정 x"+sf.toFixed(2)+")"));
  try{
   var r=await fetch(h.url+"/judge",{method:"POST",headers:H(),

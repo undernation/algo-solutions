@@ -85,6 +85,7 @@ TOKEN_FILE = os.path.join(os.path.expanduser("~"), ".algo-hub-token")
 # 결과는 캐시해 매 기동마다 다시 재지 않는다.
 PY_MULT = 2.0          # PyPy 가 C++ 기준 제한 대비 받는 배수 (정책값 — 아래 설명)
 PY_ADD = 1.0           # 가산 초
+NATIVE_MARGIN = 1.5    # 언어별 제한이 명시된 문제(SWEA)에 줄 여유 — 아래 설명
 BENCH_REF = 1.0        # 기준 기기의 _bench.py 합계(초)
 BENCH_FILE = os.path.join(os.path.expanduser("~"), ".algo-hub-bench")
 CONFIG_FILE = os.path.join(ROOT, "_meta", "judge_config.json")
@@ -99,13 +100,14 @@ def load_config():
        백준 본 사이트는 서비스 종료라 공식 배수를 확인할 수 없었다.
        이 채점기의 정책값이므로 설정 파일에서 자유롭게 바꾼다.
     """
-    global PY_MULT, PY_ADD
+    global PY_MULT, PY_ADD, NATIVE_MARGIN
     fixed = None
     if os.path.exists(CONFIG_FILE):
         try:
             c = json.load(io.open(CONFIG_FILE, encoding="utf-8"))
             PY_MULT = float(c.get("pyMult", PY_MULT))
             PY_ADD = float(c.get("pyAdd", PY_ADD))
+            NATIVE_MARGIN = float(c.get("nativeMargin", NATIVE_MARGIN))
             mf = c.get("machineFactor")
             fixed = float(mf) if mf not in (None, "", False) else None
         except Exception as e:
@@ -150,7 +152,13 @@ def allowed_time(limit_sec, lang_adjusted=False):
         t = 0.0
     if t <= 0:
         t = 2.0
-    base = t if lang_adjusted else (t * PY_MULT + PY_ADD)
+    # 언어별 제한이 명시된 문제(SWEA "Python의 경우 N초")라도 그 N 은 SWEA 채점기
+    # 기준이다. 이 VM 은 그보다 느려서, SWEA 에서 정답 처리된 코드가 여기서만
+    # 시간초과로 잡히는 일이 실제로 있었다.
+    #   SWEA 24703 어항물채우기 — 제한 8초 / 이 VM 의 pypy3 로 10.31초
+    # 그래서 여유를 곱한다. _bench.py 는 이 워크로드를 대변하지 못한다
+    # (에라토스테네스·루프 위주라 VM 이 오히려 빠르게 나와 보정이 1.0 으로 깎였다).
+    base = t * NATIVE_MARGIN if lang_adjusted else (t * PY_MULT + PY_ADD)
     return round(base * SPEED, 1)
 
 
@@ -1135,6 +1143,7 @@ def status():
             n += len([f for f in os.listdir(d) if f.endswith(".py")])
     return {"ok": True, "service": "algo-hub", "language": "python", "authRequired": bool(TOKEN),
             "speedFactor": round(SPEED, 2), "pyMult": PY_MULT, "pyAdd": PY_ADD,
+            "nativeMargin": NATIVE_MARGIN,
             "runner": RUNNER_NAME,
             # repo 절대경로(/home/<계정>/...)는 익명에게 굳이 알릴 게 아니다.
             "python": sys.version.split()[0], "repo": os.path.basename(ROOT),

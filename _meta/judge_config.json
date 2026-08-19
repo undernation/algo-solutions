@@ -9,10 +9,13 @@
   "  게시판 요약 두 건이 근거다. PyPy3 에도 같은 보너스가 붙는지는 미확인.",
   "일부 문제에는 '(언어별 추가 시간 없음)' 이 붙는데, 그건 여기서 구분하지 않는다.",
   "SWEA 처럼 문제에 'Python의 경우 N초'가 명시된 경우에는 그 값을 그대로 쓰고",
-  "pyMult/pyAdd 를 적용하지 않는다(limits.time_sec, langAdjusted=true)."
+  "pyMult/pyAdd 를 적용하지 않는다(limits.time_sec, langAdjusted=true).",
+  "SWEA 의 'Python의 경우 N초' 도 SWEA 채점기 기준이다. 우리 VM 은 그보다 느려서 SWEA 에서 정답 처리된 코드가 여기서만 시간초과로 잡혔다(24703 어항물채우기 — 제한 8초 / VM pypy3 로 10.31초). nativeMargin 으로 여유를 준다."
  ],
  "pyMult": 3.0,
  "pyAdd": 2.0,
  "machineFactor": null,
- "_machineFactor": "null 이면 judge/_bench.py 로 자동 측정(기준 1.0초 대비 배율). 숫자를 넣으면 고정."
+ "_machineFactor": "null 이면 judge/_bench.py 로 자동 측정(기준 1.0초 대비 배율). 숫자를 넣으면 고정.",
+ "_공식2": "언어별 제한 명시 시 = 문제제한 x nativeMargin x machineFactor",
+ "nativeMargin": 1.5
 }
