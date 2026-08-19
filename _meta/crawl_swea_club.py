@@ -58,6 +58,9 @@ TABLES_JS = r"""() => {
   let n = 0;
   document.querySelectorAll('table').forEach(t => {
     if (t.querySelector('table')) return;          // 중첩 표는 안쪽부터 잡힌다
+    // 그림이 든 표는 건드리지 않는다. innerText 로 셀을 읽으면 <img> 가 통째로
+    // 사라져서, 표만 예뻐지고 그림이 없어진다(25003 이 그렇게 3장을 잃었다).
+    if (t.querySelector('img')) return;
     const rows = [...t.rows].map(r => [...r.cells].map(cell));
     const cols = Math.max(0, ...rows.map(r => r.length));
     if (cols < 2 || rows.length < 2) return;
@@ -72,6 +75,21 @@ TABLES_JS = r"""() => {
     n++;
   });
   return n;
+}"""
+
+# 모든 <img> 가 디코딩될 때까지 기다린다. 안 그러면 naturalWidth 가 0 이라
+# "너무 작은 그림" 으로 오인돼 지문에서 그림이 통째로 사라진다(25003 이 그랬다).
+WAIT_IMGS_JS = r"""async () => {
+  const ims = [...document.images];
+  ims.forEach(i => { i.loading = 'eager'; });
+  await Promise.all(ims.map(i => {
+    if (i.complete && i.naturalWidth) return null;
+    return Promise.race([
+      i.decode().catch(() => null),
+      new Promise(r => setTimeout(r, 4000))
+    ]);
+  }));
+  return ims.filter(i => i.naturalWidth > 60 && i.naturalHeight > 40).length;
 }"""
 
 NBSP = u" "
@@ -230,6 +248,12 @@ def main():
                 # apply_images 는 BOJ 배치를 가정해 지문을 통째로 덮어쓴다.
                 # 마커가 박힌 본문에서 [문제 설명] 구간만 다시 잘라 온다.
                 before, before_ex = d.get("statement"), d.get("examples_text")
+                # 그림이 아직 디코딩되기 전이면 naturalWidth 가 0 이라
+                # collect_images 의 크기 필터에 걸려 통째로 빠진다(25003 이 그랬다).
+                try:
+                    pg.evaluate(WAIT_IMGS_JS)
+                except Exception:
+                    pass
                 fp.apply_images(pg, d)
                 if d.get("images"):
                     # apply_images 가 d["statement"] 에 [[IMG:n]] 이 박힌 본문을 통째로

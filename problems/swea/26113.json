@@ -7,7 +7,7 @@
  "level": "D6",
  "club": "2026 SSAFY Pro 클럽 · B형 기출",
  "stats": {
-  "participants": "292",
+  "participants": "295",
   "submissions": "383",
   "accepted": "124",
   "accept_rate": "32.38",
@@ -24,7 +24,7 @@
  ],
  "python_supported": false,
  "statement": "고대 왕국의 N개의 도시가 주어진다. 각 도시는 0부터 N-1까지 ID값을 가진다. N개의 도시 중 하나가 수도이다.\n\n도시를 연결하는 단방향 도로가 추가될 때, 해당 도로의 ID와 거리가 주어진다.\n\n수도에서 특정 도시까지 왕명을 하달 하면, 최단 경로로 전령이 이동한다.\n\n도로의 거리가 멀면 중간에 도적을 만날 가능성이 높기 때문에, 가장 거리가 긴 도로의 거리를 최소화 하고자 한다.\n\n[Fig. 1]은 6개의 도시가 주어진 예이다. 수도의 ID는 1이고, 5번 도시에 왕명을 전달하려고 한다.\n\n[[IMG:1]]\n\n[Fig. 1]\n\n1번 수도에서 5번 도시로 전령이 이동할 수 있는 최단 경로는 3개가 있다. 총 거리는 17이다.\n\n1à3à2à4à5 경로에서 가장 긴 도로의 길이는 8이다.\n\n1à2à4à5 경로에서 가장 긴 도로의 길이는 9이다.\n\n1à0à2à4à5 경로에서 가장 긴 도로의 길이는 5이고, 이 값이 최솟값이다.\n\n아래 API 설명을 참조하여 각 함수를 구현하라.\n\n※ 아래 함수 signature는 C/C++에 대한 것으로 다른 언어에 대해서는 제공되는 Main과 User Code를 참고하라.\n\n아래는 User Code 부분에 작성해야 하는 API 의 설명이다.\n\nvoid init(int N, int mCapital, int K, int mId[], int sCity[], int eCity[], int mDistance[])\n\n각 테스트 케이스의 처음에 호출된다.\n\nN개의 고대 도시가 주어진다. 각 도시는 0부터 N-1까지 ID값을 가진다. 이 중 하나의 도시가 수도 mCapital로 주어진다.\n\nK개의 도로 정보가 주어진다. 각 도로의 ID, 출발 도시와 도착 도시, 그리고 거리가 주어진다.\n\n단방향 도로이기 때문에 출발 도시에서 도착 도시로만 갈 수 있다.\n\n출발 도시와 도착 도시의 순서쌍이 동일한 도로는 없다.\n\n출발 도시와 도착 도시가 서로 같은 경우는 없다.\n\n도로 ID가 서로 같은 경우는 없다.\n\nParameters\n\nN: 도시의 개수 ( 6 ≤ N ≤ 5,000 )\n\nmCapital: 수도 ( 0 ≤ mCapital < N )\n\nK: 도로의 개수 ( 7 ≤ K ≤ 10,000 )\n\n(0 ≤ i ＜ K)인 모든 i에 대해,\n\nmId[i]: 도로 i의 ID ( 1 ≤ mId[i] ≤ 1,000,000,000 )\n\nsCity[i]: 도로 i의 출발 도시 ( 0 ≤ sCity[i] < N )\n\neCity[i]: 도로 i의 도착 도시 ( 0 ≤ eCity[i] < N )\n\nmDistance[i]: 도로 i의 거리 ( 1 ≤ mDistance[i] ≤ 100 )\n\nvoid add(int mId, int sCity, int eCity, int mDistance)\n\n출발 도시가 sCity이고, 도착 도시가 eCity이고, 거리가 mDistance인 mId 도로를 추가한다.\n\n단방향 도로이기 때문에 출발 도시에서 도착 도시로만 갈 수 있다.\n\ninit()에 없던 새로운 도시는 주어지지 않는다.\n\nsCity에서 eCity로 가는 도로가 이미 존재하는 경우는 없다.\n\nsCity와 eCity가 서로 같은 경우는 없다.\n\nmId 값으로 이미 존재하는 도로의 ID가 주어지는 경우는 없다.\n\nParameters\n\nmId: 도로의 ID ( 1 ≤ mId ≤ 1,000,000,000 )\n\nsCity: 도로의 출발 도시 ( 0 ≤ sCity < N )\n\neCity: 도로의 도착 도시 ( 0 ≤ eCity < N )\n\nmDistance: 도로의 거리 ( 1 ≤ mDistance ≤ 100 )\n\nvoid remove(int mId)\n\nmId 도로를 제거한다.\n\n존재하지 않는 도로의 ID가 주어지는 경우는 없다.\n\nParameters\n\nmId: 도로의 ID ( 1 ≤ mId ≤ 1,000,000,000 )\n\nint calculate(int mCity)\n\n왕명의 목적지 도시로 mCity가 주어진다.\n\nmCity까지 전령이 이동한 최단 경로에서 가장 거리가 긴 도로의 최솟값을 반환한다.\n\n전령이 이동할 수 있는 경로가 없다면 -1을 반환한다.\n\nmCity가 수도인 경우는 없다.\n\nParameters\n\nmCity: 목적 도시 ( 0 ≤ mCity < N )\n\nReturns\n\n수도에서 mCity로 이동이 가능하다면, 전령이 이동한 최단 경로에서 가장 거리가 긴 도로의 최솟값을 반환한다.\n\n불가능하다면, -1을 반환한다.",
- "examples_text": "아래의 [Table 1]과 같이 요청이 되는 경우를 살펴보자.\n\n| Order | Function | return | Figure |\n| --- | --- | --- | --- |\n| 1 | init(6, 1, 7, {2000,6000,5000,7000,1000,4000,3000}, {1,1,1,3,2,4,5}, {2,0,3,2,4,5,3}, {9,5,8,1,3,5,2}) |  | Fig. 2 |\n| 2 | calculate(5) | 8 | Fig. 3 |\n| 3 | add(8000, 0, 2, 4) |  | Fig. 4 |\n| 4 | calculate(5) | 5 | Fig. 5 |\n| 5 | remove(6000) |  | Fig. 6 |\n| 6 | calculate(5) | 8 | Fig. 7 |\n\n[Table 1]\n\n(순서 1) 6개의 도시와 7개의 도로 정보가 주어진다. 수도는 1번 도시이다. 함수 호출의 결과는 [Fig. 2]와 같다.\n\n[Fig. 2]\n\n(순서 2) 왕명의 목적지로 5번 도시가 주어진다. [Fig. 3]과 같이, 전령이 이동한 최단 경로에서 가장 거리가 긴 도로의 최솟값으로 8을 반환한다.\n\n[[IMG:2]]\n\n[Fig. 3]\n\n(순서 3) 0번 도시에서 2번 도시로 갈 수 있는 8000 도로가 추가된다. 도로의 거리는 4이다. 함수 호출의 결과는 [Fig. 4]와 같다.\n\n[[IMG:3]]\n\n[Fig. 4]\n\n(순서 4) 왕명의 목적지로 5번 도시가 주어진다. [Fig. 5]와 같이, 전령이 이동한 최단 경로에서 가장 거리가 긴 도로의 최솟값으로 5를 반환한다.\n\n[[IMG:4]]\n\n[Fig. 5]\n\n(순서 5) 6000 도로를 제거한다. 함수 호출의 결과는 [Fig. 6]과 같다.\n\n[[IMG:5]]\n\n[Fig. 6]\n\n(순서 6) 왕명의 목적지로 5번 도시가 주어진다. [Fig. 7]과 같이, 전령이 이동한 최단 경로에서 가장 거리가 긴 도로의 최솟값으로 8을 반환한다.\n\n[[IMG:6]]\n\n[Fig. 7]",
+ "examples_text": "아래의 [Table 1]과 같이 요청이 되는 경우를 살펴보자.\n\n| Order | Function | return | Figure |\n| --- | --- | --- | --- |\n| 1 | init(6, 1, 7, {2000,6000,5000,7000,1000,4000,3000}, {1,1,1,3,2,4,5}, {2,0,3,2,4,5,3}, {9,5,8,1,3,5,2}) |  | Fig. 2 |\n| 2 | calculate(5) | 8 | Fig. 3 |\n| 3 | add(8000, 0, 2, 4) |  | Fig. 4 |\n| 4 | calculate(5) | 5 | Fig. 5 |\n| 5 | remove(6000) |  | Fig. 6 |\n| 6 | calculate(5) | 8 | Fig. 7 |\n\n[Table 1]\n\n(순서 1) 6개의 도시와 7개의 도로 정보가 주어진다. 수도는 1번 도시이다. 함수 호출의 결과는 [Fig. 2]와 같다.\n\n[[IMG:2]]\n\n[Fig. 2]\n\n(순서 2) 왕명의 목적지로 5번 도시가 주어진다. [Fig. 3]과 같이, 전령이 이동한 최단 경로에서 가장 거리가 긴 도로의 최솟값으로 8을 반환한다.\n\n[[IMG:3]]\n\n[Fig. 3]\n\n(순서 3) 0번 도시에서 2번 도시로 갈 수 있는 8000 도로가 추가된다. 도로의 거리는 4이다. 함수 호출의 결과는 [Fig. 4]와 같다.\n\n[[IMG:4]]\n\n[Fig. 4]\n\n(순서 4) 왕명의 목적지로 5번 도시가 주어진다. [Fig. 5]와 같이, 전령이 이동한 최단 경로에서 가장 거리가 긴 도로의 최솟값으로 5를 반환한다.\n\n[[IMG:5]]\n\n[Fig. 5]\n\n(순서 5) 6000 도로를 제거한다. 함수 호출의 결과는 [Fig. 6]과 같다.\n\n[[IMG:6]]\n\n[Fig. 6]\n\n(순서 6) 왕명의 목적지로 5번 도시가 주어진다. [Fig. 7]과 같이, 전령이 이동한 최단 경로에서 가장 거리가 긴 도로의 최솟값으로 8을 반환한다.\n\n[[IMG:7]]\n\n[Fig. 7]",
  "constraints": [
   "1. 각 테스트 케이스 시작 시 init() 함수가 호출된다.",
   "2. 각 테스트 케이스에서 add() 함수의 호출 횟수는 14000 이하이다.",
@@ -38,7 +38,8 @@
   "problems/swea/img/26113_3.png",
   "problems/swea/img/26113_4.png",
   "problems/swea/img/26113_5.png",
-  "problems/swea/img/26113_6.png"
+  "problems/swea/img/26113_6.png",
+  "problems/swea/img/26113_7.png"
  ],
  "samples": [
   {

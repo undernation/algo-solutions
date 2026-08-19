@@ -92,7 +92,11 @@ WALK_JS = r"""(sel) => {
       const w = n.naturalWidth || 0, h = n.naturalHeight || 0;
       if (w < 60 || h < 40) return "";
       const src = n.getAttribute("src") || "";
-      if (/profileImage|avatar|icon|logo/i.test(src)) return "";
+      // 파일명으로 UI 아이콘을 걸러내는 규칙이다. data: URI 에까지 적용하면
+      // base64 본문에 우연히 들어간 "iCoN"/"LOgo" 때문에 멀쩡한 지문 그림이
+      // 통째로 버려진다(SWEA 25003 이 3장을 그렇게 잃었다).
+      if (!src.startsWith("data:") &&
+          /profileImage|avatar|icon|logo/i.test(src)) return "";
       imgs.push({src: src, w: w, h: h});
       return "\n[[IMG:" + imgs.length + "]]\n";
     }
