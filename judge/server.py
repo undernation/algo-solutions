@@ -857,6 +857,26 @@ def tc_preview(site, no, idx, limit=200_000, full=False):
             "truncated": len(a) > limit or len(b) > limit}
 
 
+def tc_file(site, no, kind, idx=0):
+    """sample_input.txt / sample_output.txt 를 원본 그대로 준다.
+
+    SWEA B형(Pro) 문제는 제공되는 Main 코드가 표준입력을 파일로 돌려서 읽는다.
+    로컬에서 돌려보려면 파일 자체가 필요해서, 브라우저가 받아 저장할 수 있게 연다.
+    (repo 에는 앞부분 미리보기만 있고 전체본은 여기 보관소에만 있다)
+    """
+    d = load_stored_tc(site, no)
+    if not d:
+        return {"ok": False, "error": "보관된 테스트케이스가 없습니다"}
+    src = (d.get("samples") or []) or (d.get("private") or [])
+    if not (0 <= idx < len(src)):
+        return {"ok": False, "error": "범위를 벗어난 인덱스"}
+    t = src[idx]
+    inp = kind != "out"
+    return {"ok": True,
+            "text": t.get("in" if inp else "out", ""),
+            "name": "sample_input.txt" if inp else "sample_output.txt"}
+
+
 def tc_upload(d):
     """로컬에서 크롤링한 전체 TC 를 보관소에 저장."""
     site = (d.get("site") or "BOJ").upper()
@@ -1121,7 +1141,7 @@ def status():
             "branch": br, "ahead": ah, "dirty": dirty, "solutions": n,
             "autoPush": AUTO_PUSH,
             "endpoints": ["/judge", "/run", "/exec", "/save", "/fetch", "/note",
-                          "/tc", "/tcupload", "/delete", "/problems"],
+                          "/tc", "/tcfile", "/tcupload", "/delete", "/problems"],
             "tcStore": (len(glob.glob(os.path.join(TC_STORE, "*", "*.json"))) +
                         len(glob.glob(os.path.join(TC_STORE_ALT, "*", "*.json"))))}
 
@@ -1306,6 +1326,11 @@ class H(BaseHTTPRequestHandler):
                         limit=int(body.get("limit") or 200_000),
                         full=bool(body.get("full"))))
                 return self._send(200, tc_info(site, no))
+
+            if p == "/tcfile":
+                return self._send(200, tc_file(
+                    (body.get("site") or "BOJ").upper(), str(body.get("no") or ""),
+                    body.get("kind") or "in", int(body.get("index") or 0)))
 
             if p == "/tcupload":
                 return self._send(200, tc_upload(body))

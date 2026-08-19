@@ -191,6 +191,21 @@ button.sm{padding:4px 10px;font-size:12.5px}
 .body img{max-width:100%;height:auto;display:block;margin:14px 0;border:1px solid var(--bd);
  border-radius:6px;background:#fff;cursor:zoom-in}
 .body img:hover{border-color:var(--ac)}
+/* 지문 속 표 — SWEA B형은 API 호출 순서를 표로 준다. pre-wrap 안이라
+   white-space 를 되돌려야 셀이 제 모양으로 접힌다. */
+.body .mdt{border-collapse:collapse;margin:14px 0;font-size:14px;
+ white-space:normal;display:block;overflow-x:auto;max-width:100%}
+.body .mdt th,.body .mdt td{border:1px solid var(--bd);padding:7px 11px;
+ text-align:left;vertical-align:top;line-height:1.6}
+.body .mdt th{background:var(--hdr);font-weight:700;white-space:nowrap}
+.body .mdt tbody tr:nth-child(2n){background:var(--soft)}
+.body .mdt td{font-family:ui-monospace,Consolas,monospace;font-size:13px}
+.body .mdt td:first-child{text-align:right;color:var(--sub);width:1%;white-space:nowrap}
+/* 언어 지원 배지 */
+.lang{display:inline-flex;gap:5px;align-items:center;flex-wrap:wrap}
+.lang .lg{border:1px solid var(--bd);border-radius:4px;padding:1px 7px;font-size:12px;
+ color:var(--sub);background:var(--soft)}
+.lang .lg.no{border-color:var(--no);color:var(--no);background:rgba(221,65,36,.08)}
 pre.io{background:var(--soft);border:1px solid var(--bd);border-radius:6px;padding:12px 14px;
  margin:0;font-size:13.5px;line-height:1.65;overflow-x:auto;white-space:pre;max-height:340px}
 .crumb{font-size:13px;color:var(--sub);margin-bottom:10px}
@@ -1811,20 +1826,72 @@ async function viewProblem(site,no){
 }
 
 /* 지문의 [[IMG:n]] 자리표시를 실제 그림으로 바꾼다. 파일이 없으면 표시만 지운다. */
+/* 지문 안의 마크다운 표를 진짜 표로 그린다.
+   SWEA B형(Pro) 문제는 API 호출 순서를 표로 준다("Order | Function | return").
+   pre-wrap 텍스트로 두면 셀이 줄줄이 늘어져 읽을 수가 없다.
+   크롤러가 표를 | 로 적어 두고, 여기서 <table> 로 되살린다. */
+function mdTables(html){
+ var lines=html.split("\n"), out=[], i=0;
+ function cells(ln){
+  var s=ln.trim().replace(/^\|/,"").replace(/\|$/,"");
+  return s.split("|").map(function(x){return x.trim();});
+ }
+ while(i<lines.length){
+  var isTbl = /^\s*\|/.test(lines[i]) && i+1<lines.length &&
+              /^\s*\|[\s|:-]*-[\s|:-]*\|?\s*$/.test(lines[i+1]);
+  if(!isTbl){ out.push(lines[i++]); continue; }
+  var head=cells(lines[i]), body=[];
+  i+=2;
+  while(i<lines.length && /^\s*\|/.test(lines[i])) body.push(cells(lines[i++]));
+  out.push('<table class="mdt"><thead><tr>'+
+    head.map(function(c){return "<th>"+c+"</th>";}).join("")+
+    '</tr></thead><tbody>'+
+    body.map(function(r){
+      var t=r.slice(); while(t.length<head.length) t.push("");
+      return "<tr>"+t.slice(0,head.length).map(function(c){
+        return "<td>"+(c||"&nbsp;")+"</td>";}).join("")+"</tr>";
+    }).join("")+"</tbody></table>");
+ }
+ return out.join("\n");
+}
 function withImages(text,p){
  var imgs=(p&&p.images)||[];
- return esc(text).replace(/\[\[IMG:(\d+)\]\]/g, function(_,k){
+ var h=esc(text).replace(/\[\[IMG:(\d+)\]\]/g, function(_,k){
    var src=imgs[parseInt(k,10)-1];
    if(!src) return "";
    return '<img src="./'+esc(src)+'" alt="그림 '+esc(k)+'" loading="lazy" '+
           'onclick="openImg(this.src)">';
  });
+ return mdTables(h);
 }
 function openImg(src){
  $("cv").style.display="block";
  $("cvt").textContent="그림"; $("cvp").textContent="";
  $("cvraw").href=src; CVTEXT="";
  $("cvc").innerHTML='<img src="'+esc(src)+'" style="max-width:100%;height:auto;display:block">';
+}
+
+/* 테스트케이스 파일 받기 — 전체본은 채점 서버 보관소에만 있다.
+   B형은 Main 코드가 sample_input.txt 를 파일로 읽어서, 파일이 있어야 로컬에서 돌려본다. */
+async function dlTC(kind){
+ await hubReady();
+ var h=hubFor("judge");
+ if(!h) return say("허브가 꺼져 있습니다. 우측 상단 허브 버튼을 확인하세요.","ng");
+ say("테스트케이스를 받는 중…");
+ try{
+  var r=await fetch(h.url+"/tcfile",{method:"POST",headers:H(),
+    body:JSON.stringify({site:CUR.site,no:CUR.no,kind:kind})});
+  if(r.status===401) return say("인증 실패 — 허브 버튼에서 토큰을 확인하세요.","ng");
+  var j=await r.json();
+  if(!j.ok) return say("실패: "+esc(j.error||r.status),"ng");
+  var blob=new Blob([j.text],{type:"text/plain;charset=utf-8"});
+  var a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download=CUR.no+"_"+j.name;
+  document.body.appendChild(a); a.click();
+  setTimeout(function(){URL.revokeObjectURL(a.href); a.remove();},1000);
+  say("✅ "+esc(CUR.no+"_"+j.name)+" ("+(j.text.length/1e6).toFixed(1)+"MB) 저장됨","ok");
+ }catch(e){ say("오류: "+esc(e.message),"ng"); }
 }
 
 /* 코딩살구처럼 라벨 + 복사 버튼이 달린 입·출력 패널 한 쌍 */
@@ -1872,7 +1939,28 @@ function renderProblem(p,site,no){
   return;
  }
  var h='';
+ /* SWEA B형(Pro)은 언어별로 제출 가능 여부가 다르다. 파이썬으로 못 내는 문제를
+    모르고 붙잡고 있으면 시간을 통째로 버린다 — 맨 위에 띄운다. */
+ if(p.languages&&p.languages.length){
+  h+='<div class="row" style="margin:0 0 10px"><span class="lang">'+
+     p.languages.map(function(l){return '<span class="lg">'+esc(l)+'</span>';}).join("")+
+     (p.python_supported?'':'<span class="lg no">Python 미지원</span>')+
+     '</span></div>';
+ }
+ /* B형은 제공되는 Main 코드가 sample_input.txt 를 파일로 읽는다.
+    전체 TC 는 repo 에 없고 채점 서버에만 있으므로 여기서 받아 간다. */
+ if(p.tc_stored){
+  h+='<div class="row" style="margin:0 0 12px;gap:6px;align-items:center">'+
+     '<button class="sm" onclick="dlTC(\'in\')">sample_input.txt 받기</button>'+
+     '<button class="sm" onclick="dlTC(\'out\')">sample_output.txt 받기</button>'+
+     '<span class="hint" style="margin:0">전체 '+
+       ((p.tc_full_bytes||0)/1e6).toFixed(1)+'MB · 아래 예제는 앞부분만</span></div>';
+ }
  if(p.statement) h+='<div class="sec-h">문제</div><div class="body">'+withImages(p.statement,p)+'</div>';
+ if(p.examples_text) h+='<div class="sec-h">예제</div><div class="body">'+withImages(p.examples_text,p)+'</div>';
+ if(p.constraints&&p.constraints.length)
+   h+='<div class="sec-h">제약사항</div><div class="body">'+
+      withImages(p.constraints.join("\n"),p)+'</div>';
  if(p.input_spec)  h+='<div class="sec-h">입력</div><div class="body">'+esc(p.input_spec)+'</div>';
  if(p.output_spec) h+='<div class="sec-h">출력</div><div class="body">'+esc(p.output_spec)+'</div>';
  (p.samples||[]).forEach(function(s,i){
@@ -2106,7 +2194,10 @@ async function doJudge(){
  var cases=pub.concat(hid);
  /* 히든 TC 는 실제 채점용이라 매우 크다(BOJ 2493 = 28MB). repo 에는 200KB 로 줄인
     보기용만 두고, 채점은 서버가 보관한 전체본으로 한다. 브라우저는 아무것도 안 올린다. */
- var useStored = useH && !!(P.private_tc_omitted || (P.private_tc_count||0) > hid.length);
+ /* SWEA B형(Pro)은 예제 자체가 25케이스 묶음이라 8MB 를 넘는다. repo 에는 앞부분만
+    두고 tc_stored 를 세워 두었으므로, 이 경우도 서버 보관본으로 채점한다. */
+ var useStored = !!P.tc_stored ||
+   (useH && !!(P.private_tc_omitted || (P.private_tc_count||0) > hid.length));
  if(!cases.length && !useStored)
    return say("예제가 없어 채점할 수 없습니다. 먼저 문제 자료를 가져오세요.","ng");
  var sf=(h.info&&h.info.speedFactor)||1;
