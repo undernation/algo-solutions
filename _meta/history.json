@@ -4923,15 +4923,6 @@
     "at": "15:38:31",
     "attempts": [
      {
-      "at": "15:28:43",
-      "elapsed": 5.507,
-      "file": "swea/24995_온라인마트.py",
-      "passed": 1,
-      "status": "품",
-      "total": 1,
-      "verdict": "accepted"
-     },
-     {
       "at": "15:29:41",
       "elapsed": 5.507,
       "file": "swea/24995_온라인마트.py",
