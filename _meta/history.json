@@ -4915,5 +4915,33 @@
     "title": "어항물채우기 정답"
    }
   ]
+ },
+ "2026-08-20": {
+  "count": 1,
+  "items": [
+   {
+    "at": "15:28:43",
+    "attempts": [
+     {
+      "at": "15:28:43",
+      "elapsed": 5.507,
+      "file": "swea/24995_온라인마트.py",
+      "passed": 1,
+      "status": "품",
+      "total": 1,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 5.507,
+    "file": "swea/24995_온라인마트.py",
+    "no": "24995",
+    "passed": 1,
+    "site": "SWEA",
+    "status": "품",
+    "title": "온라인마트",
+    "total": 1,
+    "verdict": "accepted"
+   }
+  ]
  }
 }
