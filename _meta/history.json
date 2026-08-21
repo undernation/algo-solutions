@@ -4944,7 +4944,7 @@
   "count": 1,
   "items": [
    {
-    "at": "17:27:32",
+    "at": "17:28:37",
     "attempts": [
      {
       "at": "17:27:32",
@@ -4954,17 +4954,26 @@
       "status": "품",
       "total": 1,
       "verdict": "time_limit_exceeded"
+     },
+     {
+      "at": "17:28:37",
+      "elapsed": 14.723,
+      "file": "swea/24997_택시호출서비스.py",
+      "passed": 1,
+      "status": "품",
+      "total": 1,
+      "verdict": "accepted"
      }
     ],
-    "elapsed": 15.079,
+    "elapsed": 14.723,
     "file": "swea/24997_택시호출서비스.py",
     "no": "24997",
-    "passed": 0,
+    "passed": 1,
     "site": "SWEA",
     "status": "품",
     "title": "택시 호출 서비스",
     "total": 1,
-    "verdict": "time_limit_exceeded"
+    "verdict": "accepted"
    }
   ]
  }

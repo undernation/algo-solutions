@@ -11,7 +11,7 @@ https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt
 제약   : 4. 각 테스트 케이스에서 getBest() 함수의 호출 횟수는 10,000 이하이다.
 제약   : 5. 택시의 위치, 출발지와 목적지의 위치는 임의로 생성되는 것을 보장한다.
 
-[채점] time_limit_exceeded  0/1  (15.079s)
+[채점] accepted  1/1  (14.723s)
 
 [문제]
 택시 호출 서비스를 제공하는 시스템을 개발하고자 한다.
@@ -2237,12 +2237,13 @@ def calc_dist(sy, sx, ey, ex):
 
 
 def init(N : int, M : int, L : int, mXs : List[int], mYs : List[int]) -> None:
-    global g_N, g_M, g_L, distance_dict, taxi_info, INF, hq, loc_info
+    global g_N, g_M, g_L, distance_dict, taxi_info, INF, hq, loc_info, area
     g_N = N
     g_M = M
     g_L = L
     hq = []
     taxi_info = {}
+    area = [[set() for _ in range(10)] for _ in range(10)]
     # loc_info = defaultdict(list)
     INF = 10 ** 18
     for num in range(1, M + 1):
@@ -2261,26 +2262,49 @@ def init(N : int, M : int, L : int, mXs : List[int], mYs : List[int]) -> None:
         # loc_info[(mYs[num - 1], mXs[num - 1])].append(num)
         # - 손님 이동거리, 택시 id, version
         heapq.heappush(hq, [0, num, 0])
+    #### distance dict 시도###########################################
+        area[mYs[num - 1] // L][mXs[num - 1] // L].add(num)
+    #####################################################################
+
 
 # 30000
 def pickup(mSX : int, mSY : int, mEX : int, mEY : int) -> int:
 
     dist = INF
     taxi_num = INF
+    call_sec_Y = mSY // g_L
+    call_sec_X = mSX // g_L
+
+    for sy in range(max(0, call_sec_Y - 1), min(9, call_sec_Y + 1) + 1):
+        for sx in range(max(0, call_sec_X - 1), min(9, call_sec_X + 1) + 1):
+            for cur_id in area[sy][sx]:
+                y, x, mile, p_mile, version = taxi_info[cur_id]
+                cur_dist = calc_dist(mSY, mSX, y, x)
+                if cur_dist <= g_L:
+                    # print("key", key)
+                    if dist > cur_dist:
+                        dist = cur_dist
+                        taxi_num = cur_id
+                        target_sec_Y = sy
+                        target_sec_X = sx
+                    elif dist == cur_dist:
+                        if taxi_num > cur_id:
+                            taxi_num = min(taxi_num, cur_id)
+                            target_sec_Y = sy
+                            target_sec_X = sx
     ###########################################################################
-    for key, value in taxi_info.items():
-        y, x, mile, p_mile, version = value
-        cur_dist = calc_dist(mSY, mSX, y, x)
-        if cur_dist <= g_L:
-            if dist > cur_dist:
-                dist = cur_dist
-                taxi_num = key
-            elif dist == cur_dist:
-                taxi_num = min(taxi_num, key)
+
+
+    ###########################################################################
 
     if taxi_num == INF:
+
         return -1
     
+    # ###########################################################################
+    # loc_info[(remove_y, remove_x)].remove(taxi_num)
+    # ###########################################################################
+
 
     cy, cx, cmile, c_p_mile, cver = taxi_info[taxi_num]
     # 손님 이송 처리.
@@ -2296,8 +2320,18 @@ def pickup(mSX : int, mSY : int, mEX : int, mEY : int) -> int:
     taxi_info[taxi_num][3] = new_c_p_mile
     taxi_info[taxi_num][4] = cver + 1
 
+    ###########################################################################
+    # loc_info[(mEY, mEX)].append(taxi_num)
+    ###########################################################################
+    # 이송한거 구역에서 없애고 새 구역으로 이동 시켜주기
+    new_area_Y = mEY // g_L
+    new_area_X = mEX // g_L
+    # print(area[target_sec_Y][target_sec_X])
+    area[target_sec_Y][target_sec_X].remove(taxi_num)
+    area[new_area_Y][new_area_X].add(taxi_num)
 
-
+    # if DEBUG:
+    #     print("pickup", taxi_num)
     return taxi_num
 
 
@@ -2310,7 +2344,8 @@ def reset(mNo : int) -> Result:
     taxi_info[mNo][2] = 0
     taxi_info[mNo][3] = 0
     taxi_info[mNo][4] = cver + 1
-
+    # if DEBUG:
+    #     print("reset", ret.mX, ret.mY, ret.mMoveDistance, ret.mRideDistance)
     return ret
 
 # 10000
@@ -2329,7 +2364,8 @@ def getBest(mNos : List[int]) -> None:
 
     for a, b, c in removed:
         heapq.heappush(hq, [a, b, c])
-
+    # if DEBUG:
+    #     print("getBest", mNos)
     pass
 
 
