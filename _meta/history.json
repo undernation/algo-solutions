@@ -4976,5 +4976,33 @@
     "verdict": "accepted"
    }
   ]
+ },
+ "2026-08-22": {
+  "count": 1,
+  "items": [
+   {
+    "at": "20:07:11",
+    "attempts": [
+     {
+      "at": "20:07:11",
+      "elapsed": 4.493,
+      "file": "boj/20125.py",
+      "passed": 17,
+      "status": "품",
+      "total": 17,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 4.493,
+    "file": "boj/20125.py",
+    "no": "20125",
+    "passed": 17,
+    "site": "BOJ",
+    "status": "품",
+    "title": "쿠키의 신체 측정",
+    "total": 17,
+    "verdict": "accepted"
+   }
+  ]
  }
 }
