@@ -1191,7 +1191,7 @@ function growNote(el){
 
    진실의 원본은 여전히 숨겨둔 #nbody 다. 이 편집기는 거기에 써 넣기만 한다.
    그래서 라이브 프리뷰가 깨져도 "원문 보기" 로 돌리면 예전 동작 그대로다. */
-var LP={on:true, blocks:[""], act:-1, host:null, ta:null};
+var LP={on:true, blocks:[""], act:-1, host:null, ta:null, drag:-1, dragged:false};
 try{ LP.on = localStorage.getItem("lpOff")!=="1"; }catch(e){}
 
 function lpIsCode(t){ return /^\s*```/.test(t); }
@@ -1236,7 +1236,7 @@ function lpFlush(){
 /* 왼쪽 줄 번호를 붙인 한 행. 번호는 .md 파일의 실제 줄 번호다.
    번호를 눌러도 그 줄로 커서가 가게 한다(줄 끝). */
 function lpRow(inner,ln,cls,i){
- return '<div class="lprow'+(cls?" "+cls:"")+'">'+
+ return '<div class="lprow'+(cls?" "+cls:"")+'" data-i="'+i+'">'+
         '<span class="lpn" data-i="'+i+'">'+ln+"</span>"+inner+"</div>";
 }
 function lpRender(){
@@ -1271,14 +1271,59 @@ function lpRender(){
  }
 }
 
+/* 여러 줄을 한 덩어리로 합쳐 편집하던 블록을, 거기서 빠져나갈 때 다시 줄 단위로
+   되돌린다. 코드블록은 원래 여러 줄이 한 덩어리이므로 lpSplit 이 그대로 돌려준다.
+   되돌리며 늘어난 줄 수를 반환한다 — 뒤쪽 인덱스를 그만큼 밀어야 한다. */
+function lpUnmerge(){
+ var k=LP.act;
+ if(k<0||k>=LP.blocks.length) return 0;
+ var t=LP.blocks[k];
+ if(t.indexOf("\n")<0) return 0;
+ var parts=lpSplit(t);
+ if(parts.length<2) return 0;
+ var bl=LP.blocks.slice();
+ bl.splice.apply(bl,[k,1].concat(parts));
+ LP.blocks=bl;
+ return parts.length-1;
+}
+
+/* a~b 줄을 하나의 편집 영역으로 합치고 그 전체를 선택한다.
+   한 줄만 textarea 인 구조라 드래그가 줄을 넘어가면 선택이 아니라 커서 이동이
+   돼 버린다 — 넘어간 순간 그 범위를 합쳐서 진짜 블록 선택으로 만든다.
+   빠져나가면 lpUnmerge 가 원래 줄들로 되돌리므로 저장 내용은 그대로다. */
+function lpMergeRange(a,b){
+ var lo=Math.min(a,b), hi=Math.max(a,b);
+ var was=LP.act, grew=lpUnmerge();
+ if(grew){ if(lo>was) lo+=grew; if(hi>was) hi+=grew; }
+ lo=Math.max(0,lo); hi=Math.min(hi,LP.blocks.length-1);
+ if(hi<=lo){ lpFocus(lo,null); return; }
+ var merged=LP.blocks.slice(lo,hi+1).join("\n");
+ var bl=LP.blocks.slice();
+ bl.splice(lo,hi-lo+1,merged);
+ LP.blocks=bl; LP.act=lo;
+ lpRender();
+ var ta=LP.host?LP.host.getElementsByClassName("lpa")[0]:null;
+ if(!ta) return;
+ ta.focus();
+ try{ ta.setSelectionRange(0,merged.length); }catch(e){}
+ lpGrow(ta);
+}
+
 function lpFocus(i,pos){
+ /* 합쳐서 편집하던 줄이 있으면 먼저 풀고, 그만큼 뒤쪽 인덱스를 민다. */
+ var was=LP.act, grew=lpUnmerge();
+ if(grew&&i>was) i+=grew;
  LP.act=Math.max(0,Math.min(i,LP.blocks.length-1));
  lpRender();
  var ta=LP.host?LP.host.getElementsByClassName("lpa")[0]:null;
  if(!ta) return;
- var p=(pos==null)?ta.value.length:Math.max(0,Math.min(pos,ta.value.length));
+ var s0,e0;
+ if(pos&&pos.length===2){ s0=pos[0]; e0=pos[1]; }
+ else { s0=e0=(pos==null)?ta.value.length:pos; }
+ s0=Math.max(0,Math.min(s0,ta.value.length));
+ e0=Math.max(0,Math.min(e0,ta.value.length));
  ta.focus();
- try{ ta.setSelectionRange(p,p); }catch(e){}
+ try{ ta.setSelectionRange(s0,e0); }catch(e){}
  var r=ta.getBoundingClientRect();
  if(r.top<64||r.bottom>innerHeight-16) ta.scrollIntoView({block:"center"});
 }
@@ -1360,6 +1405,7 @@ function lpPaste(e){
 }
 
 function lpTap(e){
+ if(LP.dragged){ LP.dragged=false; return; }   /* 방금 드래그로 범위를 고른 참이다 */
  if(e.target&&e.target.closest&&e.target.closest("a")) return;   /* 링크는 링크대로 */
  /* 드래그해서 글자를 고른 참이면 편집으로 바꾸지 않는다 — 복사하려던 것이다. */
  var sel=window.getSelection&&window.getSelection();
@@ -1371,6 +1417,43 @@ function lpTap(e){
 function lpKey(e){
  var ta=e.target, i=LP.act, a=ta.selectionStart, b=ta.selectionEnd, t=ta.value, bl;
  if(e.key==="Escape"){ ta.blur(); return; }
+ /* Ctrl+A — 이 줄이 이미 통째로 선택돼 있으면 메모 전체로 넓힌다. */
+ if((e.ctrlKey||e.metaKey)&&(e.key==="a"||e.key==="A")&&
+    a===0&&b===t.length&&LP.blocks.length>1){
+  e.preventDefault(); lpMergeRange(0,LP.blocks.length-1); return;
+ }
+ /* Shift+↑/↓ — 줄 끝에서 누르면 위/아래 줄까지 블록으로 잡는다. */
+ if((e.key==="ArrowUp"||e.key==="ArrowDown")&&e.shiftKey){
+  var up=e.key==="ArrowUp", j=up?i-1:i+1;
+  if((up?a===0:b===t.length)&&j>=0&&j<LP.blocks.length){
+   e.preventDefault(); lpMergeRange(i,j); return;
+  }
+ }
+ /* 코드블록 안에서의 Enter.
+    - 닫는 ``` 이 아직 없으면 지금 닫아 준다. 안 그러면 아래 내용이 전부
+      코드블록으로 빨려 들어간다(저장했다 다시 열면 그대로 드러난다).
+    - 이미 닫힌 블록의 맨 끝에서 누르면 블록 밖으로 나가 새 줄을 만든다.
+      안 그러면 키보드만으로는 코드블록을 빠져나갈 수가 없다. */
+ if(e.key==="Enter"&&!e.shiftKey&&!e.isComposing&&lpIsCode(t)){
+  var fn=(t.match(/^[ \t]*```/gm)||[]).length;
+  if(fn%2===1){
+   e.preventDefault();
+   var head=t.slice(0,a);
+   LP.blocks[i]=head+"\n"+t.slice(b)+"\n```";
+   lpOut(); lpFocus(i,head.length+1); return;
+  }
+  if(a===t.length&&b===t.length){
+   e.preventDefault();
+   bl=LP.blocks.slice(); bl.splice(i+1,0,"");
+   LP.blocks=bl; lpOut(); lpFocus(i+1,0); return;
+  }
+ }
+ /* 코드블록 안에서의 Tab — 편집기 밖으로 포커스가 튀지 않게 공백을 넣는다. */
+ if(e.key==="Tab"&&!e.shiftKey&&lpIsCode(t)){
+  e.preventDefault();
+  LP.blocks[i]=t.slice(0,a)+"    "+t.slice(b);
+  lpOut(); lpFocus(i,a+4); return;
+ }
  /* 한글 조합 중의 Enter 는 "조합 확정" 이지 줄바꿈이 아니다. 가로채면 글자가 씹힌다. */
  if(e.key==="Enter"&&!e.shiftKey&&!e.ctrlKey&&!e.metaKey&&!e.isComposing&&!lpIsCode(t)){
   e.preventDefault();
@@ -1416,7 +1499,22 @@ function lpMount(host,ta){
  if(!LP.on){ host.style.display="none"; ta.style.display=""; growNote(ta); return; }
  host.style.display=""; ta.style.display="none";
  LP.blocks=lpSplit(ta.value);
- host.onclick=function(e){ if(e.target===host) lpFocus(LP.blocks.length-1,null); };
+ /* 드래그로 여러 줄을 고르는 길 — 시작한 줄과 끝난 줄이 다르면 그 범위를 합친다. */
+ host.onmousedown=function(e){
+  var r=e.target&&e.target.closest?e.target.closest(".lprow"):null;
+  LP.drag=r?+r.getAttribute("data-i"):-1;
+  LP.dragged=false;
+ };
+ host.onmouseup=function(e){
+  var r=e.target&&e.target.closest?e.target.closest(".lprow"):null;
+  var to=r?+r.getAttribute("data-i"):-1, from=LP.drag;
+  LP.drag=-1;
+  if(from>=0&&to>=0&&to!==from){ LP.dragged=true; lpMergeRange(from,to); }
+ };
+ host.onclick=function(e){
+  if(LP.dragged){ LP.dragged=false; return; }
+  if(e.target===host) lpFocus(LP.blocks.length-1,null);
+ };
  lpRender();
 }
 function lpToggle(){
