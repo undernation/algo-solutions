@@ -5021,7 +5021,7 @@
   ]
  },
  "2026-08-23": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "10:21:23",
@@ -5037,6 +5037,29 @@
     "site": "SWEA",
     "status": "못품",
     "title": "고속선 선로 피로도 관제 시스템 D6"
+   },
+   {
+    "at": "20:52:42",
+    "attempts": [
+     {
+      "at": "20:52:42",
+      "elapsed": 4.405,
+      "file": "boj/25757.py",
+      "passed": 17,
+      "status": "품",
+      "total": 17,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 4.405,
+    "file": "boj/25757.py",
+    "no": "25757",
+    "passed": 17,
+    "site": "BOJ",
+    "status": "품",
+    "title": "임스와 함께하는 미니게임",
+    "total": 17,
+    "verdict": "accepted"
    }
   ]
  }
