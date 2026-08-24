@@ -5064,7 +5064,7 @@
   ]
  },
  "2026-08-24": {
-  "count": 2,
+  "count": 3,
   "items": [
    {
     "at": "15:28:37",
@@ -5110,6 +5110,29 @@
     "status": "품",
     "title": "좌표 정렬하기 2",
     "total": 15,
+    "verdict": "accepted"
+   },
+   {
+    "at": "20:23:41",
+    "attempts": [
+     {
+      "at": "20:23:41",
+      "elapsed": 3.298,
+      "file": "swea/25004_경유지운송.py",
+      "passed": 1,
+      "status": "틀림",
+      "total": 1,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 3.298,
+    "file": "swea/25004_경유지운송.py",
+    "no": "25004",
+    "passed": 1,
+    "site": "SWEA",
+    "status": "틀림",
+    "title": "경유지운송",
+    "total": 1,
     "verdict": "accepted"
    }
   ]
