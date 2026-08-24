@@ -5064,7 +5064,7 @@
   ]
  },
  "2026-08-24": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "15:28:37",
@@ -5087,6 +5087,29 @@
     "status": "못품",
     "title": "마라톤 코스",
     "total": 1,
+    "verdict": "accepted"
+   },
+   {
+    "at": "16:41:08",
+    "attempts": [
+     {
+      "at": "16:41:08",
+      "elapsed": 17.009,
+      "file": "boj/11651.py",
+      "passed": 15,
+      "status": "품",
+      "total": 15,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 17.009,
+    "file": "boj/11651.py",
+    "no": "11651",
+    "passed": 15,
+    "site": "BOJ",
+    "status": "품",
+    "title": "좌표 정렬하기 2",
+    "total": 15,
     "verdict": "accepted"
    }
   ]
