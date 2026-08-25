@@ -5136,5 +5136,33 @@
     "verdict": "accepted"
    }
   ]
+ },
+ "2026-08-25": {
+  "count": 1,
+  "items": [
+   {
+    "at": "15:52:12",
+    "attempts": [
+     {
+      "at": "15:52:12",
+      "elapsed": 12.019,
+      "file": "swea/25007_지렁이게임.py",
+      "passed": 0,
+      "status": "못품",
+      "total": 1,
+      "verdict": "time_limit_exceeded"
+     }
+    ],
+    "elapsed": 12.019,
+    "file": "swea/25007_지렁이게임.py",
+    "no": "25007",
+    "passed": 0,
+    "site": "SWEA",
+    "status": "못품",
+    "title": "지렁이 게임",
+    "total": 1,
+    "verdict": "time_limit_exceeded"
+   }
+  ]
  }
 }
