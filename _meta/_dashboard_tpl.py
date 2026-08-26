@@ -10,21 +10,37 @@ DOW = ["월", "화", "수", "목", "금", "토", "일"]
 TEMPLATE = r"""<!doctype html><html lang="ko"><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>코테 아카이브</title>
+<script>
+/* 고른 테마를 화면을 그리기 전에 입힌다. 이 줄이 없으면 다크로 고정해 둬도
+   새로고침할 때마다 흰 화면이 한 번 번쩍이고 나서 어두워진다. */
+try{var _t=localStorage.getItem("theme");
+ if(_t==="dark"||_t==="light")document.documentElement.setAttribute("data-theme",_t);}catch(e){}
+</script>
 <style>
+/* ── 색 팔레트 ───────────────────────────────────────────────────
+   기본은 라이트. 다크 값은 이 파일 아래 _DARK 한 곳에만 적어 두고
+   빌드할 때 아래 두 자리에 똑같이 박는다.
+     ① 운영체제가 다크이고 사용자가 라이트로 고정하지 않았을 때
+     ② 사용자가 다크로 고정했을 때
+   색을 손볼 일이 있으면 _DARK 만 고치면 두 곳이 같이 바뀐다.
+   색은 되도록 여기 변수로만 두고 규칙 안에 직접 쓰지 않는다 — 예전엔
+   다크 전용 규칙이 여섯 군데 흩어져 있어서 한 곳을 빠뜨리기 쉬웠다. */
 :root{
+ color-scheme:light;
  --bg:#fff; --panel:#fff; --soft:#f8f9fa; --fg:#212529; --sub:#6c757d; --mute:#adb5bd;
  --bd:#dee2e6; --bd2:#e9ecef; --ac:#0076c0; --ac2:#005a92;
  --ok:#00a10c; --no:#dd4124; --wr:#e8890c; --tl:#7c4dff; --pend:#0076c0;
  --c0:#ebedf0; --c1:#9be9a8; --c2:#40c463; --c3:#30a14e; --c4:#216e39;
  --hdr:#f6f7f8;
+ --navon:rgba(0,118,192,.09);   /* 현재 메뉴 */
+ --pendfg:#b26a00;              /* '반영 대기' 배지 글자 */
+ --tcnumbg:rgba(0,118,192,.12); /* 테스트케이스 번호 */
+ --lpabg:rgba(0,118,192,.07);   /* 복기 메모에서 편집 중인 줄 */
+ --t-kw:#cf222e; --t-bi:#6639ba; --t-fn:#8250df; --t-str:#0a3069;
+ --t-num:#0550ae; --t-cm:#6e7781; --t-dec:#953800; --t-op:#0550ae;
 }
-@media(prefers-color-scheme:dark){:root{
- --bg:#0d1117; --panel:#161b22; --soft:#12161c; --fg:#e6edf3; --sub:#9198a1; --mute:#6e7681;
- --bd:#30363d; --bd2:#21262d; --ac:#58a6ff; --ac2:#79c0ff;
- --ok:#3fb950; --no:#ff7b72; --wr:#e3a008; --tl:#bc8cff; --pend:#58a6ff;
- --c0:#161b22; --c1:#0e4429; --c2:#006d32; --c3:#26a641; --c4:#39d353;
- --hdr:#161b22;
-}}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){__DARKVARS__}}
+:root[data-theme="dark"]{__DARKVARS__}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 /* 글꼴 — 외부 폰트를 받아오지 않는다(사내망에서 막히면 통째로 깨진다).
@@ -48,13 +64,29 @@ header{border-bottom:1px solid var(--bd);background:var(--panel);position:sticky
 nav{display:flex;gap:2px;flex:1}
 nav a{padding:6px 13px;border-radius:6px;font-size:14px;font-weight:600;color:var(--sub)}
 nav a:hover{background:var(--soft);color:var(--fg);text-decoration:none}
-nav a.on{color:var(--ac);background:rgba(0,118,192,.09)}
-@media(prefers-color-scheme:dark){nav a.on{background:rgba(88,166,255,.13)}}
+nav a.on{color:var(--ac);background:var(--navon)}
 .hubbtn{border:1px solid var(--bd);background:var(--panel);color:var(--sub);border-radius:6px;
  padding:5px 11px;font-size:12.5px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;white-space:nowrap}
 .hubbtn:hover{border-color:var(--ac);color:var(--ac)}
 .dot{width:7px;height:7px;border-radius:50%;background:var(--mute);flex:none}
 .dot.on{background:var(--ok)}.dot.off{background:var(--no)}
+/* 테마 버튼 — 좁은 화면에서는 글자를 접고 아이콘만 남긴다 */
+.thbtn{padding:5px 10px;gap:5px}
+.thbtn .ico{font-size:13.5px;line-height:1}
+/* 헤더에 버튼이 하나 늘었다. 좁은 화면에서는 글자를 접고 간격도 함께 줄여야
+   허브 버튼이 화면 밖으로 밀려나지 않는다(400px 에서 실측하며 맞춘 값). */
+@media(max-width:620px){
+ .hin{gap:10px;padding:0 12px}
+ nav a{padding:6px 9px}
+ .thbtn{padding:5px 8px}
+ .thbtn .lab{display:none}
+}
+/* 360px(작은 휴대폰)까지 헤더 한 줄에 들어가게 — 여기서 더 줄이면 글자가 뭉갠다 */
+@media(max-width:480px){
+ .hin{gap:8px;padding:0 10px}
+ .brand{font-size:15px}
+ nav a{padding:6px 7px;font-size:13px}
+}
 
 main{max-width:1120px;margin:0 auto;padding:26px 20px 90px}
 h2.t{font-size:19px;font-weight:700;margin:0 0 16px;letter-spacing:-.3px}
@@ -220,8 +252,7 @@ pre.io{background:var(--soft);border:1px solid var(--bd);border-radius:6px;paddi
  font-family:ui-monospace,Consolas,monospace;font-size:13px;line-height:1.55;
  white-space:pre-wrap;word-break:break-all;max-height:460px;overflow:auto;margin:0;color:var(--fg)}
 /* 저장은 끝났지만 GitHub Pages 재빌드 전이라 이 브라우저에만 있는 기록 */
-.b.pend{background:rgba(219,138,0,.14);color:#b26a00;border:1px solid rgba(219,138,0,.4)}
-@media(prefers-color-scheme:dark){.b.pend{color:#e8a33d}}
+.b.pend{background:rgba(219,138,0,.14);color:var(--pendfg);border:1px solid rgba(219,138,0,.4)}
 .vd{padding:12px 15px;border-radius:6px;font-size:14px;margin-top:12px;display:none;border:1px solid}
 .vd.ok{background:rgba(0,161,12,.09);border-color:rgba(0,161,12,.35);color:var(--ok)}
 .vd.ng{background:rgba(221,65,36,.09);border-color:rgba(221,65,36,.35);color:var(--no)}
@@ -247,9 +278,8 @@ pre.io{background:var(--soft);border:1px solid var(--bd);border-radius:6px;paddi
  line-height:1.6;white-space:pre;overflow:auto;max-height:260px}
 .tcgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:760px){.tcgrid{grid-template-columns:1fr}}
-.tcnum{display:inline-block;background:rgba(0,118,192,.12);color:var(--ac);font-weight:800;
+.tcnum{display:inline-block;background:var(--tcnumbg);color:var(--ac);font-weight:800;
  border-radius:5px;padding:0 7px;font-size:11.5px}
-@media(prefers-color-scheme:dark){.tcnum{background:rgba(88,166,255,.15)}}
 
 /* ── 복기 메모 ── */
 .nfold{border:1px solid var(--bd);border-radius:8px;background:var(--panel)}
@@ -316,11 +346,10 @@ pre.io{background:var(--soft);border:1px solid var(--bd);border-radius:6px;paddi
 .lpb.ph{color:var(--mute)}
 /* 원문이 드러난 줄. 옅은 배경으로 "여기가 편집 중" 을 표시한다. */
 .lpa{display:block;width:100%;border:0;outline:0;resize:none;overflow:hidden;
- background:rgba(0,118,192,.07);border-radius:4px;padding:0 4px;margin:0 -4px;
+ background:var(--lpabg);border-radius:4px;padding:0 4px;margin:0 -4px;
  font:inherit;color:var(--fg);white-space:pre-wrap;min-height:1.75em}
 .lpa.code{font-family:ui-monospace,SFMono-Regular,Consolas,"D2Coding",monospace;
  font-size:12.5px;line-height:1.6;background:var(--soft)}
-@media(prefers-color-scheme:dark){.lpa{background:rgba(88,166,255,.13)}}
 
 /* ── 삭제 확인 ── */
 #dc{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;z-index:90;padding:80px 20px;overflow:auto}
@@ -402,21 +431,16 @@ button.danger:hover{opacity:.88;color:#fff;border-color:var(--no)}
 .codebox .hfold .hbody{padding-bottom:8px}
 /* 토큰 색은 전역이다 — 코드 페이지(.codebox)와 복기 메모의 코드블록(.mdcode)이
    같은 색을 쓴다. 같은 코드가 화면마다 달라 보이면 오히려 헷갈린다. */
-.t-kw{color:#cf222e;font-weight:600}   /* def class if for ... */
-.t-bi{color:#6639ba}                   /* print len range ... */
-.t-fn{color:#8250df;font-weight:600}   /* def/class 뒤의 이름 */
-.t-str{color:#0a3069}
-.t-num{color:#0550ae}
+.t-kw{color:var(--t-kw);font-weight:600}   /* def class if for ... */
+.t-bi{color:var(--t-bi)}                   /* print len range ... */
+.t-fn{color:var(--t-fn);font-weight:600}   /* def/class 뒤의 이름 */
+.t-str{color:var(--t-str)}
+.t-num{color:var(--t-num)}
 /* 주석에 기울임을 쓰지 않는다 — 한글은 이탤릭이 없어 브라우저가 억지로
    기울여 그리는데, 코드에 한글 주석이 많아 그쪽이 다 뭉개져 보였다. */
-.t-cm{color:#6e7781}
-.t-dec{color:#953800}                  /* @decorator */
-.t-op{color:#0550ae}
-@media(prefers-color-scheme:dark){
- .t-kw{color:#ff7b72} .t-bi{color:#d2a8ff} .t-fn{color:#d2a8ff}
- .t-str{color:#a5d6ff} .t-num{color:#79c0ff} .t-cm{color:#8b949e}
- .t-dec{color:#ffa657} .t-op{color:#79c0ff}
-}
+.t-cm{color:var(--t-cm)}
+.t-dec{color:var(--t-dec)}                  /* @decorator */
+.t-op{color:var(--t-op)}
 #tip{position:fixed;display:none;background:#1f2328;color:#fff;padding:9px 12px;border-radius:6px;
  font-size:12.5px;line-height:1.65;pointer-events:none;z-index:99;box-shadow:0 6px 22px rgba(0,0,0,.45);max-width:340px}
 #tip b{display:block;margin-bottom:4px}#tip ul{margin:0;padding-left:16px}
@@ -431,6 +455,7 @@ button.danger:hover{opacity:.88;color:#fff;border-color:var(--no)}
   <a href="#status" data-v="status">제출 현황</a>
   <a href="#run" data-v="run" id="navrun" class="hide">연습장</a>
  </nav>
+ <button class="hubbtn thbtn" id="thbtn" onclick="themeCycle()"><span class="ico" id="thico">&#128421;</span><span class="lab" id="thlab">자동</span></button>
  <button class="hubbtn" onclick="setupHub()"><span class="dot" id="hd"></span><span id="hs">확인 중</span></button>
 </div></header>
 
@@ -2255,6 +2280,37 @@ function wireEd(el){ if(el) el.onkeydown=edKey; }
 function syncNav(){ var a=$("navrun"); if(a&&!TOK) a.className="hide";
                     else if(a&&a.className==="hide") a.className=""; }
 
+/* ════════ 테마 ════════
+   자동 → 라이트 → 다크 → 자동 으로 돈다. 기본은 '자동'(운영체제 설정을 따름)
+   이라 예전과 똑같이 동작하고, 고정하고 싶을 때만 눌러서 바꾸면 된다.
+   고른 값은 이 브라우저에만 남는다(repo 에는 아무것도 안 들어간다).
+   실제 적용은 <head> 맨 위에서 이미 해 뒀다 — 여기서는 버튼만 맞춘다. */
+var THN={system:["&#128421;","자동","운영체제 설정을 따릅니다 \u2014 눌러서 라이트로"],
+         light: ["&#9728;","라이트","라이트 모드 \u2014 눌러서 다크로"],
+         dark:  ["&#127769;","다크","다크 모드 \u2014 눌러서 자동으로"]};
+function themeGet(){
+ try{ var t=localStorage.getItem("theme");
+      return (t==="dark"||t==="light")?t:"system"; }catch(e){ return "system"; }
+}
+function themeApply(t){
+ var r=document.documentElement;
+ if(t==="system") r.removeAttribute("data-theme"); else r.setAttribute("data-theme",t);
+ try{ if(t==="system") localStorage.removeItem("theme");
+      else localStorage.setItem("theme",t); }catch(e){}
+ themeSync();
+}
+function themeCycle(){
+ var o=["system","light","dark"];
+ themeApply(o[(o.indexOf(themeGet())+1)%3]);
+}
+function themeSync(){
+ var m=THN[themeGet()]||THN.system;
+ var i=$("thico"), l=$("thlab"), b=$("thbtn");
+ if(i) i.innerHTML=m[0];
+ if(l) l.textContent=m[1];
+ if(b) b.title=m[2];
+}
+
 function viewRun(){
  if($("v-run").dataset.built) return;
  $("v-run").dataset.built="1";
@@ -2532,11 +2588,29 @@ document.addEventListener("visibilitychange",function(){
  if(!document.hidden) checkFresh();          /* 탭으로 돌아올 때마다 확인 */
 });
 
+themeSync();
 go();
 hubReady();
 checkFresh();
 setInterval(checkFresh, 300000);              /* 켜둔 채 있어도 5분마다 */
 </script></html>"""
+
+
+# 다크 팔레트 — 위 CSS 의 __DARKVARS__ 두 자리에 그대로 박힌다.
+# 라이트 :root 에 있는 변수 중 값이 달라지는 것만 적으면 된다.
+_DARK = (
+    "color-scheme:dark;"
+    "--bg:#0d1117;--panel:#161b22;--soft:#12161c;--fg:#e6edf3;--sub:#9198a1;--mute:#6e7681;"
+    "--bd:#30363d;--bd2:#21262d;--ac:#58a6ff;--ac2:#79c0ff;"
+    "--ok:#3fb950;--no:#ff7b72;--wr:#e3a008;--tl:#bc8cff;--pend:#58a6ff;"
+    "--c0:#161b22;--c1:#0e4429;--c2:#006d32;--c3:#26a641;--c4:#39d353;"
+    "--hdr:#161b22;"
+    "--navon:rgba(88,166,255,.13);--pendfg:#e8a33d;"
+    "--tcnumbg:rgba(88,166,255,.15);--lpabg:rgba(88,166,255,.13);"
+    "--t-kw:#ff7b72;--t-bi:#d2a8ff;--t-fn:#d2a8ff;--t-str:#a5d6ff;"
+    "--t-num:#79c0ff;--t-cm:#8b949e;--t-dec:#ffa657;--t-op:#79c0ff;"
+)
+TEMPLATE = TEMPLATE.replace("__DARKVARS__", _DARK)
 
 
 def render_dashboard(data, year, total, active, best, cells, rows,
