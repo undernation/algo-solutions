@@ -22,8 +22,12 @@ export PYTHONIOENCODING=utf-8
 "$PY" _meta/build_heatmap.py >/dev/null 2>&1 || echo "[hook] heatmap 생성 실패(무시)"
 "$PY" _meta/build_index.py   >/dev/null 2>&1 || echo "[hook] index 생성 실패(무시)"
 
-# 갱신된 산출물을 이번 커밋에 포함
-git add README.md assets/heatmap.svg _meta/history.json 2>/dev/null
+# 갱신된 산출물을 이번 커밋에 포함.
+# ⚠️ 방금 만든 것을 하나라도 빠뜨리면 안 된다. index.html 과 _meta/built.json 이
+#    서로 다른 빌드에서 나오면 브라우저가 짝을 비교해 "새 기록이 있습니다" 팝업을
+#    잘못 띄우고, 워킹트리도 커밋 직후부터 계속 더러운 채로 남는다(2026-08-26).
+git add README.md HEATMAP.md index.html assets/heatmap.svg assets/heatmap.html \
+        _meta/history.json _meta/built.json 2>/dev/null
 exit 0
 """
 
