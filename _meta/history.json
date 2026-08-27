@@ -5209,7 +5209,7 @@
   ]
  },
  "2026-08-27": {
-  "count": 2,
+  "count": 3,
   "items": [
    {
     "at": "10:53:30",
@@ -5256,6 +5256,21 @@
     "title": "어항물채우기 정답",
     "total": 1,
     "verdict": "time_limit_exceeded"
+   },
+   {
+    "at": "21:38:58",
+    "attempts": [
+     {
+      "at": "21:38:58",
+      "file": "swea/24995_온라인마트.py",
+      "status": "못품"
+     }
+    ],
+    "file": "swea/24995_온라인마트.py",
+    "no": "24995",
+    "site": "SWEA",
+    "status": "못품",
+    "title": "온라인마트"
    }
   ]
  }
