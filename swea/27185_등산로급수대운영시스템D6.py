@@ -2,11 +2,11 @@
 SWEA 27185  등산로 급수대 운영 시스템 D6
 https://swexpertacademy.com/main/code/userProblem/userProblemDetail.do?fromProbList=N&deleteYn=N&contestProbId=AZ-JQYsqpU_HBITH&topPath=code&lastPath=problemDetail&secondPath=problem&menuBreakDown=swea.code.menu&menuBreakDown=swea.code.problem.menu&menuDesc=swea.code.desc&menuDesc=swea.code.problem.desc&contextPath=%2Fmain&locale=ko-kr%2Cko%3Bq%3D0.9%2Cen-us%3Bq%3D0.8%2Cen%3Bq%3D0.7&serverName=localhost&localeLanguage=ko_KR&localeLanguage2=Ko_KR&remoteAddr=175.213.163.17&scripts=%2Fjs%2Finit%2Fjquery-debug.js&scripts=%2Fjs%2Finit%2Fjquery-ui.js&scripts=%2Fjs%2Finit%2Fjquery.validate.js&scripts=%2Fjs%2Fcommon.js&NOTICE_NEW_COUNT=0&ssoLogin=false&hasSDPAdminLinkAuth=false&systemAdmin=false&backendAdmin=false&isTechBlogManager=false&CURRENT_MENU_AUTHORIZATION=READ&CURRENT_MENU_AUTHORIZATION=UPDATE&CURRENT_MENU_AUTHORIZATION=EXECUTE&CURRENT_MENU_AUTHORIZATION=DOWNLOAD&logoMainfileName=logo_company.png
 
-풀이일 : 2026-08-18   결과: 못품
+풀이일 : 2026-08-27   결과: 품
 한도   : time 12개 테스트케이스를 합쳐서 C/C++의 경우 1초 / Java의 경우 6초 / memory 힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내 / time_sec 1
 난이도 : ?  |  정답률 33.33%
 
-[채점] accepted  1/1  (0.225s)
+[채점] accepted  1/1  (0.313s)
 
 [문제]
 국립공원 관리공단은 등산로 입구부터 정상까지 이어지는 탐방로를 따라 늘어선 쉼터에 급수대를 설치·운영하는 관제 시스템을 구축한다. 쉼터는 수시로 신설되거나 폐쇄되며, 예산상 급수대는 일부 쉼터에만 설치할 수 있다.
@@ -592,179 +592,189 @@ from bisect import bisect_left, bisect_right
 #  min_max_distance : 명령 4 — 답 반환, k가 현재 쉼터 수보다 크면 -1
 # =========================================================
 
-
 def init(n, sites):
     # TODO: 초기 쉼터 n개(정렬 비보장·셔플 순서)를 등록하고
     #       전역 자료 구조를 반드시 초기화할 것. n == 0이면 빈 배열.
-    global board, g_N, arr
-    board = set()
+    global g_N, g_sites
 
-    arr = sorted(sites)
-    # print("arr",arr)
     g_N = n
-    for site in sites:
-        board.add(site)
-    
+    g_sites = sites
+    g_sites.sort()
+
     pass
 
 
 def add_site(p):
+    global g_N
     # TODO: 위치 p에 쉼터 신설
-    board.add(p)
-    new_idx = bisect_left(arr, p)
-    arr.insert(new_idx, p)
+    cur_idx = bisect_left(g_sites, p)
+    g_sites.insert(cur_idx, p)
+    g_N += 1
     pass
 
 
 def close_site(p):
+    global g_N
     # TODO: 위치 p의 쉼터 폐쇄
-    board.discard(p)
-    new_idx = bisect_left(arr, p)
-    del arr[new_idx]
+    g_sites.remove(p)
+    g_N -= 1
     pass
+
 
 
 def next_site(x):
     # TODO: x 이상인 최소 쉼터 위치를 반환, 없으면 0
-    cur_idx = bisect_left(arr, x)
-    if cur_idx == len(arr):
+    cur_idx = bisect_left(g_sites, x)
+    if cur_idx == g_N:
         return 0
     else:
-        return arr[cur_idx]
-# arr 에서 padding 으로 k 개 가능?
-def can_do(arr, padding, K):
-    # 1
-    start = arr[0]
-    cur_idx = 0
-    # 10
-    last = arr[-1]
-    # 3
-    last_idx = len(arr) - 1
-    for k in range(K - 1):
-        # 6
-        next = start + padding
-        # 1
-        #3
-        # 6
-        while arr[cur_idx] < next:
-            cur_idx += 1
-            if cur_idx > last_idx:
-                return False
-            
-        start = arr[cur_idx]
-    return True
+        return g_sites[cur_idx]
 
+
+def can_do1(area, k):
+    # 간격 area 이상으로 k 곳 배치 가능?
+    cur_idx = 0
+    cur_pos = g_sites[cur_idx]
+
+    nxt_idx = 1
+    nxt_pos = g_sites[nxt_idx]
+
+    cnt = 1
+
+    while cnt < k:
+        # area 보다 작은 공간에 있는거면 다음거보기.
+        while nxt_pos - cur_pos < area:
+            nxt_idx += 1
+            # 아직 cnt 가 k 보다 작은데 g_N에 도달했으면 불가처리.
+            # 다음 급수대를 찾지 못함.
+            if nxt_idx >= g_N:
+                return False
+            nxt_pos = g_sites[nxt_idx]
+
+        # nxt pos 가 cur pos 에서 area 이상 떨어짐.
+        cnt += 1
+        cur_idx = nxt_idx
+        cur_pos = nxt_pos
+
+    return True
 
 
 def max_min_distance(k):
     # TODO: 정확히 k곳 선택 시 인접 간격의 최솟값을 최대화한 값.
     #       k가 현재 쉼터 수보다 크면 -1
-    cur_N = len(arr)
-    if k > cur_N:
+    if g_N < k:
         return -1
-    # 이분탐색, 특정값으로 가능??
+
+    # area 설정.
     left = 1
-    
-    right = arr[-1] - arr[0]
-
+    right = g_sites[-1] - g_sites[0]
+    answer = -1
     while left <= right:
-
         center = (left + right) // 2
-        # 가능하면 늘려보기
-        if can_do(arr, center, k):
+
+        if can_do1(center, k):
             answer = center
+            # 더큰거 가능한지 확인
             left = center + 1
         else:
-            # 불가능, 줄여야함
             right = center - 1
-        # print("left, right", left, right)
+
     return answer
 
 
-def can_do2(arr, padding, K):
-    N = len(arr)
 
+def can_do2(area, k):
+    # 그리디 방식
     cur_idx = 0
-    next_idx = 0
+    cur_pos = g_sites[cur_idx]
 
-    for _ in range(K - 1):
+    cnt = 1
 
-        while (next_idx + 1 < N and
-               arr[next_idx + 1] - arr[cur_idx] <= padding):
-            next_idx += 1
+    while cnt < k:
+        nxt_point = cur_pos + area
 
-        if next_idx == N - 1:
+        nxt_idx = bisect_right(g_sites, nxt_point) - 1
+        if nxt_idx >= g_N - 1:
             return True
 
-        if next_idx == cur_idx:
-            return False
+        cur_idx = nxt_idx
+        cur_pos = g_sites[cur_idx]
+        cnt += 1
 
-        cur_idx = next_idx
+    if cur_idx < g_N - 1:
+        return False
+    else:
+        return True
 
-    return cur_idx == N - 1
-# arr = [1, 3, 8 ,10]
-# board = [False] * 11
-# for i in arr:
-#     board[i] = True
-
-# print(can_do2(arr, 4, 3))
 
 def min_max_distance(k):
     # TODO: 최소·최대 위치를 반드시 포함해 정확히 k곳 선택 시
     #       인접 간격의 최댓값을 최소화한 값. k가 현재 쉼터 수보다 크면 -1
-    # 양끝 반드시 포함.
-    # k 개 거점으로 최솟값 몇 가능?
-    # 몇까자 가능? 
-    cur_N = len(arr)
-    answer = -1
-    if k > cur_N:
+    if k > g_N:
         return -1
-    # 이분탐색, 특정값으로 가능??
-    # 인접 간격 이분탐색
+
     left = 1
-    right = arr[-1] - arr[0]
+    right = g_sites[-1] - g_sites[0]
+    answer = -1
     while left <= right:
         center = (left + right) // 2
-        # 가능하면 줄여보기
-        if can_do2(arr, center, k):
+
+        if can_do2(center, k):
             answer = center
             right = center - 1
         else:
             left = center + 1
     return answer
 
-
 # ========= 이하 수정 비권장 (출력 형식 유지) =========
 def main():
-    data = sys.stdin.buffer.read().split()
-    it = iter(data)
     out = []
-    T = int(next(it))
+
+    T = int(input())
+
     for tc in range(1, T + 1):
-        n = int(next(it)); M = int(next(it))
-        sites = [int(next(it)) for _ in range(n)]
+        n, M = map(int, input().split())
+        sites = list(map(int, input().split()))
+
         init(n, sites)
+
         out.append('#%d' % tc)
+
         for _ in range(M):
-            op = int(next(it))
+            cmd = list(map(int, input().split()))
+            op = cmd[0]
+
             if op == 1:
-                p = int(next(it)); add_site(p)
+                p = cmd[1]
+                add_site(p)
+
             elif op == 2:
-                p = int(next(it)); close_site(p)
+                p = cmd[1]
+                close_site(p)
+
             elif op == 3:
-                k = int(next(it)); out.append(str(max_min_distance(k)))
+                k = cmd[1]
+                out.append(str(max_min_distance(k)))
+
             elif op == 4:
-                k = int(next(it)); out.append(str(min_max_distance(k)))
+                k = cmd[1]
+                out.append(str(min_max_distance(k)))
+
             else:
-                s = int(next(it)); c = int(next(it))
+                s = cmd[1]
+                c = cmd[2]
+
                 x = s
                 total = 0
+
                 for _ in range(c):
                     y = next_site(x)
                     total += y
                     x = (x + y) % 1000000000 + 1
+
                 out.append(str(total))
-    sys.stdout.write('\n'.join(out) + '\n')
+
+    print('\n'.join(out))
 
 
 main()

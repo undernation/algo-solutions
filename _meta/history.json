@@ -5207,5 +5207,33 @@
     "title": "고속선 선로 피로도 관제 시스템 D6"
    }
   ]
+ },
+ "2026-08-27": {
+  "count": 1,
+  "items": [
+   {
+    "at": "10:53:30",
+    "attempts": [
+     {
+      "at": "10:53:30",
+      "elapsed": 0.313,
+      "file": "swea/27185_등산로급수대운영시스템D6.py",
+      "passed": 1,
+      "status": "품",
+      "total": 1,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.313,
+    "file": "swea/27185_등산로급수대운영시스템D6.py",
+    "no": "27185",
+    "passed": 1,
+    "site": "SWEA",
+    "status": "품",
+    "title": "등산로 급수대 운영 시스템 D6",
+    "total": 1,
+    "verdict": "accepted"
+   }
+  ]
  }
 }
