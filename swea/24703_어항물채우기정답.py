@@ -2,7 +2,7 @@
 SWEA 24703  어항물채우기 정답
 https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt8IiBqxEDHBIN6&contestProbId=AZhevOz6LizHBINp&probBoxId=AZt8IiBqxEHHBIN6&type=PROBLEM
 
-풀이일 : 2026-08-19   결과: 시간초과
+풀이일 : 2026-08-27   결과: 시간초과
 한도   : time 25개 테스트케이스를 합쳐서 C++의 경우 3초 / Java의 경우 3초 / Python의 경우 8초 / memory 힙, 정적 메모리 합쳐서 262144 kbytes 이내, 스택 메모리 1024 kbytes 이내 / time_sec 8
 난이도 : ?  |  정답률 56.97%
 제약   : 1. 각 테스트 케이스 시작 시 init() 함수가 호출된다.
@@ -11,6 +11,8 @@ https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt
 제약   : 4. 각 테스트 케이스에서 pourIn() 함수는 최대 100 회 호출된다.
 제약   : 5. 함수 호출시 주어지는 3개의 구조물들을 설치할 수 있는 위치의 개수는
 제약   : 구조물을 설치 할 수 있는 조건 2, 3번을 제외할 경우 최대 500개이하임을 보장한다.
+
+[채점] time_limit_exceeded  0/1  (12.069s)
 
 [문제]
 N개의 어항에 구조물을 설치하고, 가장 높게 물을 채울 수 있는 어항을 찾는 시뮬레이션을 진행하려고 한다.
@@ -1031,224 +1033,243 @@ _____r주어진 물을 이용해서 가장 높게 채울 수 있는 어항들 �
 # ── User Code ──
 from typing import List
 import heapq
-from collections import deque
+from collections import defaultdict
+
 class Result:
     def __init__(self) -> None:
         self.ID: int = 0
         self.height: int = 0
         self.used: int = 0
 
-
-# n개 어항에 구조물설치, 가장 높은 물 어항 찾는 시뮬
-# 어항에 구조물 추가 기능
-
-# 한번에 3개씩 주어짐
-# 주어진 순서대로,
-# 최소 한셀 면 붙어있어야함.
-# 어항 높이보다 x
-
-
-# 우선 순위 판단
-# 어항 id 작을수록 높음
-# 같은 어항내에서 왼쪽일수록 높음
-
-# 구조물이 설치된 어항에 한해서 물채우기 기능 구현 필요.
-# 채울수 있는 높이 같은거 여러개면 우선순위 높은 어항 선택
-# 1. 해당 높이 까지 사용한 물 많을수록
-# 같은 물 사용 시 id 작을 수록
+class Bowl:
+    def __init__(self):
+        self.lengths = []
+        self.upshapes = []
 
 
 def init(N: int, mWidth: int, mHeight: int, mIDs: List[int], mLengths: List[List[int]], mUpShapes: List[List[int]]) -> None:
-    #  N 은 어항 갯수
-    # 가로, 세로 길이
-    # 어항 id
-    # 어항별, 열별 구조물 높이
-    # 어항별 열별 위쪽 결합판의 종류
-    global g_N, g_mWidth, g_mHeight, g_mIDs, g_mLengths, g_mUpShapes
+    global g_N, g_width, g_height, g_ids, g_lengths, g_upshapes, bowls, shape_cands
+
     g_N = N
-    g_mWidth = mWidth
-    g_mHeight = mHeight
-    g_mIDs = mIDs
-    g_mLengths = mLengths # 어항별 높이
-    g_mUpShapes = mUpShapes # 어항별 맨위 숫자
-    pass
+    g_width = mWidth
+    g_height = mHeight
+    g_ids = mIDs
+    g_lengths = mLengths
+    g_upshapes = mUpShapes
+    bowls = {}
+    shape_cands = defaultdict(set)
 
+    for i in range(N):
+        new_bowl = Bowl()
+        cur_id = mIDs[i]
+        new_bowl.lengths = mLengths[i]
+        new_bowl.upshapes = mUpShapes[i]
+        bowls[cur_id] = new_bowl
 
-def check_side(list1, list2):
-    # a1, a2 = sorted(list1)
-    # b1, b2 = sorted(list2)
+        for idx in range(g_width - 2):
+            key = (
+                new_bowl.upshapes[idx],
+                new_bowl.upshapes[idx + 1],
+                new_bowl.upshapes[idx + 2]
+            )
+            shape_cands[key].add((cur_id, idx))
 
-    a1, a2 = list1
-    b1, b2 = list2
-    max_val = max(a2, b2)
+def check_side(first_start, first_end, second_start, second_end):
 
+    max_val = max(first_end, second_end)
 
-    if a2 < max_val:
-        return b1 < a2
+    if first_end == max_val:
+        return second_end >= first_start
     else:
-        return b2 > a1
+        return first_end >= second_start
+
+def check_build(cur_id, start_idx, mLengths, mDownShapes):
+    # 현재 upshapes 랑 주어진 downshapes 같은지 확인
+    # length 더해진거 max 보다 높게 안올라가는지 확인
+    cur_shapes = bowls[cur_id].upshapes[start_idx: start_idx + 3]
+    cur_lengths = bowls[cur_id].lengths[start_idx: start_idx + 3]
+    if cur_shapes != mDownShapes:
+        return False
+    end_lengths = []
+    for i in range(3):
+        if cur_lengths[i] + mLengths[i] > g_height:
+            return False
+        else:
+            end_lengths.append(cur_lengths[i] + mLengths[i])
+
+    # 구조물들 최소 한면 붙어있는지 확인.
+
+    # 첫번째랑 두번째거 확인
+    if not check_side(cur_lengths[0] + 1, end_lengths[0], cur_lengths[1] + 1, end_lengths[1]):
+        return False
+
+    # 두번째랑 세번째거 확인
+    if not check_side(cur_lengths[1] + 1, end_lengths[1], cur_lengths[2] + 1, end_lengths[2]):
+        return False
+    return True
+
+def check_candidate(cur_id, idx, mLengths):
+    lengths = bowls[cur_id].lengths
+
+    l0 = lengths[idx]
+    l1 = lengths[idx + 1]
+    l2 = lengths[idx + 2]
+
+    e0 = l0 + mLengths[0]
+    e1 = l1 + mLengths[1]
+    e2 = l2 + mLengths[2]
+
+    # 조건 2: 최대 높이 초과
+    if e0 > g_height or e1 > g_height or e2 > g_height:
+        return False
+
+    # 조건 3: 0번-1번 구조물이 최소 한 면 이상 접촉
+    if max(l0 + 1, l1 + 1) > min(e0, e1):
+        return False
+
+    # 조건 3: 1번-2번
+    if max(l1 + 1, l2 + 1) > min(e1, e2):
+        return False
+
+    return True
 
 
-def check_build(tank_num, down_shapes, m_lengths):
-    cnt = 0
-    ret_list = []
-    # 특정 탱크 위에 적힌 숫자
-    col_list = g_mUpShapes[tank_num]
-
-    # 특정 탱크 구조물들 높이
-    height_list = g_mLengths[tank_num]
-    # 일단 번호 맞는지 체크.
-    # 반복문 밖에서 꺼내놓기
-    d0 = down_shapes[0]
-    d1 = down_shapes[1]
-    d2 = down_shapes[2]
-
-    l0 = m_lengths[0]
-    l1 = m_lengths[1]
-    l2 = m_lengths[2]
-    for start in range(g_mWidth - 2):
-
-        # slice 만들지 말고 직접 비교
-        if (
-            col_list[start] != d0
-            or col_list[start + 1] != d1
-            or col_list[start + 2] != d2
-        ):
-            continue
-
-        h0 = height_list[start]
-        h1 = height_list[start + 1]
-        h2 = height_list[start + 2]
-
-        # 높이 초과
-        if h0 + l0 > g_mHeight:
-            continue
-        if h1 + l1 > g_mHeight:
-            continue
-        if h2 + l2 > g_mHeight:
-            continue
-
-        # 0번 - 1번이 최소 1셀 면으로 붙는지
-        # 0번 - 1번 구조물
-        if not check_side(
-            [h0, h0 + l0 ],
-            [h1, h1 + l1 ]
-        ):
-            continue
-
-        # 1번 - 2번 구조물
-        if not check_side(
-            [h1, h1 + l1 ],
-            [h2, h2 + l2 ]
-        ):
-            continue
-        cnt += 1
-        ret_list.append(start)
-    return cnt, ret_list
-
-
-def checkStructures(mLengths: List[int], mUpShapes: List[int], mDownShapes: List[int]) -> int:
-    # 구조물 설치 위치의 수를 반환
-    # 일단 완탐으로 각각 어항별로 현재 주어진 mDownShapes 랑 맞는걸 세워야함.
-    # 우선순위 세우기, id 랑 시작 위치.
-    cnt = 0
-    for tank_num in range(g_N):
-        # 체크.
-        cur_cnt, ret_list = check_build(tank_num, mDownShapes, mLengths)
-        if cur_cnt >= 1:
-            cnt += cur_cnt
-    # print("check addStructures", cnt)
-    return cnt
-
-def addStructures(mLengths: List[int], mUpShapes: List[int], mDownShapes: List[int]) -> int:
-    # 설치하고, 설치한 어항 id, 설치한 열 위치 반환
-    global hq
+def find_cands(mLengths, mUpShapes, mDownShapes):
     hq = []
     cnt = 0
-    for tank_num in range(g_N):
-        # 체크.
-        cur_cnt, ret_list = check_build(tank_num, mDownShapes, mLengths)
-        
-        if cur_cnt >= 1:
-            cur_id = g_mIDs[tank_num]
-            for i in ret_list:
-                heapq.heappush(hq, [cur_id, i, tank_num])
-            cnt += cur_cnt
-    # print(hq)
-    # hq 에서 0 거 빼내서 설치하기.
-    if hq:
-        target_tank_id, target_idx, tank_num = heapq.heappop(hq)
-        # 교체할 탱크에서 g_mLengths, g_mUpShapes 수정 필요함.
-        new_lengths = mLengths.copy()
-        for col in range(3):
-            new_height = new_lengths[col] + g_mLengths[tank_num][col + target_idx]
-            new_upshape = mUpShapes[col]
-            g_mLengths[tank_num][col + target_idx] = new_height
-            g_mUpShapes[tank_num][col + target_idx] = new_upshape
-        # print("order addStructures", target_tank_id * 1000 + (target_idx + 1))
-        return target_tank_id * 1000 + (target_idx + 1)
+    # id 작을수록, 어항내에서 왼쪽으로 갈수록.
 
-    # print("order addStructures", 0)
-    return 0
+    for cur_id, bowl in bowls.items():
 
-def check_water(height_list, water_amount):
-    freq = [0] * (g_mHeight + 1)
+        for idx in range(g_width - 2):
+            if check_build(cur_id, idx, mLengths, mDownShapes):
+                heapq.heappush(hq, [cur_id, idx])
+                cnt += 1
+    return hq, cnt
 
-    for h in height_list:
-        freq[h] += 1
 
-    empty = 0
+def checkStructures(mLengths, mUpShapes, mDownShapes):
+
+    key = tuple(mDownShapes)
+    cands = shape_cands.get(key)
+
+    if not cands:
+        return 0
+
+    cnt = 0
+
+    for cur_id, idx in cands:
+        if check_candidate(
+            cur_id,
+            idx,
+            mLengths
+        ):
+            cnt += 1
+
+    return cnt
+
+def build_boxes(cur_id, idx, mLengths, mUpShapes):
+    bowl = bowls[cur_id]
+
+    left = max(0, idx - 2)
+    right = min(g_width - 3, idx + 2)
+
+    # 변경 전 shape index 제거
+    for start in range(left, right + 1):
+        old_key = (
+            bowl.upshapes[start],
+            bowl.upshapes[start + 1],
+            bowl.upshapes[start + 2]
+        )
+
+        shape_cands[old_key].discard((cur_id, start))
+
+    # 실제 구조물 설치
+    for i in range(3):
+        bowl.lengths[idx + i] += mLengths[i]
+        bowl.upshapes[idx + i] = mUpShapes[i]
+
+    # 변경 후 shape index 추가
+    for start in range(left, right + 1):
+        new_key = (
+            bowl.upshapes[start],
+            bowl.upshapes[start + 1],
+            bowl.upshapes[start + 2]
+        )
+
+        shape_cands[new_key].add((cur_id, start))
+
+def addStructures(mLengths: List[int], mUpShapes: List[int], mDownShapes: List[int]) -> int:
+    ret, cnt = find_cands(mLengths, mUpShapes, mDownShapes)
+    if ret:
+        build_boxes(ret[0][0], ret[0][1], mLengths, mUpShapes)
+        # print("addStructures", ret[0][0] * 1000 + ret[0][1] + 1)
+        return ret[0][0] * 1000 + ret[0][1] + 1
+    else:
+        # print("addStructures", 0)
+        return 0
+
+def check_water_height(bowl_id, mWater):
+    cur_bowl = bowls[bowl_id]
+
+    cur_heights = cur_bowl.lengths
+    # 누적합 사용
+
+    # if bowl_id == 50:
+    #     print("debug cur_height", cur_heights, mWater)
+
+    temp_board = [0] * (g_height + 1)
+    max_width = g_width
+
+    # for height in cur_heights:
+    #     for h in range(height + 1):
+    #         temp_board[h] += 1
+
+    for height in cur_heights:
+        temp_board[height] += 1
+
+    new_board = [max_width] * (g_height + 1)
+    last_num = g_width
+
+    for idx in range(g_height, 0, -1):
+        cur_num = temp_board[idx]
+        new_num = last_num - cur_num
+        new_board[idx] = new_num
+        last_num = new_num
+
     used = 0
-    highest = 0
-    for row in range(g_mHeight):
-        empty += freq[row]
+    max_height = 1
 
-        if empty == 0:
-            continue
-
-        if used + empty > water_amount:
+    for height in range(1, g_height + 1):
+        cur_need = new_board[height]
+        if cur_need > mWater:
             break
-        used += empty
-        highest = row + 1
-    return highest, used > 0, used
-    
-# print("check_water", check_water(temp_board, 3))
+        else:
+            used += cur_need
+            mWater -= cur_need
 
+        max_height = height
 
+    if used == 0:
+        return False, 0
+    else:
+        return used, max_height
 
 def pourIn(mWater: int) -> Result:
-    # 물의양 주어짐, 물로 높게 채울수 있는 정보 반환.
-    # 함수 호출 후 물은 실제로 채우지 않음.
-
-    # 순환하면서 물채우고, 높이 확인.
-
+    # n개 어항중 가장 높게 채울 수 있는 어항 찾기
     hq2 = []
 
-    for tank_num in range(g_N):
-        cur_id = g_mIDs[tank_num]
+    for bowl_id, cur_bowl in bowls.items():
+        used, max_height = check_water_height(bowl_id, mWater)
+        if used != False:
+            heapq.heappush(hq2, [-max_height, -used, bowl_id])
 
-        height_list = g_mLengths[tank_num]
-
-        # print("debug")
-        # for i in board:
-        #     print(i)
-
-        # 물 최소 하나라도 써야함.
-        result, is_used, used_amount = check_water(height_list, mWater)
-        if is_used:
-            heapq.heappush(hq2, [-result, -used_amount, cur_id])
-
-    if hq2:
-        result, used_amount, cur_id  = heapq.heappop(hq2)
-        
-        ret = Result()
-        ret.ID = cur_id
-        ret.height = -result
-        ret.used = -used_amount
-    else:
-        ret = Result()
-        ret.ID = ret.height = ret.used = 0
-    # print(ret.ID, ret.height, ret.used)
+    # print(hq2)
+    ret = Result()
+    ret.ID = hq2[0][2]
+    ret.height = -hq2[0][0]
+    ret.used = -hq2[0][1]
+    # print("pour", ret.ID, ret.height, ret.used)
     return ret
 
 
