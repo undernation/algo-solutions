@@ -2,7 +2,7 @@
 SWEA 24995  온라인마트
 https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt8IiBqxEDHBIN6&contestProbId=AZihzYU6ujXHBINp&probBoxId=AZt8IiBqxEHHBIN6&type=PROBLEM
 
-풀이일 : 2026-08-27   결과: 못품
+풀이일 : 2026-08-28   결과: 틀림
 한도   : time 25개 테스트케이스를 합쳐서 C++의 경우 3초 / Java의 경우 3초 / Python의 경우 4초 / memory 힙, 정적 메모리 합쳐서 262144 kbytes 이내, 스택 메모리 1024 kbytes 이내 / time_sec 4
 난이도 : D6  |  정답률 61.02%
 제약   : 1. 각 테스트 케이스 시작 시 init() 함수가 한 번 호출된다.
@@ -10,6 +10,8 @@ https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt
 제약   : 3. 각 테스트 케이스에서 closeSale() 함수의 호출 횟수는 5,000 이하이다.
 제약   : 4. 각 테스트 케이스에서 discount() 함수의 호출 횟수는 10,000 이하이다.
 제약   : 5. 각 테스트 케이스에서 show() 함수의 호출 횟수는 1,000 이하이다.
+
+[채점] accepted  1/1  (5.822s)
 
 [문제]
 상품을 판매하는 온라인 마트가 있다.
@@ -1166,7 +1168,140 @@ Return Value
 """
 
 # ── User Code ──
-.
+import heapq
+class RESULT:
+    def __init__(self, cnt, IDs):
+        self.cnt = cnt
+        self.IDs = IDs  # [int] * 5
+
+class Product:
+    def __init__(self):
+        self.cate = -1
+        self.comp = -1
+        self.price = -1
+        self.is_sell = False
+
+
+def init() -> None:
+    global product_info, lazy_cost, hq, product_cnt
+
+    # key = id, value = product
+    product_info = {}
+
+    lazy_cost = [[0] * 6 for _ in range(6)]
+    hq = [list([] for _ in range(6)) for _ in range(6)]
+    product_cnt = [[0] * 6 for _ in range(6)]
+    pass
+
+def sell(mID : int, mCategory : int, mCompany : int, mPrice : int) -> int:
+    product = Product()
+    cur_id = mID
+    product.cate = mCategory
+    product.comp = mCompany
+    product.price = mPrice + lazy_cost[mCategory][mCompany]
+    product_info[cur_id] = product
+    product.is_sell = True
+    product_cnt[mCategory][mCompany] += 1
+
+    heapq.heappush(hq[mCategory][mCompany], [mPrice + lazy_cost[mCategory][mCompany], cur_id])
+    # print("sell", product_cnt[mCategory][mCompany])
+    return product_cnt[mCategory][mCompany]
+
+def closeSale(mID : int) -> int:
+    if mID not in product_info:
+        return -1
+    cur_product = product_info[mID]
+    cur_cate = cur_product.cate
+    cur_comp = cur_product.comp
+    if not cur_product.is_sell:
+        return -1
+    product_cnt[cur_cate][cur_comp] -= 1
+    cur_product.is_sell = False
+    # print("closeSale", cur_product.price)
+    return cur_product.price - lazy_cost[cur_cate][cur_comp]
+
+def discount(mCategory : int, mCompany : int, mAmount : int) -> int:
+
+    # stale 제거
+
+    while hq[mCategory][mCompany] and hq[mCategory][mCompany][0][0] <= mAmount + lazy_cost[mCategory][mCompany]:
+        # 판매하는 상품이 아닌 경우 그냥 pop 해주기
+        cur_id = hq[mCategory][mCompany][0][1]
+        cur_price = hq[mCategory][mCompany][0][0]
+        if not product_info[cur_id].is_sell:
+            heapq.heappop(hq[mCategory][mCompany])
+
+            continue
+
+        heapq.heappop(hq[mCategory][mCompany])
+        product_info[cur_id].is_sell = False
+        product_cnt[mCategory][mCompany] -= 1
+
+    # 나머지는 가격 감소 시키기
+    lazy_cost[mCategory][mCompany] += mAmount
+    # print("discount", product_cnt[mCategory][mCompany])
+    return product_cnt[mCategory][mCompany]
+
+def show(mHow : int, mCode : int) -> RESULT:
+
+    # cand 만들기
+    cand = []
+    if mHow == 0:
+        for i in range(1, 6):
+            for j in range(1, 6):
+                cand.append([i, j])
+    elif mHow == 1:
+        i = mCode
+        for j in range(1, 6):
+            cand.append([i, j])
+    else:
+        j = mCode
+        for i in range(1, 6):
+            cand.append([i, j])
+
+
+    cur_hq = []
+    # 각각 5개 씩 hq 로 뽑기.
+    for cate, comp in cand:
+        removed = []
+        # 5개씩 뽑기
+        cnt = 0
+
+        while hq[cate][comp] and cnt < 5:
+            # stale 인 경우 제거
+            cur_id = hq[cate][comp][0][1]
+
+
+            if not product_info[cur_id].is_sell:
+                heapq.heappop(hq[cate][comp])
+
+            else:
+                # stale 아닌 경우 제대로된 가격 cur_hq 에 넣어주기. removed 에도 넣어주기
+                real_price = product_info[cur_id].price
+
+                heapq.heappush(cur_hq, [real_price - lazy_cost[cate][comp], cur_id])
+                removed.append([real_price - lazy_cost[cate][comp], cur_id])
+                cnt += 1
+                heapq.heappop(hq[cate][comp])
+
+        for price, cur_id in removed:
+            heapq.heappush(hq[cate][comp], [price + lazy_cost[cate][comp], cur_id])
+
+    if len(cur_hq) == 0:
+        # print("show", 0)
+        return RESULT(0, [0, 0, 0, 0, 0])
+
+    # 완성된 cur_hq 에서 5개 뽑기.
+    cnt = 0
+    ret = RESULT(0, [0, 0, 0, 0, 0])
+    while cur_hq and cnt < 5:
+        price, cur_id = heapq.heappop(cur_hq)
+        ret.IDs[cnt] = cur_id
+        cnt += 1
+
+    ret.cnt = cnt
+    # print("show", ret.cnt, ret.IDs)
+    return ret
 
 
 # ── Main (수정 불가) ──

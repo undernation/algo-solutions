@@ -5273,5 +5273,33 @@
     "title": "온라인마트"
    }
   ]
+ },
+ "2026-08-28": {
+  "count": 1,
+  "items": [
+   {
+    "at": "14:03:45",
+    "attempts": [
+     {
+      "at": "14:03:45",
+      "elapsed": 5.822,
+      "file": "swea/24995_온라인마트.py",
+      "passed": 1,
+      "status": "틀림",
+      "total": 1,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 5.822,
+    "file": "swea/24995_온라인마트.py",
+    "no": "24995",
+    "passed": 1,
+    "site": "SWEA",
+    "status": "틀림",
+    "title": "온라인마트",
+    "total": 1,
+    "verdict": "accepted"
+   }
+  ]
  }
 }
