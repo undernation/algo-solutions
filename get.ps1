@@ -1,6 +1,15 @@
 # 코딩 도구 한 줄 설치 — 새 PC 에서 PowerShell 에 아래 한 줄만 붙여 넣으면 된다.
 #
-#   irm https://undernation.github.io/algo-solutions/get.ps1 | iex
+#   iex ([Text.Encoding]::UTF8.GetString((iwr https://undernation.github.io/algo-solutions/get.ps1 -UseBasicParsing).RawContentStream.ToArray()))
+#
+# ※ 왜 `irm ... | iex` 가 아닌가: Windows 기본 PowerShell 5.1 은 응답에 charset 이
+#    없으면 ISO-8859-1 로 읽어서 이 파일의 한글이 전부 깨진다. 위처럼 UTF-8 로
+#    직접 디코딩하면 어느 버전에서든 제대로 나온다.
+#    PowerShell 7(pwsh) 이나 영어가 깨져도 상관없다면 짧게 써도 동작은 한다:
+#       irm https://undernation.github.io/algo-solutions/get.ps1 | iex
+#
+# 비대화형에서 돌릴 때는 비밀번호를 환경변수로 줄 수 있다:
+#       $env:TOOL_PASS="...."; iex (...)
 #
 # 하는 일: 허브 주소 확인 → 비밀번호 확인 → zip 내려받기 → 압축 해제 →
 #          (원하면) setup.bat 실행까지.
@@ -27,10 +36,14 @@ try {
 }
 Say "허브: $hub"
 
-# 2) 비밀번호 (입력이 화면에 보이지 않는다)
-$sec = Read-Host "비밀번호" -AsSecureString
-$pw = [Runtime.InteropServices.Marshal]::PtrToStringAuto(
-        [Runtime.InteropServices.Marshal]::SecureStringToBSTR($sec))
+# 2) 비밀번호 — 환경변수 TOOL_PASS 가 있으면 그것을 쓰고, 없으면 물어본다.
+#    (자동화·비대화형 환경에서도 돌아가게 하려는 것. 평소에는 그냥 물어본다.)
+$pw = $env:TOOL_PASS
+if (-not $pw) {
+    $sec = Read-Host "비밀번호" -AsSecureString      # 입력이 화면에 보이지 않는다
+    $pw = [Runtime.InteropServices.Marshal]::PtrToStringAuto(
+            [Runtime.InteropServices.Marshal]::SecureStringToBSTR($sec))
+}
 if (-not $pw) { Say "비밀번호가 비었습니다." "Red"; return }
 $headers = @{ "X-Tool-Pass" = $pw; "Content-Type" = "application/json" }
 
