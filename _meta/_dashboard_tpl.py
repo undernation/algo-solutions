@@ -452,6 +452,12 @@ button.danger:hover{opacity:.88;color:#fff;border-color:var(--no)}
 .tmeta th{text-align:left;color:var(--sub);font-weight:600;padding:4px 18px 4px 0;
  white-space:nowrap;vertical-align:top}
 .tmeta td{padding:4px 0}
+/* 터미널 한 줄 — 길어도 줄바꿈되지 않고 가로로 스크롤된다 */
+.onel{display:flex;align-items:center;gap:8px}
+.onel code{flex:1 1 auto;min-width:0;overflow-x:auto;white-space:nowrap;
+ background:var(--soft);border:1px solid var(--bd);border-radius:6px;
+ padding:9px 11px;font-size:12.5px}
+.onel button{flex:none}
 .hide{display:none}
 </style>
 
@@ -462,7 +468,7 @@ button.danger:hover{opacity:.88;color:#fff;border-color:var(--no)}
   <a href="#problems" data-v="problems">문제</a>
   <a href="#status" data-v="status">제출 현황</a>
   <a href="#run" data-v="run" id="navrun" class="hide">연습장</a>
-  <a href="#tools" data-v="tools" id="navtool" class="hide">도구</a>
+  <a href="#tools" data-v="tools" id="navtool">도구</a>
  </nav>
  <button class="hubbtn thbtn" id="thbtn" onclick="themeCycle()"><span class="ico" id="thico">&#128421;</span><span class="lab" id="thlab">자동</span></button>
  <button class="hubbtn" onclick="setupHub()"><span class="dot" id="hd"></span><span id="hs">확인 중</span></button>
@@ -668,9 +674,10 @@ function go(){
  ["home","problems","status","p","run","c","tools"].forEach(function(x){ $("v-"+x).className = (x===v?"":"hide"); });
  Array.prototype.forEach.call(document.querySelectorAll("nav a"),function(a){
   var on=(a.dataset.v===v);
-  /* 연습장·도구 링크는 토큰이 있을 때만 보인다. className 을 통째로 쓰면 hide 가 날아간다 */
-  var mine = (a.id==="navrun" || a.id==="navtool");
-  a.className = (mine && !TOK) ? "hide" : (on?"on":"");
+  /* 연습장은 토큰이 있을 때만 보인다(서버에서 코드를 돌리는 기능이라).
+     도구는 비밀번호로도 받을 수 있어 항상 띄운다.
+     className 을 통째로 쓰면 hide 가 날아가므로 조건을 먼저 본다. */
+  a.className = (a.id==="navrun" && !TOK) ? "hide" : (on?"on":"");
  });
  if(v==="home")     viewHome();
  else if(v==="problems") viewProblems();
@@ -2289,13 +2296,8 @@ function wireEd(el){ if(el) el.onkeydown=edKey; }
 
    🔑 나만 쓴다: /exec 는 다른 POST 와 똑같이 토큰을 요구하고(= 남은 실행 불가),
    메뉴 링크도 토큰이 저장돼 있을 때만 뜬다. 잔디·문제 열람은 그대로 공개다. */
-function syncNav(){
- ["navrun","navtool"].forEach(function(id){
-  var a=$(id); if(!a) return;
-  if(!TOK) a.className="hide";
-  else if(a.className==="hide") a.className="";
- });
-}
+function syncNav(){ var a=$("navrun"); if(a&&!TOK) a.className="hide";
+                    else if(a&&a.className==="hide") a.className=""; }
 
 /* ════════ 테마 ════════
    자동 → 라이트 → 다크 → 자동 으로 돈다. 기본은 '자동'(운영체제 설정을 따름)
@@ -2340,16 +2342,47 @@ function themeSync(){
    바로 회수한다. */
 var TOOLINFO=null;
 
+/* 도구 요청 헤더. 토큰이 있으면 그걸 쓰고, 없으면 비밀번호를 보낸다.
+   둘 다 헤더로만 보낸다 — URL 에 실으면 프록시 로그·히스토리에 그대로 남는다. */
+function toolPass(){ try{ return localStorage.getItem("toolPass")||""; }catch(e){ return ""; } }
+function TH(){
+ var h={"content-type":"application/json"};
+ if(TOK) h["X-Auth-Token"]=TOK;
+ var pw=toolPass();
+ if(pw) h["X-Tool-Pass"]=pw;
+ return h;
+}
+
 function viewTools(){
  $("v-tools").innerHTML=
   '<div class="sec-h">도구</div>'+
   '<div class="note">다른 PC 에서도 이 페이지만 열면 개인 도구를 바로 받을 수 있습니다. '+
-   '<b>토큰이 저장된 브라우저에서만</b> 보이고 받아집니다.</div>'+
+   '허브 토큰이 있으면 그대로 통과하고, 없으면 <b>비밀번호</b>만 넣으면 됩니다.</div>'+
+  '<div class="panel"><div class="hd">비밀번호</div><div class="bd">'+
+   '<div class="bar">'+
+    '<input type="password" id="tlpw" placeholder="비밀번호" autocomplete="current-password" '+
+     'style="width:150px" onkeydown="if(event.key===&quot;Enter&quot;)toolSavePw()">'+
+    '<button onclick="toolSavePw()">확인</button>'+
+    '<span class="hint" id="tlpwmsg"></span>'+
+   '</div>'+
+   '<div class="hint" style="margin-top:8px">이 브라우저에만 저장됩니다. '+
+    '공용 PC 라면 다 쓴 뒤 <a href="javascript:toolForget()">지우기</a>.</div>'+
+  '</div></div>'+
   '<div class="panel"><div class="hd">배포 파일<span class="r" id="tlst">확인 중…</span></div>'+
    '<div class="bd" id="tlbd">'+
     '<div class="hint">허브에 연결하는 중입니다…</div>'+
    '</div></div>'+
-  '<div class="panel"><div class="hd">받은 다음</div><div class="bd">'+
+  '<div class="panel"><div class="hd">터미널에서 한 줄로<span class="r">권장</span></div>'+
+   '<div class="bd">'+
+    '<div class="hint" style="margin-bottom:8px">새 PC 라면 이게 제일 빠릅니다. '+
+     'PowerShell 을 열고 아래를 붙여 넣으면 비밀번호를 물어본 뒤 '+
+     '내려받기·압축 해제·준비까지 알아서 합니다.</div>'+
+    '<div class="onel"><code id="tlcmd">irm '+location.origin+
+      (location.pathname.replace(/\/[^\/]*$/,"/"))+'get.ps1 | iex</code>'+
+     '<button onclick="toolCopy()">복사</button></div>'+
+    '<div class="hint" id="tlcopy" style="margin-top:6px"></div>'+
+   '</div></div>'+
+  '<div class="panel"><div class="hd">브라우저로 받았다면</div><div class="bd">'+
    '<ol class="tsteps">'+
     '<li>zip 을 원하는 폴더에 <b>압축 해제</b>합니다.</li>'+
     '<li>폴더 안 <code>setup.bat</code> 을 실행합니다. '+
@@ -2369,6 +2402,38 @@ function viewTools(){
  toolLoad();
 }
 
+function toolCopy(){
+ var t=$("tlcmd").textContent;
+ var done=function(){ $("tlcopy").textContent="복사했습니다. PowerShell 에 붙여 넣으세요."; };
+ if(navigator.clipboard && navigator.clipboard.writeText){
+  navigator.clipboard.writeText(t).then(done, function(){ toolCopyFallback(t, done); });
+ } else toolCopyFallback(t, done);
+}
+function toolCopyFallback(t, done){
+ /* 클립보드 API 는 https 아니면 막힌다. 그때는 옛 방식으로 떨어진다. */
+ var a=document.createElement("textarea");
+ a.value=t; a.style.position="fixed"; a.style.opacity="0";
+ document.body.appendChild(a); a.select();
+ try{ document.execCommand("copy"); done(); }
+ catch(e){ $("tlcopy").textContent="복사가 막혔습니다. 위 명령을 직접 선택해 복사하세요."; }
+ a.remove();
+}
+
+function toolSavePw(){
+ var v=($("tlpw").value||"").trim();
+ try{ if(v) localStorage.setItem("toolPass",v); else localStorage.removeItem("toolPass"); }catch(e){}
+ $("tlpw").value="";
+ $("tlpwmsg").textContent = v ? "저장했습니다. 확인 중…" : "지웠습니다.";
+ TOOLINFO=null;
+ toolLoad();
+}
+function toolForget(){
+ try{ localStorage.removeItem("toolPass"); }catch(e){}
+ TOOLINFO=null;
+ $("tlpwmsg").textContent="지웠습니다.";
+ toolLoad();
+}
+
 async function toolLoad(){
  await hubReady();
  var h=hubFor("judge"), st=$("tlst"), bd=$("tlbd");
@@ -2377,16 +2442,23 @@ async function toolLoad(){
    bd.innerHTML='<div class="hint">허브가 꺼져 있습니다. 우측 상단 <b>허브 버튼</b>을 확인하세요.</div>';
    return; }
  try{
-  var r=await fetch(h.url+"/toolinfo",{method:"POST",headers:H(),body:"{}"});
+  var r=await fetch(h.url+"/toolinfo",{method:"POST",headers:TH(),body:"{}"});
+  if(r.status===429){ var j2=await r.json().catch(function(){return {};});
+    st.textContent="잠김";
+    bd.innerHTML='<div class="hint">비밀번호를 여러 번 틀려 잠겼습니다. '+
+      Math.ceil((j2.retryAfter||600)/60)+'분 뒤에 다시 시도하세요.</div>';
+    return; }
   if(r.status===401){ st.textContent="인증 필요";
-    bd.innerHTML='<div class="hint">우측 상단 <b>허브 버튼</b>에서 토큰을 입력하세요.</div>';
+    bd.innerHTML='<div class="hint">위에 <b>비밀번호</b>를 넣으세요. '+
+      '(허브 토큰이 있으면 우측 상단 허브 버튼으로 넣어도 됩니다.)</div>';
     return; }
   var j=await r.json();
   if(!j.ok){ st.textContent="파일 없음";
     bd.innerHTML='<div class="hint">'+esc(j.error||"배포할 파일이 없습니다")+'</div>';
     return; }
   TOOLINFO=j;
-  st.textContent=j.mtime+" 기준";
+  st.textContent=(j.byPass?"비밀번호":"토큰")+" · "+j.mtime+" 기준";
+  var pm=$("tlpwmsg"); if(pm) pm.textContent = j.byPass ? "확인됨" : "토큰으로 통과";
   bd.innerHTML=
    '<table class="tmeta"><tbody>'+
     '<tr><th>파일</th><td class="mono">'+esc(j.name)+'</td></tr>'+
@@ -2411,8 +2483,10 @@ async function toolGet(){
  if(!h){ m.textContent="허브가 꺼져 있습니다."; return; }
  b.disabled=true; m.textContent="받는 중…";
  try{
-  var r=await fetch(h.url+"/tool",{method:"POST",headers:H(),body:"{}"});
-  if(r.status===401){ m.textContent="인증 실패 — 토큰을 확인하세요."; b.disabled=false; return; }
+  var r=await fetch(h.url+"/tool",{method:"POST",headers:TH(),body:"{}"});
+  if(r.status===429){ m.textContent="여러 번 틀려 잠겼습니다. 잠시 뒤 다시 시도하세요.";
+    b.disabled=false; return; }
+  if(r.status===401){ m.textContent="인증 실패 — 비밀번호를 확인하세요."; b.disabled=false; return; }
   if(!r.ok){ m.textContent="실패 ("+r.status+")"; b.disabled=false; return; }
   var blob=await r.blob();
   /* blob URL 은 저장 직후 회수한다. 남겨 두면 그 URL 로 탭에서 다시 열 수 있다. */

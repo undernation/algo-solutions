@@ -248,6 +248,16 @@ def log(*a):
         print(*a, flush=True)
 
 
+def slog(*a):
+    """보안 관련 기록 — --quiet 여도 남긴다.
+
+    누가 무엇을 받아 갔는지, 인증이 몇 번 틀렸는지는 조용해지면 안 되는 정보다.
+    서비스가 --quiet 로 떠 있어서 한동안 이게 통째로 비어 있었다.
+    토큰·비밀번호·파일 내용은 여기에도 남기지 않는다.
+    """
+    print(*a, flush=True)
+
+
 KST = datetime.timezone(datetime.timedelta(hours=9))
 
 
@@ -1151,6 +1161,25 @@ def fetch_problem(ref, save=False):
 #    토큰 보유자(=나)만 받을 수 있게 한다.
 TOOLS_DIR = os.environ.get("ALGO_TOOLS_DIR") or os.path.expanduser("~/algo-tools")
 
+# 도구 내려받기 전용 비밀번호. 토큰을 새 PC 마다 옮기는 게 번거로워서 열어 둔 길이다.
+#
+# 🚩 값을 코드에 적지 않는다 — 이 저장소는 public 이라 적는 순간 비밀번호가 아니다.
+#    서버의 ~/.algo-tool-pass 에 한 줄로 넣어 둔다(없으면 이 길은 아예 닫힌다).
+# 🚩 이 비밀번호로 열리는 것은 /tool · /toolinfo 뿐이다. 채점·저장·실행은
+#    토큰 전용으로 남긴다 — 그쪽은 VM 에서 코드를 돌리는 권한이다.
+TOOL_PASS_PATH = os.environ.get("ALGO_TOOL_PASS_FILE") or \
+                 os.path.expanduser("~/.algo-tool-pass")
+
+
+def load_tool_pass():
+    try:
+        return io.open(TOOL_PASS_PATH, encoding="utf-8").read().strip()
+    except Exception:
+        return ""
+
+
+TOOL_PASS = load_tool_pass()
+
 
 def tool_path(name=""):
     """배포할 파일 경로. 이름을 안 주면 가장 최근에 올린 zip 을 고른다."""
@@ -1213,11 +1242,14 @@ def status():
 # ══════════════════════════════════════════════════════════════
 CORS = {"Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
-        "Access-Control-Allow-Headers": "content-type, accept, x-auth-token, authorization",
+        "Access-Control-Allow-Headers": "content-type, accept, x-auth-token, x-tool-pass, authorization",
         "Access-Control-Max-Age": "86400"}
 
 
 _FAILS = {}                 # ip -> 연속 인증 실패 횟수
+_LOCKED = {}                # ip -> 잠금 해제 시각(epoch). 짧은 비밀번호를 지키는 장치다.
+LOCK_AFTER = 10             # 이만큼 연속 실패하면
+LOCK_SECS = 600             # 이 시간 동안 아무것도 받지 못한다
 _FAIL_LOCK = threading.Lock()
 
 
@@ -1311,16 +1343,29 @@ class H(BaseHTTPRequestHandler):
                 break
             n -= len(chunk)
 
+    def _locked(self):
+        """이 IP 가 잠겨 있나. 짧은 비밀번호는 이게 없으면 금방 뚫린다."""
+        left = _LOCKED.get(self._client_ip(), 0) - time.time()
+        return left if left > 0 else 0
+
     def _reject(self, path):
-        """인증 실패 처리 — 본문 비우고, 반복되면 점점 느리게 답한다."""
+        """인증 실패 처리 — 본문 비우고, 반복되면 점점 느리게 답하다가 잠근다."""
         ip = self._client_ip()
         with _FAIL_LOCK:
             n = _FAILS.get(ip, 0) + 1
             _FAILS[ip] = n
+            if n >= LOCK_AFTER:
+                _LOCKED[ip] = time.time() + LOCK_SECS
         self._drain()
         if n > 3:                       # 토큰 대입 시도를 실질적으로 무의미하게
             time.sleep(min(0.5 * (2 ** min(n - 3, 5)), 15.0))
-        log("   ⛔ 인증 실패 (%s) from %s  누적 %d회" % (path, ip, n))
+        left = self._locked()
+        if left:
+            slog("   🔒 잠금 (%s) from %s  누적 %d회 · %d초 남음"
+                % (path, ip, n, int(left)))
+            return self._send(429, {"ok": False, "error": "too many attempts",
+                                    "retryAfter": int(left)})
+        slog("   ⛔ 인증 실패 (%s) from %s  누적 %d회" % (path, ip, n))
         return self._send(401, {"ok": False, "error": "unauthorized",
                                 "hint": "X-Auth-Token 헤더 필요"})
 
@@ -1338,10 +1383,24 @@ class H(BaseHTTPRequestHandler):
             _FAILS.pop(self._client_ip(), None)
         return True
 
+    def _tool_pass_ok(self):
+        """도구 내려받기 전용 비밀번호. 토큰과 마찬가지로 헤더로만 받는다."""
+        if not TOOL_PASS or self._locked():
+            return False
+        got = self.headers.get("X-Tool-Pass", "")
+        import hmac
+        if not hmac.compare_digest(str(got), str(TOOL_PASS)):
+            return False
+        with _FAIL_LOCK:
+            _FAILS.pop(self._client_ip(), None)
+        return True
+
     def do_POST(self):
         p = self.path.split("?")[0].rstrip("/")
+        # 도구 내려받기 두 곳만 비밀번호로도 연다. 나머지는 토큰 전용.
         if not self._auth_ok():
-            return self._reject(p)
+            if not (p in ("/tool", "/toolinfo") and self._tool_pass_ok()):
+                return self._reject(p)
         try:
             n = int(self.headers.get("Content-Length") or 0)
             body = json.loads(self.rfile.read(n).decode("utf-8") or "{}")
@@ -1434,7 +1493,9 @@ class H(BaseHTTPRequestHandler):
                 return self._send(200, save_solution(body))
 
             if p == "/toolinfo":
-                return self._send(200, tool_info(body.get("name") or ""))
+                d = tool_info(body.get("name") or "")
+                d["byPass"] = not self._auth_ok()   # 비밀번호로 들어왔는지
+                return self._send(200, d)
 
             if p == "/tool":
                 path = tool_path(body.get("name") or "")
@@ -1443,8 +1504,10 @@ class H(BaseHTTPRequestHandler):
                 data = io.open(path, "rb").read()
                 # 디버깅용 로그 — 언제·어디서·무엇을 받았는지만 남긴다.
                 # 토큰과 파일 내용은 절대 남기지 않는다.
-                log("\n▶ 도구 내려받기  %s  %.1f KB  from %s"
-                    % (os.path.basename(path), len(data) / 1024.0, self._client_ip()))
+                slog("\n▶ 도구 내려받기  %s  %.1f KB  (%s) from %s"
+                     % (os.path.basename(path), len(data) / 1024.0,
+                        "토큰" if self._auth_ok() else "비밀번호",
+                        self._client_ip()))
                 return self._send_bytes(data, "application/zip",
                                         os.path.basename(path))
 
