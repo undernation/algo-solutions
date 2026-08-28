@@ -5275,7 +5275,7 @@
   ]
  },
  "2026-08-28": {
-  "count": 2,
+  "count": 3,
   "items": [
    {
     "at": "14:03:45",
@@ -5320,6 +5320,29 @@
     "site": "SWEA",
     "status": "품",
     "title": "택시 호출 서비스",
+    "total": 1,
+    "verdict": "accepted"
+   },
+   {
+    "at": "17:31:24",
+    "attempts": [
+     {
+      "at": "17:31:24",
+      "elapsed": 3.524,
+      "file": "swea/25004_경유지운송.py",
+      "passed": 1,
+      "status": "시간초과",
+      "total": 1,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 3.524,
+    "file": "swea/25004_경유지운송.py",
+    "no": "25004",
+    "passed": 1,
+    "site": "SWEA",
+    "status": "시간초과",
+    "title": "경유지운송",
     "total": 1,
     "verdict": "accepted"
    }

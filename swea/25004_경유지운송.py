@@ -2,14 +2,14 @@
 SWEA 25004  경유지운송
 https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt8IiBqxEDHBIN6&contestProbId=AZih4lcKvKDHBINp&probBoxId=AZt8IiBqxEHHBIN6&type=PROBLEM
 
-풀이일 : 2026-08-24   결과: 틀림
+풀이일 : 2026-08-28   결과: 시간초과
 한도   : time 25개 테스트케이스를 합쳐서 C++의 경우 3초 / Java의 경우 3초 / Python의 경우 6.5초 / memory 힙, 정적 메모리 합쳐서 262144 kbytes 이내, 스택 메모리 1024 kbytes 이내 / time_sec 6.5
 난이도 : D6  |  정답률 94.34%
 제약   : 1. 각 테스트 케이스 시작 시 init() 함수가 호출된다.
 제약   : 2. 각 테스트 케이스에서 add() 함수의 호출 횟수는 1,400 이하이다.
 제약   : 3. 각 테스트 케이스에서 calculate() 함수의 호출 횟수는 100 이하이다.
 
-[채점] accepted  1/1  (3.298s)
+[채점] accepted  1/1  (3.524s)
 
 [문제]
 N개의 도시가 주어진다. 각 도시는 0부터 N-1까지 ID값을 가진다.
@@ -837,76 +837,80 @@ sCity에서 M개의 경유지를 거쳐서 eCity까지 이동이 가능하다면
 
 # ── User Code ──
 import heapq
+from collections import defaultdict
 def init(N, K, sCity, eCity, mLimit):
+	global INF, weights, graph, g_N, path_memo
+	path_memo = defaultdict(list)
 
-    global g_N, graph, INF, costs
-    g_N = N
-    INF = 10 ** 18
-    costs = [[INF] * N for _ in range(N)]
-    graph = [[] for _ in range(N)]
-    for k in range(K):
-        start = sCity[k]
-        end = eCity[k]
-        weight = mLimit[k]
+	INF = 10 ** 18
+	g_N = N
 
-        costs[start][end] = weight
-        costs[end][start] = weight
-        graph[start].append(end)
-        graph[end].append(start)
+	graph = [ [] for _ in range(N)]
+
+
+	weights = [[0] * N for _ in range(N)]
+	for k in range(K):
+		weights[sCity[k]][eCity[k]] = mLimit[k]
+		weights[eCity[k]][sCity[k]] = mLimit[k]
+		graph[sCity[k]].append(eCity[k])
+		graph[eCity[k]].append(sCity[k])
+
+	return
 
 
 def add(sCity, eCity, mLimit):
-    costs[sCity][eCity] = mLimit
-    costs[eCity][sCity] = mLimit
-    graph[sCity].append(eCity)
-    graph[eCity].append(sCity)
+	global path_memo
+	path_memo = defaultdict(list)
+	weights[sCity][eCity] = mLimit
+	weights[eCity][sCity] = mLimit
+	graph[sCity].append(eCity)
+	graph[eCity].append(sCity)
+	return
 
+def dijkstra(start):
+	dist = [-1] * g_N
+	hq = []
+	dist[start] = INF
+	heapq.heappush(hq, [-INF, start])
+
+	while hq:
+		neg_weight, cur_node = heapq.heappop(hq)
+		cur_weight = -neg_weight
+
+		if dist[cur_node] > cur_weight:
+			continue
+
+		for nxt_node in graph[cur_node]:
+
+			cur_limit = weights[cur_node][nxt_node]
+			move_weight = min(cur_weight, cur_limit)
+
+			if dist[nxt_node] >= move_weight:
+				continue
+
+			dist[nxt_node] = move_weight
+			heapq.heappush(hq, [-move_weight, nxt_node])
+
+	return dist
 
 def calculate(sCity, eCity, M, mStopover):
-    # 다익스트라 사용
-    dist = [-INF] * g_N
 
-    hq = []
-    # heapq.heappush(hq, ())
-    for nxt in graph[sCity]:
-        start = sCity
-        cost = costs[start][nxt]
-        heapq.heappush(hq, (-cost, start, nxt))
-        dist[sCity] = max(dist[sCity], cost)
+	# print("debug dijk", dijkstra(sCity))
+	answer = INF
 
-    while hq:
-        cur_weight, cur_node, nxt_node = heapq.heappop(hq)
-        cur_weight = -cur_weight
+	ret = dijkstra(sCity)
 
-        if dist[nxt_node] > cur_weight:
-            continue
 
-        dist[nxt_node] = cur_weight
+	for i in mStopover:
+		if ret[i] == -1:
+			return -1
+		else:
+			answer = min(answer, ret[i])
+	if ret[eCity] == -1:
+		return -1
 
-        for nxt in graph[nxt_node]:
-            if nxt == cur_node:
-                continue
-            nxt_weight = costs[nxt_node][nxt]
-            new_weight = min(cur_weight, nxt_weight)
-            if new_weight > dist[nxt]:
-                dist[nxt] = new_weight
-                heapq.heappush(hq, (-new_weight, nxt_node, nxt))
-
-    # print("calc", dist)
-    for i in mStopover:
-        if dist[i] == -INF:
-            # print("calc", -1)
-            return -1
-
-    if dist[eCity] == -INF:
-        # print("calc", -1)
-        return -1
-    else:
-        cand = []
-        cand.append(dist[eCity])
-        for i in mStopover:
-            cand.append(dist[i])
-        return min(cand)
+	answer = min(answer, ret[eCity])
+	return answer
 
 
 # ── Main (수정 불가) ──
