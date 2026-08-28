@@ -2379,7 +2379,7 @@ function viewTools(){
      '내려받기·압축 해제·준비까지 알아서 합니다.</div>'+
     '<div class="onel"><code id="tlcmd">iex ([Text.Encoding]::UTF8.GetString((iwr '+
       location.origin+(location.pathname.replace(/\/[^\/]*$/,"/"))+
-      'get.ps1 -UseBasicParsing).RawContentStream.ToArray()))</code>'+
+      'get.ps1 -UseBasicParsing).RawContentStream.ToArray()).TrimStart([char]0xFEFF))</code>'+
      '<button onclick="toolCopy()">복사</button></div>'+
     '<div class="hint" id="tlcopy" style="margin-top:6px"></div>'+
    '</div></div>'+

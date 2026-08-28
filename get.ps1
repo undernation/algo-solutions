@@ -1,6 +1,6 @@
 ﻿# 코딩 도구 한 줄 설치 — 새 PC 에서 PowerShell 에 아래 한 줄만 붙여 넣으면 된다.
 #
-#   iex ([Text.Encoding]::UTF8.GetString((iwr https://undernation.github.io/algo-solutions/get.ps1 -UseBasicParsing).RawContentStream.ToArray()))
+#   iex ([Text.Encoding]::UTF8.GetString((iwr https://undernation.github.io/algo-solutions/get.ps1 -UseBasicParsing).RawContentStream.ToArray()).TrimStart([char]0xFEFF))
 #
 # ※ 왜 `irm ... | iex` 가 아닌가: Windows 기본 PowerShell 5.1 은 응답에 charset 이
 #    없으면 ISO-8859-1 로 읽어서 이 파일의 한글이 전부 깨진다. 위처럼 UTF-8 로
