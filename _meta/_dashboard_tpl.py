@@ -444,6 +444,14 @@ button.danger:hover{opacity:.88;color:#fff;border-color:var(--no)}
 #tip{position:fixed;display:none;background:#1f2328;color:#fff;padding:9px 12px;border-radius:6px;
  font-size:12.5px;line-height:1.65;pointer-events:none;z-index:99;box-shadow:0 6px 22px rgba(0,0,0,.45);max-width:340px}
 #tip b{display:block;margin-bottom:4px}#tip ul{margin:0;padding-left:16px}
+/* ── 도구 화면 ── */
+.tsteps{margin:0;padding-left:20px;line-height:2}
+.tsteps code{background:var(--soft);border:1px solid var(--bd2);border-radius:4px;
+ padding:1px 6px;font-size:12.5px}
+.tmeta{border-collapse:collapse;font-size:13.5px}
+.tmeta th{text-align:left;color:var(--sub);font-weight:600;padding:4px 18px 4px 0;
+ white-space:nowrap;vertical-align:top}
+.tmeta td{padding:4px 0}
 .hide{display:none}
 </style>
 
@@ -454,6 +462,7 @@ button.danger:hover{opacity:.88;color:#fff;border-color:var(--no)}
   <a href="#problems" data-v="problems">문제</a>
   <a href="#status" data-v="status">제출 현황</a>
   <a href="#run" data-v="run" id="navrun" class="hide">연습장</a>
+  <a href="#tools" data-v="tools" id="navtool" class="hide">도구</a>
  </nav>
  <button class="hubbtn thbtn" id="thbtn" onclick="themeCycle()"><span class="ico" id="thico">&#128421;</span><span class="lab" id="thlab">자동</span></button>
  <button class="hubbtn" onclick="setupHub()"><span class="dot" id="hd"></span><span id="hs">확인 중</span></button>
@@ -463,6 +472,7 @@ button.danger:hover{opacity:.88;color:#fff;border-color:var(--no)}
  <div id="v-home"></div>
  <div id="v-problems" class="hide"></div>
  <div id="v-status" class="hide"></div>
+ <div id="v-tools" class="hide"></div>
  <div id="v-p" class="hide"></div>
  <div id="v-run" class="hide"></div>
  <div id="v-c" class="hide"></div>
@@ -655,16 +665,18 @@ function setupHub(){
 function go(){
  var h=(location.hash||"#home").slice(1);
  var v=h.split("/")[0]||"home";
- ["home","problems","status","p","run","c"].forEach(function(x){ $("v-"+x).className = (x===v?"":"hide"); });
+ ["home","problems","status","p","run","c","tools"].forEach(function(x){ $("v-"+x).className = (x===v?"":"hide"); });
  Array.prototype.forEach.call(document.querySelectorAll("nav a"),function(a){
   var on=(a.dataset.v===v);
-  /* 연습장 링크는 토큰이 있을 때만 보인다. className 을 통째로 쓰면 hide 가 날아간다 */
-  a.className = (a.id==="navrun" && !TOK) ? "hide" : (on?"on":"");
+  /* 연습장·도구 링크는 토큰이 있을 때만 보인다. className 을 통째로 쓰면 hide 가 날아간다 */
+  var mine = (a.id==="navrun" || a.id==="navtool");
+  a.className = (mine && !TOK) ? "hide" : (on?"on":"");
  });
  if(v==="home")     viewHome();
  else if(v==="problems") viewProblems();
  else if(v==="status")   viewStatus();
  else if(v==="run")      viewRun();
+ else if(v==="tools")    viewTools();
  else if(v==="c")   viewCode(decodeURIComponent(h.split("/").slice(1).join("/")));
  else if(v==="p")   viewProblem(h.split("/")[1],h.split("/").slice(2).join("/"));
  else location.hash="#home";
@@ -2277,8 +2289,13 @@ function wireEd(el){ if(el) el.onkeydown=edKey; }
 
    🔑 나만 쓴다: /exec 는 다른 POST 와 똑같이 토큰을 요구하고(= 남은 실행 불가),
    메뉴 링크도 토큰이 저장돼 있을 때만 뜬다. 잔디·문제 열람은 그대로 공개다. */
-function syncNav(){ var a=$("navrun"); if(a&&!TOK) a.className="hide";
-                    else if(a&&a.className==="hide") a.className=""; }
+function syncNav(){
+ ["navrun","navtool"].forEach(function(id){
+  var a=$(id); if(!a) return;
+  if(!TOK) a.className="hide";
+  else if(a.className==="hide") a.className="";
+ });
+}
 
 /* ════════ 테마 ════════
    자동 → 라이트 → 다크 → 자동 으로 돈다. 기본은 '자동'(운영체제 설정을 따름)
@@ -2309,6 +2326,107 @@ function themeSync(){
  if(i) i.innerHTML=m[0];
  if(l) l.textContent=m[1];
  if(b) b.title=m[2];
+}
+
+/* ════════ 도구 내려받기 ════════
+   다른 PC 에서 대시보드만 열면 개인 도구를 바로 받아 쓰게 하는 화면.
+
+   🔑 나만 받는다: /tool 은 다른 POST 와 똑같이 토큰을 요구하고, 메뉴도
+   토큰이 저장돼 있을 때만 뜬다. 파일은 repo 밖(VM 의 ~/algo-tools)에 있어
+   Pages 로는 새지 않는다 — repo 에 넣으면 그 순간 공개다.
+
+   흔적을 남기지 않으려고: 토큰은 헤더로만 보내고(URL 에 안 붙는다),
+   서버가 no-store 로 응답해 디스크 캐시에 안 남으며, 받은 blob URL 은
+   바로 회수한다. */
+var TOOLINFO=null;
+
+function viewTools(){
+ $("v-tools").innerHTML=
+  '<div class="sec-h">도구</div>'+
+  '<div class="note">다른 PC 에서도 이 페이지만 열면 개인 도구를 바로 받을 수 있습니다. '+
+   '<b>토큰이 저장된 브라우저에서만</b> 보이고 받아집니다.</div>'+
+  '<div class="panel"><div class="hd">배포 파일<span class="r" id="tlst">확인 중…</span></div>'+
+   '<div class="bd" id="tlbd">'+
+    '<div class="hint">허브에 연결하는 중입니다…</div>'+
+   '</div></div>'+
+  '<div class="panel"><div class="hd">받은 다음</div><div class="bd">'+
+   '<ol class="tsteps">'+
+    '<li>zip 을 원하는 폴더에 <b>압축 해제</b>합니다.</li>'+
+    '<li>폴더 안 <code>setup.bat</code> 을 실행합니다. '+
+      '(가상환경을 만들고 필요한 패키지를 설치합니다 — 처음 한 번만)</li>'+
+    '<li><code>start.vbs</code> 더블클릭 → 콘솔 없이 백그라운드 실행. '+
+      '<code>console.bat</code> 은 콘솔을 띄워 실행합니다.</li>'+
+    '<li>컴퓨터를 켤 때마다 자동 실행하려면 <code>install_startup.bat</code>, '+
+      '되돌리려면 <code>uninstall_startup.bat</code>.</li>'+
+   '</ol>'+
+   '<div class="vd ng" style="display:block">'+
+    '<b>공용 PC 에서는 받지 마세요.</b>'+
+    '<div class="d">이 zip 안에는 <code>secret.env</code> 로 API 키가 들어 있습니다. '+
+    '그래서 바로 실행되는 것이고, 동시에 남에게 넘어가면 그대로 쓰입니다. '+
+    '다 쓴 PC 에서는 압축 푼 폴더와 받은 zip 을 지우세요.</div>'+
+   '</div>'+
+  '</div></div>';
+ toolLoad();
+}
+
+async function toolLoad(){
+ await hubReady();
+ var h=hubFor("judge"), st=$("tlst"), bd=$("tlbd");
+ if(!st||!bd) return;
+ if(!h){ st.textContent="허브 꺼짐";
+   bd.innerHTML='<div class="hint">허브가 꺼져 있습니다. 우측 상단 <b>허브 버튼</b>을 확인하세요.</div>';
+   return; }
+ try{
+  var r=await fetch(h.url+"/toolinfo",{method:"POST",headers:H(),body:"{}"});
+  if(r.status===401){ st.textContent="인증 필요";
+    bd.innerHTML='<div class="hint">우측 상단 <b>허브 버튼</b>에서 토큰을 입력하세요.</div>';
+    return; }
+  var j=await r.json();
+  if(!j.ok){ st.textContent="파일 없음";
+    bd.innerHTML='<div class="hint">'+esc(j.error||"배포할 파일이 없습니다")+'</div>';
+    return; }
+  TOOLINFO=j;
+  st.textContent=j.mtime+" 기준";
+  bd.innerHTML=
+   '<table class="tmeta"><tbody>'+
+    '<tr><th>파일</th><td class="mono">'+esc(j.name)+'</td></tr>'+
+    '<tr><th>크기</th><td>'+(j.size/1024).toFixed(1)+' KB</td></tr>'+
+    '<tr><th>올린 때</th><td>'+esc(j.mtime)+'</td></tr>'+
+    '<tr><th>sha256</th><td class="mono hint">'+esc(j.sha256)+'…</td></tr>'+
+   '</tbody></table>'+
+   '<div class="bar" style="margin-top:12px">'+
+    '<button class="p" onclick="toolGet()" id="tlbtn">받기</button>'+
+    '<span class="hint" id="tlmsg"></span>'+
+   '</div>';
+ }catch(e){
+  st.textContent="연결 실패";
+  bd.innerHTML='<div class="hint">허브에 닿지 못했습니다: '+esc(String(e).slice(0,120))+'</div>';
+ }
+}
+
+async function toolGet(){
+ var b=$("tlbtn"), m=$("tlmsg");
+ if(!TOOLINFO) return;
+ var h=hubFor("judge");
+ if(!h){ m.textContent="허브가 꺼져 있습니다."; return; }
+ b.disabled=true; m.textContent="받는 중…";
+ try{
+  var r=await fetch(h.url+"/tool",{method:"POST",headers:H(),body:"{}"});
+  if(r.status===401){ m.textContent="인증 실패 — 토큰을 확인하세요."; b.disabled=false; return; }
+  if(!r.ok){ m.textContent="실패 ("+r.status+")"; b.disabled=false; return; }
+  var blob=await r.blob();
+  /* blob URL 은 저장 직후 회수한다. 남겨 두면 그 URL 로 탭에서 다시 열 수 있다. */
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement("a");
+  a.href=url; a.download=TOOLINFO.name; a.rel="noreferrer";
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(function(){ URL.revokeObjectURL(url); }, 1500);
+  m.innerHTML='내려받았습니다 · '+(blob.size/1024).toFixed(1)+' KB — '+
+              '압축을 풀고 <code>setup.bat</code> 을 실행하세요.';
+ }catch(e){
+  m.textContent="실패: "+String(e).slice(0,120);
+ }
+ b.disabled=false;
 }
 
 function viewRun(){

@@ -24,6 +24,8 @@ http://localhost:12014 를 직접 호출한다.
     POST /tcupload    전체 테스트케이스 업로드 {site, no, samples, private}
     POST /note        복기 메모 저장 {site, no, date, status, body, mode}
     POST /delete      풀이기록/문제자료 삭제 {kind, site, no, date?}
+    POST /toolinfo    배포용 도구 파일 정보 {name?}
+    POST /tool        배포용 도구 파일 내려받기 {name?}  → zip 바이트
     GET  /problems    저장된 문제 목록
 
 /save 요청 예
@@ -1139,6 +1141,50 @@ def fetch_problem(ref, save=False):
     return res
 
 
+# ── 도구 배포 (/tool) ────────────────────────────────────────────────
+# 다른 PC 에서 대시보드만 열면 개인 도구를 바로 받게 한다.
+#
+# 🚩 파일은 **repo 밖**(~/algo-tools)에 둔다. algo-solutions 는 public 이라
+#    repo 안에 넣는 순간 GitHub Pages 로 그대로 공개된다. 배포하는 zip 에는
+#    API 키가 들어 있으므로 이 구분이 곧 보안선이다.
+# 🚩 GET 으로 열지 않는다. 모든 POST 가 지나는 _auth_ok() 뒤에 두어
+#    토큰 보유자(=나)만 받을 수 있게 한다.
+TOOLS_DIR = os.environ.get("ALGO_TOOLS_DIR") or os.path.expanduser("~/algo-tools")
+
+
+def tool_path(name=""):
+    """배포할 파일 경로. 이름을 안 주면 가장 최근에 올린 zip 을 고른다."""
+    if not os.path.isdir(TOOLS_DIR):
+        return ""
+    if name:
+        # 파일명만 받는다 — "../../.ssh/id_rsa" 같은 경로 조작을 여기서 끊는다
+        p = os.path.join(TOOLS_DIR, os.path.basename(name))
+        return p if os.path.isfile(p) else ""
+    zs = [os.path.join(TOOLS_DIR, f) for f in os.listdir(TOOLS_DIR)
+          if f.lower().endswith(".zip")]
+    return max(zs, key=os.path.getmtime) if zs else ""
+
+
+def tool_info(name=""):
+    """받기 전에 무엇을 받는지 보여 주기 위한 정보. 파일 내용은 담지 않는다."""
+    p = tool_path(name)
+    if not p:
+        return {"ok": False, "error": "배포할 파일이 없습니다 (%s 에 zip 을 올려 두세요)"
+                                      % TOOLS_DIR}
+    import hashlib
+    h = hashlib.sha256()
+    with io.open(p, "rb") as f:
+        for chunk in iter(lambda: f.read(65536), b""):
+            h.update(chunk)
+    st = os.stat(p)
+    return {"ok": True,
+            "name": os.path.basename(p),
+            "size": st.st_size,
+            "sha256": h.hexdigest()[:16],
+            "mtime": datetime.datetime.fromtimestamp(st.st_mtime, KST)
+                                      .strftime("%Y-%m-%d %H:%M")}
+
+
 def status():
     br = git("rev-parse", "--abbrev-ref", "HEAD").stdout.strip()
     ah = git("rev-list", "--count", "@{u}..HEAD").stdout.strip() or "0"
@@ -1187,6 +1233,27 @@ class H(BaseHTTPRequestHandler):
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
         self.wfile.write(body)
+
+    def _send_bytes(self, data, ctype, filename):
+        """파일 응답. 받은 흔적이 남지 않도록 캐시를 전부 끈다.
+
+        no-store 가 없으면 zip 이 브라우저 디스크 캐시와 중간 프록시에 남는다.
+        내용에 API 키가 들어 있으므로 '한 번 받고 흔적은 안 남기는' 쪽을 택했다.
+        """
+        self.send_response(200)
+        for k, v in CORS.items():
+            self.send_header(k, v)
+        self.send_header("Content-Type", ctype)
+        self.send_header("Content-Length", str(len(data)))
+        self.send_header("Content-Disposition",
+                         'attachment; filename="%s"' % filename)
+        self.send_header("Cache-Control", "no-store, no-cache, must-revalidate, private")
+        self.send_header("Pragma", "no-cache")
+        self.send_header("Expires", "0")
+        self.send_header("Referrer-Policy", "no-referrer")
+        self.send_header("X-Content-Type-Options", "nosniff")
+        self.end_headers()
+        self.wfile.write(data)
 
     def do_OPTIONS(self):
         self.send_response(204)
@@ -1365,6 +1432,21 @@ class H(BaseHTTPRequestHandler):
             if p == "/save":
                 log("\n▶ 저장  %s %s %s" % (body.get("site"), body.get("no"), body.get("title")))
                 return self._send(200, save_solution(body))
+
+            if p == "/toolinfo":
+                return self._send(200, tool_info(body.get("name") or ""))
+
+            if p == "/tool":
+                path = tool_path(body.get("name") or "")
+                if not path:
+                    return self._send(404, tool_info(body.get("name") or ""))
+                data = io.open(path, "rb").read()
+                # 디버깅용 로그 — 언제·어디서·무엇을 받았는지만 남긴다.
+                # 토큰과 파일 내용은 절대 남기지 않는다.
+                log("\n▶ 도구 내려받기  %s  %.1f KB  from %s"
+                    % (os.path.basename(path), len(data) / 1024.0, self._client_ip()))
+                return self._send_bytes(data, "application/zip",
+                                        os.path.basename(path))
 
             if p == "/fetch":
                 ref = body.get("ref") or body.get("url") or str(body.get("no") or "")
