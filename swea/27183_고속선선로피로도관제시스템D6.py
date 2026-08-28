@@ -2,9 +2,11 @@
 SWEA 27183  고속선 선로 피로도 관제 시스템 D6
 https://swexpertacademy.com/main/code/userProblem/userProblemDetail.do?fromProbList=N&deleteYn=N&contestProbId=AZ-JQXMKpUnHBITH&topPath=code&lastPath=problemDetail&secondPath=problem&menuBreakDown=swea.code.menu&menuBreakDown=swea.code.problem.menu&menuDesc=swea.code.desc&menuDesc=swea.code.problem.desc&contextPath=%2Fmain&locale=ko-kr%2Cko%3Bq%3D0.9%2Cen-us%3Bq%3D0.8%2Cen%3Bq%3D0.7&serverName=localhost&localeLanguage=ko_KR&localeLanguage2=Ko_KR&remoteAddr=175.213.163.17&scripts=%2Fjs%2Finit%2Fjquery-debug.js&scripts=%2Fjs%2Finit%2Fjquery-ui.js&scripts=%2Fjs%2Finit%2Fjquery.validate.js&scripts=%2Fjs%2Fcommon.js&NOTICE_NEW_COUNT=0&ssoLogin=false&hasSDPAdminLinkAuth=false&systemAdmin=false&backendAdmin=false&isTechBlogManager=false&CURRENT_MENU_AUTHORIZATION=READ&CURRENT_MENU_AUTHORIZATION=UPDATE&CURRENT_MENU_AUTHORIZATION=EXECUTE&CURRENT_MENU_AUTHORIZATION=DOWNLOAD&logoMainfileName=logo_company.png
 
-풀이일 : 2026-08-26   결과: 못품
+풀이일 : 2026-08-28   결과: 못품
 한도   : time 12개 테스트케이스를 합쳐서 C/C++의 경우 1초 / Java의 경우 6초 / memory 힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내 / time_sec 1
 난이도 : ?  |  정답률 25.00%
+
+[채점] accepted  1/1  (0.274s)
 
 [문제]
 한 고속철도 관제 센터는 일렬로 이어진 N개의 선로 구간(section)의 금속 피로도를 실시간으로 관리한다. 각 구간에는 현재 피로도가 하나의 값으로 기록되어 있다.
@@ -508,4 +510,201 @@ main()
 -1
 """
 
-.
+import sys
+
+# =========================================================
+#  여기서부터 5개 함수만 구현하시오.
+#  (파이썬 내장과의 충돌을 피하기 위해 함수명은 아래 이름을 그대로 사용한다)
+#  main 및 입출력 부분은 수정하지 않는 것을 권장한다.
+#
+#  init       : 각 테스트 케이스 시작 시 1회 호출. 전역 자료 구조 초기화.
+#  add_stress : 구간 [l,r] 의 모든 구간 피로도를 w 만큼 증가(range add).
+#  repair     : 구간 [l,r] 을 v 로 재설정(range assign, v=0 가능).
+#  get_peak   : 구간 [l,r] 의 최대 피로도 반환(range max).
+#  find_risk  : 구간 [l,r] 에서 값 >= x 인 가장 왼쪽 인덱스 반환, 없으면 -1.
+# =========================================================
+
+# 레이지 세그트리
+
+def build(s, e, node):
+    if s == e:
+        tree[node] = arr[s]
+        return tree[node]
+
+    mid = (s + e) // 2
+
+    left_val = build(s, mid, node * 2)
+    right_val = build(mid + 1, e, node * 2 + 1)
+
+    tree[node] = max(left_val, right_val)
+
+    return tree[node]
+
+def add_node(node, value):
+    tree[node] += value
+    if lazy_set[node] is None:
+        lazy_add[node] += value
+    else:
+        lazy_set[node] += value
+
+def set_node(node, value):
+    tree[node] = value
+    lazy_set[node] = value
+    lazy_add[node] = 0
+
+def push_down(node):
+
+    lc = node * 2
+    rc = node * 2 + 1
+
+    if lazy_set[node] is not None:
+        set_node(lc, lazy_set[node])
+        set_node(rc, lazy_set[node])
+        lazy_set[node] = None
+    else:
+        add_node(lc, lazy_add[node])
+        add_node(rc, lazy_add[node])
+        lazy_add[node] = 0
+
+def update_add(s, e, node, l, r, value):
+    # 범위 밖이면
+    if r < s or e < l:
+        return
+
+    # 바로 안에 있으면
+    if l <= s and e <= r:
+        add_node(node, value)
+        return
+
+    push_down(node)
+
+    mid = (s + e) // 2
+
+    update_add(s, mid, node * 2, l, r, value)
+    update_add(mid + 1, e, node * 2 + 1, l, r, value)
+    tree[node] = max(tree[node * 2], tree[node * 2 + 1])
+
+def update_set(s, e, node, l, r, value):
+    # 범위 밖이면
+    if r < s or e < l:
+        return
+
+    # 바로 안에 있으면
+    if l <= s and e <= r:
+        set_node(node, value)
+        return
+
+    push_down(node)
+
+    mid = (s + e) // 2
+
+    update_set(s, mid, node * 2, l, r, value)
+    update_set(mid + 1, e, node * 2 + 1, l, r, value)
+    tree[node] = max(tree[node * 2], tree[node * 2 + 1])
+
+def query_max(s, e, node, l, r):
+    if r < s or e < l:
+        return -1
+
+    # 바로 안에 있으면
+    if l <= s and e <= r:
+        return tree[node]
+    mid = (s + e) // 2
+
+    push_down(node)
+
+    left_val = query_max(s, mid, node * 2, l, r)
+    right_val = query_max(mid + 1, e, node * 2 + 1, l, r)
+
+    return max(left_val, right_val)
+
+def query_first(s, e, node, l, r, x):
+    if r < s or e < l:
+        return -1
+
+    if tree[node] < x:
+        return -1
+
+    if s == e:
+        return s
+
+    mid = (s + e) // 2
+
+    push_down(node)
+
+    left_val = query_first(s, mid, node * 2, l, r, x)
+    if left_val != -1:
+        return left_val
+
+    right_val = query_first(mid + 1, e, node * 2 + 1, l, r, x)
+    if right_val != -1:
+        return right_val
+
+    return -1
+
+
+def init(N, fatigue):
+    # TODO: fatigue 는 길이 N 리스트(구간 i 의 초기 피로도).
+    #       전역 자료 구조를 반드시 초기화할 것.
+    global g_N, tree, lazy_set, lazy_add, arr
+
+    g_N = N
+    arr = fatigue
+
+    tree = [0] * (4 * N)
+    lazy_set = [None] * (4 * N)
+    lazy_add = [0] * (4 * N)
+    build(0, g_N-1, 1)
+    pass
+
+
+def add_stress(l, r, w):
+    # TODO: 구간 [l,r] 에 피로도 w 누적
+    update_add(0, g_N - 1, 1, l, r, w)
+    pass
+
+def repair(l, r, v):
+    # TODO: 구간 [l,r] 을 v 로 재설정
+    update_set(0, g_N - 1, 1, l, r, v)
+    pass
+
+def get_peak(l, r):
+    # TODO: 구간 [l,r] 의 최대 피로도 반환
+    return query_max(0, g_N - 1, 1, l, r)
+
+
+def find_risk(l, r, x):
+    # TODO: 구간 [l,r] 에서 값 >= x 인 최소 인덱스 반환, 없으면 -1
+    return query_first(0, g_N - 1, 1, l, r, x)
+
+
+# ========= 이하 수정 비권장 (출력 형식 유지) =========
+def main():
+    sys.setrecursionlimit(1 << 20)
+    data = sys.stdin.buffer.read().split()
+    it = iter(data)
+    out = []
+    T = int(next(it))
+    for tc in range(1, T + 1):
+        N = int(next(it)); M = int(next(it))
+        fatigue = [int(next(it)) for _ in range(N)]
+        init(N, fatigue)
+        out.append('#%d' % tc)
+        for _ in range(M):
+            op = int(next(it))
+            if op == 1:
+                l = int(next(it)); r = int(next(it)); w = int(next(it))
+                add_stress(l, r, w)
+            elif op == 2:
+                l = int(next(it)); r = int(next(it)); v = int(next(it))
+                repair(l, r, v)
+            elif op == 3:
+                l = int(next(it)); r = int(next(it))
+                out.append(str(get_peak(l, r)))
+            else:
+                l = int(next(it)); r = int(next(it)); x = int(next(it))
+                out.append(str(find_risk(l, r, x)))
+    sys.stdout.write('\n'.join(out) + '\n')
+
+
+main()
