@@ -2,7 +2,7 @@
 SWEA 24997  택시 호출 서비스
 https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt8IiBqxEDHBIN6&contestProbId=AZih0pbqusDHBINp&probBoxId=AZt8IiBqxEHHBIN6&type=PROBLEM
 
-풀이일 : 2026-08-21   결과: 품
+풀이일 : 2026-08-28   결과: 품
 한도   : time 25개 테스트케이스를 합쳐서 C++의 경우 3초 / Java의 경우 3초 / Python의 경우 10초 / memory 힙, 정적 메모리 합쳐서 262144 kbytes 이내, 스택 메모리 1024 kbytes 이내 / time_sec 10
 난이도 : D6  |  정답률 77.69%
 제약   : 1. 각 테스트 케이스 시작 시 init() 함수가 한 번 호출된다.
@@ -11,7 +11,7 @@ https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt
 제약   : 4. 각 테스트 케이스에서 getBest() 함수의 호출 횟수는 10,000 이하이다.
 제약   : 5. 택시의 위치, 출발지와 목적지의 위치는 임의로 생성되는 것을 보장한다.
 
-[채점] accepted  1/1  (14.723s)
+[채점] accepted  1/1  (12.286s)
 
 [문제]
 택시 호출 서비스를 제공하는 시스템을 개발하고자 한다.
@@ -2223,8 +2223,6 @@ mNos : 손님을 태우고 이동한 총 거리가 가장 큰 택시들의 번�
 from typing import List
 import heapq
 
-DEBUG = False
-
 class Result:
     def __init__(self, mX, mY, mMoveDistance, mRideDistance):
         self.mX = mX
@@ -2232,141 +2230,152 @@ class Result:
         self.mMoveDistance = mMoveDistance
         self.mRideDistance = mRideDistance
 
-def calc_dist(sy, sx, ey, ex):
-    return abs(sy - ey) + abs(sx - ex)
+class Taxi:
+    def __init__(self):
+        self.version = 0
+        self.sec_y = -1
+        self.sec_x = -1
+        self.loc_y = -1
+        self.loc_x = -1
+        self.total_dist = 0
+        self.guest_dist = 0
 
+def calc_dist(y1, x1, y2, x2):
+    return abs(y1 - y2) + abs(x1 - x2)
 
-def init(N : int, M : int, L : int, mXs : List[int], mYs : List[int]) -> None:
-    global g_N, g_M, g_L, distance_dict, taxi_info, INF, hq, loc_info, area
+def find_sec(cur_y, cur_x):
+    return cur_y // g_L, cur_x // g_L
+
+def init(N: int, M: int, L: int, mXs: List[int], mYs: List[int]) -> None:
+    global hq, g_N, g_M, g_L, section_board, taxis
+    hq = []
     g_N = N
     g_M = M
     g_L = L
-    hq = []
-    taxi_info = {}
-    area = [[set() for _ in range(10)] for _ in range(10)]
-    # loc_info = defaultdict(list)
+    taxis = {}
+    section_board = [list(set() for _ in range(10)) for _ in range(10)]
+
+    for taxi_id in range(1, M + 1):
+        taxi = Taxi()
+        taxi.loc_y = mYs[taxi_id - 1]
+        taxi.loc_x = mXs[taxi_id - 1]
+        taxi.sec_y, taxi.sec_x = find_sec(mYs[taxi_id - 1], mXs[taxi_id - 1])
+        section_board[taxi.sec_y][taxi.sec_x].add(taxi_id)
+        taxis[taxi_id] = taxi
+        # 게스트 dist, id, version
+        heapq.heappush(hq, [0, taxi_id, 0])
+
+def cand_maker(cur_sec_y, cur_sec_x):
+    cand = []
+    y_start = max(0, cur_sec_y - 1)
+    y_end = min(9, cur_sec_y + 1)
+    x_start = max(0, cur_sec_x - 1)
+    x_end = min(9, cur_sec_x + 1)
+
+    for y in range(y_start, y_end + 1):
+        for x in range(x_start, x_end + 1):
+            cand.append([y, x])
+
+    return cand
+
+def pickup(mSX: int, mSY: int, mEX: int, mEY: int) -> int:
+    # cand 안에 있는 가장 작은 택시 호출.
+    cur_sec_y, cur_sec_x = find_sec(mSY, mSX)
+    cand = cand_maker(cur_sec_y, cur_sec_x)
     INF = 10 ** 18
-    for num in range(1, M + 1):
-        taxi_info[num] = [
-            # y 위치
-            mYs[num - 1],
-            # x 위치
-            mXs[num - 1],
-            # 총 운행 거리
-            0,
-            # 손님 태우고 이동한 거리
-            0,
-            # 버전
-            0
-        ]
-        # loc_info[(mYs[num - 1], mXs[num - 1])].append(num)
-        # - 손님 이동거리, 택시 id, version
-        heapq.heappush(hq, [0, num, 0])
-    #### distance dict 시도###########################################
-        area[mYs[num - 1] // L][mXs[num - 1] // L].add(num)
-    #####################################################################
+    min_dist = INF
+    min_id = INF
+    # print("debug cur cand", cand)
+    for sec_y, sec_x in cand:
+        cur_taxis = section_board[sec_y][sec_x]
 
+        for taxi_id in cur_taxis:
+            taxi_y = taxis[taxi_id].loc_y
+            taxi_x = taxis[taxi_id].loc_x
+            cur_dist = calc_dist(taxi_y, taxi_x, mSY, mSX)
+            if cur_dist > g_L:
+                continue
+            if cur_dist < min_dist:
+                min_dist = cur_dist
+                min_id = taxi_id
+            elif cur_dist == min_dist:
+                min_id = min(taxi_id, min_id)
 
-# 30000
-def pickup(mSX : int, mSY : int, mEX : int, mEY : int) -> int:
-
-    dist = INF
-    taxi_num = INF
-    call_sec_Y = mSY // g_L
-    call_sec_X = mSX // g_L
-
-    for sy in range(max(0, call_sec_Y - 1), min(9, call_sec_Y + 1) + 1):
-        for sx in range(max(0, call_sec_X - 1), min(9, call_sec_X + 1) + 1):
-            for cur_id in area[sy][sx]:
-                y, x, mile, p_mile, version = taxi_info[cur_id]
-                cur_dist = calc_dist(mSY, mSX, y, x)
-                if cur_dist <= g_L:
-                    # print("key", key)
-                    if dist > cur_dist:
-                        dist = cur_dist
-                        taxi_num = cur_id
-                        target_sec_Y = sy
-                        target_sec_X = sx
-                    elif dist == cur_dist:
-                        if taxi_num > cur_id:
-                            taxi_num = min(taxi_num, cur_id)
-                            target_sec_Y = sy
-                            target_sec_X = sx
-    ###########################################################################
-
-
-    ###########################################################################
-
-    if taxi_num == INF:
-
+    if min_dist == INF:
+        # print("pick up", min_id)
         return -1
-    
-    # ###########################################################################
-    # loc_info[(remove_y, remove_x)].remove(taxi_num)
-    # ###########################################################################
+
+    target_taxi = taxis[min_id]
+    first_y = target_taxi.loc_y
+    first_x = target_taxi.loc_x
+
+    section_board[target_taxi.sec_y][target_taxi.sec_x].discard(min_id)
 
 
-    cy, cx, cmile, c_p_mile, cver = taxi_info[taxi_num]
-    # 손님 이송 처리.
-    pick_up_time = calc_dist(mSY, mSX, cy, cx)
-    take_time = calc_dist(mSY, mSX, mEY, mEX)
-    # 이동 하고 나서는 버전 올려주기.
-    new_c_p_mile = c_p_mile + take_time
-    heapq.heappush(hq, [-new_c_p_mile, taxi_num, cver + 1])
+    # 호출된 택시 이동 처리..
+    com_dist = calc_dist(first_y, first_x, mSY, mSX)
+    go_dist = calc_dist(mSY, mSX, mEY, mEX)
+    # 호출된 택시 주행 거리 증가, 태우고 나서는 게스트 주행거리 증가.
+    target_taxi.total_dist += com_dist + go_dist
+    target_taxi.guest_dist += go_dist
+    # 새로운 좌표랑 sec 으로 이동.
+    new_sec_y, new_sec_x = find_sec(mEY, mEX)
+    target_taxi.loc_y = mEY
+    target_taxi.loc_x = mEX
+    target_taxi.sec_y = new_sec_y
+    target_taxi.sec_x = new_sec_x
+    target_taxi.version += 1
+    # 택시 증가 이후 버전 올리고 새로 hq 에 넣어주기.
+    heapq.heappush(hq, [-target_taxi.guest_dist, min_id, target_taxi.version])
 
-    taxi_info[taxi_num][0] = mEY
-    taxi_info[taxi_num][1] = mEX
-    taxi_info[taxi_num][2] = cmile + pick_up_time + take_time
-    taxi_info[taxi_num][3] = new_c_p_mile
-    taxi_info[taxi_num][4] = cver + 1
-
-    ###########################################################################
-    # loc_info[(mEY, mEX)].append(taxi_num)
-    ###########################################################################
-    # 이송한거 구역에서 없애고 새 구역으로 이동 시켜주기
-    new_area_Y = mEY // g_L
-    new_area_X = mEX // g_L
-    # print(area[target_sec_Y][target_sec_X])
-    area[target_sec_Y][target_sec_X].remove(taxi_num)
-    area[new_area_Y][new_area_X].add(taxi_num)
-
-    # if DEBUG:
-    #     print("pickup", taxi_num)
-    return taxi_num
+    # 섹션 보드 이동처리
+    section_board[target_taxi.sec_y][target_taxi.sec_x].add(min_id)
+    # print("pick up", min_id)
+    return min_id
 
 
-# 5000
-def reset(mNo : int) -> Result:
-    cy, cx, cmile, c_p_mile, cver = taxi_info[mNo]
-    ret = Result(cx, cy, cmile, c_p_mile)
-    heapq.heappush(hq, [0, mNo, cver + 1])
+def reset(mNo: int) -> Result:
+    target_taxi = taxis[mNo]
+    ret = Result(-1, -1, -1, -1)
 
-    taxi_info[mNo][2] = 0
-    taxi_info[mNo][3] = 0
-    taxi_info[mNo][4] = cver + 1
-    # if DEBUG:
-    #     print("reset", ret.mX, ret.mY, ret.mMoveDistance, ret.mRideDistance)
+    target_y = target_taxi.loc_y
+    target_x = target_taxi.loc_x
+    target_total_dist = target_taxi.total_dist
+    target_guest_dist = target_taxi.guest_dist
+    target_version = target_taxi.version
+
+    ret.mX = target_x
+    ret.mY = target_y
+    ret.mMoveDistance = target_total_dist
+    ret.mRideDistance = target_guest_dist
+
+    target_taxi.total_dist = 0
+    target_taxi.guest_dist = 0
+    target_taxi.version += 1
+
+    heapq.heappush(hq, [0, mNo, target_taxi.version])
+    # print("reset", ret.mX, ret.mY, ret.mMoveDistance, ret.mRideDistance)
     return ret
 
-# 10000
-def getBest(mNos : List[int]) -> None:
-    removed = []
+
+def getBest(mNos: List[int]) -> None:
+
     cnt = 0
-    while cnt < 5:
-        cur_c_p_mile, taxi_num, version = heapq.heappop(hq)
-        # 버전 다르면 버리기
-        if version != taxi_info[taxi_num][4]:
-            continue
-        # 이상없으면 결과 리스트에 넣어줌.
-        mNos[cnt] = taxi_num
-        removed.append([cur_c_p_mile, taxi_num, version])
-        cnt += 1
+    removed = []
+    while hq and cnt < 5:
+        # stale 처리
+        cur_id = hq[0][1]
+        if taxis[cur_id].version != hq[0][2]:
+            heapq.heappop(hq)
+        else:
+            dist, cur_id, version = heapq.heappop(hq)
+            mNos[cnt] = cur_id
+            removed.append([dist, cur_id, version])
+            cnt += 1
 
     for a, b, c in removed:
         heapq.heappush(hq, [a, b, c])
-    # if DEBUG:
-    #     print("getBest", mNos)
-    pass
+    # print("getbest", mNos)
 
 
 # ── Main (수정 불가) ──

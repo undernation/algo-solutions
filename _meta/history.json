@@ -5275,7 +5275,7 @@
   ]
  },
  "2026-08-28": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "14:03:45",
@@ -5297,6 +5297,29 @@
     "site": "SWEA",
     "status": "틀림",
     "title": "온라인마트",
+    "total": 1,
+    "verdict": "accepted"
+   },
+   {
+    "at": "15:49:11",
+    "attempts": [
+     {
+      "at": "15:49:11",
+      "elapsed": 12.286,
+      "file": "swea/24997_택시호출서비스.py",
+      "passed": 1,
+      "status": "품",
+      "total": 1,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 12.286,
+    "file": "swea/24997_택시호출서비스.py",
+    "no": "24997",
+    "passed": 1,
+    "site": "SWEA",
+    "status": "품",
+    "title": "택시 호출 서비스",
     "total": 1,
     "verdict": "accepted"
    }
