@@ -1,4 +1,4 @@
-# 코딩 도구 한 줄 설치 — 새 PC 에서 PowerShell 에 아래 한 줄만 붙여 넣으면 된다.
+﻿# 코딩 도구 한 줄 설치 — 새 PC 에서 PowerShell 에 아래 한 줄만 붙여 넣으면 된다.
 #
 #   iex ([Text.Encoding]::UTF8.GetString((iwr https://undernation.github.io/algo-solutions/get.ps1 -UseBasicParsing).RawContentStream.ToArray()))
 #
