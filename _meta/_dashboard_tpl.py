@@ -2016,11 +2016,16 @@ function mdTables(html){
 }
 function withImages(text,p){
  var imgs=(p&&p.images)||[];
+ /* 그림을 다시 만들어도 파일명이 그대로라, 브라우저가 옛 그림을 캐시에서 꺼내 쓴다.
+    (실제로 도해를 새로 그렸는데 사이트에는 계속 옛 것이 보였다.)
+    빌드 시각(D.stamp)을 쿼리로 붙여 '빌드가 바뀌면 새로 받도록' 한다.
+    같은 빌드 안에서는 값이 같으므로 캐시는 정상적으로 재사용된다. */
+ var ver=encodeURIComponent((D&&D.stamp)||"");
  var h=esc(text).replace(/\[\[IMG:(\d+)\]\]/g, function(_,k){
    var src=imgs[parseInt(k,10)-1];
    if(!src) return "";
-   return '<img src="./'+esc(src)+'" alt="그림 '+esc(k)+'" loading="lazy" '+
-          'onclick="openImg(this.src)">';
+   return '<img src="./'+esc(src)+(ver?"?v="+ver:"")+'" alt="그림 '+esc(k)+'" '+
+          'loading="lazy" onclick="openImg(this.src)">';
  });
  return mdTables(h);
 }
