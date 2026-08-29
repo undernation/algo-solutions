@@ -19,7 +19,14 @@
 3. 채점한다
 
 ```
-python main.py < sample_input.txt
+python main.py
+```
+
+`sample_input.txt` 를 자동으로 읽는다. 다른 입력을 쓰려면:
+
+```
+python main.py 다른입력.txt
+python main.py < 다른입력.txt      (리다이렉트도 됨)
 ```
 
 ## 출력 보는 법
@@ -49,7 +56,7 @@ python main.py < sample_input.txt
 `main.py` 가 stderr 로 move 별 결과를 찍는다.
 
 ```
-python main.py < sample_input.txt 2> err.txt
+python main.py 2> err.txt
 ```
 
 `err.txt` 에 이렇게 남는다.

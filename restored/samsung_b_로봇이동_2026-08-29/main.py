@@ -1,5 +1,17 @@
+import os
 import sys
+
 from solution import init, build, move
+
+# 입력 파일. 인자로 주면 그 파일을, 아니면 같은 폴더의 sample_input.txt 를 읽는다.
+# (실제 SWEA Main 의 `sys.stdin = open('sample_input.txt', 'r')` 과 같은 역할)
+#   python main.py                     -> sample_input.txt
+#   python main.py 다른입력.txt          -> 그 파일
+#   python main.py < 다른입력.txt        -> 리다이렉트도 그대로 동작
+_HERE = os.path.dirname(os.path.abspath(__file__))
+_SRC = sys.argv[1] if len(sys.argv) > 1 else os.path.join(_HERE, "sample_input.txt")
+if os.path.exists(_SRC):
+    sys.stdin = open(_SRC, "r")
 
 input = sys.stdin.readline
 
