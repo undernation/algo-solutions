@@ -5375,8 +5375,8 @@
   "count": 1,
   "items": [
    {
-    "site": "BOJ",
-    "no": "",
+    "site": "SWEA",
+    "no": "99999",
     "title": "로봇 이동",
     "status": "못품"
    }
