@@ -795,9 +795,14 @@ def save_note(d):
     io.open(p, "w", encoding="utf-8", newline="").write(text)
     rel = os.path.relpath(p, ROOT).replace(os.sep, "/")
 
-    subprocess.run([PY, "_meta/build_probindex.py"], cwd=ROOT, capture_output=True,
-                   env={**os.environ, "PYTHONIOENCODING": "utf-8"})
-    git("add", "notes", "problems")
+    # 🚩 메모에도 상태(품/못품/틀림)가 들어간다. build_heatmap 은 실수노트·메모를
+    #    읽어 잔디와 대시보드(index.html)를 만들므로, 메모만 저장하고 빌드를 건너뛰면
+    #    사이트에 반영되지 않는다(2026-08-29 발견 — 그전 메모 커밋 10건이 전부
+    #    index.html 을 안 건드렸다). /save 와 똑같이 세 빌드를 모두 돌린다.
+    for s in ("_meta/build_probindex.py", "_meta/build_heatmap.py", "_meta/build_index.py"):
+        subprocess.run([PY, s], cwd=ROOT, capture_output=True,
+                       env={**os.environ, "PYTHONIOENCODING": "utf-8"})
+    git("add", "-A")
     c = git("commit", "-m", "[메모] %s %s %s" % (site, no, date))
     committed = c.returncode == 0
     pushed, perr = False, ""
