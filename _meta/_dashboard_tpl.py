@@ -2377,9 +2377,8 @@ function viewTools(){
     '<div class="hint" style="margin-bottom:8px">새 PC 라면 이게 제일 빠릅니다. '+
      'PowerShell 을 열고 아래를 붙여 넣으면 비밀번호를 물어본 뒤 '+
      '내려받기·압축 해제·준비까지 알아서 합니다.</div>'+
-    '<div class="onel"><code id="tlcmd">iex ([Text.Encoding]::UTF8.GetString((iwr '+
-      location.origin+(location.pathname.replace(/\/[^\/]*$/,"/"))+
-      'get.ps1 -UseBasicParsing).RawContentStream.ToArray()).TrimStart([char]0xFEFF))</code>'+
+    '<div class="onel"><code id="tlcmd">irm '+
+      location.origin+(location.pathname.replace(/\/[^\/]*$/,"/"))+'get.ps1 | iex</code>'+
      '<button onclick="toolCopy()">복사</button></div>'+
     '<div class="hint" id="tlcopy" style="margin-top:6px"></div>'+
    '</div></div>'+
