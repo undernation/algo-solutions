@@ -1,0 +1,47 @@
+{
+ "site": "SWEA",
+ "platform": "SW Expert Academy",
+ "url": "",
+ "no": "99999",
+ "title": "로봇 이동 (삼성 B형 복원)",
+ "level": "D6",
+ "club": "삼성 B형 기출 (복원)",
+ "stats": {},
+ "limits": {
+  "time": "25개 테스트케이스를 합쳐서 Python의 경우 8초",
+  "memory": "표준",
+  "time_sec": 8
+ },
+ "languages": [
+  "Python"
+ ],
+ "python_supported": true,
+ "statement": "[삼성 SW 역량테스트 B형 기출 복원] 이 문제는 시험 후 기억으로 복원한 연습판이다. 알고리즘 구조(방향 상태 BFS, 셀별 가능방향 집합, 경유지 순열)는 코드로 검증했으나, 좌표계와 교차로 규칙의 세부는 원문과 다를 수 있다.\n\n크기 N x N 의 격자 도시가 있다. 처음에는 건물과 도로가 존재하지 않는다.\n\n건물을 추가하면 건물의 바깥쪽을 한 칸 두께로 둘러싸는 도로가 함께 생성된다. 건물은 직사각형이며, 좌상단 좌표 (mX, mY), 너비 mW, 높이 mH 를 가진다. 건물 내부 영역은 x = mX ~ mX+mW-1, y = mY ~ mY+mH-1 이고, 그 바깥 한 칸이 도로가 된다. 출입구는 건물 내부 가장자리 칸 하나이며, 건물 내부 기준 상대 좌표 (mDoorX, mDoorY) 로 주어진다.\n\n[[IMG:1]]\n\n건물끼리는 서로 겹치거나 붙을 수 없다. 그러나 건물 바깥쪽 도로는 서로 겹칠 수 있으며, 두 건물의 도로가 여러 칸을 공유할 수도 있다.\n\n[도로 이동 규칙]\n로봇은 건물 주위의 도로를 그 건물 기준 시계방향으로만 이동한다. 윗변은 오른쪽, 오른쪽 변은 아래쪽, 아랫변은 왼쪽, 왼쪽 변은 위쪽 방향이다. 도로 한 칸을 이동하는 비용은 1이며, 일반 도로 중간에서는 방향을 바꿀 수 없다.\n\n[교차로]\n모든 건물 도로 사각형의 네 꼭짓점은 교차로이다. 한 교차로에 여러 건물의 도로가 함께 있을 수 있다. 교차로에서는 직진, 좌회전, 우회전, U턴이 가능하지만, 선택한 방향으로 실제 도로가 존재하고 그 도로가 어떤 건물의 시계방향 도로여야 한다. 즉 교차로에 도착해야만 다른 건물의 도로로 갈아탈 수 있다.\n\n[출입구]\n출입구를 드나들 때는 항상 우회전만 가능하다. 즉 로봇의 진행 방향 기준 오른쪽 한 칸에 출입구가 있을 때만 그 출입구로 들어갈 수 있다. 도로에서 Door, Door에서 도로로 가는 비용은 각각 1이며, 건물 내부에서는 별도의 이동을 하지 않는다.\n\n[함수]\ninit(N) : 크기 N x N 의 빈 도시를 생성한다.\nbuild(mID, mX, mY, mW, mH, mDoorX, mDoorY) : 건물을 추가한다. 건물 ID는 중복되지 않으며, 호출 횟수는 최대 약 1000이다.\nmove(mStart, mEnd, M, mID) : mStart 출입구에서 출발하여, mID[0:M] 의 모든 경유 건물 출입구를 방문한 뒤(순서 자유, M <= 5) mEnd 출입구까지 가는 최소 이동 거리를 반환한다. 이동 불가능한 경우는 주어지지 않는다.",
+ "examples_text": "건물 1은 출입구가 윗변 가운데(D1), 건물 2는 아랫변(D2)에 있고 두 건물의 도로는 x = 7 열을 공유한다. 로봇이 D1에서 나와 시계방향으로 돌다가 공유 교차로에서 건물 2의 도로로 갈아타 D2로 진입하면 14칸이다. 반대로 D2 -> D1 은 시계방향 제약 때문에 경로가 달라 20칸이 된다.\n\n[[IMG:2]]\n\n| # | Function | Return |\n| --- | --- | --- |\n| 1 | init(15) |  |\n| 2 | build(1, 3, 3, 4, 4, 1, 0) |  |\n| 3 | build(2, 8, 3, 4, 4, 3, 3) |  |\n| 4 | move(1, 2, 0, {}) | 14 |\n| 5 | move(2, 1, 0, {}) | 20 |\n| 6 | move(1, 1, 0, {}) | 0 |",
+ "constraints": [
+  "1. 격자 크기 N 과 건물 수(<= 약 1000). 건물끼리 겹치거나 붙지 않는다.",
+  "2. 각 테스트 케이스 시작 시 init() 이 한 번 호출된다.",
+  "3. 경유지 M <= 5 (방문 순서 순열 5! = 120 이내).",
+  "4. 도로는 방향 그래프이므로 dist(A,B) 와 dist(B,A) 가 다를 수 있다.",
+  "5. move 에서 이동 불가능한 경우는 주어지지 않는다."
+ ],
+ "output_spec": "입출력은 제공되는 Main 코드에서 처리하므로 User Code 에서는 입출력을 처리하지 않는다.\n\n각 명령: 100 N (init) / 200 mID mX mY mW mH mDoorX mDoorY (build) / 300 mStart mEnd M (mID x M) expected (move). 모든 move 반환이 expected 와 일치하면 그 테스트케이스는 MARK점.",
+ "images": [
+  "problems/swea/img/99999_1.png",
+  "problems/swea/img/99999_2.png"
+ ],
+ "samples": [
+  {
+   "in": "5 100\n6\n100 20\n200 1 3 3 4 4 3 0\n200 2 8 3 4 4 0 3\n300 2 1 0 9\n300 2 1 0 9\n300 2 1 0 9\n9\n100 30\n200 1 3 3 4 4 0 0\n200 2 8 3 4 4 2 0\n200 3 13 3 4 4 3 2\n200 4 18 3 4 4 1 3\n300 1 3 2 2 4 43\n300 4 3 2 2 1 44\n300 3 1 0 23\n300 3 2 1 4 44\n12\n100 30\n200 1 3 3 3 3 2 2\n200 2 7 3 3 3 2 1\n200 3 11 3 3 3 0 2\n200 4 3 7 3 3 2 0\n200 5 7 7 3 3 1 0\n200 6 11 7 3 3 2 2\n300 2 6 3 5 3 1 29\n300 2 6 3 1 4 5 29\n300 2 5 0 10\n300 3 1 2 6 5 36\n300 6 4 3 5 3 2 40\n19\n100 40\n200 1 3 3 4 3 3 1\n200 2 8 3 4 3 3 0\n200 3 13 3 4 3 0 0\n200 4 18 3 4 3 0 0\n200 5 3 7 4 3 3 0\n200 6 8 7 4 3 0 2\n200 7 13 7 4 3 3 2\n200 8 18 7 4 3 2 2\n200 9 3 11 4 3 3 0\n200 10 8 11 4 3 1 2\n200 11 13 11 4 3 2 0\n200 12 18 11 4 3 1 2\n300 3 5 2 8 2 53\n300 10 6 5 8 11 4 2 12 91\n300 8 5 0 20\n300 9 5 0 8\n300 5 10 5 6 11 4 9 8 67\n300 10 5 3 9 3 4 57\n9\n100 25\n200 1 3 3 5 5 2 4\n200 2 9 3 5 5 3 0\n200 3 3 9 5 5 4 0\n200 4 9 9 5 5 4 0\n300 3 2 0 13\n300 4 3 0 10\n300 2 1 2 3 4 27\n300 3 1 1 2 32\n",
+   "out": "#1 100\n#2 100\n#3 100\n#4 100\n#5 100"
+  }
+ ],
+ "tc_stored": false,
+ "api_style": true,
+ "fetched_at": "2026-08-29",
+ "restored": true,
+ "template": {
+  "main": "import sys\nfrom solution import init, build, move\n\ninput = sys.stdin.readline\n\nCMD_INIT = 100\nCMD_BUILD = 200\nCMD_MOVE = 300\n\nDEBUG = False   # move 실제 반환값 출력\n\n\ndef run():\n    Q = int(input())\n    okay = True\n    for _ in range(Q):\n        command = list(map(int, input().split()))\n        cmd = command[0]\n\n        if cmd == CMD_INIT:\n            N = command[1]\n            init(N)\n\n        elif cmd == CMD_BUILD:\n            (_, mID, mX, mY, mW, mH, mDoorX, mDoorY) = command\n            build(mID, mX, mY, mW, mH, mDoorX, mDoorY)\n\n        elif cmd == CMD_MOVE:\n            mStart = command[1]\n            mEnd = command[2]\n            M = command[3]\n            mID = command[4:4 + M]\n            expected = command[4 + M]\n            ret = move(mStart, mEnd, M, mID)\n            if DEBUG:\n                mark = \"OK\" if ret == expected else \"MISMATCH\"\n                sys.stderr.write(\n                    \"move(start=%d end=%d via=%s) -> got=%s expected=%s  %s\\n\"\n                    % (mStart, mEnd, mID, ret, expected, mark))\n            if ret != expected:\n                okay = False\n    return okay\n\n\nif __name__ == \"__main__\":\n    T, MARK = map(int, input().split())\n    for tc in range(1, T + 1):\n        score = MARK if run() else 0\n        print(\"#%d %d\" % (tc, score))\n",
+  "solution": "from collections import deque\nfrom itertools import permutations\n\ndef init(N):\n    pass\n\ndef build(mID, mX, mY, mW, mH, mDoorX, mDoorY):\n    pass\n\ndef move(mStart, mEnd, M, mID):\n    return 0\n"
+ }
+}
