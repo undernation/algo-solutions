@@ -76,7 +76,7 @@ def svg_grid(x0, y0, x1, y1, path=None, title="", cell=30):
     W = (x1 - x0 + 1) * cell
     H = (y1 - y0 + 1) * cell
     out = ['<svg width="%d" height="%d" viewBox="0 0 %d %d" '
-           'style="border:1px solid #ccc;background:#fff">' % (W, H + 40, W, H + 40)]
+           'style="border:1px solid #ccc;background:#fff">' % (W, H + (58 if W < 470 else 40), W, H + (58 if W < 470 else 40))]
     if title:
         out.append('<text x="4" y="13" font-size="12" fill="#333" '
                    'font-weight="bold">%s</text>' % title)
@@ -164,18 +164,23 @@ def svg_grid(x0, y0, x1, y1, path=None, title="", cell=30):
                '</marker></defs>')
     # 범례 — 화살표 두 개가 나란한 칸은 '두 건물의 도로가 겹친 것'이지
     # 그 자리에서 방향을 바꿀 수 있다는 뜻이 아니다.
-    ly = H + oy - 4
+    # 그림이 좁으면 한 줄에 두 항목이 안 들어가 글자가 잘린다. 그럴 땐 두 줄로 쓴다.
+    two_line = W < 470
+    ly = H + oy - (18 if two_line else 4)
     out.append('<line x1="8" y1="%d" x2="26" y2="%d" stroke="#5b8def" '
                'stroke-width="1.5" marker-end="url(#ah)"/>' % (ly, ly))
-    out.append('<text x="30" y="%d" font-size="10" fill="#555">'
+    out.append('<text x="30" y="%.1f" font-size="10" fill="#555">'
                '시계방향 도로(방향 고정)</text>' % (ly + 3.5))
+    if two_line:
+        cx2, cy2 = 14, ly + 17
+    else:
+        cx2, cy2 = int(W * 0.50), ly
     out.append('<circle cx="%d" cy="%d" r="5.5" fill="#fff" stroke="#e8890c" '
-               'stroke-width="2.2"/>' % (int(W * 0.56), ly))
-    out.append('<circle cx="%d" cy="%d" r="2.3" fill="#e8890c"/>'
-               % (int(W * 0.56), ly))
-    out.append('<text x="%d" y="%d" font-size="10" fill="#555">'
+               'stroke-width="2.2"/>' % (cx2, cy2))
+    out.append('<circle cx="%d" cy="%d" r="2.3" fill="#e8890c"/>' % (cx2, cy2))
+    out.append('<text x="%d" y="%.1f" font-size="10" fill="#555">'
                '교차로 — 여기서만 다른 도로로 갈아탈 수 있다</text>'
-               % (int(W * 0.56) + 10, ly + 3.5))
+               % (cx2 + 10, cy2 + 3.5))
     out.append("</svg>")
     return "".join(out)
 

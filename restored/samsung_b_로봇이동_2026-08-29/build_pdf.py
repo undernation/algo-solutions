@@ -26,6 +26,14 @@ def img_tag(idx):
     return ('<div class="fig"><img src="data:image/png;base64,%s"></div>' % b64)
 
 
+def strip_notice(text):
+    """지문 첫머리의 '복원 문제' 고지는 PDF 상단 경고 상자와 겹치므로 뺀다."""
+    lines = text.split("\n")
+    while lines and (not lines[0].strip() or lines[0].lstrip().startswith("※")):
+        lines.pop(0)
+    return "\n".join(lines)
+
+
 def body(text):
     """지문 텍스트 → HTML. [[IMG:n]] 치환, ■ 소제목, 들여쓴 줄은 코드블록."""
     out, buf = [], []
@@ -124,7 +132,7 @@ HTML = """<!doctype html><meta charset="utf-8"><style>%s</style>
 <ul>%s</ul>
 """ % (CSS, html.escape(prob["title"]), html.escape(lim["time"]),
        html.escape(lim["memory"]),
-       body(prob["statement"]), ex_html,
+       body(strip_notice(prob["statement"])), ex_html,
        html.escape(prob["output_spec"]), cons)
 
 OUT = "로봇이동_문제지.pdf"
