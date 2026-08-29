@@ -1949,6 +1949,7 @@ async function viewProblem(site,no){
      'style="width:64px;flex:0 0 64px;padding:4px 6px"></label>'+
    '<button class="p" onclick="doJudge()" title="Ctrl+Enter">채점</button>'+
    '<button onclick="doSave()" title="Ctrl+S">저장 &amp; 커밋</button>'+
+   '<button onclick="resetCode()" title="에디터를 원본(빈 골격)으로 되돌립니다">소스코드 초기화</button>'+
    '<span class="hint kbd">Ctrl+Enter 채점 · Ctrl+S 저장 · Tab / Shift+Tab 들여쓰기</span>'+
    '<button class="sm" style="margin-left:auto" onclick="doFetch()" id="rf">문제 다시 가져오기</button>'+
    '<button class="sm" onclick="askDelProb(\''+esc(site)+'\',\''+esc(no)+'\')">문제 자료 삭제</button>'+
@@ -2184,6 +2185,25 @@ function renderProblem(p,site,no){
     '<b>Python 을 지원하지 않아</b> 기본 코드가 없습니다. C++/Java 로만 제출할 수 있습니다.</div>';
   }
  }else if(mb){ mb.innerHTML=""; }
+}
+
+/* 소스코드 초기화 — 에디터를 '원본'으로 되돌린다.
+   B형(api_style)은 template.user 의 빈 함수 골격, 그 외 문제는 빈 에디터가 원본이다.
+   작성 중인 코드가 있으면 되돌리기 전에 한 번 확인한다(실수로 날리지 않게). */
+function resetCode(){
+ var p=CUR.prob||{};
+ var orig=(p.api_style && p.template) ? (p.template.user||"") : "";
+ var ed=$("ed"); if(!ed) return;
+ if(ed.value.replace(/\s+$/,"")===orig.replace(/\s+$/,"")){
+  say("이미 원본 상태입니다.","info"); return;
+ }
+ if(ed.value.trim() &&
+    !confirm("작성 중인 코드를 지우고 원본"+(orig?"(빈 골격)":"(빈 에디터)")+
+             "으로 되돌립니다.\n계속할까요?")) return;
+ ed.value=orig;
+ ed.dispatchEvent(new Event("input"));   /* 높이 자동조정 등 다시 걸리게 */
+ ed.focus();
+ say("소스코드를 원본으로 되돌렸습니다.","ok");
 }
 
 /* B형 채점용 한 파일 만들기 — Main 의 solution import 를 걷어내고 [User + Main]. */
