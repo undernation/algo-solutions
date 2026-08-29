@@ -76,7 +76,7 @@ def svg_grid(x0, y0, x1, y1, path=None, title="", cell=30):
     W = (x1 - x0 + 1) * cell
     H = (y1 - y0 + 1) * cell
     out = ['<svg width="%d" height="%d" viewBox="0 0 %d %d" '
-           'style="border:1px solid #ccc;background:#fff">' % (W, H + 18, W, H + 18)]
+           'style="border:1px solid #ccc;background:#fff">' % (W, H + 40, W, H + 40)]
     if title:
         out.append('<text x="4" y="13" font-size="12" fill="#333" '
                    'font-weight="bold">%s</text>' % title)
@@ -98,7 +98,13 @@ def svg_grid(x0, y0, x1, y1, path=None, title="", cell=30):
                    'text-anchor="middle">B%d</text>'
                    % (cx(b.x + (b.w - 1) / 2.0), cy(b.y + (b.h - 1) / 2.0) - oy + oy + 4, bid))
 
-    # 도로 화살표
+    # 도로 화살표.
+    #
+    # 🚩 한 칸에 두 방향(예: UP+DOWN)이 있어도 그것은 '두 건물의 서로 다른 도로가
+    #    겹쳐 있다'는 뜻이지, 그 자리에서 방향을 바꿀 수 있다는 뜻이 아니다.
+    #    그래서 ↕ 같은 양방향 화살표로 그리지 않고, 화살표를 셀 안에서 나란히
+    #    비켜 그려 '별개의 도로 두 개'로 보이게 한다.
+    #    방향 전환이 가능한 곳은 교차로뿐이므로 거기만 크게 강조한다.
     adir = {0: (0, -1), 1: (1, 0), 2: (0, 1), 3: (-1, 0)}  # UP,RIGHT,DOWN,LEFT (dx,dy)
     for y in range(y0, y1 + 1):
         for x in range(x0, x1 + 1):
@@ -108,19 +114,31 @@ def svg_grid(x0, y0, x1, y1, path=None, title="", cell=30):
             ccx, ccy = cx(x), cy(y)
             out.append('<rect x="%d" y="%d" width="%d" height="%d" fill="none" '
                        'stroke="#eee"/>' % ((x - x0) * cell, (y - y0) * cell + oy, cell, cell))
-            for d in range(4):
-                if not (m & (1 << d)):
-                    continue
+            ds = [d for d in range(4) if m & (1 << d)]
+            vert = [d for d in ds if d in (0, 2)]     # UP/DOWN
+            horz = [d for d in ds if d in (1, 3)]     # RIGHT/LEFT
+            for d in ds:
                 ddx, ddy = adir[d]
-                r = cell * 0.32
-                x2, y2 = ccx + ddx * r, ccy + ddy * r
-                x1a, y1a = ccx - ddx * r, ccy - ddy * r
+                r = cell * 0.30
+                # 같은 축에 두 방향이 겹치면 서로 어긋나게 비켜 그린다
+                ox = oyy = 0.0
+                if d in (0, 2) and len(vert) > 1:
+                    ox = -cell * 0.16 if d == 0 else cell * 0.16
+                if d in (1, 3) and len(horz) > 1:
+                    oyy = -cell * 0.16 if d == 1 else cell * 0.16
+                bx, by = ccx + ox, ccy + oyy
+                x2, y2 = bx + ddx * r, by + ddy * r
+                x1a, y1a = bx - ddx * r, by - ddy * r
                 out.append('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" '
-                           'stroke="#5b8def" stroke-width="1.6" '
+                           'stroke="#5b8def" stroke-width="1.5" '
                            'marker-end="url(#ah)"/>' % (x1a, y1a, x2, y2))
             if S.cross[y][x]:
-                out.append('<circle cx="%.1f" cy="%.1f" r="3.2" fill="#e8890c"/>'
-                           % (ccx, ccy))
+                # 교차로 = 이 칸에서만 다른 건물 도로로 갈아탈 수 있다
+                out.append('<circle cx="%.1f" cy="%.1f" r="%.1f" fill="#fff" '
+                           'stroke="#e8890c" stroke-width="2.2" opacity="0.95"/>'
+                           % (ccx, ccy, cell * 0.20))
+                out.append('<circle cx="%.1f" cy="%.1f" r="%.1f" fill="#e8890c"/>'
+                           % (ccx, ccy, cell * 0.085))
 
     # Door
     for bid, b in S.buildings.items():
@@ -144,6 +162,20 @@ def svg_grid(x0, y0, x1, y1, path=None, title="", cell=30):
     out.append('<defs><marker id="ah" markerWidth="6" markerHeight="6" refX="5" '
                'refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#5b8def"/>'
                '</marker></defs>')
+    # 범례 — 화살표 두 개가 나란한 칸은 '두 건물의 도로가 겹친 것'이지
+    # 그 자리에서 방향을 바꿀 수 있다는 뜻이 아니다.
+    ly = H + oy - 4
+    out.append('<line x1="8" y1="%d" x2="26" y2="%d" stroke="#5b8def" '
+               'stroke-width="1.5" marker-end="url(#ah)"/>' % (ly, ly))
+    out.append('<text x="30" y="%d" font-size="10" fill="#555">'
+               '시계방향 도로(방향 고정)</text>' % (ly + 3.5))
+    out.append('<circle cx="%d" cy="%d" r="5.5" fill="#fff" stroke="#e8890c" '
+               'stroke-width="2.2"/>' % (int(W * 0.56), ly))
+    out.append('<circle cx="%d" cy="%d" r="2.3" fill="#e8890c"/>'
+               % (int(W * 0.56), ly))
+    out.append('<text x="%d" y="%d" font-size="10" fill="#555">'
+               '교차로 — 여기서만 다른 도로로 갈아탈 수 있다</text>'
+               % (int(W * 0.56) + 10, ly + 3.5))
     out.append("</svg>")
     return "".join(out)
 
