@@ -5370,5 +5370,16 @@
     "verdict": "accepted"
    }
   ]
+ },
+ "2026-08-29": {
+  "count": 1,
+  "items": [
+   {
+    "site": "SWEA",
+    "no": "2115",
+    "title": "벌꿀채취",
+    "status": "못품"
+   }
+  ]
  }
 }
