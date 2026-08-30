@@ -5375,10 +5375,38 @@
   "count": 1,
   "items": [
    {
-    "site": "SWEA",
     "no": "99999",
-    "title": "로봇 이동",
-    "status": "못품"
+    "site": "SWEA",
+    "status": "못품",
+    "title": "로봇 이동"
+   }
+  ]
+ },
+ "2026-08-30": {
+  "count": 1,
+  "items": [
+   {
+    "at": "22:29:59",
+    "attempts": [
+     {
+      "at": "22:29:59",
+      "elapsed": 7.361,
+      "file": "boj/23288.py",
+      "passed": 22,
+      "status": "품",
+      "total": 22,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 7.361,
+    "file": "boj/23288.py",
+    "no": "23288",
+    "passed": 22,
+    "site": "BOJ",
+    "status": "품",
+    "title": "주사위 굴리기 2",
+    "total": 22,
+    "verdict": "accepted"
    }
   ]
  }
