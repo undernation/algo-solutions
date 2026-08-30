@@ -2423,7 +2423,20 @@ function viewTools(){
     '그래서 바로 실행되는 것이고, 동시에 남에게 넘어가면 그대로 쓰입니다. '+
     '다 쓴 PC 에서는 압축 푼 폴더와 받은 zip 을 지우세요.</div>'+
    '</div>'+
-  '</div></div>';
+  '</div></div>'+
+  '<div class="panel"><div class="hd">SSAFY 캡처방지(webdrm) 페이지 캡처<span class="r">중요</span></div>'+
+   '<div class="bd">'+
+    '<div class="hint" style="margin-bottom:8px">SSAFY 온라인 실습·AI 강의처럼 <b>화면이 회색으로 덮이는</b> 페이지도 그대로 캡처하려면, 캡처 전용 크롬을 한 번만 세팅하면 됩니다.</div>'+
+    '<ol class="tsteps">'+
+     '<li>압축 푼 폴더의 <code>setup_capture_chrome.bat</code> 을 실행합니다 → 바탕화면에 <b>“SSAFY 캡처 크롬”</b> 바로가기가 생깁니다.</li>'+
+     '<li>그 바로가기로 크롬을 열고 <b>처음 한 번만 SSAFY 로그인</b>합니다. (캡처 전용 프로필이라 최초 1회, 이후 유지됩니다)</li>'+
+     '<li>그 크롬에서 문제 페이지를 띄운 뒤 <b>휠 버튼 0.3초 꾹</b>(또는 <b>Alt+Q</b>) → 드래그 → 놓으면 정답이 클립보드에 들어갑니다.</li>'+
+    '</ol>'+
+    '<div class="note" style="margin-top:8px"><b>알아둘 점</b><br>'+
+     '• <b>“SSAFY 캡처 크롬”으로 연 크롬</b>에서만 회색이 뚫립니다. 평소 쓰던 일반 크롬은 그대로 두면 됩니다.<br>'+
+     '• 최신 크롬은 기본 프로필로는 이 기능이 막혀 있어 <b>전용 프로필</b>을 씁니다(그래서 바로가기를 따로 만드는 것입니다).<br>'+
+     '• webdrm 이 아닌 일반 화면·페이지도 이 크롬에서 똑같이 캡처됩니다.</div>'+
+   '</div></div>';
  toolLoad();
 }
 
