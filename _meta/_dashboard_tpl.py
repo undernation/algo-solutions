@@ -1927,9 +1927,9 @@ async function viewProblem(site,no){
   '<div class="crumb"><a href="#problems">문제</a> › '+esc(SITENM[site]||site)+'</div>'+
   '<div class="ptitle"><span class="b b-'+site+'">'+esc(site)+'</span>'+esc(no)+
    (title?'&nbsp; '+esc(title):'')+'</div>'+
-  '<div id="pinfo"></div><div id="pbody"><div class="note">문제 자료를 불러오는 중…</div></div>'+
   '<div class="sec-h">제출 이력</div><div class="panel" id="phist">'+
    (subs.length? tbl(subs) : '<div class="empty">제출 기록이 없습니다.</div>')+'</div>'+
+  '<div id="pinfo"></div><div id="pbody"><div class="note">문제 자료를 불러오는 중…</div></div>'+
   '<div class="sec-h">코드 제출</div>'+
   /* B형(Pro)은 Main 과 User Code 두 칸이다. 문제 자료를 받아온 뒤에야 알 수
      있으므로 자리만 잡아 두고 renderProblem 에서 채운다. */
