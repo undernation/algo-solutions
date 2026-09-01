@@ -5460,15 +5460,6 @@
     "at": "15:06:07",
     "attempts": [
      {
-      "at": "15:04:52",
-      "elapsed": 9.41,
-      "file": "swea/25284_무선통신.py",
-      "passed": 1,
-      "status": "품",
-      "total": 1,
-      "verdict": "accepted"
-     },
-     {
       "at": "15:06:07",
       "file": "swea/25284_무선통신.py",
       "status": "못품"
