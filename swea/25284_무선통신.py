@@ -2,7 +2,7 @@
 SWEA 25284  무선통신
 https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt8IiBqxEDHBIN6&contestProbId=AZjgTHI6STrHBITM&probBoxId=AZt8IiBqxEHHBIN6&type=PROBLEM
 
-풀이일 : 2026-09-01   결과: 품
+풀이일 : 2026-09-01   결과: 못품
 한도   : time 25개 테스트케이스를 합쳐서 C++의 경우 3초 / Java의 경우 3초 / Python의 경우 7초 / memory 힙, 정적 메모리 합쳐서 262144 kbytes 이내, 스택 메모리 1024 kbytes 이내 / time_sec 7
 난이도 : D6  |  정답률 65.63%
 제약   : 1. 각 테스트 케이스 시작 시 init() 함수가 호출된다.
@@ -11,8 +11,6 @@ https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt
 제약   : 4. 각 테스트 케이스에서 연결하는 두 무선통신기의 고유 주파수가 서로 다르면, 추가로 1,000의 파워가 더 필요하다.
 제약   : 5. 각 테스트 케이스에서 사용하는 고유주파수의 종류는 최대 100 이다.
 제약   : 6. 각 테스트 케이스에서 addRadio() 함수의 호출은 최대 500 이다.
-
-[채점] accepted  1/1  (9.41s)
 
 [문제]
 [Fig. 1] 과 같이 N * N 크기의 도시에 무선통신기들이 설치되어 있다.
