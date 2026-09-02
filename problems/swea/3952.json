@@ -1,0 +1,31 @@
+{
+ "site": "SWEA",
+ "platform": "SW Expert Academy",
+ "url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWH-GSJ6EhsDFAUG",
+ "no": "3952",
+ "title": "[Professional] 줄 세우기 D4",
+ "level": "Master",
+ "stats": {
+  "participants": "707",
+  "submissions": "1,061",
+  "accepted": "405",
+  "accept_rate": "38.17",
+  "point": "100"
+ },
+ "limits": {
+  "time": "10개 테스트케이스를 합쳐서 C의 경우 1초 / C++의 경우 1초 / Java의 경우 2초 / Python의 경우 4초",
+  "memory": "힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내",
+  "time_sec": 4.0
+ },
+ "statement": "삼성 초등학교 학생들을 줄을 세우려고 한다.\n\n하지만 아이들은 쓸데없는 자존심이 있다.\n\n“내가 쟤보다는 뒤에 서야됩니다.” 와 같은 이야기를 하는 아이들이 있다.\n\n아이들의 번호는 1부터 N까지로 하고, 저런 아이들의 데이터가 주어진다. 만약 a b 라는 데이터가 주어지면 b라는 친구는 항상 a뒤에 서야한다.\n\n(바로 뒤가 아니어도 된다. 순서상 뒤에만 있으면 된다.)\n\n이런 가능한 순서 중 아무거나 출력하시오.",
+ "input_spec": "첫 줄에 테스트케이스의 개수 T가 주어진다. (1 ≤ T ≤ 20)\n\n각 테스트 케이스의 첫 줄에는 학생의 수 N과 순서의 개수를 나타내는 M이 주어진다. (1 ≤ N ≤ 50,000, 1 ≤ M ≤ 150,000,)\n\n그 다음 M개의 줄에는 순서를 나타내는 두 개의 정수 a, b가 빈칸을 두고 주어진다. (1 ≤ a,b ≤ N)",
+ "output_spec": "각 테스트케이스마다 한 줄에 걸쳐, 테스트케이스 수 “#(TC) “를 출력하고, 학생들을 줄세우는 방법 중 하나를 출력한다.",
+ "samples": [
+  {
+   "in": "1\n5 5\n1 2\n2 4\n4 5\n1 3\n3 4",
+   "out": "#1 1 2 3 4 5"
+  }
+ ],
+ "testcase_file": "sample_input.txt / sample_output.txt (다운로드로 수집)",
+ "fetched_at": "2026-09-02"
+}

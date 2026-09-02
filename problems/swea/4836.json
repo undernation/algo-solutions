@@ -1,0 +1,31 @@
+{
+ "site": "SWEA",
+ "platform": "SW Expert Academy",
+ "url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWTLZMRKpsYDFAVT",
+ "no": "4836",
+ "title": "[S/W 문제해결 기본] 2일차 - 색칠하기 D2",
+ "level": "Master",
+ "stats": {
+  "participants": "4,973",
+  "submissions": "6,481",
+  "accepted": "4,757",
+  "accept_rate": "73.40",
+  "point": "50"
+ },
+ "limits": {
+  "time": "10개 테스트케이스를 합쳐서 Python의 경우 2초",
+  "memory": "힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내",
+  "time_sec": 2.0
+ },
+ "statement": "그림과 같이 인덱스가 있는 10x10 격자에 빨간색과 파란색을 칠하려고 한다.\n\nN개의 영역에 대해 왼쪽 위와 오른쪽 아래 모서리 인덱스, 칠할 색상이 주어질 때, 칠이 끝난 후 색이 겹쳐 보라색이 된 칸 수를 구하는 프로그램을 만드시오.\n\n주어진 정보에서 같은 색인 영역은 겹치지 않는다.\n \n\n \n\n\t\n\n0\n\n\t\n\n1\n\n\t\n\n2\n\n\t\n\n3\n\n\t\n\n4\n\n\t\n\n5\n\n\t\n\n6\n\n\t\n\n7\n\n\t\n\n8\n\n\t\n\n9\n\n\t\n\nc\n\n0\n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n1\n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n2\n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n3\n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n4\n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n5\n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n6\n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n7\n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n8\n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n9\n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\nr\n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n\t\n\n \n\n예를 들어 2개의 색칠 영역을 갖는 위 그림에 대한 색칠 정보이다.\n\n2\n\n2 2 4 4 1  ( [2,2] 부터 [4,4] 까지 color 1 (빨강) 으로 칠한다 )\n\n3 3 6 6 2 ( [3,3] 부터 [6,6] 까지 color 2 (파랑) 으로 칠한다 )",
+ "input_spec": "첫 줄에 테스트 케이스 개수 T가 주어진다.   ( 1 ≤ T ≤ 50 )\n\n다음 줄부터 테스트케이스의 첫 줄에 칠할 영역의 개수 N이 주어진다. ( 2 ≤ N ≤ 30 )\n\n다음 줄에 왼쪽 위 모서리 인덱스 r1, c1, 오른쪽 아래 모서리 r2, c2와 색상 정보 color가 주어진다. ( 0 ≤ r1, c1, r2, c2 ≤ 9 )\n\ncolor = 1 (빨강), color = 2 (파랑)",
+ "output_spec": "각 줄마다 \"#T\" (T는 테스트 케이스 번호)를 출력한 뒤, 답을 출력한다.",
+ "samples": [
+  {
+   "in": "3\n2\n2 2 4 4 1\n3 3 6 6 2\n3\n1 2 3 3 1\n3 6 6 8 1\n2 3 5 6 2\n3\n1 4 8 5 1\n1 8 3 9 1\n3 2 5 8 2",
+   "out": "#1 4\n#2 5\n#3 7"
+  }
+ ],
+ "testcase_file": "sample_input.txt / sample_output.txt (다운로드로 수집)",
+ "fetched_at": "2026-09-02"
+}

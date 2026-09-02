@@ -1,0 +1,31 @@
+{
+ "site": "SWEA",
+ "platform": "SW Expert Academy",
+ "url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWTLQZwKon4DFAVT",
+ "no": "4828",
+ "title": "[S/W 문제해결 기본] 1일차 - min max D2",
+ "level": "Master",
+ "stats": {
+  "participants": "8,206",
+  "submissions": "9,462",
+  "accepted": "6,625",
+  "accept_rate": "70.02",
+  "point": "50"
+ },
+ "limits": {
+  "time": "10개 테스트케이스를 합쳐서 Python의 경우 2초",
+  "memory": "힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내",
+  "time_sec": 2.0
+ },
+ "statement": "N개의 양의 정수에서 가장 큰 수와 가장 작은 수의 차이를 출력하시오.",
+ "input_spec": "첫 줄에 테스트 케이스의 수 T가 주어진다. ( 1 ≤ T ≤ 50 )\n\n각 케이스의 첫 줄에 양수의 개수 N이 주어진다. ( 5 ≤ N ≤ 1000 )\n\n다음 줄에 N개의 양수 ai가 주어진다. ( 1 ≤ ai≤ 1000000 )",
+ "output_spec": "각 줄마다 \"#T\" (T는 테스트 케이스 번호)를 출력한 뒤, 답을 출력한다.",
+ "samples": [
+  {
+   "in": "3\n5\n477162 658880 751280 927930 297191\n5\n565469 851600 460874 148692 111090\n10\n784386 279993 982220 996285 614710 992232 195265 359810 919192 158175",
+   "out": "#1 630739\n#2 740510\n#3 838110"
+  }
+ ],
+ "testcase_file": "sample_input.txt / sample_output.txt (다운로드로 수집)",
+ "fetched_at": "2026-09-02"
+}

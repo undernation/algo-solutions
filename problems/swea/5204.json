@@ -1,0 +1,34 @@
+{
+ "site": "SWEA",
+ "platform": "SW Expert Academy",
+ "url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWT-Pu3acjYDFAVT",
+ "no": "5204",
+ "title": "[S/W 문제해결 구현] 4일차 - 병합 정렬 D3",
+ "level": "Master",
+ "stats": {
+  "participants": "2,633",
+  "submissions": "5,596",
+  "accepted": "2,073",
+  "accept_rate": "37.04",
+  "point": "100"
+ },
+ "limits": {
+  "time": "10개 테스트케이스를 합쳐서 Python의 경우 30초",
+  "memory": "힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내",
+  "time_sec": 30.0
+ },
+ "statement": "※ SW Expert 아카데미의 문제를 무단 복제하는 것을 금지합니다.\n\n알고리즘 교수님은 학생들에게 병합 정렬을 이용해 오름차순으로 정렬하는 과제를 내려고 한다.\n\n정렬 된 결과만으로는 실제로 병합 정렬을 적용했는지 알 수 없기 때문에 다음과 같은 제약을 주었다.\n\nN개의 정렬 대상을 가진 리스트 L을 분할할 때 L[0:N//2], L[N//2:N]으로 분할 한다.\n\n병합 과정에서 다음처럼 왼쪽 마지막 원소가 오른쪽 마지막 원소보다 큰 경우의 수를 출력한다.\n\n[[IMG:1]]\n\n정렬이 끝난 리스트 L에서 L[N//2] 원소를 출력한다.\n\n알고리즘 교수님의 조건에 따라 병합 정렬을 수행하는 프로그램을 만드시오.",
+ "input_spec": "첫 줄에 테스트케이스의 수 T가 주어진다. 1<=T<=50\n\n다음 줄부터 테스트 케이스의 별로 정수의 개수 N이 주어지고, 다음 줄에 N개의 정수 ai가 주어진다.\n\n5<=N<=1,000,000, 0 <= ai <= 1,000,000",
+ "output_spec": "각 줄마다 \"#T\" (T는 테스트 케이스 번호)를 출력한 뒤,  N//2 번째 원소와 오른쪽 원소가 먼저 복사되는 경우의 수를 출력한다.",
+ "samples": [
+  {
+   "in": "2\n5\n2 2 1 1 3\n10\n7 5 4 1 2 10 3 6 9 8",
+   "out": "#1 2 0\n#2 6 6"
+  }
+ ],
+ "testcase_file": "sample_input.txt / sample_output.txt (다운로드로 수집)",
+ "images": [
+  "problems/swea/img/5204_1.png"
+ ],
+ "fetched_at": "2026-09-02"
+}

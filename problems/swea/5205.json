@@ -1,0 +1,31 @@
+{
+ "site": "SWEA",
+ "platform": "SW Expert Academy",
+ "url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWT-VprKcqwDFAVT",
+ "no": "5205",
+ "title": "[S/W 문제해결 구현] 4일차 - 퀵 정렬 D3",
+ "level": "Master",
+ "stats": {
+  "participants": "2,288",
+  "submissions": "3,971",
+  "accepted": "1,986",
+  "accept_rate": "50.01",
+  "point": "100"
+ },
+ "limits": {
+  "time": "10개 테스트케이스를 합쳐서 Python의 경우 2초",
+  "memory": "힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내",
+  "time_sec": 2.0
+ },
+ "statement": "퀵 정렬을 구현해 N개의 정수를 정렬해 리스트 A에 넣고, A[N//2]에 저장된 값을 출력하는 프로그램을 만드시오.",
+ "input_spec": "첫 줄에 테스트케이스의 수 T가 주어진다. 1<=T<=50\n\n다음 줄부터 테스트 케이스의 별로 정수의 개수 N이 주어지고, 다음 줄에 N개의 정수 ai가 주어진다.\n\n5<=N<=1,000,000, 0 <= ai <= 1,000,000",
+ "output_spec": "각 줄마다 \"#T\" (T는 테스트 케이스 번호)를 출력한 뒤, , N/2번 원소를 출력한다.",
+ "samples": [
+  {
+   "in": "2\n5\n2 2 1 1 3\n10\n7 5 4 1 2 10 3 6 9 8",
+   "out": "#1 2\n#2 6"
+  }
+ ],
+ "testcase_file": "sample_input.txt / sample_output.txt (다운로드로 수집)",
+ "fetched_at": "2026-09-02"
+}

@@ -1,0 +1,28 @@
+{
+ "site": "SWEA",
+ "platform": "SW Expert Academy",
+ "url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AY6cg0MKeVkDFAXt",
+ "no": "20728",
+ "title": "공평한 분배 2 D3",
+ "level": "Master",
+ "stats": {
+  "participants": "2,275",
+  "submissions": "2,632",
+  "accepted": "1,051",
+  "accept_rate": "39.93",
+  "point": "100"
+ },
+ "limits": {
+  "time": "116개 테스트케이스를 합쳐서 C의 경우 1초 / C++의 경우 1초 / Java의 경우 2초 / Python의 경우 3초",
+  "memory": "힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내",
+  "time_sec": 3.0
+ },
+ "statement": "사탕이 담긴 N개의 주머니가 있다. 이 중 i (1≤i≤N) 번째 주머니에는 사탕이 ai개 들어 있다. 당신은 이 주머니 중 정확히 K개를 선택하여 어린이들에게 나누어 주려고 한다.\n공정성을 위해, 당신은 나눠 준 주머니 가운데 사탕의 개수가 가장 많은 것과 가장 적은 것의 사탕 개수 차이를 최소화하려고 한다.\n모든 유효한 방법 중 차이의 최솟값을 구하는 프로그램을 작성하라.\n \n\n입력\n\n첫 번째 줄에 테스트 케이스의 수 T가 주어진다.\n\n각 테스트 케이스는 두 개의 줄로 이루어진다. 첫 번째 줄에는 주머니의 개수 N (2≤N≤50)과 나눠 줄 주머니의 개수 K (2≤K≤N)이 공백 하나를 사이로 두고 주어진다.\n두 번째 줄에는 주머니 속 사탕의 개수를 나타내는 N개의 정수 a1,a2, ⋯ ,aN(1≤ai≤109)이 공백 하나씩을 사이로 두고 주어진다.\n \n\n출력\n\n각 테스트 케이스마다, 차이의 최솟값을 출력한다.\n \n\n입력\n3\n3 2\n1 2 3\n3 3\n5 20 10\n4 3\n4 3 2 1\t \nsin.txt\n다운로드\n출력\n#1 1 \n#2 15\n#3 2\t \n\n첫 번째 예제: 주머니 2개를 고르는 방법은 {1, 2}, {1, 3}, {2, 3}이 있다. 각각의 (최대) – (최소) 값은 1, 2, 1이다. 이 중 최솟값은 1이다.\n두 번째 예제: 무조건 모든 주머니를 나눠줘야 한다.\n \nsout.txt\n다운로드\n 11\n댓글(11)\n0 / 1000자\n등록\n 성명추가 2025-05-09 00:38 댓글\n0 0\n\n 재귀 조합으로 다 해볼까 했는데 이럴 경우 최악 경우가 50C25라서 시간초과 이슈로 생각해보다가...\n오름차순 이후 슬라이딩 윈도우 처럼 최대,최소만 업데이트 쳐서 비교\n\n dooyoung 2024-12-30 13:48 댓글\n0 0\n\n 오름차순으로 정렬 후 차이값 비교해보았습니다.\n\n devstar1223 2024-11-15 14:15 댓글\n0 0\n\n 슬라이딩 윈도우\n\n 터전 2024-05-14 11:29 댓글\n0 0\n\n public static void main(String[] args) {\nScanner sc = new Scanner(System.in);\nint T = sc.nextInt();\nint N; int K;\nfor(int i=0; i<T; i++) {\nN = sc.nextInt();\nK = sc.nextInt();\nlong arr[] = new long[N];\nfor(int j=0; j<N; j++) {\narr[j] = sc.nextInt();\n}\n\nfor(int j=0; j<N; j++) {\nfor(int z=j+1; z<N; z++) {\nif(arr[j] > arr[z]) {\nlong tmp = arr[j];\narr[j] = arr[z];\narr[z] = tmp;\n}\n}\n}\nlong res = (long)(arr[N-1] - arr[(N-K)]);\nSystem.out.printf(\"#%d %d\\n\", i+1, res);\nSystem.out.println();\n}\n\n}\n왜 116개중 70개만 맞을까요..\n\n 임진영_1320319 2024-09-23 18:48 댓글\n0 0\n\n@터전  반례로\n4 2\n100 10 10 5 -> 0 이 나와야 함\n\n 류가든 2024-05-10 17:44 댓글\n0 0\n\n n, k = map(int, input().split())\na = sorted(list(map(int, input().split())), reverse=True)\nresult = []\nfor i in range(n - k + 1):\nfor x in range(i + (k - 1), n):\nres = a[i] - a[x]\nresult.append(res)\nprint(\"#%d %d\" % (test_case, min(result)))\n\n 이충현_1219770 2024-05-08 11:23 댓글\n0 0\n\n 비트 마스킹으로 구현 N이 50 만약 K가 2라면 2^50 시간 초과\n재귀 당연히 시간 초과\nDP 알고리즘 또는 수학적 지식활용\n\n처음 코드 - 시간 초과\nT = int(input())\n\nfor tc in range(T):\nN, K = map(int, input().split())\nN_lst = list(map(int, input().split()))\n\nall_comb = []\nfor i in range(1 << N):\ncombination = []\nfor num in range(N):\nif i & (1 << num):\ncombination.append(N_lst[num])\nif len(combination) == K:\nall_comb.append(combination)\n\nresult = []\nfor diff in all_comb:\nresult.append(max(diff)-min(diff))\n\nprint(f\"#{tc+1} {min(result)}\")\n\n 이충현_1219770 2024-05-08 11:31 댓글\n0 0\n\n@이충현_1219770  T = int(input())\n\nfor tc in range(T):\nN, K = map(int, input().split())\nN_lst = list(map(int, input().split()))\n\nsorted_lst = sorted(N_lst)\n\nmin_diff = float('inf')\n\nfor i in range(N - K + 1):\ndiff = sorted_lst[i + K - 1] - sorted_lst[i]\nmin_diff = min(min_diff, diff)\n\nprint(f\"#{tc+1} {min_diff}\")\n정답\n\n bezzang2 2024-05-02 16:46 댓글\n0 0\n\n BufferedReader br = new BufferedReader(new InputStreamReader(System.in));\nint numOfTestCases = Integer.parseInt(br.readLine());\nfor (int test = 1; test <= numOfTestCases; test++) {\nStringTokenizer st = new StringTokenizer(br.readLine());\nint numOfCandy = Integer.parseInt(st.nextToken());\nint numOfKids = Integer.parseInt(st.nextToken());\nArrayList<Integer> candies = new ArrayList<>();\nst = new StringTokenizer(br.readLine());\nfor (int i = 0; i < numOfCandy; i++) {\ncandies.add(Integer.parseInt(st.nextToken()));\n}\ncandies.sort(Collections.reverseOrder());\nint answer = candies.get(0) - candies.get(numOfKids- 1);\nSystem.out.println(\"#\" + test + \" \" + answer);\n}\n\n여기서 테스트 케이스 정답이 70개인데 뭐가 틀렸을까요..?\n\n bezzang2 2024-05-05 22:23 댓글\n0 0\n\n@bezzang2  아.. 무조건 최대값 - 최솟값이 아니군요..\n4 3\n100 10 10 5\n면은 10 10 5를 골라야하는 것 같아요.. 저는 일단 무조건 최대값에서 빼야하는 줄 알았어요 ㅠㅠ\n아래처럼 고쳤더니 풀렸습니다.\ncandies.sort(Collections.reverseOrder());\nint minValue = Integer.MAX_VALUE;\nfor (int i = 0; i < numOfCandy; i++) {\nif (i + numOfKids - 1 < numOfCandy) {\nif (candies.get(i) - candies.get(i + numOfKids - 1) < minValue) {\nminValue = candies.get(i) - candies.get(i + numOfKids - 1);\n}\n} else {\nbreak;\n}\n}\n\n 푸른피의 소년 2024-04-24 23:39 댓글\n2 0\n\n 조합사용하면 Runtime Error 뜨니, 정렬 후 배열인덱스를 통해 최대값, 최소값으로 해결하면 Pass~\n\n이 Problem과 함께 풀면 도움이 되는 문제들 입니다.\n\n27005산불 수열\nD3\n참여자 331 제출 99 정답률 58.59 추천 1 Point 100\n26837DNA 수열\nD3\n참여자 469 제출 307 정답률 40.72 추천 2 Point 100\n\n이 Problem에 도움이 되는 학습 컨텐츠 입니다.\n\nProgramming Intermediate\nSW 문제해결 Self Study Book Ⅲ\n추천수\n 42\nProgramming Intermediate\nSW 문제해결 Self Study Book Ⅱ\n추천수\n 25\nProgramming Intermediate\nSW 문제해결 Self Study Book Ⅰ\n추천수\n 148\nAbout\nSW Expert Academy\n포인트와 랭킹\n학습 가이드\nSupport\n공지사항\nFAQ\nQ&A\n사이트 오류 제보\n사이트 맵\n이용 약관 개인정보처리방침 이메일 무단 수집 거부\n\n1366*768 이상 해상도에 최적화되어 있으며 Google Chrome 브라우저를 권장합니다. (Internet Explorer 11 이상 지원)\n\n본 사이트의 콘텐츠는 저작권법의 보호를 받는 바 무단 전재, 복사, 배포 등을 금합니다.\n\nⓒ 2017 SAMSUNG. ALL RIGHTS RESERVED",
+ "samples": [
+  {
+   "in": "3\n3 2\n1 2 3\n3 3\n5 20 10\n4 3\n4 3 2 1",
+   "out": "#1 1 \n#2 15\n#3 2"
+  }
+ ],
+ "fetched_at": "2026-09-02"
+}

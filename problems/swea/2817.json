@@ -1,0 +1,31 @@
+{
+ "site": "SWEA",
+ "platform": "SW Expert Academy",
+ "url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV7IzvG6EksDFAXB",
+ "no": "2817",
+ "title": "부분 수열의 합 D3",
+ "level": "Master",
+ "stats": {
+  "participants": "6,388",
+  "submissions": "9,712",
+  "accepted": "5,469",
+  "accept_rate": "56.31",
+  "point": "100"
+ },
+ "limits": {
+  "time": "20개 테스트케이스를 합쳐서 C++의 경우 2초 / Java의 경우 4초 / Python의 경우 8초",
+  "memory": "힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 256MB 이내",
+  "time_sec": 8.0
+ },
+ "statement": "A1, A2, ... , AN의 N개의 자연수가 주어졌을 때, 최소 1개 이상의 수를 선택하여 그 합이 K가 되는 경우의 수를 구하는 프로그램을 작성하시오.",
+ "input_spec": "첫 번째 줄에 테스트 케이스의 수 T가 주어진다.\n\n각 테스트 케이스의 첫 번째 줄에는 2개의 자연수 N(1 ≤ N ≤ 20)과 K(1 ≤ K ≤ 1000)가 주어진다.\n\n두 번째 줄에는 N개의 자연수 수열 A가 주어진다. 수열의 원소인 N개의 자연수는 공백을 사이에 두고 주어지며, 1 이상 100 이하임이 보장된다.",
+ "output_spec": "각 테스트 케이스마다 ‘#x ’(x는 테스트케이스 번호를 의미하며 1부터 시작한다)를 출력하고, 부분 수열의 합이 K가 되는 경우의 수를 출력한다.",
+ "samples": [
+  {
+   "in": "1\n4 3\n1 2 1 2",
+   "out": "#1 4"
+  }
+ ],
+ "testcase_file": "sample_input.txt / sample_output.txt (다운로드로 수집)",
+ "fetched_at": "2026-09-02"
+}

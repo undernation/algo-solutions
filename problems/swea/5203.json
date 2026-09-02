@@ -1,0 +1,31 @@
+{
+ "site": "SWEA",
+ "platform": "SW Expert Academy",
+ "url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWT-MRHKchIDFAVT",
+ "no": "5203",
+ "title": "[S/W 문제해결 구현] 3일차 - 베이비진 게임 D3",
+ "level": "Master",
+ "stats": {
+  "participants": "2,918",
+  "submissions": "7,517",
+  "accepted": "2,512",
+  "accept_rate": "33.42",
+  "point": "100"
+ },
+ "limits": {
+  "time": "10개 테스트케이스를 합쳐서 Python의 경우 2초",
+  "memory": "힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내",
+  "time_sec": 2.0
+ },
+ "statement": "0부터 9까지인 숫자 카드 4세트를 섞은 후 6개의 카드를 골랐을 때, 연속인 숫자가 3개 이상이면 run, 같은 숫자가 3개 이상이면 triplet이라고 한다.\n\n게임을 시작하면 플레이어1과 플레이어 2가 교대로 한 장 씩 카드를 가져가며, 6장을 채우기 전이라도 먼저 run이나 triplet이 되는 사람이 승자가 된다.\n\n두 사람이 가져가게 되는 순서대로 12장의 카드에 대한 정보가 주어졌을 때 승자를 알아내는 프로그램을 작성하시오. 만약 무승부인 경우 0을 출력한다.\n\n예를 들어 9 9 5 6 5 6 1 1 4 2 2 1인 경우, 플레이어 1은 9, 5, 5, 1, 4, 2카드를, 플레이어2는 9, 6, 6, 1, 2, 1을 가져가게 된다.\n\n이때는 카드를 모두 가져갈 때 까지 run이나 triplet이 없으므로 무승부가 된다.",
+ "input_spec": "첫 줄에 테스트케이스의 수 T가 주어진다. 1<=T<=50\n\n다음 줄부터 테스트 케이스의 별로 각 줄에 0에서 9사이인 12개의 숫자가 주어진다.",
+ "output_spec": "각 줄마다 \"#T\" (T는 테스트 케이스 번호)를 출력한 뒤, 답을 출력한다.",
+ "samples": [
+  {
+   "in": "3\n9 9 5 6 5 6 1 1 4 2 2 1\n5 3 2 9 1 5 2 0 9 2 0 0\n2 8 7 7 0 2 2 2 5 4 0 3",
+   "out": "#1 0\n#2 1\n#3 2"
+  }
+ ],
+ "testcase_file": "sample_input.txt / sample_output.txt (다운로드로 수집)",
+ "fetched_at": "2026-09-02"
+}

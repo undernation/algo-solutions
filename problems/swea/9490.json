@@ -1,0 +1,30 @@
+{
+ "site": "SWEA",
+ "platform": "SW Expert Academy",
+ "url": "https://swexpertacademy.com/main/code/userProblem/userProblemDetail.do?fromProbList=N&deleteYn=N&contestProbId=AXAerAPaVXMDFARP&topPath=code&lastPath=problemDetail&secondPath=problem&menuBreakDown=swea.code.menu&menuBreakDown=swea.code.problem.menu&menuDesc=swea.code.desc&menuDesc=swea.code.problem.desc&contextPath=%2Fmain&locale=ko-kr%2Cko%3Bq%3D0.9%2Cen-us%3Bq%3D0.8%2Cen%3Bq%3D0.7&serverName=localhost&localeLanguage=ko_KR&localeLanguage2=Ko_KR&remoteAddr=175.213.163.17&scripts=%2Fjs%2Finit%2Fjquery-debug.js&scripts=%2Fjs%2Finit%2Fjquery-ui.js&scripts=%2Fjs%2Finit%2Fjquery.validate.js&scripts=%2Fjs%2Fcommon.js&NOTICE_NEW_COUNT=0&ssoLogin=false&hasSDPAdminLinkAuth=false&systemAdmin=false&backendAdmin=false&isTechBlogManager=false&CURRENT_MENU_AUTHORIZATION=READ&CURRENT_MENU_AUTHORIZATION=UPDATE&CURRENT_MENU_AUTHORIZATION=EXECUTE&CURRENT_MENU_AUTHORIZATION=DOWNLOAD&logoMainfileName=logo_company.png",
+ "no": "9490",
+ "title": "풍선팡 D2",
+ "stats": {
+  "participants": "1,196",
+  "submissions": "864",
+  "accepted": "769",
+  "accept_rate": "89.00",
+  "point": "50"
+ },
+ "limits": {
+  "time": "10개 테스트케이스를 합쳐서 C/C++의 경우 1초 / Java의 경우 1초",
+  "memory": "힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내",
+  "time_sec": 1.0
+ },
+ "statement": "종이 꽃가루가 들어있는 풍선이 M개씩 N개의 줄에 붙어있고, 어떤 풍선을 터뜨리면 안에 든 종이 꽃가루 개수만큼 상하 좌우의 풍선이 추가로 터지게 되는 게임이 있다.\n\n예를 들어 풍선에 든 꽃가루가 1개씩일 때, 가운데 풍선을 터뜨리면 상하좌우의 풍선이 추가로 1개씩 터지면서 총 5개의 꽃가루가 날리게 된다.\n\n[[IMG:1]]\n\n \n\nNxM개의 풍선에 들어있는 종이 꽃가루 개수A가 주어지면, 한 개의 풍선을 선택했을 때 날릴 수 있는 꽃가루의 합 중 최대값을 출력하는 프로그램을 만드시오.\n\n(3<=N, M<=100)",
+ "samples": [
+  {
+   "in": "3\n3 5\n2 1 1 2 2 \n2 2 1 2 2 \n2 2 1 1 2 \n5 5\n3 4 1 2 3 \n3 4 1 3 2 \n2 3 2 4 1 \n1 4 4 1 3 \n2 2 3 4 4 \n5 8\n1 3 4 4 4 4 3 3 \n4 1 2 4 3 1 4 4 \n4 1 4 4 1 4 2 1 \n3 2 4 2 1 1 2 1 \n4 4 1 4 4 2 2 2",
+   "out": "#1 10\n#2 26\n#3 40"
+  }
+ ],
+ "images": [
+  "problems/swea/img/9490_1.png"
+ ],
+ "fetched_at": "2026-09-02"
+}

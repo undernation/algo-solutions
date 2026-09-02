@@ -1,0 +1,31 @@
+{
+ "site": "SWEA",
+ "platform": "SW Expert Academy",
+ "url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWTLeicaqHcDFAVT",
+ "no": "4843",
+ "title": "[S/W 문제해결 기본] 2일차 - 특별한 정렬 D3",
+ "level": "Master",
+ "stats": {
+  "participants": "4,025",
+  "submissions": "7,443",
+  "accepted": "4,062",
+  "accept_rate": "54.57",
+  "point": "100"
+ },
+ "limits": {
+  "time": "10개 테스트케이스를 합쳐서 Python의 경우 2초",
+  "memory": "힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내",
+  "time_sec": 2.0
+ },
+ "statement": "보통의 정렬은 오름차순이나 내림차순으로 이루어지지만, 이번에는 특별한 정렬을 하려고 한다.\n\nN개의 정수가 주어지면 가장 큰 수, 가장 작은 수, 2번째 큰 수, 2번째 작은 수 식으로 큰 수와 작은 수를 번갈아 정렬하는 방법이다.\n\n예를 들어 1부터 10까지 10개의 숫자가 주어지면 다음과 같이 정렬한다.\n \n\n10 1 9 2 8 3 7 4 6 5\n \n\n주어진 숫자에 대해 특별한 정렬을 한 결과를 10개까지 출력하시오",
+ "input_spec": "첫 줄에 테스트 케이스 개수 T가 주어진다.  1<=T<=50\n\n다음 줄에 정수의 개수 N이 주어지고 다음 줄에 N개의 정수 ai가 주어진다. 10<=N<=100, 1<=ai<=100",
+ "output_spec": "각 줄마다 \"#T\" (T는 테스트 케이스 번호)를 출력한 뒤, 특별히 정렬된 숫자를 10개까지 출력한다.",
+ "samples": [
+  {
+   "in": "3\n10\n1 2 3 4 5 6 7 8 9 10\n10\n67 39 16 49 60 28 8 85 89 11 \n20\n3 69 21 46 43 60 62 97 64 30 17 88 18 98 71 75 59 36 9 26",
+   "out": "#1 10 1 9 2 8 3 7 4 6 5\n#2 89 8 85 11 67 16 60 28 49 39\n#3 98 3 97 9 88 17 75 18 71 21"
+  }
+ ],
+ "testcase_file": "sample_input.txt / sample_output.txt (다운로드로 수집)",
+ "fetched_at": "2026-09-02"
+}

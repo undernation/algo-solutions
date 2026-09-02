@@ -1,0 +1,34 @@
+{
+ "site": "SWEA",
+ "platform": "SW Expert Academy",
+ "url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWTa0jjq4ggDFAVT",
+ "no": "5176",
+ "title": "[S/W 문제해결 기본] 8일차 - 이진탐색 D2",
+ "level": "Master",
+ "stats": {
+  "participants": "3,523",
+  "submissions": "2,942",
+  "accepted": "2,298",
+  "accept_rate": "78.11",
+  "point": "50"
+ },
+ "limits": {
+  "time": "10개 테스트케이스를 합쳐서 Python의 경우 2초",
+  "memory": "힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내",
+  "time_sec": 2.0
+ },
+ "statement": "※ SW Expert 아카데미의 문제를 무단 복제하는 것을 금지합니다.\n\n1부터 N까지의 자연수를 이진 탐색 트리에 저장하려고 한다.\n\n이진 탐색 트리는 어떤 경우에도 저장된 값이 왼쪽 서브트리의 루트 <현재 노드 <오른쪽 서브 트리의 루트인 규칙을 만족한다.\n\n추가나 삭제가 없는 경우에는, 완전 이진 트리가 되도록 만들면 효율적인 이진 탐색 트리를 만들수 있다.\n\n다음은 1부터 6까지의 숫자를 완전 이진 트리 형태인 이진 탐색 트리에 저장한 경우이다.\n\n[[IMG:1]]\n\n \n\n완전 이진 트리의 노드 번호는 루트를 1번으로 하고 아래로 내려가면서 왼쪽에서 오른쪽 순으로 증가한다.\n\nN이 주어졌을 때 완전 이진 트리로 만든 이진 탐색 트리의 루트에 저장된 값과, N/2번 노드(N이 홀수인 경우 소수점 버림)에 저장된 값을 출력하는 프로그램을 만드시오.",
+ "input_spec": "첫 줄에 테스트케이스의 수 T가 주어진다. 1<=T<=50\n\n다음 줄부터 테스트 케이스의 별로 N이 주어진다. 1<=N<=1000",
+ "output_spec": "각 줄마다 \"#T\" (T는 테스트 케이스 번호)를 출력한 뒤, 답을 출력한다.",
+ "samples": [
+  {
+   "in": "3\n6\n8\n15",
+   "out": "#1 4 6\n#2 5 2\n#3 8 14"
+  }
+ ],
+ "testcase_file": "sample_input.txt / sample_output.txt (다운로드로 수집)",
+ "images": [
+  "problems/swea/img/5176_1.png"
+ ],
+ "fetched_at": "2026-09-02"
+}

@@ -1,0 +1,34 @@
+{
+ "site": "SWEA",
+ "platform": "SW Expert Academy",
+ "url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV140YnqAIECFAYD",
+ "no": "1231",
+ "title": "[S/W 문제해결 기본] 9일차 - 중위순회 D4",
+ "level": "Master",
+ "stats": {
+  "participants": "6,377",
+  "submissions": "4,489",
+  "accepted": "3,823",
+  "accept_rate": "85.16",
+  "point": "100"
+ },
+ "limits": {
+  "time": "10개 테스트케이스를 합쳐서 C++의 경우 10초 / Java의 경우 20초 / Python의 경우 30초",
+  "memory": "힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내",
+  "time_sec": 30.0
+ },
+ "statement": "※ SW Expert 아카데미의 문제를 무단 복제하는 것을 금지합니다.\n\n \n\n[제한 사항]\n\n\t\t\t시간\n\n\t\t\t10개 테스트케이스를 합쳐서 C++ 의 경우 10초 / Java 의 경우 20초 / Python 의 경우 30초\n\n\t\t\t메모리\n\n\t\t\t힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내\n\n \n\n주어진 트리를 in-order 형식으로 순회해 각 노드를 읽으면 특정 단어를 알 수 있다.\n\n \n\n[[IMG:1]]\n\n  \n\n위 트리를 in-order 형식으로 순회할 경우 SOFTWARE 라는 단어를 읽을 수 있다.\n\n주어진 트리를 in-order 형식으로 순회했을때 나오는 단어를 출력하라.\n\n[제약 사항]\n\n트리는 완전 이진 트리 형식으로 주어지며, 노드당 하나의 문자만 저장할 수 있다.\n\n노드는 아래 그림과 같은 순서로 주어진다.\n\n \n\n[[IMG:2]]",
+ "input_spec": "총 10개의 테스트 케이스가 주어진다. (총 테스트 케이스의 개수는 입력으로 주어지지 않는다)\n\n각 테스트 케이스의 첫 줄에는 트리가 갖는 정점의 총 수 N(1≤N≤100)이 주어진다. 그 다음 N줄에 걸쳐 각각의 정점 정보가 주어진다.\n\n정점 정보는 해당 정점의 문자, 해당 정점의 왼쪽 자식, 오른쪽 자식의 정점 번호 순서로 주어진다.\n\n정점 번호는 1부터 N까지의 정수로 구분된다. 정점 번호를 매기는 규칙은 위 와 같으며, 루트 정점의 번호는 항상 1이다.\n\n위의 예시에서,  알파벳 ‘F’가 2번 정점에 해당하고 두 자식이 각각 알파벳 ‘O’인 4번 정점과 알파벳 ‘T’인 5번 정점이므로 “2 F 4 5”로 주어진다.\n알파벳 S는 8번 정점에 해당하므로 “8 S” 로 주어진다.",
+ "output_spec": "#부호와 함께 테스트 케이스의 번호를 출력하고, 공백 문자 후 테스트 케이스의 답을 출력한다.",
+ "samples": [
+  {
+   "in": "8\n1 W 2 3\n2 F 4 5\n3 R 6 7\n4 O 8\n5 T\n6 A\n7 E\n8 S\n32\n1 _ 2 3\n2 _ 4 5\n3 I 6 7\n4 U 8 9\n5 E 10 11\n6 _ 12 13\n7 R 14 15\n8 M 16 17\n9 E 18 19\n10 C 20 21\n11 C 22 23\n12 N 24 25\n13 N 26 27\n14 E 28 29\n15 N 30 31\n16 O 32\n17 P\n18 T\n19 R\n20 S\n21 I\n22 N\n23 E\n24 A\n25 D\n26 E\n27 G\n28 N\n29 E\n30 I\n31 G\n32 C\n33\n1 _ 2 3\n2 L 4 5\n3 A 6 7\n4 R 8 9\n5 I 10 11\n6 _ 12 13\n7 R 14 15\n8 W 16 17\n9 _ 18 19\n10 O 20 21\n11 H 22 23\n12 N 24 25\n13 A 26 27\n14 S 28 29\n15 C 30 31\n16 O 32 33\n17 A\n18 E\n19 A\n20 G\n21 R\n22 T\n23 M\n24 A\n25 D\n26 D\n27 T\n28 _\n29 T\n30 U\n31 T\n32 S\n33 F\n42\n1 A 2 3\n2 R 4 5\n3 T 6 7\n4 I 8 9\n5 _ 10 11\n6 F 12 13\n7 A 14 15\n8 T 16 17\n9 _ 18 19\n10 A 20 21\n11 R 22 23\n12 H 24 25\n13 R 26 27\n14 S 28 29\n15 C 30 31\n16 E 32 33\n17 _ 34 35\n18 S 36 37\n19 E 38 39\n20 H 40 41\n21 D 42\n22 B\n23 E\n24 T\n25 _\n26 I\n27 S\n28 _\n29 E\n30 R\n31 H\n32 D\n33 P\n34 H\n35 F\n36 R\n37 T\n38 S\n39 A\n40 C\n41 _\n42 N\n36\n1 _ 2 3\n2 L 4 5\n3 _ 6 7\n4 _ 8 9\n5 I 10 11\n6 B 12 13\n7 V 14 15\n8 C 16 17\n9 _ 18 19\n10 O 20 21\n11 H 22 23\n12 R 24 25\n13 E 26 27\n14 O 28 29\n15 N 30 31\n16 E 32 33\n17 M 34 35\n18 O 36\n19 A\n20 G\n21 R\n22 T\n23 M\n24 P\n25 O\n26 L\n27 M\n28 S\n29 L\n30 I\n31 G\n32 W\n33 L\n34 O\n35 E\n36 T\n35\n1 Q 2 3\n2 G 4 5\n3 E 6 7\n4 T 8 9\n5 A 10 11\n6 E 12 13\n7 R 14 15\n8 A 16 17\n9 I 18 19\n10 S 20 21\n11 K 22 23\n12 E 24 25\n13 T 26 27\n14 _ 28 29\n15 P 30 31\n16 R 32 33\n17 _ 34 35\n18 R\n19 N\n20 _\n21 T\n22 C\n23 _\n24 U\n25 U\n26 _\n27 R\n28 E\n29 G\n30 A\n31 H\n32 A\n33 R\n34 Y\n35 S\n49\n1 S 2 3\n2 V 4 5\n3 H 6 7\n4 W 8 9\n5 E 10 11\n6 C 12 13\n7 H 14 15\n8 W 16 17\n9 D 18 19\n10 H 20 21\n11 L 22 23\n12 R 24 25\n13 _ 26 27\n14 _ 28 29\n15 L 30 31\n16 E 32 33\n17 O 34 35\n18 U 36 37\n19 H 38 39\n20 _ 40 41\n21 _ 42 43\n22 N 44 45\n23 M 46 47\n24 _ 48 49\n25 A\n26 K\n27 T\n28 E\n29 S\n30 E\n31 L\n32 H\n33 _\n34 H\n35 _\n36 O\n37 L\n38 _\n39 A\n40 E\n41 T\n42 E\n43 K\n44 R\n45 E\n46 _\n47 U\n48 T\n49 C\n33\n1 E 2 3\n2 N 4 5\n3 T 6 7\n4 R 8 9\n5 S 10 11\n6 E 12 13\n7 M 14 15\n8 _ 16 17\n9 S 18 19\n10 _ 20 21\n11 T 22 23\n12 P 24 25\n13 E 26 27\n14 M 28 29\n15 N 30 31\n16 H 32 33\n17 P\n18 E\n19 E\n20 T\n21 I\n22 _\n23 H\n24 _\n25 R\n26 S\n27 N\n28 _\n29 O\n30 E\n31 T\n32 T\n33 E\n35\n1 P 2 3\n2 E 4 5\n3 E 6 7\n4 R 8 9\n5 D 10 11\n6 _ 12 13\n7 R 14 15\n8 O 16 17\n9 P 18 19\n10 O 20 21\n11 R 22 23\n12 S 24 25\n13 R 26 27\n14 _ 28 29\n15 C 30 31\n16 N 32 33\n17 D 34 35\n18 _\n19 R\n20 _\n21 R\n22 E\n23 _\n24 O\n25 T\n26 O\n27 D\n28 R\n29 T\n30 A\n31 E\n32 I\n33 _\n34 R\n35 E\n29\n1 N 2 3\n2 O 4 5\n3 T 6 7\n4 H 8 9\n5 T 10 11\n6 _ 12 13\n7 T 14 15\n8 E 16 17\n9 O 18 19\n10 Y 20 21\n11 A 22 23\n12 N 24 25\n13 N 26 27\n14 T 28 29\n15 E\n16 T\n17 C\n18 N\n19 L\n20 G\n21 _\n22 R\n23 I\n24 I\n25 G\n26 I\n27 S\n28 I\n29 U",
+   "out": "#1 SOFTWARE\n#2 COMPUTER_SCIENCE_AND_ENGINEERING\n#3 SOFWARE_ALGORITHM_AND_DATA_STRUCT\n#4 DEPTH_FIRST_SEARCH_AND_BREATH_FIRST_SEARCH\n#5 WELCOME_TO_ALGORITHM_PROBLEM_SOLVING\n#6 ARRAY_STRING_STACK_QUEUE_TREE_GRAPH\n#7 HE_WHO_WOULD_HAVE_THE_KERNEL_MUST_CRACK_THE_SHELL\n#8 THE_PRESENT_IS_THE_PRESENT_MOMENT\n#9 IN_ORDER_PRE_ORDER_POST_ORDER_TRACE\n#10 TECHNOLOGY_TRAINING_INSTITUTE"
+  }
+ ],
+ "images": [
+  "problems/swea/img/1231_1.png",
+  "problems/swea/img/1231_2.png"
+ ],
+ "fetched_at": "2026-09-02"
+}

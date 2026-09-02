@@ -1,0 +1,31 @@
+{
+ "site": "SWEA",
+ "platform": "SW Expert Academy",
+ "url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWUS26fKIucDFAVT",
+ "no": "5249",
+ "title": "[S/W 문제해결 구현] 7일차 - 최소 신장 트리 D4",
+ "level": "Master",
+ "stats": {
+  "participants": "2,664",
+  "submissions": "3,483",
+  "accepted": "2,345",
+  "accept_rate": "67.33",
+  "point": "100"
+ },
+ "limits": {
+  "time": "10개 테스트케이스를 합쳐서 Python의 경우 2초",
+  "memory": "힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내",
+  "time_sec": 2.0
+ },
+ "statement": "그래프에서 사이클을 제거하고 모든 노드를 포함하는 트리를 구성할 때, 가중치의 합이 최소가 되도록 만든 경우를 최소신장트리라고 한다.\n\n0번부터 V번까지의 노드와 E개의 간선을 가진 그래프 정보가 주어질 때, 이 그래프로부터 최소신장트리를 구성하는 간선의 가중치를 모두 더해 출력하는 프로그램을 만드시오.",
+ "input_spec": "첫 줄에 테스트 케이스의 개수 T가 주어지고, 테스트 케이스 별로 첫 줄에 마지막 노드번호 V와 간선의 개수 E가 주어진다.\n\n다음 줄부터 E개의 줄에 걸쳐 간선의 양 끝 노드 n1, n2, 가중치 w가 차례로 주어진다. \n\n1<=T<=50, 1<=V<=1000, 1<=w<=10, 1<=E<=1000000",
+ "output_spec": "각 줄마다 \"#T\" (T는 테스트 케이스 번호)를 출력한 뒤, 답을 출력한다.",
+ "samples": [
+  {
+   "in": "3\n2 3\n0 1 1\n0 2 1\n1 2 6\n4 7\n0 1 9\n0 2 3\n0 3 7\n1 4 2\n2 3 8\n2 4 1\n3 4 8\n4 6\n0 1 10\n0 2 7\n1 4 2\n2 3 10\n2 4 3\n3 4 10",
+   "out": "#1 2\n#2 13\n#3 22"
+  }
+ ],
+ "testcase_file": "sample_input.txt / sample_output.txt (다운로드로 수집)",
+ "fetched_at": "2026-09-02"
+}

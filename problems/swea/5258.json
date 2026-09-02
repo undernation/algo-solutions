@@ -1,0 +1,31 @@
+{
+ "site": "SWEA",
+ "platform": "SW Expert Academy",
+ "url": "https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWUTUxz6K50DFAVT",
+ "no": "5258",
+ "title": "[S/W 문제해결 최적화] 3일차 - 해피박스 D3",
+ "level": "Master",
+ "stats": {
+  "participants": "646",
+  "submissions": "509",
+  "accepted": "322",
+  "accept_rate": "63.26",
+  "point": "100"
+ },
+ "limits": {
+  "time": "10개 테스트케이스를 합쳐서 Python의 경우 2초",
+  "memory": "힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내",
+  "time_sec": 2.0
+ },
+ "statement": "일정액을 내면 크기가 정해진 박스가 가득 찰 때까지 마음대로 물건을 골라 담을 수 있는 해피박스 이벤트가 열린다고 한다.\n\nA씨는 박스에 담긴 물건의 가격합계가 최대가 되도록 물건을 담으려고 한다.\n\nA씨 차례에 남은 물건의 크기와 가격이 주어질 때, A씨가 담을 수 있는 물건 가격은 최대 얼마인지 알아내는 프로그램을 작성하시오.\n\n담긴 상품 크기의 합이 박스 크기를 초과할 수 없고, 각 상품은 1개씩 있다. A씨가 고르는 동안 다른 사람이 가져갈 수는 없다.\n\n예를 들어 박스의 크기가 10이고 상품의 크기와 가격이 다음과 같다면, 최대로 담을 수 있는 가격 합계는 2번과 3번을 담았을 때인 25이다.\n\n \n\n상품\n\n\t\n\n크기\n\n\t\n\n가격\n\n1\n\n\t\n\n6\n\n\t\n\n12\n\n2\n\n\t\n\n5\n\n\t\n\n10\n\n3\n\n\t\n\n5\n\n\t\n\n15\n\n4\n\n\t\n\n4\n\n\t\n\n6",
+ "input_spec": "첫 줄에 테스트 케이스의 개수 T가 주어지고, 테스트 케이스 별로, 첫 줄에 박스의 크기 N과 상품의 개수 M이, 이후 M개의 줄에 걸쳐 상품 i의 크기Si와 가격Pi가 주어진다.\n10<=N<=100, 1<= Si, Pi, M<=20",
+ "output_spec": "각 줄마다 \"#T\" (T는 테스트 케이스 번호)를 출력한 뒤, 테스트 케이스에 대한 답을 출력한다.",
+ "samples": [
+  {
+   "in": "2\n10 4\n6 12\n5 10\n5 15\n4 6\n12 5\n7 20\n3 10\n5 3\n3 8\n6 15",
+   "out": "#1 25\n#2 33"
+  }
+ ],
+ "testcase_file": "sample_input.txt / sample_output.txt (다운로드로 수집)",
+ "fetched_at": "2026-09-02"
+}
