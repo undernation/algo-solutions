@@ -13,3 +13,6 @@ README.md           merge=ours
 # ⚠️ history.json 에 merge=union 을 걸었다가 JSON 이 깨진 사고가 있었다(2026-08-12).
 # union 은 양쪽 줄을 그냥 이어붙여서, 서로 다른 항목의 키가 뒤섞인 잘못된 JSON 이 된다.
 # 기본 3-way merge 를 쓰고 충돌하면 눈에 보이게 둔다.
+# index.json 도 build_probindex.py 가 매번 재생성하는 생성물이다.
+# 여기 없어서 rebase 때 충돌 마커가 그대로 커밋돼 사이트 색인이 깨졌다(2026-09-01).
+problems/index.json  merge=ours -diff
