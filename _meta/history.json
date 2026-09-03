@@ -5509,7 +5509,7 @@
   "count": 1,
   "items": [
    {
-    "at": "12:02:48",
+    "at": "13:17:32",
     "attempts": [
      {
       "at": "12:00:11",
@@ -5525,6 +5525,11 @@
       "at": "12:02:48",
       "file": "swea/25307_그림판2.py",
       "status": "품"
+     },
+     {
+      "at": "13:17:32",
+      "file": "swea/25307_그림판2.py",
+      "status": "못품"
      }
     ],
     "elapsed": 9.588,
@@ -5532,7 +5537,7 @@
     "no": "25307",
     "passed": 1,
     "site": "SWEA",
-    "status": "품",
+    "status": "못품",
     "title": "그림판2",
     "total": 1,
     "verdict": "accepted"
