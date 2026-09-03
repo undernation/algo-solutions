@@ -5512,15 +5512,6 @@
     "at": "12:02:48",
     "attempts": [
      {
-      "at": "11:58:13",
-      "elapsed": 9.588,
-      "file": "swea/25307_그림판2.py",
-      "passed": 1,
-      "status": "못품",
-      "total": 1,
-      "verdict": "accepted"
-     },
-     {
       "at": "12:00:11",
       "file": "swea/25307_그림판2.py",
       "status": "품"
