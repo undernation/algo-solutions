@@ -2,7 +2,7 @@
 SWEA 25307  그림판2
 https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt8IiBqxEDHBIN6&contestProbId=AZjgdIdKSqfHBITM&probBoxId=AZt8IiBqxEHHBIN6&type=PROBLEM
 
-풀이일 : 2026-09-03   결과: 못품
+풀이일 : 2026-09-03   결과: 품
 한도   : time 25개 테스트케이스를 합쳐서 C++의 경우 3초 / Java의 경우 3초 / Python의 경우 10초 / memory 힙, 정적 메모리 합쳐서 262144 kbytes 이내, 스택 메모리 1024 kbytes 이내 / time_sec 10
 난이도 : D6  |  정답률 33.65%
 제약   : 1. 각 테스트 케이스 시작 시 init() 함수가 한 번 호출된다.
@@ -10,8 +10,6 @@ https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt
 제약   : 3. 각 테스트 케이스에서 makeDot() 함수의 호출 횟수는 10,000 이하이다.
 제약   : 4. 각 테스트 케이스에서 paint() 함수의 호출 횟수는 10 이하이다.
 제약   : 5. 각 테스트 케이스에서 getColor() 함수의 호출 횟수는 10,000 이하이다.
-
-[채점] accepted  1/1  (9.588s)
 
 [문제]
 그림판은 정사각형 모양을 가지고 N * N 개의 셀들로 구성되어 있다. N은 2K으로 표현되는 정수이다. (2 ≤ K ≤ 9)
