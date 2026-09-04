@@ -5553,7 +5553,7 @@
   ]
  },
  "2026-09-04": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "14:07:42",
@@ -5577,6 +5577,29 @@
     "title": "전송시간",
     "total": 1,
     "verdict": "time_limit_exceeded"
+   },
+   {
+    "at": "16:00:28",
+    "attempts": [
+     {
+      "at": "16:00:28",
+      "elapsed": 0.284,
+      "file": "swea/1231_[S_W문제해결기본]9일차-중위순회D4.py",
+      "passed": 1,
+      "status": "품",
+      "total": 1,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.284,
+    "file": "swea/1231_[S_W문제해결기본]9일차-중위순회D4.py",
+    "no": "1231",
+    "passed": 1,
+    "site": "SWEA",
+    "status": "품",
+    "title": "[S/W 문제해결 기본] 9일차 - 중위순회 D4",
+    "total": 1,
+    "verdict": "accepted"
    }
   ]
  }
