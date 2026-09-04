@@ -5551,5 +5551,33 @@
     "verdict": "accepted"
    }
   ]
+ },
+ "2026-09-04": {
+  "count": 1,
+  "items": [
+   {
+    "at": "14:07:42",
+    "attempts": [
+     {
+      "at": "14:07:42",
+      "elapsed": 6.084,
+      "file": "swea/25310_전송시간.py",
+      "passed": 0,
+      "status": "못품",
+      "total": 1,
+      "verdict": "time_limit_exceeded"
+     }
+    ],
+    "elapsed": 6.084,
+    "file": "swea/25310_전송시간.py",
+    "no": "25310",
+    "passed": 0,
+    "site": "SWEA",
+    "status": "못품",
+    "title": "전송시간",
+    "total": 1,
+    "verdict": "time_limit_exceeded"
+   }
+  ]
  }
 }
