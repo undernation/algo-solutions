@@ -281,6 +281,48 @@ pre.io{background:var(--soft);border:1px solid var(--bd);border-radius:6px;paddi
 .tcnum{display:inline-block;background:var(--tcnumbg);color:var(--ac);font-weight:800;
  border-radius:5px;padding:0 7px;font-size:11.5px}
 
+
+/* ── 우측 플로팅 목차 (문제 페이지) ──
+   지문이 길면 코드 칸까지 스크롤을 한참 굴려야 했다. 화면 오른쪽에 섹션 눈금을
+   붙여 두고 누르면 그 자리로 보낸다. 평소엔 눈금만 있어 본문을 가리지 않고,
+   마우스를 올리면 이름이 펼쳐진다. 지금 보고 있는 섹션은 눈금이 길어진다. */
+#ptoc{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:26;
+ display:flex;flex-direction:column;align-items:flex-end;gap:3px;padding:9px;
+ border:1px solid transparent;border-radius:12px;max-height:80vh;
+ transition:background .14s,border-color .14s,box-shadow .14s}
+#ptoc.hide{display:none}
+#ptoc .lst{display:flex;flex-direction:column;gap:1px;width:100%;
+ max-height:72vh;overflow-y:auto;overscroll-behavior:contain}
+#ptoc .tgl{display:none}
+#ptoc a{display:flex;align-items:center;justify-content:flex-end;gap:9px;
+ padding:4px 8px;border-radius:6px;font-size:12.5px;font-weight:600;
+ color:var(--sub);white-space:nowrap;line-height:1.45}
+#ptoc a:hover{color:var(--ac);text-decoration:none}
+#ptoc a .tx{order:-1;max-width:0;opacity:0;overflow:hidden;text-align:right;
+ transition:max-width .18s,opacity .14s}
+#ptoc a .ln{flex:none;width:16px;height:2px;border-radius:2px;background:var(--mute);
+ transition:width .14s,background .14s}
+#ptoc a:hover .ln{background:var(--ac)}
+#ptoc a.on{color:var(--ac);background:var(--navon)}
+#ptoc a.on .ln{width:28px;background:var(--ac)}
+#ptoc a.on .tx{max-width:210px;opacity:1}
+#ptoc:hover{background:var(--panel);border-color:var(--bd);box-shadow:0 10px 30px rgba(0,0,0,.13)}
+#ptoc:hover a .tx{max-width:210px;opacity:1}
+/* 본문(1120px) 바깥에 자리가 남는 넓은 화면에서는 처음부터 펼쳐 둔다 */
+@media(min-width:1500px){#ptoc a .tx{max-width:210px;opacity:1}}
+/* 좁은 화면 — hover 가 없으므로 오른쪽 아래 버튼을 눌러 펼친다 */
+@media(max-width:900px){
+ #ptoc{top:auto;bottom:16px;right:12px;transform:none;padding:5px;
+  flex-direction:column-reverse;background:var(--panel);border-color:var(--bd);
+  box-shadow:0 8px 26px rgba(0,0,0,.18)}
+ #ptoc .tgl{display:block;border:0;background:transparent;color:var(--sub);
+  font-size:17px;line-height:1;padding:6px 9px;cursor:pointer}
+ #ptoc .lst{display:none;max-height:56vh}
+ #ptoc.open .lst{display:flex;padding-bottom:4px}
+ #ptoc.open a .tx{max-width:52vw;opacity:1}
+ #ptoc a{padding:7px 6px}
+}
+
 /* ── 복기 메모 ── */
 .nfold{border:1px solid var(--bd);border-radius:8px;background:var(--panel)}
 .nfold>summary{cursor:pointer;list-style:none;padding:12px 16px;font-weight:700;font-size:14px;
@@ -483,6 +525,7 @@ button.danger:hover{opacity:.88;color:#fff;border-color:var(--no)}
  <div id="v-run" class="hide"></div>
  <div id="v-c" class="hide"></div>
 </main>
+<aside id="ptoc" class="hide"></aside>
 <div id="cv" onclick="if(event.target===this)closeCode()"><div id="cvb">
  <div id="cvh"><span id="cvt"></span><span class="p" id="cvp"></span>
   <span class="sp"><button class="sm" onclick="copyCode()" id="cvcp">복사</button>
@@ -672,6 +715,7 @@ function go(){
  var h=(location.hash||"#home").slice(1);
  var v=h.split("/")[0]||"home";
  ["home","problems","status","p","run","c","tools"].forEach(function(x){ $("v-"+x).className = (x===v?"":"hide"); });
+ if(v!=="p") tocHide();
  Array.prototype.forEach.call(document.querySelectorAll("nav a"),function(a){
   var on=(a.dataset.v===v);
   /* 연습장은 토큰이 있을 때만 보인다(서버에서 코드를 돌리는 기능이라).
@@ -2079,7 +2123,71 @@ function copyTC(id, btn){
  },function(){ btn.textContent="실패"; });
 }
 
+
+/* ════════ 우측 목차 ════════
+   문제 페이지의 <div class="sec-h"> 를 그대로 훑어 눈금을 만든다. 섹션이 문제마다
+   다르므로(B형은 Main 칸이 붙고, 예제 수도 제각각) 목록을 따로 관리하지 않고
+   그릴 때마다 다시 읽는다. renderProblem 이 끝나면 저절로 다시 만들어진다. */
+var TOCH=[], TOCRAF=0;
+
+function tocHide(){
+ var b=$("ptoc"); if(!b)return;
+ b.className="hide"; b.innerHTML=""; TOCH=[];
+}
+function buildTOC(){
+ var b=$("ptoc"); if(!b)return;
+ if(location.hash.indexOf("#p/")!==0) return tocHide();
+ var host=$("v-p"); if(!host||host.className==="hide") return tocHide();
+ /* 접힌 <details>(히든 TC) 안의 제목은 화면에 없어 위치를 잡을 수 없다 — 뺀다 */
+ var hs=Array.prototype.filter.call(host.querySelectorAll(".sec-h"),function(el){
+  return !el.closest("details");
+ });
+ if(hs.length<3) return tocHide();     /* 자료가 없는 문제까지 띄우면 방해만 된다 */
+ var h='<button class="tgl" onclick="tocToggle()" title="목차">&#9776;</button>'+
+       '<div class="lst"><a href="#" onclick="tocGo(-1,event)">'+
+       '<span class="tx">맨 위</span><span class="ln"></span></a>';
+ hs.forEach(function(el,i){
+  el.id="sec"+i;
+  h+='<a href="#" onclick="tocGo('+i+',event)"><span class="tx">'+
+     esc(el.textContent.trim())+'</span><span class="ln"></span></a>';
+ });
+ b.innerHTML=h+'</div>';
+ var as=b.querySelectorAll(".lst a");
+ TOCH=hs.map(function(el,i){ return {el:el,a:as[i+1]}; });
+ b.className="";
+ tocSpy();
+}
+function tocToggle(){ var b=$("ptoc"); if(b)b.classList.toggle("open"); }
+function tocGo(i,e){
+ if(e)e.preventDefault();
+ var b=$("ptoc"); if(b)b.classList.remove("open");
+ if(i<0) return window.scrollTo({top:0,behavior:"smooth"});
+ var t=TOCH[i]; if(!t)return;
+ /* 헤더가 화면 위에 붙어 있으므로(54px) 그만큼 띄워서 멈춘다 */
+ var y=t.el.getBoundingClientRect().top+window.scrollY-70;
+ window.scrollTo({top:y<0?0:y,behavior:"smooth"});
+}
+/* 지금 보고 있는 섹션에 표시 — 마지막 칸이 짧으면 영영 안 켜지므로
+   바닥까지 내렸을 때는 무조건 마지막 것을 켠다. */
+function tocSpy(){
+ if(!TOCH.length)return;
+ var y=window.scrollY+96, cur=-1;
+ for(var i=0;i<TOCH.length;i++){
+  if(TOCH[i].el.getBoundingClientRect().top+window.scrollY<=y) cur=i;
+ }
+ if(cur<0) cur=0;
+ if((window.innerHeight+window.scrollY)>=document.body.scrollHeight-4) cur=TOCH.length-1;
+ TOCH.forEach(function(t,i){ t.a.className=(i===cur?"on":""); });
+}
+window.addEventListener("scroll",function(){
+ if(TOCRAF)return;
+ TOCRAF=requestAnimationFrame(function(){ TOCRAF=0; tocSpy(); });
+},{passive:true});
+window.addEventListener("resize",function(){ tocSpy(); },{passive:true});
+
 function renderProblem(p,site,no){
+ /* 섹션 구성이 바뀌므로 그림이 끝난 뒤 목차를 다시 만든다 */
+ setTimeout(buildTOC,0);
  CUR.prob=p;
  var subs=BYPROB[site+"/"+no]||[];
  if($("phist")) $("phist").innerHTML =
