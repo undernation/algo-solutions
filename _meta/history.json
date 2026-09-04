@@ -5556,10 +5556,19 @@
   "count": 1,
   "items": [
    {
-    "at": "14:07:42",
+    "at": "14:13:10",
     "attempts": [
      {
       "at": "14:07:42",
+      "elapsed": 6.084,
+      "file": "swea/25310_전송시간.py",
+      "passed": 0,
+      "status": "못품",
+      "total": 1,
+      "verdict": "time_limit_exceeded"
+     },
+     {
+      "at": "14:13:10",
       "elapsed": 6.084,
       "file": "swea/25310_전송시간.py",
       "passed": 0,
