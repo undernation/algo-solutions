@@ -2,12 +2,14 @@
 SWEA 25010  인기 검색어
 https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt8IiBqxEDHBIN6&contestProbId=AZih7SL6varHBINp&probBoxId=AZt8IiBqxEHHBIN6&type=PROBLEM
 
-풀이일 : 2026-08-31   결과: 못품
+풀이일 : 2026-09-05   결과: 못품
 한도   : time 25개 테스트케이스를 합쳐서 C++의 경우 3초 / Java의 경우 3초 / Python의 경우 6초 / memory 힙, 정적 메모리 합쳐서 262144 kbytes 이내, 스택 메모리 1024 kbytes 이내 / time_sec 6
 난이도 : D6  |  정답률 76.42%
 제약   : 1. 각 테스트 케이스 시작 시 init() 함수가 한 번 호출된다.
 제약   : 2. 각 테스트케이스별로 addKeyword() 의 호출횟수는 최대 10,000 회이다.
 제약   : 3. 각 테스트케이스별로 top5Keyword() 의 호출횟수는 최대 100 회이다.
+
+[채점] accepted  1/1  (3.219s)
 
 [문제]
 실시간으로 Top 5 인기검색어를 찾는 프로그램을 구현해보자.
@@ -1226,14 +1228,235 @@ mRet 에 저장된 인기 검색어 갯수
 
 # ── User Code ──
 from typing import List
+from collections import deque, defaultdict
 
-def init(N : int) -> None:
-    pass
-def addKeyword(mKeyword : str) -> None:
-    pass
 
-def top5Keyword(mRet : List[str]) -> int:
-    return 0
+# 최근 N개의 검색어
+g_N = 0
+window = deque()
+
+# 현재 최근 N개 안에서 각 검색어 등장 횟수
+keyword_count = {}
+
+# pattern -> 현재 존재하는 검색어 집합
+#
+# ex)
+# "aaa" -> "*aa", "a*a", "aa*"
+#
+# "*aa" : {"aaa", "baa", ...}
+pattern_dict = defaultdict(set)
+
+
+def get_patterns(word):
+    """
+    한 글자를 *로 치환한 모든 패턴 생성
+
+    abc
+    -> *bc
+    -> a*c
+    -> ab*
+    """
+    ret = []
+
+    for i in range(len(word)):
+        ret.append(
+            word[:i] + "*" + word[i + 1:]
+        )
+
+    return ret
+
+
+def activate_keyword(word):
+    """
+    최근 N개 안에 word가 처음 등장했을 때
+    pattern_dict에 등록
+    """
+    for pattern in get_patterns(word):
+        pattern_dict[pattern].add(word)
+
+
+def deactivate_keyword(word):
+    """
+    최근 N개에서 word가 완전히 사라졌을 때
+    pattern_dict에서 제거
+    """
+    for pattern in get_patterns(word):
+
+        bucket = pattern_dict[pattern]
+
+        bucket.remove(word)
+
+        if not bucket:
+            del pattern_dict[pattern]
+
+
+def init(N: int) -> None:
+    global g_N
+    global window
+    global keyword_count
+    global pattern_dict
+
+    g_N = N
+
+    window = deque()
+
+    keyword_count = {}
+
+    pattern_dict = defaultdict(set)
+
+
+def addKeyword(mKeyword: str) -> None:
+
+    # =====================================================
+    # 새로운 검색어 추가
+    # =====================================================
+
+    window.append(mKeyword)
+
+    # 최근 N개에 처음 등장하는 검색어라면
+    # 유사 검색용 pattern 등록
+    if keyword_count.get(mKeyword, 0) == 0:
+        activate_keyword(mKeyword)
+
+    keyword_count[mKeyword] = keyword_count.get(mKeyword, 0) + 1
+
+
+    # =====================================================
+    # N개 초과 시 가장 오래된 검색어 제거
+    # =====================================================
+
+    if len(window) > g_N:
+
+        old = window.popleft()
+
+        keyword_count[old] -= 1
+
+        # 최근 N개 안에서 완전히 사라진 경우
+        if keyword_count[old] == 0:
+
+            del keyword_count[old]
+
+            deactivate_keyword(old)
+
+
+def top5Keyword(mRet: List[str]) -> int:
+
+    # 현재 존재하는 서로 다른 검색어들
+    visited = set()
+
+    # 이미 확인한 pattern
+    #
+    # 같은 pattern bucket을 여러 번 탐색할 필요가 없음
+    used_pattern = set()
+
+    # (그룹 총 등장횟수, 대표 검색어)
+    groups = []
+
+
+    # =====================================================
+    # Connected Component 탐색
+    # =====================================================
+
+    for start in keyword_count:
+
+        if start in visited:
+            continue
+
+        q = deque()
+
+        q.append(start)
+        visited.add(start)
+
+        # 현재 component의 전체 호출 횟수
+        total_count = 0
+
+        # 대표 검색어
+        representative = None
+        representative_count = -1
+
+
+        while q:
+
+            cur = q.popleft()
+
+            cur_count = keyword_count[cur]
+
+            # ---------------------------------------------
+            # 그룹 전체 등장 횟수
+            # ---------------------------------------------
+
+            total_count += cur_count
+
+
+            # ---------------------------------------------
+            # 대표 검색어 선정
+            #
+            # 1. 개별 등장 횟수가 많은 검색어
+            # 2. 같으면 사전순
+            # ---------------------------------------------
+
+            if (
+                cur_count > representative_count
+                or
+                (
+                    cur_count == representative_count
+                    and
+                    cur < representative
+                )
+            ):
+                representative = cur
+                representative_count = cur_count
+
+
+            # ---------------------------------------------
+            # cur와 유사한 검색어 탐색
+            # ---------------------------------------------
+
+            for pattern in get_patterns(cur):
+
+                if pattern in used_pattern:
+                    continue
+
+                used_pattern.add(pattern)
+
+                # 같은 pattern을 가진 서로 다른 단어들은
+                # 정확히 한 글자만 다름
+                for nxt in pattern_dict[pattern]:
+
+                    if nxt in visited:
+                        continue
+
+                    visited.add(nxt)
+                    q.append(nxt)
+
+
+        groups.append(
+            (total_count, representative)
+        )
+
+
+    # =====================================================
+    # 인기검색어 순위
+    #
+    # 1. 그룹 전체 등장 횟수 내림차순
+    # 2. 대표 검색어 사전순
+    # =====================================================
+
+    groups.sort(
+        key=lambda x: (-x[0], x[1])
+    )
+
+
+    # =====================================================
+    # Top 5 반환
+    # =====================================================
+
+    ret_count = min(5, len(groups))
+
+    for i in range(ret_count):
+        mRet[i] = groups[i][1]
+
+    return ret_count
 
 
 # ── Main (수정 불가) ──
