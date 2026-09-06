@@ -5670,7 +5670,7 @@
   ]
  },
  "2026-09-06": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "10:55:33",
@@ -5686,6 +5686,29 @@
     "site": "SWEA",
     "status": "못품",
     "title": "인기 검색어"
+   },
+   {
+    "at": "22:17:15",
+    "attempts": [
+     {
+      "at": "22:17:15",
+      "elapsed": 14.711,
+      "file": "swea/25284_무선통신.py",
+      "passed": 1,
+      "status": "시간초과",
+      "total": 1,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 14.711,
+    "file": "swea/25284_무선통신.py",
+    "no": "25284",
+    "passed": 1,
+    "site": "SWEA",
+    "status": "시간초과",
+    "title": "무선통신",
+    "total": 1,
+    "verdict": "accepted"
    }
   ]
  }

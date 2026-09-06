@@ -2,7 +2,7 @@
 SWEA 25284  무선통신
 https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt8IiBqxEDHBIN6&contestProbId=AZjgTHI6STrHBITM&probBoxId=AZt8IiBqxEHHBIN6&type=PROBLEM
 
-풀이일 : 2026-09-05   결과: 못품
+풀이일 : 2026-09-06   결과: 시간초과
 한도   : time 25개 테스트케이스를 합쳐서 C++의 경우 3초 / Java의 경우 3초 / Python의 경우 7초 / memory 힙, 정적 메모리 합쳐서 262144 kbytes 이내, 스택 메모리 1024 kbytes 이내 / time_sec 7
 난이도 : D6  |  정답률 65.63%
 제약   : 1. 각 테스트 케이스 시작 시 init() 함수가 호출된다.
@@ -11,6 +11,8 @@ https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt
 제약   : 4. 각 테스트 케이스에서 연결하는 두 무선통신기의 고유 주파수가 서로 다르면, 추가로 1,000의 파워가 더 필요하다.
 제약   : 5. 각 테스트 케이스에서 사용하는 고유주파수의 종류는 최대 100 이다.
 제약   : 6. 각 테스트 케이스에서 addRadio() 함수의 호출은 최대 500 이다.
+
+[채점] accepted  1/1  (14.711s)
 
 [문제]
 [Fig. 1] 과 같이 N * N 크기의 도시에 무선통신기들이 설치되어 있다.
@@ -1377,7 +1379,116 @@ mID 무선통신기에서 mCount 개 무선통신기를 연결하기 위한 최�
 """
 
 # ── User Code ──
-.
+from typing import List
+import heapq
+
+
+class Radio:
+    def __init__(self):
+        self.y = -1
+        self.x = -1
+        self.sec_y = -1
+        self.sec_x = -1
+        self.freq = -1
+
+
+def calc_dist(sy, sx, ey, ex):
+    return abs(sy - ey) + abs(sx - ex)
+
+
+def init(N: int, mLimit: int) -> None:
+    global g_N
+    global g_limit, graph, limit_dist, radios, section_count
+    g_N = N
+    g_limit = mLimit
+    limit_dist = mLimit // 1000
+
+    section_count = (N + 99) // 100
+    radios = {}
+    graph = [[set() for _ in range(section_count)] for _ in range(section_count)]
+
+
+def get_section(cy, cx):
+    return cy // 100, cx // 100
+
+
+def addRadio(K: int, mID: List[int], mFreq: List[int], mY: List[int], mX: List[int]) -> None:
+    for k in range(K):
+        radio = Radio()
+        cur_id = mID[k]
+        radio.freq = mFreq[k]
+        radio.y = mY[k]
+        radio.x = mX[k]
+        sec_y, sec_x = get_section(mY[k], mX[k])
+        radio.sec_y = sec_y
+        radio.sec_x = sec_x
+        graph[sec_y][sec_x].add(cur_id)
+        radios[cur_id] = radio
+
+
+def getMinPower(mID: int, mCount: int) -> int:
+    # 안쪽은 다보고
+    # 바깥쪽은 주파수 같은것만 보기
+    cur_radio = radios[mID]
+    sec_y = cur_radio.sec_y
+    sec_x = cur_radio.sec_x
+    cy = cur_radio.y
+    cx = cur_radio.x
+    freq = cur_radio.freq
+    # 안쪽 확인
+    y_inner_start = max(0, sec_y - limit_dist + 1)
+    y_inner_end = min(section_count - 1, sec_y + limit_dist - 1)
+
+    x_inner_start = max(0, sec_x - limit_dist + 1)
+    x_inner_end = min(section_count - 1, sec_x + limit_dist - 1)
+
+    hq = []
+
+    for ny in range(max(0, sec_y - limit_dist), min(section_count - 1, sec_y + limit_dist) + 1):
+        for nx in range(max(0, sec_x - limit_dist), min(section_count - 1, sec_x + limit_dist) + 1):
+            # 안쪽이면 둘다보기
+            if (y_inner_start <= ny <= y_inner_end) \
+                    and (x_inner_start <= nx <= x_inner_end):
+                bucket = graph[ny][nx]
+                for cur_id in bucket:
+                    if cur_id == mID:
+                        continue
+                    cur_y = radios[cur_id].y
+                    cur_x = radios[cur_id].x
+                    cur_freq = radios[cur_id].freq
+                    if freq != cur_freq:
+
+                        cur_power = calc_dist(cy, cx, cur_y, cur_x) * 10 + 1000
+                    else:
+                        cur_power = calc_dist(cy, cx, cur_y, cur_x) * 10
+                    if cur_power <= g_limit:
+                        heapq.heappush(hq, cur_power)
+            else:
+                bucket = graph[ny][nx]
+                for cur_id in bucket:
+                    if cur_id == mID:
+                        continue
+                    cur_freq = radios[cur_id].freq
+                    if cur_freq != freq:
+                        continue
+                    cur_y = radios[cur_id].y
+                    cur_x = radios[cur_id].x
+
+                    cur_power = calc_dist(cy, cx, cur_y, cur_x) * 10
+                    if cur_power <= g_limit:
+                        heapq.heappush(hq, cur_power)
+
+    cnt = 0
+    answer = 0
+    # print("getMinPower, hq", hq)
+
+    while hq and cnt < mCount:
+        power = heapq.heappop(hq)
+        answer += power
+        cnt += 1
+
+    # print("getMinPower", answer)
+    return answer
 
 
 # ── Main (수정 불가) ──
