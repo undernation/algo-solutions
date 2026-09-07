@@ -2,7 +2,7 @@
 SWEA 25310  전송시간
 https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt8IiBqxEDHBIN6&contestProbId=AZjgeHpKSrnHBITM&probBoxId=AZt8IiBqxEHHBIN6&type=PROBLEM
 
-풀이일 : 2026-09-04   결과: 못품
+풀이일 : 2026-09-07   결과: 품
 한도   : time 25개 테스트케이스를 합쳐서 C++의 경우 3초 / Java의 경우 3초 / Python의 경우 4초 / memory 힙, 정적 메모리 합쳐서 262144 kbytes 이내, 스택 메모리 1024 kbytes 이내 / time_sec 4
 난이도 : D6  |  정답률 69.89%
 제약   : 1. 각 테스트 케이스 시작 시 init() 함수가 호출된다.
@@ -10,7 +10,7 @@ https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt
 제약   : 3. 각 테스트 케이스에서 removeLine() 함수의 호출 횟수는 최대 200 이다.
 제약   : 4. 각 테스트 케이스에서 checkTime() 함수의 호출 횟수는 최대 700 이다.
 
-[채점] time_limit_exceeded  0/1  (6.084s)
+[채점] time_limit_exceeded  0/1  (6.468s)
 
 [문제]
 네트워크의 루트 노드 3개로 외부와 통신하는 네트워크가 있다. 네트워크의 전송 시간을 알아보기 위해 루트 노드 간의 최단 전송 시간을 측정하려고 한다.
@@ -1805,234 +1805,16 @@ mNodeA 노드와 mNodeB 노드 사이의 최단 전송 시간
 
 # ── User Code ──
 from typing import List
-from collections import defaultdict
 import heapq
 
-def changer(num):
-    row = num // 100
-    col = num % 100
-    return row * 3 + col
+def change_to_idx(node_num):
+    group = node_num // 100
+    num = node_num % 100
+    return group * 3 + num
 
-def is_present(node_num):
-    ret = node_num % 100
-    if 1 <= ret <= 3:
-        return True
-    else:
-        return False
+def dijkstra(start, costs, graph):
 
-def update_group(cur_group):
-    cur_costs = small_group_time_dict[cur_group]
-    cur_graph = small_group_graph_dict[cur_group]
-
-    first = cur_group * 3 + 1
-    second = cur_group * 3 + 2
-    third = cur_group * 3 + 3
-    # 새로 소규모 다익스트라로 대표 노드 간 거리 갱신
-    # 1 -> 2, 3
-    dist = small_dijkstra(1, cur_graph, cur_costs)
-    # print("debug dist", dist)
-    # print(dist[2], dist[3])
-    # 1 -> 2 갱신
-    large_group_time[first][second] = dist[2]
-    large_group_time[second][first] = dist[2]
-    large_group_graph[first].add(second)
-    large_group_graph[second].add(first)
-    # 1 -> 3
-    large_group_time[first][third] = dist[3]
-    large_group_time[third][first] = dist[3]
-    large_group_graph[first].add(third)
-    large_group_graph[third].add(first)
-
-    dist = small_dijkstra(2, cur_graph, cur_costs)
-    # 2 -> 3
-    large_group_time[second][third] = dist[3]
-    large_group_time[third][second] = dist[3]
-    large_group_graph[second].add(third)
-    large_group_graph[third].add(second)
-
-
-def init(N : int, K : int, mNodeA : List[int], mNodeB : List[int], mTime : List[int]) -> None:
-    # N : 소규모 그룹 개수
-    # K : 라인 개수
-    # mtime : 전송시간
-    global g_N, INF, small_group_graph_dict, small_group_time_dict, large_group_time, large_group_graph, memo
-    INF = 10 ** 18
-    g_N = N
-    memo = {}
-    group_num = 3 + N * 3
-    small_group_graph_dict = {}
-    small_group_time_dict = {}
-    large_group_time =[[INF] * (group_num + 1) for _ in range(group_num + 1)]
-    large_group_graph = [set() for _ in range(group_num + 1)]
-
-    for k in range(K):
-        # 한쪽 라인만 대표 노드인 경우,
-        # 양쪽 모두 대표 노드인 경우
-        # 양쪽 모두 말단 노드인 경우
-        node_a = mNodeA[k]
-        node_b = mNodeB[k]
-        cur_time = mTime[k]
-
-        group_a = node_a // 100
-        group_b = node_b // 100
-
-        if group_a != group_b:
-            # 양쪽 모두 대표
-            # 그래프에 입력.
-            changed_a = changer(node_a)
-            changed_b = changer(node_b)
-            large_group_graph[changed_a].add(changed_b)
-            large_group_graph[changed_b].add(changed_a)
-            large_group_time[changed_a][changed_b] = cur_time
-            large_group_time[changed_b][changed_a] = cur_time
-            # print(node_a, node_b, changed_a, changed_b, cur_time)
-        else:
-            # 양쪽 모두 같은 그룹
-            cur_group = node_a // 100
-            changed_a = node_a % 100
-            changed_b = node_b % 100
-
-            # print("cur_group", cur_group, node_b // 100)
-            if cur_group not in small_group_graph_dict:
-                small_group_graph_dict[cur_group] = [set() for _ in range(31)]
-                small_group_time_dict[cur_group] = [[INF] * 31 for _ in range(31)]
-            # 그래프 양쪽에 넣어주기
-            small_group_graph_dict[cur_group][changed_a].add(changed_b)
-            small_group_graph_dict[cur_group][changed_b].add(changed_a)
-
-            # 시간 양쪽에 넣어주기
-            small_group_time_dict[cur_group][changed_a][changed_b] = cur_time
-            small_group_time_dict[cur_group][changed_b][changed_a] = cur_time
-
-    # 다끝나면 그룹 업데이트 해주기
-    for group_num in range(1, N + 1):
-        update_group(group_num)
-
-
-    # print("debug large_group_time")
-    # for i in large_group_time:
-    #     print(i)
-    # print("debug large_group_graph")
-    # print(large_group_graph)
-    # for i in large_group_graph:
-    #     print(i)
-
-def calc_group(node_num):
-    return node_num // 100
-
-def small_dijkstra(start, graph, cost):
     dist = [INF] * 31
-
-    hq = []
-    dist[start] = 0
-    heapq.heappush(hq, [0, start])
-
-    while hq:
-        cur_cost, cur_node = heapq.heappop(hq)
-        if cur_cost > dist[cur_node]:
-            continue
-        for nxt_node in graph[cur_node]:
-            nxt_cost = cost[cur_node][nxt_node]
-            new_cost = cur_cost + nxt_cost
-
-            if dist[nxt_node] > new_cost:
-                dist[nxt_node] = new_cost
-                heapq.heappush(hq, [new_cost, nxt_node])
-    return dist
-
-
-
-# 200
-def addLine(mNodeA : int, mNodeB : int, mTime : int) -> None:
-    group_a = calc_group(mNodeA)
-    group_b = calc_group(mNodeB)
-    take_time = mTime
-    node_a = mNodeA
-    node_b = mNodeB
-    memo.clear()
-    # 만약에 같은 그룹일 경우, 새로 소규모 다익스트라해서 갱신해줘야함.
-    if group_a == group_b:
-        cur_group = group_a
-        cur_costs = small_group_time_dict[cur_group]
-        cur_graph = small_group_graph_dict[cur_group]
-        # 그룹 안 인덱스로 변환.
-        node_a = node_a % 100
-        node_b = node_b % 100
-
-        # take time 넣어주기
-        cur_costs[node_a][node_b] = take_time
-        cur_costs[node_b][node_a] = take_time
-
-        # 그래프안에 노드 넣어주기
-        cur_graph[node_a].add(node_b)
-        cur_graph[node_b].add(node_a)
-
-        update_group(cur_group)
-
-    # 그룹이 다를 경우 ( 그냥 대규모 노드에 추가해주면 끝.)
-    else:
-        changed_a = changer(node_a)
-        changed_b = changer(node_b)
-        large_group_graph[changed_a].add(changed_b)
-        large_group_graph[changed_b].add(changed_a)
-        large_group_time[changed_a][changed_b] = take_time
-        large_group_time[changed_b][changed_a] = take_time
-    # print("addline", mNodeA, mNodeB, mTime)
-
-# 200
-def removeLine(mNodeA : int, mNodeB : int) -> None:
-    group_a = calc_group(mNodeA)
-    group_b = calc_group(mNodeB)
-    take_time = INF
-    node_a = mNodeA
-    node_b = mNodeB
-    memo.clear()
-
-
-    # 만약에 같은 그룹일 경우, 새로 소규모 다익스트라해서 갱신해줘야함.
-    if group_a == group_b:
-        cur_group = group_a
-
-        cur_costs = small_group_time_dict[cur_group]
-        cur_graph = small_group_graph_dict[cur_group]
-
-        node_a = node_a % 100
-        node_b = node_b % 100
-        if node_b in cur_graph[node_a]:
-            # take time 넣어주기
-            cur_costs[node_a][node_b] = take_time
-            cur_costs[node_b][node_a] = take_time
-            # print("super debug", cur_graph[node_a], node_b)
-            # 그래프안에 노드 제거해주기
-            cur_graph[node_a].discard(node_b)
-            cur_graph[node_b].discard(node_a)
-
-        update_group(cur_group)
-    # 그룹이 다를 경우 ( 그냥 대규모 노드에 제거해주면 끝.)
-    else:
-        changed_a = changer(node_a)
-        changed_b = changer(node_b)
-        large_group_graph[changed_a].discard(changed_b)
-        large_group_graph[changed_b].discard(changed_a)
-        large_group_time[changed_a][changed_b] = take_time
-        large_group_time[changed_b][changed_a] = take_time
-    # print("remove_line", mNodeA, mNodeB)
-
-# 700
-def checkTime(mNodeA : int, mNodeB : int) -> int:
-    # 루트 노드에서 대규모 노드 다익스트라. 이후 출력 끝.
-    key = (mNodeA, mNodeB)
-
-    if key in memo:
-        return memo[key]
-
-    node_a = mNodeA
-    node_b = mNodeB
-    # 다익스트라 사용. mNodeA 에서 출발
-
-    dist = [INF] * 904
-    start = node_a
-
     hq = []
     dist[start] = 0
     heapq.heappush(hq, [0, start])
@@ -2042,25 +1824,236 @@ def checkTime(mNodeA : int, mNodeB : int) -> int:
         if dist[cur_node] < cur_cost:
             continue
 
-        for nxt_node in large_group_graph[cur_node]:
-            # print("nxt node", nxt_node)
-            nxt_cost = large_group_time[cur_node][nxt_node]
-            new_cost = nxt_cost + cur_cost
+        for nxt_node in graph[cur_node]:
+            nxt_cost = costs[cur_node][nxt_node]
 
+            new_cost = nxt_cost + cur_cost
             if new_cost < dist[nxt_node]:
                 dist[nxt_node] = new_cost
                 heapq.heappush(hq, [new_cost, nxt_node])
-    for root in range(1, 4):
-        if root == node_a:
+
+    return dist
+
+def update_group(group_num):
+    global small_dist, small_graph, large_dist
+    cur_dist = small_dist[group_num]
+    cur_graph = small_graph[group_num]
+
+    ret = dijkstra(1, cur_dist, cur_graph)
+    # 1에서 출발, 2, 3 업데이트
+    first_to_second = ret[2]
+    first_to_third = ret[3]
+
+    # 2에서 출발 3 업데이트,
+    ret = dijkstra(2, cur_dist, cur_graph)
+    second_to_third = ret[3]
+    first = group_num * 3 + 1
+    second = group_num * 3 + 2
+    third = group_num * 3 + 3
+    # large graph 업데이트
+    large_dist[first][second] = first_to_second
+    large_dist[second][first] = first_to_second
+
+    large_dist[first][third] = first_to_third
+    large_dist[third][first] = first_to_third
+
+    large_dist[second][third] = second_to_third
+    large_dist[third][second] = second_to_third
+
+
+
+def init(N: int, K: int, mNodeA: List[int], mNodeB: List[int], mTime: List[int]) -> None:
+    global large_graph, small_graph, INF, GROUP_CNT, memo, large_dist, small_dist
+    INF = 10 ** 18
+
+    GROUP_CNT = N
+
+    large_dist = [[INF] * (GROUP_CNT * 3 + 4) for _ in range(GROUP_CNT * 3 + 4)]
+    large_graph = [set() for _ in range(GROUP_CNT * 3 + 4)]
+
+    small_dist = {}
+    small_graph = {}
+    memo = {}
+
+    # 소규모 그룹 등록
+    for n in range(1, N + 1):
+        small_dist[n] = [[INF] * 31 for _ in range(31)]
+        small_graph[n] = [set() for _ in range(31)]
+        # 그룹 내 연결
+        cur_group = n
+        first = n * 3 + 1
+        second = n * 3 + 2
+        third = n * 3 + 3
+        large_graph[first].add(second)
+        large_graph[second].add(first)
+        large_graph[second].add(third)
+        large_graph[third].add(second)
+        large_graph[first].add(third)
+        large_graph[third].add(first)
+
+    for k in range(K):
+        node_a = mNodeA[k]
+        node_b = mNodeB[k]
+        take_time = mTime[k]
+        group_a = node_a // 100
+        group_b = node_b // 100
+
+        # 그룹이 같은경우 내부 업데이트
+        if group_a == group_b:
+            cur_group = group_a
+            node_a = node_a % 100
+            node_b = node_b % 100
+            cur_dist = small_dist[cur_group]
+            cur_graph = small_graph[cur_group]
+
+            # 양방향 간선 추가
+            cur_graph[node_a].add(node_b)
+            cur_graph[node_b].add(node_a)
+
+            # 걸리느 시간 입력
+            cur_dist[node_a][node_b] = take_time
+            cur_dist[node_b][node_a] = take_time
+
+        # 그룹이 다른 경우
+        else:
+            # large 그래프 처리
+            changed_node_a = change_to_idx(node_a)
+            changed_node_b = change_to_idx(node_b)
+
+            # 양방향 간선 추가
+            large_graph[changed_node_a].add(changed_node_b)
+            large_graph[changed_node_b].add(changed_node_a)
+
+            # 걸리는 시간 입력
+            large_dist[changed_node_a][changed_node_b] = take_time
+            large_dist[changed_node_b][changed_node_a] = take_time
+
+    for n in range(1, N + 1):
+        update_group(n)
+
+def addLine(mNodeA: int, mNodeB: int, mTime: int) -> None:
+    node_a = mNodeA
+    node_b = mNodeB
+    group_a = mNodeA // 100
+    group_b = mNodeB // 100
+
+    memo.clear()
+    # 그룹이 같은경우 내부 업데이트
+    if group_a == group_b:
+        cur_group = group_a
+        cur_dist = small_dist[cur_group]
+        cur_graph = small_graph[cur_group]
+        node_a = node_a % 100
+        node_b = node_b % 100
+        # 양방향 간선 추가
+        cur_graph[node_a].add(node_b)
+        cur_graph[node_b].add(node_a)
+
+        # 걸리느 시간 입력
+        cur_dist[node_a][node_b] = mTime
+        cur_dist[node_b][node_a] = mTime
+        update_group(cur_group)
+
+    # 그룹이 다른 경우
+    else:
+        changed_node_a = change_to_idx(node_a)
+        changed_node_b = change_to_idx(node_b)
+        # 양방향 간선 추가
+        large_graph[changed_node_a].add(changed_node_b)
+        large_graph[changed_node_b].add(changed_node_a)
+
+        # 걸리는 시간 입력
+        large_dist[changed_node_a][changed_node_b] = mTime
+        large_dist[changed_node_b][changed_node_a] = mTime
+
+
+def removeLine(mNodeA: int, mNodeB: int) -> None:
+    node_a = mNodeA
+    node_b = mNodeB
+    group_a = mNodeA // 100
+    group_b = mNodeB // 100
+
+    # 그룹이 같은경우 내부 업데이트
+    if group_a == group_b:
+        cur_group = group_a
+        cur_dist = small_dist[cur_group]
+        cur_graph = small_graph[cur_group]
+        node_a = node_a % 100
+        node_b = node_b % 100
+
+        if node_b not in cur_graph[node_a]:
+            return
+        memo.clear()
+        # 양방향 간선 추가
+        cur_graph[node_a].remove(node_b)
+        cur_graph[node_b].remove(node_a)
+
+        # 걸리느 시간 입력
+        cur_dist[node_a][node_b] = INF
+        cur_dist[node_b][node_a] = INF
+        update_group(cur_group)
+
+    # 그룹이 다른 경우
+    else:
+        changed_node_a = change_to_idx(node_a)
+        changed_node_b = change_to_idx(node_b)
+        # 양방향 간선 추가
+        if changed_node_b not in large_graph[changed_node_a]:
+            return
+        memo.clear()
+        large_graph[changed_node_a].remove(changed_node_b)
+        large_graph[changed_node_b].remove(changed_node_a)
+
+        # 걸리는 시간 입력
+        large_dist[changed_node_a][changed_node_b] = INF
+        large_dist[changed_node_b][changed_node_a] = INF
+
+def large_dijkstra(start, costs, graph):
+
+    dist = [INF] * (GROUP_CNT * 3 + 4)
+    hq = []
+    dist[start] = 0
+    heapq.heappush(hq, [0, start])
+
+    while hq:
+        cur_cost, cur_node = heapq.heappop(hq)
+        if dist[cur_node] < cur_cost:
             continue
 
-        memo[(node_a, root)] = dist[root]
-        memo[(root, node_a)] = dist[root]
+        for nxt_node in graph[cur_node]:
+            nxt_cost = costs[cur_node][nxt_node]
 
+            new_cost = nxt_cost + cur_cost
+            if new_cost < dist[nxt_node]:
+                dist[nxt_node] = new_cost
+                heapq.heappush(hq, [new_cost, nxt_node])
 
-    # print("check_time",mNodeA, mNodeB, dist[node_b])
+    return dist
 
-    return dist[node_b]
+def checkTime(mNodeA: int, mNodeB: int) -> int:
+
+    # 다익스트라 활용
+    # 전체 노드 계산
+    key = (mNodeA, mNodeB)
+    if key in memo:
+        # print("check_time", mNodeA, mNodeB, memo[key])
+        return memo[key]
+
+    if mNodeA == 1 or mNodeB == 1:
+        ret = large_dijkstra(1, large_dist, large_graph)
+        # print(ret)
+        memo[(1, 2)] = ret[2]
+        memo[(2, 1)] = ret[2]
+        memo[(1, 3)] = ret[3]
+        memo[(3, 1)] = ret[3]
+
+    elif mNodeA == 3 or mNodeB == 3:
+        ret = large_dijkstra(2, large_dist, large_graph)
+        memo[(2, 3)] = ret[3]
+        memo[(3, 2)] = ret[3]
+
+    # print("check_time", mNodeA, mNodeB, memo[key])
+    return memo[key]
 
 
 # ── Main (수정 불가) ──

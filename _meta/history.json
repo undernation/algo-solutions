@@ -5713,7 +5713,7 @@
   ]
  },
  "2026-09-07": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "10:52:27",
@@ -5729,6 +5729,29 @@
     "site": "SWEA",
     "status": "못품",
     "title": "그림판2"
+   },
+   {
+    "at": "13:55:03",
+    "attempts": [
+     {
+      "at": "13:55:03",
+      "elapsed": 6.468,
+      "file": "swea/25310_전송시간.py",
+      "passed": 0,
+      "status": "품",
+      "total": 1,
+      "verdict": "time_limit_exceeded"
+     }
+    ],
+    "elapsed": 6.468,
+    "file": "swea/25310_전송시간.py",
+    "no": "25310",
+    "passed": 0,
+    "site": "SWEA",
+    "status": "품",
+    "title": "전송시간",
+    "total": 1,
+    "verdict": "time_limit_exceeded"
    }
   ]
  }
