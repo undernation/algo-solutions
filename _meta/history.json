@@ -5713,7 +5713,7 @@
   ]
  },
  "2026-09-07": {
-  "count": 2,
+  "count": 3,
   "items": [
    {
     "at": "10:52:27",
@@ -5752,6 +5752,29 @@
     "title": "전송시간",
     "total": 1,
     "verdict": "time_limit_exceeded"
+   },
+   {
+    "at": "21:01:37",
+    "attempts": [
+     {
+      "at": "21:01:37",
+      "elapsed": 0.229,
+      "file": "swea/27172_태양광발전단지관제시스템D6.py",
+      "passed": 1,
+      "status": "시간초과",
+      "total": 1,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.229,
+    "file": "swea/27172_태양광발전단지관제시스템D6.py",
+    "no": "27172",
+    "passed": 1,
+    "site": "SWEA",
+    "status": "시간초과",
+    "title": "태양광 발전 단지 관제 시스템 D6",
+    "total": 1,
+    "verdict": "accepted"
    }
   ]
  }

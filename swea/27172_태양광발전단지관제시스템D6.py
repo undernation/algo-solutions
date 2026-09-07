@@ -2,9 +2,11 @@
 SWEA 27172  태양광 발전 단지 관제 시스템 D6
 https://swexpertacademy.com/main/code/userProblem/userProblemDetail.do?fromProbList=N&deleteYn=N&contestProbId=AZ-HaGAam0_HBITH&topPath=code&lastPath=problemDetail&secondPath=problem&menuBreakDown=swea.code.menu&menuBreakDown=swea.code.problem.menu&menuDesc=swea.code.desc&menuDesc=swea.code.problem.desc&contextPath=%2Fmain&locale=ko-kr%2Cko%3Bq%3D0.9%2Cen-us%3Bq%3D0.8%2Cen%3Bq%3D0.7&serverName=localhost&localeLanguage=ko_KR&localeLanguage2=Ko_KR&remoteAddr=175.213.163.17&scripts=%2Fjs%2Finit%2Fjquery-debug.js&scripts=%2Fjs%2Finit%2Fjquery-ui.js&scripts=%2Fjs%2Finit%2Fjquery.validate.js&scripts=%2Fjs%2Fcommon.js&NOTICE_NEW_COUNT=0&ssoLogin=false&hasSDPAdminLinkAuth=false&systemAdmin=false&backendAdmin=false&isTechBlogManager=false&CURRENT_MENU_AUTHORIZATION=READ&CURRENT_MENU_AUTHORIZATION=UPDATE&CURRENT_MENU_AUTHORIZATION=EXECUTE&CURRENT_MENU_AUTHORIZATION=DOWNLOAD&logoMainfileName=logo_company.png
 
-풀이일 : 2026-08-22   결과: 시간초과
+풀이일 : 2026-09-07   결과: 시간초과
 한도   : time 12개 테스트케이스를 합쳐서 C/C++의 경우 2초 / Java의 경우 6초 / memory 힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내 / time_sec 2
 난이도 : ?  |  정답률 25.00%
+
+[채점] accepted  1/1  (0.229s)
 
 [문제]
 한 태양광 발전 단지는 N×N개의 정사각형 지점(cell) 격자로 이루어져 있으며, 각 지점에는 태양광 패널이 하나씩 설치되어 그 현재 발전량이 값으로 기록되어 있다.
@@ -506,11 +508,11 @@ query의 count1 ≤ count ≤ 5, 범위 내 지점 수 ≥ count 보장
 5
 """
 
-# import sys
-# sys.stdin = open("input.txt", "r")
+
+
 import heapq
 class Point:
-    __slots__ = ('x', 'y')          # x: 열(column), y: 행(row)
+    __slots__ = ('x', 'y')  # x: 열(column), y: 행(row)
 
     def __init__(self, x=0, y=0):
         self.x = x
@@ -524,141 +526,175 @@ class Point:
 #  main 및 입출력 부분은 수정하지 않는 것을 권장한다.
 # =========================================================
 
+def get_section(y, x):
+    return y // g_K, x // g_K
+
+
 def init(N, K, graph):
     # TODO: 각 테스트 케이스 시작 시 1회 호출된다.
     #       전역 자료 구조를 반드시 초기화할 것.
-    global g_N, g_K, board, lazy, section, lazy_hq, version
-    g_N = N
+    global lazy_add, g_K, g_graph, versions, bucket
     g_K = K
-    board = [row[:] for row in graph]
-    # K 는 한 구역의 한변의 길이.
-    section = N // K
-    lazy = [[0] * section for _ in range(section)]
-    version = [[0] * N for _ in range(N)]
-    lazy_hq = [
-        list([] for _ in range(section)) for _ in range(section)
-    ]
+    section_cnt = N // K + 1
+    g_graph = graph
+    bucket = [[[] for _ in range(section_cnt)] for _ in range(section_cnt)]
 
-    # 힙큐에 넣어주기
+    lazy_add = [[0] * section_cnt for _ in range(section_cnt)]
+    versions = [[0] * N for _ in range(N)]
+
     for i in range(N):
         for j in range(N):
-            cur_x_sec = j // g_K
-            cur_y_sec = i // g_K
-            cur_val = board[i][j]
-            cur_version = 0
-            heapq.heappush(lazy_hq[cur_y_sec][cur_x_sec], [-cur_val, j, i, cur_version])
+            sec_y, sec_x = get_section(i, j)
+
+            bucket[sec_y][sec_x].append(
+                [-graph[i][j], j, i, 0]
+            )
+
+    for sy in range(section_cnt):
+        for sx in range(section_cnt):
+            heapq.heapify(bucket[sy][sx])
 
 
-# 5000
 def set_value(p, value):
-    # TODO: 지점 p의 값을 value로 설정(덮어쓰기)
     cur_x = p.x
     cur_y = p.y
-    cur_x_sec = cur_x // g_K
-    cur_y_sec = cur_y // g_K
-    cur_version = version[cur_y][cur_x]
-    new_val = value - lazy[cur_y_sec][cur_x_sec]
-    board[cur_y][cur_x] = new_val
-    heapq.heappush(lazy_hq[cur_y_sec][cur_x_sec], [-new_val, cur_x, cur_y, cur_version + 1])
-    version[cur_y][cur_x] += 1
-    # print("set_value", p.x, p.y ,value)
-    pass
 
-# 5000
+    sec_y, sec_x = get_section(cur_y, cur_x)
+
+    base_value = value - lazy_add[sec_y][sec_x]
+
+    g_graph[cur_y][cur_x] = base_value
+
+    versions[cur_y][cur_x] += 1
+    new_version = versions[cur_y][cur_x]
+
+    heapq.heappush(
+        bucket[sec_y][sec_x],
+        [-base_value, cur_x, cur_y, new_version]
+    )
+
 def get_value(p):
     # TODO: 지점 p의 현재 값을 반환
     cur_x = p.x
     cur_y = p.y
-    cur_x_sec = cur_x // g_K
-    cur_y_sec = cur_y // g_K
-    # print("get_value", board[cur_y][cur_x] + lazy[cur_y_sec][cur_x_sec])
-    return board[cur_y][cur_x] + lazy[cur_y_sec][cur_x_sec]
+    sec_y, sec_x = get_section(cur_y, cur_x)
+    return g_graph[cur_y][cur_x] + lazy_add[sec_y][sec_x]
 
-# 20000
+
 def update(A, B, num):
     # TODO: [A, B] 범위(구역 정렬 보장)의 모든 지점에 num을 더함
-    start_x = A.x
-    start_y = A.y
-    start_x_sec = start_x // g_K
-    start_y_sec = start_y // g_K
+    a_x = A.x
+    a_y = A.y
+    sec_a_y, sec_a_x = get_section(a_y, a_x)
 
-    end_x = B.x
-    end_y = B.y
-    end_x_sec = end_x // g_K
-    end_y_sec = end_y // g_K
+    b_x = B.x
+    b_y = B.y
+    sec_b_y, sec_b_x = get_section(b_y, b_x)
 
-    for y in range(start_y_sec, end_y_sec + 1):
-        for x in range(start_x_sec, end_x_sec + 1):
-            lazy[y][x] += num
+    for y in range(sec_a_y, sec_b_y + 1):
+        for x in range(sec_a_x, sec_b_x + 1):
+            lazy_add[y][x] += num
 
-    # print("update", num)
-    # for y in range(section):
-    #     print(lazy[y])
-    # print("board")
-    # for y in range(g_N):
-    #     print(board[y])
-    # pass
-
-# 3000
 def query(A, B, count, result):
-    # TODO: 우선순위 상위 count개 지점의 좌표를
-    #       result[0..count-1]에 채움 (result[i]의 x, y를 덮어쓸 것)
-    start_x = A.x
-    start_y = A.y
-    start_x_sec = start_x // g_K
-    start_y_sec = start_y // g_K
+    sec_a_y, sec_a_x = get_section(A.y, A.x)
+    sec_b_y, sec_b_x = get_section(B.y, B.x)
 
-    end_x = B.x
-    end_y = B.y
-    end_x_sec = end_x // g_K
-    end_y_sec = end_y // g_K
+    hq = []
 
+    # ==========================================
+    # 1. 각 sector에서는 1등만 확인
+    # ==========================================
+    for sy in range(sec_a_y, sec_b_y + 1):
+        for sx in range(sec_a_x, sec_b_x + 1):
+
+            cur_bucket = bucket[sy][sx]
+
+            # stale 제거
+            while cur_bucket:
+                value, x, y, version = cur_bucket[0]
+
+                if version == versions[y][x]:
+                    break
+
+                heapq.heappop(cur_bucket)
+
+            if cur_bucket:
+                value, x, y, version = cur_bucket[0]
+
+                # 실제 우선순위
+                hq.append(
+                    (
+                        value - lazy_add[sy][sx],
+                        x,
+                        y,
+                        sy,
+                        sx
+                    )
+                )
+
+    # 400개 후보를 한 번에 heap으로
+    heapq.heapify(hq)
+
+    # query에서 잠시 제거한 원소
     removed = []
-    temp_hq = []
-    # 일단 구현해보자.
-    cnt = 0
-    for y in range(start_y_sec, end_y_sec + 1):
-        for x in range(start_x_sec, end_x_sec + 1):
-            while lazy_hq[y][x]:
-                val, cur_x, cur_y, cur_version = heapq.heappop(lazy_hq[y][x])
-                
-                if cur_version != version[cur_y][cur_x]:
-                    continue
-                real_val = val - lazy[y][x]
-                # 버전 맞으면 넣어주기.
-                heapq.heappush(temp_hq, [real_val, cur_x, cur_y, x, y, cur_version])
-                removed.append([val, cur_y, cur_x, y, x, cur_version])
+
+    # ==========================================
+    # 2. 전체 TOP count개만 실제 pop
+    # ==========================================
+    for i in range(count):
+
+        value, x, y, sy, sx = heapq.heappop(hq)
+
+        result[i].x = x
+        result[i].y = y
+
+        cur_bucket = bucket[sy][sx]
+
+        # 이 sector의 현재 1등 제거
+        item = heapq.heappop(cur_bucket)
+
+        removed.append(
+            (sy, sx, item)
+        )
+
+        # 마지막이면 다음 후보 필요 없음
+        if i == count - 1:
+            break
+
+        # ======================================
+        # 이 sector의 다음 유효 후보
+        # ======================================
+        while cur_bucket:
+            next_value, next_x, next_y, next_version = cur_bucket[0]
+
+            if next_version == versions[next_y][next_x]:
                 break
 
-    while cnt < count:
-        # 상위 지점 pop 하기.
-        # print("temp hq", temp_hq)
-        real_val, cur_x, cur_y, x, y, cur_version = heapq.heappop(temp_hq)
-        result[cnt].x = cur_x
-        result[cnt].y = cur_y
-        # print("real_val", real_val)
-        
-        # pop 한 상위 지점 새로 넣어주기.
-        while lazy_hq[y][x]:
-            val, cur_x, cur_y, cur_version = heapq.heappop(lazy_hq[y][x])
-            
-            if cur_version != version[cur_y][cur_x]:
-                continue
-            real_val = val - lazy[y][x]
-            # 버전 맞으면 넣어주기.
-            heapq.heappush(temp_hq, [real_val, cur_x, cur_y, x, y, cur_version])
-            removed.append([val, cur_y, cur_x, y, x, cur_version])
-            break
-        # temp_hq 에서 
-        cnt += 1
+            heapq.heappop(cur_bucket)
 
-    # removed 된거 처리해주기.
-    for val, y, x, sec_y, sec_x, cur_version in removed:
-        heapq.heappush(lazy_hq[sec_y][sec_x], [val, x, y, cur_version])
+        if cur_bucket:
+            next_value, next_x, next_y, next_version = cur_bucket[0]
 
-    # print("query")
-    # for i in result:
-    #     print(i.x, i.y)
+            heapq.heappush(
+                hq,
+                (
+                    next_value - lazy_add[sy][sx],
+                    next_x,
+                    next_y,
+                    sy,
+                    sx
+                )
+            )
+
+    # ==========================================
+    # 3. query니까 원상 복구
+    # ==========================================
+    for sy, sx, item in removed:
+        heapq.heappush(
+            bucket[sy][sx],
+            item
+        )
+
 
 # ========= 이하 수정 비권장 (출력 형식 유지) =========
 def main():
@@ -676,22 +712,22 @@ def main():
 
         init(N, K, graph)
 
-        out.append(f"#{tc}")
+        out.append(f'#{tc}')
 
         for _ in range(M):
-            command = list(map(int, input().split()))
-            op = command[0]
+            cmd = list(map(int, input().split()))
+            op = cmd[0]
 
             if op == 1:
-                _, x, y, v = command
+                _, x, y, v = cmd
                 set_value(Point(x, y), v)
 
             elif op == 2:
-                _, x, y = command
+                _, x, y = cmd
                 out.append(str(get_value(Point(x, y))))
 
             elif op == 3:
-                _, x1, y1, x2, y2, w = command
+                _, x1, y1, x2, y2, w = cmd
                 update(
                     Point(x1, y1),
                     Point(x2, y2),
@@ -699,7 +735,7 @@ def main():
                 )
 
             else:
-                _, x1, y1, x2, y2, c = command
+                _, x1, y1, x2, y2, c = cmd
 
                 res = [Point() for _ in range(c)]
 
@@ -712,7 +748,7 @@ def main():
 
                 out.append(
                     ' '.join(
-                        f"{p.x} {p.y}"
+                        f'{p.x} {p.y}'
                         for p in res
                     )
                 )
