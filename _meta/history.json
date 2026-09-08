@@ -5779,7 +5779,7 @@
   ]
  },
  "2026-09-08": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "11:00:24",
@@ -5801,6 +5801,29 @@
     "site": "SWEA",
     "status": "못품",
     "title": "단어암기장",
+    "total": 1,
+    "verdict": "accepted"
+   },
+   {
+    "at": "16:58:55",
+    "attempts": [
+     {
+      "at": "16:58:55",
+      "elapsed": 0.274,
+      "file": "swea/5189_[S_W문제해결구현]2일차-전자카트D3.py",
+      "passed": 1,
+      "status": "틀림",
+      "total": 1,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.274,
+    "file": "swea/5189_[S_W문제해결구현]2일차-전자카트D3.py",
+    "no": "5189",
+    "passed": 1,
+    "site": "SWEA",
+    "status": "틀림",
+    "title": "[S/W 문제해결 구현] 2일차 - 전자카트 D3",
     "total": 1,
     "verdict": "accepted"
    }
