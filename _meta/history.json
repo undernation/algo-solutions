@@ -5777,5 +5777,33 @@
     "verdict": "accepted"
    }
   ]
+ },
+ "2026-09-08": {
+  "count": 1,
+  "items": [
+   {
+    "at": "11:00:24",
+    "attempts": [
+     {
+      "at": "11:00:24",
+      "elapsed": 8.309,
+      "file": "swea/25313_단어암기장.py",
+      "passed": 1,
+      "status": "못품",
+      "total": 1,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 8.309,
+    "file": "swea/25313_단어암기장.py",
+    "no": "25313",
+    "passed": 1,
+    "site": "SWEA",
+    "status": "못품",
+    "title": "단어암기장",
+    "total": 1,
+    "verdict": "accepted"
+   }
+  ]
  }
 }
