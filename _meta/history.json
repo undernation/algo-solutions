@@ -5830,7 +5830,7 @@
   ]
  },
  "2026-09-09": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "11:58:28",
@@ -5852,6 +5852,29 @@
     "site": "SWEA",
     "status": "시간초과",
     "title": "커피점 & 제과점",
+    "total": 1,
+    "verdict": "accepted"
+   },
+   {
+    "at": "20:28:50",
+    "attempts": [
+     {
+      "at": "20:28:50",
+      "elapsed": 15.008,
+      "file": "swea/25284_무선통신.py",
+      "passed": 1,
+      "status": "품",
+      "total": 1,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 15.008,
+    "file": "swea/25284_무선통신.py",
+    "no": "25284",
+    "passed": 1,
+    "site": "SWEA",
+    "status": "품",
+    "title": "무선통신",
     "total": 1,
     "verdict": "accepted"
    }
