@@ -514,6 +514,13 @@ python _meta/build_probindex.py  # 문제 자료 색인(problems/index.json)
 - ⚠️ `save_solution()` 안에서 attempts 리스트에 `hist` 라는 이름을 쓰지 말 것 —
   바깥의 history 딕셔너리를 가려 **`history.json` 을 배열로 덮어쓴다**(실제로 겪음).
 
+- **회차별 코드 "보기" (2026-09-10)**: 풀이 파일은 문제당 하나라 재제출하면 덮어써진다.
+  그래서 옛 회차 "보기"가 전부 최신 코드를 보여줬다(27183 에서 발견). 지금은
+  `build_heatmap.annotate_commits()` 가 회차마다 그 시각의 커밋 해시를 붙이고(`row.commit`),
+  대시보드가 `#c/<file>@<sha>` 로 raw.githubusercontent 에서 그 커밋의 파일을 연다.
+  최신 회차는 그대로 로컬 파일. 전제: **git 이력이 있어야 한다** — Actions 는 `fetch-depth: 0`,
+  허브는 full clone. 히스토리를 재작성하면 그 이전 회차 링크는 최신 코드로 되돌아간다.
+
 > 🔑 **`history.json`이 핵심이다.** 볼트가 없는 PC에서도 잔디가 유지되도록 **repo에 커밋된 누적본**이다.
 > 볼트가 있는 PC에서 돌리면 실수노트 전체 이력이 자동으로 합쳐진다. **절대 삭제하지 말 것.**
 

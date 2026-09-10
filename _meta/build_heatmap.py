@@ -14,7 +14,7 @@ history.json 형식:
     python _meta/build_heatmap.py
     python _meta/build_heatmap.py --year 2026
 """
-import os, re, io, json, glob, datetime, sys, html
+import os, re, io, json, glob, datetime, sys, html, subprocess
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -363,6 +363,78 @@ def build_rows(data: dict) -> list:
     return rows
 
 
+# ── 회차별 코드: 그 시각의 커밋 ──────────────────────────────────
+# 풀이 파일은 문제당 하나라 재제출하면 덮어써진다. 그래서 '제출 이력' 의 옛 회차
+# "보기" 가 전부 최신 코드를 보여줬다(2026-09-10, 27183 에서 발견). 허브는 저장마다
+# 커밋하므로 옛 회차의 코드는 git 이력에 그대로 있다. 회차마다 그 시각의 커밋을
+# 붙여 두면 대시보드가 raw.githubusercontent 에서 그 커밋의 파일을 연다.
+# 최신 커밋(= 현재 파일)인 회차에는 붙이지 않는다 — 로컬 파일이 더 빠르고 CDN 지연이 없다.
+# Actions 는 fetch-depth 0 이어야 한다(얕은 클론이면 git log 가 비어 그냥 건너뛴다).
+_COMMITS = {}
+
+
+def _file_commits(rel: str) -> list:
+    """파일을 건드린 커밋 [(short_sha, 작성시각 UTC naive)] — 오래된 것부터."""
+    if rel in _COMMITS:
+        return _COMMITS[rel]
+    out = []
+    try:
+        r = subprocess.run(["git", "log", "--format=%h|%aI", "--", rel], cwd=ROOT,
+                           capture_output=True, text=True, encoding="utf-8", errors="replace")
+        for line in (r.stdout or "").splitlines():
+            if "|" not in line:
+                continue
+            sha, iso = line.split("|", 1)
+            try:
+                t = datetime.datetime.fromisoformat(iso.strip())
+            except ValueError:
+                continue
+            if t.tzinfo is not None:
+                t = t.astimezone(datetime.timezone.utc).replace(tzinfo=None)
+            out.append((sha.strip(), t))
+    except Exception:
+        out = []
+    out.sort(key=lambda x: x[1])
+    _COMMITS[rel] = out
+    return out
+
+
+def annotate_commits(rows: list) -> None:
+    """허브로 저장한 회차(at 있음)에 그 회차의 커밋 해시를 붙인다.
+
+    회차 시각은 KST, 커밋 시각은 UTC 로 비교한다. at 은 파일을 쓰기 전에 찍히므로
+    커밋은 그 몇 초~몇 분 뒤다. 같은 파일의 회차 수와 커밋 수가 같으면 순서대로
+    짝짓고(날짜를 과거로 고쳐 저장한 경우도 맞는다), 아니면 시각 창으로 찾는다.
+    """
+    by_file = {}
+    for r in rows:
+        if r.get("file") and r.get("at"):
+            by_file.setdefault(r["file"], []).append(r)
+    for rel, rs in by_file.items():
+        commits = _file_commits(rel)
+        if len(commits) < 2:
+            continue
+        latest = commits[-1][0]
+        rs.sort(key=lambda x: (x.get("date", ""), x.get("at", "")))
+        if len(rs) == len(commits):
+            pairs = list(zip(rs, commits))
+        else:
+            pairs = []
+            for r in rs:
+                try:
+                    t = datetime.datetime.strptime("%s %s" % (r["date"], r["at"]), "%Y-%m-%d %H:%M:%S")
+                except ValueError:
+                    continue
+                t_utc = t - datetime.timedelta(hours=9)
+                cand = [c for c in commits
+                        if t_utc - datetime.timedelta(seconds=90) <= c[1] <= t_utc + datetime.timedelta(hours=12)]
+                if cand:
+                    pairs.append((r, cand[0]))
+        for r, (sha, _) in pairs:
+            if sha != latest:
+                r["commit"] = sha
+
+
 # ── 렌더 ───────────────────────────────────────────────────────
 def fmt(it) -> str:
     """구조화 item -> 표시 문자열"""
@@ -450,6 +522,7 @@ def render_html(data, year, total, active, best):
                           "dw": DOW[d.weekday()], "n": rec["count"],
                           "lv": level(rec["count"])})
     rows = build_rows(data)
+    annotate_commits(rows)
     # 크롤링된 문제 자료 색인 + 코딩살구 전체 문제 카탈로그
     probs, cat = {"count": 0, "items": {}}, []
     try:

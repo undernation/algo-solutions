@@ -885,8 +885,12 @@ function tbl(rows){
     '<td class="n">'+tcCell(r)+'</td>'+
     '<td class="n">'+(r.elapsed!=null?(+r.elapsed).toFixed(2)+'초':'<span style="color:var(--mute)">—</span>')+'</td>'+
     /* 진짜 링크로 둔다 — 새 탭으로 열거나 주소를 공유할 수 있다 */
+    /* 회차에 그 시각의 커밋(r.commit)이 붙어 있으면 그 커밋의 파일을 연다. 파일은
+       문제당 하나라 재제출 때 덮어써지므로, 이게 없으면 옛 회차도 최신 코드가 떴다. */
     '<td>'+(r.file?'<a class="lnk" style="color:var(--ac)" href="#c/'+
-      encodeURIComponent(r.file)+'">보기</a>':'<span style="color:var(--mute)">—</span>')+'</td>'+
+      encodeURIComponent(r.file)+(r.commit?'@'+r.commit:'')+'" title="'+
+      (r.commit?'이 회차 제출 당시 코드 · commit '+r.commit:'현재 파일')+
+      '">보기</a>':'<span style="color:var(--mute)">—</span>')+'</td>'+
     /* at 을 같이 넘겨 '이 회차만' 지운다. 안 넘기면 그날 제출이 통째로 지워진다. */
     '<td><span class="del" title="이 제출 기록 삭제" onclick="askDelSub(\''+esc(r.site)+
       '\',\''+esc(r.no)+'\',\''+esc(r.date)+'\',event,\''+esc(r.at||"")+'\')">&#128465;</span></td></tr>';
@@ -1923,10 +1927,17 @@ function codeInner(src){
 function openCode(file){ location.hash="#c/"+encodeURIComponent(file); }
 
 var codeCur="";
-async function viewCode(file){
- if(!file){ location.hash="#status"; return; }
- if(codeCur===file) return;            /* 같은 파일 재진입 시 다시 안 받는다 */
- codeCur=file;
+/* "#c/<file>" 또는 "#c/<file>@<commit>". 커밋이 붙은 것은 옛 회차라 그 커밋 시점의
+   파일을 raw.githubusercontent 에서 받는다(풀이 파일은 문제당 하나라 최신 제출로 덮여 있다). */
+var REPO=(location.hostname.slice(-10)===".github.io"&&location.pathname.split("/")[1])
+  ? location.hostname.split(".")[0]+"/"+location.pathname.split("/")[1] : "undernation/algo-solutions";
+async function viewCode(key){
+ if(!key){ location.hash="#status"; return; }
+ if(codeCur===key) return;            /* 같은 파일 재진입 시 다시 안 받는다 */
+ codeCur=key;
+ var mm=key.match(/^(.*)@([0-9a-f]{6,40})$/), file=mm?mm[1]:key, sha=mm?mm[2]:"";
+ var src=sha?"https://raw.githubusercontent.com/"+REPO+"/"+sha+"/"+file:"./"+file+"?"+Date.now();
+ var orig=sha?"https://github.com/"+REPO+"/blob/"+sha+"/"+file:"./"+file;
  CVTEXT="";
  var back=history.length>1
    ? '<a class="sm" href="javascript:history.back()">← 뒤로</a>'
@@ -1934,12 +1945,12 @@ async function viewCode(file){
  $("v-c").innerHTML=
   '<div class="crumb">'+back+'</div>'+
   '<div class="cbar"><span class="ct" id="cft">코드</span>'+
-   '<span class="cp">'+esc(file)+'</span>'+
+   '<span class="cp">'+esc(file)+(sha?' <span class="b" title="이 회차 제출 당시 코드">회차 스냅샷 '+esc(sha)+'</span>':'')+'</span>'+
    '<span class="csp"><button class="sm" id="cvcp" onclick="copyCode()">복사</button>'+
-   '<a class="sm" href="./'+esc(file)+'" target="_blank" rel="noopener">원본</a></span></div>'+
+   '<a class="sm" href="'+esc(orig)+'" target="_blank" rel="noopener">원본</a></span></div>'+
   '<div id="cvc2" class="codebox">불러오는 중…</div>';
  try{
-  var r=await fetch("./"+file+"?"+Date.now());
+  var r=await fetch(src);
   if(!r.ok){ $("cvc2").textContent="불러오기 실패 ("+r.status+")"; return; }
   var t=await r.text(); CVTEXT=t;
   /* 맨 위 독스트링(문제 지문·검증 기록)은 접어 두고 코드부터 보여준다.

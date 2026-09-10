@@ -26,6 +26,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0     # 회차별 코드 링크가 git log 로 커밋 해시를 찾는다
 
       - uses: actions/setup-python@v5
         with:
