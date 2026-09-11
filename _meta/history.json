@@ -5977,5 +5977,33 @@
     "title": "고속선 선로 피로도 관제 시스템 D6"
    }
   ]
+ },
+ "2026-09-11": {
+  "count": 1,
+  "items": [
+   {
+    "at": "15:37:47",
+    "attempts": [
+     {
+      "at": "15:37:47",
+      "elapsed": 6.902,
+      "file": "swea/25948_빙하의이동.py",
+      "passed": 1,
+      "status": "틀림",
+      "total": 1,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 6.902,
+    "file": "swea/25948_빙하의이동.py",
+    "no": "25948",
+    "passed": 1,
+    "site": "SWEA",
+    "status": "틀림",
+    "title": "빙하의 이동",
+    "total": 1,
+    "verdict": "accepted"
+   }
+  ]
  }
 }
