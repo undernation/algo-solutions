@@ -2,14 +2,14 @@
 SWEA 25430  커피점 & 제과점
 https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt8IiBqxEDHBIN6&contestProbId=AZks_3_KZmnHBIO0&probBoxId=AZt8IiBqxEHHBIN6&type=PROBLEM
 
-풀이일 : 2026-09-09   결과: 시간초과
+풀이일 : 2026-09-12   결과: 품
 한도   : time 25개 테스트케이스를 합쳐서 C++의 경우 1초 / Java의 경우 3초 / Python의 경우 6초 / memory 힙, 정적 메모리 합쳐서 262144 kbytes 이내, 스택 메모리 1024 kbytes 이내 / time_sec 6
 난이도 : D6  |  정답률 50.64%
 제약   : 1. 각 테스트 케이스 시작 시 init() 함수가 호출된다.
 제약   : 2. 각 테스트 케이스에서 add() 함수의 호출 횟수는 2000 이하이다.
 제약   : 3. 각 테스트 케이스에서 calculate() 함수의 호출 횟수는 100 이하이다.
 
-[채점] accepted  1/1  (8.685s)
+[채점] accepted  1/1  (8.961s)
 
 [문제]
 N개의 건물이 주어진다. 각 건물은 0부터 N-1까지 ID값을 가진다.
@@ -2429,49 +2429,50 @@ Returns
 # ── User Code ──
 import heapq
 
-g_distance = {}
-g_graph = []
+g_N = 0
+graph = []
+INF = 10 ** 18
 
 
 def init(N, K, sBuilding, eBuilding, mDistance):
-    global g_N, INF, g_distance, g_graph
+    global g_N, graph, INF
+
     g_N = N
-    INF = 10 ** 18
-    g_graph = [dict() for _ in range(N)]
+
+    graph = [dict() for _ in range(N)]
 
     for k in range(K):
         start = sBuilding[k]
         end = eBuilding[k]
         cur_dist = mDistance[k]
-        g_distance[(start, end)] = cur_dist
-        g_distance[(end, start)] = cur_dist
-        g_graph[start][end] = cur_dist
-        g_graph[end][start] = cur_dist
+
+        graph[start][end] = cur_dist
+        graph[end][start] = cur_dist
 
 
 def add(sBuilding, eBuilding, mDistance):
-    g_graph[sBuilding][eBuilding] = mDistance
-    g_graph[eBuilding][sBuilding] = mDistance
+    graph[sBuilding][eBuilding] = mDistance
+    graph[eBuilding][sBuilding] = mDistance
 
 
-def dijkstra(building_list, range_limit):
+def dijkstra(shops, limit):
     dist = [INF] * g_N
     hq = []
 
-    for building in building_list:
-        hq.append((0, building))
-        dist[building] = 0
+    for shop in shops:
+        hq.append((0, shop))
+        dist[shop] = 0
 
     while hq:
         cur_cost, cur_node = heapq.heappop(hq)
-
         if dist[cur_node] < cur_cost:
             continue
 
-        for nxt_node, nxt_cost in g_graph[cur_node].items():
+        for nxt_node, nxt_cost in graph[cur_node].items():
             new_cost = cur_cost + nxt_cost
-
-            if new_cost <= range_limit and new_cost < dist[nxt_node]:
+            if new_cost > limit:
+                continue
+            if dist[nxt_node] > new_cost:
                 dist[nxt_node] = new_cost
                 heapq.heappush(hq, (new_cost, nxt_node))
 
@@ -2479,52 +2480,38 @@ def dijkstra(building_list, range_limit):
 
 
 def calculate(M, mCoffee, P, mBakery, R):
-    coffee_set = set(mCoffee)
-    bakery_set = set(mBakery)
-    coffee_dist = dijkstra(mCoffee, R)
-
-    # 빵집 다익스트라
-
-    dist = [INF] * g_N
+    coffee_shops = set(mCoffee)
+    coffee_dist = dijkstra(coffee_shops, R)
+    bakeries = set(mBakery)
     hq = []
-
-    for building in mBakery:
-        hq.append((0, building))
-        dist[building] = 0
+    dist = [INF] * g_N
+    for bakery in mBakery:
+        hq.append((0, bakery))
+        dist[bakery] = 0
     answer = INF
+
     while hq:
         cur_cost, cur_node = heapq.heappop(hq)
-
         if dist[cur_node] < cur_cost:
             continue
-
         if cur_cost >= answer:
             break
-
-        if (
-            cur_node not in coffee_set
-            and cur_node not in bakery_set
-            and coffee_dist[cur_node] <= R
-        ):
-            answer = min(
-                answer,
-                cur_cost + coffee_dist[cur_node]
-            )
-
-        for nxt_node, nxt_cost in g_graph[cur_node].items():
+        for nxt_node, nxt_cost in graph[cur_node].items():
             new_cost = cur_cost + nxt_cost
-
-            if new_cost <= R and new_cost < dist[nxt_node]:
+            if new_cost > R:
+                continue
+            if dist[nxt_node] > new_cost:
                 dist[nxt_node] = new_cost
+                if coffee_dist[nxt_node] != INF and nxt_node not in coffee_shops and nxt_node not in bakeries:
+                    answer = min(answer, dist[nxt_node] + coffee_dist[nxt_node])
                 heapq.heappush(hq, (new_cost, nxt_node))
 
-
-    # dist = dijkstra(mCoffee, mBakery)
-
     if answer == INF:
-        return -1
 
-    return answer
+        return -1
+    else:
+        # print("cal", answer)
+        return answer
 
 
 # ── Main (수정 불가) ──

@@ -6005,5 +6005,33 @@
     "verdict": "accepted"
    }
   ]
+ },
+ "2026-09-12": {
+  "count": 1,
+  "items": [
+   {
+    "at": "21:30:20",
+    "attempts": [
+     {
+      "at": "21:30:20",
+      "elapsed": 8.961,
+      "file": "swea/25430_커피점&제과점.py",
+      "passed": 1,
+      "status": "품",
+      "total": 1,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 8.961,
+    "file": "swea/25430_커피점&제과점.py",
+    "no": "25430",
+    "passed": 1,
+    "site": "SWEA",
+    "status": "품",
+    "title": "커피점 & 제과점",
+    "total": 1,
+    "verdict": "accepted"
+   }
+  ]
  }
 }
