@@ -2,11 +2,11 @@
 SWEA 5189  [S/W 문제해결 구현] 2일차 - 전자카트 D3
 https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWTtmmdKeD8DFAVT
 
-풀이일 : 2026-09-08   결과: 틀림
+풀이일 : 2026-09-12   결과: 품
 한도   : time 10개 테스트케이스를 합쳐서 Python의 경우 2초 / memory 힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내 / time_sec 2
 난이도 : Master  |  정답률 75.37%
 
-[채점] accepted  1/1  (0.274s)
+[채점] accepted  1/1  (0.241s)
 
 [문제]
 골프장 관리를 위해 전기 카트로 사무실에서 출발해 각 관리구역을 돌고 다시 사무실로 돌아와야 한다.
@@ -141,35 +141,30 @@ e
 #3 139
 """
 
-
 T = int(input())
-
+# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
 for test_case in range(1, T + 1):
     N = int(input())
     board = [list(map(int, input().split())) for _ in range(N)]
-
     memo = {}
-    INF = 10 ** 18
     MAX = (1 << N) - 1
+    INF = 10 ** 18
 
 
     def dfs(mask, last):
         if mask == MAX:
             return board[last][0]
 
+        ret = INF
         if (mask, last) in memo:
             return memo[(mask, last)]
-        ret = INF
-
-        for n in range(N):
-            if mask & (1 << n):
+        for nxt in range(N):
+            if mask & (1 << nxt):
                 continue
-
-            ret = min(ret, board[last][n] + dfs(mask | (1 << n), n))
+            ret = min(ret, board[last][nxt] + dfs(mask | (1 << nxt), nxt))
 
         memo[(mask, last)] = ret
+        # print(ret)
         return ret
-
-
     answer = dfs(1, 0)
     print(f"#{test_case} {answer}")
