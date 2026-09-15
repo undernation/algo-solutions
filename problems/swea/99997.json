@@ -1,60 +1,60 @@
 {
-  "site": "SWEA",
-  "platform": "SSAFY A형 (코드·입력 기반 복원)",
-  "no": "99997",
-  "title": "[SSAFY A형 1번 복원] 충전소 설치 (2026-09-15)",
-  "label": "SSAFY A형 복원 · 아카이브 내부 번호",
-  "level": "",
-  "url": "",
-  "source_url": "https://lab.ssafy.com/s16/b06/lectures/-/tree/d3ebeeadfae5bf905edb6c678acfdc0e32451d54/99_exam/A/1",
-  "limits": {
-    "time": "50개 테스트케이스 합산 약 10초 (응시자 기억)",
-    "time_sec": 10,
-    "memory": "미확인 (원문 미제공)",
-    "time_source": "participant_recollection",
-    "time_is_approximate": true,
-    "time_scope": "all_testcases",
-    "remembered_testcase_count": 50
-  },
-  "statement": "※ 2026-09-15 SSAFY A형 1번의 제공 코드와 입력으로 복원한 연습 문제입니다.\n제목은 복원용이며, 내부 식별자는 SWEA/99997입니다. 공식 SWEA 번호가 아닙니다.\n원문과 공식 출력은 제공되지 않았습니다. 원본 output.txt가 비어 있어 아래 예제 출력은 원본 풀이와 독립 구현을 대조해 계산했습니다.\n\n정수 좌표로 나타내는 마을에 N개의 집이 있다. i번째 집의 좌표는 (x_i, y_i)이고, 이 집에서 이용할 수 있는 충전소까지의 최대 거리는 d_i이다.\n\n충전소를 설치할 수 있는 위치는 x좌표와 y좌표가 각각 -15 이상 15 이하인 정수 좌표이다. 집이 있는 위치에는 충전소를 설치할 수 없다. 충전소를 두 개 설치할 때는 서로 다른 위치에 설치해야 한다.\n\n집 (x, y)와 충전소 (a, b) 사이의 거리는 맨해튼 거리 |x-a| + |y-b|이다. 각 집은 설치된 충전소 중 가장 가까운 곳을 이용한다. 모든 집이 충전소를 이용하려면 각 집에서 가장 가까운 충전소까지의 거리가 그 집의 d_i 이하여야 한다. 한 충전소를 이용하는 집의 수에는 제한이 없다.\n\n다음 우선순위에 따라 충전소를 최대 두 개 설치하려고 한다.\n\n1. 충전소 하나로 모든 집의 거리 조건을 만족시킬 수 있다면 반드시 하나만 설치한다.\n2. 하나로 불가능할 때만 두 개를 설치한다.\n3. 위에서 결정한 설치 개수 안에서, 각 집과 가장 가까운 충전소 사이의 거리 합이 최소가 되도록 한다.\n\n구해야 하는 값은 이때의 최소 거리 합이다. 충전소 두 개로도 모든 집의 거리 조건을 만족시킬 수 없다면 -1을 출력한다.\n\n설치 개수를 줄이는 것이 거리 합을 줄이는 것보다 우선한다. 따라서 두 개를 설치하면 더 짧은 거리 합을 얻을 수 있더라도, 하나로 가능하다면 하나를 설치한 결과를 출력한다.",
-  "input_spec": "첫째 줄에 테스트케이스 수 T가 주어진다.\n\n각 테스트케이스의 첫째 줄에 집의 수 N이 주어진다. 다음 N개의 줄에는 각 집의 x좌표, y좌표, 허용 거리 d가 공백으로 구분되어 주어진다.\n\nT\nN\nx_1 y_1 d_1\n...\nx_N y_N d_N",
-  "output_spec": "각 테스트케이스마다 #테스트케이스번호 정답 형식으로 출력한다. 번호는 1부터 시작한다. 정답은 설치 우선순위를 지킨 최소 거리 합이며, 불가능하면 -1이다.",
-  "examples_text": "- 1번: 집 (-2, 0)과 (1, 3)을 하나의 충전소로 감당할 수 없다. (-1, 0)과 (1, 2)에 각각 설치하면 두 집 모두 거리 1로 이용하므로 정답은 2이다.\n- 2번: (-1, 0)에 충전소 하나를 설치하면 두 집까지의 거리는 1, 2이고 각각의 허용 거리를 만족한다. 따라서 정답은 3이다. 충전소 두 개를 써서 거리 합 2를 만들 수 있어도, 하나로 가능한 경우이므로 선택하지 않는다.\n- 4번: 충전소 두 개로도 모든 집을 감당할 수 없어 -1이다.",
-  "constraints": [
-    "시간 제한: 50개 테스트케이스 합산 약 10초 (응시자 기억).",
-    "정확한 시간 및 언어별 차등 여부, 메모리 제한과 전체 입력 제한은 미확인이다.",
-    "다음 입력 범위는 제공 테스트케이스에서 관찰한 값이며, 원문의 최대 제한을 뜻하지 않는다.",
-    "코드에 명시된 충전소 설치 좌표: -15 ≤ x, y ≤ 15인 정수 좌표.",
-    "제공 입력: T=5, N은 2~10, 허용 거리 d는 1~11.",
-    "T·N·d의 원문 상한은 확인되지 않았다."
-  ],
-  "samples": [
-    {
-      "in": "5\n2\n-2 0 1\n1 3 2\n2\n-1 -1 1\n1 0 2\n10\n3 5 4\n2 6 8\n7 4 10\n6 6 11\n3 3 3\n5 2 8\n0 5 10\n4 7 9\n6 2 5\n1 1 10\n5\n-1 -2 1\n4 -2 1\n7 9 2\n10 10 3\n0 3 1\n8\n1 1 8\n-3 1 8\n-4 0 4\n3 3 6\n-1 1 6\n-4 4 7\n-3 5 4\n-1 -2 4\n",
-      "out": "#1 2\n#2 3\n#3 36\n#4 -1\n#5 21\n"
-    }
-  ],
-  "sample_case_count": 5,
-  "private_testcases": [],
-  "private_tc_count": 0,
-  "tc_stored": false,
-  "images": [],
-  "api_style": false,
-  "restored": true,
-  "fetched_at": "2026-09-15",
-  "restoration": {
-    "exam_date": "2026-09-15",
-    "source_commit": "d3ebeeadfae5bf905edb6c678acfdc0e32451d54",
-    "source_path": "99_exam/A/1",
-    "title_is_reconstructed": true,
-    "official_outputs_available": false,
-    "sample_outputs": "computed from supplied solution and checked against an independent implementation",
-    "official_limits_available": false,
-    "participant_recollection": {
-      "testcases": 50,
-      "total_seconds_approx": 10
-    },
-    "archive": "restored/ssafy_a_2026-09-15/1_charging_stations",
-    "verification": "restored/ssafy_a_2026-09-15/verification.json"
+ "site": "SWEA",
+ "platform": "SSAFY A형 (코드·입력 기반 복원)",
+ "no": "99997",
+ "title": "[SSAFY A형 1번 복원] 충전소 설치 (2026-09-15)",
+ "label": "SSAFY A형 복원 · 아카이브 내부 번호",
+ "level": "",
+ "url": "",
+ "source_url": "https://lab.ssafy.com/s16/b06/lectures/-/tree/d3ebeeadfae5bf905edb6c678acfdc0e32451d54/99_exam/A/1",
+ "limits": {
+  "time": "50개 테스트케이스 합산 약 10초 (응시자 기억)",
+  "time_sec": 10,
+  "memory": "미확인 (원문 미제공)",
+  "time_source": "participant_recollection",
+  "time_is_approximate": true,
+  "time_scope": "all_testcases",
+  "remembered_testcase_count": 50
+ },
+ "statement": "※ 2026-09-15 SSAFY A형 1번의 제공 코드와 입력으로 복원한 연습 문제입니다.\n제목은 복원용이며, 내부 식별자는 SWEA/99997입니다. 공식 SWEA 번호가 아닙니다.\n원문과 공식 출력은 제공되지 않았습니다. 원본 output.txt가 비어 있어 아래 예제 출력은 원본 풀이와 독립 구현을 대조해 계산했습니다.\n\n정수 좌표로 나타내는 마을에 N개의 집이 있다. i번째 집의 좌표는 (x_i, y_i)이고, 이 집에서 이용할 수 있는 충전소까지의 최대 거리는 d_i이다.\n\n충전소를 설치할 수 있는 위치는 x좌표와 y좌표가 각각 -15 이상 15 이하인 정수 좌표이다. 집이 있는 위치에는 충전소를 설치할 수 없다. 충전소를 두 개 설치할 때는 서로 다른 위치에 설치해야 한다.\n\n집 (x, y)와 충전소 (a, b) 사이의 거리는 맨해튼 거리 |x-a| + |y-b|이다. 각 집은 설치된 충전소 중 가장 가까운 곳을 이용한다. 모든 집이 충전소를 이용하려면 각 집에서 가장 가까운 충전소까지의 거리가 그 집의 d_i 이하여야 한다. 한 충전소를 이용하는 집의 수에는 제한이 없다.\n\n다음 우선순위에 따라 충전소를 최대 두 개 설치하려고 한다.\n\n1. 충전소 하나로 모든 집의 거리 조건을 만족시킬 수 있다면 반드시 하나만 설치한다.\n2. 하나로 불가능할 때만 두 개를 설치한다.\n3. 위에서 결정한 설치 개수 안에서, 각 집과 가장 가까운 충전소 사이의 거리 합이 최소가 되도록 한다.\n\n구해야 하는 값은 이때의 최소 거리 합이다. 충전소 두 개로도 모든 집의 거리 조건을 만족시킬 수 없다면 -1을 출력한다.\n\n설치 개수를 줄이는 것이 거리 합을 줄이는 것보다 우선한다. 따라서 두 개를 설치하면 더 짧은 거리 합을 얻을 수 있더라도, 하나로 가능하다면 하나를 설치한 결과를 출력한다.",
+ "input_spec": "첫째 줄에 테스트케이스 수 T가 주어진다.\n\n각 테스트케이스의 첫째 줄에 집의 수 N이 주어진다. 다음 N개의 줄에는 각 집의 x좌표, y좌표, 허용 거리 d가 공백으로 구분되어 주어진다.\n\nT\nN\nx_1 y_1 d_1\n...\nx_N y_N d_N",
+ "output_spec": "각 테스트케이스마다 #테스트케이스번호 정답 형식으로 출력한다. 번호는 1부터 시작한다. 정답은 설치 우선순위를 지킨 최소 거리 합이며, 불가능하면 -1이다.",
+ "examples_text": "- 1번: 집 (-2, 0)과 (1, 3)을 하나의 충전소로 감당할 수 없다. (-1, 0)과 (1, 2)에 각각 설치하면 두 집 모두 거리 1로 이용하므로 정답은 2이다.\n- 2번: (-1, 0)에 충전소 하나를 설치하면 두 집까지의 거리는 1, 2이고 각각의 허용 거리를 만족한다. 따라서 정답은 3이다. 충전소 두 개를 써서 거리 합 2를 만들 수 있어도, 하나로 가능한 경우이므로 선택하지 않는다.\n- 4번: 충전소 두 개로도 모든 집을 감당할 수 없어 -1이다.",
+ "constraints": [
+  "시간 제한: 50개 테스트케이스 합산 약 10초 (응시자 기억).",
+  "정확한 시간 및 언어별 차등 여부, 메모리 제한과 전체 입력 제한은 미확인이다.",
+  "다음 입력 범위는 제공 테스트케이스에서 관찰한 값이며, 원문의 최대 제한을 뜻하지 않는다.",
+  "코드에 명시된 충전소 설치 좌표: -15 ≤ x, y ≤ 15인 정수 좌표.",
+  "제공 입력: T=5, N은 2~10, 허용 거리 d는 1~11.",
+  "T·N·d의 원문 상한은 확인되지 않았다."
+ ],
+ "samples": [
+  {
+   "in": "5\n2\n-2 0 1\n1 3 2\n2\n-1 -1 1\n1 0 2\n10\n3 5 4\n2 6 8\n7 4 10\n6 6 11\n3 3 3\n5 2 8\n0 5 10\n4 7 9\n6 2 5\n1 1 10\n5\n-1 -2 1\n4 -2 1\n7 9 2\n10 10 3\n0 3 1\n8\n1 1 8\n-3 1 8\n-4 0 4\n3 3 6\n-1 1 6\n-4 4 7\n-3 5 4\n-1 -2 4\n",
+   "out": "#1 2\n#2 3\n#3 36\n#4 -1\n#5 21\n"
   }
+ ],
+ "sample_case_count": 5,
+ "private_testcases": [],
+ "private_tc_count": 0,
+ "tc_stored": false,
+ "images": [],
+ "api_style": false,
+ "restored": true,
+ "fetched_at": "2026-09-15",
+ "restoration": {
+  "exam_date": "2026-09-15",
+  "source_commit": "d3ebeeadfae5bf905edb6c678acfdc0e32451d54",
+  "source_path": "99_exam/A/1",
+  "title_is_reconstructed": true,
+  "official_outputs_available": false,
+  "sample_outputs": "computed from supplied solution and checked against an independent implementation",
+  "official_limits_available": false,
+  "participant_recollection": {
+   "testcases": 50,
+   "total_seconds_approx": 10
+  },
+  "archive": "restored/ssafy_a_2026-09-15/1_charging_stations",
+  "verification": "restored/ssafy_a_2026-09-15/verification.json"
+ }
 }
