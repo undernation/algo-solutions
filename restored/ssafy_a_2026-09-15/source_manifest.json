@@ -1,0 +1,50 @@
+{
+  "repository": "https://lab.ssafy.com/s16/b06/lectures.git",
+  "commit": "d3ebeeadfae5bf905edb6c678acfdc0e32451d54",
+  "exam_date": "2026-09-15",
+  "restored_at": "2026-09-15",
+  "files": [
+    {
+      "source_path": "99_exam/A/1/sol.py",
+      "archived_path": "1_charging_stations/original/sol.py",
+      "bytes": 2609,
+      "sha256": "377421028fefe0b4eaeda8ebd2a0edb736f33f744604ee07f42177b79c2db5ed"
+    },
+    {
+      "source_path": "99_exam/A/1/input.txt",
+      "archived_path": "1_charging_stations/original/input.txt",
+      "bytes": 194,
+      "sha256": "adaa34dfc1a14eeaf5bee13112ae3749f6ce3f9b222bf5b6ff1f95c22a500e09"
+    },
+    {
+      "source_path": "99_exam/A/1/output.txt",
+      "archived_path": "1_charging_stations/original/output.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source_path": "99_exam/A/1/sol2.py",
+      "archived_path": "1_charging_stations/original/sol2.py",
+      "bytes": 2142,
+      "sha256": "409b1ceeb77db812d7b71e0bf6143fc9d4be7503f4623179a9aa962254dcbf3c"
+    },
+    {
+      "source_path": "99_exam/A/2/sol.py",
+      "archived_path": "2_farming/original/sol.py",
+      "bytes": 2644,
+      "sha256": "8a825539003681887297f2304ce711c576b1fc43aef2919e57a0f0f41bab8bc4"
+    },
+    {
+      "source_path": "99_exam/A/2/input.txt",
+      "archived_path": "2_farming/original/input.txt",
+      "bytes": 1232,
+      "sha256": "3b55845556910640e63e2daa16d89172f6ba84ad1d272f7319a1d05b22f8dde1"
+    },
+    {
+      "source_path": "99_exam/A/2/output.txt",
+      "archived_path": "2_farming/original/output.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

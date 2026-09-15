@@ -1,0 +1,3 @@
+# GitLab 원본 blob의 줄바꿈까지 그대로 보존한다.
+*/original/* -text
+*/sample_input.txt -text

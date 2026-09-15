@@ -1,0 +1,215 @@
+{
+  "seed": 20260915,
+  "official_outputs_available": false,
+  "sample_case_counts": [
+    5,
+    10
+  ],
+  "sample_answers": [
+    [
+      2,
+      3,
+      36,
+      -1,
+      21
+    ],
+    [
+      4,
+      0,
+      10,
+      11,
+      16,
+      14,
+      20,
+      18,
+      15,
+      22
+    ]
+  ],
+  "sample_script_seconds": {
+    "1_charging_stations/solution.py": 0.0456,
+    "1_charging_stations/original/sol.py": 0.0808,
+    "1_charging_stations/original/sol2.py": 0.16,
+    "2_farming/solution.py": 0.0496,
+    "2_farming/original/sol.py": 0.0575
+  },
+  "station_random_cases": 2000,
+  "station_original_random_cases": 80,
+  "station_boundary_cases": 7,
+  "farming_random_cases": 2000,
+  "farming_start_states": 40044,
+  "farming_exhaustive_cases": 160,
+  "repeated_provided_50_case_batch_seconds": {
+    "1_charging_stations/solution.py": 0.0715,
+    "1_charging_stations/original/sol.py": 0.4333,
+    "1_charging_stations/original/sol2.py": 1.172,
+    "2_farming/solution.py": 0.0969,
+    "2_farming/original/sol.py": 0.1275
+  },
+  "observed_size_stress": {
+    "stations_N10": {
+      "answer": 22,
+      "seconds": 0.0239
+    },
+    "farm_N9_M50": {
+      "answer": 23,
+      "seconds": 0.0081
+    }
+  },
+  "first_farm_sample_start": {
+    "position": [
+      1,
+      3
+    ],
+    "direction": [
+      -1,
+      0
+    ]
+  },
+  "first_farm_sample_optimal_trace": [
+    {
+      "day": 1,
+      "position": [
+        1,
+        3
+      ],
+      "action": "1번째 파종 (성숙: 6일)",
+      "next": [
+        1,
+        4
+      ],
+      "harvest": 0
+    },
+    {
+      "day": 2,
+      "position": [
+        1,
+        4
+      ],
+      "action": "1번째 파종 (성숙: 7일)",
+      "next": [
+        2,
+        4
+      ],
+      "harvest": 0
+    },
+    {
+      "day": 3,
+      "position": [
+        2,
+        4
+      ],
+      "action": "1번째 파종 (성숙: 8일)",
+      "next": [
+        2,
+        3
+      ],
+      "harvest": 0
+    },
+    {
+      "day": 4,
+      "position": [
+        2,
+        3
+      ],
+      "action": "1번째 파종 (성숙: 9일)",
+      "next": [
+        2,
+        2
+      ],
+      "harvest": 0
+    },
+    {
+      "day": 5,
+      "position": [
+        2,
+        2
+      ],
+      "action": "1번째 파종 (성숙: 10일)",
+      "next": [
+        1,
+        2
+      ],
+      "harvest": 0
+    },
+    {
+      "day": 6,
+      "position": [
+        1,
+        2
+      ],
+      "action": "1번째 파종 (성숙: 11일)",
+      "next": [
+        1,
+        3
+      ],
+      "harvest": 0
+    },
+    {
+      "day": 7,
+      "position": [
+        1,
+        3
+      ],
+      "action": "수확",
+      "next": [
+        1,
+        4
+      ],
+      "harvest": 1
+    },
+    {
+      "day": 8,
+      "position": [
+        1,
+        4
+      ],
+      "action": "수확",
+      "next": [
+        2,
+        4
+      ],
+      "harvest": 2
+    },
+    {
+      "day": 9,
+      "position": [
+        2,
+        4
+      ],
+      "action": "수확",
+      "next": [
+        2,
+        3
+      ],
+      "harvest": 3
+    },
+    {
+      "day": 10,
+      "position": [
+        2,
+        3
+      ],
+      "action": "수확",
+      "next": [
+        1,
+        3
+      ],
+      "harvest": 4
+    },
+    {
+      "day": 11,
+      "position": [
+        1,
+        3
+      ],
+      "action": "2번째 파종 (성숙: 17일)",
+      "next": [
+        1,
+        4
+      ],
+      "harvest": 4
+    }
+  ],
+  "seconds": 16.488
+}

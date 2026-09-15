@@ -32,6 +32,11 @@ _meta/             도구 · 색인 · 대시보드 템플릿
 
 ## 🛠 사용법
 
+### 복원 문제
+
+- 2026-09-15 SSAFY A형: [1번 충전소 설치](https://undernation.github.io/algo-solutions/#p/SWEA/99997) · [2번 농지 이동과 수확](https://undernation.github.io/algo-solutions/#p/SWEA/99998)
+- [복원 지문·원본 코드·입출력·검증 결과](restored/ssafy_a_2026-09-15/README.md)
+
 ### 매일 쓰는 것 — 브라우저만 있으면 됨
 
 [대시보드](https://undernation.github.io/algo-solutions/)에서 문제 열고 → 코드 붙여넣고 → **채점** → **저장 & 커밋**.
