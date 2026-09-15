@@ -1,0 +1,5340 @@
+{
+  "seed": 2026091502,
+  "generated_count": 50,
+  "distinct_from_original": true,
+  "official_testcases": false,
+  "bounds": {
+    "n": [
+      6,
+      9
+    ],
+    "days": [
+      10,
+      50
+    ],
+    "mountain_border": true,
+    "note": "Only observed sample bounds are used; official maxima are unknown"
+  },
+  "groups": {
+    "boundary": 12,
+    "growth_boundary": 8,
+    "random": 15,
+    "stress": 15
+  },
+  "oracle": "daily growth countdown and direction-vector rotations",
+  "reference_implementations": [
+    "independent countdown oracle",
+    "solution.py",
+    "original/sol.py"
+  ],
+  "start_states_checked": 4576,
+  "runtime": "Python 3.7.10 (51efa818fd9b, Apr 04 2021, 12:09:32)\r\n[PyPy 7.3.4 with MSC v.1927 64 bit (AMD64)]",
+  "generated_batch_seconds": {
+    "solution.py": 0.1117,
+    "original/sol.py": 0.1427
+  },
+  "time_limit_seconds": 15,
+  "within_15_seconds_on_this_machine": true,
+  "cases": [
+    {
+      "kind": "boundary",
+      "reason": "고립된 농지는 이동·파종 불가",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 10,
+      "id": 1,
+      "answer": 0,
+      "profile": {
+        "n": 6,
+        "days": 10,
+        "farmland": 1,
+        "start_states_checked": 4,
+        "simulated_days_per_implementation": 40,
+        "minimum_over_start_states": 0,
+        "maximum_over_start_states": 0,
+        "best_start_zero_based": {
+          "position": [
+            2,
+            2
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 10,
+        "best_path_max_sowings_in_one_cell": 0
+      }
+    },
+    {
+      "kind": "boundary",
+      "reason": "서로 고립된 여러 농지에서 시작 상태 초기화",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 50,
+      "id": 2,
+      "answer": 0,
+      "profile": {
+        "n": 9,
+        "days": 50,
+        "farmland": 25,
+        "start_states_checked": 100,
+        "simulated_days_per_implementation": 5000,
+        "minimum_over_start_states": 0,
+        "maximum_over_start_states": 0,
+        "best_start_zero_based": {
+          "position": [
+            1,
+            1
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 50,
+        "best_path_max_sowings_in_one_cell": 0
+      }
+    },
+    {
+      "kind": "boundary",
+      "reason": "일자 통로의 후진과 성장 대기",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 20,
+      "id": 3,
+      "answer": 5,
+      "profile": {
+        "n": 7,
+        "days": 20,
+        "farmland": 5,
+        "start_states_checked": 20,
+        "simulated_days_per_implementation": 400,
+        "minimum_over_start_states": 4,
+        "maximum_over_start_states": 5,
+        "best_start_zero_based": {
+          "position": [
+            1,
+            3
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 8,
+        "best_path_max_sowings_in_one_cell": 2
+      }
+    },
+    {
+      "kind": "boundary",
+      "reason": "꺾인 통로의 회전과 마지막 날 수확",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 12,
+      "id": 4,
+      "answer": 3,
+      "profile": {
+        "n": 6,
+        "days": 12,
+        "farmland": 7,
+        "start_states_checked": 28,
+        "simulated_days_per_implementation": 336,
+        "minimum_over_start_states": 1,
+        "maximum_over_start_states": 3,
+        "best_start_zero_based": {
+          "position": [
+            1,
+            3
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 4,
+        "best_path_max_sowings_in_one_cell": 1
+      }
+    },
+    {
+      "kind": "boundary",
+      "reason": "T자 분기에서 방향 우선순위",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 25,
+      "id": 5,
+      "answer": 6,
+      "profile": {
+        "n": 7,
+        "days": 25,
+        "farmland": 8,
+        "start_states_checked": 32,
+        "simulated_days_per_implementation": 800,
+        "minimum_over_start_states": 4,
+        "maximum_over_start_states": 6,
+        "best_start_zero_based": {
+          "position": [
+            2,
+            1
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 9,
+        "best_path_max_sowings_in_one_cell": 2
+      }
+    },
+    {
+      "kind": "boundary",
+      "reason": "십자 분기와 네 방향 시작",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 30,
+      "id": 6,
+      "answer": 7,
+      "profile": {
+        "n": 9,
+        "days": 30,
+        "farmland": 13,
+        "start_states_checked": 52,
+        "simulated_days_per_implementation": 1560,
+        "minimum_over_start_states": 5,
+        "maximum_over_start_states": 7,
+        "best_start_zero_based": {
+          "position": [
+            3,
+            4
+          ],
+          "direction_vector": [
+            0,
+            -1
+          ]
+        },
+        "best_path_stationary_days": 12,
+        "best_path_max_sowings_in_one_cell": 2
+      }
+    },
+    {
+      "kind": "boundary",
+      "reason": "고리 모양 길의 순환과 재파종",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 35,
+      "id": 7,
+      "answer": 15,
+      "profile": {
+        "n": 8,
+        "days": 35,
+        "farmland": 20,
+        "start_states_checked": 80,
+        "simulated_days_per_implementation": 2800,
+        "minimum_over_start_states": 15,
+        "maximum_over_start_states": 15,
+        "best_start_zero_based": {
+          "position": [
+            1,
+            1
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 0,
+        "best_path_max_sowings_in_one_cell": 1
+      }
+    },
+    {
+      "kind": "boundary",
+      "reason": "작은 사각형에서 성숙 농지 진입",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 11,
+      "id": 8,
+      "answer": 3,
+      "profile": {
+        "n": 6,
+        "days": 11,
+        "farmland": 4,
+        "start_states_checked": 16,
+        "simulated_days_per_implementation": 176,
+        "minimum_over_start_states": 3,
+        "maximum_over_start_states": 3,
+        "best_start_zero_based": {
+          "position": [
+            2,
+            2
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 2,
+        "best_path_max_sowings_in_one_cell": 2
+      }
+    },
+    {
+      "kind": "boundary",
+      "reason": "긴 뱀 모양 통로와 반복 후진",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 49,
+      "id": 9,
+      "answer": 22,
+      "profile": {
+        "n": 9,
+        "days": 49,
+        "farmland": 31,
+        "start_states_checked": 124,
+        "simulated_days_per_implementation": 6076,
+        "minimum_over_start_states": 10,
+        "maximum_over_start_states": 22,
+        "best_start_zero_based": {
+          "position": [
+            3,
+            7
+          ],
+          "direction_vector": [
+            1,
+            0
+          ]
+        },
+        "best_path_stationary_days": 4,
+        "best_path_max_sowings_in_one_cell": 1
+      }
+    },
+    {
+      "kind": "boundary",
+      "reason": "연결되지 않은 두 농장 중 최적 시작 선택",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 30,
+      "id": 10,
+      "answer": 10,
+      "profile": {
+        "n": 8,
+        "days": 30,
+        "farmland": 10,
+        "start_states_checked": 40,
+        "simulated_days_per_implementation": 1200,
+        "minimum_over_start_states": 7,
+        "maximum_over_start_states": 10,
+        "best_start_zero_based": {
+          "position": [
+            1,
+            6
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 9,
+        "best_path_max_sowings_in_one_cell": 2
+      }
+    },
+    {
+      "kind": "boundary",
+      "reason": "비대칭 분기에서 오른쪽·앞·왼쪽 선택",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 38,
+      "id": 11,
+      "answer": 10,
+      "profile": {
+        "n": 8,
+        "days": 38,
+        "farmland": 14,
+        "start_states_checked": 56,
+        "simulated_days_per_implementation": 2128,
+        "minimum_over_start_states": 7,
+        "maximum_over_start_states": 10,
+        "best_start_zero_based": {
+          "position": [
+            1,
+            2
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 12,
+        "best_path_max_sowings_in_one_cell": 2
+      }
+    },
+    {
+      "kind": "boundary",
+      "reason": "작은 방과 막다른 출구의 재방문",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 50,
+      "id": 12,
+      "answer": 21,
+      "profile": {
+        "n": 7,
+        "days": 50,
+        "farmland": 13,
+        "start_states_checked": 52,
+        "simulated_days_per_implementation": 2600,
+        "minimum_over_start_states": 16,
+        "maximum_over_start_states": 21,
+        "best_start_zero_based": {
+          "position": [
+            5,
+            5
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 0,
+        "best_path_max_sowings_in_one_cell": 4
+      }
+    },
+    {
+      "kind": "growth_boundary",
+      "reason": "두 칸 통로, M=10: 성숙·진입·다음 날 수확과 누적 파종",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 10,
+      "id": 13,
+      "answer": 1,
+      "profile": {
+        "n": 6,
+        "days": 10,
+        "farmland": 2,
+        "start_states_checked": 8,
+        "simulated_days_per_implementation": 80,
+        "minimum_over_start_states": 1,
+        "maximum_over_start_states": 1,
+        "best_start_zero_based": {
+          "position": [
+            2,
+            2
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 8,
+        "best_path_max_sowings_in_one_cell": 1
+      }
+    },
+    {
+      "kind": "growth_boundary",
+      "reason": "두 칸 통로, M=11: 성숙·진입·다음 날 수확과 누적 파종",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 11,
+      "id": 14,
+      "answer": 1,
+      "profile": {
+        "n": 6,
+        "days": 11,
+        "farmland": 2,
+        "start_states_checked": 8,
+        "simulated_days_per_implementation": 88,
+        "minimum_over_start_states": 1,
+        "maximum_over_start_states": 1,
+        "best_start_zero_based": {
+          "position": [
+            2,
+            2
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 8,
+        "best_path_max_sowings_in_one_cell": 2
+      }
+    },
+    {
+      "kind": "growth_boundary",
+      "reason": "두 칸 통로, M=12: 성숙·진입·다음 날 수확과 누적 파종",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 12,
+      "id": 15,
+      "answer": 2,
+      "profile": {
+        "n": 6,
+        "days": 12,
+        "farmland": 2,
+        "start_states_checked": 8,
+        "simulated_days_per_implementation": 96,
+        "minimum_over_start_states": 2,
+        "maximum_over_start_states": 2,
+        "best_start_zero_based": {
+          "position": [
+            2,
+            2
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 9,
+        "best_path_max_sowings_in_one_cell": 2
+      }
+    },
+    {
+      "kind": "growth_boundary",
+      "reason": "두 칸 통로, M=17: 성숙·진입·다음 날 수확과 누적 파종",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 17,
+      "id": 16,
+      "answer": 2,
+      "profile": {
+        "n": 6,
+        "days": 17,
+        "farmland": 2,
+        "start_states_checked": 8,
+        "simulated_days_per_implementation": 136,
+        "minimum_over_start_states": 2,
+        "maximum_over_start_states": 2,
+        "best_start_zero_based": {
+          "position": [
+            2,
+            2
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 13,
+        "best_path_max_sowings_in_one_cell": 2
+      }
+    },
+    {
+      "kind": "growth_boundary",
+      "reason": "두 칸 통로, M=18: 성숙·진입·다음 날 수확과 누적 파종",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 18,
+      "id": 17,
+      "answer": 3,
+      "profile": {
+        "n": 6,
+        "days": 18,
+        "farmland": 2,
+        "start_states_checked": 8,
+        "simulated_days_per_implementation": 144,
+        "minimum_over_start_states": 3,
+        "maximum_over_start_states": 3,
+        "best_start_zero_based": {
+          "position": [
+            2,
+            2
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 14,
+        "best_path_max_sowings_in_one_cell": 2
+      }
+    },
+    {
+      "kind": "growth_boundary",
+      "reason": "두 칸 통로, M=23: 성숙·진입·다음 날 수확과 누적 파종",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 23,
+      "id": 18,
+      "answer": 3,
+      "profile": {
+        "n": 6,
+        "days": 23,
+        "farmland": 2,
+        "start_states_checked": 8,
+        "simulated_days_per_implementation": 184,
+        "minimum_over_start_states": 3,
+        "maximum_over_start_states": 3,
+        "best_start_zero_based": {
+          "position": [
+            2,
+            2
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 18,
+        "best_path_max_sowings_in_one_cell": 3
+      }
+    },
+    {
+      "kind": "growth_boundary",
+      "reason": "두 칸 통로, M=24: 성숙·진입·다음 날 수확과 누적 파종",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 24,
+      "id": 19,
+      "answer": 4,
+      "profile": {
+        "n": 6,
+        "days": 24,
+        "farmland": 2,
+        "start_states_checked": 8,
+        "simulated_days_per_implementation": 192,
+        "minimum_over_start_states": 4,
+        "maximum_over_start_states": 4,
+        "best_start_zero_based": {
+          "position": [
+            2,
+            2
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 19,
+        "best_path_max_sowings_in_one_cell": 3
+      }
+    },
+    {
+      "kind": "growth_boundary",
+      "reason": "두 칸 통로, M=50: 성숙·진입·다음 날 수확과 누적 파종",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 50,
+      "id": 20,
+      "answer": 7,
+      "profile": {
+        "n": 6,
+        "days": 50,
+        "farmland": 2,
+        "start_states_checked": 8,
+        "simulated_days_per_implementation": 400,
+        "minimum_over_start_states": 7,
+        "maximum_over_start_states": 7,
+        "best_start_zero_based": {
+          "position": [
+            2,
+            2
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 42,
+        "best_path_max_sowings_in_one_cell": 4
+      }
+    },
+    {
+      "kind": "random",
+      "reason": "농지 밀도 18%의 무작위 지도 1",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 10,
+      "id": 21,
+      "answer": 0,
+      "profile": {
+        "n": 6,
+        "days": 10,
+        "farmland": 3,
+        "start_states_checked": 12,
+        "simulated_days_per_implementation": 120,
+        "minimum_over_start_states": 0,
+        "maximum_over_start_states": 0,
+        "best_start_zero_based": {
+          "position": [
+            1,
+            4
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 10,
+        "best_path_max_sowings_in_one_cell": 0
+      }
+    },
+    {
+      "kind": "random",
+      "reason": "농지 밀도 40%의 무작위 지도 2",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 19,
+      "id": 22,
+      "answer": 4,
+      "profile": {
+        "n": 7,
+        "days": 19,
+        "farmland": 11,
+        "start_states_checked": 44,
+        "simulated_days_per_implementation": 836,
+        "minimum_over_start_states": 0,
+        "maximum_over_start_states": 4,
+        "best_start_zero_based": {
+          "position": [
+            1,
+            1
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 9,
+        "best_path_max_sowings_in_one_cell": 2
+      }
+    },
+    {
+      "kind": "random",
+      "reason": "농지 밀도 68%의 무작위 지도 3",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 27,
+      "id": 23,
+      "answer": 9,
+      "profile": {
+        "n": 8,
+        "days": 27,
+        "farmland": 22,
+        "start_states_checked": 88,
+        "simulated_days_per_implementation": 2376,
+        "minimum_over_start_states": 0,
+        "maximum_over_start_states": 9,
+        "best_start_zero_based": {
+          "position": [
+            1,
+            5
+          ],
+          "direction_vector": [
+            1,
+            0
+          ]
+        },
+        "best_path_stationary_days": 4,
+        "best_path_max_sowings_in_one_cell": 2
+      }
+    },
+    {
+      "kind": "random",
+      "reason": "농지 밀도 90%의 무작위 지도 4",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 40,
+      "id": 24,
+      "answer": 18,
+      "profile": {
+        "n": 9,
+        "days": 40,
+        "farmland": 45,
+        "start_states_checked": 180,
+        "simulated_days_per_implementation": 7200,
+        "minimum_over_start_states": 2,
+        "maximum_over_start_states": 18,
+        "best_start_zero_based": {
+          "position": [
+            7,
+            6
+          ],
+          "direction_vector": [
+            1,
+            0
+          ]
+        },
+        "best_path_stationary_days": 0,
+        "best_path_max_sowings_in_one_cell": 4
+      }
+    },
+    {
+      "kind": "random",
+      "reason": "농지 밀도 18%의 무작위 지도 5",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 50,
+      "id": 25,
+      "answer": 7,
+      "profile": {
+        "n": 6,
+        "days": 50,
+        "farmland": 3,
+        "start_states_checked": 12,
+        "simulated_days_per_implementation": 600,
+        "minimum_over_start_states": 0,
+        "maximum_over_start_states": 7,
+        "best_start_zero_based": {
+          "position": [
+            2,
+            2
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 42,
+        "best_path_max_sowings_in_one_cell": 4
+      }
+    },
+    {
+      "kind": "random",
+      "reason": "농지 밀도 40%의 무작위 지도 6",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 10,
+      "id": 26,
+      "answer": 3,
+      "profile": {
+        "n": 7,
+        "days": 10,
+        "farmland": 12,
+        "start_states_checked": 48,
+        "simulated_days_per_implementation": 480,
+        "minimum_over_start_states": 0,
+        "maximum_over_start_states": 3,
+        "best_start_zero_based": {
+          "position": [
+            1,
+            1
+          ],
+          "direction_vector": [
+            -1,
+            0
+          ]
+        },
+        "best_path_stationary_days": 2,
+        "best_path_max_sowings_in_one_cell": 2
+      }
+    },
+    {
+      "kind": "random",
+      "reason": "농지 밀도 68%의 무작위 지도 7",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 19,
+      "id": 27,
+      "answer": 6,
+      "profile": {
+        "n": 8,
+        "days": 19,
+        "farmland": 25,
+        "start_states_checked": 100,
+        "simulated_days_per_implementation": 1900,
+        "minimum_over_start_states": 0,
+        "maximum_over_start_states": 6,
+        "best_start_zero_based": {
+          "position": [
+            2,
+            3
+          ],
+          "direction_vector": [
+            0,
+            -1
+          ]
+        },
+        "best_path_stationary_days": 4,
+        "best_path_max_sowings_in_one_cell": 2
+      }
+    },
+    {
+      "kind": "random",
+      "reason": "농지 밀도 90%의 무작위 지도 8",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 27,
+      "id": 28,
+      "answer": 11,
+      "profile": {
+        "n": 9,
+        "days": 27,
+        "farmland": 43,
+        "start_states_checked": 172,
+        "simulated_days_per_implementation": 4644,
+        "minimum_over_start_states": 0,
+        "maximum_over_start_states": 11,
+        "best_start_zero_based": {
+          "position": [
+            1,
+            3
+          ],
+          "direction_vector": [
+            -1,
+            0
+          ]
+        },
+        "best_path_stationary_days": 0,
+        "best_path_max_sowings_in_one_cell": 2
+      }
+    },
+    {
+      "kind": "random",
+      "reason": "농지 밀도 18%의 무작위 지도 9",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 40,
+      "id": 29,
+      "answer": 0,
+      "profile": {
+        "n": 6,
+        "days": 40,
+        "farmland": 2,
+        "start_states_checked": 8,
+        "simulated_days_per_implementation": 320,
+        "minimum_over_start_states": 0,
+        "maximum_over_start_states": 0,
+        "best_start_zero_based": {
+          "position": [
+            3,
+            4
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 40,
+        "best_path_max_sowings_in_one_cell": 0
+      }
+    },
+    {
+      "kind": "random",
+      "reason": "농지 밀도 40%의 무작위 지도 10",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 50,
+      "id": 30,
+      "answer": 22,
+      "profile": {
+        "n": 7,
+        "days": 50,
+        "farmland": 13,
+        "start_states_checked": 52,
+        "simulated_days_per_implementation": 2600,
+        "minimum_over_start_states": 0,
+        "maximum_over_start_states": 22,
+        "best_start_zero_based": {
+          "position": [
+            3,
+            1
+          ],
+          "direction_vector": [
+            0,
+            -1
+          ]
+        },
+        "best_path_stationary_days": 1,
+        "best_path_max_sowings_in_one_cell": 5
+      }
+    },
+    {
+      "kind": "random",
+      "reason": "농지 밀도 68%의 무작위 지도 11",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 10,
+      "id": 31,
+      "answer": 4,
+      "profile": {
+        "n": 8,
+        "days": 10,
+        "farmland": 29,
+        "start_states_checked": 116,
+        "simulated_days_per_implementation": 1160,
+        "minimum_over_start_states": 0,
+        "maximum_over_start_states": 4,
+        "best_start_zero_based": {
+          "position": [
+            1,
+            3
+          ],
+          "direction_vector": [
+            -1,
+            0
+          ]
+        },
+        "best_path_stationary_days": 0,
+        "best_path_max_sowings_in_one_cell": 1
+      }
+    },
+    {
+      "kind": "random",
+      "reason": "농지 밀도 90%의 무작위 지도 12",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 19,
+      "id": 32,
+      "answer": 8,
+      "profile": {
+        "n": 9,
+        "days": 19,
+        "farmland": 45,
+        "start_states_checked": 180,
+        "simulated_days_per_implementation": 3420,
+        "minimum_over_start_states": 0,
+        "maximum_over_start_states": 8,
+        "best_start_zero_based": {
+          "position": [
+            3,
+            2
+          ],
+          "direction_vector": [
+            0,
+            -1
+          ]
+        },
+        "best_path_stationary_days": 0,
+        "best_path_max_sowings_in_one_cell": 2
+      }
+    },
+    {
+      "kind": "random",
+      "reason": "농지 밀도 18%의 무작위 지도 13",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 27,
+      "id": 33,
+      "answer": 0,
+      "profile": {
+        "n": 6,
+        "days": 27,
+        "farmland": 1,
+        "start_states_checked": 4,
+        "simulated_days_per_implementation": 108,
+        "minimum_over_start_states": 0,
+        "maximum_over_start_states": 0,
+        "best_start_zero_based": {
+          "position": [
+            3,
+            4
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 27,
+        "best_path_max_sowings_in_one_cell": 0
+      }
+    },
+    {
+      "kind": "random",
+      "reason": "농지 밀도 40%의 무작위 지도 14",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 40,
+      "id": 34,
+      "answer": 13,
+      "profile": {
+        "n": 7,
+        "days": 40,
+        "farmland": 12,
+        "start_states_checked": 48,
+        "simulated_days_per_implementation": 1920,
+        "minimum_over_start_states": 0,
+        "maximum_over_start_states": 13,
+        "best_start_zero_based": {
+          "position": [
+            3,
+            2
+          ],
+          "direction_vector": [
+            1,
+            0
+          ]
+        },
+        "best_path_stationary_days": 11,
+        "best_path_max_sowings_in_one_cell": 4
+      }
+    },
+    {
+      "kind": "random",
+      "reason": "농지 밀도 68%의 무작위 지도 15",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 50,
+      "id": 35,
+      "answer": 15,
+      "profile": {
+        "n": 8,
+        "days": 50,
+        "farmland": 21,
+        "start_states_checked": 84,
+        "simulated_days_per_implementation": 4200,
+        "minimum_over_start_states": 0,
+        "maximum_over_start_states": 15,
+        "best_start_zero_based": {
+          "position": [
+            2,
+            1
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 12,
+        "best_path_max_sowings_in_one_cell": 2
+      }
+    },
+    {
+      "kind": "stress",
+      "reason": "N=9, M=50, 내부 49칸 전부 농지: 시작 상태 196개",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 50,
+      "id": 36,
+      "answer": 24,
+      "profile": {
+        "n": 9,
+        "days": 50,
+        "farmland": 49,
+        "start_states_checked": 196,
+        "simulated_days_per_implementation": 9800,
+        "minimum_over_start_states": 15,
+        "maximum_over_start_states": 24,
+        "best_start_zero_based": {
+          "position": [
+            1,
+            1
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 0,
+        "best_path_max_sowings_in_one_cell": 2
+      }
+    },
+    {
+      "kind": "stress",
+      "reason": "N=9, M=50, 내부 장애물 (1, 1)과 농지 48칸",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 50,
+      "id": 37,
+      "answer": 24,
+      "profile": {
+        "n": 9,
+        "days": 50,
+        "farmland": 48,
+        "start_states_checked": 192,
+        "simulated_days_per_implementation": 9600,
+        "minimum_over_start_states": 15,
+        "maximum_over_start_states": 24,
+        "best_start_zero_based": {
+          "position": [
+            1,
+            2
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 0,
+        "best_path_max_sowings_in_one_cell": 2
+      }
+    },
+    {
+      "kind": "stress",
+      "reason": "N=9, M=50, 내부 장애물 (1, 4)과 농지 48칸",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 50,
+      "id": 38,
+      "answer": 24,
+      "profile": {
+        "n": 9,
+        "days": 50,
+        "farmland": 48,
+        "start_states_checked": 192,
+        "simulated_days_per_implementation": 9600,
+        "minimum_over_start_states": 11,
+        "maximum_over_start_states": 24,
+        "best_start_zero_based": {
+          "position": [
+            1,
+            1
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 0,
+        "best_path_max_sowings_in_one_cell": 1
+      }
+    },
+    {
+      "kind": "stress",
+      "reason": "N=9, M=50, 내부 장애물 (2, 3)과 농지 48칸",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 50,
+      "id": 39,
+      "answer": 24,
+      "profile": {
+        "n": 9,
+        "days": 50,
+        "farmland": 48,
+        "start_states_checked": 192,
+        "simulated_days_per_implementation": 9600,
+        "minimum_over_start_states": 15,
+        "maximum_over_start_states": 24,
+        "best_start_zero_based": {
+          "position": [
+            1,
+            1
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 0,
+        "best_path_max_sowings_in_one_cell": 2
+      }
+    },
+    {
+      "kind": "stress",
+      "reason": "N=9, M=50, 내부 장애물 (3, 3)과 농지 48칸",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 50,
+      "id": 40,
+      "answer": 24,
+      "profile": {
+        "n": 9,
+        "days": 50,
+        "farmland": 48,
+        "start_states_checked": 192,
+        "simulated_days_per_implementation": 9600,
+        "minimum_over_start_states": 15,
+        "maximum_over_start_states": 24,
+        "best_start_zero_based": {
+          "position": [
+            1,
+            1
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 0,
+        "best_path_max_sowings_in_one_cell": 2
+      }
+    },
+    {
+      "kind": "stress",
+      "reason": "N=9, M=50, 내부 장애물 (4, 4)과 농지 48칸",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 50,
+      "id": 41,
+      "answer": 24,
+      "profile": {
+        "n": 9,
+        "days": 50,
+        "farmland": 48,
+        "start_states_checked": 192,
+        "simulated_days_per_implementation": 9600,
+        "minimum_over_start_states": 15,
+        "maximum_over_start_states": 24,
+        "best_start_zero_based": {
+          "position": [
+            1,
+            1
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 0,
+        "best_path_max_sowings_in_one_cell": 2
+      }
+    },
+    {
+      "kind": "stress",
+      "reason": "N=9, M=50, 내부 장애물 (5, 2)과 농지 48칸",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 50,
+      "id": 42,
+      "answer": 24,
+      "profile": {
+        "n": 9,
+        "days": 50,
+        "farmland": 48,
+        "start_states_checked": 192,
+        "simulated_days_per_implementation": 9600,
+        "minimum_over_start_states": 15,
+        "maximum_over_start_states": 24,
+        "best_start_zero_based": {
+          "position": [
+            1,
+            1
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 0,
+        "best_path_max_sowings_in_one_cell": 2
+      }
+    },
+    {
+      "kind": "stress",
+      "reason": "N=9, M=50, 좁은 출입구가 2행에 있는 장벽",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 50,
+      "id": 43,
+      "answer": 23,
+      "profile": {
+        "n": 9,
+        "days": 50,
+        "farmland": 43,
+        "start_states_checked": 172,
+        "simulated_days_per_implementation": 8600,
+        "minimum_over_start_states": 9,
+        "maximum_over_start_states": 23,
+        "best_start_zero_based": {
+          "position": [
+            2,
+            2
+          ],
+          "direction_vector": [
+            0,
+            -1
+          ]
+        },
+        "best_path_stationary_days": 0,
+        "best_path_max_sowings_in_one_cell": 4
+      }
+    },
+    {
+      "kind": "stress",
+      "reason": "N=9, M=50, 좁은 출입구가 6행에 있는 장벽",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 50,
+      "id": 44,
+      "answer": 23,
+      "profile": {
+        "n": 9,
+        "days": 50,
+        "farmland": 43,
+        "start_states_checked": 172,
+        "simulated_days_per_implementation": 8600,
+        "minimum_over_start_states": 9,
+        "maximum_over_start_states": 23,
+        "best_start_zero_based": {
+          "position": [
+            2,
+            2
+          ],
+          "direction_vector": [
+            0,
+            -1
+          ]
+        },
+        "best_path_stationary_days": 0,
+        "best_path_max_sowings_in_one_cell": 4
+      }
+    },
+    {
+      "kind": "stress",
+      "reason": "N=9, M=50, 장애물 2개와 많은 시작 상태",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 50,
+      "id": 45,
+      "answer": 23,
+      "profile": {
+        "n": 9,
+        "days": 50,
+        "farmland": 47,
+        "start_states_checked": 188,
+        "simulated_days_per_implementation": 9400,
+        "minimum_over_start_states": 6,
+        "maximum_over_start_states": 23,
+        "best_start_zero_based": {
+          "position": [
+            2,
+            6
+          ],
+          "direction_vector": [
+            0,
+            -1
+          ]
+        },
+        "best_path_stationary_days": 0,
+        "best_path_max_sowings_in_one_cell": 4
+      }
+    },
+    {
+      "kind": "stress",
+      "reason": "N=9, M=50, 장애물 3개와 많은 시작 상태",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 50,
+      "id": 46,
+      "answer": 24,
+      "profile": {
+        "n": 9,
+        "days": 50,
+        "farmland": 46,
+        "start_states_checked": 184,
+        "simulated_days_per_implementation": 9200,
+        "minimum_over_start_states": 6,
+        "maximum_over_start_states": 24,
+        "best_start_zero_based": {
+          "position": [
+            2,
+            3
+          ],
+          "direction_vector": [
+            0,
+            -1
+          ]
+        },
+        "best_path_stationary_days": 0,
+        "best_path_max_sowings_in_one_cell": 3
+      }
+    },
+    {
+      "kind": "stress",
+      "reason": "N=9, M=50, 장애물 4개와 많은 시작 상태",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 50,
+      "id": 47,
+      "answer": 24,
+      "profile": {
+        "n": 9,
+        "days": 50,
+        "farmland": 45,
+        "start_states_checked": 180,
+        "simulated_days_per_implementation": 9000,
+        "minimum_over_start_states": 0,
+        "maximum_over_start_states": 24,
+        "best_start_zero_based": {
+          "position": [
+            1,
+            1
+          ],
+          "direction_vector": [
+            0,
+            1
+          ]
+        },
+        "best_path_stationary_days": 0,
+        "best_path_max_sowings_in_one_cell": 2
+      }
+    },
+    {
+      "kind": "stress",
+      "reason": "N=9, M=50, 장애물 5개와 많은 시작 상태",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 50,
+      "id": 48,
+      "answer": 23,
+      "profile": {
+        "n": 9,
+        "days": 50,
+        "farmland": 44,
+        "start_states_checked": 176,
+        "simulated_days_per_implementation": 8800,
+        "minimum_over_start_states": 7,
+        "maximum_over_start_states": 23,
+        "best_start_zero_based": {
+          "position": [
+            2,
+            6
+          ],
+          "direction_vector": [
+            -1,
+            0
+          ]
+        },
+        "best_path_stationary_days": 0,
+        "best_path_max_sowings_in_one_cell": 4
+      }
+    },
+    {
+      "kind": "stress",
+      "reason": "N=9, M=50, 장애물 6개와 많은 시작 상태",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 50,
+      "id": 49,
+      "answer": 24,
+      "profile": {
+        "n": 9,
+        "days": 50,
+        "farmland": 43,
+        "start_states_checked": 172,
+        "simulated_days_per_implementation": 8600,
+        "minimum_over_start_states": 0,
+        "maximum_over_start_states": 24,
+        "best_start_zero_based": {
+          "position": [
+            1,
+            1
+          ],
+          "direction_vector": [
+            -1,
+            0
+          ]
+        },
+        "best_path_stationary_days": 0,
+        "best_path_max_sowings_in_one_cell": 4
+      }
+    },
+    {
+      "kind": "stress",
+      "reason": "N=9, M=50, 장애물 7개와 많은 시작 상태",
+      "grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "days": 50,
+      "id": 50,
+      "answer": 23,
+      "profile": {
+        "n": 9,
+        "days": 50,
+        "farmland": 42,
+        "start_states_checked": 168,
+        "simulated_days_per_implementation": 8400,
+        "minimum_over_start_states": 4,
+        "maximum_over_start_states": 23,
+        "best_start_zero_based": {
+          "position": [
+            2,
+            6
+          ],
+          "direction_vector": [
+            0,
+            -1
+          ]
+        },
+        "best_path_stationary_days": 0,
+        "best_path_max_sowings_in_one_cell": 4
+      }
+    }
+  ]
+}

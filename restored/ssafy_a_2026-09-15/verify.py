@@ -239,7 +239,7 @@ def main():
         actual_hash = hashlib.sha256((ROOT / entry["archived_path"]).read_bytes()).hexdigest()
         assert actual_hash == entry["sha256"], entry
 
-    # 응시자가 기억한 '50개 합산 약 10초' 형식에 맞춘 반복 입력 측정.
+    # 응시자가 기억한 '50개 합산 약 15초' 형식에 맞춘 반복 입력 측정.
     # 제공 입력을 반복했으므로 원문의 미공개/최악 테스트 통과를 의미하지 않는다.
     batches = {}
     for folder, answers in ((P1, expected[0]), (P2, expected[1])):

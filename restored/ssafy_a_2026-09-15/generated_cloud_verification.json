@@ -1,0 +1,173 @@
+{
+  "runner_status": {
+    "ok": true,
+    "runner": "PyPy 7.3.9",
+    "speedFactor": 1.0,
+    "nativeMargin": 1.5,
+    "pyMult": 3.0,
+    "pyAdd": 2.0
+  },
+  "checks": [
+    {
+      "problem_id": 99997,
+      "mode": "combined_50",
+      "matched": true,
+      "source_sha256": "84e8af3c7854200a2c659ed1d7c568837f0cf44435f2be808c182bf1d3e72241",
+      "result": {
+        "ok": true,
+        "status": "ok",
+        "truncated": false,
+        "outBytes": 331,
+        "elapsed": 13.624,
+        "allowedTime": 15.0,
+        "runner": "PyPy 7.3.9"
+      }
+    },
+    {
+      "problem_id": 99997,
+      "mode": "individual_process_probe",
+      "source_sha256": "84e8af3c7854200a2c659ed1d7c568837f0cf44435f2be808c182bf1d3e72241",
+      "result": {
+        "ok": true,
+        "verdict": "time_limit_exceeded",
+        "allowedTime": 15.0,
+        "totalTime": true,
+        "summary": {
+          "passed": 20,
+          "total": 51,
+          "firstFailedIndex": 20
+        },
+        "judgedAt": "2026-09-15T13:11:19.218Z",
+        "elapsedSec": 15.069,
+        "first_failure_status": "time_limit_exceeded"
+      },
+      "superseded": true,
+      "note": "Each generated case launched a new PyPy process. Replaced by a single T=50 batch."
+    },
+    {
+      "problem_id": 99998,
+      "mode": "combined_50",
+      "matched": true,
+      "source_sha256": "2bed3144898a8b99c276b7503e5828a22e6616dc9f375841d5ede914d3cd9c3a",
+      "result": {
+        "ok": true,
+        "status": "ok",
+        "truncated": false,
+        "outBytes": 316,
+        "elapsed": 0.51,
+        "allowedTime": 15.0,
+        "runner": "PyPy 7.3.9"
+      }
+    },
+    {
+      "problem_id": 99998,
+      "mode": "individual_process_probe",
+      "source_sha256": "2bed3144898a8b99c276b7503e5828a22e6616dc9f375841d5ede914d3cd9c3a",
+      "result": {
+        "ok": true,
+        "verdict": "time_limit_exceeded",
+        "allowedTime": 15.0,
+        "totalTime": true,
+        "summary": {
+          "passed": 49,
+          "total": 51,
+          "firstFailedIndex": 49
+        },
+        "judgedAt": "2026-09-15T13:11:35.422Z",
+        "elapsedSec": 15.063,
+        "first_failure_status": "time_limit_exceeded"
+      },
+      "superseded": true,
+      "note": "Each generated case launched a new PyPy process. Replaced by a single T=50 batch."
+    },
+    {
+      "problem_id": 99997,
+      "mode": "stress_50_repeated",
+      "matched": true,
+      "within_15_seconds": false,
+      "note": "10 distinct N=10 stress cases repeated five times; separate from the published 50 distinct cases",
+      "source_sha256": "84e8af3c7854200a2c659ed1d7c568837f0cf44435f2be808c182bf1d3e72241",
+      "result": {
+        "ok": true,
+        "status": "ok",
+        "truncated": false,
+        "outBytes": 341,
+        "elapsed": 19.275,
+        "allowedTime": 30.0,
+        "runner": "PyPy 7.3.9"
+      }
+    },
+    {
+      "problem_id": 99997,
+      "mode": "archive_final_batched",
+      "base_time_seconds": 15,
+      "archive_default_vm_margin": 1.5,
+      "actual_input_cases": 55,
+      "source_sha256": "84e8af3c7854200a2c659ed1d7c568837f0cf44435f2be808c182bf1d3e72241",
+      "result": {
+        "ok": true,
+        "verdict": "accepted",
+        "allowedTime": 22.5,
+        "totalTime": true,
+        "summary": {
+          "passed": 2,
+          "total": 2,
+          "firstFailedIndex": null
+        },
+        "judgedAt": "2026-09-15T13:15:35.833Z",
+        "elapsedSec": 16.516,
+        "detail": [
+          {
+            "index": 0,
+            "kind": "public",
+            "status": "passed",
+            "elapsed": 3.309
+          },
+          {
+            "index": 1,
+            "kind": "private",
+            "status": "passed",
+            "elapsed": 13.208
+          }
+        ]
+      }
+    },
+    {
+      "problem_id": 99998,
+      "mode": "archive_final_batched",
+      "base_time_seconds": 15,
+      "archive_default_vm_margin": 1.5,
+      "actual_input_cases": 60,
+      "source_sha256": "2bed3144898a8b99c276b7503e5828a22e6616dc9f375841d5ede914d3cd9c3a",
+      "result": {
+        "ok": true,
+        "verdict": "accepted",
+        "allowedTime": 22.5,
+        "totalTime": true,
+        "summary": {
+          "passed": 2,
+          "total": 2,
+          "firstFailedIndex": null
+        },
+        "judgedAt": "2026-09-15T13:15:37.054Z",
+        "elapsedSec": 0.907,
+        "detail": [
+          {
+            "index": 0,
+            "kind": "public",
+            "status": "passed",
+            "elapsed": 0.395
+          },
+          {
+            "index": 1,
+            "kind": "private",
+            "status": "passed",
+            "elapsed": 0.511
+          }
+        ]
+      }
+    }
+  ],
+  "recorded_on": "2026-09-15",
+  "timing_note": "Local and cloud timings are measured wall time on different machines; they do not establish the official exam verdict."
+}

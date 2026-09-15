@@ -1,0 +1,2696 @@
+{
+  "seed": 2026091501,
+  "generated_count": 50,
+  "distinct_from_original": true,
+  "official_testcases": false,
+  "bounds": {
+    "n": [
+      2,
+      10
+    ],
+    "coordinates": [
+      -15,
+      15
+    ],
+    "d": [
+      1,
+      11
+    ],
+    "note": "N and d use observed sample bounds; official maxima are unknown"
+  },
+  "groups": {
+    "boundary": 12,
+    "one_station": 10,
+    "two_stations": 10,
+    "impossible": 8,
+    "stress": 10
+  },
+  "answers_by_branch": {
+    "two": 21,
+    "one": 15,
+    "impossible": 14
+  },
+  "oracle": "independent partition of houses; all grid coordinates examined",
+  "reference_implementations": [
+    "independent partition oracle",
+    "solution.py",
+    "original/sol.py",
+    "original/sol2.py"
+  ],
+  "user_code": {
+    "file": "swea/99997_[SSAFYA형1번복원]충전소설치(2026-09-15).py",
+    "sha256": "84e8af3c7854200a2c659ed1d7c568837f0cf44435f2be808c182bf1d3e72241",
+    "original_sample_passed": 5,
+    "generated_passed": 50,
+    "additional_single_station_random_passed": 2000,
+    "runtime": "Python 3.7.10 (51efa818fd9b, Apr 04 2021, 12:09:32)\r\n[PyPy 7.3.4 with MSC v.1927 64 bit (AMD64)]",
+    "generated_batch_seconds": 2.018,
+    "sample_batch_seconds": 0.6458,
+    "time_limit_seconds": 15,
+    "within_15_seconds_on_this_machine": true,
+    "stress_50_repeated_seconds": 2.5948,
+    "stress_50_note": "10 distinct stress cases repeated five times; separate timing check, not the published dataset",
+    "stress_within_15_seconds_on_this_machine": true,
+    "correctness_assumption": "all house coordinates are distinct; original guarantee unknown",
+    "conditional_duplicate_coordinate_case": {
+      "houses": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "reference_answer": 2,
+      "user_output": "#1 1",
+      "included_in_published_tests": false
+    }
+  },
+  "reference_batch_seconds": 0.1372,
+  "cases": [
+    {
+      "kind": "boundary",
+      "reason": "양 끝 모서리와 최소 허용 거리",
+      "houses": [
+        [
+          -15,
+          -15,
+          1
+        ],
+        [
+          15,
+          15,
+          1
+        ]
+      ],
+      "id": 1,
+      "answer": 2,
+      "branch": "two",
+      "profile": {
+        "n": 2,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 959,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 461276,
+        "feasible_station_pairs": 4
+      }
+    },
+    {
+      "kind": "boundary",
+      "reason": "인접한 두 집 위에는 설치 불가",
+      "houses": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ]
+      ],
+      "id": 2,
+      "answer": 2,
+      "branch": "two",
+      "profile": {
+        "n": 2,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 959,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 462232,
+        "feasible_station_pairs": 9
+      }
+    },
+    {
+      "kind": "boundary",
+      "reason": "경계선 위의 유일한 공통 위치",
+      "houses": [
+        [
+          -15,
+          -1,
+          1
+        ],
+        [
+          -15,
+          1,
+          1
+        ]
+      ],
+      "id": 3,
+      "answer": 2,
+      "branch": "one",
+      "profile": {
+        "n": 2,
+        "one_station_candidates": 1,
+        "one_station_cost": 2,
+        "valid_station_positions": 959,
+        "all_grid_pairs_enumerated_by_user": 0,
+        "house_checks_in_user_pair_loop": 0,
+        "feasible_station_pairs": 0
+      }
+    },
+    {
+      "kind": "boundary",
+      "reason": "모서리 부근과 동률 최적 위치",
+      "houses": [
+        [
+          -15,
+          -15,
+          2
+        ],
+        [
+          -14,
+          -14,
+          2
+        ]
+      ],
+      "id": 4,
+      "answer": 2,
+      "branch": "one",
+      "profile": {
+        "n": 2,
+        "one_station_candidates": 4,
+        "one_station_cost": 2,
+        "valid_station_positions": 959,
+        "all_grid_pairs_enumerated_by_user": 0,
+        "house_checks_in_user_pair_loop": 0,
+        "feasible_station_pairs": 0
+      }
+    },
+    {
+      "kind": "boundary",
+      "reason": "거리 합보다 설치 1개를 우선",
+      "houses": [
+        [
+          -2,
+          0,
+          3
+        ],
+        [
+          0,
+          0,
+          3
+        ],
+        [
+          2,
+          0,
+          3
+        ]
+      ],
+      "id": 5,
+      "answer": 5,
+      "branch": "one",
+      "profile": {
+        "n": 3,
+        "one_station_candidates": 4,
+        "one_station_cost": 5,
+        "valid_station_positions": 958,
+        "all_grid_pairs_enumerated_by_user": 0,
+        "house_checks_in_user_pair_loop": 0,
+        "feasible_station_pairs": 0
+      }
+    },
+    {
+      "kind": "boundary",
+      "reason": "허용 거리와 정확히 같은 위치",
+      "houses": [
+        [
+          -1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ]
+      ],
+      "id": 6,
+      "answer": 3,
+      "branch": "one",
+      "profile": {
+        "n": 3,
+        "one_station_candidates": 1,
+        "one_station_cost": 3,
+        "valid_station_positions": 958,
+        "all_grid_pairs_enumerated_by_user": 0,
+        "house_checks_in_user_pair_loop": 0,
+        "feasible_station_pairs": 0
+      }
+    },
+    {
+      "kind": "boundary",
+      "reason": "서로 떨어진 세 권역은 2개로 불가능",
+      "houses": [
+        [
+          -15,
+          -15,
+          1
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          15,
+          15,
+          1
+        ]
+      ],
+      "id": 7,
+      "answer": -1,
+      "branch": "impossible",
+      "profile": {
+        "n": 3,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 958,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 460324,
+        "feasible_station_pairs": 0
+      }
+    },
+    {
+      "kind": "boundary",
+      "reason": "공통 교점이 집으로 막힘",
+      "houses": [
+        [
+          -1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "id": 8,
+      "answer": -1,
+      "branch": "impossible",
+      "profile": {
+        "n": 3,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 958,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 461280,
+        "feasible_station_pairs": 0
+      }
+    },
+    {
+      "kind": "boundary",
+      "reason": "밀집한 집 때문에 중앙 집의 허용 위치 없음",
+      "houses": [
+        [
+          -1,
+          -1,
+          1
+        ],
+        [
+          -1,
+          0,
+          1
+        ],
+        [
+          -1,
+          1,
+          1
+        ],
+        [
+          0,
+          -1,
+          1
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          -1,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "id": 9,
+      "answer": -1,
+      "branch": "impossible",
+      "profile": {
+        "n": 9,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 952,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 454579,
+        "feasible_station_pairs": 0
+      }
+    },
+    {
+      "kind": "boundary",
+      "reason": "N=10 직선 배치와 짝수 개 중앙값",
+      "houses": [
+        [
+          0,
+          -5,
+          11
+        ],
+        [
+          0,
+          -4,
+          11
+        ],
+        [
+          0,
+          -3,
+          11
+        ],
+        [
+          0,
+          -2,
+          11
+        ],
+        [
+          0,
+          -1,
+          11
+        ],
+        [
+          0,
+          0,
+          11
+        ],
+        [
+          0,
+          1,
+          11
+        ],
+        [
+          0,
+          2,
+          11
+        ],
+        [
+          0,
+          3,
+          11
+        ],
+        [
+          0,
+          4,
+          11
+        ]
+      ],
+      "id": 10,
+      "answer": 35,
+      "branch": "one",
+      "profile": {
+        "n": 10,
+        "one_station_candidates": 88,
+        "one_station_cost": 35,
+        "valid_station_positions": 951,
+        "all_grid_pairs_enumerated_by_user": 0,
+        "house_checks_in_user_pair_loop": 0,
+        "feasible_station_pairs": 0
+      }
+    },
+    {
+      "kind": "boundary",
+      "reason": "좌표 양쪽 경계의 두 군집",
+      "houses": [
+        [
+          -15,
+          -2,
+          2
+        ],
+        [
+          -15,
+          2,
+          2
+        ],
+        [
+          15,
+          -2,
+          2
+        ],
+        [
+          15,
+          2,
+          2
+        ]
+      ],
+      "id": 11,
+      "answer": 8,
+      "branch": "two",
+      "profile": {
+        "n": 4,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 957,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 466079,
+        "feasible_station_pairs": 1
+      }
+    },
+    {
+      "kind": "boundary",
+      "reason": "집마다 다른 허용 거리",
+      "houses": [
+        [
+          -7,
+          0,
+          1
+        ],
+        [
+          -6,
+          1,
+          3
+        ],
+        [
+          7,
+          0,
+          1
+        ],
+        [
+          6,
+          -1,
+          3
+        ],
+        [
+          0,
+          0,
+          11
+        ]
+      ],
+      "id": 12,
+      "answer": 10,
+      "branch": "two",
+      "profile": {
+        "n": 5,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 956,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 464150,
+        "feasible_station_pairs": 16
+      }
+    },
+    {
+      "kind": "one_station",
+      "reason": "단일 충전소를 보장한 무작위 배치 1",
+      "houses": [
+        [
+          8,
+          -3,
+          8
+        ],
+        [
+          9,
+          -6,
+          4
+        ],
+        [
+          3,
+          -7,
+          6
+        ],
+        [
+          9,
+          -2,
+          8
+        ],
+        [
+          4,
+          -4,
+          7
+        ],
+        [
+          7,
+          -2,
+          6
+        ],
+        [
+          6,
+          -2,
+          5
+        ]
+      ],
+      "id": 13,
+      "answer": 28,
+      "branch": "one",
+      "profile": {
+        "n": 7,
+        "one_station_candidates": 6,
+        "one_station_cost": 28,
+        "valid_station_positions": 954,
+        "all_grid_pairs_enumerated_by_user": 0,
+        "house_checks_in_user_pair_loop": 0,
+        "feasible_station_pairs": 0
+      }
+    },
+    {
+      "kind": "one_station",
+      "reason": "단일 충전소를 보장한 무작위 배치 2",
+      "houses": [
+        [
+          7,
+          -5,
+          6
+        ],
+        [
+          6,
+          -3,
+          5
+        ],
+        [
+          8,
+          2,
+          7
+        ],
+        [
+          10,
+          0,
+          6
+        ],
+        [
+          5,
+          0,
+          4
+        ],
+        [
+          11,
+          -3,
+          7
+        ],
+        [
+          5,
+          2,
+          7
+        ],
+        [
+          6,
+          1,
+          4
+        ]
+      ],
+      "id": 14,
+      "answer": 30,
+      "branch": "one",
+      "profile": {
+        "n": 8,
+        "one_station_candidates": 7,
+        "one_station_cost": 30,
+        "valid_station_positions": 953,
+        "all_grid_pairs_enumerated_by_user": 0,
+        "house_checks_in_user_pair_loop": 0,
+        "feasible_station_pairs": 0
+      }
+    },
+    {
+      "kind": "one_station",
+      "reason": "단일 충전소를 보장한 무작위 배치 3",
+      "houses": [
+        [
+          -9,
+          14,
+          7
+        ],
+        [
+          -7,
+          9,
+          6
+        ],
+        [
+          -15,
+          10,
+          5
+        ],
+        [
+          -12,
+          14,
+          7
+        ],
+        [
+          -15,
+          11,
+          8
+        ],
+        [
+          -14,
+          7,
+          7
+        ],
+        [
+          -12,
+          9,
+          2
+        ],
+        [
+          -12,
+          11,
+          4
+        ]
+      ],
+      "id": 15,
+      "answer": 31,
+      "branch": "one",
+      "profile": {
+        "n": 8,
+        "one_station_candidates": 3,
+        "one_station_cost": 31,
+        "valid_station_positions": 953,
+        "all_grid_pairs_enumerated_by_user": 0,
+        "house_checks_in_user_pair_loop": 0,
+        "feasible_station_pairs": 0
+      }
+    },
+    {
+      "kind": "one_station",
+      "reason": "단일 충전소를 보장한 무작위 배치 4",
+      "houses": [
+        [
+          9,
+          9,
+          1
+        ],
+        [
+          9,
+          6,
+          7
+        ],
+        [
+          11,
+          11,
+          5
+        ],
+        [
+          10,
+          6,
+          6
+        ],
+        [
+          12,
+          9,
+          7
+        ],
+        [
+          7,
+          11,
+          5
+        ],
+        [
+          10,
+          5,
+          9
+        ],
+        [
+          4,
+          8,
+          8
+        ],
+        [
+          10,
+          12,
+          6
+        ]
+      ],
+      "id": 16,
+      "answer": 32,
+      "branch": "one",
+      "profile": {
+        "n": 9,
+        "one_station_candidates": 4,
+        "one_station_cost": 32,
+        "valid_station_positions": 952,
+        "all_grid_pairs_enumerated_by_user": 0,
+        "house_checks_in_user_pair_loop": 0,
+        "feasible_station_pairs": 0
+      }
+    },
+    {
+      "kind": "one_station",
+      "reason": "단일 충전소를 보장한 무작위 배치 5",
+      "houses": [
+        [
+          -11,
+          1,
+          6
+        ],
+        [
+          -10,
+          3,
+          9
+        ],
+        [
+          -5,
+          -4,
+          6
+        ]
+      ],
+      "id": 17,
+      "answer": 17,
+      "branch": "one",
+      "profile": {
+        "n": 3,
+        "one_station_candidates": 12,
+        "one_station_cost": 17,
+        "valid_station_positions": 958,
+        "all_grid_pairs_enumerated_by_user": 0,
+        "house_checks_in_user_pair_loop": 0,
+        "feasible_station_pairs": 0
+      }
+    },
+    {
+      "kind": "one_station",
+      "reason": "단일 충전소를 보장한 무작위 배치 6",
+      "houses": [
+        [
+          8,
+          6,
+          6
+        ],
+        [
+          12,
+          8,
+          9
+        ],
+        [
+          8,
+          7,
+          8
+        ],
+        [
+          8,
+          2,
+          7
+        ],
+        [
+          10,
+          3,
+          2
+        ],
+        [
+          11,
+          1,
+          7
+        ],
+        [
+          8,
+          0,
+          8
+        ]
+      ],
+      "id": 18,
+      "answer": 27,
+      "branch": "one",
+      "profile": {
+        "n": 7,
+        "one_station_candidates": 9,
+        "one_station_cost": 27,
+        "valid_station_positions": 954,
+        "all_grid_pairs_enumerated_by_user": 0,
+        "house_checks_in_user_pair_loop": 0,
+        "feasible_station_pairs": 0
+      }
+    },
+    {
+      "kind": "one_station",
+      "reason": "단일 충전소를 보장한 무작위 배치 7",
+      "houses": [
+        [
+          -1,
+          -9,
+          5
+        ],
+        [
+          -7,
+          -10,
+          8
+        ],
+        [
+          -4,
+          -12,
+          3
+        ],
+        [
+          -6,
+          -11,
+          6
+        ],
+        [
+          -7,
+          -12,
+          8
+        ],
+        [
+          -4,
+          -11,
+          4
+        ],
+        [
+          -6,
+          -13,
+          6
+        ]
+      ],
+      "id": 19,
+      "answer": 22,
+      "branch": "one",
+      "profile": {
+        "n": 7,
+        "one_station_candidates": 10,
+        "one_station_cost": 22,
+        "valid_station_positions": 954,
+        "all_grid_pairs_enumerated_by_user": 0,
+        "house_checks_in_user_pair_loop": 0,
+        "feasible_station_pairs": 0
+      }
+    },
+    {
+      "kind": "one_station",
+      "reason": "단일 충전소를 보장한 무작위 배치 8",
+      "houses": [
+        [
+          3,
+          -1,
+          6
+        ],
+        [
+          8,
+          0,
+          5
+        ],
+        [
+          0,
+          4,
+          9
+        ],
+        [
+          4,
+          4,
+          6
+        ]
+      ],
+      "id": 20,
+      "answer": 18,
+      "branch": "one",
+      "profile": {
+        "n": 4,
+        "one_station_candidates": 9,
+        "one_station_cost": 18,
+        "valid_station_positions": 957,
+        "all_grid_pairs_enumerated_by_user": 0,
+        "house_checks_in_user_pair_loop": 0,
+        "feasible_station_pairs": 0
+      }
+    },
+    {
+      "kind": "one_station",
+      "reason": "단일 충전소를 보장한 무작위 배치 9",
+      "houses": [
+        [
+          5,
+          2,
+          5
+        ],
+        [
+          5,
+          5,
+          3
+        ],
+        [
+          8,
+          7,
+          9
+        ],
+        [
+          4,
+          2,
+          2
+        ],
+        [
+          8,
+          6,
+          7
+        ],
+        [
+          3,
+          7,
+          5
+        ],
+        [
+          8,
+          4,
+          6
+        ],
+        [
+          7,
+          5,
+          5
+        ],
+        [
+          7,
+          0,
+          8
+        ],
+        [
+          4,
+          1,
+          5
+        ]
+      ],
+      "id": 21,
+      "answer": 42,
+      "branch": "one",
+      "profile": {
+        "n": 10,
+        "one_station_candidates": 2,
+        "one_station_cost": 42,
+        "valid_station_positions": 951,
+        "all_grid_pairs_enumerated_by_user": 0,
+        "house_checks_in_user_pair_loop": 0,
+        "feasible_station_pairs": 0
+      }
+    },
+    {
+      "kind": "one_station",
+      "reason": "단일 충전소를 보장한 무작위 배치 10",
+      "houses": [
+        [
+          -7,
+          6,
+          8
+        ],
+        [
+          -6,
+          1,
+          3
+        ],
+        [
+          -6,
+          -1,
+          4
+        ],
+        [
+          -3,
+          -1,
+          5
+        ]
+      ],
+      "id": 22,
+      "answer": 13,
+      "branch": "one",
+      "profile": {
+        "n": 4,
+        "one_station_candidates": 7,
+        "one_station_cost": 13,
+        "valid_station_positions": 957,
+        "all_grid_pairs_enumerated_by_user": 0,
+        "house_checks_in_user_pair_loop": 0,
+        "feasible_station_pairs": 0
+      }
+    },
+    {
+      "kind": "two_stations",
+      "reason": "분리된 두 군집과 서로 다른 허용 거리 1",
+      "houses": [
+        [
+          -13,
+          -2,
+          5
+        ],
+        [
+          -14,
+          0,
+          2
+        ],
+        [
+          -11,
+          0,
+          3
+        ],
+        [
+          10,
+          2,
+          2
+        ],
+        [
+          13,
+          3,
+          4
+        ],
+        [
+          10,
+          1,
+          5
+        ]
+      ],
+      "id": 23,
+      "answer": 11,
+      "branch": "two",
+      "profile": {
+        "n": 6,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 955,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 515559,
+        "feasible_station_pairs": 28
+      }
+    },
+    {
+      "kind": "two_stations",
+      "reason": "분리된 두 군집과 서로 다른 허용 거리 2",
+      "houses": [
+        [
+          -14,
+          -3,
+          3
+        ],
+        [
+          -10,
+          -2,
+          3
+        ],
+        [
+          -11,
+          -5,
+          3
+        ],
+        [
+          11,
+          -2,
+          1
+        ],
+        [
+          13,
+          -2,
+          1
+        ],
+        [
+          12,
+          -3,
+          1
+        ]
+      ],
+      "id": 24,
+      "answer": 10,
+      "branch": "two",
+      "profile": {
+        "n": 6,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 955,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 480668,
+        "feasible_station_pairs": 2
+      }
+    },
+    {
+      "kind": "two_stations",
+      "reason": "분리된 두 군집과 서로 다른 허용 거리 3",
+      "houses": [
+        [
+          -14,
+          -6,
+          2
+        ],
+        [
+          -14,
+          -7,
+          4
+        ],
+        [
+          13,
+          8,
+          3
+        ],
+        [
+          11,
+          8,
+          1
+        ]
+      ],
+      "id": 25,
+      "answer": 5,
+      "branch": "two",
+      "profile": {
+        "n": 4,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 957,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 476696,
+        "feasible_station_pairs": 40
+      }
+    },
+    {
+      "kind": "two_stations",
+      "reason": "분리된 두 군집과 서로 다른 허용 거리 4",
+      "houses": [
+        [
+          -13,
+          4,
+          3
+        ],
+        [
+          -13,
+          8,
+          4
+        ],
+        [
+          -10,
+          7,
+          5
+        ],
+        [
+          -12,
+          5,
+          1
+        ],
+        [
+          11,
+          7,
+          1
+        ],
+        [
+          13,
+          5,
+          4
+        ],
+        [
+          10,
+          6,
+          5
+        ],
+        [
+          13,
+          8,
+          2
+        ],
+        [
+          12,
+          6,
+          2
+        ]
+      ],
+      "id": 26,
+      "answer": 20,
+      "branch": "two",
+      "profile": {
+        "n": 9,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 952,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 486580,
+        "feasible_station_pairs": 2
+      }
+    },
+    {
+      "kind": "two_stations",
+      "reason": "분리된 두 군집과 서로 다른 허용 거리 5",
+      "houses": [
+        [
+          -11,
+          3,
+          4
+        ],
+        [
+          -11,
+          2,
+          1
+        ],
+        [
+          13,
+          6,
+          3
+        ],
+        [
+          13,
+          2,
+          3
+        ],
+        [
+          13,
+          5,
+          3
+        ]
+      ],
+      "id": 27,
+      "answer": 8,
+      "branch": "two",
+      "profile": {
+        "n": 5,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 956,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 495934,
+        "feasible_station_pairs": 12
+      }
+    },
+    {
+      "kind": "two_stations",
+      "reason": "분리된 두 군집과 서로 다른 허용 거리 6",
+      "houses": [
+        [
+          -13,
+          -3,
+          1
+        ],
+        [
+          -11,
+          -5,
+          4
+        ],
+        [
+          -14,
+          -2,
+          5
+        ],
+        [
+          13,
+          -9,
+          3
+        ],
+        [
+          14,
+          -8,
+          3
+        ],
+        [
+          13,
+          -10,
+          5
+        ],
+        [
+          13,
+          -7,
+          2
+        ]
+      ],
+      "id": 28,
+      "answer": 12,
+      "branch": "two",
+      "profile": {
+        "n": 7,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 954,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 462437,
+        "feasible_station_pairs": 10
+      }
+    },
+    {
+      "kind": "two_stations",
+      "reason": "분리된 두 군집과 서로 다른 허용 거리 7",
+      "houses": [
+        [
+          -11,
+          2,
+          4
+        ],
+        [
+          -12,
+          1,
+          1
+        ],
+        [
+          -10,
+          0,
+          2
+        ],
+        [
+          13,
+          6,
+          5
+        ],
+        [
+          10,
+          4,
+          2
+        ],
+        [
+          11,
+          2,
+          5
+        ]
+      ],
+      "id": 29,
+      "answer": 11,
+      "branch": "two",
+      "profile": {
+        "n": 6,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 955,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 496935,
+        "feasible_station_pairs": 14
+      }
+    },
+    {
+      "kind": "two_stations",
+      "reason": "분리된 두 군집과 서로 다른 허용 거리 8",
+      "houses": [
+        [
+          -11,
+          -8,
+          2
+        ],
+        [
+          -11,
+          -9,
+          5
+        ],
+        [
+          -11,
+          -7,
+          1
+        ],
+        [
+          -13,
+          -7,
+          2
+        ],
+        [
+          10,
+          4,
+          5
+        ],
+        [
+          13,
+          4,
+          3
+        ],
+        [
+          12,
+          1,
+          3
+        ],
+        [
+          11,
+          5,
+          5
+        ],
+        [
+          11,
+          1,
+          3
+        ]
+      ],
+      "id": 30,
+      "answer": 19,
+      "branch": "two",
+      "profile": {
+        "n": 9,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 952,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 475510,
+        "feasible_station_pairs": 4
+      }
+    },
+    {
+      "kind": "two_stations",
+      "reason": "분리된 두 군집과 서로 다른 허용 거리 9",
+      "houses": [
+        [
+          -13,
+          -8,
+          3
+        ],
+        [
+          -12,
+          -8,
+          2
+        ],
+        [
+          -11,
+          -8,
+          4
+        ],
+        [
+          -10,
+          -6,
+          2
+        ],
+        [
+          -11,
+          -5,
+          2
+        ],
+        [
+          13,
+          -3,
+          4
+        ],
+        [
+          13,
+          -6,
+          4
+        ],
+        [
+          12,
+          -3,
+          2
+        ],
+        [
+          11,
+          -3,
+          4
+        ],
+        [
+          14,
+          -6,
+          3
+        ]
+      ],
+      "id": 31,
+      "answer": 21,
+      "branch": "two",
+      "profile": {
+        "n": 10,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 951,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 495330,
+        "feasible_station_pairs": 6
+      }
+    },
+    {
+      "kind": "two_stations",
+      "reason": "분리된 두 군집과 서로 다른 허용 거리 10",
+      "houses": [
+        [
+          -12,
+          1,
+          2
+        ],
+        [
+          -13,
+          2,
+          4
+        ],
+        [
+          10,
+          6,
+          3
+        ],
+        [
+          14,
+          6,
+          2
+        ],
+        [
+          13,
+          5,
+          2
+        ]
+      ],
+      "id": 32,
+      "answer": 7,
+      "branch": "two",
+      "profile": {
+        "n": 5,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 956,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 477676,
+        "feasible_station_pairs": 22
+      }
+    },
+    {
+      "kind": "impossible",
+      "reason": "세 권역을 각각 담당해야 하는 배치 1",
+      "houses": [
+        [
+          -14,
+          -14,
+          1
+        ],
+        [
+          -12,
+          -13,
+          2
+        ],
+        [
+          12,
+          -12,
+          2
+        ],
+        [
+          13,
+          -14,
+          1
+        ],
+        [
+          1,
+          14,
+          3
+        ],
+        [
+          0,
+          14,
+          2
+        ],
+        [
+          0,
+          12,
+          2
+        ]
+      ],
+      "id": 33,
+      "answer": -1,
+      "branch": "impossible",
+      "profile": {
+        "n": 7,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 954,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 460340,
+        "feasible_station_pairs": 0
+      }
+    },
+    {
+      "kind": "impossible",
+      "reason": "세 권역을 각각 담당해야 하는 배치 2",
+      "houses": [
+        [
+          -12,
+          -12,
+          1
+        ],
+        [
+          -12,
+          -14,
+          2
+        ],
+        [
+          14,
+          -13,
+          3
+        ],
+        [
+          13,
+          -12,
+          3
+        ],
+        [
+          -1,
+          13,
+          1
+        ],
+        [
+          0,
+          14,
+          3
+        ],
+        [
+          0,
+          12,
+          1
+        ],
+        [
+          1,
+          13,
+          2
+        ]
+      ],
+      "id": 34,
+      "answer": -1,
+      "branch": "impossible",
+      "profile": {
+        "n": 8,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 953,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 458442,
+        "feasible_station_pairs": 0
+      }
+    },
+    {
+      "kind": "impossible",
+      "reason": "세 권역을 각각 담당해야 하는 배치 3",
+      "houses": [
+        [
+          -12,
+          -12,
+          2
+        ],
+        [
+          -12,
+          -13,
+          1
+        ],
+        [
+          -13,
+          -14,
+          2
+        ],
+        [
+          12,
+          -14,
+          1
+        ],
+        [
+          13,
+          -12,
+          3
+        ],
+        [
+          14,
+          -12,
+          1
+        ],
+        [
+          -1,
+          14,
+          3
+        ],
+        [
+          -1,
+          13,
+          2
+        ],
+        [
+          1,
+          13,
+          2
+        ]
+      ],
+      "id": 35,
+      "answer": -1,
+      "branch": "impossible",
+      "profile": {
+        "n": 9,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 952,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 467853,
+        "feasible_station_pairs": 0
+      }
+    },
+    {
+      "kind": "impossible",
+      "reason": "세 권역을 각각 담당해야 하는 배치 4",
+      "houses": [
+        [
+          -12,
+          -12,
+          3
+        ],
+        [
+          -13,
+          -14,
+          3
+        ],
+        [
+          -14,
+          -12,
+          1
+        ],
+        [
+          13,
+          -12,
+          1
+        ],
+        [
+          12,
+          -12,
+          1
+        ],
+        [
+          13,
+          -14,
+          2
+        ],
+        [
+          0,
+          12,
+          1
+        ],
+        [
+          1,
+          13,
+          1
+        ],
+        [
+          -1,
+          13,
+          3
+        ]
+      ],
+      "id": 36,
+      "answer": -1,
+      "branch": "impossible",
+      "profile": {
+        "n": 9,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 952,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 483931,
+        "feasible_station_pairs": 0
+      }
+    },
+    {
+      "kind": "impossible",
+      "reason": "세 권역을 각각 담당해야 하는 배치 5",
+      "houses": [
+        [
+          -13,
+          -12,
+          3
+        ],
+        [
+          -14,
+          -12,
+          2
+        ],
+        [
+          12,
+          -12,
+          2
+        ],
+        [
+          12,
+          -13,
+          2
+        ],
+        [
+          -1,
+          14,
+          1
+        ],
+        [
+          1,
+          14,
+          2
+        ],
+        [
+          1,
+          12,
+          3
+        ]
+      ],
+      "id": 37,
+      "answer": -1,
+      "branch": "impossible",
+      "profile": {
+        "n": 7,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 954,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 484971,
+        "feasible_station_pairs": 0
+      }
+    },
+    {
+      "kind": "impossible",
+      "reason": "세 권역을 각각 담당해야 하는 배치 6",
+      "houses": [
+        [
+          -14,
+          -13,
+          3
+        ],
+        [
+          -12,
+          -14,
+          2
+        ],
+        [
+          -12,
+          -12,
+          2
+        ],
+        [
+          13,
+          -12,
+          2
+        ],
+        [
+          14,
+          -14,
+          2
+        ],
+        [
+          12,
+          -14,
+          3
+        ],
+        [
+          0,
+          14,
+          2
+        ],
+        [
+          -1,
+          14,
+          3
+        ],
+        [
+          1,
+          13,
+          1
+        ]
+      ],
+      "id": 38,
+      "answer": -1,
+      "branch": "impossible",
+      "profile": {
+        "n": 9,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 952,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 477385,
+        "feasible_station_pairs": 0
+      }
+    },
+    {
+      "kind": "impossible",
+      "reason": "세 권역을 각각 담당해야 하는 배치 7",
+      "houses": [
+        [
+          -13,
+          -12,
+          3
+        ],
+        [
+          -12,
+          -14,
+          1
+        ],
+        [
+          13,
+          -12,
+          3
+        ],
+        [
+          12,
+          -14,
+          1
+        ],
+        [
+          -1,
+          13,
+          1
+        ],
+        [
+          -1,
+          14,
+          3
+        ],
+        [
+          1,
+          13,
+          3
+        ]
+      ],
+      "id": 39,
+      "answer": -1,
+      "branch": "impossible",
+      "profile": {
+        "n": 7,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 954,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 477309,
+        "feasible_station_pairs": 0
+      }
+    },
+    {
+      "kind": "impossible",
+      "reason": "세 권역을 각각 담당해야 하는 배치 8",
+      "houses": [
+        [
+          -14,
+          -14,
+          3
+        ],
+        [
+          -12,
+          -13,
+          3
+        ],
+        [
+          14,
+          -13,
+          1
+        ],
+        [
+          13,
+          -14,
+          1
+        ],
+        [
+          1,
+          13,
+          1
+        ],
+        [
+          0,
+          12,
+          1
+        ]
+      ],
+      "id": 40,
+      "answer": -1,
+      "branch": "impossible",
+      "profile": {
+        "n": 6,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 955,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 479355,
+        "feasible_station_pairs": 0
+      }
+    },
+    {
+      "kind": "stress",
+      "reason": "N=10, 앞 9개는 넓은 허용 거리, 마지막 먼 집에서 늦게 탈락 (1)",
+      "houses": [
+        [
+          -1,
+          -1,
+          11
+        ],
+        [
+          -1,
+          0,
+          11
+        ],
+        [
+          -1,
+          1,
+          11
+        ],
+        [
+          0,
+          -1,
+          11
+        ],
+        [
+          0,
+          0,
+          11
+        ],
+        [
+          0,
+          1,
+          11
+        ],
+        [
+          1,
+          -1,
+          11
+        ],
+        [
+          1,
+          0,
+          11
+        ],
+        [
+          1,
+          1,
+          11
+        ],
+        [
+          -15,
+          -15,
+          1
+        ]
+      ],
+      "id": 41,
+      "answer": 25,
+      "branch": "two",
+      "profile": {
+        "n": 10,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 951,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 2017015,
+        "feasible_station_pairs": 344
+      }
+    },
+    {
+      "kind": "stress",
+      "reason": "N=10, 앞 9개는 넓은 허용 거리, 마지막 먼 집에서 늦게 탈락 (2)",
+      "houses": [
+        [
+          1,
+          -1,
+          11
+        ],
+        [
+          1,
+          0,
+          11
+        ],
+        [
+          1,
+          1,
+          11
+        ],
+        [
+          2,
+          -1,
+          11
+        ],
+        [
+          2,
+          0,
+          11
+        ],
+        [
+          2,
+          1,
+          11
+        ],
+        [
+          3,
+          -1,
+          11
+        ],
+        [
+          3,
+          0,
+          11
+        ],
+        [
+          3,
+          1,
+          11
+        ],
+        [
+          -15,
+          -15,
+          2
+        ]
+      ],
+      "id": 42,
+      "answer": 25,
+      "branch": "two",
+      "profile": {
+        "n": 10,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 951,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 2017015,
+        "feasible_station_pairs": 860
+      }
+    },
+    {
+      "kind": "stress",
+      "reason": "N=10, 앞 9개는 넓은 허용 거리, 마지막 먼 집에서 늦게 탈락 (3)",
+      "houses": [
+        [
+          -3,
+          0,
+          11
+        ],
+        [
+          -3,
+          1,
+          11
+        ],
+        [
+          -3,
+          2,
+          11
+        ],
+        [
+          -2,
+          0,
+          11
+        ],
+        [
+          -2,
+          1,
+          11
+        ],
+        [
+          -2,
+          2,
+          11
+        ],
+        [
+          -1,
+          0,
+          11
+        ],
+        [
+          -1,
+          1,
+          11
+        ],
+        [
+          -1,
+          2,
+          11
+        ],
+        [
+          15,
+          -15,
+          1
+        ]
+      ],
+      "id": 43,
+      "answer": 25,
+      "branch": "two",
+      "profile": {
+        "n": 10,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 951,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 2017015,
+        "feasible_station_pairs": 344
+      }
+    },
+    {
+      "kind": "stress",
+      "reason": "N=10, 앞 9개는 넓은 허용 거리, 마지막 먼 집에서 늦게 탈락 (4)",
+      "houses": [
+        [
+          -1,
+          -3,
+          11
+        ],
+        [
+          -1,
+          -2,
+          11
+        ],
+        [
+          -1,
+          -1,
+          11
+        ],
+        [
+          0,
+          -3,
+          11
+        ],
+        [
+          0,
+          -2,
+          11
+        ],
+        [
+          0,
+          -1,
+          11
+        ],
+        [
+          1,
+          -3,
+          11
+        ],
+        [
+          1,
+          -2,
+          11
+        ],
+        [
+          1,
+          -1,
+          11
+        ],
+        [
+          -15,
+          15,
+          2
+        ]
+      ],
+      "id": 44,
+      "answer": 25,
+      "branch": "two",
+      "profile": {
+        "n": 10,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 951,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 2017015,
+        "feasible_station_pairs": 860
+      }
+    },
+    {
+      "kind": "stress",
+      "reason": "N=10, 앞 9개는 넓은 허용 거리, 마지막 먼 집에서 늦게 탈락 (5)",
+      "houses": [
+        [
+          3,
+          2,
+          11
+        ],
+        [
+          3,
+          3,
+          11
+        ],
+        [
+          3,
+          4,
+          11
+        ],
+        [
+          4,
+          2,
+          11
+        ],
+        [
+          4,
+          3,
+          11
+        ],
+        [
+          4,
+          4,
+          11
+        ],
+        [
+          5,
+          2,
+          11
+        ],
+        [
+          5,
+          3,
+          11
+        ],
+        [
+          5,
+          4,
+          11
+        ],
+        [
+          -15,
+          -15,
+          1
+        ]
+      ],
+      "id": 45,
+      "answer": 25,
+      "branch": "two",
+      "profile": {
+        "n": 10,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 951,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 2016977,
+        "feasible_station_pairs": 344
+      }
+    },
+    {
+      "kind": "stress",
+      "reason": "N=10, 앞 9개는 넓은 허용 거리, 마지막 먼 집에서 늦게 탈락 (6)",
+      "houses": [
+        [
+          -5,
+          -4,
+          11
+        ],
+        [
+          -5,
+          -3,
+          11
+        ],
+        [
+          -5,
+          -2,
+          11
+        ],
+        [
+          -4,
+          -4,
+          11
+        ],
+        [
+          -4,
+          -3,
+          11
+        ],
+        [
+          -4,
+          -2,
+          11
+        ],
+        [
+          -3,
+          -4,
+          11
+        ],
+        [
+          -3,
+          -3,
+          11
+        ],
+        [
+          -3,
+          -2,
+          11
+        ],
+        [
+          15,
+          15,
+          2
+        ]
+      ],
+      "id": 46,
+      "answer": 25,
+      "branch": "two",
+      "profile": {
+        "n": 10,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 951,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 2016106,
+        "feasible_station_pairs": 860
+      }
+    },
+    {
+      "kind": "stress",
+      "reason": "N=10, 앞 9개는 넓은 허용 거리, 마지막 먼 집에서 늦게 탈락 (7)",
+      "houses": [
+        [
+          1,
+          -5,
+          11
+        ],
+        [
+          1,
+          -4,
+          11
+        ],
+        [
+          1,
+          -3,
+          11
+        ],
+        [
+          2,
+          -5,
+          11
+        ],
+        [
+          2,
+          -4,
+          11
+        ],
+        [
+          2,
+          -3,
+          11
+        ],
+        [
+          3,
+          -5,
+          11
+        ],
+        [
+          3,
+          -4,
+          11
+        ],
+        [
+          3,
+          -3,
+          11
+        ],
+        [
+          -15,
+          15,
+          1
+        ]
+      ],
+      "id": 47,
+      "answer": 25,
+      "branch": "two",
+      "profile": {
+        "n": 10,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 951,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 2016158,
+        "feasible_station_pairs": 344
+      }
+    },
+    {
+      "kind": "stress",
+      "reason": "N=10, 앞 7개 검사 후 뒤의 세 권역 때문에 설치 불가능 (8)",
+      "houses": [
+        [
+          -4,
+          3,
+          11
+        ],
+        [
+          -4,
+          4,
+          11
+        ],
+        [
+          -4,
+          5,
+          11
+        ],
+        [
+          -3,
+          3,
+          11
+        ],
+        [
+          -3,
+          4,
+          11
+        ],
+        [
+          -3,
+          5,
+          11
+        ],
+        [
+          -2,
+          3,
+          11
+        ],
+        [
+          -15,
+          -15,
+          1
+        ],
+        [
+          15,
+          -15,
+          1
+        ],
+        [
+          0,
+          15,
+          1
+        ]
+      ],
+      "id": 48,
+      "answer": -1,
+      "branch": "impossible",
+      "profile": {
+        "n": 10,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 951,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 1717437,
+        "feasible_station_pairs": 0
+      }
+    },
+    {
+      "kind": "stress",
+      "reason": "N=10, 앞 7개 검사 후 뒤의 세 권역 때문에 설치 불가능 (9)",
+      "houses": [
+        [
+          4,
+          -6,
+          11
+        ],
+        [
+          4,
+          -5,
+          11
+        ],
+        [
+          4,
+          -4,
+          11
+        ],
+        [
+          5,
+          -6,
+          11
+        ],
+        [
+          5,
+          -5,
+          11
+        ],
+        [
+          5,
+          -4,
+          11
+        ],
+        [
+          6,
+          -6,
+          11
+        ],
+        [
+          -15,
+          -15,
+          1
+        ],
+        [
+          15,
+          -15,
+          1
+        ],
+        [
+          0,
+          15,
+          1
+        ]
+      ],
+      "id": 49,
+      "answer": -1,
+      "branch": "impossible",
+      "profile": {
+        "n": 10,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 951,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 1713302,
+        "feasible_station_pairs": 0
+      }
+    },
+    {
+      "kind": "stress",
+      "reason": "N=10, 앞 7개 검사 후 뒤의 세 권역 때문에 설치 불가능 (10)",
+      "houses": [
+        [
+          -6,
+          4,
+          11
+        ],
+        [
+          -6,
+          5,
+          11
+        ],
+        [
+          -6,
+          6,
+          11
+        ],
+        [
+          -5,
+          4,
+          11
+        ],
+        [
+          -5,
+          5,
+          11
+        ],
+        [
+          -5,
+          6,
+          11
+        ],
+        [
+          -4,
+          4,
+          11
+        ],
+        [
+          -15,
+          -15,
+          1
+        ],
+        [
+          15,
+          -15,
+          1
+        ],
+        [
+          0,
+          15,
+          1
+        ]
+      ],
+      "id": 50,
+      "answer": -1,
+      "branch": "impossible",
+      "profile": {
+        "n": 10,
+        "one_station_candidates": 0,
+        "one_station_cost": null,
+        "valid_station_positions": 951,
+        "all_grid_pairs_enumerated_by_user": 461280,
+        "house_checks_in_user_pair_loop": 1711282,
+        "feasible_station_pairs": 0
+      }
+    }
+  ]
+}
