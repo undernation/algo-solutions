@@ -6201,5 +6201,33 @@
     "title": "[SSAFY A형 2번 복원] 농지 이동과 수확 (2026-09-15)"
    }
   ]
+ },
+ "2026-09-16": {
+  "count": 1,
+  "items": [
+   {
+    "at": "10:43:41",
+    "attempts": [
+     {
+      "at": "10:43:41",
+      "elapsed": 7.099,
+      "file": "swea/25948_빙하의이동.py",
+      "passed": 1,
+      "status": "틀림",
+      "total": 1,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 7.099,
+    "file": "swea/25948_빙하의이동.py",
+    "no": "25948",
+    "passed": 1,
+    "site": "SWEA",
+    "status": "틀림",
+    "title": "빙하의 이동",
+    "total": 1,
+    "verdict": "accepted"
+   }
+  ]
  }
 }

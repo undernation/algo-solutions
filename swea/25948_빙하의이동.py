@@ -2,13 +2,13 @@
 SWEA 25948  빙하의 이동
 https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt8IiBqxEDHBIN6&contestProbId=AZve05OqCl3HBIN6&probBoxId=AZt8IiBqxEHHBIN6&type=PROBLEM
 
-풀이일 : 2026-09-11   결과: 틀림
+풀이일 : 2026-09-16   결과: 틀림
 한도   : time 25개 테스트케이스를 합쳐서 C++의 경우 2초 / Java의 경우 3초 / Python의 경우 10초 / memory 힙, 정적 메모리 합쳐서 262144 kbytes 이내, 스택 메모리 1024 kbytes 이내 / time_sec 10
 난이도 : D5  |  정답률 80.43%
 제약   : 1. 바다의 크기 N x N ( 5 ≤ N ≤ 100)
 제약   : 2. 각 테스트케이스별로 oneYearLater() 호출 횟수는 최대 100 회이다.
 
-[채점] accepted  1/1  (6.902s)
+[채점] accepted  1/1  (7.099s)
 
 [문제]
 N x N 크기의 바다가 있다.
@@ -447,6 +447,7 @@ Return
 
 # ── User Code ──
 from typing import List
+from collections import deque
 import heapq
 
 
@@ -455,46 +456,70 @@ class RESULT:
         self.heights = mHeights
 
 
-from collections import deque
+dydx = [[-1, 0], [0, 1], [1, 0], [0, -1]]
 
-g_N = 0
+g_N = -1
 board = []
 direction_board = []
 
 
-def border_changer(y, x):
-    if (0 <= y < g_N) and (0 <= x < g_N):
-        return y, x
-    # 벗어나 있는 경우
-    ret_y = y
-    ret_x = x
-    # y 가 음수인 경우
-    if y < 0:
-        ret_y = y + g_N
-    elif y >= g_N:
-        ret_y = y - g_N
+def border_changer(cy, cx):
+    global g_N
+    if 0 <= cy < g_N and 0 <= cx < g_N:
+        return cy, cx
 
-    if x < 0:
-        ret_x = x + g_N
-    elif x >= g_N:
-        ret_x = x - g_N
-
-    return ret_y, ret_x
+    return (cy + g_N) % g_N, (cx + g_N) % g_N
 
 
-dydx = [[-1, 0], [0, 1], [1, 0], [0, -1]]
-
-
-def spread_direction(board, direction_board, y, x, direction):
-    global dydx
+def melt():
     visited = set()
-    visited.add((y, x))
-    direction_board[y][x] = direction
-    cur_dir = direction
 
+    def melt_bfs(sy, sx):
+        visited.add((sy, sx))
+        q = deque()
+        q.append((sy, sx))
+
+        while q:
+            cy, cx = q.popleft()
+            for d in range(4):
+                dy, dx = dydx[d]
+                ny = cy + dy
+                nx = cx + dx
+                ny, nx = border_changer(ny, nx)
+                if (ny, nx) in visited:
+                    continue
+                visited.add((ny, nx))
+                if board[ny][nx] >= 1:
+                    board[ny][nx] -= 1
+                    continue
+                q.append((ny, nx))
+
+    for i in range(g_N):
+        for j in range(g_N):
+            if (i, j) not in visited and board[i][j] == 0:
+                melt_bfs(i, j)
+
+
+class Ice:
+    def __init__(self):
+        self.area = -1
+        self.volume = -1
+        self.direction = -1
+        self.pos_set = set()
+        self.y = -1
+        self.x = -1
+
+
+def spread_direction(sy, sx, direction):
+    global direction_board
+    # bfs
+
+    visited = set()
+
+    visited.add((sy, sx))
+    direction_board[sy][sx] = direction
     q = deque()
-    q.append((y, x))
-
+    q.append((sy, sx))
     while q:
         cy, cx = q.popleft()
         for d in range(4):
@@ -506,83 +531,33 @@ def spread_direction(board, direction_board, y, x, direction):
                 continue
             if board[ny][nx] == 0:
                 continue
-
+            direction_board[ny][nx] = direction
             visited.add((ny, nx))
-            direction_board[ny][nx] = cur_dir
             q.append((ny, nx))
 
 
-def melt(board):
-    # 바다 인 면 찾기
-    visited = set()
-
-    def melt_bfs(y, x):
-        q = deque()
-        q.append((y, x))
-        visited.add((y, x))
-        while q:
-            cy, cx = q.popleft()
-            for d in range(4):
-                dy, dx = dydx[d]
-                ny = cy + dy
-                nx = cx + dx
-                ny, nx = border_changer(ny, nx)
-
-                if (ny, nx) in visited:
-                    continue
-                # 다음이 바다면 그냥 진행함
-
-                # 방문 처리
-                visited.add((ny, nx))
-                # 다음이 빙하면 -1 하고 큐에는 안넣어줌
-                if board[ny][nx] != 0:
-                    board[ny][nx] -= 1
-                    if board[ny][nx] == 0:
-                        direction_board[ny][nx] = -1
-
-                else:
-                    q.append((ny, nx))
-
-    for i in range(g_N):
-        for j in range(g_N):
-            if (i, j) not in visited and board[i][j] == 0:
-                melt_bfs(i, j)
-
-
-class Ice:
-    def __init__(self):
-        self.wide = 0
-        self.shape = 0
-        self.y = -1
-        self.x = -1
-        self.direction = -1
-        self.loc = []
-
-
 def move():
-    global direction_board, board
-    # board 에서 각 빙하별로 id 만들기, 부피, 위치(최상단 y 최 좌단 x), 면적,방향
-
-    # 이동 처리 후 새로운 id board 만들어서 겹친곳 확인, 겹친곳에는 id 정보로다가 방향 정하고 그 방향으로 다시 spread
-
-    # 일단 각 빙하별로 id 만들기
-
-    ice_dict = {}
-    id_cnt = 1
+    global board, direction_board
+    # 현재 보드에 있는 얼음 각각 id 화 시키기
+    ice_cnt = 0
     visited = set()
+    ices = dict()
 
-    def move_bfs(y, x):
-        wide = 1
-        shape = board[y][x]
-        loc_y = y
-        loc_x = x
-        temp_visited = set()
-
+    # bfs 각각 얼음 bfs 로 만들기
+    def id_bfs(sy, sx):
+        nonlocal ice_cnt
+        visited.add((sy, sx))
+        local_visited = set()
+        local_visited.add((sy, sx))
         q = deque()
-        q.append((y, x))
-        temp_visited.add((y, x))
-        visited.add((y, x))
-        cur_direction = direction_board[y][x]
+        q.append((sy, sx))
+        area = 1
+        volume = board[sy][sx]
+        cur_direction = direction_board[sy][sx]
+
+        min_y = sy
+        min_x = sx
+
         while q:
             cy, cx = q.popleft()
             for d in range(4):
@@ -594,79 +569,62 @@ def move():
                     continue
                 if board[ny][nx] == 0:
                     continue
-
-                wide += 1
-                shape += board[ny][nx]
-
-                if ny < loc_y:
-                    loc_y = ny
-                    loc_x = nx
-                elif ny == loc_y:
-                    loc_x = min(loc_x, nx)
-
-                temp_visited.add((ny, nx))
                 visited.add((ny, nx))
+                local_visited.add((ny, nx))
                 q.append((ny, nx))
+                area += 1
+                volume += board[ny][nx]
 
-        return temp_visited, wide, shape, cur_direction, loc_y, loc_x
+                if ny < min_y:
+                    min_y = ny
+                    min_x = nx
+                elif ny == min_y:
+                    min_x = min(min_x, nx)
+
+        ice = Ice()
+        ice.volume = volume
+        ice.area = area
+        ice.direction = cur_direction
+        ice.pos_set = local_visited
+        ice.y = min_y
+        ice.x = min_x
+
+        ices[ice_cnt] = ice
+        ice_cnt += 1
 
     for i in range(g_N):
         for j in range(g_N):
-            if board[i][j] != 0 and (i, j) not in visited:
-                ice = Ice()
-                temp_visited, wide, shape, cur_direction, y, x = move_bfs(i, j)
-                ice.shape = shape
-                ice.wide = wide
-                ice.direction = cur_direction
-                ice.loc = temp_visited.copy()
-                ice.y = y
-                ice.x = x
-                ice_dict[id_cnt] = ice
-                id_cnt += 1
+            if (i, j) not in visited and board[i][j] != 0:
+                id_bfs(i, j)
 
-    # 일단 보드 이동, 이동 시 도착지랑 비교해서 큰숫자 넣기.
+    ice_set = [list(set() for _ in range(g_N)) for _ in range(g_N)]
     new_board = [[0] * g_N for _ in range(g_N)]
-    for i in range(g_N):
-        for j in range(g_N):
-            if board[i][j] != 0:
-                cur_dir = direction_board[i][j]
-                cy, cx = i, j
-                dy, dx = dydx[cur_dir]
-                ny = cy + dy
-                nx = cx + dx
-                ny, nx = border_changer(ny, nx)
-                new_board[ny][nx] = max(new_board[ny][nx], board[cy][cx])
-    board = new_board
-    # ice 참고해서 방향 정하기.
-    id_board = [list(set() for _ in range(g_N)) for _ in range(g_N)]
 
-    # id 에 따라서 움직이기,
-    for cur_id, cur_ice in ice_dict.items():
-        cur_ice_list = cur_ice.loc
-        cur_ice_dir = cur_ice.direction
-        dy, dx = dydx[cur_ice_dir]
+    # ices 안에 있는 빙하 이동
+    for ice_id, ice in ices.items():
+        cur_dir = ice.direction
+        dy, dx = dydx[cur_dir]
 
-        for cy, cx in cur_ice_list:
+        for cy, cx in ice.pos_set:
             ny = cy + dy
             nx = cx + dx
             ny, nx = border_changer(ny, nx)
-            id_board[ny][nx].add(cur_id)
+            new_board[ny][nx] = max(new_board[ny][nx], board[cy][cx])
+            ice_set[ny][nx].add(ice_id)
 
-    # bfs 로 겹치거나 인접한 부분 확인, 겹치는 부분 방향 정하고 dir spread 하기.
+            # set bfs 로다가 새로 위치 정하기
     visited = set()
-    # set() 길이 1 이상인것만 bfs 하기. 그렇게 합집합들 구하기.
-    # 합집합들에서 방향 정하고 현재 visited 에 방향 넣어주기.
-    new_direction_board = [[-1] * g_N for _ in range(g_N)]
 
-    def dir_bfs(y, x):
-        visited.add((y, x))
-        temp_visited = set()
-        temp_visited.add((y, x))
-        union_set = set()
-        union_set = union_set.union(id_board[y][x])
+    # 빙하 교체
+    board = new_board
+
+    def loc_bfs(sy, sx):
+        cand = set()
+        visited.add((sy, sx))
+        cand = cand.union(ice_set[sy][sx])
 
         q = deque()
-        q.append((y, x))
+        q.append((sy, sx))
 
         while q:
             cy, cx = q.popleft()
@@ -675,107 +633,96 @@ def move():
                 ny = cy + dy
                 nx = cx + dx
                 ny, nx = border_changer(ny, nx)
-
                 if (ny, nx) in visited:
                     continue
-                if len(id_board[ny][nx]) == 0:
+                if len(ice_set[ny][nx]) == 0:
                     continue
-                visited.add((ny, nx))
-                temp_visited.add((ny, nx))
-                union_set = union_set.union(id_board[ny][nx])
-                # print(union_set)
+                cand = cand.union(ice_set[ny][nx])
                 q.append((ny, nx))
+                visited.add((ny, nx))
+        return cand
 
-        hq = []
-        for cur_id in union_set:
-            cur_ice = ice_dict[cur_id]
-            cur_wide = cur_ice.wide
-            cur_y = cur_ice.y
-            cur_x = cur_ice.x
-            cur_shape = cur_ice.shape
-            heapq.heappush(hq, [-cur_shape, cur_wide, cur_y, cur_x, cur_id])
-
-        final_id = hq[0][4]
-        # print(final_id)
-        final_direction = ice_dict[final_id].direction
-
-        for y, x in temp_visited:
-            new_direction_board[y][x] = final_direction
-
+    direction_board = [[-1] * g_N for _ in range(g_N)]
     for i in range(g_N):
         for j in range(g_N):
-            # 두개이상 아이디 있어서 겹치면.
-            if (i, j) not in visited and len(id_board[i][j]) >= 1:
-                dir_bfs(i, j)
-
-    direction_board = new_direction_board
+            if not (i, j) in visited and len(ice_set[i][j]) >= 1:
+                candidates = loc_bfs(i, j)
+                hq = []
+                for cand in candidates:
+                    cur_ice = ices[cand]
+                    cur_volume = cur_ice.volume
+                    cur_area = cur_ice.area
+                    cur_y = cur_ice.y
+                    cur_x = cur_ice.x
+                    cur_direction = cur_ice.direction
+                    heapq.heappush(hq, [-cur_volume, cur_area, cur_y, cur_x, cur_direction])
+                y = hq[0][2]
+                x = hq[0][3]
+                new_direction = hq[0][4]
+                spread_direction(i, j, new_direction)
 
 
 def init(N: int, M: int, mIceBlock: List[List[int]], mIceGroup: List[List[int]]) -> None:
     global g_N, board, direction_board
     g_N = N
+    board = [[0] * g_N for _ in range(g_N)]
+    direction_board = [[-1] * g_N for _ in range(g_N)]
 
     board = mIceBlock
 
-    direction_board = [[-1] * N for _ in range(N)]
-
-    # direction 보드 에 방향 넣어주기
-    for x, y, direction in mIceGroup:
-        spread_direction(board, direction_board, y, x, direction)
-
-    # print("debug board")
+    for m in range(M):
+        x, y, direction = mIceGroup[m]
+        # print(y, x, direction)
+        spread_direction(y, x, direction)
+    #
+    # print("debug ice")
     # for i in board:
     #     print(i)
-    # print("direction board")
+    # print("debug dir")
+    # for i in direction_board:
+    #     print(i)
+    # melt()
+    # print("debug after melt")
+    # for i in board:
+    #     print(i)
+    #
+    # move()
+    # print("debug after move")
+    # for i in board:
+    #     print(i)
+    # print("debug after move direction")
     # for i in direction_board:
     #     print(i)
     #
-    # print("melted board")
-    # melt(board)
+    # print("debug ice2")
     # for i in board:
     #     print(i)
-    #
-    #
-    # print("=========================moved=========================")
-    # # move()
-    # print("debug board")
-    # for i in board:
-    #     print(i)
-    # print("direction board")
+    # print("debug dir2")
     # for i in direction_board:
     #     print(i)
-    #
-    # print("melted board")
-    # # melt(board)
+    # melt()
+    # print("debug after melt2")
     # for i in board:
     #     print(i)
-    # print("=========================changed_turn=========================")
+    #
+    # move()
+    # print("debug after move2")
+    # for i in board:
+    #     print(i)
+    # print("debug after move direction2")
+    # for i in direction_board:
+    #     print(i)
+
+    pass
 
 
 def oneYearLater() -> RESULT:
-    res = RESULT([[0 for _ in range(100)] for _ in range(100)])
-    # 얼음 녹기
-    # print("debug before melt")
-    # for i in board:
-    #     print(i)
-    melt(board)
-    # print("debug after melt board")
-    # for i in board:
-    #     print(i)
+    melt()
     move()
+    res = RESULT([[0 for _ in range(100)] for _ in range(100)])
     for i in range(g_N):
         for j in range(g_N):
             res.heights[i][j] = board[i][j]
-    # print("direction board")
-    # for i in direction_board:
-    #     print(i)
-    # print("debug after move board")
-    # for i in board:
-    #     print(i)
-
-
-
-    # print(res.heights)
     return res
 
 
