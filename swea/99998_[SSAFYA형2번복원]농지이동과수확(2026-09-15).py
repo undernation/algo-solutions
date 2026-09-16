@@ -1,7 +1,7 @@
 """
 SWEA 99998  [SSAFY A형 2번 복원] 농지 이동과 수확 (2026-09-15)
 
-풀이일 : 2026-09-15   결과: 못품
+풀이일 : 2026-09-16   결과: 틀림
 한도   : time 50개 테스트케이스 합산 약 15초 (응시자 기억, PyPy3 기준) / time_sec 15 / memory 미확인 (원문 미제공) / time_source participant_recollection / time_is_approximate True / time_scope all_testcases / remembered_testcase_count 50 / runtime PyPy3
 제약   : 시간 제한: PyPy3 기준 50개 테스트케이스 합산 약 15초 (응시자 기억).
 제약   : 정확한 공식 시간, 다른 언어의 제한, 메모리 제한과 전체 입력 제한은 미확인이다.
@@ -9,6 +9,8 @@ SWEA 99998  [SSAFY A형 2번 복원] 농지 이동과 수확 (2026-09-15)
 제약   : 제공 입력: T=10, N은 6~9, M은 10~50, 지도 값은 0 또는 1.
 제약   : 제공 지도는 모두 테두리가 산이지만 원문에서 이를 보장하는지는 미확인이다.
 제약   : T·N·M의 원문 상한은 확인되지 않았다.
+
+[채점] accepted  2/2  (1.677s)
 
 [문제]
 ※ 2026-09-15 SSAFY A형 2번의 제공 코드와 입력으로 복원한 연습 문제입니다.
@@ -167,4 +169,119 @@ M일의 오전에 수확한 곡식까지 정답에 포함한다. M일 오후에 
 
 """
 
-.
+
+
+T = int(input())
+# 동 서 남 북
+DIR = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+DIR_DICT = {
+    0: [2, 0, 3, 1],
+    1: [3, 1, 2, 0],
+    2: [1, 2, 0, 3],
+    3: [0, 3, 1, 2]
+}
+
+
+class Grain:
+    def __init__(self):
+        self.y = -1
+        self.x = -1
+        self.harvest_day = -1
+        self.ssak_day = -1
+
+
+class Robot:
+    def __init__(self):
+        self.y = -1
+        self.x = -1
+        self.direction = -1
+
+
+def check_move(sy, sx, cd, cur_day):
+    ret = None
+    new_direction = None
+    for d in DIR_DICT[cd]:
+        dy, dx = DIR[d]
+        ny = sy + dy
+        nx = sx + dx
+        if not (0 <= ny < N and 0 <= nx < N):
+            continue
+        if board[ny][nx] == 1:
+            continue
+
+        # 만약 싹이 나는 경우
+        if (ny, nx) in grains:
+            cur_grain_id = grains[(ny, nx)]
+            cur_grain = grain_info[cur_grain_id]
+            if cur_grain.harvest_day > cur_day:
+                continue
+
+        ret = (ny, nx)
+        new_direction = d
+        break
+    return ret, new_direction
+
+
+for test_case in range(1, T + 1):
+    N, M = map(int, input().split())
+    cnt_board = [[1] * N for _ in range(N)]
+    board = [list(map(int, input().split())) for _ in range(N)]
+
+    answer = 0
+
+    for sy in range(N):
+        for sx in range(N):
+            for direction in range(4):
+
+                if board[sy][sx] == 1:
+                    continue
+                cnt = 0
+                grains = {}
+                grain_info = {}
+                grain_id = 0
+
+                copied_cnt_board = [row[:] for row in cnt_board]
+                robot = Robot()
+                robot.y = sy
+                robot.x = sx
+                robot.direction = direction
+
+                for day in range(1, M + 1):
+                    cur_robot = robot
+                    cur_y = robot.y
+                    cur_x = robot.x
+                    cur_dir = robot.direction
+
+                    can_move, new_direction = check_move(cur_y, cur_x, cur_dir, day)
+                    if (cur_y, cur_x) in grains:
+                        cur_grain_id = grains[(ny, nx)]
+                        del grains[(ny, nx)]
+                        del grain_info[cur_grain_id]
+                        cnt += 1
+                    elif can_move is not None:
+                        new_grain = Grain()
+                        new_grain.y = cur_y
+                        new_grain.x = cur_x
+                        new_grain.harvest_day = copied_cnt_board[cur_y][cur_x] + 4 + day
+                        copied_cnt_board[cur_y][cur_x] += 1
+                        cur_id = grain_id
+                        grains[(cur_y, cur_x)] = cur_id
+                        grain_info[cur_id] = new_grain
+
+                        grain_id += 1
+
+                    # 이동
+                    if can_move is not None:
+                        dy, dx = DIR[new_direction]
+                        ny = cur_y + dy
+                        nx = cur_x + dx
+                        new_dir = new_direction
+
+
+                        robot.y = ny
+                        robot.x = nx
+                        robot.direction = new_dir
+
+                answer = max(cnt, answer)
+
+    print(f"#{test_case} {answer}")
