@@ -6287,19 +6287,32 @@
   "count": 1,
   "items": [
    {
-    "at": "12:41:14",
+    "at": "12:41:51",
     "attempts": [
      {
       "at": "12:41:14",
       "file": "swea/25958_타워디펜스게임.py",
       "status": "품"
+     },
+     {
+      "at": "12:41:51",
+      "elapsed": 4.788,
+      "file": "swea/25958_타워디펜스게임.py",
+      "passed": 1,
+      "status": "틀림",
+      "total": 1,
+      "verdict": "accepted"
      }
     ],
+    "elapsed": 4.788,
     "file": "swea/25958_타워디펜스게임.py",
     "no": "25958",
+    "passed": 1,
     "site": "SWEA",
-    "status": "품",
-    "title": "타워디펜스게임"
+    "status": "틀림",
+    "title": "타워디펜스게임",
+    "total": 1,
+    "verdict": "accepted"
    }
   ]
  }
