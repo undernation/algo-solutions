@@ -2,15 +2,13 @@
 SWEA 25958  타워디펜스게임
 https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt8IiBqxEDHBIN6&contestProbId=AZvfDDtKDNjHBIN6&probBoxId=AZt8IiBqxEHHBIN6&type=PROBLEM
 
-풀이일 : 2026-09-13   결과: 틀림
+풀이일 : 2026-09-17   결과: 품
 한도   : time 25개 테스트케이스를 합쳐서 C++의 경우 3초 / Java의 경우 3초 / Python의 경우 5초 / memory 힙, 정적 메모리 합쳐서 262144 kbytes 이내, 스택 메모리 1024 kbytes 이내 / time_sec 5
 난이도 : D5  |  정답률 64.29%
 제약   : 1. 각 테스트 케이스 시작 시 init() 함수가 한 번 호출된다.
 제약   : 2. Map 의 크기는 최대 20 x 20 이다.
 제약   : 3. 각 테스트 케이스에서 addTower() 함수의 호출 횟수는 N x N 이하이다.
 제약   : 4. 각 테스트 케이스에서 runSimulation() 함수의 호출 횟수는 10 이하이다.
-
-[채점] accepted  1/1  (6.831s)
 
 [문제]
 타워디펜스게임을 시뮬레이션 하는 API 를 구현해보자.
@@ -697,243 +695,218 @@ from typing import List
 from collections import deque
 import heapq
 
-direction_board = []
-start_pos = (-1, -1)
-end_pos = (-1, -1)
-dydx = []
-towers = {}
-runners = {}
-tower_id_cnt = 0
-targets = []
-runner_board = []
-completed = []
-
-
 class Tower:
     def __init__(self):
-        self.y = -1
-        self.x = -1
-        self.target_id = -1
+        self.target = -1
         self.reload_time = -1
         self.next_shoot_time = -1
+        self.y = -1
+        self.x = -1
 
 
 class Runner:
     def __init__(self):
         self.y = -1
         self.x = -1
-        self.interval = -1
-        self.hp = -1
         self.next_move_time = -1
+        self.hp = -1
 
+
+DIR = [[1, 0], [-1, 0], [0, 1], [0, -1]]
+
+board = []
+towers = {}
+tower_cnt = 0
+runners = {}
+runner_board = []
+g_N = 0
 
 def init(N: int, mMap: List[List[int]]) -> None:
-    global direction_board, start_pos, end_pos, dydx, towers, runners, tower_id_cnt, runner_board, g_N
+    global board, towers, tower_cnt, runner_board, g_N, sy, sx, ey, ex
     g_N = N
-    direction_board = [[-1] * N for _ in range(N)]
-    runner_board = [[-1] * N for _ in range(N)]
-    dydx = [[1, 0], [-1, 0], [0, 1], [0, -1]]
+    sy = -1
+    sx = -1
+
+    ey = -1
+    ex = -1
+
     towers = {}
-    tower_id_cnt = 0
-    runners = {}
+    tower_cnt = 0
+    runner_board = [[0] * N for _ in range(N)]
     for i in range(N):
         for j in range(N):
             if mMap[i][j] == 2:
-                start_pos = (i, j)
+                sy, sx = i, j
             elif mMap[i][j] == 3:
-                end_pos = (i, j)
+                ey, ex = i, j
 
-    # bfs
+    board = [[-1] * N for _ in range(N)]
     visited = set()
-    q = deque()
-    visited.add(start_pos)
-
-    q.append(start_pos)
+    q = deque([(sy, sx)])
+    visited.add((sy, sx))
 
     while q:
         cy, cx = q.popleft()
-        for direction in range(4):
-            dy, dx = dydx[direction]
+        for d in range(4):
+            dy, dx = DIR[d]
             ny = cy + dy
             nx = cx + dx
             if not (0 <= ny < N and 0 <= nx < N):
                 continue
-            if mMap[ny][nx] == 0:
-                continue
             if (ny, nx) in visited:
                 continue
-
-            direction_board[cy][cx] = direction
-            q.append((ny, nx))
             visited.add((ny, nx))
-    # print("mMap")
-    # for i in mMap:
-    #     print(i)
-    # print("direction_board")
-    # for i in direction_board:
+            if mMap[ny][nx] == 1:
+                board[cy][cx] = d
+                q.append((ny, nx))
+            elif mMap[ny][nx] == 3:
+                board[cy][cx] = d
+
+    # for i in board:
     #     print(i)
 
 
 def addTower(mRow: int, mCol: int, mInterval: int) -> None:
-    global tower_id_cnt
+    global towers, tower_cnt, sy, sx
     tower = Tower()
     tower.y = mRow
     tower.x = mCol
     tower.reload_time = mInterval
-    cur_tower_id = tower_id_cnt
-    tower_id_cnt += 1
+    towers[tower_cnt] = tower
+    tower_cnt += 1
 
-    towers[cur_tower_id] = tower
-    # print("addtower", mRow, mCol, mInterval)
+    # print("addTower", mRow, mCol, mInterval)
 
-
-def can_attack(sy, sx, ey, ex):
-    return abs(sy - ey) + abs(sx - ex) <= 3
-
-
-def pick_target(tower_id, cur_time):
-    global targets
-    cur_tower = towers[tower_id]
-    cur_tower_y = cur_tower.y
-    cur_tower_x = cur_tower.x
-    # 공격 준비 안된 타워는 대상 찾지 않음
-    if cur_tower.next_shoot_time > cur_time:
+def move_runner(cur_time, runner_id, interval):
+    cur_runner = runners[runner_id]
+    if cur_runner.next_move_time > cur_time:
         return
-    # 공격준비 된 타워는 대상 찾기
-    last_target = cur_tower.target_id
-    if last_target != -1 and last_target in runners:
-        # 마지막 공격한 대상이 있고, 살아 있다면, 사정거리안에 있는지 확인
+    cur_runner_y = cur_runner.y
+    cur_runner_x = cur_runner.x
+    cur_runner.next_move_time = cur_time + interval
+    # 만약 -1 -1 인경우
+    if cur_runner_y == -1 and cur_runner_x == -1:
+        ny = sy
+        nx = sx
+        runner_board[ny][nx] = runner_id
+        cur_runner.y = ny
+        cur_runner.x = nx
+        return
+    nxt_dir = board[cur_runner_y][cur_runner_x]
 
-        last_target_y = runners[last_target].y
-        last_target_x = runners[last_target].x
-        if can_attack(cur_tower_y, cur_tower_x, last_target_y, last_target_x):
-            targets.append(last_target)
-            cur_tower.next_shoot_time = cur_time + cur_tower.reload_time
-            return
-        # else:
-        #     # 사정거리 안에 없는 경우.
-        #     pass
+    dy, dx = DIR[nxt_dir]
+    ny = cur_runner_y + dy
+    nx = cur_runner_x + dx
+    cur_runner.y = ny
+    cur_runner.x = nx
+    runner_board[ny][nx] = runner_id
+    runner_board[cur_runner_y][cur_runner_x] = 0
 
-    # 새로운 대상 찾기
+    return
+
+def choose_target(tower_id, cur_time):
+    cy = towers[tower_id].y
+    cx = towers[tower_id].x
+    cur_target = towers[tower_id].target
     hq = []
-    y_start = max(0, cur_tower_y - 3)
-    y_end = min(g_N - 1, cur_tower_y + 3)
-    x_start = max(0, cur_tower_x - 3)
-    x_end = min(g_N - 1, cur_tower_x + 3)
+    is_found = False
 
-    for y in range(y_start, y_end + 1):
-        for x in range(x_start, x_end + 1):
-            if runner_board[y][x] != -1 and can_attack(cur_tower_y, cur_tower_x, y, x):
-                target_runner = runners[runner_board[y][x]]
-                target_hp = target_runner.hp
-                heapq.heappush(hq, (target_hp, runner_board[y][x]))
+    for y in range(max(0, cy - 3), min(g_N - 1, cy + 3) + 1):
+        for x in range(max(0, cx - 3), min(g_N - 1, cx + 3) + 1):
+            if runner_board[y][x] != 0 and (abs(cy - y) + abs(cx - x)) <= 3:
+                cur_runner_id = runner_board[y][x]
+                if cur_target == cur_runner_id:
+                    hq = [cur_target]
+                    is_found = True
+                    break
+                hp = runners[cur_runner_id].hp
+
+                heapq.heappush(hq, (hp, cur_runner_id))
+        if is_found:
+            break
+
+    if cur_target in hq:
+        towers[tower_id].next_shoot_time = cur_time + towers[tower_id].reload_time
+        return cur_target
 
     if hq:
-        # 우선순위거 발사. 발사 후 쿨타임 돌려주기
-        targets.append(hq[0][1])
-        cur_tower.next_shoot_time = cur_time + cur_tower.reload_time
-        cur_tower.target_id = hq[0][1]
+        towers[tower_id].next_shoot_time = cur_time + towers[tower_id].reload_time
+
+        return hq[0][1]
     else:
-        cur_tower.target_id = -1
+        return None
 
-
-def move_runner(runner_id, cur_time, mRetTs, mRetHP):
-    global completed
-    runner = runners[runner_id]
-
-    # 움직일 시간 아니면 그냥 return
-    if runner.next_move_time > cur_time:
-        return
-    # 현재 위치가 (-1, -1) 이고 움직일 시간이 되었을 경우
-    if (runner.y == -1) and (runner.x == -1):
-        runner.y, runner.x = start_pos
-    # 현재 위치가 평소와 같고 움직일 시간이 되었을 경우
-    else:
-        dy, dx = dydx[direction_board[runner.y][runner.x]]
-        ny = runner.y + dy
-        nx = runner.x + dx
-        runner_board[runner.y][runner.x] = -1
-        runner.y = ny
-        runner.x = nx
-
-    # 새 위치 지도에 등록
-    # print("debug runner y runner x", runner.y, runner.x)
-    runner_board[runner.y][runner.x] = runner_id
-    # 이동 쿨타임 갱신
-    runner.next_move_time = cur_time + runner.interval
-    # 목적지 에 도착하였을 경우 (삭제)
-    if (runner.y, runner.x) == end_pos:
-        runner_board[runner.y][runner.x] = -1
-        mRetTs[runner_id] = cur_time
-        # print("debug runner hp", runner.hp)
-        mRetHP[runner_id] = runner.hp
-        completed.append(runner_id)
-        # del runners[runner_id]
 
 
 def runSimulation(M: int, mInterval: int, mHP: int, mRetTs: List[int], mRetHP: List[int]) -> None:
-    global targets, completed
-    runners.clear()
-
-    # 타워 발사 시간 초기화
+    global ey, ex
+    # 모든 타워 상태 초기화
     for tower_id, tower in towers.items():
         tower.next_shoot_time = -1
-        tower.target_id = -1
+        tower.target = -1
 
-    # 러너 등록
-    cur_interval = mInterval
-    cur_hp = mHP
-
-    for runner_id in range(M):
+    # 도망자 상태 초기화
+    runners.clear()
+    for runner_id in range(1, M + 1):
         runner = Runner()
-        runner.interval = cur_interval
-        runner.hp = cur_hp
-        runner.next_move_time = cur_interval * (runner_id + 1)
+        runner.hp = mHP
+        runner.next_move_time = runner_id * mInterval
         runners[runner_id] = runner
-    # print("tower debug")
-    # for tower_id, tower in towers.items():
-    #     print("tower_id, y, x", tower_id, tower.y, tower.x)
-    # 반복문 시작
+
+
     time = 0
     while runners:
-        # 타워 순회하면서 공격준비 안된애들은 턴 종료, 된애들은 대상 선택.
+        # print("debug runners time", time)
+        # for key, value in runners.items():
+        #     print(key, value.next_move_time, value.hp)
+
         targets = []
+        # 공격 준비 된 타워들 공격 대상 지정
         for tower_id, tower in towers.items():
-            pick_target(tower_id, time)
+            if tower.next_shoot_time > time:
+                continue
 
-        # if 0 in runners:
-        #     print("time", time)
-        #     print("runner 0 debug", runners[0].y, runners[0].x, runners[0].hp)
-        #     print("targets", targets)
+            # 현재 타워 공격대상 확인
+            target = choose_target(tower_id, time)
+            if target is None:
+                tower.target = -1
+            else:
+                tower.target = target
+                targets.append(target)
 
-        # print("debug runner board time:", time)
-        # for i in runner_board:
-        #     print(i)
+        for target in targets:
+            if target not in runners:
+                continue
 
-        for target_id in targets:
-            if target_id in runners:
-                runners[target_id].hp -= 1
-                if runners[target_id].hp == 0:
-                    # 죽은 경우 죽은 턴 저장
-                    mRetTs[target_id] = time
-                    mRetHP[target_id] = 0
-                    cur_y = runners[target_id].y
-                    cur_x = runners[target_id].x
-                    runner_board[cur_y][cur_x] = -1
-                    # print("dead target_id", time ,target_id)
-                    del runners[target_id]
-        # for runner_id, runner in runners.items():
-        #     print("debug hp", runner_id, runner.hp)
-        # complted
-        completed = []
-        # 남은 도망자들 처리.
+            runners[target].hp -= 1
+
+            if runners[target].hp == 0:
+                mRetTs[target - 1] = time
+                # 삭제 처리
+                cur_runner = runners[target]
+                cur_runner_y = cur_runner.y
+                cur_runner_x = cur_runner.x
+                runner_board[cur_runner_y][cur_runner_x] = 0
+                del runners[target]
+
+        arrived = []
+        # 러너 이동
         for runner_id, runner in runners.items():
-            move_runner(runner_id, time, mRetTs, mRetHP)
-        for cur_id in completed:
-            del runners[cur_id]
+            move_runner(time, runner_id, mInterval)
+            cur_runner = runners[runner_id]
+            if cur_runner.y == ey and cur_runner.x == ex:
+                runner_board[cur_runner.y][cur_runner.x] = 0
+                arrived.append(runner_id)
+
+        for i in arrived:
+            mRetTs[i - 1] = time
+            mRetHP[i - 1] = runners[i].hp
+            del runners[i]
+
+
         time += 1
 
-    # print("runSimulation interval, hp", mInterval, mHP, mRetTs, mRetHP)
+    # print("run simul", mRetTs, mRetHP)
 
 
 # ── Main (수정 불가) ──
