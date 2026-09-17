@@ -2,7 +2,7 @@
 SWEA 25000  마라톤 코스
 https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt8IiBqxEDHBIN6&contestProbId=AZih2RXKu2_HBINp&probBoxId=AZt8IiBqxEHHBIN6&type=PROBLEM
 
-풀이일 : 2026-08-24   결과: 못품
+풀이일 : 2026-09-17   결과: 못품
 한도   : time 25개 테스트케이스를 합쳐서 C++의 경우 3초 / Java의 경우 3초 / Python의 경우 6초 / memory 힙, 정적 메모리 합쳐서 262144 kbytes 이내, 스택 메모리 1024 kbytes 이내 / time_sec 6
 난이도 : D6  |  정답률 74.29%
 제약   : 1. 각 테스트 케이스 시작 시 init() 함수가 호출된다.
@@ -11,7 +11,7 @@ https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt
 제약   : 4. 각 테스트 케이스에서 removeRoad() 함수의 호출은 최대 100 이다.
 제약   : 5. 각 테스트 케이스에서 getLength() 함수의 호출은 최대 1,000 이다.
 
-[채점] accepted  1/1  (5.576s)
+[채점] accepted  1/1  (5.389s)
 
 [문제]
 [Fig. 1] 과 같이 도시에 N 개의 지점과 도로가 있다. 지점과 지점은 도로로 연결된다.
@@ -561,98 +561,99 @@ add_road_ID: 165989 add_road_spotA: 37 add_road_spotB: 45 add_road_Length: 5974
 
 # ── User Code ──
 from typing import List
-from collections import defaultdict
+
+g_N = -1
+roads = {}
+active = set()
+graph = []
 
 
-# n 은 10 이상 1000 이하.
 def init(N: int) -> None:
-    global g_N, roads, graph
+    global g_N, roads, active, graph
     g_N = N
-    roads = defaultdict(list)
-    graph = [set() for _ in range(N + 1)]
+    roads = {}
+    active = set()
+    graph = [[] for _ in range(N + 1)]
+
+
+def addRoad(K: int, mID: List[int], mSpotA: List[int], mSpotB: List[int], mLen: List[int]) -> None:
+    for i in range(K):
+        road_id = mID[i]
+        a = mSpotA[i]
+        b = mSpotB[i]
+        length = mLen[i]
+
+        roads[road_id] = (a, b, length)
+
+        graph[a].append(road_id)
+        graph[b].append(road_id)
+
+        active.add(road_id)
+
+
+def removeRoad(mID: int) -> None:
+    active.discard(mID)
     pass
 
-# 하나의 지점에 연결되는 도로는 최대 5개
-# 1000
-def addRoad(K: int, mID: List[int], mSpotA: List[int], mSpotB: List[int], mLen: List[int]) -> None:
 
-    for k in range(K):
-        roads[mID[k]] = [
-            mSpotA[k],
-            mSpotB[k],
-            mLen[k],
-            True
-        ]
 
-        graph[mSpotA[k]].add(mID[k])
-        graph[mSpotB[k]].add(mID[k])
 
-# 100
-def removeRoad(mID: int) -> None:
-    roads[mID][3] = False
 
-def dfs(start, cur, depth, length, used_edges):
-
-    if depth == 4:
-        paths[cur].append((length, frozenset(used_edges)))
-        return
-
-    # 다음 방문처 확인
-    for nxt_road_id in graph[cur]:
-        if nxt_road_id in used_edges:
-            continue
-
-        spota, spotb, mlen, is_ok = roads[nxt_road_id]
-
-        if not is_ok:
-            continue
-
-        new_length = length + mlen
-
-        if new_length > 42195:
-            continue
-
-        if spota == cur:
-            #spot b 로 움직이기
-            if start == spotb:
-                continue
-            used_edges.append(nxt_road_id)
-            dfs(start, spotb, depth + 1, new_length, used_edges)
-        else:
-            if start == spota:
-                continue
-            used_edges.append(nxt_road_id)
-            dfs(start, spota, depth + 1, new_length, used_edges)
-
-        used_edges.pop()
-
-# 1000
 def getLength(mSpot: int) -> int:
-    global paths
-    paths = [[] for _ in range(g_N + 1)]
-    dfs(mSpot, mSpot, 0, 0, [])
+    paths = {}
+
+    used_edges = set()
+
+    def dfs(cur, depth, dist):
+        if depth == 4:
+            paths.setdefault(cur, []).append(
+                (dist, used_edges.copy())
+            )
+            return
+        for road_id in graph[cur]:
+            if road_id not in active:
+                continue
+
+            if road_id in used_edges:
+                continue
+
+            a, b, length = roads[road_id]
+
+            nxt = b if cur == a else a
+
+            if nxt == mSpot:
+                continue
+
+            used_edges.add(road_id)
+
+            dfs(
+                nxt,
+                 depth + 1,
+                dist + length
+            )
+
+            used_edges.remove(road_id)
+    dfs(mSpot, 0, 0)
+
     answer = -1
-    for spot in range(1, g_N + 1):
-        if spot == mSpot:
-            continue
-        cur_paths = paths[spot]
 
-        for i in range(len(cur_paths)):
-            len1, edges1 = cur_paths[i]
+    for end, arr in paths.items():
+        size = len(arr)
 
-            for j in range(i + 1, len(cur_paths)):
-                len2, edges2 = cur_paths[j]
+        for i in range(size):
+            dist1, edges1 = arr[i]
+            for j in range(i + 1, size):
+                dist2, edges2 = arr[j]
 
-                total = len1 + len2
+                total = dist1 + dist2
 
                 if total > 42195:
                     continue
 
                 if not edges1.isdisjoint(edges2):
                     continue
-
                 answer = max(answer, total)
-    # print("getlength", answer)
+
     return answer
 
 
