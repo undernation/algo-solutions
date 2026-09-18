@@ -3,10 +3,13 @@ name: 잔디 · 인덱스 자동 갱신
 on:
   push:
     branches: [master, main]
-    paths:                      # 풀이/데이터가 바뀔 때만
+    paths:                      # 풀이/문제 자료/생성 코드가 바뀔 때
       - 'boj/**'
       - 'swea/**'
+      - 'problems/**'
       - '_meta/history.json'
+      - '_meta/_dashboard_tpl.py'
+      - '_meta/build_probindex.py'
       - '_meta/build_heatmap.py'
       - '_meta/build_index.py'
       - '.github/workflows/heatmap.yml'
@@ -18,8 +21,8 @@ permissions:
   contents: write
 
 concurrency:
-  group: heatmap
-  cancel-in-progress: true
+  group: heatmap-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -28,25 +31,41 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0     # 회차별 코드 링크가 git log 로 커밋 해시를 찾는다
+          ref: ${{ github.ref_name }}
 
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: 잔디 · 인덱스 생성
-        run: |
-          python _meta/build_probindex.py
-          python _meta/build_heatmap.py
-          python _meta/build_index.py
-
-      - name: 변경분 커밋
+      - name: 최신 커밋 기준 생성 · 커밋 · 푸시
+        env:
+          TARGET_BRANCH: ${{ github.ref_name }}
+        shell: bash
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if git diff --quiet -- README.md assets/ _meta/history.json; then
-            echo "변경 없음 — 커밋 생략"
-            exit 0
-          fi
-          git add README.md assets/ _meta/history.json
-          git commit -m "chore: 잔디·인덱스 자동 갱신 ($(date -u +%Y-%m-%d))"
-          git push
+          for attempt in 1 2 3; do
+            # 이 작업만 쓰는 일회성 runner 체크아웃이다. 이전 시도의 생성 커밋을
+            # 버리고 원격 최신 코드/데이터에서 다시 생성해 다른 작성자의 변경을 보존한다.
+            git fetch origin "$TARGET_BRANCH"
+            git reset --hard FETCH_HEAD
+
+            python _meta/build_probindex.py
+            python _meta/build_heatmap.py
+            python _meta/build_index.py
+
+            git add README.md HEATMAP.md index.html \
+              assets/heatmap.svg assets/heatmap.html \
+              _meta/history.json _meta/built.json problems/index.json
+            if git diff --cached --quiet; then
+              echo "변경 없음 — 커밋 생략"
+              exit 0
+            fi
+            git commit -m "chore: 잔디·인덱스 자동 갱신 ($(date -u +%Y-%m-%d))"
+            if git push origin "HEAD:refs/heads/$TARGET_BRANCH"; then
+              exit 0
+            fi
+            echo "푸시 실패 ($attempt/3) — 다음 시도에서 최신 원격 기준으로 재생성"
+          done
+          echo "::error::자동 갱신을 세 번 시도했지만 푸시하지 못했습니다."
+          exit 1
