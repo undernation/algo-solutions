@@ -46,5 +46,23 @@
       "bytes": 0,
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     }
+  ],
+  "statement_updates": [
+    {
+      "date": "2026-09-18",
+      "problem": 1,
+      "source": "participant supplied constraints",
+      "house_count": "2 <= N <= 20",
+      "allowed_distance": "1 <= d_i <= 30, integer"
+    },
+    {
+      "date": "2026-09-18",
+      "problem": 2,
+      "source_filename": "Pasted image 20260916160231.png",
+      "archived_path": "2_farming/reference_statement.png",
+      "bytes": 344445,
+      "sha256": "29feba91ad19f60be97c909bea79fe9255f884e3aca25ecbe4ecfc2c0094d7c1",
+      "partial_statement": true
+    }
   ]
 }
