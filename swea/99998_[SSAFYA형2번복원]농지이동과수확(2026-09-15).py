@@ -1,7 +1,7 @@
 """
 SWEA 99998  [SSAFY A형 2번 복원] 농지 이동과 수확 (2026-09-15)
 
-풀이일 : 2026-09-16   결과: 틀림
+풀이일 : 2026-09-18   결과: 못품
 한도   : time 50개 테스트케이스 합산 약 15초 (응시자 기억, PyPy3 기준) / time_sec 15 / memory 미확인 (원문 미제공) / time_source participant_recollection / time_is_approximate True / time_scope all_testcases / remembered_testcase_count 50 / runtime PyPy3
 제약   : 시간 제한: PyPy3 기준 50개 테스트케이스 합산 약 15초 (응시자 기억).
 제약   : 정확한 공식 시간, 다른 언어의 제한, 메모리 제한과 전체 입력 제한은 미확인이다.
@@ -10,61 +10,65 @@ SWEA 99998  [SSAFY A형 2번 복원] 농지 이동과 수확 (2026-09-15)
 제약   : 제공 지도는 모두 테두리가 산이지만 원문에서 이를 보장하는지는 미확인이다.
 제약   : T·N·M의 원문 상한은 확인되지 않았다.
 
-[채점] accepted  2/2  (1.677s)
+[채점] accepted  2/2  (1.302s)
 
 [문제]
 ※ 2026-09-15 SSAFY A형 2번의 제공 코드와 입력으로 복원한 연습 문제입니다.
 제목은 복원용이며, 내부 식별자는 SWEA/99998입니다. 공식 SWEA 번호가 아닙니다.
-원문과 공식 출력은 제공되지 않았습니다. 원본 output.txt가 비어 있어 아래 예제 출력은 원본 풀이와 독립 구현을 대조해 계산했습니다.
+2026-09-18에 제공된 지문 이미지로 로봇·성장 과정·오전/오후 규칙을 보완했습니다. 전체 원문과 공식 출력은 확보하지 못했습니다. 원본 output.txt가 비어 있어 아래 예제 출력은 원본 풀이와 독립 구현을 대조해 계산했습니다.
 
 추가 연습 입력: 기존 제공 입력 10개와 별도로, 복원 규칙으로 만든 서로 다른 50개를 추가했습니다. 공식 히든 테스트가 아닙니다. 추가 입력은 T=50 한 묶음으로 등록되어 화면에는 히든 1개로 표시됩니다. 히든을 포함해 채점하면 기존 10개 + 추가 50개, 실제 총 60개를 실행합니다.
 
-N × N 크기의 지도에 농지와 산이 있다. 지도에서 0은 농지, 1은 산을 나타낸다. 처음에는 모든 농지가 비어 있다.
+N × N 크기의 정사각형 지형을 가진 행성이 있다. 각 칸은 농지 또는 산이며, 입력에서 0은 농지, 1은 산을 뜻한다. 처음에는 모든 농지가 비어 있다.
 
-농부는 원하는 농지 한 칸에서 시작하며, 처음 바라보는 방향도 동·서·남·북 중 하나로 정할 수 있다. 농부는 1일부터 M일까지 매일 현재 칸에서 농사일을 하고 인접한 칸으로 이동한다. 하루에 여러 칸을 이동하지 않는다.
+지구인들은 이 행성에 농사 로봇 ‘개척자’를 보내 곡물을 수확하려고 한다. 로봇은 원하는 농지 한 칸에서 시작하며, 처음 바라보는 방향도 동·서·남·북 중 하나로 정할 수 있다. 로봇은 1일부터 M일까지 매일 오전에는 현재 칸에서 작업하고, 오후에는 이동한다.
 
 시작 위치와 방향을 가장 잘 골랐을 때 M일 동안 수확할 수 있는 곡식의 최대 개수를 구하라. 시작 위치나 방향을 바꾸어 비교할 때마다 모든 농지는 처음의 빈 상태에서 다시 시작한다.
 
-■ 1. 이동할 칸 결정
+■ 1. 씨앗, 싹, 곡식의 성장 과정
 
-매일 오전 작업 전에, 현재 바라보는 방향을 기준으로 다음 순서로 인접한 네 칸을 검사한다.
+빈 농지에 씨를 심으면 1일이 지난 다음 날 싹이 난다. 그 농지에서 k번째로 싹이 난 경우, 싹이 난 날로부터 3 + k일이 더 지나면 곡식이 열린다. k는 1 이상의 정수이며, 농지마다 따로 센다.
 
-오른쪽 → 앞 → 왼쪽 → 뒤
+- 처음 싹이 났다면, 싹이 난 날로부터 4일(3 + 1)이 더 지나 곡식이 열린다.
+- 두 번째로 싹이 났다면, 싹이 난 날로부터 5일(3 + 2)이 더 지나 곡식이 열린다.
+- 같은 농지에서 다시 농사를 지을수록 성장에 필요한 시간이 하루씩 길어진다. 수확해도 그 칸의 누적 재배 횟수는 초기화되지 않는다.
 
-이 순서에서 처음으로 이동 가능한 칸을 그날 오후의 이동 목적지로 정한다. 예를 들어 동쪽을 바라보고 있다면 남쪽, 동쪽, 북쪽, 서쪽 순서로 검사한다.
+따라서 p일에 k번째 씨를 심었다면 p + 1일에 싹이 나고, p + 1 + (3 + k) = p + 4 + k일의 오전부터 곡식이 열린 상태가 된다. 다른 칸에 씨를 심은 횟수는 이 계산에 영향을 주지 않는다.
 
-다음 조건을 모두 만족하는 칸으로만 이동할 수 있다.
+예를 들어 한 농지에 1일 오전 처음 씨를 심으면 2일에 싹이 나고 6일 오전부터 곡식이 열린다. 2~5일에는 아직 성장 중이므로 그 칸에 들어갈 수 없다. 곡식이 열려도 자동으로 수확되지는 않는다. 로봇이 그 칸에 서서 오전 작업을 해야 수확된다.
 
-- 지도 안에 있는 농지이다. 산이나 지도 바깥으로는 갈 수 없다.
-- 비어 있거나, 그날 이미 수확할 수 있게 된 곡식이 있다.
+■ 2. 오전 작업
 
-씨를 심었지만 아직 수확할 수 없는 농지로는 이동할 수 없다. 이동 가능한 칸이 없으면 그날은 현재 위치에 머물며 바라보는 방향도 유지한다.
+로봇은 오전에 현재 서 있는 농지의 상태에 따라 아래 작업 중 하나만 수행한다.
 
-■ 2. 오전의 농사일
+- 빈 농지이고 오후에 이동할 곳이 있는 경우: 현재 칸에 씨를 심는다.
+- 빈 농지이고 오후에 이동할 곳이 없는 경우: 씨를 심지 않고 아무 작업도 하지 않는다.
+- 곡식이 열린 농지인 경우: 곡식 1개를 수확한다. 수확한 칸은 빈 농지가 되며, 이동할 곳이 없어도 수확한다.
 
-오후 목적지를 결정한 뒤, 현재 서 있는 농지에서 다음 작업을 한다.
-
-- 빈 농지: 오후에 이동할 곳이 있으면 씨를 심는다. 이동할 곳이 없으면 씨를 심지 않는다.
-- 수확 가능한 농지: 곡식 1개를 수확하고 그 칸을 빈 농지로 만든다. 이동할 곳이 없어도 수확한다.
-- 수확한 날 같은 칸에 바로 씨를 다시 심지는 않는다.
-
-각 농지에는 그 칸에서 지금까지 씨를 심은 횟수가 따로 기록된다. 수확해도 이 횟수는 초기화되지 않는다.
-
-그 농지에 k번째로 씨를 심은 날이 d일이면, d + 4 + k일의 오전부터 수확할 수 있다. 그 날짜 전까지는 성장 중인 농지이므로 진입할 수 없다. k는 1부터 시작한다.
-
-| 파종 | 수확 가능 시작일 |
-|---|---|
-| 그 칸에 처음 파종 | 파종일 + 5 |
-| 그 칸에 두 번째 파종 | 파종일 + 6 |
-| 그 칸에 세 번째 파종 | 파종일 + 7 |
-
-예를 들어 1일에 처음 심었다면 2일부터 5일까지는 아직 수확할 수 없고, 6일 오전부터 수확할 수 있다. 성숙했다고 자동으로 수확되는 것은 아니다. 농부가 그 칸에 서서 오전 작업을 해야 수확된다.
+수확과 파종은 서로 다른 작업이다. 따라서 수확한 날 같은 칸에 바로 씨를 다시 심지 않는다. 이동할 곳이 있는지는 아래 오후 이동 규칙으로 판단한다.
 
 ■ 3. 오후 이동
 
-오전에 정한 목적지가 있으면 그 칸으로 한 칸 이동한다. 바라보는 방향도 이동한 방향으로 바뀐다. 도착한 칸의 농사일은 다음 날 오전에 한다.
+로봇은 현재 바라보는 방향을 기준으로 인접한 네 칸을 오른쪽 → 앞 → 왼쪽 → 뒤 순서로 살펴본다. 그중 가장 먼저 발견한 이동 가능한 칸으로 한 칸 이동한다. 매일 이동 방향을 자유롭게 고르는 것은 아니다.
 
-M일의 오전에 수확한 곡식까지 정답에 포함한다. M일 오후에 수확 가능한 칸에 도착하더라도, 다음 날의 작업은 없으므로 그 칸의 곡식은 정답에 포함되지 않는다.
+다음 조건을 모두 만족해야 이동할 수 있다.
+
+- 지도 안에 있는 농지이다. 산이나 지도 바깥으로는 갈 수 없다.
+- 빈 농지이거나, 그날 이미 곡식이 열린 농지이다.
+
+씨를 심은 뒤 아직 곡식이 열리지 않은 농지에는 들어갈 수 없다. 특히 싹이 자라는 농지는 지나갈 수 없다.
+
+예를 들어 동쪽을 바라보고 있다면 남쪽 → 동쪽 → 북쪽 → 서쪽 순서로 확인한다. 남쪽에 싹이 자라고 동쪽이 빈 농지라면 동쪽으로 이동한다. 남쪽에 이미 곡식이 열려 있다면, 동쪽이 비어 있어도 우선순위가 높은 남쪽으로 이동한다.
+
+이동하면 로봇이 바라보는 방향도 이동한 방향으로 바뀐다. 네 칸 모두 이동할 수 없으면 현재 위치에 머물며 방향도 유지한다. 하루에 여러 칸을 이동하지 않으며, 도착한 칸의 작업은 다음 날 오전에 한다.
+
+■ 4. 하루 처리와 종료 시점
+
+날짜가 바뀌어 성장 기간이 지난 농지는 그날부터 곡식이 열린 것으로 판단한다. 그 상태에서 이동할 곳이 있는지 확인하고, 현재 칸의 오전 작업 → 오후 한 칸 이동 또는 대기 순서로 하루를 진행한다. 오전 작업은 현재 칸만 바꾸므로 이웃 칸의 이동 가능 여부와 우선순위는 바뀌지 않는다.
+
+곡식이 열린 날 오후에 해당 칸으로 이동할 수 있지만, 수확은 다음 날 오전에 한다. 앞의 예에서 6일 오후에 처음 그 칸에 도착했다면 실제 수확은 7일 오전이다.
+
+M일의 오전에 수확한 곡식까지 정답에 포함한다. M일 오후에 곡식이 열린 칸에 도착하더라도, 다음 날의 작업은 없으므로 그 곡식은 정답에 포함되지 않는다.
 
 [예제 1]
 입력:
@@ -172,116 +176,79 @@ M일의 오전에 수확한 곡식까지 정답에 포함한다. M일 오후에 
 
 
 T = int(input())
-# 동 서 남 북
-DIR = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+N = 0
+DIR = [[1, 0], [-1, 0], [0, 1], [0, -1]]
 DIR_DICT = {
-    0: [2, 0, 3, 1],
-    1: [3, 1, 2, 0],
-    2: [1, 2, 0, 3],
-    3: [0, 3, 1, 2]
+    0: [3, 0, 2, 1],
+    1: [2, 1, 3, 0],
+    2: [0, 2, 1, 3],
+    3: [1, 3, 0, 2]
 }
 
 
-class Grain:
-    def __init__(self):
-        self.y = -1
-        self.x = -1
-        self.harvest_day = -1
-        self.ssak_day = -1
+def check_move(cy, cx, cur_day, cur_dir):
+    new_dir = None
+    direction = DIR_DICT[cur_dir]
 
-
-class Robot:
-    def __init__(self):
-        self.y = -1
-        self.x = -1
-        self.direction = -1
-
-
-def check_move(sy, sx, cd, cur_day):
-    ret = None
-    new_direction = None
-    for d in DIR_DICT[cd]:
-        dy, dx = DIR[d]
-        ny = sy + dy
-        nx = sx + dx
+    for i in direction:
+        dy, dx = DIR[i]
+        ny = cy + dy
+        nx = cx + dx
         if not (0 <= ny < N and 0 <= nx < N):
             continue
-        if board[ny][nx] == 1:
+
+        new_board_val = temp_board[ny][nx]
+        if new_board_val == 1:
+            continue
+        if new_board_val > cur_day:
             continue
 
-        # 만약 싹이 나는 경우
-        if (ny, nx) in grains:
-            cur_grain_id = grains[(ny, nx)]
-            cur_grain = grain_info[cur_grain_id]
-            if cur_grain.harvest_day > cur_day:
-                continue
-
-        ret = (ny, nx)
-        new_direction = d
+        new_dir = i
         break
-    return ret, new_direction
+
+    return new_dir
 
 
 for test_case in range(1, T + 1):
     N, M = map(int, input().split())
-    cnt_board = [[1] * N for _ in range(N)]
+
     board = [list(map(int, input().split())) for _ in range(N)]
-
     answer = 0
-
     for sy in range(N):
         for sx in range(N):
-            for direction in range(4):
-
-                if board[sy][sx] == 1:
-                    continue
+            if board[sy][sx] == 1:
+                continue
+            for i in range(4):
+                grain_cnt_board = [[1] * N for _ in range(N)]
+                cy, cx = sy, sx
+                cur_dir = i
                 cnt = 0
-                grains = {}
-                grain_info = {}
-                grain_id = 0
-
-                copied_cnt_board = [row[:] for row in cnt_board]
-                robot = Robot()
-                robot.y = sy
-                robot.x = sx
-                robot.direction = direction
+                temp_board = [row[:] for row in board]
 
                 for day in range(1, M + 1):
-                    cur_robot = robot
-                    cur_y = robot.y
-                    cur_x = robot.x
-                    cur_dir = robot.direction
+                    temptemp_board = [row[:] for row in temp_board]
+                    # print("debug board")
+                    temptemp_board[cy][cx] = -1
 
-                    can_move, new_direction = check_move(cur_y, cur_x, cur_dir, day)
-                    if (cur_y, cur_x) in grains:
-                        cur_grain_id = grains[(ny, nx)]
-                        del grains[(ny, nx)]
-                        del grain_info[cur_grain_id]
+                    # 이동할 수 있는 위치 확인
+                    target = check_move(cy, cx, day, cur_dir)
+
+                    if 1 < temp_board[cy][cx] <= day:
+                        temp_board[cy][cx] = 0
                         cnt += 1
-                    elif can_move is not None:
-                        new_grain = Grain()
-                        new_grain.y = cur_y
-                        new_grain.x = cur_x
-                        new_grain.harvest_day = copied_cnt_board[cur_y][cur_x] + 4 + day
-                        copied_cnt_board[cur_y][cur_x] += 1
-                        cur_id = grain_id
-                        grains[(cur_y, cur_x)] = cur_id
-                        grain_info[cur_id] = new_grain
+                    elif target is not None:
+                        # 씨 심기
+                        temp_board[cy][cx] = day + grain_cnt_board[cy][cx] + 4
+                        # print("debug", day + grain_cnt_board[cy][cx] + 3)
+                        grain_cnt_board[cy][cx] += 1
 
-                        grain_id += 1
-
-                    # 이동
-                    if can_move is not None:
-                        dy, dx = DIR[new_direction]
-                        ny = cur_y + dy
-                        nx = cur_x + dx
-                        new_dir = new_direction
-
-
-                        robot.y = ny
-                        robot.x = nx
-                        robot.direction = new_dir
-
-                answer = max(cnt, answer)
+                    if target is not None:
+                        cur_dir = target
+                        dy, dx = DIR[cur_dir]
+                        ny = cy + dy
+                        nx = cx + dx
+                        cy = ny
+                        cx = nx
+                answer = max(answer, cnt)
 
     print(f"#{test_case} {answer}")

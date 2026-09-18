@@ -6335,7 +6335,7 @@
   ]
  },
  "2026-09-18": {
-  "count": 2,
+  "count": 3,
   "items": [
    {
     "at": "11:30:29",
@@ -6366,6 +6366,29 @@
     "site": "SWEA",
     "status": "못품",
     "title": "마라톤 코스"
+   },
+   {
+    "at": "19:54:48",
+    "attempts": [
+     {
+      "at": "19:54:48",
+      "elapsed": 1.302,
+      "file": "swea/99998_[SSAFYA형2번복원]농지이동과수확(2026-09-15).py",
+      "passed": 2,
+      "status": "못품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 1.302,
+    "file": "swea/99998_[SSAFYA형2번복원]농지이동과수확(2026-09-15).py",
+    "no": "99998",
+    "passed": 2,
+    "site": "SWEA",
+    "status": "못품",
+    "title": "[SSAFY A형 2번 복원] 농지 이동과 수확 (2026-09-15)",
+    "total": 2,
+    "verdict": "accepted"
    }
   ]
  }
