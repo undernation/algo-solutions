@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="640" viewBox="0 0 720 640" role="img" aria-labelledby="title description">
+<title id="title">① 변의 일부만 닿아도 연결</title>
+<desc id="description">첫 번째 예제의 N=20 보드 중 x=0~8, y=0~4를 같은 비율로 확대한 그림. 블록 안의 숫자는 블록 ID이다. 점선은 새 블록 ID 15이다. 같은 색은 추가가 끝난 뒤 같은 구역임을 뜻한다. ID 15가 양쪽 구역을 하나로 합친다. addBlock 반환값은 10. 구역 ID 7 · 면적 10 · 블록 3개.</desc>
+<style>text{font-family:"Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif}</style>
+<rect x="0" y="0" width="720" height="640" rx="16" fill="#ffffff"/>
+<text x="28" y="42" font-size="27" fill="#17283e" text-anchor="start" font-weight="700">① 변의 일부만 닿아도 연결</text>
+<text x="28" y="79" font-size="23" fill="#475569" text-anchor="start" font-weight="400">ID 15가 양쪽 구역을 하나로 합친다.</text>
+<rect x="30" y="99" width="22" height="22" rx="4" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+<text x="64" y="117" font-size="20" fill="#243449" text-anchor="start" font-weight="400">같은 색 = 같은 구역</text>
+<rect x="405" y="99" width="22" height="22" rx="3" fill="#ffffff" stroke="#334155" stroke-width="2" stroke-dasharray="5 3"/>
+<text x="440" y="117" font-size="20" fill="#243449" text-anchor="start" font-weight="400">점선 = 새 블록</text>
+<line x1="88" y1="186" x2="88" y2="442" stroke="#e2e8f0" stroke-width="1" />
+<text x="88" y="474" font-size="20" fill="#64748b" text-anchor="middle" font-weight="400">0</text>
+<line x1="152" y1="186" x2="152" y2="442" stroke="#e2e8f0" stroke-width="1" />
+<text x="152" y="474" font-size="20" fill="#64748b" text-anchor="middle" font-weight="400">1</text>
+<line x1="216" y1="186" x2="216" y2="442" stroke="#e2e8f0" stroke-width="1" />
+<text x="216" y="474" font-size="20" fill="#64748b" text-anchor="middle" font-weight="400">2</text>
+<line x1="280" y1="186" x2="280" y2="442" stroke="#e2e8f0" stroke-width="1" />
+<text x="280" y="474" font-size="20" fill="#64748b" text-anchor="middle" font-weight="400">3</text>
+<line x1="344" y1="186" x2="344" y2="442" stroke="#e2e8f0" stroke-width="1" />
+<text x="344" y="474" font-size="20" fill="#64748b" text-anchor="middle" font-weight="400">4</text>
+<line x1="408" y1="186" x2="408" y2="442" stroke="#e2e8f0" stroke-width="1" />
+<text x="408" y="474" font-size="20" fill="#64748b" text-anchor="middle" font-weight="400">5</text>
+<line x1="472" y1="186" x2="472" y2="442" stroke="#e2e8f0" stroke-width="1" />
+<text x="472" y="474" font-size="20" fill="#64748b" text-anchor="middle" font-weight="400">6</text>
+<line x1="536" y1="186" x2="536" y2="442" stroke="#e2e8f0" stroke-width="1" />
+<text x="536" y="474" font-size="20" fill="#64748b" text-anchor="middle" font-weight="400">7</text>
+<line x1="600" y1="186" x2="600" y2="442" stroke="#e2e8f0" stroke-width="1" />
+<text x="600" y="474" font-size="20" fill="#64748b" text-anchor="middle" font-weight="400">8</text>
+<line x1="88" y1="442" x2="600" y2="442" stroke="#e2e8f0" stroke-width="1" />
+<text x="68" y="449" font-size="20" fill="#64748b" text-anchor="end" font-weight="400">0</text>
+<line x1="88" y1="378" x2="600" y2="378" stroke="#e2e8f0" stroke-width="1" />
+<text x="68" y="385" font-size="20" fill="#64748b" text-anchor="end" font-weight="400">1</text>
+<line x1="88" y1="314" x2="600" y2="314" stroke="#e2e8f0" stroke-width="1" />
+<text x="68" y="321" font-size="20" fill="#64748b" text-anchor="end" font-weight="400">2</text>
+<line x1="88" y1="250" x2="600" y2="250" stroke="#e2e8f0" stroke-width="1" />
+<text x="68" y="257" font-size="20" fill="#64748b" text-anchor="end" font-weight="400">3</text>
+<line x1="88" y1="186" x2="600" y2="186" stroke="#e2e8f0" stroke-width="1" />
+<text x="68" y="193" font-size="20" fill="#64748b" text-anchor="end" font-weight="400">4</text>
+<line x1="88" y1="442" x2="618" y2="442" stroke="#64748b" stroke-width="2" />
+<line x1="88" y1="442" x2="88" y2="168" stroke="#64748b" stroke-width="2" />
+<text x="628" y="449" font-size="22" fill="#475569" text-anchor="start" font-weight="400">x</text>
+<text x="88" y="156" font-size="22" fill="#475569" text-anchor="middle" font-weight="400">y</text>
+<g data-block-id="20" data-region-id="7" data-coordinates="0,0,2,2">
+<rect x="88" y="314" width="128" height="128" fill="#dbeafe" stroke="#3b82f6" stroke-width="3"/>
+<text x="152.0" y="387.0" font-size="27" fill="#17283e" text-anchor="middle" font-weight="700">ID 20</text>
+</g>
+<g data-block-id="7" data-region-id="7" data-coordinates="4,0,6,2">
+<rect x="344" y="314" width="128" height="128" fill="#dbeafe" stroke="#3b82f6" stroke-width="3"/>
+<text x="408.0" y="387.0" font-size="27" fill="#17283e" text-anchor="middle" font-weight="700">ID 7</text>
+</g>
+<g data-block-id="15" data-region-id="7" data-coordinates="2,0,4,1">
+<rect x="216" y="378" width="128" height="64" fill="#dbeafe" stroke="#334155" stroke-width="3" stroke-dasharray="9 5"/>
+<text x="280.0" y="407.0" font-size="27" fill="#17283e" text-anchor="middle" font-weight="700">ID 15</text>
+<text x="280.0" y="432.0" font-size="20" fill="#334155" text-anchor="middle" font-weight="400">새 블록</text>
+</g>
+<line x1="216" y1="442" x2="216" y2="378" stroke="#087f5b" stroke-width="7" />
+<line x1="344" y1="442" x2="344" y2="378" stroke="#087f5b" stroke-width="7" />
+<text x="286" y="235" font-size="22" fill="#087f5b" text-anchor="middle" font-weight="700">초록 선에서 연결</text>
+<rect x="28" y="504" width="664" height="108" rx="12" fill="#f1f5f9"/>
+<text x="48" y="545" font-size="27" fill="#17283e" text-anchor="start" font-weight="700">addBlock 반환값 = 10</text>
+<text x="48" y="586" font-size="24" fill="#334155" text-anchor="start" font-weight="400">구역 ID 7 · 면적 10 · 블록 3개</text>
+</svg>
