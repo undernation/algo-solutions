@@ -190,7 +190,7 @@ Q
 결과는 `Result(count=4, ids=[99, 1, 8, 40])`이다.
 
 `sample_output.txt`는 **함수를 올바르게 구현했을 때**의 출력이다.
-현재 `solution.py`는 `NotImplementedError`를 발생시키는 빈 틀이므로 실행하면 각 케이스가 0점이다.
+현재 `solution.py`는 함수 설명만 있는 빈 틀이므로, 구현하기 전에 실행하면 각 케이스가 0점이다.
 
 ## 6. 실행 방법
 
