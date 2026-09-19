@@ -1,0 +1,101 @@
+{
+  "scope": "Reconstructed rules; not an official judge result or reproduction of the original generator.",
+  "source_sha256": "5bbcc22fe0c282a4f0a68bee7ef89d138c6a048ca05044403504c209c28485cc",
+  "functional_verification": {
+    "oracle": "Independent integer unit-cell four-neighbor flood fill; public API only.",
+    "per_runtime": {
+      "runtimes": [
+        "CPython 3.13.3",
+        "PyPy 3.7.10"
+      ],
+      "fixed_cases": 25,
+      "random_cases": 1200,
+      "addBlock": 22200,
+      "isSameRegion": 971089,
+      "top10": 38561
+    },
+    "samples": {
+      "cases": 4,
+      "separate_main_solution": "passed",
+      "archive_merged_code": "passed"
+    }
+  },
+  "illustrative_random_benchmark": {
+    "distribution": "Our illustrative distribution, not the original problem generator: independent uniform integer widths/heights 1..30; lower corners uniform among in-board placements conditional on dimensions; reject positive-area interior overlap.",
+    "seed": 20260919,
+    "N": 45000,
+    "cases": 50,
+    "blocks_per_case": 15000,
+    "query_every_additions": 150,
+    "statistics": {
+      "total_additions": 750000,
+      "total_proposals": 752450,
+      "rejected_for_interior_overlap": 2450,
+      "edge_items_scanned_total": 999012,
+      "edge_items_scanned_mean_per_add": 1.332016,
+      "edge_items_scanned_max_per_add": 13,
+      "edge_items_scanned_p50": 1,
+      "edge_items_scanned_p90": 3,
+      "edge_items_scanned_p99": 6,
+      "max_x_bucket_length": 7,
+      "max_y_bucket_length": 8,
+      "adds_joining_existing_regions": 365,
+      "scan_histogram": {
+        "0": 263337,
+        "1": 208597,
+        "2": 139271,
+        "3": 78233,
+        "4": 37177,
+        "5": 15309,
+        "6": 5574,
+        "7": 1773,
+        "8": 558,
+        "9": 127,
+        "10": 28,
+        "11": 14,
+        "12": 1,
+        "13": 1
+      }
+    }
+  },
+  "runs": [
+    {
+      "status": "passed",
+      "implementation": "CPython",
+      "python": "3.13.3",
+      "dataset_sha256": "a1448300c0dce38b7e46d090fe0e3608dda8189fd09b3aa344733db71aff8594",
+      "source_sha256": "5bbcc22fe0c282a4f0a68bee7ef89d138c6a048ca05044403504c209c28485cc",
+      "source_unchanged": true,
+      "cases": 50,
+      "api_calls": {
+        "init": 50,
+        "addBlock": 750000,
+        "top10": 5000,
+        "isSameRegion": 5000
+      },
+      "api_and_answer_check_seconds": 1.696644,
+      "timing_includes": "API calls, loop/call overhead, and result comparisons against already computed answers.",
+      "timing_excludes": "Input generation, overlap rejection, reference answer calculation, scan/bucket statistics, data loading, imports, process startup, and file I/O.",
+      "time_limit_claim": "No official 50-case / 6-second acceptance claim. This dataset uses our own distribution; hardware/runtime and the original generation rules can differ."
+    },
+    {
+      "status": "passed",
+      "implementation": "PyPy",
+      "python": "3.7.10",
+      "dataset_sha256": "a1448300c0dce38b7e46d090fe0e3608dda8189fd09b3aa344733db71aff8594",
+      "source_sha256": "5bbcc22fe0c282a4f0a68bee7ef89d138c6a048ca05044403504c209c28485cc",
+      "source_unchanged": true,
+      "cases": 50,
+      "api_calls": {
+        "init": 50,
+        "addBlock": 750000,
+        "top10": 5000,
+        "isSameRegion": 5000
+      },
+      "api_and_answer_check_seconds": 1.456634,
+      "timing_includes": "API calls, loop/call overhead, and result comparisons against already computed answers.",
+      "timing_excludes": "Input generation, overlap rejection, reference answer calculation, scan/bucket statistics, data loading, imports, process startup, and file I/O.",
+      "time_limit_claim": "No official 50-case / 6-second acceptance claim. This dataset uses our own distribution; hardware/runtime and the original generation rules can differ."
+    }
+  ]
+}

@@ -1,16 +1,3 @@
-## SWEA 99996 [삼성 B형 복원] 블록 구역 관리
-
-#### 2026-09-19 (못품)
-못푼이유
-유니온 파인드 구현 자체를 몰랐다.
-변으로 관리하는 것까지는 잘 떠올랐으나..
-
-그리고 유니온 파인드를 구현했다고 하더라도
-버전으로 관리하는 부분에서 헷갈렸을것같다.
-
-아래는 정답 코드 전문
-
-```python
 class Result:
     def __init__(self, count=0, ids=None):
         # 실제 반환한 구역 수: 0 이상 10 이하.
@@ -115,13 +102,13 @@ def addBlock(blockId: int, x1: int, y1: int, x2: int, y2: int) -> int:
     neighbors = set()
 
     for oy1, oy2, other_idx in x_edges[x1]:
-
         if y1 < oy2 and oy1 < y2:
             neighbors.add(other_idx)
 
     for oy1, oy2, other_idx in x_edges[x2]:
         if y1 < oy2 and oy1 < y2:
             neighbors.add(other_idx)
+
     for ox1, ox2, other_idx in y_edges[y1]:
         if x1 < ox2 and ox1 < x2:
             neighbors.add(other_idx)
@@ -129,6 +116,7 @@ def addBlock(blockId: int, x1: int, y1: int, x2: int, y2: int) -> int:
     for ox1, ox2, other_idx in y_edges[y2]:
         if x1 < ox2 and ox1 < x2:
             neighbors.add(other_idx)
+
     root = idx
 
     for other_idx in neighbors:
@@ -144,7 +132,6 @@ def addBlock(blockId: int, x1: int, y1: int, x2: int, y2: int) -> int:
             region_id[root],
             root,
             version[root]
-
         )
     )
 
@@ -208,18 +195,3 @@ def top10() -> Result:
         len(ids),
         ids
     )
-
-```
-
-
-### 풀이 보충 자료
-
-블록이 랜덤하게 생성된다는 조건에서 같은 좌표의 변 목록이 짧을 것으로 기대하고, 네 목록을 직접 순회하는 접근이다. 내부가 겹치지 않는다는 전제 덕분에 왼쪽·오른쪽 변을 같은 x 목록에 넣고 선형 검사해도 접촉 판정은 정확하다.
-
-- Union-Find는 접촉한 블록의 구역을 합치며, 이미 같은 구역이면 다시 면적을 더하지 않는다. 구역 ID는 대표 인덱스와 별도로 최소 블록 ID를 저장한다.
-- 힙 항목은 대표가 흡수되었으면 부모 검사로, 같은 대표의 면적·개수가 갱신되었으면 버전 검사로 제외한다. top10에서 꺼낸 유효 항목은 다시 넣는다.
-- 자체 랜덤 입력 50케이스 × 15,000블록에서는 추가당 검사량이 평균 1.332개, 최대 13개였다. N=45000, 가로·세로 1~30, 균일 좌표 추출 후 내부 겹침 거부라는 설명용 분포이며 원문 생성기와는 구분한다.
-
-- [사용자 코드 상세 해설](https://github.com/undernation/algo-solutions/blob/master/restored/samsung_b_block_regions_2026-09-19/user_solution_explained.md)
-- [구현 코드](https://github.com/undernation/algo-solutions/blob/master/restored/samsung_b_block_regions_2026-09-19/user_solution.py)
-- [검증 결과와 측정 조건](https://github.com/undernation/algo-solutions/blob/master/restored/samsung_b_block_regions_2026-09-19/verification_summary.json)
