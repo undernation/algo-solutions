@@ -5,16 +5,12 @@
 정답 구현이나 알고리즘 힌트는 포함하지 않는다.
 """
 
-from dataclasses import dataclass, field
-from typing import List
-
-
-@dataclass
 class Result:
-    # 실제 반환한 구역 수: 0 이상 10 이하.
-    count: int = 0
-    # 순위순 구역 ID. 실제 반환할 count개만 넣는다.
-    ids: List[int] = field(default_factory=list)
+    def __init__(self, count=0, ids=None):
+        # 실제 반환한 구역 수: 0 이상 10 이하.
+        self.count = count
+        # 순위순 구역 ID. 실제 반환할 count개만 넣는다.
+        self.ids = [] if ids is None else ids
 
 
 def init(N: int) -> None:

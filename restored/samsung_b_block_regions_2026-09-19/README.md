@@ -69,10 +69,10 @@
 구역이 10개 미만이면 존재하는 구역만 반환한다. 구역이 없으면 빈 결과를 반환한다.
 
 ```python
-@dataclass
 class Result:
-    count: int = 0
-    ids: List[int] = field(default_factory=list)
+    def __init__(self, count=0, ids=None):
+        self.count = count
+        self.ids = [] if ids is None else ids
 ```
 
 - `count`: 실제 반환하는 구역의 개수. `min(10, 현재 구역 수)`이다.
