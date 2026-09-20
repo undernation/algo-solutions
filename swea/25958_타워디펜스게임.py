@@ -2,15 +2,13 @@
 SWEA 25958  타워디펜스게임
 https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt8IiBqxEDHBIN6&contestProbId=AZvfDDtKDNjHBIN6&probBoxId=AZt8IiBqxEHHBIN6&type=PROBLEM
 
-풀이일 : 2026-09-17   결과: 틀림
+풀이일 : 2026-09-20   결과: 못품
 한도   : time 25개 테스트케이스를 합쳐서 C++의 경우 3초 / Java의 경우 3초 / Python의 경우 5초 / memory 힙, 정적 메모리 합쳐서 262144 kbytes 이내, 스택 메모리 1024 kbytes 이내 / time_sec 5
 난이도 : D5  |  정답률 64.29%
 제약   : 1. 각 테스트 케이스 시작 시 init() 함수가 한 번 호출된다.
 제약   : 2. Map 의 크기는 최대 20 x 20 이다.
 제약   : 3. 각 테스트 케이스에서 addTower() 함수의 호출 횟수는 N x N 이하이다.
 제약   : 4. 각 테스트 케이스에서 runSimulation() 함수의 호출 횟수는 10 이하이다.
-
-[채점] accepted  1/1  (4.788s)
 
 [문제]
 타워디펜스게임을 시뮬레이션 하는 API 를 구현해보자.
@@ -697,218 +695,201 @@ from typing import List
 from collections import deque
 import heapq
 
+g_N = -1
+routes = []
+towers = dict()
+tower_id_cnt = -1
+runners = {}
+len_routes = -1
+
+
 class Tower:
     def __init__(self):
-        self.target = -1
         self.reload_time = -1
-        self.next_shoot_time = -1
-        self.y = -1
-        self.x = -1
+        self.next_attack_time = -1
+        self.attack_area = []
+        self.target = -1
 
 
 class Runner:
     def __init__(self):
-        self.y = -1
-        self.x = -1
-        self.next_move_time = -1
+        self.idx = -1
+        self.nxt_move_time = -1
         self.hp = -1
 
 
-DIR = [[1, 0], [-1, 0], [0, 1], [0, -1]]
-
-board = []
-towers = {}
-tower_cnt = 0
-runners = {}
-runner_board = []
-g_N = 0
-
 def init(N: int, mMap: List[List[int]]) -> None:
-    global board, towers, tower_cnt, runner_board, g_N, sy, sx, ey, ex
+    global g_N, routes, towers, tower_id_cnt, len_routes
+    towers = dict()
     g_N = N
-    sy = -1
-    sx = -1
-
-    ey = -1
-    ex = -1
-
-    towers = {}
-    tower_cnt = 0
-    runner_board = [[0] * N for _ in range(N)]
+    routes = []
+    board = mMap
+    start_y = -1
+    start_x = -1
+    end_y = -1
+    end_x = -1
+    tower_id_cnt = 0
     for i in range(N):
         for j in range(N):
-            if mMap[i][j] == 2:
-                sy, sx = i, j
-            elif mMap[i][j] == 3:
-                ey, ex = i, j
+            if board[i][j] == 2:
+                start_y = i
+                start_x = j
+            elif board[i][j] == 3:
+                end_y = i
+                end_x = j
+    routes.append((start_y, start_x))
 
-    board = [[-1] * N for _ in range(N)]
     visited = set()
-    q = deque([(sy, sx)])
-    visited.add((sy, sx))
+    visited.add((start_y, start_x))
+
+    q = deque([(start_y, start_x)])
 
     while q:
         cy, cx = q.popleft()
-        for d in range(4):
-            dy, dx = DIR[d]
+
+        for dy, dx in [[1, 0], [-1, 0], [0, 1], [0, -1]]:
             ny = cy + dy
             nx = cx + dx
             if not (0 <= ny < N and 0 <= nx < N):
                 continue
+            if board[ny][nx] != 1:
+                continue
             if (ny, nx) in visited:
                 continue
             visited.add((ny, nx))
-            if mMap[ny][nx] == 1:
-                board[cy][cx] = d
-                q.append((ny, nx))
-            elif mMap[ny][nx] == 3:
-                board[cy][cx] = d
+            q.append((ny, nx))
+            routes.append((ny, nx))
 
-    # for i in board:
-    #     print(i)
+    routes.append((end_y, end_x))
+    len_routes = len(routes)
+    # print(routes)
 
 
-def addTower(mRow: int, mCol: int, mInterval: int) -> None:
-    global towers, tower_cnt, sy, sx
-    tower = Tower()
-    tower.y = mRow
-    tower.x = mCol
-    tower.reload_time = mInterval
-    towers[tower_cnt] = tower
-    tower_cnt += 1
-
-    # print("addTower", mRow, mCol, mInterval)
-
-def move_runner(cur_time, runner_id, interval):
-    cur_runner = runners[runner_id]
-    if cur_runner.next_move_time > cur_time:
-        return
-    cur_runner_y = cur_runner.y
-    cur_runner_x = cur_runner.x
-    cur_runner.next_move_time = cur_time + interval
-    # 만약 -1 -1 인경우
-    if cur_runner_y == -1 and cur_runner_x == -1:
-        ny = sy
-        nx = sx
-        runner_board[ny][nx] = runner_id
-        cur_runner.y = ny
-        cur_runner.x = nx
-        return
-    nxt_dir = board[cur_runner_y][cur_runner_x]
-
-    dy, dx = DIR[nxt_dir]
-    ny = cur_runner_y + dy
-    nx = cur_runner_x + dx
-    cur_runner.y = ny
-    cur_runner.x = nx
-    runner_board[ny][nx] = runner_id
-    runner_board[cur_runner_y][cur_runner_x] = 0
-
-    return
-
-def choose_target(tower_id, cur_time):
-    cy = towers[tower_id].y
-    cx = towers[tower_id].x
-    cur_target = towers[tower_id].target
-    hq = []
-    is_found = False
+def make_attack_area(cy, cx):
+    ret = []
 
     for y in range(max(0, cy - 3), min(g_N - 1, cy + 3) + 1):
         for x in range(max(0, cx - 3), min(g_N - 1, cx + 3) + 1):
-            if runner_board[y][x] != 0 and (abs(cy - y) + abs(cx - x)) <= 3:
-                cur_runner_id = runner_board[y][x]
-                if cur_target == cur_runner_id:
-                    hq = [cur_target]
-                    is_found = True
-                    break
-                hp = runners[cur_runner_id].hp
 
-                heapq.heappush(hq, (hp, cur_runner_id))
-        if is_found:
-            break
+            if abs(y - cy) + abs(x - cx) <= 3:
+                ret.append((y, x))
 
-    if cur_target in hq:
-        towers[tower_id].next_shoot_time = cur_time + towers[tower_id].reload_time
-        return cur_target
+    return ret
 
-    if hq:
-        towers[tower_id].next_shoot_time = cur_time + towers[tower_id].reload_time
 
-        return hq[0][1]
-    else:
-        return None
+def addTower(mRow: int, mCol: int, mInterval: int) -> None:
+    global tower_id_cnt
+    tower = Tower()
+    tower.attack_area = make_attack_area(mRow, mCol)
+    tower.reload_time = mInterval
 
+    towers[tower_id_cnt] = tower
+    tower_id_cnt += 1
+
+
+def find_target(tower_id):
+    ret = set()
+    tower = towers[tower_id]
+    hq = []
+
+    for y, x in tower.attack_area:
+        if (y, x) in runners:
+            cur_runner_id = runners[(y, x)]
+            cur_runner = runner_info[cur_runner_id]
+            heapq.heappush(hq, (cur_runner.hp, cur_runner_id))
+            ret.add(cur_runner_id)
+
+    return ret, hq
 
 
 def runSimulation(M: int, mInterval: int, mHP: int, mRetTs: List[int], mRetHP: List[int]) -> None:
-    global ey, ex
-    # 모든 타워 상태 초기화
-    for tower_id, tower in towers.items():
-        tower.next_shoot_time = -1
+    global runners, runner_info, len_routes
+    # key = (y, x) value : runner_id
+    runners = {}
+    runner_info = {}
+
+    for runner_id in range(M):
+        runner = Runner()
+        runner.nxt_move_time = (runner_id + 1) * mInterval
+        runner.hp = mHP
+        runner_info[runner_id] = runner
+
+    # 타워 상태 초기화
+    for key, tower in towers.items():
+        tower.next_attack_time = -1
         tower.target = -1
 
-    # 도망자 상태 초기화
-    runners.clear()
-    for runner_id in range(1, M + 1):
-        runner = Runner()
-        runner.hp = mHP
-        runner.next_move_time = runner_id * mInterval
-        runners[runner_id] = runner
-
-
+    # 시뮬레이션
     time = 0
-    while runners:
-        # print("debug runners time", time)
-        # for key, value in runners.items():
-        #     print(key, value.next_move_time, value.hp)
-
-        targets = []
-        # 공격 준비 된 타워들 공격 대상 지정
+    while runner_info:
+        target_runners = []
+        # 타워들 대상 성택
         for tower_id, tower in towers.items():
-            if tower.next_shoot_time > time:
+            if tower.next_attack_time > time:
                 continue
+            cur_target = tower.target
+            # 공격 준비 된애들은 대상 선택
+            targets, target_hq = find_target(tower_id)
 
-            # 현재 타워 공격대상 확인
-            target = choose_target(tower_id, time)
-            if target is None:
+            if not targets:
                 tower.target = -1
             else:
-                tower.target = target
-                targets.append(target)
+                tower.next_attack_time = time + tower.reload_time
+                if cur_target in targets:
+                    target_runners.append(cur_target)
+                    tower.target = cur_target
+                else:
+                    tower.target = target_hq[0][1]
+                    target_runners.append(target_hq[0][1])
 
-        for target in targets:
-            if target not in runners:
+        for target_runner in target_runners:
+            if target_runner not in runner_info:
+                continue
+            runner_info[target_runner].hp -= 1
+
+            if runner_info[target_runner].hp == 0:
+                # 삭제 처리
+                target_idx = runner_info[target_runner].idx
+                cy, cx = routes[target_idx]
+                del runners[(cy, cx)]
+                del runner_info[target_runner]
+                mRetTs[target_runner] = time
+        arrived = []
+        # 도망자 이동
+        for runner_id, runner in runner_info.items():
+            # 현재 행동주기 도래했는지 확인
+            if runner.nxt_move_time > time:
                 continue
 
-            runners[target].hp -= 1
+            cur_idx = runner.idx
+            runner.nxt_move_time = time + mInterval
+            # -1 이면 0으로 이동
+            if cur_idx == -1:
+                cy, cx = -1, -1
+            else:
+                cy, cx = routes[runner.idx]
 
-            if runners[target].hp == 0:
-                mRetTs[target - 1] = time
-                # 삭제 처리
-                cur_runner = runners[target]
-                cur_runner_y = cur_runner.y
-                cur_runner_x = cur_runner.x
-                runner_board[cur_runner_y][cur_runner_x] = 0
-                del runners[target]
+            if (cy, cx) in runners:
+                del runners[(cy, cx)]
+            runner.idx += 1
 
-        arrived = []
-        # 러너 이동
-        for runner_id, runner in runners.items():
-            move_runner(time, runner_id, mInterval)
-            cur_runner = runners[runner_id]
-            if cur_runner.y == ey and cur_runner.x == ex:
-                runner_board[cur_runner.y][cur_runner.x] = 0
+            if runner.idx >= len_routes - 1:
+                # 도착 처리
                 arrived.append(runner_id)
+            else:
+                # print(routes)
+                ny, nx = routes[runner.idx]
+                runners[(ny, nx)] = runner_id
 
-        for i in arrived:
-            mRetTs[i - 1] = time
-            mRetHP[i - 1] = runners[i].hp
-            del runners[i]
-
+        for runner_id in arrived:
+            cur_hp = runner_info[runner_id].hp
+            mRetHP[runner_id] = cur_hp
+            mRetTs[runner_id] = time
+            del runner_info[runner_id]
 
         time += 1
 
-    # print("run simul", mRetTs, mRetHP)
+    # print("run simulate", mRetTs, mRetHP)
 
 
 # ── Main (수정 불가) ──
