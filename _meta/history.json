@@ -6421,7 +6421,7 @@
   ]
  },
  "2026-09-20": {
-  "count": 2,
+  "count": 3,
   "items": [
    {
     "at": "13:28:01",
@@ -6460,6 +6460,29 @@
     "site": "SWEA",
     "status": "못품",
     "title": "타워디펜스게임"
+   },
+   {
+    "at": "16:13:49",
+    "attempts": [
+     {
+      "at": "16:13:49",
+      "elapsed": 0.301,
+      "file": "swea/5260_[S_W문제해결최적화]3일차-부분집합의합D4.py",
+      "passed": 1,
+      "status": "못품",
+      "total": 1,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.301,
+    "file": "swea/5260_[S_W문제해결최적화]3일차-부분집합의합D4.py",
+    "no": "5260",
+    "passed": 1,
+    "site": "SWEA",
+    "status": "못품",
+    "title": "[S/W 문제해결 최적화] 3일차 - 부분 집합의 합 D4",
+    "total": 1,
+    "verdict": "accepted"
    }
   ]
  }

@@ -2,9 +2,11 @@
 SWEA 5260  [S/W 문제해결 최적화] 3일차 - 부분 집합의 합 D4
 https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWUTWmcqLDcDFAVT
 
-풀이일 : 2026-09-16   결과: 못품
+풀이일 : 2026-09-20   결과: 못품
 한도   : time 10개 테스트케이스를 합쳐서 Python의 경우 2초 / memory 힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내 / time_sec 2
 난이도 : Master  |  정답률 42.98%
+
+[채점] accepted  1/1  (0.301s)
 
 [문제]
 1부터 N까지 양의 정수를 원소로 갖는 집합이 있다. 이 집합의 모든 부분 집합에 대해 원소의 합이 K인 경우의 수 M을 알아내려고 한다.
@@ -25,24 +27,18 @@ https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWU
 #3 1
 """
 
-import sys
-from collections import deque
-
-sys.stdin = open('sample_input.txt', 'r')
 
 T = int(input())
-
+# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
 for test_case in range(1, T + 1):
     N, K = map(int, input().split())
-
-    answer = 0
-
     dp = [0] * (K + 1)
+
     dp[0] = 1
-    for i in range(1, N + 1):
-        for j in range(K, i - 1, -1):
-            dp[j] += dp[j - i]
 
-    # print(dp)
+    for num in range(1, N + 1):
+        for s in range(K, num - 1, -1):
+            dp[s] += dp[s - num]
 
-    print(f"#{test_case} {dp[K]}")
+    answer = dp[K]
+    print(f"#{test_case} {answer}")
