@@ -2,7 +2,7 @@
 SWEA 25000  마라톤 코스
 https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt8IiBqxEDHBIN6&contestProbId=AZih2RXKu2_HBINp&probBoxId=AZt8IiBqxEHHBIN6&type=PROBLEM
 
-풀이일 : 2026-09-18   결과: 못품
+풀이일 : 2026-09-20   결과: 품
 한도   : time 25개 테스트케이스를 합쳐서 C++의 경우 3초 / Java의 경우 3초 / Python의 경우 6초 / memory 힙, 정적 메모리 합쳐서 262144 kbytes 이내, 스택 메모리 1024 kbytes 이내 / time_sec 6
 난이도 : D6  |  정답률 74.29%
 제약   : 1. 각 테스트 케이스 시작 시 init() 함수가 호출된다.
@@ -10,6 +10,8 @@ https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AZt
 제약   : 3. 각 테스트 케이스에서 addRoad() 함수의 호출은 최대 1,000 이다.
 제약   : 4. 각 테스트 케이스에서 removeRoad() 함수의 호출은 최대 100 이다.
 제약   : 5. 각 테스트 케이스에서 getLength() 함수의 호출은 최대 1,000 이다.
+
+[채점] accepted  1/1  (4.414s)
 
 [문제]
 [Fig. 1] 과 같이 도시에 N 개의 지점과 도로가 있다. 지점과 지점은 도로로 연결된다.
@@ -560,23 +562,20 @@ add_road_ID: 165989 add_road_spotA: 37 add_road_spotB: 45 add_road_Length: 5974
 # ── User Code ──
 from typing import List
 
-g_N = -1
+graph = []
 roads = {}
 road_info = {}
 active = set()
-graph = []
-road_length = {}
+g_N = -1
 
 
 def init(N: int) -> None:
-    global g_N, roads, graph, active, road_length
+    global graph, roads, road_info, active, g_N
     g_N = N
-    # (start, end) : road_id
-    roads = {}
-    # road_id : length
-    road_length = {}
-    active = set()
     graph = [set() for _ in range(N + 1)]
+    roads = dict()
+    road_info = dict()
+    active = set()
 
 
 def addRoad(K: int, mID: List[int], mSpotA: List[int], mSpotB: List[int], mLen: List[int]) -> None:
@@ -586,95 +585,74 @@ def addRoad(K: int, mID: List[int], mSpotA: List[int], mSpotB: List[int], mLen: 
         b = mSpotB[k]
         length = mLen[k]
 
-        # 활성화
         active.add(cur_id)
-        # 경로 넣기
         graph[a].add(b)
         graph[b].add(a)
 
-        road_length[cur_id] = length
+        road_info[cur_id] = length
         roads[(a, b)] = cur_id
         roads[(b, a)] = cur_id
+
+    # print("addroad", K)
 
 
 def removeRoad(mID: int) -> None:
     active.discard(mID)
+    # print("removeRoad", mID)
     pass
+
 
 
 def getLength(mSpot: int) -> int:
     paths = {}
+    used_path = set()
 
-    HALF_MAX = 42195
-    used_edges = set()
-
-    def dfs(depth, cur, dist):
+    def dfs(depth, cur, length, used_path):
         if depth == 4:
             if cur not in paths:
                 paths[cur] = []
-            paths[cur].append(
-                (
-                    dist,
-                    used_edges.copy()
-                )
-            )
+
+            paths[cur].append((length, used_path.copy()))
+
             return
 
         for nxt in graph[cur]:
+
             cur_road_id = roads[(cur, nxt)]
             if nxt == mSpot:
                 continue
+            if cur_road_id in used_path:
+                continue
             if cur_road_id not in active:
                 continue
-            new_length = dist + road_length[cur_road_id]
-            if new_length > HALF_MAX:
-                continue
-            if cur_road_id in used_edges:
-                continue
-            used_edges.add(cur_road_id)
-            dfs(depth + 1, nxt, new_length)
-            used_edges.discard(cur_road_id)
+            cur_length = road_info[cur_road_id]
 
-    dfs(0, mSpot, 0)
+            used_path.add(cur_road_id)
+            # print("used_path", used_path)
+            dfs(depth + 1, nxt, length + cur_length, used_path)
+            used_path.discard(cur_road_id)
 
-    answer = -1
+    dfs(0, mSpot, 0, used_path)
+    answer = 0
+    # print(paths)
+    for cur_key, used_path in paths.items():
+        for i in range(len(used_path)):
+            for j in range(i + 1, len(used_path)):
+                first = used_path[i]
+                second = used_path[j]
 
-    for turn_spot in paths:
-        half_paths = paths[turn_spot]
-
-        if len(half_paths) < 2:
-            continue
-
-        half_paths.sort(
-            key=lambda x: -x[0],
-
-        )
-
-        n = len(half_paths)
-
-        for i in range(n - 1):
-            len1, edges1 = half_paths[i]
-
-            if len1 + half_paths[i + 1][0] <= answer:
-                break
-
-            for j in range(i + 1, n):
-                len2, edges2 = half_paths[j]
-
-                total = len1 + len2
-
-                if total > 42195:
+                if not first[1].isdisjoint(second[1]):
                     continue
-
-                if total <= answer:
-                    break
-                if not edges1.isdisjoint(edges2):
+                if first[0] + second[0] > 42195:
                     continue
+                answer = max(answer, first[0] + second[0])
 
-                answer = total
-                break
-
-    return answer
+    if answer == 0:
+        # print("getlength", answer)
+        return -1
+    else:
+        # print("gelength", answer)
+        return answer
 
 
 # ── Main (수정 불가) ──

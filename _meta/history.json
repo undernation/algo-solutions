@@ -6419,5 +6419,33 @@
     "verdict": "accepted"
    }
   ]
+ },
+ "2026-09-20": {
+  "count": 1,
+  "items": [
+   {
+    "at": "13:28:01",
+    "attempts": [
+     {
+      "at": "13:28:01",
+      "elapsed": 4.414,
+      "file": "swea/25000_마라톤코스.py",
+      "passed": 1,
+      "status": "품",
+      "total": 1,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 4.414,
+    "file": "swea/25000_마라톤코스.py",
+    "no": "25000",
+    "passed": 1,
+    "site": "SWEA",
+    "status": "품",
+    "title": "마라톤 코스",
+    "total": 1,
+    "verdict": "accepted"
+   }
+  ]
  }
 }
