@@ -1,7 +1,7 @@
 """
 SWEA 99998  [SSAFY A형 2번 복원] 농지 이동과 수확 (2026-09-15)
 
-풀이일 : 2026-09-18   결과: 못품
+풀이일 : 2026-09-21   결과: 못품
 한도   : time 50개 테스트케이스 합산 약 15초 (응시자 기억, PyPy3 기준) / time_sec 15 / memory 미확인 (원문 미제공) / time_source participant_recollection / time_is_approximate True / time_scope all_testcases / remembered_testcase_count 50 / runtime PyPy3
 제약   : 시간 제한: PyPy3 기준 50개 테스트케이스 합산 약 15초 (응시자 기억).
 제약   : 정확한 공식 시간, 다른 언어의 제한, 메모리 제한과 전체 입력 제한은 미확인이다.
@@ -10,7 +10,7 @@ SWEA 99998  [SSAFY A형 2번 복원] 농지 이동과 수확 (2026-09-15)
 제약   : 제공 지도는 모두 테두리가 산이지만 원문에서 이를 보장하는지는 미확인이다.
 제약   : T·N·M의 원문 상한은 확인되지 않았다.
 
-[채점] accepted  2/2  (1.302s)
+[채점] accepted  2/2  (1.129s)
 
 [문제]
 ※ 2026-09-15 SSAFY A형 2번의 제공 코드와 입력으로 복원한 연습 문제입니다.
@@ -175,8 +175,6 @@ M일의 오전에 수확한 곡식까지 정답에 포함한다. M일 오후에 
 
 
 
-T = int(input())
-N = 0
 DIR = [[1, 0], [-1, 0], [0, 1], [0, -1]]
 DIR_DICT = {
     0: [3, 0, 2, 1],
@@ -186,69 +184,81 @@ DIR_DICT = {
 }
 
 
-def check_move(cy, cx, cur_day, cur_dir):
-    new_dir = None
-    direction = DIR_DICT[cur_dir]
+def check_move(cy, cx, cur_direction, cur_day):
+    cur_dirs = DIR_DICT[cur_direction]
+    ret = None
 
-    for i in direction:
-        dy, dx = DIR[i]
+    for direction in cur_dirs:
+        dy, dx = DIR[direction]
         ny = cy + dy
         nx = cx + dx
+
         if not (0 <= ny < N and 0 <= nx < N):
             continue
-
-        new_board_val = temp_board[ny][nx]
-        if new_board_val == 1:
+        if 1 == temp_board[ny][nx]:
             continue
-        if new_board_val > cur_day:
+        if temp_board[ny][nx] > cur_day:
             continue
 
-        new_dir = i
-        break
+        return direction
 
-    return new_dir
+    return ret
 
 
-for test_case in range(1, T + 1):
+def set_grain(cy, cx, cur_day):
+    global temp_board, grain_cnt_board
+    temp_board[cy][cx] = cur_day + 4 + grain_cnt_board[cy][cx]
+    grain_cnt_board[cy][cx] += 1
+
+
+def harvest_grain(cy, cx):
+    global cnt, temp_board
+    temp_board[cy][cx] = 0
+    cnt += 1
+
+
+T = int(input())
+for tc in range(1, T + 1):
     N, M = map(int, input().split())
-
     board = [list(map(int, input().split())) for _ in range(N)]
     answer = 0
-    for sy in range(N):
-        for sx in range(N):
-            if board[sy][sx] == 1:
+    for i in range(N):
+        for j in range(N):
+            if board[i][j] == 1:
                 continue
-            for i in range(4):
-                grain_cnt_board = [[1] * N for _ in range(N)]
-                cy, cx = sy, sx
-                cur_dir = i
+            for start_direction in range(4):
                 cnt = 0
                 temp_board = [row[:] for row in board]
+                grain_cnt_board = [[1] * N for _ in range(N)]
+
+                cy = i
+                cx = j
+                cd = start_direction
 
                 for day in range(1, M + 1):
-                    temptemp_board = [row[:] for row in temp_board]
-                    # print("debug board")
-                    temptemp_board[cy][cx] = -1
+                    destination = check_move(cy, cx, cd, day)
+                    # print(cy, cx)
+                    if temp_board[cy][cx] == 0 and destination is not None:
+                        set_grain(cy, cx, day)
+                    elif temp_board[cy][cx] == 0 and destination is None:
+                        continue
 
-                    # 이동할 수 있는 위치 확인
-                    target = check_move(cy, cx, day, cur_dir)
+                    elif 1 < temp_board[cy][cx] <= day:
+                        harvest_grain(cy, cx)
 
-                    if 1 < temp_board[cy][cx] <= day:
-                        temp_board[cy][cx] = 0
-                        cnt += 1
-                    elif target is not None:
-                        # 씨 심기
-                        temp_board[cy][cx] = day + grain_cnt_board[cy][cx] + 4
-                        # print("debug", day + grain_cnt_board[cy][cx] + 3)
-                        grain_cnt_board[cy][cx] += 1
-
-                    if target is not None:
-                        cur_dir = target
-                        dy, dx = DIR[cur_dir]
+                    if destination is not None:
+                        dy, dx = DIR[destination]
                         ny = cy + dy
                         nx = cx + dx
                         cy = ny
                         cx = nx
-                answer = max(answer, cnt)
+                        cd = destination
 
-    print(f"#{test_case} {answer}")
+                    else:
+                        pass
+                if answer < cnt:
+                    answer = cnt
+                    # print(cnt)
+                # answer = max(answer, cnt)
+
+    print(f"#{tc} {answer}")

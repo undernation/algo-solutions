@@ -6508,5 +6508,33 @@
     "verdict": "accepted"
    }
   ]
+ },
+ "2026-09-21": {
+  "count": 1,
+  "items": [
+   {
+    "at": "16:15:18",
+    "attempts": [
+     {
+      "at": "16:15:18",
+      "elapsed": 1.129,
+      "file": "swea/99998_[SSAFYA형2번복원]농지이동과수확(2026-09-15).py",
+      "passed": 2,
+      "status": "못품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 1.129,
+    "file": "swea/99998_[SSAFYA형2번복원]농지이동과수확(2026-09-15).py",
+    "no": "99998",
+    "passed": 2,
+    "site": "SWEA",
+    "status": "못품",
+    "title": "[SSAFY A형 2번 복원] 농지 이동과 수확 (2026-09-15)",
+    "total": 2,
+    "verdict": "accepted"
+   }
+  ]
  }
 }
