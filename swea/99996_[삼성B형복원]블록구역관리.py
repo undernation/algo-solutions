@@ -1,7 +1,7 @@
 """
 SWEA 99996  [삼성 B형 복원] 블록 구역 관리
 
-풀이일 : 2026-09-19   결과: 못품
+풀이일 : 2026-09-22   결과: 못품
 한도   : time 50개 테스트 케이스 합산 Python 6초 (응시자 기억) / time_sec 6 / memory 미확인 / time_source participant_recollection / time_is_approximate True / time_scope all_testcases / remembered_testcase_count 50 / runtime Python
 난이도 : B형 (복원)  |  정답률 ?%
 제약   : N 최댓값: 45,000 (기억). 복원본에서는 1 ≤ N ≤ 45,000.
@@ -9,9 +9,9 @@ SWEA 99996  [삼성 B형 복원] 블록 구역 관리
 제약   : 블록의 내부는 겹치지 않으며 삭제 함수는 없다.
 제약   : 블록 ID는 순차적으로 입력된다는 보장이 없다.
 제약   : 변의 일부를 공유해도 같은 구역이며, 꼭짓점만 공유하면 그 접촉만으로 연결되지 않는다.
-제약   : 블록은 랜덤하게 생성된다는 조건이 있었음. 분포와 크기 상한 식은 미확인.
+제약   : 블록은 랜덤하게 생성된다 (사용자 재확인). 구체적 분포와 크기 상한 식은 미확인.
 
-[채점] accepted  1/1  (1.126s)
+[채점] accepted  1/1  (1.295s)
 
 [문제]
 ※ 삼성 B형 시험의 기억을 바탕으로 작성한 검토용 복원본입니다. 제목과 내부 식별자 SWEA/99996은 아카이브 등록을 위해 정했으며 공식 문제 번호가 아닙니다. 2026-09-19는 복원일입니다. 원문과 공식 예제는 확보하지 못했습니다.
@@ -28,7 +28,9 @@ SWEA 99996  [삼성 B형 복원] 블록 구역 관리
 
 예를 들어 (1, 1)부터 (2, 2)까지의 블록은 면적이 1이다. 두 좌표를 양끝 칸 번호로 세지 않는다.
 
-서로 다른 블록의 내부는 절대로 겹치지 않는다. 블록 ID는 추가 순서와 무관하다. 예를 들어 20, 7, 15, 3 순서로 들어올 수 있으며, 1부터 차례대로 주어진다는 보장은 없다.
+서로 다른 블록의 내부는 절대로 겹치지 않는다. 블록은 랜덤하게 생성된다. 이 생성 조건은 사용자가 재확인했으며, 구체적인 확률 분포와 블록 크기 상한 식은 미확인이다.
+
+블록 ID는 추가 순서와 무관하다. 예를 들어 20, 7, 15, 3 순서로 들어올 수 있으며, 1부터 차례대로 주어진다는 보장은 없다.
 
 ■ 같은 구역이 되는 조건
 
@@ -83,7 +85,7 @@ init/isSameRegion/top10의 정확한 원래 함수명, Result의 원래 필드�
 
 N의 최솟값 1, 블록 ID가 중복되지 않는 양의 정수라는 보장, 유효한 블록 ID만 조회한다는 보장, 케이스당 한 번의 초기화는 연습본의 약속이다.
 
-블록 하나의 가로·세로 길이에 N에 따른 별도 상한이 있었는지는 아직 미확인이다. 블록은 랜덤하게 생성된다는 조건이 있었다고 기억하지만, 분포와 생성 방식은 복원되지 않았다. 예제는 규칙 확인을 위해 직접 구성했다.
+블록 하나의 가로·세로 길이에 N에 따른 별도 상한이 있었는지는 아직 미확인이다. 랜덤 생성 조건 자체는 사용자가 재확인했으며, 구체적인 분포와 생성 방식은 아직 복원되지 않았다. 예제는 규칙 확인을 위해 직접 구성했다.
 
 아래 User Code에는 직접 구현할 함수 틀이 제공된다. Result는 일반 클래스로 정의되어 있다.
 
@@ -181,10 +183,24 @@ class Result:
 
 import heapq
 
+
+# 유니온 파인드 구현
+
+# 특정 노드의 부모를 찾는 함수
+def find(node):
+    while parent[node] != node:
+        node = parent[node]
+
+    return node
+
+
+# a 노드와 b 노드를 이어붙임. 단 여기서 노드의 갯수가 적은걸 많은거 아래에 이어붙임
+def union(a, b):
+    pass
+
 g_N = 0
 
 block_to_idx = {}
-
 parent = []
 uf_size = []
 
@@ -198,14 +214,12 @@ rank_heap = []
 x_edges = []
 y_edges = []
 
-
 def find(x):
     while parent[x] != x:
         parent[x] = parent[parent[x]]
         x = parent[x]
 
     return x
-
 
 def union(a, b):
     ra = find(a)
@@ -218,6 +232,7 @@ def union(a, b):
         ra, rb = rb, ra
 
     parent[rb] = ra
+
     uf_size[ra] += uf_size[rb]
 
     region_area[ra] += region_area[rb]
@@ -232,21 +247,24 @@ def union(a, b):
 
     return ra
 
-
 def init(N: int) -> None:
     """테스트 케이스 시작 시 호출된다. 이전 테스트의 모든 상태를 초기화한다."""
     global g_N, block_to_idx, parent, uf_size, region_area
     global region_count, region_id, version, rank_heap, x_edges, y_edges
-
     g_N = N
-
     block_to_idx = {}
 
+    # 부모 모음?
     parent = []
+    # 유니온 파인드 사이즈?
     uf_size = []
 
+
+    # 구역 면적
     region_area = []
+    # 구역 칸 세기
     region_count = []
+    # 구역 id 모음?
     region_id = []
 
     version = []
@@ -275,13 +293,13 @@ def addBlock(blockId: int, x1: int, y1: int, x2: int, y2: int) -> int:
     neighbors = set()
 
     for oy1, oy2, other_idx in x_edges[x1]:
-
         if y1 < oy2 and oy1 < y2:
             neighbors.add(other_idx)
 
     for oy1, oy2, other_idx in x_edges[x2]:
         if y1 < oy2 and oy1 < y2:
             neighbors.add(other_idx)
+
     for ox1, ox2, other_idx in y_edges[y1]:
         if x1 < ox2 and ox1 < x2:
             neighbors.add(other_idx)
@@ -289,6 +307,7 @@ def addBlock(blockId: int, x1: int, y1: int, x2: int, y2: int) -> int:
     for ox1, ox2, other_idx in y_edges[y2]:
         if x1 < ox2 and ox1 < x2:
             neighbors.add(other_idx)
+
     root = idx
 
     for other_idx in neighbors:
@@ -304,7 +323,6 @@ def addBlock(blockId: int, x1: int, y1: int, x2: int, y2: int) -> int:
             region_id[root],
             root,
             version[root]
-
         )
     )
 
@@ -334,7 +352,6 @@ def isSameRegion(blockId1: int, blockId2: int) -> int:
 
     return 1 if find(idx1) == find(idx2) else 0
 
-
 def top10() -> Result:
     """면적 내림차순, 블록 수 오름차순, 구역 ID 오름차순으로 최대 10개 반환.
 
@@ -350,7 +367,6 @@ def top10() -> Result:
 
         if parent[root] != root:
             continue
-
         if version[root] != ver:
             continue
 
