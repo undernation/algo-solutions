@@ -6561,7 +6561,7 @@
   ]
  },
  "2026-09-22": {
-  "count": 2,
+  "count": 3,
   "items": [
    {
     "at": "10:34:59",
@@ -6600,6 +6600,29 @@
     "site": "BOJ",
     "status": "못품",
     "title": "원판 돌리기"
+   },
+   {
+    "at": "13:04:15",
+    "attempts": [
+     {
+      "at": "13:04:15",
+      "elapsed": 10.812,
+      "file": "boj/2776.py",
+      "passed": 24,
+      "status": "품",
+      "total": 24,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 10.812,
+    "file": "boj/2776.py",
+    "no": "2776",
+    "passed": 24,
+    "site": "BOJ",
+    "status": "품",
+    "title": "암기왕",
+    "total": 24,
+    "verdict": "accepted"
    }
   ]
  }
