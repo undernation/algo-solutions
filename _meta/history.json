@@ -7686,7 +7686,7 @@
   ]
  },
  "2026-09-23": {
-  "count": 3,
+  "count": 4,
   "items": [
    {
     "at": "13:47:07",
@@ -7747,6 +7747,29 @@
     "status": "못품",
     "title": "선 긋기",
     "total": 17,
+    "verdict": "accepted"
+   },
+   {
+    "at": "19:35:42",
+    "attempts": [
+     {
+      "at": "19:35:42",
+      "elapsed": 7.584,
+      "file": "boj/2670.py",
+      "passed": 27,
+      "status": "못품",
+      "total": 27,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 7.584,
+    "file": "boj/2670.py",
+    "no": "2670",
+    "passed": 27,
+    "site": "BOJ",
+    "status": "못품",
+    "title": "연속부분최대곱",
+    "total": 27,
     "verdict": "accepted"
    }
   ]
