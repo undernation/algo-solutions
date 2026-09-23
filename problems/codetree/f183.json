@@ -1,0 +1,39 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f183",
+ "title": "팩맨",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/pacman/description",
+ "alias": "pacman",
+ "pid": 183,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2021 하반기 오후 1번 문제",
+ "level": "L15",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "120 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "25.1",
+  "submissions": "6464"
+ },
+ "sample_count": 2,
+ "statement_len": 2800,
+ "fetched_at": "2026-09-23",
+ "statement": "$4 \\times 4$ 격자에 $m$개의 몬스터와 $1$개의 팩맨이 주어집니다. 각각의 몬스터는 상하좌우, 대각선 방향 중 하나를 가집니다. 팩맨 게임은 턴 단위로 진행이 되며 한 턴은 다음과 같이 진행됩니다.\n\n1. 몬스터 복제 시도\n2. 몬스터 이동\n3. 팩맨 이동\n4. 몬스터 시체 소멸\n5. 몬스터 복제 완성\n\n아래 그림과 같이 초기 상황이 주어졌을 때에 턴은 다음과 같이 진행됩니다.\n\n<p align=\"center\">\n  <img width=\"600\" src=\"https://contents.codetree.ai/problems/2005/images/bbcd2bf4-1af1-4195-8f84-a6ff52556970.png\">\n</p>\n\n1. 몬스터 복제 시도\n\n몬스터는 현재의 위치에서 자신과 같은 방향을 가진 몬스터를 복제하려 합니다. 이때 복제된 몬스터는 아직은 부화되지 않은 상태로 움직이지 못합니다. 그림에서 알의 형태를 띄고 있는 복제된 몬스터는 현재 시점을 기준으로 각 몬스터와 동일한 방향을 지니게 되며, 이후 이 알이 부화할 시 해당 방향을 지닌 채로 깨어나게 됩니다.\n\n<p align=\"center\">\n  <img width=\"600\" src=\"https://contents.codetree.ai/problems/2005/images/a471335f-9c1e-45ef-be5b-9d028a8577e0.png\">\n</p>\n\n2. 몬스터 이동\n\n몬스터는 현재 자신이 가진 방향대로 한 칸 이동합니다. 이때 움직이려는 칸에 몬스터 시체가 있거나, 팩맨이 있는 경우거나 격자를 벗어나는 방향일 경우에는 반시계 방향으로 $45$도를 회전한 뒤 해당 방향으로 갈 수 있는지 판단합니다. 만약 갈 수 없다면, 가능할 때까지 반시계 방향으로 $45$도씩 회전하며 해당 방향으로 갈 수 있는지를 확인합니다. 만약 $8$ 방향을 다 돌았는데도 불구하고, 모두 움직일 수 없었다면 해당 몬스터는 움직이지 않습니다.\n\n몬스터가 이동하면 다음과 같이 변하게 됩니다.\n\n<p align=\"center\">\n  <img width=\"600\" src=\"https://contents.codetree.ai/problems/2005/images/a73f5d17-b45a-46b9-b618-458feae04c7f.png\">\n</p>\n\n3. 팩맨 이동\n\n팩맨의 이동은 총 $3$칸을 이동하게 되는데, 각 이동마다 상하좌우의 선택지를 가지게 됩니다. 총 $4$가지의 방향을 $3$칸 이동하기 때문에 총 $64$개의 이동 방법이 존재하는데, 이 중 몬스터를 가장 많이 먹을 수 있는 방향으로 움직이게 됩니다. 만약 가장 많이 먹을 수 있는 방향이 여러개라면 **상-좌-하-우**의 우선순위를 가지며  우선순위가 높은 순서대로 배열하면 \"상상상 - 상상좌 - 상상하 - 상상우 - 상좌상 - 상좌좌 - 상좌하 - ...\"과 같이 나타낼 수 있습니다. 이동하는 과정에 격자 바깥을 나가는 경우는 고려하지 않습니다.\n\n예시의 경우에서는\n상우우, 우상우, 우우상으로 이동하면 총 $2$마리의 몬스터를 먹을 수 있기 때문에 이중 우선순위가 제일 높은 상우우 방향으로 움직입니다. 이때 이동할 때 이동하는 칸에 있는 몬스터는 모두 먹어치운 뒤, 그 자리에 몬스터의 시체를 남깁니다.\n\n이때 팩맨은 알은 먹지 않으며, 움직이기 전에 함께 있었던 몬스터도 먹지 않습니다. 즉, 이동하는 과정에 있는 몬스터만 먹습니다.\n\n<p align=\"center\">\n  <img width=\"600\" src=\"https://contents.codetree.ai/problems/2005/images/4cf6df73-d6f4-414e-8d92-a34659fe2e23.png\">\n</p>\n\n4. 몬스터 시체 소멸\n\n몬스터의 시체는 총 $2$턴동안만 유지됩니다. 즉, 시체가 생기고 나면 시체가 소멸되기 까지는 총 두 턴을 필요로 합니다.\n현재 예시에는 소멸되는 몬스터가 존재하지 않습니다.\n\n5. 몬스터 복제 완성\n\n아까 알 형태였던 몬스터가 부화합니다. 처음 복제가 된 몬스터의 방향을 지닌 채로 깨어나게 됩니다.\n\n<p align=\"center\">\n  <img width=\"600\" src=\"https://contents.codetree.ai/problems/2005/images/954c6f90-e807-4d4c-b541-3f47174f5288.png\">\n</p>\n\n이 상태에서 한 턴을 더 진행하게 되면 다음과 같이 변화하게 됩니다.\n\n<p align=\"center\">\n  <img width=\"600\" src=\"https://contents.codetree.ai/problems/2005/images/d0adf992-c993-40cc-80e3-95fc840406c1.png\">\n</p>\n<p align=\"center\">\n  <img width=\"600\" src=\"https://contents.codetree.ai/problems/2005/images/7ca3cd61-1455-4131-8b12-a87cbf475e22.png\">\n</p>\n<p align=\"center\">\n  <img width=\"600\" src=\"https://contents.codetree.ai/problems/2005/images/d2e52bc3-44a9-4efa-833d-0de985541eda.png\">\n</p>\n<p align=\"center\">\n  <img width=\"600\" src=\"https://contents.codetree.ai/problems/2005/images/54c7808c-facc-4cb4-b5c8-7b80a27c6dc4.png\">\n</p>\n\n모든 턴이 진행되고 난 뒤 살아 남은 몬스터의 마리 수를 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 몬스터의 마리 수를 나타내는 정수 $m$과 진행되는 턴의 수를 나타내는 정수 $t$가 주어집니다.\n\n두 번째 줄에는 팩맨의 격자에서의 초기 위치를 나타내는 정수 $r, c$가 주어집니다. $r$은 격자의 몇번째 행인지, $c$는 격자의 몇번째 열인지를 나타냅니다.\n\n그 다음 줄부터 $m$개의 줄에는 몬스터의 위치 $r, c$와 방향 정보 $d$가 주어집니다.\n$r$과 $c$는 각각 격자의 몇번째 행인지, $c$는 격자의 몇번째 열인지를 의미하고, 방향 $d$는 $1$부터 순서대로 ↑, ↖, ←, ↙, ↓, ↘, →, ↗ 를 의미합니다.",
+ "output_spec": "$t$개의 턴이 지난 이후 격자에 살아남은 몬스터는 총 몇 마리인지 출력합니다.",
+ "constraints": "- $1 \\le m \\le 10$\n- $1 \\le t \\le 25$\n- $1 \\le r, c \\le 4$\n- $1 \\le d \\le 8$\n- 몬스터의 초기 위치와 팩맨의 초기 위치는 같을 수도 있습니다.\n- 턴이 진행되는 동안 살아있는 몬스터의 수가 $100$만개가 넘는 입력은 주어지지 않는다고 가정해도 좋습니다.",
+ "samples": [
+  {
+   "in": "4 1\n3 1\n1 3 5\n2 2 7\n3 4 6\n4 2 2\n",
+   "out": "6\n"
+  },
+  {
+   "in": "4 2\n3 1\n1 3 5\n2 2 7\n3 4 6\n4 2 2\n",
+   "out": "8\n"
+  }
+ ]
+}

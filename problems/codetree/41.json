@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "41",
+ "title": "둘 중 하나 잘 고르기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-choose-one-of-two-points/description",
+ "alias": "choose-one-of-two-points",
+ "pid": 41,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "DP II",
+ "lesson": "원하는 State를 정의하여 한 칸씩 나아가는 DP",
+ "card": "challenge-choose-one-of-two-points",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "256 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "73.2",
+  "submissions": "1016"
+ },
+ "sample_count": 2,
+ "statement_len": 197,
+ "fetched_at": "2026-09-23",
+ "statement": "$2 \\times N$ 번에 걸쳐 시행을 반복하며 매 시행마다 빨간색, 파란색 총 $2$개의 카드가 주어지고 항상 두 색깔의 카드 중 하나의 카드를 선택해야만 합니다. 각 카드에는 정수가 적혀 있고, 적절하게 카드를 골라 결과적으로 빨간색 카드를 $N$개, 파란색 카드를 $N$개 고른다고 했을 때 뽑힌 정수들의 합을 최대로 하는 프로그램을 작성합니다.",
+ "input_spec": "첫째 줄에는 $N$이 주어집니다.\n\n두 번째 줄부터 $2 \\times N$개의 줄에 빨간색 카드에 적혀 있는 정수와 파란색 카드에 적혀 있는 정수가 차례대로 공백을 사이에 두고 주어집니다.",
+ "output_spec": "얻을 수 있는 최대 합을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le R_i, B_i \\le 1\\,000$ $(1 \\le i \\le 2N)$",
+ "samples": [
+  {
+   "in": "2\n5 4\n5 2\n6 4\n3 3\n",
+   "out": "18\n"
+  },
+  {
+   "in": "2\n10 9\n1 1\n7 1\n7 1\n",
+   "out": "24\n"
+  }
+ ],
+ "sample_notes": [
+  "빨간색 카드를 $2$, $3$번째에 파란색 카드를 $1$, $4$번째에 고르면 합이 $18$이 됩니다.",
+  ""
+ ]
+}

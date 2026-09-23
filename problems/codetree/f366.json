@@ -1,0 +1,39 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f366",
+ "title": "플레이페어 암호",
+ "url": "https://www.codetree.ai/ko/frequent-problems/hsat/problems/playfair-cipher/description",
+ "alias": "playfair-cipher",
+ "pid": 366,
+ "group": "hsat",
+ "kind": "frequent",
+ "origin": "3차 1번 문제",
+ "level": "L8",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "48.4",
+  "submissions": "366"
+ },
+ "sample_count": 2,
+ "statement_len": 2343,
+ "fetched_at": "2026-09-23",
+ "statement": "대학교 학부 생활을 마치고 현대자동차에 프로그래머로 취직한 사회초년생 현빈이는 팀장님에게 보안에 관한 지식이 하나도 없음을 들키고 말았습니다. 그래서 현빈이는 업무 시간 틈틈이 보안과 관련된 주제들을 공부하고 있습니다.\n\n오늘 공부할 주제는 암호화 방식 중 하나인 Playfair cipher(플레이페어 암호)입니다. Playfair cipher는 알파벳으로 이루어진 어떤 문자열(평문; plaintext)을 암호화하는 방법으로, 이를 위해 알파벳으로 이루어진 문자열인 키(key)가 필요합니다. Playfair cipher는 빈도 분석을 어렵게 하기 위해 한 번에 두 글자 단위로 암호화를 진행합니다. 또한 $5 \\times 5$ 크기의 표를 사용하기 때문에 알파벳 $26$개를 모두 담기에는 칸이 한 개 부족하며, `I`와 `J`를 동일한 것으로 생각합니다. 이 문제에서는 편의상 `J`가 아예 주어지지 않습니다.\n\n먼저, 주어진 키를 $5 \\times 5$ 크기의 표로 변환합니다. 키를 한 글자씩 보면서 왼쪽 위 칸부터 한 줄씩 표를 채웁니다. 만약 이전에 봤던 알파벳이 한 번 더 등장하면 무시하고 다음 글자를 보면 됩니다. 키를 다 보고도 칸이 남는다면, 아직 등장하지 않은 알파벳을 순서대로 채워 넣으면 됩니다. 예를 들어 키가 `PLAYFAIRCIPHERKEY`라면 다음과 같이 표가 만들어집니다. 굵게 표시된 알파벳이 키를 통해 채워진 알파벳입니다.\n\n<p align=center> <img width=\"300\" src=\"https://contents.codetree.ai/problems/4074/images/8902e94d-ca10-494d-b54a-3a098ccb8f65.png\">\n\n다음 일은 암호화하려는 메시지를 두 글자씩 나누는 일입니다. 예를 들어, `HELLOWORLD`라는 메시지를 두 글자씩 나눈다면 `HE LL OW OR LD`가 됩니다. 그러나 Playfair cipher는 두 글자가 같은 경우 암호화할 수 있는 방법을 만들지 않았기 때문에 `LL`같이 같은 두 글자로 이루어진 쌍이 생기면 중간에 다른 글자를 넣어 쌍을 파괴해야 합니다. 이렇게 같은 두 글자로 이루어진 쌍이 생기면 그중 가장 앞에 있는 쌍 사이에 `X`를 넣고, 뒤쪽은 새롭게 쌍을 구성하면 됩니다. 만약 쌍이 `XX`였다면 `X`를 넣어서는 해결이 안 되기 때문에 `Q`를 넣는 것으로 해결합니다. 이렇게 쌍을 모두 맞추고 마지막에 한 글자가 남는다면 이것도 암호화가 불가능하기 때문에 여기도 `X`를 덧붙여 강제로 쌍을 맞춰줍니다.\n\n그러므로, `HELLOWORLD`를 두 글자씩 나누는 올바른 방법은 `HE LX LO WO RL DX`이고, `XXYYY`를 두 글자씩 나누는 올바른 방법은 `XQ XY YX YX`가 됩니다.\n\n마지막으로, 쌍을 만든 두 글자를 암호화하는 일이 남았습니다. 다음과 같은 세 가지 경우가 있는데, 위에서 만든 $5 \\times 5$ 표를 통해 설명합니다.\n\n1. 만약 두 글자가 표에서 같은 행에 존재하면, 오른쪽으로 한 칸 이동한 칸에 적힌 글자로 암호화됩니다. 예를 들어 `HE`를 암호화하면 `EI`가 됩니다. 위치가 다섯 번째 열이라면 첫 번째 열로 이동하게 됩니다.\n\n<p align=center> <img width=\"300\" src=\"https://contents.codetree.ai/problems/4074/images/887c763a-f6ba-446f-b611-5eb4cef5ebe0.png\">\n\n2. 만약 두 글자가 표에서 같은 열에 존재하면, 아래쪽으로 한 칸 이동한 칸에 적힌 글자로 암호화됩니다. 예를 들어 `LO`를 암호화하면 `RV`가 됩니다. 위치가 다섯 번째 행이라면 첫 번째 행으로 이동하게 됩니다.\n\n<p align=center> <img width=\"300\" src=\"https://contents.codetree.ai/problems/4074/images/c4a867d2-05ed-4b7a-8874-2237e1e1c9fc.png\">\n\n3. 만약 두 글자가 표에서 서로 다른 행, 열에 존재하면, 두 글자가 위치하는 칸의 열이 서로 교환된 위치에 적힌 글자로 암호화됩니다. 예를 들어 `LX`를 암호화하면 `YV`가 됩니다.\n\n<p align=center> <img width=\"300\" src=\"https://contents.codetree.ai/problems/4074/images/abd55720-78ad-4d80-8341-8962e2ae0c75.png\">\n\n이 과정에 따르면, `HELLOWORLD`를 Playfair cipher로 암호화한 결과는 `EIYVRVVQBRGW`가 됩니다.\n\n현빈이는 어떤 메시지와 키가 주어졌을 때 주어진 메시지를 Playfair cipher로 암호화하려고 합니다.",
+ "input_spec": "첫 번째 줄에 암호화할 메시지 $S$가 주어집니다.\n\n두 번째 줄에 키 $K$가 주어집니다.",
+ "output_spec": "첫 번째 줄에 Playfair cipher로 암호화한 결과를 출력합니다.",
+ "constraints": "- $1 \\le |S| \\le 1\\,000$\n- $1 \\le |K| \\le 100$\n- $S$와 $K$는 `J`를 제외한 알파벳 대문자로만 이루어져 있습니다.",
+ "samples": [
+  {
+   "in": "HELLOWORLD\nPLAYFAIRCIPHERKEY\n",
+   "out": "EIYVRVVQBRGW\n"
+  },
+  {
+   "in": "LEMONSTRAWBERRYAPPLEIUICE\nWATERMELON\n",
+   "out": "NALNBQEWTANRTZEZTKKOWQWUGW\n"
+  }
+ ]
+}

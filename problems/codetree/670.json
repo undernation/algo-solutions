@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "670",
+ "title": "100으로 나눈 나머지의 수열",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-sequence-of-remainder-divided-by-100/description",
+ "alias": "sequence-of-remainder-divided-by-100",
+ "pid": 670,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "재귀함수",
+ "lesson": "값을 반환하는 재귀함수",
+ "card": "challenge-sequence-of-remainder-divided-by-100",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "90.9",
+  "submissions": "2448"
+ },
+ "sample_count": 1,
+ "statement_len": 136,
+ "fetched_at": "2026-09-23",
+ "statement": "첫 번째는 $2$, 두 번째는 $4$, 세 번째부터는 앞의 두 수의 곱을 $100$으로 나눈 나머지로 이루어진 수열이 있습니다. $20$ 이하의 정수 $N$을 입력받아 재귀함수를 이용하여 $N$번째 값을 구하여 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 정수 $N$이 주어집니다.",
+ "output_spec": "첫 번째 줄에 수열의 $N$번째 값을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 20$",
+ "samples": [
+  {
+   "in": "5\n",
+   "out": "56\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 예제에서 입력으로 $5$가 주어집니다. 수열은 $2$, $4$, $8$, $32$, $56\\dots$ 으로 진행됩니다. $5$번째 항을 계산할 시, $8 \\times 32 = 256$을 $100$으로 나눈 나머지는 $56$이므로 수열의 $5$번째 값은 $56$이 됩니다."
+ ]
+}

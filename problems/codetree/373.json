@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "373",
+ "title": "배열의 합",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-sum-of-array/description",
+ "alias": "sum-of-array",
+ "pid": 373,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "2차원 배열",
+ "lesson": "2차원 배열 입력",
+ "card": "intro-sum-of-array",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "95.3",
+  "submissions": "7479"
+ },
+ "sample_count": 1,
+ "statement_len": 64,
+ "fetched_at": "2026-09-23",
+ "statement": "$4$개의 줄에 각 줄마다 $4$개의 정수가 주어집니다. 줄의 합을 구하는 프로그램을 배열을 사용하여 작성해보세요.",
+ "input_spec": "각 줄마다 $4$개의 정수가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "$4$개의 줄에 각 줄의 합을 출력합니다.",
+ "constraints": "- $0 \\le \\texttt{점수} \\le 100$",
+ "samples": [
+  {
+   "in": "1 2 3 4\n7 8 9 10\n11 12 13 14\n15 16 17 18\n",
+   "out": "10\n34\n50\n66\n"
+  }
+ ]
+}

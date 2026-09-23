@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "655",
+ "title": "정수의 최솟값",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-minimum-value-of-an-integer/description",
+ "alias": "minimum-value-of-an-integer",
+ "pid": 655,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "함수",
+ "lesson": "값을 반환하는 함수",
+ "card": "intro-minimum-value-of-an-integer",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "83.1",
+  "submissions": "4472"
+ },
+ "sample_count": 1,
+ "statement_len": 136,
+ "fetched_at": "2026-09-23",
+ "statement": "세 정수 $a, b, c$가 주어지면 그 수를 전달받아 최솟값을 구하여 출력하는 프로그램을 작성해보세요. 이때 주어진 세 정수 $a, b, c$를 전달받아 최솟값을 구하는 함수를 작성하고, 주어진 $a, b, c$를 함수로 전달하여 출력합니다.",
+ "input_spec": "첫 번째 줄에 정수 $a, b, c$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 주어진 정수 중 최솟값을 출력합니다.",
+ "constraints": "- $-100 \\le a, b, c \\le 100$",
+ "samples": [
+  {
+   "in": "-17 38 0\n",
+   "out": "-17\n"
+  }
+ ]
+}

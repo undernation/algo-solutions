@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "563",
+ "title": "이웃 동네",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-bfs-order/description",
+ "alias": "bfs-order",
+ "pid": 563,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 탐색",
+ "lesson": "BFS 탐색",
+ "card": "challenge-bfs-order",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "76.9",
+  "submissions": "2802"
+ },
+ "sample_count": 0,
+ "statement_len": 384,
+ "fetched_at": "2026-09-23",
+ "statement": "여러분은 인구 조사를 하기 위해 모든 집을 방문해야 하는 상황입니다.\n\n마을의 구조를 그래프로 표현하면 다음과 같습니다.\n\n![](https://contents.codetree.ai/problems/563/images/problems-f435dd4a-978c-44bb-ad4d-6cb4d90a4a21.png)\n\n여러분이 BFS를 통해 마을을 순회하려고 할 때, 어떤 순서대로 방문하게 될지 판단해봅시다. 단, $1$번 집에서 탐색을 시작한다고 가정합니다.\n\n탐색을 진행하다 어떤 시점에 방문 할 수 있는 지점이 여러 개인 경우 번호가 낮은 정점부터 방문한다고 가정합니다.\n\n**보기** — 순서대로 6개 고르기\n\n1. `1`\n2. `2`\n3. `3`\n4. `4`\n5. `5`\n6. `6`"
+}

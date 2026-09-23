@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "31",
+ "title": "두 방향 탈출 가능 여부 판별하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-determine-escapableness-with-2-ways/description",
+ "alias": "determine-escapableness-with-2-ways",
+ "pid": 31,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "DFS",
+ "lesson": "DFS",
+ "card": "intro-determine-escapableness-with-2-ways",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "192 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "47.8",
+  "submissions": "7614"
+ },
+ "sample_count": 2,
+ "statement_len": 352,
+ "fetched_at": "2026-09-23",
+ "statement": "$N \\times M$ 크기의 이차원 영역의 좌측 상단에서 출발하여 우측 하단까지 뱀에게 물리지 않고 탈출하려고 합니다. 이동을 할 때에는 반드시 아래와 오른쪽 두 방향 중 인접한 칸으로만 이동할 수 있으며, 뱀이 있는 칸으로는 이동을 할 수 없습니다. 예를 들어 <그림 1>과 같이 뱀이 배치되어 있는 경우 실선과 같은 경로로 탈출을 할 수 있습니다. 이 때 뱀에게 물리지 않고 탈출 가능한 경로가 있는지 여부를 판별하는 코드를 작성해보세요.\n\n![](https://contents.codetree.ai/problems/31/images/problems-fd5f8453-7d51-4973-8202-2eb4f14c070d.png)",
+ "input_spec": "첫 번째 줄에는 $N$과 $M$이 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 각 행에는 $M$개의 정수가 공백을 사이에 두고 주어집니다. 각 정수는 뱀이 없는 경우 $1$, 뱀이 있는 경우 $0$입니다.",
+ "output_spec": "좌측 상단에서 출발하여 우측 하단까지 뱀에게 물리지 않고 탈출 가능한 경로가 있으면 $1$, 없으면 $0$을 출력합니다.",
+ "constraints": "- $2 \\le N, M \\le 100$\n- 격자의 각 칸의 값은 뱀이 없는 경우 $1$, 뱀이 있는 경우 $0$입니다.\n- 시작 칸과 끝 칸에는 뱀이 주어지지 않는다고 가정해도 좋습니다.",
+ "samples": [
+  {
+   "in": "5 5\n1 0 1 1 1\n1 0 1 0 1\n1 0 1 1 1\n1 0 1 0 1\n1 1 1 0 1\n",
+   "out": "0\n"
+  },
+  {
+   "in": "5 5\n1 0 1 1 1\n1 0 1 0 1\n1 1 1 0 1\n1 0 1 1 1\n0 1 1 0 1\n",
+   "out": "1\n"
+  }
+ ]
+}

@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3410",
+ "title": "부분 문자열 중 팰린드롬의 수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-counting-palindrome-substrings/description",
+ "alias": "counting-palindrome-substrings",
+ "pid": 3410,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "String",
+ "lesson": "Manacher's algorithm",
+ "card": "challenge-counting-palindrome-substrings",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 3초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 3.0
+ },
+ "stats": {
+  "accept_rate": "55.4",
+  "submissions": "112"
+ },
+ "sample_count": 2,
+ "statement_len": 236,
+ "fetched_at": "2026-09-23",
+ "statement": "길이가 $N$인 문자열 $S$가 주어졌을 때 $S_{ij}$를 문자열 S의 $i$번째 문자부터 $j$번째 문자까지로 이루어진 부분문자열이라 부르겠습니다. $1 \\le i \\le  j \\le N$을 만족하는 모든 쌍 $(i,\\ j)$에 대해 $S_{ij}$를 구했을 때 이 중 좌우대칭인 문자열의 수를 구하는 프로그램을 작성해보세요. 단, 동일한 문자열이더라도 $(i,\\ j)$값이 다르면 중복하여 계산해야 함에 유의합니다.",
+ "input_spec": "첫 번째 줄에는 문자열 $S$가 주어집니다.",
+ "output_spec": "모든 $S_{ij}$에 대해 좌우대칭인 문자열의 수를 출력합니다.",
+ "constraints": "- $1 \\le \\texttt{문자열 } S \\texttt{의 길이}  \\le 100\\,000$\n- 문자열 $S$는 소문자 알파벳으로만 이루어져 있습니다.",
+ "samples": [
+  {
+   "in": "aaa\n",
+   "out": "6"
+  },
+  {
+   "in": "aabaa\n",
+   "out": "9"
+  }
+ ],
+ "sample_notes": [
+  "$S_{11} = a, S_{12} = aa, S_{13} = aaa, S_{22} = a, S_{23} = aa, S_{33} = a$ 로 총 6개가 답이 됩니다.",
+  "$S_{11} = a, S_{12} = aa, S_{15} = aabaa, S_{22} = a, S_{24} = aba, S_{33} = b, S_{44} = a, S_{45} = aa, S_{55} = a$ 로 총 9개가 답이 됩니다."
+ ]
+}

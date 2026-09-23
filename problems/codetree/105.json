@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "105",
+ "title": "겹치지 않게 선분 고르기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-select-segments-without-overlap/description",
+ "alias": "select-segments-without-overlap",
+ "pid": 105,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Backtracking",
+ "lesson": "K개 중 하나를 N번 선택하기(Simple)",
+ "card": "challenge-select-segments-without-overlap",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "45.6",
+  "submissions": "3893"
+ },
+ "sample_count": 2,
+ "statement_len": 104,
+ "fetched_at": "2026-09-23",
+ "statement": "수직선상에 $N$개의 선분이 주어졌을 때, 서로 겹치지 않고 고를 수 있는 가장 많은 선분의 수를 구하는 프로그램을 작성하세요. \n\n단, 끝점을 공유하는 것 역시 겹친 것으로 생각합니다.",
+ "input_spec": "첫 번째 줄에는 선분의 개수를 나타내는 정수 $N$이 주어집니다.\n\n두 번째 줄 부터는 $N$개의 줄에 걸쳐 각 선분의 정보 $l_i$, $r_i$가 공백을 사이에 두고 주어집니다. 이 때 $l_i$, $r_i$는 $i$번째 선분의 수직선상에서의 양끝점 좌표를 나타냅니다.",
+ "output_spec": "겹치지 않게 뽑을 수 있는 최대 선분의 수를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 15$\n- $1 \\le l_i < r_i \\le 1\\,000$ ($1 \\le i \\le N$)",
+ "samples": [
+  {
+   "in": "3\n1 2\n3 4\n5 6\n",
+   "out": "3\n"
+  },
+  {
+   "in": "3\n1 2\n1 4\n3 4\n",
+   "out": "2\n"
+  }
+ ]
+}

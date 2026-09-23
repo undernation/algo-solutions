@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2264",
+ "title": "비교에 따른 연산",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-operation-based-on-comparison/description",
+ "alias": "operation-based-on-comparison",
+ "pid": 2264,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "조건문",
+ "lesson": "if else 조건문",
+ "card": "test-operation-based-on-comparison",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "79.3",
+  "submissions": "20796"
+ },
+ "sample_count": 2,
+ "statement_len": 94,
+ "fetched_at": "2026-09-23",
+ "statement": "두 개의 정수 $a$, $b$를 입력받아 $a$가 $b$보다 크다면 두 수의 곱을 출력하고, 그렇지 않다면 $b$를 $a$로 나눈 몫을 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 두 정수 $a$, $b$가 공백을 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 크기 비교 결과에 따라, $a$가 $b$보다 크다면 두 수의 곱을, 그렇지 않다면 $b$를 $a$로 나눈 몫을 출력합니다.",
+ "constraints": "- $1 \\le a, b \\le 100$",
+ "samples": [
+  {
+   "in": "10 5\n",
+   "out": "50\n"
+  },
+  {
+   "in": "3 10\n",
+   "out": "3\n"
+  }
+ ]
+}

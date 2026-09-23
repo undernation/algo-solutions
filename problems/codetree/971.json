@@ -1,0 +1,50 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "971",
+ "title": "괄호 문자열의 적합성 판단",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-parentheses-string/description",
+ "alias": "parentheses-string",
+ "pid": 971,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "스택, 큐, 덱",
+ "lesson": "Stack",
+ "card": "challenge-parentheses-string",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "55.2",
+  "submissions": "3251"
+ },
+ "sample_count": 4,
+ "statement_len": 364,
+ "fetched_at": "2026-09-23",
+ "statement": "괄호 문자열은 두 개의 괄호 기호인 `(` 와 `)` 만으로 구성되어 있는 문자열입니다. 괄호 문자열은 다음과 같이 $2$가지로 분류할 수 있습니다. \n\n1.  올바른 괄호 문자열 : 괄호를 열고 닫음이 분명한 문자열을 말합니다. 다음과 같은 문자열은 올바른 괄호 문자열입니다.\n```\n \"()\"\n \"(())\"\n \"(()())\" \n```\n\n2. 올바르지 못한 괄호 문자열 : 괄호를 열고 닫음이 분명하지 못한 문자열을 말합니다. 다음과 같은 문자열은 올바르지 못한 괄호 문자열입니다.\n\n```\n \"((\"\n \"(()(\"\n \"(((())\" \n```\n\n입력으로 주어진 괄호 문자열이 올바른지, 그렇지 못한지를 판단하여 결과를 출력하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 하나의 괄호 문자열이 한 줄에 공백없이 주어집니다.",
+ "output_spec": "첫 번째 줄에 입력 괄호 문자열이 올바른 괄호 문자열이면 `Yes`, 아니면 `No`를 출력합니다.",
+ "constraints": "- $2 \\le \\texttt{괄호 문자열의 길이} \\le 50$\n- 주어지는 문자열은 `(`, `)`로만 구성되어 있습니다.",
+ "samples": [
+  {
+   "in": "(()(())\n",
+   "out": "No\n"
+  },
+  {
+   "in": "(((()())()\n",
+   "out": "No\n"
+  },
+  {
+   "in": "((()()(()))(((())))()\n",
+   "out": "No\n"
+  },
+  {
+   "in": "()()()()(()()())()\n",
+   "out": "Yes\n"
+  }
+ ]
+}

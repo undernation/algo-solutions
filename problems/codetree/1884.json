@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1884",
+ "title": "지질 연구",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-geological-research/description",
+ "alias": "geological-research",
+ "pid": 1884,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "위상정렬",
+ "lesson": "Graph DP",
+ "card": "challenge-geological-research",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "65.9",
+  "submissions": "91"
+ },
+ "sample_count": 1,
+ "statement_len": 819,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$번부터 $N$번까지 $N$개의 정점과 $M$개의 단방향 간선으로 이루어진 그래프가 있습니다.\n\n그래프는 각 지층과, 해당 지층이 받는 압력을 표시합니다. $3$번 정점에서 $4$번 정점으로 연결된 간선이 있다면 $3$번 위치의 지층이 $4$번 위치의 지층에게 압력을 가하고 있다는 뜻입니다.\n\n각 지층이 받는 압력의 정도를 표시하기 위해 압력을 표시하기 위한 압력도를 만들었습니다. 각 지층의 압력도는 다음과 같습니다.\n\n- 아무 압력도 받지 않는 지층은 압력도가 1입니다.\n\n- 압력을 받는 지층이라면, 해당 지층에 압력을 주는 모든 지층의 압력도를 확인합니다. 이 중 가장 큰 값이 $i$ 라고 할 때, 해당 지층에 압력을 주는 $i$의 압력도의 지층이 $1$개라면 해당 지층은 압력도가 $i$가 됩니다. $2$개 이상이라면 해당 지층은 압력도가 $i + 1$가 됩니다.\n\n그래프의 정보가 주어졌을 때, 모든 지층 중에서 가장 압력도가 큰 값을 구하는 프로그램을 작성해보세요.\n\n<br/>\n\n![](https://contents.codetree.ai/problems/1884/images/problems-9d851e4c-8a40-45e5-ac8d-f512df58c06d.png)\n\n<br/>\n\n예를 들어, 다음과 같은 그래프가 있습니다.\n\n<br/>\n\n![](https://contents.codetree.ai/problems/1884/images/problems-9830ff5f-812e-420a-b9dc-3be00c37a406.png)\n\n<br/>\n\n해당 그래프에서 각 지층의 압력도는 다음과 같습니다. 가장 큰 값은 $7$번 지층의 $3$이 됩니다.",
+ "input_spec": "첫 번째 줄에 정점의 개수 $N$, 간선의 개수 $M$ 이 공백을 두고 주어집니다.\n\n두 번째 줄부터 $M$개의 줄에 걸쳐 각 간선의 출발지와 도착지가 공백을 두고 주어집니다.",
+ "output_spec": "모든 지층의 압력도 중에서 가장 큰 값을 출력합니다.",
+ "constraints": "- $2 \\le N \\le 1\\,000$\n- $N-1 \\le M \\le 100\\,000$\n- 그래프에 사이클이 없음이 보장됩니다.",
+ "samples": [
+  {
+   "in": "8 9\n1 4\n1 6\n2 4\n2 5\n3 5\n4 6\n4 7\n5 7\n6 8\n",
+   "out": "3\n"
+  }
+ ]
+}

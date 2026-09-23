@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "414",
+ "title": "문자열 전부 붙이기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-paste-all-string/description",
+ "alias": "paste-all-string",
+ "pid": 414,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "문자열",
+ "lesson": "문자열 Concat",
+ "card": "challenge-paste-all-string",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "93.9",
+  "submissions": "2067"
+ },
+ "sample_count": 2,
+ "statement_len": 69,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 n이 주어지고, n개의 줄에 걸쳐 총 n개의 문자열이 주어질 때, 모든 문자열을 붙여 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 정수 n이 주어지고,\n\n두 번째 줄부터 n개의 줄에 걸쳐 총 n개의 문자열이 주어집니다.",
+ "output_spec": "첫 번째 줄에 이어붙인 모든 문자열을 출력합니다.",
+ "constraints": "- $1 \\le n \\le 10$\n- 문자열의 길이 $\\le 100$",
+ "samples": [
+  {
+   "in": "3\nLee\nBros\nCode\n",
+   "out": "LeeBrosCode\n"
+  },
+  {
+   "in": "5\na\nb\nc\nd\ne\n",
+   "out": "abcde\n"
+  }
+ ]
+}

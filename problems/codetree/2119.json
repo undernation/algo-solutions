@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2119",
+ "title": "범위 내에 있는 점의 수 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-the-number-of-points-within-the-range-2/description",
+ "alias": "the-number-of-points-within-the-range-2",
+ "pid": 2119,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shorten time Technique",
+ "lesson": "Prefix Sum",
+ "card": "challenge-the-number-of-points-within-the-range-2",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "46.8",
+  "submissions": "1036"
+ },
+ "sample_count": 1,
+ "statement_len": 83,
+ "fetched_at": "2026-09-23",
+ "statement": "수평선 위에 $N$개의 서로 다른 위치에 점이 놓여 있습니다. 주어진 $Q$개의 범위 내에 각각 점이 몇 개씩 있는지 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N, Q$가 공백을 사이에 두고 차례대로 주어집니다.\n\n두 번째 줄에 $N$개 점의 위치가 각각 공백을 사이에 두고 차례대로 주어집니다.  \n\n세 번째 줄부터 $Q$개의 줄에 걸쳐 각 줄에 범위에 대한 정보가 한 개씩 주어집니다. 각 범위에 대한 정보는 $A, B$가 공백을 사이에 두고 차례대로 주어지며 이는 $A$이상 $B$이하를 의미합니다.",
+ "output_spec": "첫 번째 줄부터 $Q$개의 줄에 걸쳐 각 줄에 주어진 범위 내에 점들이 각각 몇 개씩 있는지 차례대로 출력합니다.",
+ "constraints": "- $1 \\le N , Q \\le 100\\,000$\n- $0 \\le \\texttt{주어지는 점의 위치} \\le 1\\,000\\,000$\n- $0 \\le A \\le B \\le 1\\,000\\,000$",
+ "samples": [
+  {
+   "in": "4 6\n3 2 7 5\n2 3\n2 4\n2 5\n2 7\n4 6\n8 10\n",
+   "out": "2\n2\n3\n4\n1\n0\n"
+  }
+ ],
+ "sample_notes": [
+  "각 범위에 대해 범위 내 속한 점들은 다음과 같습니다. \n\n$2$이상 $3$이하 : $2$, $3$ \n\n$2$이상 $4$이하 : $2$, $3$ \n\n$2$이상 $5$이하 : $2$, $3$, $5$ \n\n$2$이상 $7$이하 : $2$, $3$, $5$, $7$ \n\n$4$이상 $6$이하 : $5$ \n\n$8$이상 $10$이하 : `None`\n\n![](https://contents.codetree.ai/problems/2119/images/problems-da7f449c-c7c8-49ca-aceb-32b1ec412412.png)"
+ ]
+}

@@ -1,0 +1,51 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "106",
+ "title": "알파벳과 사칙연산",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-calculations-with-alphabet/description",
+ "alias": "calculations-with-alphabet",
+ "pid": 106,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Backtracking",
+ "lesson": "K개 중 하나를 N번 선택하기(Simple)",
+ "card": "test-calculations-with-alphabet",
+ "card_type": "Test",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "44.6",
+  "submissions": "2804"
+ },
+ "sample_count": 3,
+ "statement_len": 263,
+ "fetched_at": "2026-09-23",
+ "statement": "`a`에서 `f`까지의 소문자 알파벳과 $+$, $-$, $*$ 기호만으로 이루어져 있는 길이가 $N$인 식이 하나 주어집니다. \n\n이때, 각 소문자 알파벳에 $1$ 이상 $4$ 이하의 정수 중 적절한 수를 집어넣어 식의 결과를 최대로 하는 프로그램을 작성해보세요. \n\n단, 일반 사칙연산처럼 $*$가 우선순위가 더 높은 것이 아닌, 모든 연산의 우선순위가 전부 같다고 가정하고 계산해야 합니다. 예를 들어 $3 - 2 * 3$ 은 $-3$이 아닌 $3$으로 계산합니다.",
+ "input_spec": "첫 번째 줄에 식이 주어집니다.",
+ "output_spec": "가능한 최대 결과를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 200$\n- 계산 도중 값이 항상 $-2^{31}$이상 $2^{31} - 1$이하를 벗어나지 않음을 가정해도 좋습니다.\n- 식은 `a`에서 `f`까지의 소문자 알파벳과 $+$, $-$, $*$ 기호만으로 이루어져 있습니다. 알파벳이나 연산자가 연속하여 $2$번 이상 나타나는 경우 없이 항상 번갈아가며 주어지며, 식의 시작과 마지막에는 반드시 알파벳이 입력된다고 가정해도 좋습니다.",
+ "samples": [
+  {
+   "in": "c-a*b\n",
+   "out": "12\n"
+  },
+  {
+   "in": "b-a*b-c+b\n",
+   "out": "15\n"
+  },
+  {
+   "in": "a+e\n",
+   "out": "8\n"
+  }
+ ],
+ "sample_notes": [
+  "$a = 1$, $b = 4$, $c = 4$일 때 $4 - 1 * 4$로 최대인 $12$가 나옵니다.",
+  "$a = 1$, $b = 4$, $c = 1$ 일 때 $4 - 1 * 4 - 1 + 4$로 최대인 $15$가 나옵니다.",
+  "$a = 4$, $e = 4$ 일 때 $4 + 4$로 최대인 $8$이 나옵니다."
+ ]
+}

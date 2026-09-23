@@ -1,0 +1,37 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "296",
+ "title": "감소시키며 출력하기 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-decrease-and-print-2/description",
+ "alias": "decrease-and-print-2",
+ "pid": 296,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "while문 b → a 1씩 감소",
+ "card": "intro-decrease-and-print-2",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "92.0",
+  "submissions": "4578"
+ },
+ "sample_count": 1,
+ "statement_len": 56,
+ "fetched_at": "2026-09-23",
+ "statement": "`while`문을 사용해 $26$부터 $10$까지 $1$씩 감소하며 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "입력이 주어지지 않습니다.",
+ "output_spec": "수 사이에 공백을 두고 출력합니다.",
+ "samples": [
+  {
+   "in": "",
+   "out": "26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10\n"
+  }
+ ]
+}

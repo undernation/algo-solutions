@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "583",
+ "title": "음수 피보나치",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-dp-number-fibbo/description",
+ "alias": "dp-number-fibbo",
+ "pid": 583,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "DP",
+ "lesson": "subproblem을 그대로 합치면 되는 DP",
+ "card": "test-dp-number-fibbo",
+ "card_type": "Test",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "67.3",
+  "submissions": "2159"
+ },
+ "sample_count": 0,
+ "statement_len": 341,
+ "fetched_at": "2026-09-23",
+ "statement": "만약 음수에도 피보나치가 있다면 어떨까요?\n\n$f(n) = f(n - 1) + f(n - 2)$ 이고 $f(1) = 1, f(0) = 0$ 이므로,\n\n$f(1) = f(0) + f(-1) = 0 + f(-1) = 1$ 이 성립해 $f(-1) = 1$이 됩니다.\n\n마찬가지로, $f(0) = f(-1) + f(-2) = 1 + f(-2) = 0$이 성립해 $f(-2) = -1$이 됩니다.\n\n이런 방식으로 음수 피보나치 항을 정의하게 된다면, $f(-10)$ 은 어떤 값이 나오게 될까요?\n\n**보기** — 하나 고르기\n\n1. `34`\n2. `-34`\n3. `55`\n4. `-55`\n5. `89`\n6. `-89`"
+}

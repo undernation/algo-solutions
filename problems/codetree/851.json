@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "851",
+ "title": "함수를 이용한 소수 판별",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-decimal-decisions-using-functions/description",
+ "alias": "decimal-decisions-using-functions",
+ "pid": 851,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "함수",
+ "lesson": "값을 반환하는 함수",
+ "card": "intro-decimal-decisions-using-functions",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "60.5",
+  "submissions": "5400"
+ },
+ "sample_count": 1,
+ "statement_len": 83,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $A$와 $B$가 주어지면, $A$ 이상 $B$ 이하 소수들의 합을 구해주는 프로그램을 작성해보세요. 단, 함수를 이용하여 문제를 해결해주세요.",
+ "input_spec": "첫 번째 줄에 정수 $A$와 $B$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 $A$에서 $B$ 사이 소수들의 합을 출력합니다.",
+ "constraints": "- $2 \\le A \\le B \\le 100$",
+ "samples": [
+  {
+   "in": "5 19\n",
+   "out": "72\n"
+  }
+ ],
+ "sample_notes": [
+  "$5$부터 $19$까지 소수인 숫자는 $5$, $7$, $11$, $13$, $17$, $19$입니다. 이들의 합은 $72$입니다."
+ ]
+}

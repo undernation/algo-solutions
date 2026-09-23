@@ -1,0 +1,37 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2242",
+ "title": "데이터 교환",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-exchange-data/description",
+ "alias": "exchange-data",
+ "pid": 2242,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "출력",
+ "lesson": "두 변수 값을 교환",
+ "card": "test-exchange-data",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 0.5초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 0.5
+ },
+ "stats": {
+  "accept_rate": "87.2",
+  "submissions": "13984"
+ },
+ "sample_count": 1,
+ "statement_len": 105,
+ "fetched_at": "2026-09-23",
+ "statement": "세 정수 $a$, $b$, $c$ 에 차례대로 $5$, $6$, $7$을 넣고, $b$에는 $a$값을 , $c$에는 $b$값을, $a$에는 $c$값을 넣어 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "입력이 주어지지 않습니다.",
+ "output_spec": "첫 번째 줄에는 정수 $a$를 출력합니다.\n\n두 번째 줄에는 정수 $b$를 출력합니다.\n\n세 번째 줄에는 정수 $c$을 출력합니다.",
+ "samples": [
+  {
+   "in": "",
+   "out": "7\n5\n6\n"
+  }
+ ]
+}

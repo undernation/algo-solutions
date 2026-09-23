@@ -1,0 +1,27 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "591",
+ "title": "가장 긴 감소하는 부분수열",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-dp-lis-2/description",
+ "alias": "dp-lis-2",
+ "pid": 591,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "DP",
+ "lesson": "조건에 맞게 선택적으로 전진하는 DP",
+ "card": "test-dp-lis-2",
+ "card_type": "Test",
+ "level": "Medium",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "62.4",
+  "submissions": "2266"
+ },
+ "sample_count": 0,
+ "statement_len": 170,
+ "fetched_at": "2026-09-23",
+ "statement": "다음과 같은 수열 $A$가 존재합니다. $A$에서 가장 긴 감소하는 부분수열의 길이는 몇이 될까요?\n\n```\n[60, 65, 50, 70, 63, 55, 45, 51, 45, 48, 54, 70, 61]\n```\n\n**보기** — 하나 고르기\n\n1. `3`\n2. `4`\n3. `5`\n4. `6`\n5. `7`",
+ "hint": "- **부분수열**이란 임의의 수열 $A$가 있을 때, $A$에서 몇 개의 수들을 제거한 뒤, 남은 수를 순서대로 이어붙여 만들 수 있는 수열을 $A$의 부분수열이라고 정의합니다. 예를 들어, 수열 $B$가 [$13$, $17$, $20$, $25$]일 때, [$13$, $20$]과 [$13$, $17$, $20$, $25$]는 수열 $B$의 부분수열이지만 [$21$]과 [$20, 13$]은 수열 $B$의 부분수열이 아닙니다.\n\n- **감소하는 수열**이란 임의의 수열 $A$가 있을 때, $A$의 어떤 항을 고르더라도 그 값이 이전 항의 값보다 작아지는 것을 의미합니다."
+}

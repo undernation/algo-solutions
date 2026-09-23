@@ -1,0 +1,37 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2241",
+ "title": "정수 복사",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-copy-integer/description",
+ "alias": "copy-integer",
+ "pid": 2241,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "출력",
+ "lesson": "다른 변수로부터 값 변경",
+ "card": "test-copy-integer",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 0.5초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 0.5
+ },
+ "stats": {
+  "accept_rate": "84.1",
+  "submissions": "19932"
+ },
+ "sample_count": 1,
+ "statement_len": 91,
+ "fetched_at": "2026-09-23",
+ "statement": "변수 $a$에 $3$를 넣고, 변수 $b$에 $4$를 넣은 뒤, 다시 $a$의 값을 $b$에 넣어줍니다. 그 후, $a$와 $b$의 값을 곱한 결과값을 출력합니다.",
+ "input_spec": "입력이 주어지지 않습니다.",
+ "output_spec": "첫 번째 줄에 계산이 끝난 뒤의 $a$값과 $b$값을 공백을 두고 출력합니다.\n\n두 번째 줄에 $a$와 $b$를 곱한 값을 출력합니다.",
+ "samples": [
+  {
+   "in": "",
+   "out": "3 3\n9\n"
+  }
+ ]
+}

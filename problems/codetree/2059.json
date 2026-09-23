@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2059",
+ "title": "겹치는 선분들",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-overlapping-lines/description",
+ "alias": "overlapping-lines",
+ "pid": 2059,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shorten time Technique",
+ "lesson": "+1-1 technique",
+ "card": "challenge-overlapping-lines",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "100 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "67.9",
+  "submissions": "624"
+ },
+ "sample_count": 1,
+ "statement_len": 294,
+ "fetched_at": "2026-09-23",
+ "statement": "수직선 위에 $1$부터 $N$까지 번호가 매겨진 $N$개의 선분이 있습니다. 선분 $1$은 원점에서 시작해서 $M(1)$만큼 왼쪽 혹은 오른쪽으로 그려집니다. 선분 $2$는 선분 $1$을 그리고 마친 지점에서 시작해서 $M(2)$만큼 왼쪽 혹은 오른쪽으로 그려집니다. 이런식으로 선분 $i$는 선분 $i-1$을 그리고 마친 지점에서 시작해 $M(i)$만큼 왼쪽 혹은 오른쪽으로 그려집니다. 각 선분의 길이와 그려진 방향이 주어질 때, 이 $N$개의 선분들이 $K$개 이상 겹치는 곳의 길이 합을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $N$과 $K$가 공백을 사이에 두고 차례대로 주어집니다. \n\n두 번째 줄 부터는 $N$개 줄에 걸쳐 $i+1$번째 줄에 $M(i)$와 선분이 그려진 방향이 공백을 사이에 두고 차례대로 주어집니다. R은 오른쪽, L은 왼쪽을 뜻합니다.",
+ "output_spec": "첫 번째 줄에 선분들이 $K$개 이상 겹치는 곳의 길이 합을 출력합니다.",
+ "constraints": "- $1 \\le K \\le N \\le 100\\,000$\n- $[-10^9,\\ 10^9]$ 안에는 모든 선분들이 위치합니다.",
+ "samples": [
+  {
+   "in": "6 2\n2 R\n6 L\n1 R\n8 L\n1 R\n2 R\n",
+   "out": "6\n"
+  }
+ ],
+ "sample_notes": [
+  "$2$개 이상의 선분이 겹치는 곳은 $[-11,\\ -8]$, $[-4,\\ -3]$, $[0,\\ 2]$ 로 길이는 총 $6$입니다.\n\n\n![](https://contents.codetree.ai/problems/2059/images/problems-8df19149-edd2-458c-bff6-caec46614349.png)"
+ ]
+}

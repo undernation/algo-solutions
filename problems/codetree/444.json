@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "444",
+ "title": "배열의 연산",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-array-operation/description",
+ "alias": "array-operation",
+ "pid": 444,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "배열, 연결 리스트",
+ "lesson": "배열",
+ "card": "intro-array-operation",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "52.4",
+  "submissions": "6934"
+ },
+ "sample_count": 0,
+ "statement_len": 477,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 코드의 시간복잡도를 예측하여 봅시다.\n\n- `arr.find(x)`는 $x$가 $arr$안에 있는지 확인하는 메소드이며, `arr.remove(x)`는 $x$번째 값을 삭제하라는 메소드이며, `arr.add(x)`는 $arr$의 맨 뒤에 $x$를 추가하라는 메소드입니다.\n- 배열의 크기는 $N$ 이라고 가정합니다.\n\n```js\nfunction solution(arr)\n  set result = []\n  for i = 0 ... i < arr.size()\n    if arr.find(i)\n      result.add(1)\n  \n  result.remove(5)\n  return result[5]\n```\n\n**보기** — 하나 고르기\n\n1. $\\mathcal{O}(\\log{N})$\n2. $\\mathcal{O}(N)$\n3. $\\mathcal{O}(N\\log{N})$\n4. $\\mathcal{O}(N^2)$\n5. $\\mathcal{O}(N^3)$"
+}

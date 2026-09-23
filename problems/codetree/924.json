@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "924",
+ "title": "거울에 레이저 쏘기 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-shoot-a-laser-in-the-mirror-2/description",
+ "alias": "shoot-a-laser-in-the-mirror-2",
+ "pid": 924,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 II",
+ "lesson": "dx dy technique",
+ "card": "challenge-shoot-a-laser-in-the-mirror-2",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "46.1",
+  "submissions": "4611"
+ },
+ "sample_count": 1,
+ "statement_len": 139,
+ "fetched_at": "2026-09-23",
+ "statement": "$N \\times N$ 크기의 격자 안에 각 칸마다 거울이 하나씩 들어 있습니다. 각 거울은 `\\`나 `/`의 형태를 띠고 있고, 격자 밖 $4N$개의 위치 중 특정 위치에서 레이저를 쏘았을 때, 거울에 튕기는 횟수를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 격자의 정보가 주어집니다. 각 줄에는 해당 행의 정보가 `/` 또는 `\\` 문자 $N$개로 공백 없이 주어집니다.\n\n그다음 줄에는 레이저를 쏘는 위치 $K$가 주어집니다. $K$는 다음과 같이 위에서 아래 방향으로 $1$행 $1$열 칸으로 들어오는 곳을 $1$번으로 하여 시계 방향으로 돌며 가능한 시작 위치에 순서대로 번호를 붙여 $4N$번을 마지막으로 했을 때의 번호들 중 하나의 값으로 주어집니다.\n\n![](https://contents.codetree.ai/problems/924/images/problems-42195f7e-07a7-478a-9aec-6ede1458871d.svg)",
+ "output_spec": "첫 번째 줄에 주어진 위치에서 레이저를 쏘았을 때 거울에 튕기는 횟수를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 1\\,000$\n- $1 \\le K \\le 4N$",
+ "hint": "문자 `/`의 표현은 `'/'` 로 가능하지만, `\\`는 Escape String이 필요하므로  문자 `\\`의 표현은 `'\\\\'`로 해야 올바르게 동작합니다.",
+ "samples": [
+  {
+   "in": "3\n/\\\\\n\\\\\\\n/\\/\n2\n",
+   "out": "3\n"
+  }
+ ],
+ "sample_notes": [
+  "아래와 같이 $2$번 위치에서 시작하면 총 $3$번 튕기게 됩니다.\n\n![](https://contents.codetree.ai/problems/924/images/problems-ccd68b30-b8d8-4aa9-9404-551868e6d882.svg)"
+ ]
+}

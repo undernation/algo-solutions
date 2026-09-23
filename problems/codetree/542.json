@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "542",
+ "title": "스파이 찾기 (2)",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-heap-shape/description",
+ "alias": "heap-shape",
+ "pid": 542,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "트리",
+ "lesson": "Heap",
+ "card": "challenge-heap-shape",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Multiple choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "34.5",
+  "submissions": "4068"
+ },
+ "sample_count": 0,
+ "statement_len": 890,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 중 힙이 아닌 것을 모두 고르세요. (max-heap, min-heap 모두 아닌 경우를 골라야 합니다.)\n\n**보기** — 모두 고르기\n\n1. <p align='center'>\n   <img src='https://contents.codetree.ai/problems/542/images/02aa3cbb-e1a1-40f8-a9c1-3644235c9944.svg'>\n   </p>\n2. <p align='center'>\n   <img src='https://contents.codetree.ai/problems/542/images/740a4328-7926-4f3d-8634-41e726a33a76.svg'>\n   </p>\n3. <p align='center'>\n   <img src='https://contents.codetree.ai/problems/542/images/6734a461-7248-4af0-8c82-b874c025b0cf.svg'>\n   </p>\n4. <p align='center'>\n   <img src='https://contents.codetree.ai/problems/542/images/072a9186-b22a-441c-b034-bb738b7e1f03.svg'>\n   </p>\n5. <p align='center'>\n   <img src='https://contents.codetree.ai/problems/542/images/db3de0ca-6767-4dc6-8995-73b0934f6f5f.svg'>\n   </p>\n6. <p align='center'>\n   <img src='https://contents.codetree.ai/problems/542/images/e3fe761f-003b-4d98-8c4c-24fb32f8423b.svg'>\n   </p>"
+}

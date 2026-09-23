@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f362",
+ "title": "차세대 지능형 교통시스템",
+ "url": "https://www.codetree.ai/ko/frequent-problems/hsat/problems/next-generation-ITS/description",
+ "alias": "next-generation-ITS",
+ "pid": 362,
+ "group": "hsat",
+ "kind": "frequent",
+ "origin": "1차 1번 문제",
+ "level": "L14",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "260 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "33.2",
+  "submissions": "361"
+ },
+ "sample_count": 1,
+ "statement_len": 1324,
+ "fetched_at": "2026-09-23",
+ "statement": "지능형 교통시스템(Intelligent Transport System)은 이미 우리의 삶에 밀접하게 연결되어 있다. 내비게이션 실시간 교통정보, 고속도로의 하이패스, 정류장의 버스 도착 안내 시스템들이 ITS에 속한다. 여기서 차량과 인프라가 서로 협력하면 차세대 지능형 교통시스템(C-ITS, Cooperative Intelligent Transportation System)이 되는 것이다. 이렇게 차량 주행과 관련된 인프라와 차량 등이 통신하기 시작하면 사고나 정체 상황에서 놀라운 일이 벌어진다.\n\n<p align=center> <img width=\"400\" src=\"https://contents.codetree.ai/problems/4079/images/0602d8d6-128d-4744-877c-15021018e028.jpeg\">\n\n여기 교통 인프라(신호등)와 실시간 통신을 하는 자율주행차가 가로, 세로 $N$개의 교차로로 구성된 도로를 지나고 있다. 교차로 간 연결된 선을 도로, 도로의 교차점들을 교차로로 생각하자.\n\n자율주행 차는 처음에 제일 왼쪽 위의 교차로로 아래쪽 방향에서 진입하고 있다. (자동차는 도로 한 칸을 가는 데는 1T가 걸린다.)\n\n<p align=center> <img width=\"500\" src=\"https://contents.codetree.ai/problems/4079/images/2e09d679-bbd5-4688-bf28-3cfe260a1905.jpeg\">\n\n각 교차로의 신호등은 다음과 같은 $12$가지 상태 중 $4$가지를 가지고 무한히 반복하는 방식으로 운영된다.\n\n<p align=center> <img width=\"400\" src=\"https://contents.codetree.ai/problems/4079/images/9199f399-a1ec-460f-afe7-eff6e9253037.jpeg\">\n\n예를 들어 한 교차로의 신호 집합이 $3 \\ 2 \\ 6 \\ 10$과 같이 주어진 경우는 아래와 같다.\n\n<p align=center> <img width=\"600\" src=\"https://contents.codetree.ai/problems/4079/images/0c669f91-e7b0-4b25-9f63-1365beee2eaa.jpeg\">\n\n자율주행 자동차가 멈추지 않고, 시간 $T$ 이내에 갈 수 있는 교차로의 수를 계산하라. 단, 신호가 맞지 않으면 그 교차로에는 갈 수가 없다.\n\n처음에 제일 왼쪽 위의 교차로로 아래쪽 방향에서 진입하고 있으므로, 교차로 $(1,1)$의 신호가 $2, 10$번 중 하나가 아니면 더 이상 진행을 할 수 없으므로 교차로는 단 하나[교차로$(1,1)$]로 계산한다.",
+ "input_spec": "입력으로는 $N$과 시간 $T$가 첫 줄에 주어진다.\n\n다음 $N^2$개의 줄에 각 교차로의 신호 집합이 주어진다.\n\n신호는 항상 $4$개이며, 순서는 $X$축부터 진행을 한다.\n\n예를 들어 $N$이 $2$인 경우\n\n두 번째 줄. 교차로 $(1,1)$의 신호\n\n세 번째 줄. 교차로 $(2,1)$의 신호\n\n네 번째 줄. 교차로 $(1,2)$의 신호\n\n마지막 줄. 교차로 $(2,2)$의 신호\n\n<p align=center> <img width=\"400\" src=\"https://contents.codetree.ai/problems/4079/images/08c39afa-ec16-45d3-8f17-05e2b4184737.jpeg\">",
+ "output_spec": "이동 경로에 있는 모든 교차로의 개수를 출력한다. 한번 갔던 교차로는 중복해서 세지 않는다.",
+ "constraints": "- $1 \\le N, T \\le 100$\n- 모든 입력은 정수이다.",
+ "samples": [
+  {
+   "in": "3 3\n2 6 12 9\n7 1 11 6\n6 3 5 11\n1 1 12 9\n3 11 8 2\n1 7 11 9\n4 6 2 3\n2 4 2 4\n6 9 2 6\n",
+   "out": "6\n"
+  }
+ ],
+ "sample_notes": [
+  "[$T = 0$]\n자율주행 자동차는 처음에 제일 왼쪽 위의 교차로로 아래쪽 방향에서 진입하고 있고, 그 때 교차로 A의 신호등은 $2$번이므로 우회전만 가능하다.\n\n(이동 경로에 있는 교차로 $1$개 - 교차로 A)\n\n<p align=center> <img width=\"600\" src=\"https://contents.codetree.ai/problems/4079/images/74947361-8d10-44fb-814f-1ba3988c040c.jpeg\">\n\n[$T = 1$]\n\n교차로 B로 진입하고 있고, 그 때 교차로 B의 신호등은 $1$번이므로 직진과 우회전이 가능하다.\n\n(이동 경로에 있는 교차로 $2$개 - 교차로 A, 교차로 B)\n\n<p align=center> <img width=\"600\" src=\"https://contents.codetree.ai/problems/4079/images/97603f81-f0cb-4534-8f7b-b34ff786cdc2.jpeg\">\n\n[$T = 2$, case $1$]\n\n교차로 B를 통과해서 갈 수 있는 두가지 경로(교차로 C, 교차로 E 방향) 중, 교차로 C로 진입을 하게\n될 때 교차로 C의 신호등은 $5$번으로 직진과 좌회전 신호이지만 더 이상의 진행은 불가능 하다.\n\n(이동 경로에 있는 교차로 $3$개 - 교차로 A, 교차로 B, 교차로 C)\n\n<p align=center> <img width=\"600\" src=\"https://contents.codetree.ai/problems/4079/images/2a4830bc-5f95-46c3-8d60-86e6b5ed49a5.jpeg\">\n\n[$T = 2$, case $2$]\n\n교차로 B를 통과해서 갈 수 있는 두가지 경로(교차로 C, 교차로 E 방향) 중, 교차로 E로 진입을\n하게 될 때 교차로 E의 신호등은 $8$번으로 직진과 좌회전이 가능하다.\n\n(이동 경로에 있는 교차로 $3$개 - 교차로 A, 교차로 B, 교차로 E)\n\n<p align=center> <img width=\"600\" src=\"https://contents.codetree.ai/problems/4079/images/4aa77591-8032-45b1-b4c3-15677b195cf6.jpeg\">\n\n[$T = 3$, case $2$ - $1$]\n\n교차로 E를 통과해서 갈 수 있는 두가지 경로(교차로 F, 교차로 H 방향) 중, 교차로 F로 진입을\n하게 될 때 교차로 F의 신호등은 $9$번으로 직진과 우회전이나 우회전만 가능하다.\n\n(이동 경로에 있는 교차로 $4$개 - 교차로 A, 교차로 B, 교차로 E, 교차로 F)\n\n<p align=center> <img width=\"600\" src=\"https://contents.codetree.ai/problems/4079/images/6aae3bab-5a88-4531-b49e-31649128facb.jpeg\">\n\n[$T = 3$, case $2$ - $2$]\n\n교차로 E를 통과해서 갈 수 있는 두가지 경로(교차로 F, 교차로 H 방향) 중, 교차로 H로 진입을\n하게 될 때 교차로 H의 신호등은 $4$번으로 직친과 좌회전, 우회전이나 좌회전과 우회전만 가능\n하다.\n\n(이동 경로에 있는 교차로 $4$개 - 교차로 A, 교차로 B, 교차로 E, 교차로 H)\n\n<p align=center> <img width=\"600\" src=\"https://contents.codetree.ai/problems/4079/images/6dee6d96-aa72-4759-ba63-220e8530caa9.jpeg\">\n\n그래서 $T$ = $0$ ~ $3$까지 시간동안 이동경로에 있는 모든 교차로는 총 6개이다.\n\n(교차로 A, 교차로 B, 교차로 C, 교차로 E, 교차로 F, 교차로 H)"
+ ]
+}

@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3471",
+ "title": "외판원 순회 3",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-taveling-salesman-problem-3/description",
+ "alias": "taveling-salesman-problem-3",
+ "pid": 3471,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Advanced DP",
+ "lesson": "Bitmask DP",
+ "card": "challenge-taveling-salesman-problem-3",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 5초 · C++17 1초",
+  "memory": "288 MB",
+  "time_sec": 5.0
+ },
+ "stats": {
+  "accept_rate": "79.5",
+  "submissions": "44"
+ },
+ "sample_count": 2,
+ "statement_len": 194,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$번 지점에서 출발하여 $1$번 지점을 제외하고 정확히 $K$개의 지점을 딱 한 번씩만 방문하고 다시 $1$번 지점으로 돌아오려고 합니다. $i$번 지점에서 $j$번 지점으로 이동하는 데 드는 비용 정보 $A_{ij}$가 주어졌을 때, $K$개의 정점을 겹치지 않게 방문하고 되돌아오는데 필요한 최소 비용의 합을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$과 $K$가 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 한 줄에 $N$개씩의 $A_{ij}$에 해당하는 정보가 정수로 공백을 두고 주어집니다. $0$은 이동할 수 없음을 뜻하며, $A_{ii}=0$임을 가정해도 좋습니다.",
+ "output_spec": "$1$번 지점에서 출발하여 $1$번 정점을 제외한 정확히 $K$개의 정점을 한 번씩만 방문하고 다시 $1$번 지점으로 되돌아오기 위해 필요한 최소 비용을 출력합니다. 불가능한 입력은 주어지지 않는다고 가정해도 좋습니다.",
+ "constraints": "- $2\\le N\\le16$\n- $1\\le K\\lt N$\n- $0\\le$ 주어지는 정수 $\\le10\\,000$",
+ "samples": [
+  {
+   "in": "4 2\n0 2 5 9\n3 0 8 11\n7 3 0 10\n9 5 7 0\n",
+   "out": "11\n"
+  },
+  {
+   "in": "4 3\n0 2 5 9\n3 0 8 11\n7 3 0 10\n9 5 7 0\n",
+   "out": "22\n"
+  }
+ ],
+ "sample_notes": [
+  "예제 $1$번에서 $1\\to2\\to3\\to1$ 순서로 이동하면 비용이 총 $17\\,(2+8+7)$이 듭니다.  \n하지만, $1\\to3\\to2\\to1$ 순서로 이동하면 비용이 총 $11\\,(5+3+3)$로 최소가 됩니다.",
+  ""
+ ]
+}

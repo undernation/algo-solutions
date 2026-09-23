@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1005",
+ "title": "가장 많은 데이터",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-most-frequent-data/description",
+ "alias": "most-frequent-data",
+ "pid": 1005,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "중급 자료구조",
+ "lesson": "HashMap",
+ "card": "intro-most-frequent-data",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "83.8",
+  "submissions": "2172"
+ },
+ "sample_count": 1,
+ "statement_len": 75,
+ "fetched_at": "2026-09-23",
+ "statement": "알파벳 대소문자로 이루어진 문자열들이 중복을 허용하여 입력되었을때, 최대로 등장한 문자열의 등장 횟수를 출력하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에는 입력될 문자열의 개수 $N$이 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 문자열들이 입력됩니다.",
+ "output_spec": "첫 번째 줄에 가장 많이 입력된 데이터가 등장한 횟수를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100\\,000$\n- $1 \\le \\texttt{각 문자열의 길이} \\le 50$\n- 모든 문자열은 알파벳 대소문자로 이루어져 있습니다.",
+ "samples": [
+  {
+   "in": "7\nred\nred\nred\nblue\nblue\nblue\ngreen\n",
+   "out": "3\n"
+  }
+ ]
+}

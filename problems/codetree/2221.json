@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2221",
+ "title": "높이 차를 최소화 하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-minimize-the-height-difference/description",
+ "alias": "minimize-the-height-difference",
+ "pid": 2221,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Parametric Search",
+ "lesson": "Parametric Search",
+ "card": "challenge-minimize-the-height-difference",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 3초 · C++17 2초",
+  "memory": "200 MB",
+  "time_sec": 3.0
+ },
+ "stats": {
+  "accept_rate": "34.7",
+  "submissions": "375"
+ },
+ "sample_count": 1,
+ "statement_len": 537,
+ "fetched_at": "2026-09-23",
+ "statement": "1이상 500이하의 숫자로만 이루어져 있는 $n \\times m$ 격자 정보가 주어집니다. 이때 (1, 1) 위치에서 출발하여 상하좌우 방향으로 인접한 칸으로만 이동하여 $(n, m)$ 위치에 도달하고자 합니다. 가능한 모든 경우 중 이동하는 경로에서의 최대 높이와 최소 높이와의 차이를 최소로 하는 프로그램을 작성해보세요.\n\n예를 들어 다음과 같이 3 \\* 5크기의 격자가 주어지고, 다음 경로로 이동한다면 높이 차 6(7 - 1)으로 원하는 위치로 이동이 가능합니다. \n\n![](https://contents.codetree.ai/problems/2221/images/problems-2b359000-93bc-4ecf-a7a6-7c98abcf7c25.png)\n<br>\n\n하지만 다음과 같은 경로로 이동한다면 높이 차 4(5-1)로 도착지에 도달 할 수 있게 됩니다. \n\n![](https://contents.codetree.ai/problems/2221/images/problems-275d07eb-bbae-475f-a24a-5fcb52fb812c.png)",
+ "input_spec": "첫 번째 줄에는 격자 크기에 대한 정보인 $n, m$이 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터 $n+1$번 째 줄까지 각 행에 해당하는 $m$개의 높이가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 도착지에 도달하기 위해 거쳐가는 곳의 최대 높이와 최소 높이 차의 최솟값을 출력합니다.",
+ "constraints": "- $1 \\le n, m \\le 100$\n - $1 \\le$ 높이 $\\le 500$",
+ "samples": [
+  {
+   "in": "3 5\n1 4 6 3 5\n5 4 3 7 2\n7 3 1 5 4\n",
+   "out": "4\n"
+  }
+ ]
+}

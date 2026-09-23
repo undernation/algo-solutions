@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "245",
+ "title": "입력받은 값 교체하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-changing-inputs/description",
+ "alias": "changing-inputs",
+ "pid": 245,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "입출력",
+ "lesson": "공백을 사이에 두고 입력",
+ "card": "challenge-changing-inputs",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "89.7",
+  "submissions": "21563"
+ },
+ "sample_count": 1,
+ "statement_len": 56,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $a$, $b$를 입력받고, $a$와 $b$의 위치를 교환한 후 출력하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 정수 $a$, $b$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "결과값 $a$와 $b$를 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $1 \\le a, b \\le 100$",
+ "samples": [
+  {
+   "in": "14 5\n",
+   "out": "5 14\n"
+  }
+ ]
+}

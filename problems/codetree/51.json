@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "51",
+ "title": "최장 공통 부분 수열",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-longest-common-sequence/description",
+ "alias": "longest-common-sequence",
+ "pid": 51,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "DP II",
+ "lesson": "String Matching",
+ "card": "intro-longest-common-sequence",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 3초 · C++17 1초",
+  "memory": "128 MB",
+  "time_sec": 3.0
+ },
+ "stats": {
+  "accept_rate": "67.2",
+  "submissions": "1239"
+ },
+ "sample_count": 2,
+ "statement_len": 395,
+ "fetched_at": "2026-09-23",
+ "statement": "길이가 $N$인 문자열 $A$와 길이가 $M$인 문자열 $B$가 주어졌을 때 최장 공통 부분 수열을 찾는 프로그램을 작성해보세요.\n\n부분 수열이란 수열의 원소들 중 임의로 몇 개를 골라 순서대로 나열한 수열을 의미하고, 이때 해당 부분 수열이 주어진 두 수열에 있어 모두 부분 수열이라면, 이 수열을 공통 부분 수열이라고 합니다.\n\n예를 들어 문자열 $A$가 $\"SABSBA\"$, 문자열 $B$가 $\"ABABSA\"$라고 했을 때\n\n문자열 $\"SSA\"$는 문자열 $A$의 부분 수열이지만, 문자열 $B$의 부분 수열은 아니므로 공통 부분 수열이 아닙니다.\n\n문자열 $\"ABA\"$는 문자열 $A$, $B$의 공통 부분 수열입니다.\n\n문자열 $\"ABSA\"$ 역시 문자열 $A$, $B$의 공통 부분 수열 입니다.",
+ "input_spec": "첫째 줄에는 문자열 $A$가 주어집니다.\n\n두 번째 줄에는 문자열 $B$가 주어집니다.",
+ "output_spec": "최장 공통 부분 수열의 길이를 출력합니다.",
+ "constraints": "- $1 \\le N, M \\le 1\\,000$\n- 문자열 $A$, $B$는 알파벳 대문자로만 이루어져 있습니다.",
+ "samples": [
+  {
+   "in": "SABSBA\nABABSA\n",
+   "out": "4\n"
+  },
+  {
+   "in": "ABA\nABBA\n",
+   "out": "3\n"
+  }
+ ]
+}

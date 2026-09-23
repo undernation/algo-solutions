@@ -1,0 +1,39 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1996",
+ "title": "숫자 빠르게 찾기 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-find-number-fast-2/description",
+ "alias": "find-number-fast-2",
+ "pid": 1996,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "중급 자료구조",
+ "lesson": "TreeSet",
+ "card": "intro-find-number-fast-2",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 2초 · C++17 1.5초",
+  "memory": "192 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "93.1",
+  "submissions": "780"
+ },
+ "sample_count": 1,
+ "statement_len": 110,
+ "fetched_at": "2026-09-23",
+ "statement": "서로 다른 $N$개의 숫자가 주어집니다. 이후 $M$개의 숫자가 추가적으로 주어졌을 때, 각각의 숫자에 대해 처음 주어진 $N$개의 숫자 중 같거나 큰 최초의 숫자를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $N, M$이 공백을 두고 주어집니다.\n\n두 번째 줄에는 $N$개의 숫자가 공백을 사이에 두고 주어집니다. 주어지는 모든 숫자는 서로 다름을 가정해도 좋습니다.\n\n세 번째 줄 부터는 $M$개의 줄에 걸쳐 숫자가 한 줄에 하나씩 주어집니다.",
+ "output_spec": "$M$개의 줄에 걸쳐 주어진 $N$개의 숫자들 중 해당 숫자보다 같거나 큰 최초의 숫자를 출력합니다. 만약 그러한 숫자가 존재하지 않는다면, $-1$을 출력합니다.",
+ "constraints": "- $1 ≤ N, M ≤ 100\\,000$\n- $1 ≤ \\texttt{주어지는 값} ≤ 10^9$",
+ "hint": "`TreeSet` 이용해 해결합니다. `TreeSet`은 삽입, 삭제, 탐색 모두 $\\mathcal{O}(\\log{N})$.의 시간복잡도를 갖습니다.",
+ "samples": [
+  {
+   "in": "5 8\n7 9 1 5 10\n1\n2\n5\n6\n7\n9\n10\n11\n",
+   "out": "1\n5\n5\n7\n7\n9\n10\n-1\n"
+  }
+ ]
+}

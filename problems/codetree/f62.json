@@ -1,0 +1,43 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f62",
+ "title": "회전하는 빙하",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/rotating-glacier/description",
+ "alias": "rotating-glacier",
+ "pid": 62,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2020 하반기 오후 2번 문제",
+ "level": "L13",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "59.0",
+  "submissions": "1372"
+ },
+ "sample_count": 3,
+ "statement_len": 1737,
+ "fetched_at": "2026-09-23",
+ "statement": "$2^n \\times 2^n$ 격자의 빙하를 회전시키려고 합니다. \n\n빙하에 속한 각각의 얼음은 인접 회전성이라는 성질을 가집니다. 좌측 상단에 있는 빙하를 특정 범위를 선택해서 회전시키게 되면 다른 상하좌우의 인접한 격자들도 똑같은 크기만큼 회전하게 됩니다. \n\n빙하를 회전하는 범위를 레벨이라고 표현합니다. 레벨이 $L$일 때 $2^L \\times 2^L$만큼 격자를 선택하여 $2^{L-1} \\times 2^{L-1}$만큼 잘라 $4$등분하여 회전시키게 됩니다. 예를 들어 다음과 같은 격자에 레벨 $1$과 $2$만큼 **순서대로** 빙하를 회전시키게 되면 다음과 같이 변합니다. 레벨 $0$의 경우의 회전이 존재하지만 회전이 일어나도 각각의 얼음의 위치는 변하지 않습니다. 아래 레벨 $2$ 그림은 초기 상태에서 레벨 $1$ 회전을 진행한 뒤, 연달아 레벨 $2$ 회전을 진행한 그림임에 유의합니다.\n\n<p align=\"center\">\n<img width=\"500\" height=\"350\" src=\"https://contents.codetree.ai/problems/147/images/2082eaf1-3fab-468b-83f9-8af7093fe01f.png\">\n</p>\n-\n<p align=\"center\">\n<img width=\"500\" height=\"350\" src=\"https://contents.codetree.ai/problems/147/images/7b6e0d10-48b5-4f6f-af1a-5f978081315c.png\">\n</p>\n-\n<p align=\"center\">\n<img width=\"500\" height=\"350\" src=\"https://contents.codetree.ai/problems/147/images/db10147f-87d1-4cfa-8e38-6e9aba2913a5.png\">\n</p>\n\n각각의 회전이 모두 끝나고 난 뒤에는 빙하에 속한 얼음이 녹습니다. 만약 한 칸을 기준으로 상하좌우 인접한 칸에 얼음이 $3$개 이상 있는 경우에는 녹지 않습니다. 그렇지 않은 경우에는 $1$이 줄어듭니다. 인접한 칸이 격자를 벗어나는 경우나 해당 칸의 값이 $0$인 경우에는 얼음이 존재하지 않는다고 생각합니다. 얼음이 녹는 것은 동시에 진행됩니다.\n\n<p align=\"center\">\n<img width=\"500\" height=\"200\" src=\"https://contents.codetree.ai/problems/147/images/58079e81-17e9-492b-8051-1e6877e98f2a.png\">\n</p>\n\n<p align=\"center\">\n<img width=\"500\" height=\"200\" src=\"https://contents.codetree.ai/problems/147/images/4d2f1b6f-749b-4d9b-816e-6d236dd20d03.png\">\n</p>\n\n모든 회전을 끝내고 난 뒤에 남아있는 빙하의 총 양과 가장 큰 얼음 군집의 크기를 출력해주세요. 빙하의 총 양이란 격자에 남은 숫자의 총 합을 뜻하며 얼음 군집이란 연결된 칸의 집합을 뜻합니다. 아래 그림에서 색으로 구분해놓은 격자의 집합이 군집입니다.\n\n<p align=\"center\">\n<img width=\"350\" height=\"350\" src=\"https://contents.codetree.ai/problems/147/images/6e3ff05f-b630-49e0-a551-e1f531153298.png\">\n</p>\n\n위의 경우 가장 큰 얼음 군집의 크기는 $4$입니다.",
+ "input_spec": "첫 번째 줄에 회전 가능 레벨 $n$과 회전 횟수 $q$가 공백을 사이에 두고 주어집니다. 회전 가능 레벨이 $n$이라는 의미는, 주어지는 격자의 크기가 $2^n \\times 2^n$ 이라는 것을 뜻합니다.\n\n두 번째 줄부터 $2^n + 1$번째 줄까지 빙하의 각 칸에 해당하는 얼음의 양이 $2^n$개씩 주어집니다.\n\n$2^n + 2$번째 줄에는 회전 레벨이 차례대로 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에는 회전을 모두 끝낸 뒤에 남아있는 빙하의 총 양을 출력합니다.\n\n두 번째 줄에는 가장 큰 크기를 가지는 얼음군집의 크기를 출력합니다. 만약 얼음 군집이 존재하지 않는다면 $0$을 출력합니다.\n\n주어진 회전은 꼭 순서대로 진행되어야만 함에 유의합니다.",
+ "constraints": "- $2 \\le n \\le 6$\n- $1 \\le q \\le 1,000$\n- $0 \\le$ 얼음의 양 $\\le 100$\n- $0 \\le$ 회전 레벨 $\\le n$\n- $n$, $q$, 얼음의 양, 회전 레벨은 모두 정수입니다.",
+ "samples": [
+  {
+   "in": "3 2\n1 5 10 50 2 6 12 20\n32 24 15 17 24 10 20 30\n7 10 20 10 0 10 20 30\n10 1 20 10 30 40 20 1\n2 5 10 64 19 29 17 46\n20 48 49 34 12 24 10 7\n8 10 6 1 2 47 20 13\n29 19 11 31 15 14 67 33\n1 2\n",
+   "out": "1229\n63 \n"
+  },
+  {
+   "in": "2 1\n20 10 0 0\n5 0 6 16\n12 0 20 0\n0 15 0 0\n0\n",
+   "out": "96\n4\n"
+  },
+  {
+   "in": "2 10\n20 10 0 0\n5 0 6 16\n12 0 20 0\n0 15 0 0\n0 1 2 0 1 2 0 1 2 0\n",
+   "out": "38\n2\n"
+  }
+ ]
+}

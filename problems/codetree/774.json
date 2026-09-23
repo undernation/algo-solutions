@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "774",
+ "title": "바구니 안의 사탕",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-candy-in-the-basket/description",
+ "alias": "candy-in-the-basket",
+ "pid": 774,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shorten time Technique",
+ "lesson": "Two Pointer",
+ "card": "challenge-candy-in-the-basket",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "44.4",
+  "submissions": "876"
+ },
+ "sample_count": 1,
+ "statement_len": 120,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$차원 직선 위에 총 $N$개의 바구니가 놓여 있고, 바구니 안에는 사탕이 담겨 있습니다. 중심점 $c$를 잘 잡아 [$c-K$, $c+K$] 구간에 있는 사탕의 수가 최대가 되도록 하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$과 $K$가 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터는 $N$개의 줄에 걸쳐 한 줄에 하나씩 각 사탕의 개수와 바구니의 좌표가 공백을 사이에 두고 주어집니다. 단, 같은 위치에 여러 바구니가 놓여 있는 것이 가능함에 유의합니다.",
+ "output_spec": "첫 번째 줄에 사탕의 수가 최대가 되는 경우를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100\\,000$\n - $1 \\le K \\le 2\\,000\\,000$\n - $0 \\le \\texttt{바구니의 위치} \\le 1\\,000\\,000$\n - $1 \\le \\texttt{사탕의 개수} \\le 10\\,000$",
+ "samples": [
+  {
+   "in": "4 3\n4 7\n10 15\n2 2\n5 1\n",
+   "out": "11\n"
+  }
+ ],
+ "sample_notes": [
+  "$c$를 $4$로 잡으면 $1$ 위치부터, $7$ 위치까지의 사탕을 전부 획득할 수 있으므로 총 획득량은 $11$이 됩니다.\n\n\n<br>\n\n![](https://contents.codetree.ai/problems/774/images/problems-461e955b-8312-430e-9e01-381339c7d208.png)\n\n<br>"
+ ]
+}

@@ -1,0 +1,54 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "286",
+ "title": "5의 배수의 합",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-sum-of-specific-condition-multiple/description",
+ "alias": "sum-of-specific-condition-multiple",
+ "pid": 286,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "sum 계산하기",
+ "card": "challenge-sum-of-specific-condition-multiple",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "57.5",
+  "submissions": "6261"
+ },
+ "sample_count": 5,
+ "statement_len": 133,
+ "fetched_at": "2026-09-23",
+ "statement": "두 정수 $A$와 $B$가 주어집니다.\n\n$A$와 $B$를 포함하여, $A$와 $B$ 사이의 수 중에서 $5$의 배수인 수를 모두 더한 값을 출력하는 프로그램을 작성해보세요.\n\n$A$와 $B$ 간에 대소 관계가 보장되지 않음에 유의하세요.",
+ "input_spec": "첫 줄에 두 정수 $A$와 $B$가 공백으로 구분되어 주어집니다.",
+ "output_spec": "첫 줄에 총합을 출력합니다.",
+ "constraints": "- $1 \\le A \\le 200$\n- $1 \\le B \\le 200$",
+ "samples": [
+  {
+   "in": "1 4\n",
+   "out": "0\n"
+  },
+  {
+   "in": "5 5\n",
+   "out": "5\n"
+  },
+  {
+   "in": "11 3\n",
+   "out": "15\n"
+  },
+  {
+   "in": "1 15\n",
+   "out": "30\n"
+  },
+  {
+   "in": "50 13\n",
+   "out": "260\n"
+  }
+ ]
+}

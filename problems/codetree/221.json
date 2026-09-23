@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "221",
+ "title": "길이 변형 후 사각형 넓이 구하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-square-width-after-length-change/description",
+ "alias": "square-width-after-length-change",
+ "pid": 221,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "연산자",
+ "lesson": "사칙연산",
+ "card": "intro-square-width-after-length-change",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "85.9",
+  "submissions": "8617"
+ },
+ "sample_count": 1,
+ "statement_len": 112,
+ "fetched_at": "2026-09-23",
+ "statement": "직사각형의 가로와 세로의 길이를 정수형 값으로 입력받은 후 가로의 길이는 $8$ 증가시키고 세로의 길이는 3배하여 저장한 후 가로의 길이, 세로의 길이, 넓이를 차례로 출력하는 프로그램을 작성해주세요.",
+ "input_spec": "첫 번째 줄에 가로와 세로의 길이가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "한 줄에 하나씩 가로의 길이, 세로의 길이, 넓이를 출력합니다.",
+ "constraints": "- $1 \\le$  $\\texttt{가로 길이, 세로 길이}$  $\\le 100$",
+ "samples": [
+  {
+   "in": "12 7\n",
+   "out": "20\n21\n420\n"
+  }
+ ]
+}

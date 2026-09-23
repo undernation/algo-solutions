@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "155",
+ "title": "문자열 받아 출력",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-enter-word-and-print/description",
+ "alias": "enter-word-and-print",
+ "pid": 155,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "입출력",
+ "lesson": "문자, 문자열 입력",
+ "card": "intro-enter-word-and-print",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "80.7",
+  "submissions": "10739"
+ },
+ "sample_count": 2,
+ "statement_len": 39,
+ "fetched_at": "2026-09-23",
+ "statement": "문자열 $S$를 하나 입력받아 그대로 출력하는 프로그램을 작성해주세요.",
+ "input_spec": "첫 번째 줄에는 $S$가 주어집니다. 문자열 $S$는 알파벳으로만 이루어져 있다고 가정해도 좋습니다.",
+ "output_spec": "입력받은 문자열을 출력합니다.",
+ "constraints": "$1 \\le \\texttt{문자열 } S \\texttt{의 길이} \\le 100$",
+ "samples": [
+  {
+   "in": "caT\n",
+   "out": "caT\n"
+  },
+  {
+   "in": "AppLe\n",
+   "out": "AppLe\n"
+  }
+ ]
+}

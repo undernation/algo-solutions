@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "945",
+ "title": "인접하지 않은 2개의 수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-two-non-adjacent-numbers/description",
+ "alias": "two-non-adjacent-numbers",
+ "pid": 945,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 I",
+ "lesson": "자리 수 단위로 완전탐색",
+ "card": "challenge-two-non-adjacent-numbers",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "71.0",
+  "submissions": "3395"
+ },
+ "sample_count": 1,
+ "statement_len": 153,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 정수 $A_1, A_2, \\dots, A_N$이 주어졌을 때, 인접하지 않은 $2$개의 수를 적절하게 골라 합이 최대가 되도록 하는 프로그램을 작성해보세요.\n\n여기서 두 수 $A_i$와 $A_j$가 인접하지 않다는 것은 $|i - j| \\ge 2$임을 의미합니다.",
+ "input_spec": "첫 번째 줄에는 $N$이 주어집니다.\n\n두 번째 줄에는 $N$개의 정수 $A_1, A_2, \\dots, A_N$이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 인접하지 않은 두 수의 합 중 최댓값을 출력합니다.",
+ "constraints": "- $3 \\le N \\le 100$\n- $1 \\le A_i \\le 100$ ($1 \\le i \\le N$)\n- 주어지는 모든 수는 정수입니다.",
+ "samples": [
+  {
+   "in": "6\n2 1 6 2 7 8\n",
+   "out": "14\n"
+  }
+ ],
+ "sample_notes": [
+  "세 번째 수 $6$과 여섯 번째 수 $8$을 고르면 합이 $14$가 됩니다. 다섯 번째 수와 여섯 번째 수를 동시에 고를 수는 없기 때문에, $14$보다 더 큰 답을 찾을 수는 없습니다."
+ ]
+}

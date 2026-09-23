@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "98",
+ "title": "구슬의 이동",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-marble-movement/description",
+ "alias": "marble-movement",
+ "pid": 98,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Simulation",
+ "lesson": "격자 안에서 여러 객체를 이동",
+ "card": "challenge-marble-movement",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "45.2",
+  "submissions": "1548"
+ },
+ "sample_count": 2,
+ "statement_len": 1456,
+ "fetched_at": "2026-09-23",
+ "statement": "$M$개의 구슬이 $N \\times N$ 격자 안에 놓여져 있고, 격자는 벽으로 둘러싸여 있습니다. 각 구슬은 일정 속도를 갖고 정해진 방향으로 움직이고 있습니다. 그림에서 나타나는 숫자는 각 구슬마다 $1$초에 몇 칸을 움직이는지를 표시한 것입니다.\n\n![](https://contents.codetree.ai/problems/98/images/problems-b4188cc2-6d8f-4438-b011-e9eeba41ae1a.png)\n\n구슬이 벽에 부딪히면 움직이는 방향이 반대로 뒤집혀 동일한 속도로 움직이는 것을 반복합니다. 이때 방향을 바꾸는 데에는 시간이 전혀 소요되지 않습니다.\n\n![](https://contents.codetree.ai/problems/98/images/problems-1ba076a2-413e-4b70-95a1-0b3ee4bd4414.png)\n\n위의 그림을 예로 1초 뒤의 모습을 그려보면 다음과 같습니다.\n\n![](https://contents.codetree.ai/problems/98/images/problems-a1261a75-32da-4650-923c-2eef356977d0.png)\n\n매 초마다 구슬들은 움직이게 되고, 움직이고 난 후 같은 위치에 여러 구슬이 위치하게 될 수도 있습니다. 만약 동일한 위치에 구슬이 $K$개 이하라면 문제 없이 그 다음 과정을 진행하게 됩니다.  하지만 만약 $K$개가 넘는 구슬이 같은 칸에 위치하게 된다면, 우선순위가 높은 구슬 $K$개만 살아남고 나머지 구슬들은 전부 사라지게 됩니다. 여기서 우선순위가 높다는 말은, 구슬의 속도가 빠른 구슬일수록 우선순위가 높으며 구슬의 속도가 일치할 경우에는 구슬의 번호가 더 큰 구슬이 우선순위가 높습니다.\n\n다음 그림을 예로 들어보겠습니다.\n![](https://contents.codetree.ai/problems/98/images/problems-b7b5d8ae-2a30-42d6-b584-63fdfb4be56e.png)\n\n$K=2$라 했을 때 $1$초 뒤에는 세 구슬이 같은 위치에 있게 되고 이때 우선순위가 가장 높은 $2$번 구슬과 그 다음으로 우선순위가 높은 $3$번 구슬만이 살아남게 됩니다.\n![](https://contents.codetree.ai/problems/98/images/problems-080f912c-5db8-4410-a0e8-ed510a8f8a88.png)\n\n참고로, 시작시점으로부터 정수시간만큼 지난 경우에만 위 논리대로 구슬의 충돌을 따집니다. 예를 들어, 속도계산에 근거해서 $t=1.5s$ 시점에 부딪히게되는 경우가 있더라도 충돌이 아닌 것으로 간주합니다.\n\n그리고 소멸은 충돌 그 즉시 일어납니다. 즉, 마지막 그림처럼 $t=1s$에 충돌하면, 이 시점에 이미 살아남은 구슬의 수는 두 개가 됩니다\n\n각 구슬의 초기상태가 주어졌을 때, $T$초가 지난 이후에도 여전히 격자 안에 남아있는 구슬의 개수를 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 격자의 크기를 나타내는 $N$과 구슬의 개수를 나타내는 $M$, 시간 $T$, 그리고 각 칸에 살아남을 수 있는 최대 구슬 수를 의미하는 $K$가 각각 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터는 $M$개의 줄에 걸쳐 구슬의 정보 $(r, c, d, v)$가 공백을 사이에 두고 주어집니다. 각 구슬이 $r$행 $c$열에서 $d$방향으로 속도 $v$로 이동중이라는 의미이며, $d$는 위, 아래, 오른쪽, 왼쪽을 의미하는 `U`, `D`, `R`, `L` $4$개의 문자 중 하나가 주어집니다. 속도가 $v$라는 의미는 $1$초에 $v$칸만큼 이동한다는 뜻입니다. 번호는 정보가 따로 주어지진 않고 입력된 순서대로 부여됩니다. 즉 첫 번째로 입력된 구슬은 $1$, $i$번째로 입력된 구슬은 $i$입니다.",
+ "output_spec": "$T$초 후에도 여전히 남아 있는 구슬의 수를 출력합니다.",
+ "constraints": "- $2 \\le N \\le 50$\n- $1 \\le M \\le N \\times N$\n- $1 \\le T \\le 100$\n- $1 \\le K \\le M$\n- $1 \\le r \\le N$\n- $1 \\le c \\le N$\n- $1 \\le v \\le 10$\n- $d \\in \\{\\texttt{U}, \\texttt{D}, \\texttt{R}, \\texttt{L}\\}$\n- 초기 구슬의 위치는 서로 다릅니다.",
+ "samples": [
+  {
+   "in": "4 5 1 1\n1 2 L 3\n2 3 U 2\n3 1 R 4\n3 4 D 1\n4 2 U 3\n",
+   "out": "5\n"
+  },
+  {
+   "in": "4 3 1 2\n1 4 D 1\n2 1 R 3\n3 4 U 1\n",
+   "out": "2\n"
+  }
+ ]
+}

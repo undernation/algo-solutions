@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "930",
+ "title": "$1 \\times 3$ 안의 최대 동전 수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-best-place-of-13/description",
+ "alias": "best-place-of-13",
+ "pid": 930,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 I",
+ "lesson": "자리 수 단위로 완전탐색",
+ "card": "intro-best-place-of-13",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "82.3",
+  "submissions": "3732"
+ },
+ "sample_count": 2,
+ "statement_len": 259,
+ "fetched_at": "2026-09-23",
+ "statement": "$N \\times N$ 크기의 격자 정보가 주어집니다. 이때 해당 위치에 동전이 있다면 $1$, 없다면 $0$이 주어집니다. $N \\times N$ 격자를 벗어나지 않도록 $1 \\times 3$ 크기의 직사각형을 적절하게 잘 잡아서 해당 범위 안에 들어 있는 동전의 개수를 최대로 하는 프로그램을 작성해보세요. 단, $1 \\times 3$ 크기의 직사각형은 세로로는 길이 $1$, 가로로는 길이 $3$으로만 이루어지게 잡아야 하며, 회전시킬 수 없음에 유의합니다.",
+ "input_spec": "첫 번째 줄에는 격자의 크기를 나타내는 $N$이 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 격자에 대한 정보가 주어집니다. 그중 $i$번째 줄에는 $i$번째 행에 해당하는 $N$개의 정수가 공백을 사이에 두고 주어지며, 각 정수는 $0$ 또는 $1$입니다. ($1 \\le i \\le N$)",
+ "output_spec": "첫 번째 줄에 $N \\times N$ 격자를 벗어나지 않으면서 $1 \\times 3$ 크기의 직사각형 안에 들어올 수 있는 동전의 최대 개수를 출력합니다.",
+ "constraints": "- $3 \\le N \\le 20$",
+ "samples": [
+  {
+   "in": "3\n1 0 1\n0 1 0\n0 0 0\n",
+   "out": "2\n"
+  },
+  {
+   "in": "5\n0 0 0 1 1\n1 0 1 1 1\n0 1 0 1 0\n0 1 0 1 0\n0 0 0 1 1\n",
+   "out": "3\n"
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "733",
+ "title": "출력결과 51",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201727/description",
+ "alias": "reading-k201727",
+ "pid": 733,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "함수",
+ "lesson": "값을 반환하는 함수",
+ "card": "challenge-reading-k201727",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "45.1",
+  "submissions": "6146"
+ },
+ "sample_count": 0,
+ "statement_len": 898,
+ "fetched_at": "2026-09-23",
+ "statement": "주어진 `Lee`함수에 대하여, `Lee(654321) + Lee(123345) + Lee(442211) + Lee(202104)`의 값은 무엇인가?\n\n## Python3 코드\n```python\ndef Lee(x):\n    trigger = 10\n    while x:\n        if x % 10 > trigger:\n            return 0\n        trigger = x % 10\n        x //= 10\n    return 1\n```\n\n## C/C++ 코드\n\n```cpp\nint Lee(int x) \n{\n    int last = 10; \n    while (x){\n        if (x % 10 > last) return 0; \n        last = x % 10;\n        x /= 10;\n    }\n    return 1; \n}\n```\n\n## Java 코드\n\n```java\nint Lee(int x) \n{\n    int last = 10; \n    while (x > 0){\n        if (x % 10 > last) return 0; \n        last = x % 10;\n        x /= 10;\n    }\n    return 1; \n}\n```\n\n## JavaScript 코드\n```JavaScript\nfunction Lee(x) {\n    let trigger = 10;\n    while (x) {\n        if (x % 10 > trigger) {\n            return 0;\n        }\n        trigger = x % 10;\n        x = parseInt(x / 10);\n    }\n    return 1;\n}\n```\n\n**보기** — 하나 고르기\n\n1. 0\n2. 1\n3. 2\n4. 3\n5. 4"
+}

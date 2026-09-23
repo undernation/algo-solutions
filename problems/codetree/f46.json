@@ -1,0 +1,39 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f46",
+ "title": "전투 로봇",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/fighting-robot/description",
+ "alias": "fighting-robot",
+ "pid": 46,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2018 하반기 오후 2번 문제",
+ "level": "L13",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "48.6",
+  "submissions": "1538"
+ },
+ "sample_count": 2,
+ "statement_len": 1707,
+ "fetched_at": "2026-09-23",
+ "statement": "$n \\times n$ 격자판에 $m$개의 몬스터와 하나의 전투로봇이 주어집니다. 한 칸에는 몬스터가 최대 하나만 존재할 수 있습니다.\n\n전투로봇과 몬스터 모두 자연수인 레벨을 가지고 있습니다. 초기의 전투로봇의 레벨은 $2$이고, 전투로봇은 $1$초에 상하좌우로 인접한 한 칸씩 이동합니다.\n\n전투로봇은 자신의 레벨보다 큰 몬스터가 있는 칸은 지나칠 수 없고, 나머지 칸은 모두 지날 수 있습니다. 전투로봇은 자신의 레벨보다 낮은 몬스터만 없앨 수 있습니다. 즉 레벨이 같은 몬스터는 없애지는 못하지만, 해당 칸을 지나칠 수는 있습니다.\n\n전투로봇이 어디로 이동할지 정하는 규칙은 다음과 같습니다.\n\n+ 없앨 수 있는 몬스터가 있다면 해당 몬스터를 없애러 갑니다.\n\n+ 없앨 수 있는 몬스터가 하나 이상이라면, 거리가 가장 가까운 몬스터를 없애러 갑니다.\n\n  + 거리는 해당 칸으로 이동할 때 지나야하는 칸의 개수의 최솟값을 뜻합니다.\n\n  + 가장 가까운 거리의 없앨 수 있는 몬스터가 하나 이상이라면 가장 위에 존재하는 몬스터를, 가장 위에 존재하는 몬스터가 여럿이라면 가장 왼쪽에 존재하는 몬스터부터 없앱니다.\n\n+ 없앨 수 있는 몬스터가 없다면 일을 끝냅니다.\n\n전투로봇이 한 칸 이동하는데에는 $1$초가 걸리고, 몬스터를 없애는 시간은 없다고 가정합니다. 즉 전투로봇이 목표하는 몬스터가 있는 칸에 도달하면 바로 몬스터가 없어집니다. 몬스터를 없애면 해당 칸은 빈칸이 됩니다.\n\n전투 로봇은 본인의 레벨과 같은 수의 몬스터를 없앨 때마다 레벨이 상승합니다. 예를 들어 레벨이 $3$인 전투 로봇은 $3$개의 몬스터를 없애면 레벨이 상승합니다.\n\n다음과 같이 전투 로봇과 몬스터가 있다면 다음과 같이 진행됩니다.\n\n<p align=\"center\">\n<img width=\"450\" height=\"400\" src=\"https://contents.codetree.ai/problems/132/images/9be6b0be-b67d-4894-a719-97d424c9557c.png\">\n</p>\n\n<p align=\"center\">\n<img width=\"450\" height=\"400\" src=\"https://contents.codetree.ai/problems/132/images/6ec4a109-7049-4fa7-a201-dbda0654e609.png\">\n</p>\n\n<p align=\"center\">\n<img width=\"450\" height=\"400\" src=\"https://contents.codetree.ai/problems/132/images/5a213730-f43d-41fb-a26c-a78c9bd98e21.png\">\n</p>\n\n<p align=\"center\">\n<img width=\"450\" height=\"400\" src=\"https://contents.codetree.ai/problems/132/images/69dc8637-0819-477a-ad15-d207c96dbc1f.png\">\n</p>\n\n<p align=\"center\">\n<img width=\"450\" height=\"400\" src=\"https://contents.codetree.ai/problems/132/images/830f708c-fdc7-4eb7-bef9-dbbe2dce4fb3.png\">\n</p>\n\n\n전투로봇이 일을 종료하기까지 총 $17$초가 걸립니다.\n\n공간에 있는 몬스터와 전투로봇의 정보가 주어질 때, 전투 로봇이 일을 끝내기 전까지 걸린 시간을 출력하세요.",
+ "input_spec": "첫 번째 줄에 격자판의 크기를 의미하는 정수 $n$이 주어집니다.\n\n두 번째 줄부터 $(n+1)$번째 줄까지 공간에 대한 정보가 공백을 사이에 두고 주어집니다. $0$은 빈 곳을 의미하며, $1$부터 $6$까지는 몬스터가 존재하며, 적힌 수는 해당 몬스터의 레벨을 의미합니다. $9$는 전투로봇을 의미합니다. 이외의 입력은 주어지지 않습니다.\n\n전투로봇은 무조건 한 곳에 위치한다고 가정해도 좋습니다.",
+ "output_spec": "전투로봇이 일을 끝내기 전까지 걸린 시간을 출력하세요.",
+ "constraints": "- $2 \\le n \\le 20$",
+ "samples": [
+  {
+   "in": "5\n0 0 0 0 0\n2 0 0 4 0\n0 0 9 0 0\n0 0 0 0 0\n1 0 0 4 1\n",
+   "out": "17\n"
+  },
+  {
+   "in": "3\n0 1 1\n4 4 4\n0 9 0\n",
+   "out": "0\n"
+  }
+ ]
+}

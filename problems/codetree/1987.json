@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1987",
+ "title": "위상정렬 개수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-num-of-topological-sort/description",
+ "alias": "num-of-topological-sort",
+ "pid": 1987,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 알고리즘",
+ "lesson": "Topological Sort",
+ "card": "challenge-num-of-topological-sort",
+ "card_type": "Problem",
+ "level": "Hard",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "36.4",
+  "submissions": "1920"
+ },
+ "sample_count": 0,
+ "statement_len": 224,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 그래프에서 가능한 서로 다른 위상정렬 순서는 몇 가지 일까요?\n\n![](https://contents.codetree.ai/problem_factory/images/704aadb9-d45d-4b7e-aeae-d35e5e650ad5.webp)\n\n**보기** — 하나 고르기\n\n1. `0`\n2. `1`\n3. `2`\n4. `6`\n5. `12`\n6. `24`\n7. `48`\n8. `72`\n9. `108`"
+}

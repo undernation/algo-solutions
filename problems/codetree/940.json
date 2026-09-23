@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "940",
+ "title": "아름다운 수열 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-beautiful-sequence-2/description",
+ "alias": "beautiful-sequence-2",
+ "pid": 940,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 I",
+ "lesson": "구간 단위로 완전탐색",
+ "card": "challenge-beautiful-sequence-2",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "52.6",
+  "submissions": "3289"
+ },
+ "sample_count": 2,
+ "statement_len": 314,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 정수로 이루어진 수열 $A$와 $M$개의 정수로 이루어진 수열 $B$가 주어집니다. 수열 $B$의 각 원소들의 순서를 바꿔 나오는 수열을 아름다운 수열이라고 합니다. 수열 $A$에서 길이가 $M$인 연속 부분 수열들 중 아름다운 수열의 수를 세는 프로그램을 작성해보세요.\n\n예를 들어 수열 $B$를 [$4$, $6$, $7$]이라 했을 때 [$4$, $6$, $7$], [$4$, $7$, $6$], [$6$, $4$, $7$], [$6$, $7$, $4$], [$7$, $4$, $6$], [$7$, $6$, $4$]는 모두 아름다운 수열이 됩니다.",
+ "input_spec": "첫 번째 줄에는 $N$, $M$이 공백을 사이에 두고 주어집니다.\n\n두 번째 줄에는 수열 $A$의 원소 $A_1$, $A_2$, $\\dots$, $A_N$이 공백을 사이에 두고 주어집니다.\n\n세 번째 줄에는 수열 $B$의 원소 $B_1$, $B_2$, $\\dots$, $B_M$이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 수열 $A$의 연속 부분 수열들 중 아름다운 수열의 수를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le M \\le 100$\n- $1 \\le A_i \\le 100$ ($1 \\le i \\le N$)\n- $1 \\le B_i \\le 100$ ($1 \\le i \\le M$)\n- $N$, $M$, $A_i$, $B_i$는 모두 정수입니다.",
+ "samples": [
+  {
+   "in": "8 3\n2 4 6 7 5 7 6 4\n4 6 7\n",
+   "out": "2\n"
+  },
+  {
+   "in": "5 3\n4 5 4 4 5\n4 5 4\n",
+   "out": "3\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 예제에서 수열 $A$의 연속 부분 수열 중 아름다운 수열은 [$4$, $6$, $7$], [$7$, $6$, $4$] 총 $2$개가 있습니다.",
+  ""
+ ]
+}

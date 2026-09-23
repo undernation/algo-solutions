@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "911",
+ "title": "2진수로 변환하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-convert-to-binary/description",
+ "alias": "convert-to-binary",
+ "pid": 911,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 I",
+ "lesson": "Notation",
+ "card": "intro-convert-to-binary",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "69.7",
+  "submissions": "5256"
+ },
+ "sample_count": 1,
+ "statement_len": 65,
+ "fetched_at": "2026-09-23",
+ "statement": "십진수 $N$이 주어지면 $0$과 $1$로만 이루어진 $2$진수로 그 수를 변환하여 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 정수 $N$이 주어집니다.",
+ "output_spec": "첫 번째 줄에 주어진 십진수를 $2$진수로 변환한 결과를 공백없이 출력합니다.",
+ "constraints": "- $0 \\le N \\le 100\\,000$",
+ "samples": [
+  {
+   "in": "29\n",
+   "out": "11101\n"
+  }
+ ],
+ "sample_notes": [
+  "예제에서 입력으로 주어진 수 $29$를 $2$진수로 변환하면 $11101$이 됩니다.\n\n$1 \\times 2^4 + 1 \\times 2^3 + 1 \\times 2^2 + 0 \\times 2^1 + 1 \\times 2^0 = 16 + 8 + 4 + 1 = 29$"
+ ]
+}

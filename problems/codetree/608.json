@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "608",
+ "title": "좀 더 빠르게!",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-ga-uf-effective/description",
+ "alias": "ga-uf-effective",
+ "pid": 608,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 알고리즘",
+ "lesson": "Kruskal",
+ "card": "intro-ga-uf-effective",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Multiple choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "43.7",
+  "submissions": "2263"
+ },
+ "sample_count": 0,
+ "statement_len": 658,
+ "fetched_at": "2026-09-23",
+ "statement": "Union-Find 알고리즘은 최적화가 되지 않은 기본 구현도 훌륭하지만, 코드 몇 줄만 수정해도 효율성을 크게 높일 수 있습니다.\n\n아래 코드를 보고, 올바른 선택지를 모두 골라보세요.\n\n```js\nfunction init(size)\n  set uf = [0] with size\n  for i = 1 ... size\n    uf[i] = i\n  return uf\n\nfunction find(x)\n  if uf[x] == x\n    return x\n  return find(uf[x])\n  \nfunction union(x, y)\n  set X = find(x), Y = find(y)\n  uf[X] = Y\n```\n\n**보기** — 모두 고르기\n\n1. 코드의 `init` 부분을 바꿔야 한다.\n2. `find` 함수에서 `return find(uf[x])`를 `uf[x]에 root node`를 저장한 뒤 반환하는 식으로 바꿔야 한다.\n3. `union` 함수에서 `uf[X] = Y`를 `uf[X] = find(uf, Y)`로 바꿔야 한다.\n4. 개선되지 않은 union-find 방법의 `find`함수의 시간복잡도는 최악에 $\\mathcal{O}(N)$이다.\n5. 개선된 union-find 방법의 시간복잡도는 최악의 상황에서도 $\\mathcal{O}(\\log{N})$이다."
+}

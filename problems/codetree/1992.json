@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1992",
+ "title": "십진수와 이진수 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-decimal-and-binary-number-2/description",
+ "alias": "decimal-and-binary-number-2",
+ "pid": 1992,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 I",
+ "lesson": "Notation",
+ "card": "challenge-decimal-and-binary-number-2",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "91.4",
+  "submissions": "2766"
+ },
+ "sample_count": 1,
+ "statement_len": 88,
+ "fetched_at": "2026-09-23",
+ "statement": "이진수로 표현된 자연수 $N$이 주어집니다. 이 수를 십진수로 바꿔 $17$배를 한 뒤, 그 결과를 다시 이진수로 나타내어 출력하는 프로그램을 작성해 보세요.",
+ "input_spec": "첫 번째 줄에 이진수로 표현된 수 $N$이 공백 없이 주어집니다.",
+ "output_spec": "첫 번째 줄에 $17$배 한 결과를 이진수로 공백 없이 출력합니다.",
+ "constraints": "- $N$을 이진수로 나타낸 자리수는 $1$자리 이상 $10$자리 이하입니다.\n- $N$의 이진수 표현은 `0`과 `1`로만 이루어지며, 맨 앞자리는 `0`이 아닙니다.",
+ "samples": [
+  {
+   "in": "10011\n",
+   "out": "101000011\n"
+  }
+ ],
+ "sample_notes": [
+  "`10011`을 십진수로 표현하면 $19$입니다. $19 \\times 17 = 323$이므로, $323$을 다시 이진수로 표현한 `101000011`을 출력합니다."
+ ]
+}

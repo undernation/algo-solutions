@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "114",
+ "title": "돌 잘 치우기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-clear-stones-well/description",
+ "alias": "clear-stones-well",
+ "pid": 114,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "BFS",
+ "lesson": "BFS 탐색",
+ "card": "challenge-clear-stones-well",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "54.0",
+  "submissions": "2669"
+ },
+ "sample_count": 2,
+ "statement_len": 223,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $0$, $1$로만 이루어진 $N \\times N$ 격자가 주어졌습니다.\n\n$1$이 돌을 나타낸다 할 때, 주어진 돌 중 $M$개의 돌만 적절하게 치워 $K$개의 시작점으로부터 상하좌우 인접한 곳으로만 이동하여 도달 가능한 칸의 수를 최대로 하는 프로그램을 작성해보세요.\n\n정수 $0$은 해당 칸이 이동할 수 있는 곳임을, 정수 $1$은 돌이 있어 해당 칸이 이동할 수 없는 곳임을 의미합니다.",
+ "input_spec": "첫 번째 줄에는 격자의 크기를 나타내는 $N$과 시작점의 수를 나타내는 $K$, 그리고 꼭 치워야 할 돌의 개수 $M$이 각각 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터는 $N$개의 줄에 걸쳐 각 행에 해당하는 $N$개의 정수가 순서대로 공백을 사이에 두고 주어집니다.\n\n그 다음 줄부터는 $K$개의 줄에 걸쳐 각 시작점의 위치 $(r,\\ c)$가 공백을 사이에 두고 주어집니다. $(r,\\ c)$는 $r$행 $c$열 위치가 시작점 중 하나임을 의미합니다.",
+ "output_spec": "주어진 돌 중 $M$개의 돌을 적절하게 치웠을 때 시작지점으로부터 방문이 가능한 서로 다른 칸의 수의 최댓값을 출력합니다.",
+ "constraints": "- $3 \\le N \\le 100$\n- $1 \\le K \\le N \\times N$\n- $0 \\le M \\le \\texttt{초기 입력에서 돌의 개수} \\le 8$\n- $\\texttt{격자 값} \\in \\{0, 1\\}$\n- $1 \\le r,\\ c \\le N$\n- 모든 시작점 위치의 격자 값은 $0$이며, 시작점끼리 서로 겹치지 않습니다.",
+ "samples": [
+  {
+   "in": "3 2 1\n0 0 0\n0 0 1\n1 0 0\n1 1\n1 2\n",
+   "out": "8\n"
+  },
+  {
+   "in": "4 2 2\n0 1 1 0\n0 1 1 0\n0 1 1 1\n0 1 0 0\n1 4\n4 4\n",
+   "out": "10\n"
+  }
+ ]
+}

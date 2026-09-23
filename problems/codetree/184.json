@@ -1,0 +1,43 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "184",
+ "title": "배열 놀이",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-play-with-array/description",
+ "alias": "play-with-array",
+ "pid": 184,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "1차원 배열",
+ "lesson": "탐색",
+ "card": "challenge-play-with-array",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "50.0",
+  "submissions": "5194"
+ },
+ "sample_count": 2,
+ "statement_len": 354,
+ "fetched_at": "2026-09-23",
+ "statement": "$ N $ 개의 원소와 $ Q $ 개의 질의가 주어집니다.\n\n하나의 질의는 다음 세 종류 중 하나입니다:\n\n+ \"$1$ $a$\"  \n  + $a$번째 원소를 출력합니다.\n+ \"$2$ $b$\"  \n  + $ N $ 개의 원소 중에 값이 $b$인 원소를 찾아, 그 원소가 몇 번째 원소인지 출력합니다.\n  + 그러한 원소가 여러 개라면, 그 중에서 index가 제일 작은 원소의 것을 출력합니다.\n  + 그러한 원소가 없다면, $0$을 출력합니다.\n+ \"$3$ $s$ $e$\"  \n  + $s$번째 원소부터 $e$번째 원소까지 각 원소의 값을 공백으로 구분하여 차례대로 출력합니다.\n\n각 질의를 차례대로 수행하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 줄에 두 정수 $N$과 $Q$가 주어집니다.\n\n그다음 줄에 $N$ 개의 원소의 값이 차례대로 공백으로 구분되어 주어집니다.\n\n그다음 줄부터 $Q$ 개의 줄에 걸쳐, $Q$ 개의 질의가 한 줄에 하나씩 차례대로 주어집니다.  \n이 중 $i$번째 줄에는 $i$번째 질의가 지문과 동일한 형식으로 주어집니다.",
+ "output_spec": "첫 줄부터 $Q$ 개의 줄에 걸쳐, $Q$ 개의 질의에 대한 결과를 한 줄에 하나씩 차례대로 출력합니다.",
+ "constraints": "- $1 \\le N, Q\\le 100$\n- $1 \\le a \\le N$\n- $1 \\le b \\le 100$\n- $1 \\le s \\le e \\le N$\n- $N$ 개의 원소의 값은 모두 $1$ 이상 $100$ 이하입니다.",
+ "hint": "문제에서 주어지는 입력을 한번에 받지 않고  \n질의마다 입력받고, 출력하는 것을 반복하여도 올바른 출력 결과가 나온다면 맞는 코드입니다.",
+ "samples": [
+  {
+   "in": "3 3\n1 8 5\n1 1\n2 5\n3 1 2\n",
+   "out": "1\n3\n1 8\n"
+  },
+  {
+   "in": "5 5\n3 2 4 5 4\n1 4\n2 4\n2 5\n3 1 5\n3 2 5\n",
+   "out": "5\n3\n4\n3 2 4 5 4\n2 4 5 4\n"
+  }
+ ]
+}

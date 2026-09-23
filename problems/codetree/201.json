@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "201",
+ "title": "점수 입출력",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-enter-int-and-print-score/description",
+ "alias": "enter-int-and-print-score",
+ "pid": 201,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "입출력",
+ "lesson": "정수 입력",
+ "card": "challenge-enter-int-and-print-score",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "79.9",
+  "submissions": "29355"
+ },
+ "sample_count": 1,
+ "statement_len": 42,
+ "fetched_at": "2026-09-23",
+ "statement": "점수를 입력받아 출력 예시와 같은 포맷으로 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 점수에 해당하는 정수 $N$이 주어집니다.",
+ "output_spec": "입력받은 점수 $N$에 대하여 `Your score is N point.` 와 같은 형식으로 출력하세요.",
+ "constraints": "- $1 \\le N \\le 1\\,000$",
+ "samples": [
+  {
+   "in": "143\n",
+   "out": "Your score is 143 point.\n"
+  }
+ ]
+}

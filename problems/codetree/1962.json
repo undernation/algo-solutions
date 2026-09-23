@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1962",
+ "title": "이진 탐색 트리의 삭제",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-bst-delete/description",
+ "alias": "bst-delete",
+ "pid": 1962,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "트리",
+ "lesson": "이진 탐색 트리",
+ "card": "intro-bst-delete",
+ "card_type": "Introduction",
+ "level": "Hard",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "50.2",
+  "submissions": "3019"
+ },
+ "sample_count": 0,
+ "statement_len": 961,
+ "fetched_at": "2026-09-23",
+ "statement": "다음은 이진 탐색 트리에서의 삭제를 진행했을 때의 코드입니다. 빈 칸에 알맞은 코드를 넣어주세요.  \n단, 값 $x$는 이진 탐색 트리에 존재한다고 가정해도 좋습니다.\n\n```jsx\nfunction bst.search(x)\n    set node = bst.root                     \n    while node != null and node.value != x \n        if node.value > x                \n            node = node.left           \n        else                               \n            node = node.right           \n    \n    return node  \n\nfunction bst.minimum(node)\n    while node.left != null\n        node = (1)\n    return node\n\nfunction bst.delete(x)\n    set node = bst.search(x)\n    \n    if node.left == null\n        move((2), node)\n    else if node.right == null\n        move((3), node)\n    else\n        set succ = bst.minimum((4))\n        \n        if succ == node.right\n            move((5), node)\n        else\n            node.value = succ.value\n            move((6), succ)\n\n```\n\n**보기** — 순서대로 6개 고르기\n\n1. `node`\n2. `node.left`\n3. `node.right`\n4. `node.value`\n5. `succ.left`\n6. `succ.right`"
+}

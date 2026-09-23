@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "430",
+ "title": "대입과 조건문",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-basic-time-complexity/description",
+ "alias": "basic-time-complexity",
+ "pid": 430,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "시간, 공간복잡도",
+ "lesson": "시간복잡도의 정의",
+ "card": "intro-basic-time-complexity",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "82.4",
+  "submissions": "5211"
+ },
+ "sample_count": 0,
+ "statement_len": 266,
+ "fetched_at": "2026-09-23",
+ "statement": "다음은 간단한 조건문이 포함된 코드입니다.\n이 코드의 시간복잡도는 무엇일까요?\n\n\n\n```js\nfunction solution()\n  set data = [] * 3\n  set data[0] = 12\n  set data[1] = 15\n  if data[0] < data[1]\n    data[2] = 20\n```\n\n**보기** — 하나 고르기\n\n1. $$O(1)$$\n2. $$O(\\log N)$$\n3. $$O(N)$$\n4. $$O(N \\log N)$$\n5. $$O(N^2)$$"
+}

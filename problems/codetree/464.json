@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "464",
+ "title": "데이터가 같은 두 원형 리스트",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-two-circular-linked-lists/description",
+ "alias": "two-circular-linked-lists",
+ "pid": 464,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "배열, 연결 리스트",
+ "lesson": "원형 연결 리스트",
+ "card": "challenge-two-circular-linked-lists",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "56.4",
+  "submissions": "2531"
+ },
+ "sample_count": 0,
+ "statement_len": 902,
+ "fetched_at": "2026-09-23",
+ "statement": "두 개의 원형 연결 리스트가 같은 관계에 있는지 확인하고자 합니다. 여기서 '같은 관계'란 두 리스트가 정확히 같은 순서는 아니더라도, 어느 한 지점에서 시작하여 모든 값을 탐색했을 때 동일한 순서가 나타나는 경우를 의미합니다. \n\n예를 들어, 첫 번째 리스트가 $head$를 기준으로 [$4$, $5$, $6$, $7$, $8$, $9$]라는 순서를 가지고 있고, 두 번째 리스트가 [$7$, $8$, $9$, $4$, $5$, $6$]이라는 순서를 가지고 있다면, 이 두 리스트는 같은 관계에 있다고 할 수 있습니다. \n\n이러한 두 원형 리스트가 주어졌을 때, 두 리스트가 같은 관계인지 확인하는 코드를 작성하려고 합니다. 단, 문제를 단순화하기 위해 다음과 같은 조건을 가정합니다.\n\n- 리스트 내의 모든 값은 서로 다릅니다.\n- 두 리스트를 구성하는 원소들의 종류는 완전히 동일합니다.\n\n이 문제를 해결하는 코드를 작성해보세요.\n\n```jsx\nfunction solution(CLL1, CLL2)\n  set cnode1 = CLL1.(1)\n  set cnode2 = CLL2.(2)\n  while cnode2.data != (3)\n    cnode2 = cnode2.next\n  \n  while true\n    if cnode1.data != (4)\n      return (5)\n\n    cnode1 = cnode1.next\n    cnode2 = cnode2.next\n\n    if cnode1 == (6)\n      break\n      \n  return true\n```\n\n**보기** — 순서대로 6개 고르기\n\n1. `head`\n2. `next`\n3. `cnode1.data`\n4. `cnode2.data`\n5. `CLL1.head`\n6. `CLL2.head`\n7. `true`\n8. `false`"
+}

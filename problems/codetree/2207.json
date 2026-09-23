@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2207",
+ "title": "최대 직사각형 합",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-max-rect-sum-in-grid/description",
+ "alias": "max-rect-sum-in-grid",
+ "pid": 2207,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shorten time Technique",
+ "lesson": "Prefix Sum",
+ "card": "challenge-max-rect-sum-in-grid",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 3초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 3.0
+ },
+ "stats": {
+  "accept_rate": "37.7",
+  "submissions": "763"
+ },
+ "sample_count": 1,
+ "statement_len": 139,
+ "fetched_at": "2026-09-23",
+ "statement": "$-1\\,000$이상 $1\\,000$이하의 숫자로만 이루어진 $N \\times N$ 크기의 $2$차원 격자 상태가 주어졌을 때, 격자를 벗어나지 않는 직사각형 하나를 적절하게 잡아 사각형 내 숫자들의 합이 최대가 되도록 하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $N$이 주어집니다.\n\n두 번째 줄 부터는 $N$개의 줄에 걸쳐 각 행에 해당하는 $N$개의 숫자가 공백을 두고 차례대로 주어집니다.",
+ "output_spec": "격자를 벗어나지 않는 직사각형 중 사각형 내 숫자들의 합이 최대가 되는 경우의 합을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 300$\n- $-1\\,000 \\le 원소의 크기 \\le 1\\,000$",
+ "samples": [
+  {
+   "in": "3\n1 2 3\n6 -900 7\n7 7 9\n",
+   "out": "23\n"
+  }
+ ],
+ "sample_notes": [
+  "다음과 같이 범위를 잡으면 합이 $23$으로 최대가 됩니다.\n\n\n1 2 3\n\n6 -900 7\n\n**7 7 9**"
+ ]
+}

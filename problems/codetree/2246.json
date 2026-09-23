@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2246",
+ "title": "문자열 순서 바꾸기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-change-order-of-strings/description",
+ "alias": "change-order-of-strings",
+ "pid": 2246,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "입출력",
+ "lesson": "문자, 문자열 입력",
+ "card": "test-change-order-of-strings",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "83.1",
+  "submissions": "16928"
+ },
+ "sample_count": 1,
+ "statement_len": 49,
+ "fetched_at": "2026-09-23",
+ "statement": "문자열 $S$와 문자열 $T$를 입력받아 순서를 바꾸어 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 문자열 $S$가, 두 번째 줄에 문자열 $T$가 차례대로 주어집니다. 단, 문자열 $S$와 $T$는 알파벳 소문자로만 이루어져있다고 가정해도 좋습니다.",
+ "output_spec": "첫 번째 줄에 문자열 $T$를, 두 번째 줄에 문자열 $S$를 출력합니다.",
+ "constraints": "- $1 \\le \\texttt{문자열 S의 길이, T의 길이} \\le 100$",
+ "samples": [
+  {
+   "in": "code\ntree\n",
+   "out": "tree\ncode\n"
+  }
+ ]
+}

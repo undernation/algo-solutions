@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1056",
+ "title": "트리의 지름 3",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-diameter-of-tree-3/description",
+ "alias": "diameter-of-tree-3",
+ "pid": 1056,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Tree",
+ "lesson": "트리",
+ "card": "challenge-diameter-of-tree-3",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 3초 · C++17 3초",
+  "memory": "700 MB",
+  "time_sec": 3.0
+ },
+ "stats": {
+  "accept_rate": "40.2",
+  "submissions": "410"
+ },
+ "sample_count": 2,
+ "statement_len": 124,
+ "fetched_at": "2026-09-23",
+ "statement": "트리에서 가장 먼 두 정점간의 거리를 트리의 지름이라고 합니다.\n\n트리에서 **두 번째로** 먼 두 정점 간의 거리를 구하는 프로그램을 작성해보세요. 만약 그 값이 첫 번째로 먼 정점간의 거리와 같더라도 그대로 출력하세요.",
+ "input_spec": "첫 번째 줄에는 정점의 개수 $N$이 주어집니다.\n\n두 번째 줄부터 $N-1$번째 줄에 각각 걸쳐 간선으로 연결된 두 개의 노드 번호와 두 노드를 연결하는 간선의 길이가 공백을 두고 차례대로 주어집니다.",
+ "output_spec": "첫 번째 줄에 두번째로 먼 두 정점의 거리를 출력합니다.",
+ "constraints": "- $3 \\le N \\le 100\\,000$\n- $1 \\le \\texttt{주어지는 노드 번호} \\le 100\\,000$\n- $1 \\le \\texttt{간선의 길이} \\le 20\\,000$",
+ "samples": [
+  {
+   "in": "7\n1 2 1\n2 3 2\n1 4 3\n1 5 1\n5 6 1\n6 7 1\n",
+   "out": "6\n"
+  },
+  {
+   "in": "3\n1 2 4\n1 3 9\n",
+   "out": "9\n"
+  }
+ ]
+}

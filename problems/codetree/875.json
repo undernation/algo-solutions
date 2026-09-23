@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "875",
+ "title": "총점 비교",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-compare-total-points/description",
+ "alias": "compare-total-points",
+ "pid": 875,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "정렬",
+ "lesson": "객체 정렬",
+ "card": "intro-compare-total-points",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "92.7",
+  "submissions": "3212"
+ },
+ "sample_count": 1,
+ "statement_len": 85,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$명의 학생에 대해 각각 이름과 세 과목의 점수가 주어집니다. 학생들을 세 과목 점수의 총점이 낮은 순으로 정렬하여 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 정수 $N$이 주어집니다.\n\n두 번째 줄부터 $N$개의 줄이 주어지며, 그중 $i$번째 줄에는 $i$번째 학생의 이름과 세 과목의 점수가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "총 $N$개의 줄을 출력합니다.\n\n각 줄에는 학생 한 명의 이름과 세 과목의 점수를 입력에서 주어진 순서 그대로 `이름 점수1 점수2 점수3` 형태로 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $1 \\le N \\le 10$\n- 각 학생의 이름의 길이는 $1$ 이상 $10$ 이하이며, 소문자 알파벳으로만 이루어져 있습니다.\n- 각 과목의 점수는 $1$ 이상 $100$ 이하입니다.\n- 어떤 두 학생의 총점도 서로 다름이 보장됩니다.",
+ "samples": [
+  {
+   "in": "3\nlee 50 60 70\nkim 70 80 70\npark 80 70 55\n",
+   "out": "lee 50 60 70\npark 80 70 55\nkim 70 80 70\n"
+  }
+ ],
+ "sample_notes": [
+  "`lee` 학생의 총점은 $180$, `kim` 학생의 총점은 $220$, `park` 학생의 총점은 $205$점 이므로 `lee`, `park`, `kim` 순이 됩니다."
+ ]
+}

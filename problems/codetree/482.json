@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "482",
+ "title": "시간 측정",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-merge-sort-speed/description",
+ "alias": "merge-sort-speed",
+ "pid": 482,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "정렬",
+ "lesson": "병합 정렬",
+ "card": "challenge-merge-sort-speed",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "49.6",
+  "submissions": "3031"
+ },
+ "sample_count": 0,
+ "statement_len": 320,
+ "fetched_at": "2026-09-23",
+ "statement": "신기한 기계가 하나 있습니다. \n\n이 기계에는 정확히 $128$개의 데이터만 넣을 수 있으며, 이 기계는 데이터가 오름차순으로 정렬된 이후의 결과를 반환해줍니다. \n\n이 기계를 한 번 사용하는데 걸리는 시간은 $20$초라고 합니다.\n\n$256$개의 데이터가 주어졌을 때, 오름차순으로 정렬했을 때의 결과를 앞에서부터 $64$개 구하기 위해 걸리는 시간을 최소로 한다면 몇 초가 소요될까요? 보기중 올바른 것을 골라봅시다.\n\n단, 기계만을 이용하여 문제를 해결해야 합니다.\n\n**보기** — 하나 고르기\n\n1. `0`\n2. `20`\n3. `40`\n4. `60`\n5. `80`"
+}

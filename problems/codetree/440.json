@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "440",
+ "title": "시간복잡도",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-time-complexity-concept/description",
+ "alias": "time-complexity-concept",
+ "pid": 440,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "시간, 공간복잡도",
+ "lesson": "시간복잡도의 정의",
+ "card": "challenge-time-complexity-concept",
+ "card_type": "Problem",
+ "level": "Hard",
+ "ptype": "Multiple choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "36.4",
+  "submissions": "8947"
+ },
+ "sample_count": 0,
+ "statement_len": 341,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 중 시간복잡도에 관한 옳은 것을 모두 고르세요.\n\n**보기** — 모두 고르기\n\n1. $N \\times N$ 크기의 배열의 모든 값을 한번 씩 순회하는 코드의 시간복잡도는 $\\mathcal{O}(N^2)$ 라고 할 수 있다.\n2. $\\mathcal{O}(2^N)$ 코드보다 $\\mathcal{O}(N^2)$ 코드가 더 효율적이다.\n3. $\\mathcal{O}(23N) = \\mathcal{O}(N)$ 이다.\n4. $\\mathcal{O}(N)$ 코드는 $\\mathcal{O}(1)$ 코드보다 정확히 $N$배 만큼 느리다.\n5. $\\mathcal{O}(3^{N+2}) = \\mathcal{O}(3^N)$이다."
+}

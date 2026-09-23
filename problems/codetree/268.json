@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "268",
+ "title": "학점 계산기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-credit-calculator/description",
+ "alias": "credit-calculator",
+ "pid": 268,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "1차원 배열",
+ "lesson": "한 줄에 여러 개 입력",
+ "card": "intro-credit-calculator",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "73.1",
+  "submissions": "6255"
+ },
+ "sample_count": 2,
+ "statement_len": 134,
+ "fetched_at": "2026-09-23",
+ "statement": "과목 수 $N$이 주어집니다. $N$개 과목의 학점을 입력받아서 평균학점을 구하여 출력하고, 평균이 $4.0$ 이상이면 `Perfect`, $3.0$ 이상이면 `Good`, $3.0$ 미만이면 `Poor`를 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 과목의 수 $N$을 정수로 입력받고,\n\n두 번째 줄에는 $N$개의 과목 학점을 공백을 사이에 두고 입력받습니다.",
+ "output_spec": "첫 번째 줄에는 평균학점을 반올림하여 소수 첫째 자리까지 출력하고,\n\n두 번째 줄에는 평균학점에 해당하는 등급을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 5$\n- $0 \\le \\texttt{학점} \\le 4.5$",
+ "samples": [
+  {
+   "in": "4\n3.0 2.8 4.0 3.5\n",
+   "out": "3.3\nGood\n"
+  },
+  {
+   "in": "3\n4.5 3.8 3.9\n",
+   "out": "4.1\nPerfect\n"
+  }
+ ]
+}

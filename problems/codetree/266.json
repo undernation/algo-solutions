@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "266",
+ "title": "특정 수 도달하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-reaching-specific-number/description",
+ "alias": "reaching-specific-number",
+ "pid": 266,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "1차원 배열",
+ "lesson": "한 줄에 여러 개 입력",
+ "card": "intro-reaching-specific-number",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "54.0",
+  "submissions": "8611"
+ },
+ "sample_count": 1,
+ "statement_len": 154,
+ "fetched_at": "2026-09-23",
+ "statement": "$500$ 이하의 정수가 총 $10$번 주어지는데, $250$ 이상의 정수가 주어지면 마지막으로 주어진 수를 제외하고 주어진 모든 정수들의 합계와 평균을 구하는 프로그램을 작성해보세요. 단, $250$ 이상의 정수가 없다면 $10$개의 합계와 평균을 계산하면 됨에 유의합니다.",
+ "input_spec": "첫 번째 줄에 $500$ 이하의 양의 정수 $10$개가 공백을 사이에 두고 반복하여 주어집니다. 단, 주어지는 숫자 중 처음은 무조건 $250$ 미만의 숫자입니다.",
+ "output_spec": "합계와 평균이 공백을 사이에 두고 차례로 출력합니다. 평균은 반올림하여 소수 첫째자리까지 출력합니다.",
+ "constraints": "- $1 \\le \\texttt{주어지는 수} \\le 500$",
+ "samples": [
+  {
+   "in": "4 10 37 53 88 260 67 88 500 400\n",
+   "out": "192 38.4\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 예제에서는 숫자 $260$이 주어지기 전까지의 합과 평균을 구해야 합니다. 따라서 합과 평균 값은 $4+10+37+53+88=192$, $(4+10+37+53+88)/5=38.4$이 됩니다."
+ ]
+}

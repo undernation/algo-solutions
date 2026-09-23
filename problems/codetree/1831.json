@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1831",
+ "title": "행렬로 주어진 간선",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-edge-given-by-matrix/description",
+ "alias": "edge-given-by-matrix",
+ "pid": 1831,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shortest Path",
+ "lesson": "Floyd Warshall",
+ "card": "intro-edge-given-by-matrix",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "67.3",
+  "submissions": "502"
+ },
+ "sample_count": 2,
+ "statement_len": 171,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$ 개의 정점이 존재하는 그래프에서 각 간선의 정보가 행렬로 주어집니다.\n\n행렬에서 $i$ 행의 $j$ 열에 해당하는 정수가 $1$이라면, 정점 $i$에서 정점 $j$로 가는 간선이 놓여있다는 뜻입니다.\n\n모든 정점에 대해서, 서로의 정점으로 도달하는 경로가 있는지 없는지 구하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 정수 $N$이 주어집니다.\n\n두 번째 줄부터 $N$ 개의 줄에 걸쳐 간선의 정보가 행렬로 주어집니다. 각 줄마다 각 행에 해당하는 정보가 공백을 사이에 두고 주어집니다.\n\n행렬의 $i$ 행의 $j$ 열에 해당하는 정수가 $1$이라면, 정점 $i$에서 정점 $j$로 가는 간선이 놓여있다는 뜻이고, $0$이라면, 정점 $i$에서 정점 $j$로 직접 연결된 간선이 없다는 뜻입니다.",
+ "output_spec": "첫 번째 줄부터 $N$개의 줄에 걸쳐 행렬로 표현하는데, 정점 $i$에서 $j$로 가는 경로가 있으면 $i$번째 줄의 $j$번째 수를 $1$로, 없으면 $0$으로 출력합니다. $i$와 $j$가 동일한 곳은 항상 도달이 가능하므로 $1$을 출력합니다.",
+ "constraints": "- $1\\le N\\le100$\n- $\\texttt{행렬의 원소 값} \\in \\{ 0, 1 \\}$",
+ "samples": [
+  {
+   "in": "3\n0 1 0\n0 0 1\n1 0 0\n",
+   "out": "1 1 1\n1 1 1\n1 1 1\n"
+  },
+  {
+   "in": "7\n0 0 0 1 0 0 0\n0 0 0 0 0 0 1\n0 0 0 0 0 0 0\n0 0 0 0 1 1 0\n1 0 0 0 0 0 0\n0 0 0 0 0 0 1\n0 0 1 0 0 0 0\n",
+   "out": "1 0 1 1 1 1 1\n0 1 1 0 0 0 1\n0 0 1 0 0 0 0\n1 0 1 1 1 1 1\n1 0 1 1 1 1 1\n0 0 1 0 0 1 1\n0 0 1 0 0 0 1\n"
+  }
+ ],
+ "sample_notes": [
+  "그래프는 밑의 그림과 같습니다.\n\n![](https://contents.codetree.ai/problems/1831/images/problems-7d6747a4-5eff-444d-a9ba-736f1220eb33.png)",
+  "그래프는 밑의 그림과 같습니다.\n\n![](https://contents.codetree.ai/problems/1831/images/problems-727c8174-80c6-4a42-a11b-6d76f2154d4c.png)"
+ ]
+}

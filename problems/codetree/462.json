@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "462",
+ "title": "원형 연결 리스트의 동작",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-circular-linked-list-working/description",
+ "alias": "circular-linked-list-working",
+ "pid": 462,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "배열, 연결 리스트",
+ "lesson": "원형 연결 리스트",
+ "card": "challenge-circular-linked-list-working",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "81.0",
+  "submissions": "1969"
+ },
+ "sample_count": 0,
+ "statement_len": 452,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 코드의 실행 결과를 작성해보세요. 단, 여기서 CLL은 원형 연결 리스트를 의미합니다. `insert_front` 함수는 연결 리스트의 맨 앞에 노드를 추가하는 함수이며, `insert_end`는 연결 리스트의 맨 뒤에 노드를 추가하는 함수입니다.\n\n```jsx\nfunction solution()\n  set cll = empty CLL\n  cll.insert_front(32)\n  cll.insert_front(15)\n  cll.insert_end(32)\n  cll.insert_end(17)\n  cll.insert_front(14)\n  set cnode = cll.head\n  for i = 1 ... i <= 8\n    print(cnode.data)\n    cnode = cnode.next\n```\n\n**보기** — 순서대로 8개 고르기\n\n1. `14`\n2. `15`\n3. `17`\n4. `32`"
+}

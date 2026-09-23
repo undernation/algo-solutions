@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "92",
+ "title": "주사위 던지기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-roll-a-dice/description",
+ "alias": "roll-a-dice",
+ "pid": 92,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Simulation",
+ "lesson": "격자 안에서 단일 객체를 이동",
+ "card": "challenge-roll-a-dice",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "65.3",
+  "submissions": "1277"
+ },
+ "sample_count": 2,
+ "statement_len": 1665,
+ "fetched_at": "2026-09-23",
+ "statement": "다음과 같이 $6$개의 면으로 이루어져 있는 주사위가 하나 주어집니다.\n\n![](https://contents.codetree.ai/problems/92/images/problems-9a70dd42-a7fb-4128-b430-730e93ea469c.png)\n\n각 면에는 $1$ 이상 $6$ 이하의 숫자가 적혀 있으며, 마주보는 면 끼리 적혀있는 숫자의 합은 $7$이 됩니다.\n\n이때 이 주사위를 위에서 주어진 상태 그대로 $N \\times N$ 크기의 빈 격자판 위의 특정 위치에 올려 놓고, $M$번에 걸쳐 상하좌우 중 한 방향으로 딱 한 칸을 이동하도록 굴리는 것을 반복하려고 합니다. 처음 주사위가 놓여지는 것을 포함하여, 각 주사위가 격자판에 닿을 때마다 격자판에는 해당 위치에 주사위의 아랫면에 적혀있던 숫자가 적히게 됩니다. 이미 해당 위치에 숫자가 적혀 있었더라도, 새로 숫자가 적히게 됩니다. 처음 주사위가 놓여져 있는 방향은, 위의 그림에서 주어진 것과 같습니다. \n\n만약 굴리는 도중 해당 방향으로 주사위를 굴렸을 때 격자 밖으로 벗어나게 되는 경우라면, 주사위를 굴리지 않고 그다음 과정을 수행해야만 합니다.\n\n예를 들어 다음과 같이 $2$행 $3$열에서 주사위를 놓고 시작해보는 경우를 살펴보겠습니다.\n\n![](https://contents.codetree.ai/problems/92/images/problems-61cd5350-dbcd-48b8-a69c-6babc51bcbae.png)\n\n처음 바닥면에는 숫자 $6$이 쓰여져 있으므로, 격자판의 $2$행 $3$열에는 숫자 $6$이 적히게 됩니다.\n\n이제 주사위를 왼쪽, 아래, 오른쪽, 위 순서대로 굴려보겠습니다.\n\n왼쪽으로 굴린 후의 모습은 다음과 같으며, 이때는 주사위의 바닥면에 숫자 $4$가 오게 되므로 격자판의 $2$행 $2$열 위치에 숫자 $4$가 적히게 됩니다.\n\n![](https://contents.codetree.ai/problems/92/images/problems-db2ad168-6440-47e9-a492-8fb071e968a9.png)\n\n마찬가지 방식으로 아래, 오른쪽, 위 순서대로 굴리게 되면, 다음과 같이 주사위와 격자판의 상태가 바뀌게 됩니다.\n\n![](https://contents.codetree.ai/problems/92/images/problems-29e15a5f-2f59-41ef-be27-fad98b9691da.png)\n\n![](https://contents.codetree.ai/problems/92/images/problems-de7da720-6dff-403b-8a37-eb1bd7fd3a6a.png)\n\n![](https://contents.codetree.ai/problems/92/images/problems-3a8e9623-5621-4e90-94bc-094369b65841.png)\n\n이 경우라면 주사위는 굴리는 것을 전부 진행한 이후에 $N \\times N$ 격자판에 써있는 숫자들의 합은 총 $16$이 됩니다.\n\n![](https://contents.codetree.ai/problems/92/images/problems-2987de98-b0b8-48dc-92c5-b040010eaa5e.png)\n\n초기 주사위가 놓여져 있는 위치와 주사위를 굴릴 방향들이 주어졌을 때, 최종적으로 격자판에 적혀있는 숫자의 총합을 계산하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 격자의 크기를 나타내는 $N$과 주사위를 굴릴 횟수 $M$, 그리고 초기 주사위의 위치 $r, c$가 각각 공백을 사이에 두고 주어집니다. $r, c$는 처음에 주사위가 $r$행 $c$열에 놓여있음을 의미합니다. \n\n두 번째 줄에는 방향 정보를 나타내는 $M$개의 문자가 공백을 사이에 두고 주어집니다. 각 문자는 `L`, `R`, `U`, `D` 중 하나이며 순서대로 왼쪽, 오른쪽, 위, 아래 방향을 의미합니다.",
+ "output_spec": "주사위를 모두 굴린 이후에 격자판에 적혀있는 숫자들의 총 합을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le M \\le 10\\,000$\n- $1 \\le r, c \\le N$",
+ "samples": [
+  {
+   "in": "4 4 2 3\nL D R U\n",
+   "out": "16\n"
+  },
+  {
+   "in": "4 4 2 3\nL L L L\n",
+   "out": "11\n"
+  }
+ ]
+}

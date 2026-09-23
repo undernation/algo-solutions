@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "202",
+ "title": "두수의 곱과 몫",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-multiple-and-quotient-of-two-numbers/description",
+ "alias": "multiple-and-quotient-of-two-numbers",
+ "pid": 202,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "연산자",
+ "lesson": "사칙연산",
+ "card": "challenge-multiple-and-quotient-of-two-numbers",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "76.9",
+  "submissions": "9320"
+ },
+ "sample_count": 2,
+ "statement_len": 38,
+ "fetched_at": "2026-09-23",
+ "statement": "두 개의 정수를 입력받아 곱과 몫을 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 정수 $a, b$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에는 두 정수를 곱했을 때의 결과와 식을,\n\n두 번째 줄에는 $a$에서 $b$를 나눴을 때의 결과와 식을 출력합니다.",
+ "constraints": "- $1 \\le b \\le a \\le 500$",
+ "samples": [
+  {
+   "in": "300 5\n",
+   "out": "300 * 5 = 1500\n300 / 5 = 60\n"
+  },
+  {
+   "in": "23 10\n",
+   "out": "23 * 10 = 230\n23 / 10 = 2\n"
+  }
+ ]
+}

@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "44",
+ "title": "적절한 옷 고르기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-select-proper-clothes/description",
+ "alias": "select-proper-clothes",
+ "pid": 44,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "DP II",
+ "lesson": "연속적이지만 직전 상황에 영향을 받는 DP",
+ "card": "intro-select-proper-clothes",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "74.4",
+  "submissions": "1192"
+ },
+ "sample_count": 2,
+ "statement_len": 766,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 옷에 대한 정보가 주어졌을 때, $M$일 동안 옷을 적절하게 입어 만족도의 합을 최대화 하려고 합니다. 각각의 옷은 입을 수 있는 기간이 정해져있고, $M$일 안에 같은 옷을 여러 번 입어도 됩니다. 총 만족도는 $M$개의 날 중 각각의 인접한 날짜에 입은 옷의 화려함의 차이의 절댓값의 합으로 정의됩니다. 또한, 하루에 정확히 하나의 옷을 입어야만 합니다.\n\n예를 들어 $N = 3$, $M = 5$ 이고 세 옷의 정보가 다음과 같다고 해봅시다.\n\n![](https://contents.codetree.ai/problems/44/images/problems-75ea9244-5be5-420b-ad40-09fca9feaab9.png)\n\n$1$, $1$, $1$, $1$, $3$ 순서로 옷을 입게 되면, $4$번째 날에는 $1$번 옷을 입을 수 없기 때문에 불가능합니다.\n\n$1$, $1$, $2$, $3$, $3$ 순서로 옷을 입게 되면 각 날의 화려함은 $39$, $39$, $20$, $25$, $25$이기 때문에 만족도의 합은 $|39 - 39| + |39 - 20| + |20 - 25| + |25 - 25| = 24$ 가 됩니다.\n\n$1$, $2$, $1$, $2$, $3$ 순서로 옷을 입게 되면 각 날의 화려함은 $39$, $20$, $39$, $20$, $25$이기 때문에 만족도의 합은 $|39 - 20| + |20 - 39| + |39 - 20| + |20 - 25| = 62$ 가 됩니다.\n\n최대 만족도를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫째 줄에는 $N$과 $M$이 공백을 사이에 두고 주어집니다.\n\n두 번째 줄 부터는 $N$개의 줄에 걸쳐 각각의 옷의 정보 $s_i,\\ e_i,\\ v_i$가 공백을 사이에 두고 주어집니다. $s_i$는 $i$번째 옷을 입기 시작할 수 있는 날짜, $e_i$는 $i$번째 옷을 입을 수 있는 마지막 날짜, $v_i$는 $i$번째 옷의 화려함 입니다.",
+ "output_spec": "최대 만족도를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 200$\n- $2 \\le M \\le 200$\n- $1 \\le s_i \\le e_i \\le M$ $(1 \\le i \\le N)$\n- $1 \\le v_i \\le 1\\,000$ $(1 \\le i \\le N)$\n- 각 날짜마다 최소 한 개의 옷은 입을 수 있도록 입력이 주어진다고 가정해도 좋습니다.",
+ "samples": [
+  {
+   "in": "2 3\n2 3 10\n1 2 5\n",
+   "out": "5\n"
+  },
+  {
+   "in": "3 5\n1 3 39\n1 4 20\n4 5 25\n",
+   "out": "62\n"
+  }
+ ]
+}

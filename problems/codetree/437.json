@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "437",
+ "title": "재귀함수의 시간복잡도",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-recursive-time-complexity/description",
+ "alias": "recursive-time-complexity",
+ "pid": 437,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "시간, 공간복잡도",
+ "lesson": "재귀함수의 시간복잡도",
+ "card": "intro-recursive-time-complexity",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "79.2",
+  "submissions": "3710"
+ },
+ "sample_count": 0,
+ "statement_len": 212,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 코드의 시간복잡도를 판단해봅시다.\n```js\nfunction solution(N)\n  if N >= 0\n    solution(N - 1)\n```\n\n**보기** — 하나 고르기\n\n1. $\\mathcal{O}(1)$\n2. $\\mathcal{O}(\\log{N})$\n3. $\\mathcal{O}(N)$\n4. $\\mathcal{O}(2^N)$\n5. $\\mathcal{O}(N^2)$"
+}

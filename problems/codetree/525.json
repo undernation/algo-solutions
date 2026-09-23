@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "525",
+ "title": "의문의 메서드",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-deque-method/description",
+ "alias": "deque-method",
+ "pid": 525,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "스택, 큐, 덱",
+ "lesson": "Deque",
+ "card": "test-deque-method",
+ "card_type": "Test",
+ "level": "Medium",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "42.4",
+  "submissions": "2910"
+ },
+ "sample_count": 0,
+ "statement_len": 597,
+ "fetched_at": "2026-09-23",
+ "statement": "여러분은 열심히 코드를 타이핑 하다가 실수로 컴퓨터의 전원 코드를 뽑아버렸습니다.\n\n이전의 코드를 다시 되돌리기 위해 코드를 열심히 작성했지만, 다음과 같은 부분만 살릴 수 있었습니다.\n```jsx\nfunction solution()\n    set D = empty deque\n    D.push_back(10)\n    D.push_front(20)\n    D.pop_back()\n    (1)\n    (2)\n    D.push_back(17)\n    D.push_back(25)\n    D.push_back(13)\n    (3)\n    (4)\n    (5)\n```\n\n다행히 기억하지 못한 부분은 다음과 같이 출력 값을 기억하고 있었습니다.\n```\n1\n20\n13\n20\n2\n```\n(1) ~ (5)에 들어갈 내용을 순서대로 골라 코드를 복원해봅시다. (단, 같은 명령어가 중복으로 선택되어도 됩니다.)\n\n**보기** — 순서대로 5개 고르기\n\n1. `print(D.pop_front())\n   `\n2. `print(D.pop_back())`\n3. `print(D.size())`\n4. `print(D.empty() == true)`\n5. `print(D.back())`"
+}

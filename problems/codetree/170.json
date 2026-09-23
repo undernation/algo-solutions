@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "170",
+ "title": "B부터 A까지 감소",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-dec-from-b-to-a/description",
+ "alias": "dec-from-b-to-a",
+ "pid": 170,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "for문 b → a 1씩 감소",
+ "card": "challenge-dec-from-b-to-a",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "90.5",
+  "submissions": "9743"
+ },
+ "sample_count": 2,
+ "statement_len": 65,
+ "fetched_at": "2026-09-23",
+ "statement": "$A, B$ 두 자연수를 입력받아 $B$부터 $A$까지 $1$씩 감소하며 그 값을  출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 정수 $A, B$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 $B$부터 시작하여 $A$까지 $1$씩 감소하도록 수들을 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $1 \\le A \\le B \\le 100$",
+ "samples": [
+  {
+   "in": "2 5\n",
+   "out": "5 4 3 2\n"
+  },
+  {
+   "in": "5 5\n",
+   "out": "5\n"
+  }
+ ]
+}

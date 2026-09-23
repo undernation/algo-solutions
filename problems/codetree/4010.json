@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "4010",
+ "title": "강강수월래",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-circle-dance/description",
+ "alias": "circle-dance",
+ "pid": 4010,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "중급 자료구조",
+ "lesson": "Doubly-LinkedList",
+ "card": "challenge-circle-dance",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "100 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "44.1",
+  "submissions": "227"
+ },
+ "sample_count": 1,
+ "statement_len": 1045,
+ "fetched_at": "2026-09-23",
+ "statement": "현재 코드트리 고등학교의 수련회에서는 마지막 날 밤 행사로 학생들이 원 모양으로 손을 잡고 빙빙 도는 강강수월래를 진행하고 있습니다. 수련회의 총 교관인 곰돌이는 학생들에게 다음과 같은 $3$가지 동작을 실시하도록 하였습니다.\n\n1. $A$ 학생과 $B$ 학생이 있는 원 잇기\n2. 한 원 안에 있는 학생 $A$, $B$ 각각을 경계로 원 쪼개기 ($A$ 학생부터 시작해 시계 방향으로 돌면서 $B$학생을 만날 때까지의 학생들을 새로운 원으로 만들어 원래 원에서 쪼개집니다.)\n3. $A$ 학생이 속한 원 안에서 학생 번호가 가장 작은 학생부터 반시계 방향으로 자신의 번호 외치기\n\n$1$번 행동의 예시는 다음과 같습니다.\n\n![](https://contents.codetree.ai/problems/4010/images/problems-41328eac-f598-4465-aee9-3ec052a7cba5.png)\n\n다음과 같은 두 원을 합친다고 해보겠습니다.\n\n![](https://contents.codetree.ai/problems/4010/images/problems-f3356bc6-641a-44bd-bad2-3adc55724f66.png)\n\n다음과 같이 원을 잇습니다. 잇고 나면 다음과 같이 변화합니다.\n\n![](https://contents.codetree.ai/problems/4010/images/problems-dc9af0e9-7f51-4148-83a8-fd066de968aa.png)\n\n$2$번 행동의 예시는 다음과 같습니다.\n\n![](https://contents.codetree.ai/problems/4010/images/problems-0a58d7ac-9191-4b68-ab16-125f7338ae0c.png)\n\n다음과 같은 상황에서 원을 나눈다고 해보겠습니다.\n\n![](https://contents.codetree.ai/problems/4010/images/problems-5585a98d-db37-43f1-af46-718c0f8be0b6.png)\n\n다음과 같이 원이 나뉘게 됩니다. \n\n다음 행동을 진행할 수 있는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 학생의 수 $N$ 과 제일 처음에 있는 원의 수 $M$, 동작의 총 횟수 $Q$ 가 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터 $M$ 개의 줄에 걸쳐 각 원에 있는 학생들에 대한 정보가 주어집니다. 각 줄에 맨 첫 수로는 각 원에 있는 학생의 총 수가 주어집니다. 그 뒤부터 공백을 사이에 두고 학생들의 번호가 시계 방향으로 순서대로 공백을 사이에 두고 주어집니다.\n\n$M + 2$ 번째 줄부터 $Q$ 개의 줄에 걸쳐 곰돌이가 지시한 동작이 다음과 같은 형식으로 주어집니다.\n\n- $1\\ A\\ B$\n- $2\\ A\\ B$\n- $3\\ A$",
+ "output_spec": "$3$번 명령은 맨 마지막에만 주어집니다. $3$번 명령이 주어졌을 때 $A$ 학생이 속한 원 안에서 학생 번호가 가장 작은 학생부터 반시계 방향으로 돌면서 해당 원의 모든 학생들의 번호를 공백을 사이에 두고 출력하세요.",
+ "constraints": "- $2 \\le N \\le 100\\,000$\n- $2 \\le M \\le 10$\n- $1 \\le Q \\le 10\\,000$\n- $1 \\le \\texttt{학생의 번호} \\le 100\\,000\\,000$\n- 학생의 번호는 모두 다르다고 가정해도 좋습니다.",
+ "samples": [
+  {
+   "in": "8 2 3\n3 1 4 3\n5 2 8 7 5 6\n1 4 6\n2 6 7\n3 4\n",
+   "out": "1 3 5 7 4\n"
+  }
+ ]
+}

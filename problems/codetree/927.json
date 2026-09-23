@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "927",
+ "title": "모이자",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-gather/description",
+ "alias": "gather",
+ "pid": 927,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 I",
+ "lesson": "자리 수 단위로 완전탐색",
+ "card": "intro-gather",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "79.1",
+  "submissions": "5115"
+ },
+ "sample_count": 1,
+ "statement_len": 183,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 집이 $x = 1$에서 $x = N$까지 순서대로 놓여 있고, $i$번째 집에는 $A_i$명의 사람이 살고 있습니다. ($1 \\le i \\le N$) 이들은 회의를 위해 $N$개의 집 중 한 곳에 전부 모이려고 합니다. 적절한 집을 선택하여 모든 사람들의 이동 거리의 합이 최소가 되도록 하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.  \n두 번째 줄에는 각 집에 살고 있는 사람 수에 해당하는 $N$개의 정수 $A_1$, $A_2$, $\\ldots$, $A_N$이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 가능한 이동 거리의 합 중 최솟값을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le A_i \\le 100$ ($1 \\le i \\le N$)",
+ "samples": [
+  {
+   "in": "5\n1 2 3 2 6\n",
+   "out": "16\n"
+  }
+ ],
+ "sample_notes": [
+  "$1$번째 집으로 모이면 총 이동 거리의 합은 $1 \\times 0 + 2 \\times 1 + 3 \\times 2 + 2 \\times 3 + 6 \\times 4 = 38$이 됩니다.  \n$2$번째 집으로 모이면 총 이동 거리의 합은 $1 \\times 1 + 2 \\times 0 + 3 \\times 1 + 2 \\times 2 + 6 \\times 3 = 26$이 됩니다.  \n$3$번째 집으로 모이면 총 이동 거리의 합은 $1 \\times 2 + 2 \\times 1 + 3 \\times 0 + 2 \\times 1 + 6 \\times 2 = 18$이 됩니다.  \n$4$번째 집으로 모이면 총 이동 거리의 합은 $1 \\times 3 + 2 \\times 2 + 3 \\times 1 + 2 \\times 0 + 6 \\times 1 = 16$이 됩니다.  \n$5$번째 집으로 모이면 총 이동 거리의 합은 $1 \\times 4 + 2 \\times 3 + 3 \\times 2 + 2 \\times 1 + 6 \\times 0 = 18$이 됩니다.  \n\n따라서 가능한 이동 거리의 합 중 최솟값은 $16$이 됩니다."
+ ]
+}

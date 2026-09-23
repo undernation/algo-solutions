@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "404",
+ "title": "문자열의 개수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-number-of-spring/description",
+ "alias": "number-of-spring",
+ "pid": 404,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "문자열",
+ "lesson": "문자열 비교",
+ "card": "challenge-number-of-spring",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "85.6",
+  "submissions": "1883"
+ },
+ "sample_count": 1,
+ "statement_len": 194,
+ "fetched_at": "2026-09-23",
+ "statement": "알파벳으로 구성된 문자열들이 연속적으로 입력됩니다. 입력 도중에 문자열 대신 '0'이 입력되면 입력을 종료합니다. 프로그램은 '0'이 입력되기 전까지 입력된 문자열의 총 개수를 출력하고, 입력된 문자열 중 홀수 번째에 해당하는 문자열들을 입력된 순서대로 한 줄에 하나씩 출력해야 합니다. 단, 입력에는 반드시 '0'이 포함된다고 가정해도 좋습니다.",
+ "input_spec": "각 줄에 문자열이 한 줄에 하나씩 주어집니다. 마지막 줄에는 '0' 문자열이 주어집니다.",
+ "output_spec": "첫 번째 줄에 입력받은 모든 문자열의 개수를 출력하고\n\n두 번째 줄부터 홀수 번째로 주어진 문자열을 입력받은 순서대로 출력합니다.",
+ "constraints": "- $1 \\le \\texttt{주어지는 각 문자열의 길이} \\le 200$\n- $1 \\le \\texttt{주어지는 총 문자열의 수} \\le 200$",
+ "samples": [
+  {
+   "in": "game\nmovie\nbook\n0\n",
+   "out": "3\ngame\nbook\n"
+  }
+ ]
+}

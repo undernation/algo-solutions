@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3432",
+ "title": "가장 긴 접두사",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-longest-prefix/description",
+ "alias": "longest-prefix",
+ "pid": 3432,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "String",
+ "lesson": "KMP",
+ "card": "challenge-longest-prefix",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "71.7",
+  "submissions": "53"
+ },
+ "sample_count": 2,
+ "statement_len": 144,
+ "fetched_at": "2026-09-23",
+ "statement": "소문자 알파벳으로만 이루어진 문자열 $T$가 주어집니다. 문자열 $T$의 접두사 중 이를 뒤집었을 때 문자열 $T$의 부분 문자열이 되는 최장 접두사의 길이를 구하는 프로그램을 작성해보세요. 여기서 부분 문자열이란 연속하여 나올 수 있는 문자열을 의미합니다.",
+ "input_spec": "첫 번째 줄에 문자열 $T$가 주어집니다.\n\n문자열 $T$는 소문자 알파벳으로만 이루어져 있습니다.",
+ "output_spec": "조건을 만족하는 경우 중 최장 접두사의 길이를 출력합니다.",
+ "constraints": "- $1\\le \\texttt{문자열}\\ T \\texttt{의 길이} \\le100\\,000$\n- 문자열 $T$는 소문자 알파벳으로만 이루어져 있습니다.",
+ "samples": [
+  {
+   "in": "abracadabrbap\n",
+   "out": "3\n"
+  },
+  {
+   "in": "ababa\n",
+   "out": "5\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 예제에서 접두사 $abr$의 경우 이를 뒤집은 $rba$가 문자열 $T$의 부분 문자열이 됩니다. 이보다 더 긴 접두사는 없습니다.",
+  "두 번째 예제에서 $ababa$ 그 자체로 뒤집었을 때 동일한 문자열이기에 문제 조건을 만족하는 가장 긴 경우가 됩니다."
+ ]
+}

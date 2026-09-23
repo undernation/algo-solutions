@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "920",
+ "title": "되돌아오기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-come-back/description",
+ "alias": "come-back",
+ "pid": 920,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 II",
+ "lesson": "dx dy technique",
+ "card": "challenge-come-back",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "59.0",
+  "submissions": "5918"
+ },
+ "sample_count": 1,
+ "statement_len": 146,
+ "fetched_at": "2026-09-23",
+ "statement": "$(0,\\ 0)$에서 시작하여 총 $N$번 움직여보려고 합니다. $N$번에 걸쳐 움직이려는 방향과 움직일 거리가 주어지고, $1$초에 한 칸씩 움직인다고 했을 때, 몇 초 뒤에 처음으로 다시 $(0,\\ 0)$에 돌아오게 되는지를 판단하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 정수 $N$이 주어집니다.\n\n이어지는 $N$개의 줄 중 $i$번째 줄에는 이동 방향 $d_i$와 이동 거리 $L_i$가 공백을 사이에 두고 주어집니다. $d_i$는 W, S, N, E 중 하나이며 각각 서, 남, 북, 동쪽으로 이동함을 의미합니다.",
+ "output_spec": "첫 번째 줄에 다시 시작점으로 되돌아오는 데 걸리는 시간을 출력합니다. 만약 $N$번 이동을 진행했는데도 시작점으로 돌아오지 못했다면 $-1$을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le L_i \\le 10$ ($1 \\le i \\le N$)\n- $L_i$는 정수입니다 ($1 \\le i \\le N$).",
+ "samples": [
+  {
+   "in": "6\nN 3\nE 2\nS 3\nW 4\nS 5\nE 8\n",
+   "out": "10\n"
+  }
+ ],
+ "sample_notes": [
+  "![](https://contents.codetree.ai/problems/920/images/problems-135d37ba-2076-4bf6-9114-7342583c8ec3.svg)\n\n위로 $3$칸, 오른쪽으로 $2$칸, 아래로 $3$칸 이동 후 왼쪽으로 이동하던 도중에 처음 위치로 되돌아 오게 됩니다.   \n왼쪽으로 이동시 $2$칸을 이동하면 처음 위치로 오게 되므로, 총 걸리는 시간은 $10$초 입니다."
+ ]
+}

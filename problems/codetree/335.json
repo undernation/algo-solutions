@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "335",
+ "title": "999 또는 -999",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-999-or-999/description",
+ "alias": "999-or-999",
+ "pid": 335,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "1차원 배열",
+ "lesson": "Min/Max",
+ "card": "challenge-999-or-999",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "87.7",
+  "submissions": "7023"
+ },
+ "sample_count": 2,
+ "statement_len": 115,
+ "fetched_at": "2026-09-23",
+ "statement": "최대 $100$개의 세 자리 이하 정수가 차례로 주어지다가 $999$나 $-999$가 주어지면 입력 받는 것을 종료하고 이 수를 제외한 수 중 가장 큰 수와 가장 작은 수를 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 세 자리 이하의 정수가 공백을 사이에 두고 차례로 주어집니다. (단, $999$나 $-999$는 반드시 세 번째 이후부터 주어지며, 가장 끝으로 주어지는 수는 항상 $999$ 혹은 $-999$임을 가정해도 좋습니다.)",
+ "output_spec": "주어진 수들 중 가장 큰 수와 가장 작은 수를 차례로 사이에 공백을 두고 출력합니다.",
+ "constraints": "- $-999\\le \\texttt{주어지는 정수} \\le999$",
+ "samples": [
+  {
+   "in": "123 0 789 -998 999\n",
+   "out": "789 -998\n"
+  },
+  {
+   "in": "1 4 -999\n",
+   "out": "4 1\n"
+  }
+ ],
+ "sample_notes": [
+  "예제1에서 5번째에 $999$가 주어졌으므로 $999$ 이전의 수들 중 가장 큰 $789$와 가장 작은 $-998$이 출력됩니다.",
+  ""
+ ]
+}

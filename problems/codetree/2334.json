@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2334",
+ "title": "부분 문자열의 개수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-number-of-substrings/description",
+ "alias": "number-of-substrings",
+ "pid": 2334,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "문자열",
+ "lesson": "문자열 찾기",
+ "card": "test-number-of-substrings",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "80.2",
+  "submissions": "3298"
+ },
+ "sample_count": 2,
+ "statement_len": 77,
+ "fetched_at": "2026-09-23",
+ "statement": "두 문자열 $A$와 $B$가 주어졌을 때, 문자열 $B$가 문자열 $A$의 부분 문자열로써 등장하는 횟수를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 문자열 $A$가 주어집니다.\n\n두 번째 줄에 문자열 $B$가 주어집니다.\n\n단, 문자열 $B$의 길이는 항상 $2$임을 가정하여도 좋습니다.",
+ "output_spec": "첫 번째 줄에, 문자열 $B$가 문자열 $A$의 부분 문자열로써 등장하는 횟수를 출력합니다.",
+ "constraints": "- $1 \\le \\texttt{문자열 A의 길이} \\le 1\\,000$",
+ "samples": [
+  {
+   "in": "banana\nna\n",
+   "out": "2\n"
+  },
+  {
+   "in": "aaabbb\naa\n",
+   "out": "2\n"
+  }
+ ]
+}

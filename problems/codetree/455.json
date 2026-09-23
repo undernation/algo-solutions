@@ -1,0 +1,27 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "455",
+ "title": "특이한 삭제",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-doubly-linked-list-remove/description",
+ "alias": "doubly-linked-list-remove",
+ "pid": 455,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "배열, 연결 리스트",
+ "lesson": "Doubly-LinkedList",
+ "card": "challenge-doubly-linked-list-remove",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "54.9",
+  "submissions": "4093"
+ },
+ "sample_count": 0,
+ "statement_len": 416,
+ "fetched_at": "2026-09-23",
+ "statement": "이중 연결리스트에서 $tail$을 지우는 `delete_end()` 함수를 특이한  방식으로 구현했습니다.\n\n```jsx\nfunction DLL.delete_end()\n  set p = DLL.head\n  set q = p.next\n  \n  while q.next != null\n    p = q\n    q = q.next\n    \n  q.prev = null\n  p.next = null\n```\n이 코드는 특정한 상황에서는 올바르게 동작하지만, 특정한 상황에서는 그렇지 않습니다. 이 코드가 올바르게 동작하는 경우를 골라보세요\n\n**보기** — 하나 고르기\n\n1. 연결 리스트가 비어있지 않은 경우\n2. `2`개 이상의 노드가 있는 연결 리스트\n3. 정확히 `1`개의 노드가 있는 연결 리스트\n4. 비어있는 연결 리스트\n5. 모든 연결 리스트",
+ "hint": "![](https://contents.codetree.ai/problems/455/images/problems-7401e925-0d38-4f22-af59-d9d3a4f54f76.svg)\n\n위의 그림처럼, $node1.next.data$을 출력하면 두번째 노드의 데이터를 출력해야 합니다. 왜냐하면 $node1.next.data$ 가 $node2$의 데이터에 접근하기 때문입니다. 따라서 결과는 $3$입니다. 반면,  $node2.next.data$를 출력하려고 하면 에러가 발생합니다. 왜냐하면 $node2.next$는 $null$이기 때문입니다.  $next$, $prev$, or $data$ 를 $null$에서 접근하려고 하면 오류가 발생한다은 것에 유의하세요."
+}

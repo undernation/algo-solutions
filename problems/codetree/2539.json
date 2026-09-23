@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2539",
+ "title": "두 정수에 대한 연산값 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-operational-values-for-two-integers-2/description",
+ "alias": "operational-values-for-two-integers-2",
+ "pid": 2539,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "함수",
+ "lesson": "Call by value / Call by reference",
+ "card": "test-operational-values-for-two-integers-2",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "80.4",
+  "submissions": "3247"
+ },
+ "sample_count": 1,
+ "statement_len": 267,
+ "fetched_at": "2026-09-23",
+ "statement": "두 정수 $a$, $b$가 주어지면 둘 중 작은 수에는 $10$을 더하고 큰 수에는 $2$를 곱하여 저장한 후 출력하는 프로그램을 작성해보세요.\n\n단, $a$와 $b$를 인자로 받는 함수를 작성해 그 함수 안에서 값을 바꾸고, 출력은 함수 호출 이후에 진행해야 합니다. 함수 호출이 끝난 뒤 호출한 쪽의 $a$, $b$가 바뀐 값을 가지고 있으면 되므로, 참조로 전달하거나 객체로 감싸 전달하거나 바뀐 값을 반환해 다시 대입하는 등 사용하는 언어에서 가능한 방법을 쓰면 됩니다.",
+ "input_spec": "첫 번째 줄에 정수 $a, b$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 두 정수 $a, b$에 해당하는 값을 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $1 \\le a, b \\le 200$\n- $a \\neq b$",
+ "samples": [
+  {
+   "in": "100 200\n",
+   "out": "110 400\n"
+  }
+ ]
+}

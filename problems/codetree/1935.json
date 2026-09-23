@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1935",
+ "title": "도시 연결하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-connecting-cities/description",
+ "alias": "connecting-cities",
+ "pid": 1935,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "MST",
+ "lesson": "Prim",
+ "card": "challenge-connecting-cities",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "120 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "58.9",
+  "submissions": "90"
+ },
+ "sample_count": 2,
+ "statement_len": 1064,
+ "fetched_at": "2026-09-23",
+ "statement": "트리 나라에는 여러 도시가 있습니다. 도시들을 도로로 모두 연결하려 합니다.\n\n$N \\times M$ 표의 각 칸에 $0$ 또는 $1$이 주어져 있습니다. $1$은 도시입니다. 상하좌우로 인접해있는 1은 같은 도시입니다.\n\n![](https://contents.codetree.ai/problems/1935/images/problems-bebf541c-48a3-4382-8163-fd735daf2cb5.png)\n\n예를 들어, 다음과 같은 나라가 있다고 합시다. 색칠되어 있는 칸이 $1$이고, 색칠되지 않은 칸이 $0$입니다. 이 나라에 도시는 $4$개가 있습니다.\n\n서로 다른 두 도시를 연결하기 위해서는 도로를 놓아야 합니다. 도로는 수평 혹은 수직으로 일직선으로만 놓을 수 있습니다.\n\n![](https://contents.codetree.ai/problems/1935/images/problems-36e2bdb7-dc70-4bfb-bc75-e518f7d28d77.png)\n\n다음은 놓을 수 있는 도로의 예시입니다:\n\n- 도로를 놓았을 때, 각 도로의 시작과 끝에 놓인 도시만이 연결됩니다. 예를 들어, 위에서 연결한 $1$번과 $3$번 도시 사이의 도로는 $1$번과 $3$번 도시만을 서로 연결합니다. $2$번 도시는 해당 도로와 인접해 있지만 연결되지 않습니다.\n- 도로는 서로 겹칠 수 있습니다. 예를 들어, 위에서 연결한 $1$번과 $3$번 도시 사이의 도로와 $1$번과 $2$번 도시 사이의 도로를 둘 다 놓을 수 있습니다.\n\n각 도로를 놓기 위해선 도로의 길이만큼 비용이 발생합니다. 위 그림에서는 각 도로마다 $1$, $1$, $2$만큼의 비용이 발생해 총 $4$만큼의 비용이 발생합니다.\n\n모든 도시를 연결하기 위해 최소한의 비용을 사용해 도로를 놓으려 할 때, 필요한 비용을 구하는 프로그램을 작성하세요.\n\n![](https://contents.codetree.ai/problems/1935/images/problems-670872ff-2361-4f07-bca1-db07c4335668.png)\n\n위의 그림에서는 다음과 같이 도로를 놓았을 때, 총 비용 $3$으로 최소가 됩니다.",
+ "input_spec": "첫 번째 줄에 $N$과 $M$이 공백을 두고 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 한 줄에 $M$개씩 $0$또는 $1$이 공백을 두고 주어집니다.",
+ "output_spec": "모든 도시를 연결하기 위한 최소 비용을 출력합니다.\n\n모든 도시를 연결할 수 없다면 $-1$을 출력합니다.",
+ "constraints": "- $1 \\le N, M \\le 50$\n- $3 \\le N \\times M$\n- $2 \\le \\texttt{도시의 개수}$",
+ "samples": [
+  {
+   "in": "4 6\n0 0 0 0 0 0\n1 1 0 1 0 1\n1 0 0 1 1 0\n0 1 0 1 0 0\n",
+   "out": "3\n"
+  },
+  {
+   "in": "4 6\n1 0 1 0 1 0\n0 1 0 1 0 1\n1 0 1 0 1 0\n0 1 0 1 0 1\n",
+   "out": "-1\n"
+  }
+ ]
+}

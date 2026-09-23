@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "503",
+ "title": "범위 내 수 세기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-lower-upper-range/description",
+ "alias": "lower-upper-range",
+ "pid": 503,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "이진탐색",
+ "lesson": "Lower/Upper Bound",
+ "card": "challenge-lower-upper-range",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "77.9",
+  "submissions": "1518"
+ },
+ "sample_count": 0,
+ "statement_len": 326,
+ "fetched_at": "2026-09-23",
+ "statement": "`lower bound`와 `upper bound`의 차이를 활용하면, 배열 내 특정 수의 개수를 쉽게 구할 수 있습니다.\n\n해당 코드를 완성해봅시다. (배열은 정렬되었다고 가정합니다.)\n\n```jsx\nfunction solution(arr, target)\n  set lb = lower_bound(arr, target)\n  set ub = upper_bound(arr, target)\n  return ()\n```\n\n**보기** — 하나 고르기\n\n1. `ub + lb`\n2. `ub - lb`\n3. `ub - lb + 1`\n4. `ub - lb - 1`\n5. `ub - lb + 2`"
+}

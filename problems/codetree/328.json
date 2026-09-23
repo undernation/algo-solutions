@@ -1,0 +1,39 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "328",
+ "title": "특정 규칙에 따른 문자 출력",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-character-output-according-to-rule/description",
+ "alias": "character-output-according-to-rule",
+ "pid": 328,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "다중 반복문",
+ "lesson": "행, 열에 대해 대칭인 별 출력",
+ "card": "challenge-character-output-according-to-rule",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "90.8",
+  "submissions": "2745"
+ },
+ "sample_count": 1,
+ "statement_len": 97,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $N$을 입력받아 문자를 특정 규칙에 따라 출력하는 프로그램을 아래 예를 참고하여 작성해보세요.\n\n예)\n\n$N$에 $2$를 입력받는 경우\n```\n  @\n@ @\n@\n```",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.",
+ "output_spec": "주어지는 $N$의 값에 따른 문자를 입출력 예제와 같이 출력합니다.",
+ "constraints": "- $1 \\le N \\le 10$",
+ "hint": "예) $N$이 $3$인 경우 \n```\ni            공백의 개수   문자의 개수\n\n0    V V @       2         1\n1    V @ @       1         2       공백의 개수 : N - 1 - i\n2    @ @ @       0         3       문자의 개수 : i + 1\n---------------------------------------------------------\n0    @ @                   2       문자의 개수 : N - 1 - i\n1    @                     1 \n```",
+ "samples": [
+  {
+   "in": "3\n",
+   "out": "    @\n  @ @\n@ @ @\n@ @\n@\n"
+  }
+ ]
+}

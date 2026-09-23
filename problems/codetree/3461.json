@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3461",
+ "title": "3개씩 합치기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-combine-3/description",
+ "alias": "combine-3",
+ "pid": 3461,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Advanced DP",
+ "lesson": "작은 구간에서 큰 구간으로 확장되는 DP",
+ "card": "challenge-combine-3",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 5초 · C++17 1초",
+  "memory": "288 MB",
+  "time_sec": 5.0
+ },
+ "stats": {
+  "accept_rate": "36.2",
+  "submissions": "105"
+ },
+ "sample_count": 2,
+ "statement_len": 473,
+ "fetched_at": "2026-09-23",
+ "statement": "$n$개의 정수가 주어졌을 때, 인접한 3개의 정수를 골라 가운데 수를 없애는 것을 수가 2개 남을때까지 반복하려고 합니다. 이때 3개의 수 a, b, c를 골라 이 중 가운데 수인 b를 없애는데 필요한 비용은 a * b * c가 됩니다.\n\n예를 들어, 순서대로 `4 3 3 5`이 주어진 경우에 대해 생각해보겠습니다.\n\n만약 처음 (3, 3, 5)을 고르면 `4 3 5`이 남게 되고 이후 `4 3 5`을 고르게 되면 `4 5` 이렇게 2개만 남게 됩니다. 이 과정에 드는 총 비용은 3 * 3 * 5 + 4 * 3 * 5 = 105가 됩니다.\n\n하지만 처음 (4, 3, 3)을 고르면 `4 3 5`가 남게 되고 이후 `4 3 5`을 고르게 되면 `4 5` 이렇게 2개만 남게 됩니다. 이 과정에 드는 총 비용은 4 * 3 * 3 + 4 * 3 * 5 = 96이 됩니다.\n\n순서를 잘 정하여 드는 총 비용을 최소로 하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 정수의 수 $n$이 주어집니다.\n\n두 번째 줄에는 정수 $n$개가 공백을 사이에 두고 차례대로 주어집니다.",
+ "output_spec": "2개의 수만 남기기 위해 필요한 최소 비용을 출력합니다.",
+ "constraints": "- $3 \\le n \\le 500$\n - $1 \\le$ 주어지는 정수 $\\le 100$",
+ "samples": [
+  {
+   "in": "4\n4 3 3 5\n",
+   "out": "96\n"
+  },
+  {
+   "in": "5\n1 2 10 2 1\n",
+   "out": "42\n"
+  }
+ ]
+}

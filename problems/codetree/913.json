@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "913",
+ "title": "연속되는 수 3",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-continuous-number3/description",
+ "alias": "continuous-number3",
+ "pid": 913,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 II",
+ "lesson": "최장 연속 부분 수열",
+ "card": "challenge-continuous-number3",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "66.5",
+  "submissions": "3487"
+ },
+ "sample_count": 1,
+ "statement_len": 143,
+ "fetched_at": "2026-09-23",
+ "statement": "$0$이 아닌 $N$개의 정수가 주어졌을 때, 부호가 동일한 정수로만 이루어진 연속 부분 수열 중 최대 길이를 구하는 프로그램을 작성해보세요.\n\n연속 부분 수열이란, 어떤 수열에서 연속한 구간에 속하는 정수를 모두 뽑았을 때 나오는 부분 수열을 의미합니다.",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 각 정수가 한 줄에 하나씩 주어집니다.",
+ "output_spec": "첫 번째 줄에 부호가 동일한 정수로만 이루어진 연속 부분 수열의 최대 길이를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 1\\,000$\n- $-1\\,000 \\le A_i \\le 1\\,000$ ($1 \\le i \\le N$)\n- 입력으로 주어지는 정수 중 $0$은 없습니다.",
+ "samples": [
+  {
+   "in": "7\n2\n-1\n-5\n-2\n-3\n5\n8\n",
+   "out": "4\n"
+  }
+ ],
+ "sample_notes": [
+  "숫자들을 순서대로 나열해보면 [$2$, $-1$, $-5$, $-2$, $-3$, $5$, $8$] 이므로 [$-1$, $-5$, $-2$, $-3$] 이렇게 연속 부분 수열을 뽑게 되면 모든 원소의 부호가 같으며 길이가 $4$가 됩니다. 이보다 더 좋은 답은 없습니다."
+ ]
+}

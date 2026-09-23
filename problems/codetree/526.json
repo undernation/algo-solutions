@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "526",
+ "title": "트리",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-tree-introduction/description",
+ "alias": "tree-introduction",
+ "pid": 526,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "트리",
+ "lesson": "트리",
+ "card": "intro-tree-introduction",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Multiple choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "52.6",
+  "submissions": "4595"
+ },
+ "sample_count": 0,
+ "statement_len": 270,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 Rooted Tree를 보고, 옳은 것을 모두 고르세요.\n\n\n![](https://contents.codetree.ai/problems/526/images/problems-95fc78ab-29d9-49ba-9365-408d2e46dfe0.png)\n\n**보기** — 모두 고르기\n\n1. 루트 노드는 `1`개이며, `1`번이다.\n2. 리프 노드의 수는 `3`개이다.\n3. 루트 노드의 깊이를 `0`이라고 했을 때, `5`번 노드의 깊이는 `3`이다.\n4. 트리의 높이는 `4`이다."
+}

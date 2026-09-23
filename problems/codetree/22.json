@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "22",
+ "title": "XOR 결과 최대 만들기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-max-of-xor/description",
+ "alias": "max-of-xor",
+ "pid": 22,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Backtracking",
+ "lesson": "N개 중에 M개 고르기(Simple)",
+ "card": "challenge-max-of-xor",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "53.6",
+  "submissions": "3660"
+ },
+ "sample_count": 1,
+ "statement_len": 79,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 음이 아닌 정수가 입력으로 주어졌을 때, 그 중 $M$개의 정수를 뽑아 모두 XOR한 결과의 최댓값을 출력하는 코드를 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $N$과 $M$이 공백을 사이에 두고 주어지고,\n두 번째 줄에는 $N$개의 정수가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "$M$개의 정수를 골랐을 때 가능한 XOR 결과의 최댓값을 출력합니다.",
+ "constraints": "- $1 \\le M \\le N \\le 20$\n- $0 \\le \\texttt{정수} \\le 1\\,000\\,000$",
+ "samples": [
+  {
+   "in": "5 3\n1 2 3 4 5\n",
+   "out": "7\n"
+  }
+ ],
+ "sample_notes": [
+  "$2$, $4$, $5$을 뽑으면 $2\\ \\texttt{xor}\\ 4\\ \\texttt{xor}\\ 5 = 3$ 이지만 \n\n$1$, $3$, $5$를 뽑으면 $1\\ \\texttt{xor}\\ 3\\ \\texttt{xor}\\ 5 = 7$ 로 최대가 됩니다."
+ ]
+}

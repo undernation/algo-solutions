@@ -1,0 +1,39 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f327",
+ "title": "꼬리잡기놀이",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/tail-catch-play/description",
+ "alias": "tail-catch-play",
+ "pid": 327,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2022 상반기 오후 1번 문제",
+ "level": "L15",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "28.4",
+  "submissions": "10121"
+ },
+ "sample_count": 2,
+ "statement_len": 2406,
+ "fetched_at": "2026-09-23",
+ "statement": "$n \\times n$ 격자에서 꼬리잡기놀이를 진행합니다.\n꼬리잡기놀이는 다음과 같이 진행됩니다.\n\n3명 이상이 한 팀이 됩니다. 모든 사람들은 자신의 앞 사람의 허리를 잡고 움직이게 되며, 맨 앞에 있는 사람을 **머리사람**, 맨 뒤에 있는 사람을 **꼬리사람**이라고 합니다. 각 팀은 게임에서 주어진 이동 선을 따라서만 이동합니다. 각 팀의 이동 선은 끝이 이어져있습니다. 각 팀의 이동 선은 서로 겹치지 않습니다.\n\n다음과 같이 초기 조건이 주어질 수 있습니다.\n\n<p align=\"center\">\n<img width=\"400\" src=\"https://contents.codetree.ai/problems/2414/images/6ea4735c-be16-4b0a-a77c-5c5b05d13917.png\">\n</p>\n\n게임은 라운드 별로 진행이 되며, 한 라운드는 다음과 같이 진행됩니다.\n\n1. 먼저 각 팀은 **머리사람**을 따라서 한 칸 이동합니다.\n\n<p align=\"center\">\n<img width=\"400\" src=\"https://contents.codetree.ai/problems/2414/images/79577ea4-3de1-4956-b87a-324de4863cba.png\">\n</p>\n\n2. 각 라운드마다 공이 정해진 선을 따라 던져집니다. $n$개의 행, $n$개의 열이 주어진다고 했을 때 공이 던져지는 선은 다음과 같습니다.\n\n<p align=\"center\">\n<img width=\"400\" src=\"https://contents.codetree.ai/problems/2414/images/ba8bdf88-33a8-4877-b4bc-8554613f8210.png\">\n</p>\n<br />\n<br />\n<p align=\"center\">\n<img width=\"400\" src=\"https://contents.codetree.ai/problems/2414/images/d31863f5-cf56-4985-9fb5-623caa27983c.png\">\n</p>\n<br />\n<br />\n<p align=\"center\">\n<img width=\"400\" src=\"https://contents.codetree.ai/problems/2414/images/7c97859e-129f-45d1-89cd-99d414f1a546.png\">\n</p>\n\n<br />\n<br />\n\n<p align=\"center\">\n<img width=\"400\" src=\"https://contents.codetree.ai/problems/2414/images/79c0696b-b366-4ad7-8ab5-4a86b76534c7.png\">\n</p>\n\n$4n$번째 라운드를 넘어가는 경우에는 다시 $1$번째 라운드의 방향으로 돌아갑니다.\n\n3. 공이 던져지는 경우에 해당 선에 사람이 있으면 최초에 만나게 되는 사람만이 공을 얻게 되어 점수를 얻게 됩니다. 점수는 해당 사람이 **머리사람**을 시작으로 팀 내에서 $k$번째 사람이라면 $k$의 제곱만큼 점수를 얻게 됩니다. 아무도 공을 받지 못하는 경우에는 아무 점수도 획득하지 못합니다. 위의 예시에서 $1$라운드는 다음과 같이 진행됩니다.\n \n<p align=\"center\">\n<img width=\"400\" src=\"https://contents.codetree.ai/problems/2414/images/efd196f4-bff2-408f-a709-6108dd76a26c.png\">\n</p>\n\n**머리사람**에서 $3$번째에 있는 사람이 공을 얻었기 때문에 $9(3 \\times 3)$점을 획득하게 됩니다. 공을 획득한 팀의 경우에는 **머리사람**과 **꼬리사람**이 바뀝니다. 즉 방향을 바꾸게 됩니다.\n\n4. 다음 라운드는 다음과 같이 진행됩니다.\n\n4-1. $1$라운드가 끝난 후\n\n<p align=\"center\">\n<img width=\"400\" src=\"https://contents.codetree.ai/problems/2414/images/1a16095c-e45c-408b-8554-2987f338c2fc.png\">\n</p>\n\n4-2. 모든 팀 $1$칸 이동\n\n<p align=\"center\">\n<img width=\"400\" src=\"https://contents.codetree.ai/problems/2414/images/a9178e4c-3076-4ec2-9fda-00c784ae1466.png\">\n</p>\n\n4-3. 공 발사$(+ 16$점$)$\n\n<p align=\"center\">\n<img width=\"400\" src=\"https://contents.codetree.ai/problems/2414/images/59024735-8fed-4fe2-9780-17d6c44dcf60.png\">\n</p>\n\n총 격자의 크기, 각 팀의 위치, 각 팀의 이동 선, 총 진행하는 라운드의 수가 주어질 때 각 팀이 획득한 점수의 총합을 구하는 프로그램을 구하세요.",
+ "input_spec": "첫 번째 줄에 격자의 크기와 팀의 개수를 나타내는 두 정수 $n$과 $m$, 라운드 수를 나타내는 정수 $k$가 공백을 사이에 두고 주어집니다.\n\n그 다음 줄부터 $n$개의 줄에 걸쳐 각 행에 해당하는 초기 상태의 정보를 나타내는 정수 $n$개가 공백을 사이에 두고 주어집니다. $0$은 빈칸, $1$은 머리사람, $2$는 머리사람과 꼬리사람이 아닌 나머지, $3$은 꼬리사람, $4$는 이동 선을 의미합니다.",
+ "output_spec": "$k$번의 라운드 동안 각 팀이 얻게되는 점수의 총합을 출력합니다.",
+ "constraints": "- $3 \\le n \\le 20$\n- $1 \\le m \\le 5$\n- $1 \\le k \\le 1\\,000$\n- 이동 선의 각 칸은 반드시 $2$개의 인접한 칸만이 존재하고, 하나의 이동 선에는 하나의 팀만이 존재한다고 가정해도 좋습니다.",
+ "samples": [
+  {
+   "in": "7 2 1\n3 2 1 0 0 0 0\n4 0 4 0 2 1 4\n4 4 4 0 2 0 4\n0 0 0 0 3 0 4\n0 0 4 4 4 0 4\n0 0 4 0 0 0 4\n0 0 4 4 4 4 4",
+   "out": "9\n"
+  },
+  {
+   "in": "7 2 2\n3 2 1 0 0 0 0\n4 0 4 0 2 1 4\n4 4 4 0 2 0 4\n0 0 0 0 3 0 4\n0 0 4 4 4 0 4\n0 0 4 0 0 0 4\n0 0 4 4 4 4 4",
+   "out": "25\n"
+  }
+ ]
+}

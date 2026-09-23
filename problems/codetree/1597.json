@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1597",
+ "title": "최대 거리의 점",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-maximum-distance-point/description",
+ "alias": "maximum-distance-point",
+ "pid": 1597,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Parametric Search",
+ "lesson": "Parametric Search",
+ "card": "challenge-maximum-distance-point",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "65.8",
+  "submissions": "660"
+ },
+ "sample_count": 2,
+ "statement_len": 146,
+ "fetched_at": "2026-09-23",
+ "statement": "수직선 위에 서로 다른 $N$개의 점이 있습니다.\n\n이 $N$개의 점들 위에 $M$개의 물건을 설치한다고 할 때, 가장 인접한 두 물건의 거리를 가능한 크게 하여 설치하려고 합니다.\n\n이 때 가장 인접한 두 물건의 거리의 최댓값을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$, $M$이 공백을 두고 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 각 점의 좌표가 한 줄에 하나씩 주어집니다.",
+ "output_spec": "가장 인접한 두 물건의 거리의 최댓값을 출력합니다.",
+ "constraints": "+ $2 \\le M \\le N \\le 200\\,000$\n+ $0 \\le$ 점의 좌표 $\\le 10^9$",
+ "samples": [
+  {
+   "in": "4 3\n1\n5\n12\n21\n",
+   "out": "9\n"
+  },
+  {
+   "in": "5 3\n1\n2\n4\n8\n9\n",
+   "out": "3\n"
+  }
+ ],
+ "sample_notes": [
+  "$1$, $12$, $21$ 위에 물건을 설치하면 가장 인접한 두 물건 사이의 거리는 $9$가 됩니다.\n\n<br>\n\n![](https://contents.codetree.ai/problems/1597/images/problems-7a654a48-fc4d-4b80-9685-454a3015e383.png)\n\n<br>",
+  "$1$, $4$, $8$ 또는 $1$, $4$, $9$ 위에 물건을 설치하면 가장 인접한 두 물건 사이의 거리는 $3$이 됩니다.\n\n<br>\n\n![](https://contents.codetree.ai/problems/1597/images/problems-8acc47df-2375-48c0-8603-93669dfc4651.png)\n\n<br>"
+ ]
+}

@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "54",
+ "title": "안전 지대",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-comfort-zone/description",
+ "alias": "comfort-zone",
+ "pid": 54,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "DFS",
+ "lesson": "DFS",
+ "card": "challenge-comfort-zone",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 7.5초 · C++17 0.5초",
+  "memory": "512 MB",
+  "time_sec": 7.5
+ },
+ "stats": {
+  "accept_rate": "35.1",
+  "submissions": "6512"
+ },
+ "sample_count": 2,
+ "statement_len": 944,
+ "fetched_at": "2026-09-23",
+ "statement": "$N \\times M$ 크기의 격자로 구성된 마을이 있습니다. 격자마다 한 집을 의미하며, 각 집의 높이는 $1$ 이상 $100$ 이하의 정수입니다.\n\n![](https://contents.codetree.ai/problems/54/images/problems-8e36f981-2e8c-4e44-8cfa-61d1181406a3.png)\n\n이런 상황에서 만약 비가 $K$ ($1$ 이상의 정수)만큼 온다고 한다면, 마을에 있는 집들 중 높이가 $K$ 이하인 집들은 전부 물에 잠기게 되기 때문에, 대책을 세우기 위해 미리 각 $K$에 따라 안전 영역의 개수가 어떻게 달라지는지를 보려고 합니다. 여기서 안전 영역이란 잠기지 않은 집들로 이루어져 있으며, 잠기지 않은 집들끼리 상하좌우로 인접해 있는 경우 동일한 안전 영역에 있는 것으로 봅니다.\n\n위의 예에서 $K = 1$인 경우에는 안전한 영역은 $1$개 입니다.\n\n![](https://contents.codetree.ai/problems/54/images/problems-d5ae4918-c554-4594-bb42-7060fa296818.png)\n\n$K = 3$인 경우에는 안전 영역의 수가 $3$이 되며\n\n![](https://contents.codetree.ai/problems/54/images/problems-c53fe1b9-9f8a-4345-b781-c6dc91bb95b6.png)\n\n$K = 4$일 때는 안전 영역의 수가 $4$가 됩니다.\n\n![](https://contents.codetree.ai/problems/54/images/problems-9312cca1-c78d-410d-ab18-09d1958a1a12.png)\n\n\n이런 상황에서 안전 영역의 수가 최대가 될 때의 $K$와 그때의 안전 영역의 수를 구해주는 프로그램을 작성해보세요.\n\n위의 예에서는 $K = 4$일 때 안전 영역의 수가 $4$로 최대가 됩니다.",
+ "input_spec": "첫 번째 줄에는 $N$과 $M$이 공백을 사이에 두고 주어지고,\n\n두 번째 줄부터는 $N$개의 줄에 걸쳐 각 행에 위치한 $M$개의 마을의 높이 정보가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "$1$ 이상의 정수 $K$ 중, 안전 영역의 수가 최대가 될 때의 $K$와 그때의 안전 영역의 수를 공백을 사이에 두고 출력합니다. 만약 안전 영역의 수가 최대가 되는 $K$가 여러 개라면, 그중 가장 작은 $K$를 출력합니다.",
+ "constraints": "- $1 \\le N,\\ M \\le 50$\n- $1 \\le \\texttt{각 집의 높이} \\le 100$",
+ "samples": [
+  {
+   "in": "4 5\n1 2 4 7 5\n4 2 5 5 2\n5 7 3 2 6\n6 7 4 5 1\n",
+   "out": "4 4\n"
+  },
+  {
+   "in": "3 2\n1 2\n2 2\n1 1\n",
+   "out": "1 1\n"
+  }
+ ]
+}

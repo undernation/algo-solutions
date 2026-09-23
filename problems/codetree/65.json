@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "65",
+ "title": "자동차 단일 거래 이익 최대화하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-max-profit-of-single-car/description",
+ "alias": "max-profit-of-single-car",
+ "pid": 65,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "1차원 배열",
+ "lesson": "Min/Max",
+ "card": "challenge-max-profit-of-single-car",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "55.0",
+  "submissions": "4495"
+ },
+ "sample_count": 2,
+ "statement_len": 126,
+ "fetched_at": "2026-09-23",
+ "statement": "향후 $N$년 간의 자동차 가격 정보가 미리 주어졌을 때, 자동차를 단 한 번 사서 되팔 때의 이익을 최대화하고자 합니다. 낼 수 있는 최대 이익을 출력하는 프로그램을 작성해보세요. 단, 자동차를 사기 전에는 팔 수 없습니다.",
+ "input_spec": "첫 번째 줄에는 $N$이 주어지고,  \n두 번째 줄에는 $N$년 간 각 해의 자동차 가격이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "자동차를 단 한 번 사서 되팔 때의 최대 이익을 출력합니다. 단, 이익이 나지 않는 경우 $0$을 출력해줍니다.",
+ "constraints": "- $0 \\le \\texttt{자동차 가격} \\le 2^{31}-1$\n- $1 \\le N \\le 1\\,000$",
+ "samples": [
+  {
+   "in": "5\n9 10 2 3 6\n",
+   "out": "4\n"
+  },
+  {
+   "in": "5\n9 7 5 3 1\n",
+   "out": "0\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 예제: 가격이 $2$일 때 사고 $6$일 때 팔았을 때의 이익은 $4$입니다. 자동차를 사기 전에는 팔 수 없기 때문에 $10-2=8$은 답이 될 수 없음에 유의합니다.",
+  "두 번째 예제: 언제 사고 팔아도 이익이 나지 않기 때문에 $0$을 출력해줍니다."
+ ]
+}

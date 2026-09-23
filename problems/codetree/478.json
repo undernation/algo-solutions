@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "478",
+ "title": "정렬과 정렬",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-sort-compare/description",
+ "alias": "sort-compare",
+ "pid": 478,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "정렬",
+ "lesson": "정렬 속도 비교",
+ "card": "test-sort-compare",
+ "card_type": "Test",
+ "level": "Easy",
+ "ptype": "Multiple choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "37.4",
+  "submissions": "4295"
+ },
+ "sample_count": 0,
+ "statement_len": 290,
+ "fetched_at": "2026-09-23",
+ "statement": "다음은 정렬에 대한 설명입니다. 옳은 것을 모두 고르세요.\n\n**보기** — 모두 고르기\n\n1. 거품, 선택, 삽입 정렬 중에선 선택 정렬의 속도가 가장 빠른 편이다.\n2. 기수 정렬의 시간복잡도는 각 원소가 되는 숫자의 범위와 관련이 깊다.\n3. `1`부터 `10`억 사이의 임의의 자연수가 있는 배열이 있다면,  원소의 개수와 상관없이 기수 정렬이 항상 좋다.\n4. 원소의 개수를 나타내는 `N`이 `1`억이고, `1`부터 `10`억 사이의 임의의 자연수를 원소로 하는 배열이 있다면, 기수 정렬이 최선의 방법이다."
+}

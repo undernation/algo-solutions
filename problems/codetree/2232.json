@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2232",
+ "title": "소괄호 매칭 수 최대화하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-maximize-the-number-of-parenthesis-matches/description",
+ "alias": "maximize-the-number-of-parenthesis-matches",
+ "pid": 2232,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Greedy",
+ "lesson": "Greedy Algorithm",
+ "card": "challenge-maximize-the-number-of-parenthesis-matches",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "42.2",
+  "submissions": "372"
+ },
+ "sample_count": 1,
+ "statement_len": 445,
+ "fetched_at": "2026-09-23",
+ "statement": "소괄호로만 이루어진 문자열 $N$개가 주어집니다. 이들을 적절하게 붙여 하나의 문자열 $T$로 만들어 얻을 수 있는 점수를 최대화하려고 합니다. 이때, 문자열 $T$의 점수는 문자열 내 서로 다른 두 문자를 골랐을 때, 왼쪽에 있는 문자는 `(`, 오른쪽에 있는 문자는 `)`인 가지수로 정의됩니다.\n\n예를 들어 문자열 `)(()())`는 다음의 이유로 $8$점을 얻게 됩니다.\n\n- ) **(** ( **)** ( ) )\n- ) **(** ( ) ( **)** )\n- ) **(** ( ) ( ) **)**\n- ) ( **(** **)** ( ) )\n- ) ( **(** ) ( **)** )\n- ) ( **(** ) ( ) **)**\n- ) ( ( ) **(** **)** )\n- ) ( ( ) **(** ) **)**\n \n문자열 $T$를 잘 만들어 최대 점수를 얻는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $N$이 주어집니다.\n\n두 번째 줄부터 $N+1$번째 줄까지는 소괄호로만 이루어져 있는 문자열이 하나씩 주어집니다.",
+ "output_spec": "주어진 문자열을 잘 나열하여 만들어진 새로운 문자열 $T$ 중 얻을 수 있는 최대 점수를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100\\,000$\n- 주어진 문자열 길이의 총 합은 $500\\,000$을 넘지 않는다고 가정해도 좋습니다.\n- 문자열은 (`과 `)`로만 구성돼있음이 보장됩니다.",
+ "samples": [
+  {
+   "in": "4\n(()\n)\n((\n)(\n",
+   "out": "13\n"
+  }
+ ],
+ "sample_notes": [
+  "`((` `(()` `)(` `)` 순서로 붙여 만든 $P$는 `(((())()` 입니다. 이때 $13$점을 얻게 되어 최대가 됩니다."
+ ]
+}

@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1050",
+ "title": "트리 위에 물건 놓기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-node-best-count/description",
+ "alias": "node-best-count",
+ "pid": 1050,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Tree",
+ "lesson": "Tree DP",
+ "card": "intro-node-best-count",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "160 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "54.8",
+  "submissions": "467"
+ },
+ "sample_count": 2,
+ "statement_len": 179,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$번부터 $N$번까지 $N$개의 정점으로 이루어진 트리가 주어집니다.\n\n여러분은 이 트리의 몇몇 정점 위에 물건을 놓고자 합니다.\n이때, 모든 간선에 대해, 간선의 양끝 두 정점 중 적어도 하나의 정점 위에는 물건이 놓여 있어야 합니다.\n\n조건을 만족하기 위해 필요한 최소 물건의 개수를 구하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 정점의 수 $N$이 주어집니다.\n\n그다음 줄부터 $N-1$ 개의 줄에 걸쳐, 한 줄에 간선 하나씩, 각 간선이 연결하는 두 정점의 번호가 공백으로 구분되어 주어집니다.",
+ "output_spec": "첫 번째 줄에 필요한 물건의 수의 최솟값을 출력합니다.",
+ "constraints": "- $2 \\le N \\le 100\\,000$\n- 간선 정보는 $1$ 이상 $N$ 이하의 두 정수로 주어지며, 주어지는 그래프는 트리입니다.",
+ "samples": [
+  {
+   "in": "6\n1 2\n2 3\n3 4\n4 5\n4 6 \n",
+   "out": "2\n"
+  },
+  {
+   "in": "5\n4 5\n4 2\n2 3\n1 2\n",
+   "out": "2\n"
+  }
+ ]
+}

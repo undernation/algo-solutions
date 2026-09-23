@@ -1,0 +1,37 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "264",
+ "title": "차례로 출력",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-print-in-order/description",
+ "alias": "print-in-order",
+ "pid": 264,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "for문 a → b 1씩 증가",
+ "card": "intro-print-in-order",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "90.0",
+  "submissions": "16633"
+ },
+ "sample_count": 1,
+ "statement_len": 30,
+ "fetched_at": "2026-09-23",
+ "statement": "$5$부터 $17$까지 출력하는 프로그램을 작성해보세요",
+ "input_spec": "입력이 주어지지 않습니다.",
+ "output_spec": "첫 번째 줄에 $5$부터 $17$까지 공백을 사이에 두고 출력합니다.",
+ "samples": [
+  {
+   "in": "",
+   "out": "5 6 7 8 9 10 11 12 13 14 15 16 17\n"
+  }
+ ]
+}

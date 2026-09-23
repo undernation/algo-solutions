@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2089",
+ "title": "별이 있는 숫자로만의 이동",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-move-to-numbers-with-star/description",
+ "alias": "move-to-numbers-with-star",
+ "pid": 2089,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shorten time Technique",
+ "lesson": "Prefix Sum",
+ "card": "challenge-move-to-numbers-with-star",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 6초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 6.0
+ },
+ "stats": {
+  "accept_rate": "62.6",
+  "submissions": "457"
+ },
+ "sample_count": 1,
+ "statement_len": 434,
+ "fetched_at": "2026-09-23",
+ "statement": "안에 숫자가 쓰여진 $N \\times N$크기의 격자가 있습니다. 이 중 임의의 한 칸을 시작칸으로 잡고 이 칸으로부터 인접한 칸으로만 이동했을 때 $K$칸 이내에 이동할 수 있는 칸으로만 이동하려고 합니다. 예를 들어 아래와 같이 칸이 구성되어있고 $B$가 시작점, $K$가 $2$라고 할 때, $*$가 되어있는 칸으로만 이동이 가능합니다. \n```\n50    5     25*   6     17    \n14    3*    2*    7*    21    \n99*   10*   1*(B) 2*    80*    \n8     7*    5*    23*   11   \n10    0     78*   1     9\n```\n시작점을 적절하게 잡아 이동 가능한 칸에 적혀있는 숫자의 합이 최대가 되게 하려고 할 때, 가능한 숫자 합의 최댓값을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $N, K$가 공백을 사이에 두고 차례대로 주어집니다. \n\n두 번째 줄부터 $N$개의 줄에 걸쳐 $i+1$번째 줄에 사각형의 $i$번째 줄 각 칸 안에 쓰인 숫자들이 공백을 사이에 두고 차례대로 주어집니다.",
+ "output_spec": "첫 번째 줄에 이동 가능한 칸에 쓰인 숫자 합의 최댓값을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 400$ \n- $0 \\le \\texttt{칸에 쓰여진 숫자} \\le 1\\,000$ \n- $0 \\le K \\le 2N$",
+ "samples": [
+  {
+   "in": "5 2\n50 5 25 6 17\n14 3 2 7 21\n99 10 1 2 80\n8 7 5 23 11\n10 0 78 1 9\n",
+   "out": "342\n"
+  }
+ ],
+ "sample_notes": [
+  "가운데 1번 칸을 시작칸으로 지정한다면, 이동 가능한 칸 안의 숫자 합은 342로 최대가 됩니다.\n\n50 5 **25** 6 17\n\n14 **3** **2** **7** 21\n\n**99** **10** **1** **2** **80**\n\n8 **7** **5** **23** 11\n\n10 0 **78** 1 9"
+ ]
+}

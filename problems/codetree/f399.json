@@ -1,0 +1,35 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f399",
+ "title": "큐브 위 도미노",
+ "url": "https://www.codetree.ai/ko/frequent-problems/acpc/problems/domino-on-cube/description",
+ "alias": "domino-on-cube",
+ "pid": 399,
+ "group": "acpc",
+ "kind": "frequent",
+ "origin": "2026 ACPC I",
+ "level": "L9",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "49.5",
+  "submissions": "190"
+ },
+ "sample_count": 1,
+ "statement_len": 1146,
+ "fetched_at": "2026-09-23",
+ "statement": "코디는 $N \\times N \\times N$ 크기의 정육면체 큐브를 구매했습니다.\n\n큐브의 각 면은 $N \\times N$ 크기의 격자 형태이며, 각 칸은 체스판처럼 흑칸(B)과 백칸(W)으로 번갈아 색칠되어 있습니다.\n\n즉, 큐브의 각 면은 다음 두 가지 중 하나의 격자 패턴을 가집니다.\n- 최좌측에서 가장 위 칸이 **흑칸(B)** 으로 시작하는 형태\n- 최좌측에서 가장 위 칸이 **백칸(W)** 으로 시작하는 형태\n\n예를 들어 $N = 3$일 때, 큐브의 각 면은 다음 두 type중 하나입니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/800e2a46-ff91-42ab-978c-0ddcd53232a3.webp)\n\n코디는 해당 큐브 위에 $1 \\times 2(2 \\times 1)$ 크기의 도미노를 놓아 타일링을 진행하려 합니다.\n\n도미노는  $90^{\\circ}$로 접는 것이 가능하며  다음 두 가지 방식으로 놓을 수 있습니다. \n- 한 면 안에서 두 칸을 차지하도록 평평하게 놓기\n- 서로 인접한 두 면에 걸치도록, 모서리에  $90^{\\circ}$로 접어 놓기\n\n단, 서로 다른 도미노가 특정 칸에 겹치도록 놓는 것은 불가능합니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/8de9da50-0ffe-4486-9fed-06905b732f5b.webp)\n\n그렇게 놓인 도미노는 차지한 두 칸의 색 조합에 따라, 다음 세 가지 도미노중 하나로 구분됩니다.\n\n- `WW` 도미노 : 두 칸이 모두 백칸\n- `BB` 도미노 : 두 칸이 모두 흑칸\n- `WB(BW)` 도미노 : 한 칸은 백칸, 다른 한 칸은 흑칸\n\n큐브의 각 면 형태와 도미노 배치를 자유롭게 선택할 수 있을 때, `WW` , `BB` , `WB(BW)` 세 종류 도미노가 각각 **최대 몇 개까지** 나올 수 있는지 구하는 프로그램을 작성하세요. 도미노 배치가 완료된 후, 큐브에 빈 칸(도미노가 배치되지 않은 칸)이 존재해도 괜찮습니다.\n\n각 도미노 개수의 최댓값은 서로 독립적으로 구할 수 있습니다. 즉, `WW`의 최대 개수, `BB`의 최대 개수, `WB`의 최대 개수는 각각 별도의 타일링 시나리오에서 구할 수 있습니다.",
+ "input_spec": "첫 번째 줄에 큐브의 크기를 나타내는 홀수 $N$이 주어집니다.",
+ "output_spec": "첫 줄에 `WW`, `BB`, `WB` 도미노 순으로 각각 나올 수 있는 최대 개수를 공백으로 구분해 출력합니다.",
+ "constraints": "- $3 \\le N \\le 99\\,999$\n- $N$은 홀수",
+ "samples": [
+  {
+   "in": "3\n",
+   "out": "12 12 27\n"
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "753",
+ "title": "출력결과 71",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201826/description",
+ "alias": "reading-k201826",
+ "pid": 753,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "break문",
+ "card": "challenge-reading-k201826",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "69.7",
+  "submissions": "4680"
+ },
+ "sample_count": 0,
+ "statement_len": 947,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 프로그램의 출력 결과는 무엇인가?\n\n## Python3 코드\n```python\nx = 100\nfor x in range(1, 6):\n    if x == 2:\n        continue\n    if x == 4:\n        break\n    print(x, end=' ')\n```\n\n## C 코드\n\n```c\nint x = 100;\nfor (x = 1; x <= 5; x++) {  \n    if (x == 2)    \n        continue;  \n    if (x == 4)    \n        break;\n    printf(\"%d \", x);\n}\n```\n\n## C++ 코드\n\n```cpp\nint x = 100;\nfor (x = 1; x <= 5; x++) {  \n    if (x == 2)    \n        continue;  \n    if (x == 4)    \n        break;\n    cout << x << \" \";\n}\n```\n\n## Java 코드\n\n```java\nint x = 100;\nfor (x = 1; x <= 5; x++) {  \n    if (x == 2)    \n        continue;  \n    if (x == 4)    \n        break;\n    System.out.print(x + \" \");\n}\n```\n\n## JavaScript 코드\n\n```JavaScript\nlet x = 100;\nlet result = \"\";\nfor (x = 1; x <= 5; x++) {  \n    if (x == 2)    \n        continue;  \n    if (x == 4)    \n        break;\n    result += x + \" \";\n}\n\nconsole.log(result);\n```\n\n**보기** — 하나 고르기\n\n1. 1 2 3 4 5\n2. 1 3\n3. 1 2 3\n4. 1 2 3 4\n5. 1 3 5"
+}

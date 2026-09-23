@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "480",
+ "title": "병합 정렬",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-merge-sort/description",
+ "alias": "merge-sort",
+ "pid": 480,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "정렬",
+ "lesson": "병합 정렬",
+ "card": "intro-merge-sort",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "68.8",
+  "submissions": "2102"
+ },
+ "sample_count": 0,
+ "statement_len": 916,
+ "fetched_at": "2026-09-23",
+ "statement": "병합 정렬은 데이터를 쪼개고, 이후 다시 병합하는 과정을 통해 정렬하는 알고리즘으로, 추가적인 공간이 필요합니다.\n\n앞에서 배웠던 정렬 알고리즘에 비해 다소 구현은 복잡하지만, $\\mathcal{O}(N \\log N)$ 이라는 효율적인 시간복잡도를 보여줍니다.\n\n병합 정렬 코드를 완성해봅시다.\n\n```jsx\nfunction merge_sort(arr[], low, high)\n  if low < high\n    set mid = (low + high) / 2\n    merge_sort(arr, low, mid)\n    merge_sort(arr, (1), high)\n    merge(arr, low, (2), high)\n\n\nset merged_arr = []\n    \nfunction merge(arr[], low, mid, high)\n  set i = (3), j = (4)\n\n  set k = low\n  while i <= mid && j <= high\n    if arr[i] <= arr[j]\n      merged_arr[k] = (5)\n      k += 1; i += 1\n    else\n      merged_arr[k] = (6)\n      k += 1; j += 1\n  \n  while i <= mid\n    merged_arr[k] = arr[i]\n    k += 1; i += 1\n\n  while j <= high\n    merged_arr[k] = arr[j]\n    k += 1; j += 1\n  \n  for k = low ... k <= high\n    arr[k] = merged_arr[k]\n  \n  return arr \n```\n\n**보기** — 순서대로 6개 고르기\n\n1. `mid-1`\n2. `mid`\n3. `mid+1`\n4. `low`\n5. `high`\n6. `arr[i]`\n7. `arr[j]`"
+}

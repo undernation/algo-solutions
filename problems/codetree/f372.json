@@ -1,0 +1,48 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f372",
+ "title": "염기서열 커버",
+ "url": "https://www.codetree.ai/ko/frequent-problems/hsat/problems/dna-wildcard-covering/description",
+ "alias": "dna-wildcard-covering",
+ "pid": 372,
+ "group": "hsat",
+ "kind": "frequent",
+ "origin": "6차 1번 문제",
+ "level": "L14",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "41.1",
+  "submissions": "158"
+ },
+ "sample_count": 3,
+ "statement_len": 508,
+ "fetched_at": "2026-09-23",
+ "statement": "생명 공학을 연구하는 현생이는 요즘 DNA 염기서열을 연구하고 있다. DNA 염기서열이란 4종류의 핵염기 `a`(아데닌), `c`(사이토신), `g`(구아닌), `t`(티민)이 일자로 연결된 가닥이다. 문자열로는 `a`, `c`, `g`, `t` 네 문자의 나열로 나타낸다.\n\n현생이는 인간에게 좋게 작용하는 **좋은 염기서열** $N$개를 가지고 있고 이 모든 좋은 염기서열의 길이는 $M$이다. 주어진 좋은 염기서열은 몇 개의 와일드 카드(`.`)을 가지고 있어, 이 부분에는 `a`, `c`, `g`, `t`의 어떤 염기가 들어가도 좋은 염기서열로 작용한다고 하자.\n\n주어진 좋은 염기서열의 조건을 만족할 수 있는 염기서열을 **초염기서열**이라고 한다. 그러나 주어진 모든 좋은 염기서열을 만족하는 것은 불가능할 수 있어서, 여러 초염기서열을 만들어서 여러 그룹의 좋은 염기서열을 커버할 수 있도록 하고자 한다.\n\n주어진 모든 좋은 염기서열을 커버하기 위해 필요한 최소 갯수의 초염기서열은 몇 개일까?",
+ "input_spec": "첫 번째 줄에는 정수 $N$, $M$이 공백을 두고 주어진다. $N$은 좋은 염기서열의 개수, $M$은 그들의 길이를 의미한다.\n\n다음 $N$개의 줄의 각 줄에는 좋은 염기서열이 주어진다.",
+ "output_spec": "첫 번째 줄에 모든 염기서열을 커버하기 위한 초염기서열의 최소 갯수를 출력한다.",
+ "constraints": "- $1 \\leq N \\leq 15$\n- $1 \\leq M \\leq 20$\n- 주어지는 염기서열의 길이는 $M$이다.\n- 염기서열은 `a`, `c`, `g`, `t`, `.`로 이루어져 있다.",
+ "samples": [
+  {
+   "in": "4 5\na..tt\ngc...\na.g.t\n.c.ag\n",
+   "out": "2\n"
+  },
+  {
+   "in": "4 1\na\ng\nc\nt\n",
+   "out": "4\n"
+  },
+  {
+   "in": "4 4\na...\n.c..\n..g.\n...t\n",
+   "out": "1\n"
+  }
+ ],
+ "sample_notes": [
+  "예제 1번에서, `acgtt`와 `gctag`의 두 가지 초염기서열을 가지고 있다면, `acgtt`는 `a..tt`와 `a.g.t`를 만족할 수 있고 `gctag`는 `gc...`와 `.c.ag`를 만족할 수 있어 모든 염기서열을 커버할 수 있다.",
+  "",
+  ""
+ ]
+}

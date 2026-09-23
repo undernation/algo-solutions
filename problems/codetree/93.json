@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "93",
+ "title": "대폭발",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-big-explosion/description",
+ "alias": "big-explosion",
+ "pid": 93,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Simulation",
+ "lesson": "격자 안에서 단일 객체를 이동",
+ "card": "challenge-big-explosion",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "67.7",
+  "submissions": "1024"
+ },
+ "sample_count": 2,
+ "statement_len": 920,
+ "fetched_at": "2026-09-23",
+ "statement": "$N \\times N$ 크기의 격자판 위의 한 지점에 폭탄이 놓여 있습니다. 아래 그림은 시작 시점($0$초)의 모습입니다.\n\n![](https://contents.codetree.ai/problems/93/images/problems-e6d9fc84-b9c1-48c4-8c73-683d0026bd36.png)\n\n폭탄은 시간이 흐름에 따라 $4$방향으로 폭발합니다. $1$초에 한 번씩 폭발하며, $t$초가 되면 $t-1$초에 폭탄이 있던 위치에서 상하좌우 $4$방향으로 거리 $2^{t - 1}$ 만큼 떨어진 지점에 새로운 폭탄이 생기게 됩니다. 이때 기존 위치에 있던 폭탄은 그대로 남아있으며 여전히 계속 터짐을 반복하게 됩니다.\n\n\n\n예를 들어 위의 경우에서 시작하여 $1$초가 되면 다음과 같이 거리를 $1$만큼 두고 $4$방향으로 폭탄이 새롭게 생겨나게 됩니다.\n\n\n![](https://contents.codetree.ai/problems/93/images/problems-33cfea41-2137-45aa-b941-1b46a307e673.png)\n\n다시 $1$초가 지나 $2$초가 되면 다음과 같이 거리를 $2$만큼 두고 폭탄이 새롭게 생겨나게 됩니다. 이때 $1$초 전에 새로 생겨난 폭탄들도 $0$초부터 있었던 원시폭탄과 마찬가지로 거리를 $2$만큼 두고 새로운 폭탄을 생성하게 됩니다. 격자를 벗어나는 곳에는 폭탄이 새로 생기지 않게 되고, 이미 폭탄이 있는 경우 역시 새롭게 폭탄이 생겨나지 않습니다.\n\n![](https://contents.codetree.ai/problems/93/images/problems-fc438281-cdb1-4bf3-b28d-e7ed13c6132d.png)\n\n격자판의 크기와 처음 폭탄의 위치가 주어졌을 때, $M$초가 되었을 때 격자판에 놓여있는 폭탄의 개수를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 격자의 크기를 나타내는 $N$과 시간을 나타내는 $M$, 그리고 초기 폭탄의 위치 $r, c$가 각각 공백을 사이에 두고 주어집니다. $r, c$는 처음에 폭탄이 $r$행 $c$열에 놓여있음을 의미합니다.",
+ "output_spec": "$M$초 후 격자판에 놓여있는 폭탄의 수를 출력합니다.",
+ "constraints": "-  $1 \\le N \\le 100$\n- $1 \\le M \\le 8$\n- $1 \\le r, c \\le N$",
+ "samples": [
+  {
+   "in": "5 1 3 4\n",
+   "out": "5\n"
+  },
+  {
+   "in": "5 2 3 4\n",
+   "out": "15\n"
+  }
+ ]
+}

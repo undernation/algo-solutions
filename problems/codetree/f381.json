@@ -1,0 +1,43 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f381",
+ "title": "배터리 효율 최적화 하기",
+ "url": "https://www.codetree.ai/ko/frequent-problems/hsat/problems/optimizing-battery-efficiency/description",
+ "alias": "optimizing-battery-efficiency",
+ "pid": 381,
+ "group": "hsat",
+ "kind": "frequent",
+ "origin": "10차 2번 문제",
+ "level": "L13",
+ "limits": {
+  "time": "Python3 2초 · C++17 2초",
+  "memory": "80 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "48.1",
+  "submissions": "482"
+ },
+ "sample_count": 2,
+ "statement_len": 560,
+ "fetched_at": "2026-09-23",
+ "statement": "전기차의 성능을 결정하는 중요한 요소 중 하나는 고성능 배터리입니다. 최근 H-자동차 회사는 전기차의 주행 거리와 효율성을 개선하기 위해 `펜타-배터리 모듈`이라는 새로운 배터리 디자인에 주목하고 있습니다. 이 디자인은 $1 \\times 1$ 크기의 배터리 셀 $5$개를 연결하여 만들어진 모듈입니다.\n\n전기차 배터리 팩 설계 프로젝트에 참여하고 있는 $A$는, $N \\times M$ 크기의 격자 모양 배터리 팩에 두 개의 `펜타-배터리 모듈`을 배치해야 합니다. 각 격자 칸은 배터리 셀 하나에 해당하며, 각 셀은 고유의 에너지 출력 값을 가집니다. `펜타-배터리 모듈`을 배치하면 해당 배터리 셀의 에너지 출력 값만큼 효율 점수를 얻게 됩니다.\n\n설계의 가장 중요한 조건은 두 모듈을 배치할 때 **정확히 두 배터리 셀**이 겹치도록 하는 것입니다. 겹쳐진 해당 셀들에서의 에너지 출력을 두 배로 증가시켜, 해당 두 배터리 셀에서는 두 배의 효율 점수를 얻게 됩니다.\n\n설계의 조건을 만족하며 `펜타-배터리 모듈`을 효율적으로 설치하여 효율 점수를 최대화 할 수 있게 하는 프로그램을 작성하세요.",
+ "input_spec": "첫번째 줄에 격자의 세로 길이와 가로 길이를 나타내는 두 정수 $N$과 $M$이 공백으로 구분되어 주어집니다.\n\n두번째 줄부터 $N$ 개의 줄에 걸쳐 배터리 셀의 에너지 출력 값 정보가 주어집니다. 각 줄은 $M$ 개의 정수가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 얻을 수 있는 효율 점수의 최댓값을 출력하세요.",
+ "constraints": "- $1 \\le N, M \\le 10$\n- $8 \\le N \\times M \\le 16$\n- $-1\\,000 \\le \\texttt{각 배터리 셀의 에너지 출력값} \\le 1\\,000$",
+ "samples": [
+  {
+   "in": "2 4\n10 2 8 9\n15 3 10 2\n",
+   "out": "84\n"
+  },
+  {
+   "in": "3 4\n10 11 -10 9\n15 -10 10 2\n-10 22 31 10\n",
+   "out": "144\n"
+  }
+ ],
+ "sample_notes": [
+  "<p align=center> <img width=\"300\" src=\"https://contents.codetree.ai/problems/4106/images/45dcddd0-e7c3-4d20-b3d8-c7e17364eaa3.png\">\n\n예제 $1$번에서 얻을 수 있는 효율 점수는 다음과 같습니다. $10 \\times 2 + 15 \\times 2 + 2 + 8 + 9 + 3 + 10 + 2 = 84$\n\n <p align=center> <img width=\"300\" src=\"https://contents.codetree.ai/problems/4106/images/a364b7e2-d50b-4e51-8e2b-7377ce0c25b7.png\">\n\n예제 $2$번에서 얻을 수 있는 효율 점수는 다음과 같습니다. $22 \\times 2 + 31 \\times 2 + 10 + 2 + 10 + (-10) + 15 + 11 = 144$",
+  ""
+ ]
+}

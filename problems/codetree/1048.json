@@ -1,0 +1,50 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1048",
+ "title": "간선 순회",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-touring-the-line/description",
+ "alias": "touring-the-line",
+ "pid": 1048,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Tree",
+ "lesson": "트리",
+ "card": "challenge-touring-the-line",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 5초 · C++17 1초",
+  "memory": "288 MB",
+  "time_sec": 5.0
+ },
+ "stats": {
+  "accept_rate": "62.1",
+  "submissions": "327"
+ },
+ "sample_count": 4,
+ "statement_len": 700,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$번부터 $N$번까지 $N$개의 정점으로 이루어진 트리가 주어집니다.\n이 트리의 각 간선에는 길이가 부여되어 있습니다.\n\n이 트리에서 아무 정점이나 하나 골라서, 그 정점을 시작점으로 하여 다음과 같은 규칙에 따라 이동하고자 합니다.\n\n+ 하루에 이동하는 거리가 $D$ 이하가 되게 하고자 합니다. 그러나 하루가 지나갈 때, 간선 위에 있어도 무방합니다.\n+ 이미 지나간 간선은 다시 지나갈 수 없습니다.\n\n예를 들어서, $1-2-3-4$ 형태의 트리가 주어지고, 두 정점 $1$과 $2$를 잇고있는 간선과, $2$와 $3$을 잇고있는 간선의 길이는 $3$이고, $3$과 $4$를 잇고있는 간선의 길이가 $2$라고 합시다.\n만약, $D = 2$라면 정점 $1$에서 시작하여 정점 $4$로 가기 위해서, 첫 번째 날에는 $2$만큼 이동하게 됩니다. 다음날에는 $1$만큼 더 이동해서 정점 $2$에 도착하게 된 다음, $1$만큼 더 이동해 $2-3$ 간선 사이에 있게 됩니다.\n이틀 더 이동하면, 정점 $4$에 도달할 수 있음을 알 수 있습니다.\n\n![](https://contents.codetree.ai/problems/1048/images/problems-75775d47-ddbc-4151-9cef-6062ad73dcd5.png)\n\n위 규칙에 따라 최대한 많은 간선을 지나가려고 할 때,\n최소한으로 필요한 날짜 수를 구하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 정수 $N$과 $D$가 공백으로 구분되어 주어집니다.\n\n그다음 줄부터 $N-1$ 개의 줄에 걸쳐, 한 줄에 간선 하나씩, 간선으로 연결된 두 정점의 번호와 그 간선의 길이가 공백으로 구분되어 주어집니다.",
+ "output_spec": "첫 번째 줄에 최대한 많은 간선을 지나가는데 걸리는 최소 일수를 출력합니다.",
+ "constraints": "- $2 \\le N \\le 50\\,000$\n- $1 \\le D \\le 100\\,000$\n- $1 \\le \\texttt{간선이 연결하는 정점 번호} \\le N$\n- $1 \\le \\texttt{각 간선의 길이}  \\le 1\\,000$, 간선의 길이는 정수.\n- 주어지는 그래프는 트리입니다.",
+ "samples": [
+  {
+   "in": "3 3\n1 2 2\n1 3 2\n",
+   "out": "2\n"
+  },
+  {
+   "in": "3 2\n1 2 1\n1 3 1\n",
+   "out": "1\n"
+  },
+  {
+   "in": "6 6\n1 2 7\n1 3 5\n2 4 10\n4 5 9\n4 6 3\n",
+   "out": "5\n"
+  },
+  {
+   "in": "6 4\n1 2 4\n2 3 2\n3 4 7\n3 5 3\n6 5 4\n",
+   "out": "4\n"
+  }
+ ]
+}

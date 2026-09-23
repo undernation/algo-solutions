@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "273",
+ "title": "특정 숫자 도달하기 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reaching-specific-number-2/description",
+ "alias": "reaching-specific-number-2",
+ "pid": 273,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "for문 b → a 1씩 감소",
+ "card": "challenge-reaching-specific-number-2",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "90.8",
+  "submissions": "5083"
+ },
+ "sample_count": 1,
+ "statement_len": 44,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $N$의 값을 입력받아 $1$까지 차례로 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 정수 $N$이 주어집니다.",
+ "output_spec": "입력받은 정수 $N$부터 $1$까지 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$",
+ "samples": [
+  {
+   "in": "8\n",
+   "out": "8 7 6 5 4 3 2 1\n"
+  }
+ ]
+}

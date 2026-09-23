@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1755",
+ "title": "부분 수열의 합이 K",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-the-sum-of-the-subsequences-is-k/description",
+ "alias": "the-sum-of-the-subsequences-is-k",
+ "pid": 1755,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shorten time Technique",
+ "lesson": "Prefix Sum",
+ "card": "challenge-the-sum-of-the-subsequences-is-k",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "82.1",
+  "submissions": "871"
+ },
+ "sample_count": 1,
+ "statement_len": 88,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 정수로 이루어진 수열에서 연속된 구간의 합을 구하려합니다.\n\n모든 연속된 구간의 합 중에서 합이 $K$인 것의 개수를 구하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 정수 $N$과 $K$가 공백을 두고 주어집니다.\n\n두 번째 줄에 $N$개의 정수가 공백을 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 모든 연속된 구간의 합 중에서 합이 $K$인 것의 개수를 출력합니다.",
+ "constraints": "- $3 \\le N \\le 1\\,000$\n- $1 \\le K \\le 1\\,000\\,000$\n- $1 \\le \\texttt{주어진 정수의 값} \\le 1\\,000\\,000$",
+ "samples": [
+  {
+   "in": "4 3\n1 2 1 2\n",
+   "out": "3\n"
+  }
+ ],
+ "sample_notes": [
+  "합이 $3$이 되는 $3$개의 구간은 다음과 같습니다.\n\n[$1$, $2$],   [$2$, $1$],  [$1$, $2$]"
+ ]
+}

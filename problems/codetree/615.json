@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "615",
+ "title": "병합 순서",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-ga-prim-order/description",
+ "alias": "ga-prim-order",
+ "pid": 615,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 알고리즘",
+ "lesson": "Prim",
+ "card": "test-ga-prim-order",
+ "card_type": "Test",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "47.9",
+  "submissions": "1669"
+ },
+ "sample_count": 0,
+ "statement_len": 267,
+ "fetched_at": "2026-09-23",
+ "statement": "다음과 같은 그래프가 있습니다.\n\n프림 알고리즘을 사용하여 MST를 만들려고 할 때, 어떤 순서대로 노드가 선택되는지 골라봅시다. (단, $1$번에서 출발한다고 가정합니다.)\n\n![](https://contents.codetree.ai/problems/615/images/problems-27c5ce7b-fdc1-4cff-baa7-a28362ae2324.svg)\n\n**보기** — 순서대로 6개 고르기\n\n1. `2`\n2. `3`\n3. `4`\n4. `5`\n5. `6`\n6. `7`"
+}

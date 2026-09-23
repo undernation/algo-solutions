@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "596",
+ "title": "최단거리 개념",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-ga-shoterst-concept/description",
+ "alias": "ga-shoterst-concept",
+ "pid": 596,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 알고리즘",
+ "lesson": "Dijkstra",
+ "card": "intro-ga-shoterst-concept",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Multiple choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "52.4",
+  "submissions": "3754"
+ },
+ "sample_count": 0,
+ "statement_len": 300,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 중 옳은 것을 모두 골라봅시다.\n\n**보기** — 모두 고르기\n\n1. 가중치가 있는 그래프에서 최단거리를 DFS로 구할 수 있으며, 이는 시간복잡도 측면에서 가장 효율적인 방법 중 하나이다.\n2. 가중치가 전부 동일하다면, 방향성이 있는 그래프와 없는 그래프에서 모두 BFS를 이용하여 최단거리를 구할 수 있다.\n3. 가중치가 양수라면 BFS를 통해 구할 수 없지만, 가중치가 음수라면 BFS를 통해 구할 수 있다.\n4. 일반적으로 가중치가 있다면 BFS로 구할 수 없지만, 모든 간선의 가중치가 동일하다면 BFS로 구할 수 있다."
+}

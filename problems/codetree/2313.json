@@ -1,0 +1,43 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2313",
+ "title": "알파벳 출력하기 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-print-alphabet-2/description",
+ "alias": "print-alphabet-2",
+ "pid": 2313,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "다중 반복문",
+ "lesson": "알파벳 출력",
+ "card": "test-print-alphabet-2",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "71.0",
+  "submissions": "2950"
+ },
+ "sample_count": 2,
+ "statement_len": 164,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $N$이 주어지면, 아래 예를 참고하여 규칙에 맞게 영문자를 출력하는 프로그램을 작성해보세요. `Z` 다음에는 `A`가 나와야 합니다(입출력 예제2 참고).\n\n예)\n\n$N=2$ 인 경우:\n\n```\nA B\n  C\n```\n\n$N=3$ 인 경우:\n\n```\nA B C\n  D E\n    F\n```",
+ "input_spec": "첫 번째 줄에 $N$의 값이 주어집니다.",
+ "output_spec": "주어지는 $N$ 값에 따른 영문자를 출력합니다.",
+ "constraints": "- $1\\le N\\le 15$",
+ "hint": "예) $n=4$ 인 경우:\n```\ni             문자의 개수\n\n0   A B C D       4\n1     E F G       3\n2       H I       2\n3         J       1\n\n식               N - i\n```",
+ "samples": [
+  {
+   "in": "4\n",
+   "out": "A B C D\n  E F G\n    H I\n      J\n"
+  },
+  {
+   "in": "7\n",
+   "out": "A B C D E F G\n  H I J K L M\n    N O P Q R\n      S T U V\n        W X Y\n          Z A\n            B\n"
+  }
+ ]
+}

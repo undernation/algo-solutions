@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "66",
+ "title": "문자열 계속 지우기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-keep-removing-string/description",
+ "alias": "keep-removing-string",
+ "pid": 66,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "문자열",
+ "lesson": "문자 삭제",
+ "card": "challenge-keep-removing-string",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "63.9",
+  "submissions": "2748"
+ },
+ "sample_count": 2,
+ "statement_len": 542,
+ "fetched_at": "2026-09-23",
+ "statement": "문자열 $A$와 문자열 $B$가 주어지면 문자열 $A$의 부분문자열 중 가장 앞에 등장하는 $B$와 같은 문자열을 찾아 지우려고 합니다. 지우고 난 후 떨어져있는 $A$의 문자열들을 다시 붙여 만들어진 새로운 문자열에서 부분 문자열 $B$가 없을 때까지 지우는 것을 반복합니다.\n\n예를 들어 문자열 $A$가 `baabba`, $B$가 `ab`라면 다음의 과정을 따르게 됩니다.\n\n1. $A$의 $3$번째 위치에서 시작하여 $4$번째 위치에서 끝나는 부분 문자열이 최초로 $B$와 일치하는 문자열이므로 해당 문자열을 $A$에서 삭제합니다. \n`baabba` → `baba`\n2. 새로 만들어진 문자열 `baba`에서 $2$번째 위치에서 시작하여 $3$번째 위치에서 끝나는 부분 문자열이 최초로 $B$와 일치하는 문자열이므로 해당 문자열을 삭제합니다.\n`baba` → `ba`\n3. 남은 문자열 `ba`의 연속 부분문자열 중 문자열 $B$와 일치하는 문자열이 존재하지 않으므로 최종 결과는 `ba`가 됩니다.\n\n최종적으로 남게 된 문자열을 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 문자열 $A$가 주어집니다.\n\n두 번째 줄에는 문자열 $B$가 주어집니다.",
+ "output_spec": "문자열 $A$에서 문자열 $B$를 찾아 계속 지우는 것을 반복한 이후에 남게되는 문자열을 출력합니다.",
+ "constraints": "-  $1 \\le \\texttt{문자열 } A \\texttt{의 길이, 문자열 } B \\texttt{의 길이} \\le 100$",
+ "samples": [
+  {
+   "in": "baabba\nab\n",
+   "out": "ba\n"
+  },
+  {
+   "in": "bbababab\nab\n",
+   "out": "bb\n"
+  }
+ ]
+}

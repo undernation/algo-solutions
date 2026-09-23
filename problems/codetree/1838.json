@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1838",
+ "title": "각 정점까지의 최단 경로 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-shortest-path-to-each-vertex-2/description",
+ "alias": "shortest-path-to-each-vertex-2",
+ "pid": 1838,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shortest Path",
+ "lesson": "Floyd Warshall",
+ "card": "intro-shortest-path-to-each-vertex-2",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "73.3",
+  "submissions": "528"
+ },
+ "sample_count": 1,
+ "statement_len": 160,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 정점이 존재하고 $M$개의 간선의 양 끝 정점과 가중치가 주어질 때, 모든 정점 쌍 $(i,\\,j)$에 대해 정점 $i$에서 출발하여 정점 $j$에 도착하기 위한 최단 거리를 구하는 프로그램을 작성해보세요. 단, 주어진 정점과 간선으로 이루어지는 그래프는 방향 그래프 입니다.",
+ "input_spec": "첫 번째 줄에 정점의 개수 $N$과 간선의 개수 $M$이 공백을 두고 주어집니다.\n\n두 번째 줄부터 $M$개의 줄에 걸쳐, 각 간선을 연결하는 두 정점의 번호와 가중치가 공백을 두고 주어집니다. 두 정점을 연결하는 간선이 여러 개 주어질 수도 있습니다.",
+ "output_spec": "모든 정점 쌍 $(i,\\,j)$에 대한 최단거리를 출력합니다.\n\n$N$개의 줄에 걸쳐 각 정점에서 출발하여 $1$번 정점, $2$번 정점, $\\cdots$, $N$번 정점까지 도달하기 위한 최단거리 값을 공백을 사이에 두고 출력합니다. 만약 불가능하다면 $-1$을 출력합니다.",
+ "constraints": "- $1\\le N\\le 100$\n- $1\\le M\\le 100\\,000$\n- $1\\le\\texttt{간선의 가중치}\\le 100\\,000$",
+ "samples": [
+  {
+   "in": "5 14\n1 2 2\n1 3 3\n1 4 1\n1 5 10\n2 4 2\n3 4 1\n3 5 1\n4 5 3\n3 5 10\n3 1 8\n1 4 2\n5 1 7\n3 4 2\n5 2 4\n",
+   "out": "0 2 3 1 4\n12 0 15 2 5\n8 5 0 1 1\n10 7 13 0 3\n7 4 10 6 0\n"
+  }
+ ],
+ "sample_notes": [
+  "그래프는 다음과 같습니다.\n\n![](https://contents.codetree.ai/problems/1838/images/problems-42388916-91cf-46fb-9f55-18c104bc3ba7.png)\n\n위 그래프에서, $i$에서 시작하여 $j$로 가는 모든 쌍에 대해 경로를 표시하면 밑의 그림과 같습니다. ($5 \\times 5$ 크기의 격자모양으로 나타내었습니다)\n\n```\n0 2 3 1 4\n12 0 15 2 5\n8 5 0 1 1\n10 7 13 0 3\n7 4 10 6 0\n```\n\n```\n1 -> 2\n1 -> 3\n1 -> 4\n1 -> 4 -> 5\n2 -> 4 -> 5 -> 1\n2 -> 4 -> 5 -> 1 -> 3\n2 -> 4\n2 -> 4 -> 5\n3 -> 1\n3 -> 5 -> 2\n3 -> 4\n3 -> 5\n4 -> 5 -> 1\n4 -> 5 -> 2\n4 -> 5 -> 1 -> 3\n4 -> 5\n5 -> 1\n5 -> 2\n5 -> 1 -> 3\n5 -> 2 -> 4\n```"
+ ]
+}

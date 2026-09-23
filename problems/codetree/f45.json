@@ -1,0 +1,39 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f45",
+ "title": "바이러스 실험",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/virus-experiment/description",
+ "alias": "virus-experiment",
+ "pid": 45,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2018 하반기 오후 1번 문제",
+ "level": "L13",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "200 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "41.5",
+  "submissions": "1810"
+ },
+ "sample_count": 2,
+ "statement_len": 1893,
+ "fetched_at": "2026-09-23",
+ "statement": "$n \\times n$ 격자 무늬의 배지에 바이러스를 배양하는 실험을 하고자 합니다.\n\n초기에 각 칸에 $5$만큼의 양분이 들어있으며 $m$개의 바이러스로 시작합니다.\n\n한 사이클마다 다음과 같은 규칙을 가지고 실험이 진행됩니다.\n\n1. 각각의 바이러스는 본인이 속한 $1 \\times 1$ 크기의 칸에 있는 양분을 섭취합니다. 본인의 나이만큼 양분을 섭취하며, 같은 칸에 여러 개의 바이러스가 있을 때에는 나이가 어린 바이러스부터 양분을 섭취합니다. 양분을 섭취한 바이러스는 나이가 $1$ 증가합니다. 만약 양분이 부족하여 본인의 나이만큼 양분을 섭취할 수 없다면 그 즉시 죽습니다.\n\n2. 모든 바이러스가 섭취를 끝낸 후 죽은 바이러스가 양분으로 변합니다. 죽은 바이러스마다 나이를 $2$로 나눈 값이 바이러스가 있던 칸에 양분으로 추가됩니다. 편의를 위해 소숫점 아래는 버립니다.\n\n3. 이후 바이러스가 번식을 진행합니다. 번식은 $5$의 배수의 나이를 가진 바이러스에게만 진행되며, 인접한 $8$개의 칸에 나이가 $1$인 바이러스가 생깁니다. 이는 상하좌우와 대각선으로 인접한 $8$칸을 뜻하고, 배지 범위를 벗어난 곳에는 바이러스가 번식하지 않습니다.\n\n4. 1, 2, 3 과정이 순서대로 끝난 뒤에는 주어진 양분의 양에 따라 칸에 양분이 추가됩니다.\n\n아래와 같은 바이러스 상태가 주어진다면 다음과 같이 진행됩니다. 각 사이클마다 양분은 모든 칸에 $1$씩 추가된다고 생각해봅시다.\n\n<p align=\"center\">\n<img width=\"500\" height=\"250\" src=\"https://contents.codetree.ai/problems/131/images/dbde15a7-350b-4509-87ef-9d6a06b23e51.png\">\n</p>\n\n<p align=\"center\">\n<img width=\"500\" height=\"250\" src=\"https://contents.codetree.ai/problems/131/images/ca4e3797-0b34-48c4-97d5-319bca539523.png\">\n</p>\n\n<p align=\"center\">\n<img width=\"500\" height=\"250\" src=\"https://contents.codetree.ai/problems/131/images/03c791c8-c9cf-4cad-b679-e9fbbafbc4ce.png\">\n</p>\n\n<p align=\"center\">\n<img width=\"500\" height=\"250\" src=\"https://contents.codetree.ai/problems/131/images/d525215b-2787-4e3b-9526-69239fb1b853.png\">\n</p>\n\n<p align=\"center\">\n<img width=\"500\" height=\"250\" src=\"https://contents.codetree.ai/problems/131/images/3f6766a6-0093-4747-8e45-56eddebe5586.png\">\n</p>\n\n<p align=\"center\">\n<img width=\"500\" height=\"250\" src=\"https://contents.codetree.ai/problems/131/images/04cefa4f-c4e7-4639-835b-72276ed792b8.png\">\n</p>\n\n<p align=\"center\">\n<img width=\"500\" height=\"250\" src=\"https://contents.codetree.ai/problems/131/images/3fd5d8ad-b98e-484b-aaa1-db2b4103ffa8.png\">\n</p>\n\n따라서 해당 상태에서 $2$사이클이 지나면 총 $6$개의 바이러스가 살아남는 것을 알 수 있습니다.\n\n$k$ 사이클이 끝난 이후에도 살아있는 바이러스의 양을 출력하는 프로그램을 구하세요.",
+ "input_spec": "첫 번째 줄에는 배지의 크기 $n$, 바이러스의 개수 $m$, 총 사이클의 수 $k$가 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터 $n+1$번째 줄까지는 마지막에 추가되는 양분의 양을 의미하는 정수가 공백을 사이에 두고 출력됩니다.\n\n그 다음 줄부터 $m$개의 줄에는 바이러스의 정보가 주어집니다. 처음의 두개의 정수 $r, c$는 바이러스의 위치를 의미하고, $r$은 격자의 몇번째 행인지를 $c$는 격자의 몇 번째 열인지를 알려줍니다. 세 번째 정수로는 바이러스의 나이가 주어집니다. 각각의 정수는 공백을 사이에 두고 주어집니다.\n\n입력으로 주어지는 바이러스의 위치는 모두 서로 다르다고 가정해도 좋습니다",
+ "output_spec": "$k$ 사이클 이후에 살아남은 바이러스의 수를 구하시오",
+ "constraints": "- $1 \\le n \\le 10$\n- $1 \\le m \\le n^2$\n- $1 \\le k \\le 1,000$\n- $1 \\le r \\le n$\n- $1 \\le c \\le n$\n- $1 \\le$ 마지막에 추가되는 양분의 양 $\\le 100$\n- $1 \\le$ 입력으로 주어지는 바이러스의 나이 $\\le 10$\n- $n, m, k$는 정수입니다.",
+ "samples": [
+  {
+   "in": "5 3 2\n1 1 1 1 1\n1 1 1 1 1\n1 1 1 1 1\n1 1 1 1 1\n1 1 1 1 1\n2 2 2\n3 4 3\n4 5 4\n",
+   "out": "6\n"
+  },
+  {
+   "in": "5 3 10\n1 1 1 1 1\n1 1 1 1 1\n1 1 1 1 1\n1 1 1 1 1\n1 1 1 1 1\n2 2 2\n3 4 3\n4 5 4\n",
+   "out": "0\n"
+  }
+ ]
+}

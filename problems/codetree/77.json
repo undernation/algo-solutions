@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "77",
+ "title": "기울어진 직사각형",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-slanted-rectangle/description",
+ "alias": "slanted-rectangle",
+ "pid": 77,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Simulation",
+ "lesson": "격자 안에서 완전탐색",
+ "card": "challenge-slanted-rectangle",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "56.7",
+  "submissions": "2687"
+ },
+ "sample_count": 2,
+ "statement_len": 990,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$ 이상 $100$ 이하의 정수로만 이루어져 있는 $N \\times N$ 크기의 격자 정보가 주어집니다.\n\n![](https://contents.codetree.ai/problems/77/images/problems-6ff23e15-7499-44ee-95fe-8fcbcc7d193c.png)\n\n이때, 이 격자 내에 있는 기울어진 직사각형들을 살펴보려고 합니다.\n\n기울어진 직사각형이란, 격자내에 있는 한 지점으로부터 체스의 비숍처럼 대각선으로 움직이며 반시계 순회를 했을 때 지나왔던 지점들의 집합을 일컫습니다. 이 때 반드시 아래에서 시작해서 $1$, $2$, $3$, $4$번 방향순으로 순회해야하며 각 방향으로 최소 1번은 움직여야 합니다. 또한, 이동하는 도중 격자 밖으로 넘어가서는 안됩니다.\n\n![](https://contents.codetree.ai/problems/77/images/problems-694bde47-302d-43d6-a226-d6d78d36a6cd.png)\n\n 예를 들어 위의 규칙에 따라 다음과 같은 기울어진 직사각형을 2개 만들어 볼 수 있습니다.\n\n![](https://contents.codetree.ai/problems/77/images/problems-2ac576fe-1b77-4368-8ca1-3a8a0b673931.png)\n![](https://contents.codetree.ai/problems/77/images/problems-d5c75a7e-009b-441a-afe4-a560fa9d1dc7.png)\n\n가능한 기울어진 직사각형들 중 해당 직사각형을 이루는 지점에 적힌 숫자들의 합이 최대가 되도록 하는 프로그램을 작성해보세요.\n\n위의 예에서는 다음과 같이 기울어진 직사각형을 잡게 되었을 때 합이 $21$이 되어 최대가 됩니다.\n\n![](https://contents.codetree.ai/problems/77/images/problems-ac7a6d90-b72d-4cce-9c72-3989c7d853e1.png)",
+ "input_spec": "첫 번째 줄에는 격자의 크기를 나타내는 $N$이 주어집니다.\n\n두 번째 줄부터는 $N$개의 줄에 걸쳐 격자에 대한 정보가 주어집니다. 각 줄에는 각각의 행에 대한 정보가 주어지며, 이 정보는 각각 공백을 사이에 두고 주어집니다.",
+ "output_spec": "가능한 기울어진 직사각형들 중 최대의 합을 출력합니다.",
+ "constraints": "- $3 \\le N \\le 20$\n- $1 \\le \\texttt{격자 값} \\le 100$",
+ "samples": [
+  {
+   "in": "5\n1 2 2 2 2\n1 3 4 4 4\n1 2 3 3 3\n1 2 3 3 3\n1 2 3 3 3\n",
+   "out": "21\n"
+  },
+  {
+   "in": "3\n1 2 3\n4 5 6\n7 8 8\n",
+   "out": "20\n"
+  }
+ ]
+}

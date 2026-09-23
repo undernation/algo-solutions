@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "4100",
+ "title": "패턴 매칭",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-pattern-matching/description",
+ "alias": "pattern-matching",
+ "pid": 4100,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "DP II",
+ "lesson": "String Matching",
+ "card": "challenge-pattern-matching",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "47.4",
+  "submissions": "420"
+ },
+ "sample_count": 3,
+ "statement_len": 770,
+ "fetched_at": "2026-09-23",
+ "statement": "문자열 $S$와 패턴 $P$가 주어집니다. 이 문자열 $S$가 패턴 $P$에 속하는지 여부를 판단하는 프로그램을 작성하세요.\n\n패턴 $P$는 $'.'$과 $'*'$을 지원하는 정규 표현식입니다.\n\n정규 표현식에서 $'.'$은 어떤 단일 문자와도 일치합니다. $'*'$은 바로 앞에 등장한 하나의 문자(소문자 영어 알파벳 또는 $'.'$)에 붙어, 그 앞 문자가 매칭할 수 있는 문자를 $0$개 이상 연속해서 매칭합니다. 예를 들어 $\"a*\"$는 $0$개 이상의 $'a'$와 일치하고, $\".*\"$는 어떤 문자든 $0$개 이상과 일치합니다. 패턴은 $S$ 전체와 일치해야 하며, 부분 일치는 인정하지 않습니다.\n\n예를 들어, $S = \"ab\"$, $P = \"a.\"$ 일 때, 문자열 $S$는 패턴 $P$에 속합니다. $'.'$은 어떤 단일 문자와도 일치하기 때문에, $'b'$와 $'.'$은 일치합니다.\n\n$S = \"aaa\"$, $P = \"a*\"$ 일 때, 문자열 $S$는 패턴 $P$에 속합니다. $\"a*\"$은 $0$개 이상의 $'a'$와 일치하기 때문에, $\"aaa\"$와 $\"a*\"$은 일치합니다.\n\n$S = \"aaa\"$, $P = \"a*a\"$ 일 때에도 문자열 $S$는 패턴 $P$에 속합니다. $\"a*\"$이 앞의 두 $'a'$와 일치하고 남은 $\"a\"$가 패턴의 마지막 $'a'$와 일치하기 때문입니다.\n\n$S = \"codetree\"$, $P = \".*\"$ 일 때, 문자열 $S$는 패턴 $P$에 속합니다. $\".*\"$은 어떤 문자든 $0$개 이상과 일치하기 때문입니다.",
+ "input_spec": "첫 번째 줄에 문자열 $S$가 주어집니다.\n\n두 번째 줄에 문자열 $P$가 주어집니다.",
+ "output_spec": "첫 번째 줄에 문자열 $S$가 패턴 $P$에 속하면 $true$, 속하지 않는다면 $false$를 출력합니다.",
+ "constraints": "- $1 \\le S\\texttt{의 길이} \\le 20$\n- $1 \\le P\\texttt{의 길이} \\le 20$\n- $S$는 소문자 영어 알파벳만을 포함합니다.\n- $P$는 소문자 영어 알파벳, $'.'$, $'*'$만을 포함합니다.\n- $'*'$ 문자는 반드시 그 바로 앞에 소문자 영어 알파벳 또는 $'.'$이 오도록 배치되며, 연속된 두 개의 $'*'$은 나타나지 않습니다.",
+ "samples": [
+  {
+   "in": "ab\na.\n",
+   "out": "true\n"
+  },
+  {
+   "in": "aaa\na*\n",
+   "out": "true\n"
+  },
+  {
+   "in": "codetree\n.*\n",
+   "out": "true\n"
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2327",
+ "title": "격자 모양 출력하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-print-grid-shape/description",
+ "alias": "print-grid-shape",
+ "pid": 2327,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "2차원 배열",
+ "lesson": "격자로서의 2차원 배열",
+ "card": "test-print-grid-shape",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "86.7",
+  "submissions": "2351"
+ },
+ "sample_count": 1,
+ "statement_len": 161,
+ "fetched_at": "2026-09-23",
+ "statement": "$N \\times N$ 크기의 격자의 칸 위에 $M$개의 점이 놓여져 있습니다. \n\n각 점의 크기는 해당 칸의 행 번호와 열 번호의 곱이 됩니다.\n\n각 점의 위치에 해당하는 정보가 주어질 때, 격자의 모양을 출력하는 프로그램을 작성해보세요.\n\n단, 행과 열의 번호는 $1$부터 시작됩니다.",
+ "input_spec": "첫 번째 줄에 격자의 크기 $N$과 점의 개수 $M$이 공백을 두고 주어집니다.\n\n두 번째 줄부터 $M$개의 줄에 걸쳐 각 점의 행 번호와 열 번호가 공백을 사이에 두고 주어집니다.\n\n주어진 $M$개의 점의 위치는 모두 다름을 가정해도 좋습니다.",
+ "output_spec": "첫 번째 줄부터 $N$개의 줄에 걸쳐, 각 행에 해당하는 $N$개의 값을 공백을 사이에 두고 출력합니다.\n\n점이 있는 칸은 점의 크기를, 나머지 칸은 $0$을 출력합합니다.",
+ "constraints": "- $1 \\le N \\le 10$\n- $1 \\le M \\le N \\times N$",
+ "samples": [
+  {
+   "in": "3 3\n1 1\n3 2\n3 3\n",
+   "out": "1 0 0\n0 0 0\n0 6 9\n"
+  }
+ ]
+}

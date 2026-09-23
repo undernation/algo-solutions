@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2210",
+ "title": "인접하지 않은 3개의 숫자",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-three-non-adjacent-numbers/description",
+ "alias": "three-non-adjacent-numbers",
+ "pid": 2210,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shorten time Technique",
+ "lesson": "LR Technique",
+ "card": "challenge-three-non-adjacent-numbers",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "54.2",
+  "submissions": "577"
+ },
+ "sample_count": 1,
+ "statement_len": 75,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 숫자가 주어졌을 때, 서로 인접하지 않도록 $3$개의 숫자를 적절하게 골라 합이 최대가 되도록 하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $N$이 주어집니다.  \n\n두 번째 줄에는 $N$개의 숫자가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 인접하지 않은 세 숫자의 합 중 최댓값을 출력합니다.",
+ "constraints": "- $5 \\le N \\le 100\\,000$\n - $1 \\le \\texttt{each given number} \\le 100\\,000$",
+ "samples": [
+  {
+   "in": "6\n1 1 2 5 8 7\n",
+   "out": "13\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 숫자 $1$과 네 번째 숫자 $5$, 그리고 여섯 번째 숫자 $7$을 고르면 합이 $13$이 됩니다. 이보다 더 큰 답을 찾을 수는 없습니다."
+ ]
+}

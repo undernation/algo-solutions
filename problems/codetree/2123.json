@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2123",
+ "title": "미래가 보이는 가위바위보",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-rock-paper-scissors-to-see-the-future/description",
+ "alias": "rock-paper-scissors-to-see-the-future",
+ "pid": 2123,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shorten time Technique",
+ "lesson": "LR Technique",
+ "card": "challenge-rock-paper-scissors-to-see-the-future",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "64.6",
+  "submissions": "639"
+ },
+ "sample_count": 1,
+ "statement_len": 226,
+ "fetched_at": "2026-09-23",
+ "statement": "$A$와 $B$가 가위바위보를 총 $N$회 진행합니다. $A$는 $B$가 무엇을 낼지 알고 있습니다. $A$는 주먹, 가위, 보자기 중 같은 것을 연속해서 내고, 게임 $N$회 중 최대 한 번만 자신이 내는 것을 바꿔, 이후에는 바꾼 것을 계속 내려고 합니다. 예를 들어 $K$번 연속 주먹을 내고, $N-K$번은 가위를 냅니다. $A$가 이길 수 있는 게임 수의 최댓값을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다. \n\n두 번째 줄부터 $N$개의 줄에 걸쳐 각 줄에 주먹, 가위, 보자기 중 $B$가 무엇을 내는지에 대한 정보가 주어집니다. $H$는 주먹, $S$는 가위, $P$는 보자기를 나타냅니다.",
+ "output_spec": "첫 번째 줄에 $A$가 이길 수 있는 게임 수의 최댓값을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100\\,000$\n- 주어지는 문자열은 $H$, $S$, $P$로만 구성되어 있습니다.",
+ "samples": [
+  {
+   "in": "5\nP\nP\nH\nP\nS\n",
+   "out": "4\n"
+  }
+ ],
+ "sample_notes": [
+  "$1$부터 $4$회까지 가위를 내고 마지막 판에 주먹을 내면 $3$번째 판 빼고 모든 판을 이길 수 있습니다. $A$가 이보다 더 많이 이길 수 있는 방법은 없습니다."
+ ]
+}

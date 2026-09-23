@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "850",
+ "title": "함수를 이용한 369 게임",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-369-games-using-functions/description",
+ "alias": "369-games-using-functions",
+ "pid": 850,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "함수",
+ "lesson": "값을 반환하는 함수",
+ "card": "intro-369-games-using-functions",
+ "card_type": "Introduction",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "65.6",
+  "submissions": "5556"
+ },
+ "sample_count": 1,
+ "statement_len": 129,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $A$와 $B$가 주어지면, $A$이상 $B$이하 수들 중 $3$, $6$, $9$ 중에 하나가 들어가 있거나 그 수 자체가 $3$의 배수인 수의 개수를 세는 프로그램을 작성해보세요. 단, 함수를 이용하여 문제를 해결해주세요.",
+ "input_spec": "첫 번째 줄에 정수 $A$와 $B$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 위의 조건을 만족하는 수의 개수를 세어 출력합니다.",
+ "constraints": "- $1\\le A \\le B \\le 1\\,000\\,000$",
+ "samples": [
+  {
+   "in": "22 33\n",
+   "out": "9\n"
+  }
+ ],
+ "sample_notes": [
+  "$22$부터 $33$까지 위의 조건에 해당하는 수는 $23$, $24$, $26$, $27$, $29$, $30$, $31$, $32$, $33$로 총 $9$개이다."
+ ]
+}

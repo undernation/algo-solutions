@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2393",
+ "title": "재귀함수를 이용한 최소공배수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-least-common-multiple-using-recursive-function/description",
+ "alias": "least-common-multiple-using-recursive-function",
+ "pid": 2393,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "재귀함수",
+ "lesson": "값을 반환하는 재귀함수",
+ "card": "test-least-common-multiple-using-recursive-function",
+ "card_type": "Test",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "66.5",
+  "submissions": "3927"
+ },
+ "sample_count": 1,
+ "statement_len": 72,
+ "fetched_at": "2026-09-23",
+ "statement": "$n$개의 수가 주어졌을 때 이 수들의 최소공배수를 구하는 프로그램을 작성해보세요. 단, 재귀함수를 이용하여 문제를 해결해주세요.",
+ "input_spec": "첫 번째 줄에 정수 $n$이 주어집니다.\n\n두 번째 줄에 정수 $n$개 $A_1$, $A_2$, $\\dots$, $A_n$이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 $n$개의 수의 최소공배수를 출력합니다.",
+ "constraints": "- $1 \\le n \\le 10$\n- $1 \\le A_i \\le 10$ ($1 \\le i \\le n$)\n- 모든 입력값은 정수입니다.",
+ "samples": [
+  {
+   "in": "6\n1 5 7 9 2 6\n",
+   "out": "630\n"
+  }
+ ],
+ "sample_notes": [
+  "앞에서부터 최소공배수를 하나씩 누적하면 $1$, $5$, $35$, $315$, $630$, $630$이 됩니다.\n\n예를 들어 네 번째 단계에서는 앞의 세 수의 최소공배수인 $35$와 네 번째 원소 $9$의 최소공배수를 구해 $315$를 얻습니다. 마지막 원소 $6$은 이미 $630$을 나누므로 값이 그대로 유지되어 답은 $630$입니다."
+ ]
+}

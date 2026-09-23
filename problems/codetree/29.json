@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "29",
+ "title": "가능한 수열 중 최솟값 구하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-find-min-of-possible-series/description",
+ "alias": "find-min-of-possible-series",
+ "pid": 29,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Backtracking",
+ "lesson": "K개 중 하나를 N번 선택하기(Conditional)",
+ "card": "challenge-find-min-of-possible-series",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "192 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "50.7",
+  "submissions": "1827"
+ },
+ "sample_count": 3,
+ "statement_len": 389,
+ "fetched_at": "2026-09-23",
+ "statement": "길이가 $N$인 수열을 세 개의 숫자 $4$, $5$, $6$ 으로만 구성하려고 합니다. 이 때 임의의 길이를 갖는 두 개의 인접한 연속 부분 수열이 동일한 경우, 이는 불가능한 수열로 간주합니다. <그림 $1$>은 불가능한 수열의 예시들 입니다. 아래의 그림과 같이 빨간색으로 밑줄이 쳐진 부분 수열과 파란색으로 밑줄 쳐진 인접한 연속 부분 수열이 동일한 경우, 이는 불가능한 수열입니다. 이 때 길이가 $N$인 가능한 수열 중 앞에서부터 읽었을 때 사전순으로 가장 앞선 수열을 출력하는 코드를 작성해보세요.\n\n![](https://contents.codetree.ai/problems/29/images/problems-35b10d4d-db2e-43b7-8501-6c17703f64e5.png)",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.",
+ "output_spec": "길이가 $N$이고 $4$, $5$, $6$으로만 이루어진 가능한 수열 중 사전순으로 가장 앞선 수열을 출력합니다. \n\n이 때 숫자 사이에는 공백 없이 출력합니다.",
+ "constraints": "- $1 \\le N \\le 80$",
+ "samples": [
+  {
+   "in": "2\n",
+   "out": "45\n"
+  },
+  {
+   "in": "3\n",
+   "out": "454\n"
+  },
+  {
+   "in": "7\n",
+   "out": "4546454\n"
+  }
+ ]
+}

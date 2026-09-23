@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "887",
+ "title": "G & H 반전시키기 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-reversing-g-and-h-2/description",
+ "alias": "reversing-g-and-h-2",
+ "pid": 887,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Greedy",
+ "lesson": "상태 반전이 가능한 문제",
+ "card": "intro-reversing-g-and-h-2",
+ "card_type": "Introduction",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "85.3",
+  "submissions": "380"
+ },
+ "sample_count": 1,
+ "statement_len": 389,
+ "fetched_at": "2026-09-23",
+ "statement": "문자 'G'과 'H'로만 이루어진 길이가 n인 초기 문자열과 목표 문자열이 주어집니다. 모든 위치를 누르는 것이 가능하고, 특정 위치를 누르게 되면 해당 위치를 포함하여 앞에 있는 모든 문자가 전부 반전됩니다. 여기서 반전이란 문자 'G'가 'H'가 되고, 문자 'H'가 'G'가 되는 것을 의미합니다. 적절하게 칸을 눌러 최종적으로 초기 문자열이 목표 문자열이 되도록 하는 최소 클릭 횟수를 출력하는 프로그램을 작성해보세요. 단, 누른 칸을 또 누르는 것 역시 가능함에 유의합니다.\n\n예를 들어, n = 5, 초기 문자열이 GGHHH, 목표 문자열이 GGGGG였다면, 2번째, 5번째 칸을 순서대로 누르면 GGHHH -> HHHHH -> GGGGG 과정을 통해 목표 문자열을 만들 수 있습니다.",
+ "input_spec": "첫 번째 줄에는 $n$이 주어집니다.\n\n두 번째 줄에는 길이가 $n$인 초기 문자열이 주어집니다.\n\n세 번째 줄에는 길이가 $n$인 목표 문자열이 주어집니다.",
+ "output_spec": "초기 문자열이 목표 문자열이 되기 위해 눌러야 할 최소 횟수를 출력합니다.",
+ "constraints": "- $1 \\leq n \\leq 1,000$",
+ "samples": [
+  {
+   "in": "5\nGGHHH\nGGGGG\n",
+   "out": "2\n"
+  }
+ ]
+}

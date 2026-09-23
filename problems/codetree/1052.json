@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1052",
+ "title": "인접한 노드 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-adjacent-node-2/description",
+ "alias": "adjacent-node-2",
+ "pid": 1052,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Tree",
+ "lesson": "Tree DP",
+ "card": "challenge-adjacent-node-2",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "540 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "63.2",
+  "submissions": "155"
+ },
+ "sample_count": 1,
+ "statement_len": 150,
+ "fetched_at": "2026-09-23",
+ "statement": "주어진 트리에서 다음 규칙에 따라 여러 개의 노드를 선택하고자 합니다.\n\n\n- 선택한 노드끼리는 인접해 있을 수 없습니다.\n\n각각의 노드에 값이 적혀 있고, 선택한 노드에 적힌 값의 합이 최대가 되게 노드를 선택하고자 합니다.\n\n이때, 선택해야 하는 노드를 구해주세요.",
+ "input_spec": "첫 번째 줄에 노드의 개수 $N$이 주어집니다.\n\n두 번째 줄에 각 노드에 적힌 값이 $1$번 노드부터 $N$번 노드까지 순서대로 공백을 두고 주어집니다.\n\n세 번째 줄부터 n-1개의 줄에 걸쳐 인접한 두 노드의 번호가 공백을 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 선택한 노드 각각에 적힌 값의 합을 출력합니다.\n\n두 번째 줄에 선택한 노드의 번호를 낮은 것부터 공백을 두고 출력합니다.",
+ "constraints": "- $1\\le N \\le 10\\,000$\n- $1 \\le \\texttt{노드에 주어진 값} \\le 10\\,000$\n- 최대값이 될 수 있는 방법이 여러 개인 입력은 주어지지 않습니다.",
+ "samples": [
+  {
+   "in": "6\n10 30 40 10 20 70\n1 2\n2 3\n4 3\n4 5\n6 2\n",
+   "out": "140\n1 3 5 6\n"
+  }
+ ]
+}

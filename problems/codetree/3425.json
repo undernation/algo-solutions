@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3425",
+ "title": "노드 최적의 개수 3",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-node-best-count-3/description",
+ "alias": "node-best-count-3",
+ "pid": 3425,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Tree",
+ "lesson": "Tree DP",
+ "card": "challenge-node-best-count-3",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "180 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "56.4",
+  "submissions": "101"
+ },
+ "sample_count": 2,
+ "statement_len": 150,
+ "fetched_at": "2026-09-23",
+ "statement": "트리가 주어졌을 때 몇몇 노드에 물건을 놓으려고 합니다. 물건을 놓은 이후에는 모든 노드에 대해 자기 자신 혹은 인접한 노드 위에는 최소 하나 이상의 물건이 올라가 있어야만 한다고 했을 때, 조건을 만족하기 위해 필요한 최소 물건의 수를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 노드의 개수 $n$이 주어집니다.\n\n두 번째 줄 부터 $n-1$ 개의 줄에 각각 걸쳐 간선으로 연결된 두 개의 노드가 공백을 두고 차례대로 주어집니다.",
+ "output_spec": "첫 번째 줄에 최소한으로 놓일 물건의 수를 출력하세요.",
+ "constraints": "- $2 \\leq n \\leq 100,000$\n - $1 \\leq$ 노드의 크기 $\\leq n$",
+ "samples": [
+  {
+   "in": "6\n1 2\n2 3\n3 4\n4 5\n4 6 \n",
+   "out": "2\n"
+  },
+  {
+   "in": "9\n1 2\n2 3\n3 4\n4 5\n4 6\n7 1\n8 1\n9 1\n",
+   "out": "2\n"
+  }
+ ]
+}

@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "103",
+ "title": "아름다운 수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-beautiful-number/description",
+ "alias": "beautiful-number",
+ "pid": 103,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Backtracking",
+ "lesson": "K개 중 하나를 N번 선택하기(Simple)",
+ "card": "challenge-beautiful-number",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "67.7",
+  "submissions": "5070"
+ },
+ "sample_count": 2,
+ "statement_len": 435,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$이상 $4$이하의 정수로만 이루어져 있으면서, 정확히 해당 숫자만큼 연달아 같은 숫자가 나오는 수를 아름다운 수라고 부릅니다.\n\n예를 들어 $1333221$는 $1$이 $1$번, $3$이 $3$번, $2$가 $2$번 그리고 $1$이 $1$번 연속하여 나오므로 아름다운 수입니다.\n\n이때 동일한 숫자에 대해 연달아 같은 숫자의 묶음이 나오는 것 또한 아름다운 수입니다.\n\n예를 들어 $111$, $22222222$와 같은 수 역시 $1$이 $1$번 나온 것이 $3$번 반복되었고, $2$가 $2$번 나온 것이 $4$번 반복되었다고 할 수 있기 때문에 아름다운 수라고 할 수 있습니다.\n다만, $222$의 경우에는 $2$가 $2$번 나온 뒤, 다시 $2$가 $1$번 나왔으므로 아름다운 수가 아닙니다.\n\n$N$자리 아름다운 수가 몇 개 있는지를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 정수 $N$이 주어집니다.",
+ "output_spec": "$N$자리 아름다운 수의 개수를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 10$",
+ "samples": [
+  {
+   "in": "1\n",
+   "out": "1\n"
+  },
+  {
+   "in": "3\n",
+   "out": "4\n"
+  }
+ ],
+ "sample_notes": [
+  "",
+  "$3$자리 아름다운 수는 $111$, $122$, $221$, $333$으로 네 개 있으므로 답이 $4$가 됩니다."
+ ]
+}

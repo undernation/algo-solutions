@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1905",
+ "title": "In-Place Sort가 될 가능성",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-possibility-of-in-place-sort/description",
+ "alias": "possibility-of-in-place-sort",
+ "pid": 1905,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "정렬",
+ "lesson": "In-Place Sort",
+ "card": "challenge-possibility-of-in-place-sort",
+ "card_type": "Problem",
+ "level": "Hard",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "48.2",
+  "submissions": "2129"
+ },
+ "sample_count": 0,
+ "statement_len": 496,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 중 $\\mathcal{O}(N)$ 시간복잡도를 갖으며 In-Place Sort가 가능한 경우를 모두 골라보세요.\n\n(1) $N$개의 정수가 주어졌을 때, 음의 정수는 앞쪽에, 양의 정수는 뒷쪽에 있게 만드는 정렬.\n\n예시)   \n초기 상태\n```js\n[1, 2, 3, -3, -2, 5, 6, -6]   \n```\n정렬 이후 상태\n```js\n[-2, -6, -3, 5, 6, 2, 3, 1]\n```\n\n(2) $N$개의 정수가 주어졌을 때, 음의 정수는 앞쪽에, 양의 정수는 뒷쪽에 있게 만드는 정렬. 단, 음의 정수의 순서는 처음 주어진 것과 같아야 한다.\n\n예시)   \n초기 상태\n```js\n[1, 2, 3, -3, -2, 5, 6, -6]\n```\n정렬 이후 상태\n```js\n[-3, -2, -6, 3, 5, 6, 1, 2]\n```\n\n**보기** — 하나 고르기\n\n1. (1) 번만 가능하다.\n2. (1), (2) 번이 가능하다.\n3. (2) 번만 가능하다.\n4. 모두 불가능하다."
+}

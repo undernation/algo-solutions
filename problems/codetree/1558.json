@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1558",
+ "title": "수도코드 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-pseudo-code-2/description",
+ "alias": "pseudo-code-2",
+ "pid": 1558,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "시간, 공간복잡도",
+ "lesson": "수도코드",
+ "card": "challenge-pseudo-code-2",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "69.5",
+  "submissions": "7372"
+ },
+ "sample_count": 0,
+ "statement_len": 190,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 프로그램에서 CodeTree가 출력되는 횟수는 몇 번 일까요?\n\n```jsx\nset a = 0\nfor i = 1 ... i <= 20\n    if i <= 9\n        continue\n    print(\"CodeTree\")\n```\n\n**보기** — 하나 고르기\n\n1. `0`\n2. `9`\n3. `11`\n4. `19`\n5. `20`"
+}

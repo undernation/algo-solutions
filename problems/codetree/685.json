@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "685",
+ "title": "출력결과 3",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201521/description",
+ "alias": "reading-k201521",
+ "pid": 685,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "언제 끝날지 모르는 상황에서의 loop",
+ "card": "challenge-reading-k201521",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "56.0",
+  "submissions": "5658"
+ },
+ "sample_count": 0,
+ "statement_len": 722,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 프로그램의 출력 결과는 무엇인가?\n\n## Python3 코드\n```python\na = 128; b = 2021\n\nwhile b != 0:\n    tmp = a % b\n    a = b\n    b = tmp\n\nprint(a)\n```\n## C 코드\n\n```cpp\nint a = 128, b = 2021; \nwhile (b != 0) {\n    int tmp = a % b; \n    a = b;\n    b = tmp;\n}\nprintf(\"%d\\n\", a);\n```\n\n## C++ 코드\n\n```cpp\nint a = 128, b = 2021; \nwhile (b != 0) {\n    int tmp = a % b; \n    a = b;\n    b = tmp;\n}\ncout << a << endl;\n```\n\n## Java 코드\n\n```java\nint a = 128, b = 2021; \nwhile (b != 0) {\n    int tmp = a % b; \n    a = b;\n    b = tmp;\n}\nSystem.out.println(a);\n```\n\n## JavaScript 코드\n\n```JavaScript\nlet a = 128, b = 2021; \nwhile (b != 0) {\n    let tmp = a % b; \n    a = b;\n    b = tmp;\n}\nconsole.log(a);\n```\n\n**보기** — 하나 고르기\n\n1. `1`\n2. `2`\n3. `3`\n4. `4`\n5. `5`"
+}

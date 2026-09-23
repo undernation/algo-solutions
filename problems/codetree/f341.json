@@ -1,0 +1,43 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f341",
+ "title": "코드트리 오마카세",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/codetree-omakase/description",
+ "alias": "codetree-omakase",
+ "pid": 341,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2023 하반기 오후 2번 문제",
+ "level": "L18",
+ "limits": {
+  "time": "Python3 2초 · C++17 1.5초",
+  "memory": "80 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "20.2",
+  "submissions": "3665"
+ },
+ "sample_count": 2,
+ "statement_len": 1361,
+ "fetched_at": "2026-09-23",
+ "statement": "코드트리 회사에서는 회전 초밥집을 새로 오픈하였습니다. 고객을 사랑하는 마음에서 시작된 초밥집이기 때문에 주방장이 직접 각 초밥에 사람 이름을 적어서 회전하는 벨트 위에 올려놓는 초밥 오마카세 집입니다. \n\n코드트리 오마카세에는 아래와 같이 원형 형태의 초밥 벨트와 $L$개의 의자가 놓여있습니다. 의자는 원형에서 $x=0$을 기점으로 시계방향으로 돌며 $x=1, ..., x=L-1$ 위치까지 총 $L$개가 등간격으로 놓여있습니다. 회전 초밥은 각 의자 앞에 여러 개 놓일 수 있으며 초밥 벨트는 1초에 한 칸씩 시계방향으로 회전합니다. 처음에는 벨트 위에 놓여 있는 초밥이 전혀 없으며 의자 위에 앉아 있는 사람 역시 없습니다.\n\n<p align=\"center\">\n  <img width=\"450\" src=\"https://contents.codetree.ai/problems/4037/images/77a95361-768b-4bc0-b2f0-1dcfd7fdc8ce.png\" >\n</p>\n\n코드트리 오마카세는 3가지 명령에 따라 진행됩니다.\n\n(1) **주방장의 초밥 만들기**\n\n주방장은 시각 $t$에 위치 $x$ 앞에 있는 벨트 위에 $name$ 이름을 부착한 회전 초밥을 하나 올려놓습니다. 단, 이 과정은 시각 $t$에 초밥 회전이 일어난 직후에 발생합니다. 또, 같은 위치에 여러 회전 초밥이 올라갈 수 있으며 자신의 이름이 적혀 있는 초밥이 같은 위치에 여러 개 놓여 있는 것 역시 가능함에 유의합니다.\n\n(2) **손님 입장**\n\n이름이 $name$인 사람이 시각 $t$에 위치 $x$에 있는 의자로 가서 앉습니다. 단, 이 과정은 시각 $t$에 초밥 회전이 일어난 직후에 발생합니다. 이때부터 위치 $x$ 앞으로 오는 초밥들 중 자신의 이름이 적혀있는 초밥을 정확히 $n$개를 먹고 자리를 떠납니다. 이 명령이 주어졌을 때 해당 위치에는 사람이 없음을 가정해도 좋습니다. 만약 시각 $t$에 위치 $x$에 자신의 이름이 적혀있는 초밥이 놓여 있다면 자리에 착석하는 즉시 먹게 되며, 자신의 이름이 적혀 있는 초밥이 같은 위치에 여러 개 있다면 동시에 여러 개를 먹을 수 있습니다. 또한 초밥을 먹는데에는 시간이 소요되지 않는다고 가정해도 좋습니다.\n\n(3) **사진 촬영**\n\n시각 $t$에 코드트리 오마카세 집의 모습을 촬영합니다. 이때 시각 $t$에는 먼저 (1) 초밥 회전이 일어난 뒤 (2) 손님이 자신이 앉아 있는 자리에서 자신의 이름이 적힌 초밥을 먹은 뒤 (3) 사진 촬영을 진행해야 함에 유의합니다. \n\n사진 촬영을 진행했을 때 현재 코드트리 오마카세 집에 있는 사람 수와 남아 있는 초밥 수를 출력하면 됩니다.\n\n$Q$ 번에 걸쳐 명령을 순서대로 진행하며 알맞은 답을 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 초밥 벨트의 길이 $L$과 명령의 수 $Q$가 공백을 사이에 두고 주어집니다. \n\n두 번째 줄부터는 $Q$개의 줄에 걸쳐 명령의 정보가 주어집니다. 각 명령에 따른 형태는 다음과 같습니다.\n\n- 주방장의 초밥 만들기\n   \n  `100 t x name` 형태로 공백을 사이에 두고 주어집니다. 이는 주방장이 시각 $t$에 위치 $x$ 앞에 있는 벨트 위에 $name$ 이름을 부착한 회전 초밥을 하나 올려 놓는다는 것을 의미합니다. \n\n- 손님 입장\n   \n  `200 t x name n` 형태로 공백을 사이에 두고 주어집니다. 이는 이름이 $name$인 사람이 시각 $t$에 위치 $x$에 있는 의자로 가서 앉은 뒤 $n$개의 초밥을 먹을 때까지 기다리게 됨을 의미합니다. $n$개의 초밥을 먹게된 직후 자리를 떠나게 됩니다. \n\n  오는 손님의 이름은 전부 다르며, 동일한 손님이 다시 방문하게 되는 경우는 없음을 가정해도 좋습니다.\n\n- 사진 촬영\n\n  `300 t` 형태로 주어집니다. 이 경우 시각 $t$에 코드트리 오마카세 집에 있는 사람 수와 남아 있는 초밥의 수를 공백을 사이에 두고 출력합니다. 이 명령은 최소 $1$번 이상 주어진다고 가정해도 좋습니다.",
+ "output_spec": "300 명령어에 대해 시각 $t$에 코드트리 오마카세 집에 있는 사람 수와 남아 있는 초밥의 수를 공백을 사이에 두고 한 줄에 하나씩 순서대로 출력합니다.",
+ "constraints": "- 3 ≤ $L$ ≤ 1,000,000,000\n- 1 ≤ $Q$ ≤ 100,000\n- 1 ≤ $t$ ≤ 1,000,000,000\n- 0 ≤ $x$ ≤ $L - 1$\n- 1 ≤ $name$ 의 길이 ≤ 30\n- 1 ≤ 주어지는 서로 다른 $name$의 수 ≤ 15,000\n- $name$ 은 소문자 알파벳으로만 이루어져 있습니다.\n\n입력으로 주어지는 $t$ 값은 모두 다르며, 오름차순으로 정렬되어 주어집니다.\n\n**또, 시간이 무한히 흘렀을 때 만들어진 모든 초밥은 손님에 의해 다 사라지며, 손님 역시 정확히 $n$개의 초밥을 먹고 코드트리 오마카세를 떠나게 됨을 가정해도 좋습니다.**",
+ "samples": [
+  {
+   "in": "5 10\n100 1 1 sam\n100 2 2 teddy\n100 3 2 june\n300 6\n200 7 4 june 2\n200 8 3 teddy 1\n300 9\n200 10 3 sam 1\n100 11 4 june\n300 13\n",
+   "out": "0 3\n1 2\n0 0\n"
+  },
+  {
+   "in": "5 13\n100 1 0 sam\n100 2 1 sam\n100 3 2 sam\n100 4 3 sam\n100 5 4 sam\n200 6 3 sam 7\n100 7 3 sam\n300 8\n300 9\n100 10 0 sam\n300 12\n300 13\n300 14\n",
+   "out": "1 5\n1 0\n1 1\n0 0\n0 0\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 예제에 대해 자세히 알아보겠습니다.\n\n먼저 1초에 $x=1$위치에 $sam$ 이름이 붙어있는 초밥이 올라갑니다.\n\n<p align=\"center\">\n  <img width=\"450\" src=\"https://contents.codetree.ai/problems/4037/images/a0d106b5-8087-432f-b10b-f9bcce2eb0a6.png\" >\n</p>\n\n2초에는 $x=2$위치에 $teddy$ 이름이 붙어있는 초밥이 올라갑니다. \n\n<p align=\"center\">\n  <img width=\"450\" src=\"https://contents.codetree.ai/problems/4037/images/ac8f7457-f652-4243-b1d0-5806be0568c4.png\" >\n</p>\n\n3초에는 $x=2$위치에 $june$ 이름이 붙어있는 초밥이 올라갑니다. \n\n<p align=\"center\">\n  <img width=\"450\" src=\"https://contents.codetree.ai/problems/4037/images/c70db868-91e9-4df1-8369-8f07421001a9.png\" >\n</p>\n\n6초에는 총 0명의 사람과 3개의 초밥이 올라가 있습니다.\n\n<p align=\"center\">\n  <img width=\"450\" src=\"https://contents.codetree.ai/problems/4037/images/a5f62d4e-e449-4d77-8277-0d4f7116781f.png\" >\n</p>\n\n7초에는 $june$이 $x = 4$ 위치에 와서 착석합니다. $june$은 2개의 초밥을 먹어야 합니다.\n\n<p align=\"center\">\n  <img width=\"450\" src=\"https://contents.codetree.ai/problems/4037/images/30d049aa-9e39-4c23-91a9-cd2d069819fb.png\" >\n</p>\n\n8초에는 $teddy$가 $x = 3$ 위치에 와서 착석합니다. $teddy$는 1개의 초밥을 먹어야 하는데 이때 착석과 동시에 자리 앞에 $teddy$ 초밥이 올라와 있는 것을 발견한 $teddy$는 초밥을 먹고 바로 떠납니다. 따라서 진행 이후 상태는 아래와 같습니다.\n\n<p align=\"center\">\n  <img width=\"450\" src=\"https://contents.codetree.ai/problems/4037/images/43c05aea-aa1f-4357-aeb1-2119ae0808fe.png\" >\n</p>\n\n<p align=\"center\">\n  <img width=\"450\" src=\"https://contents.codetree.ai/problems/4037/images/89eb7f09-91d6-4eca-9373-e0cb8a75ff49.png\" >\n</p>\n\n9초에는 총 1명의 사람과 2개의 초밥이 올라가 있습니다.\n\n<p align=\"center\">\n  <img width=\"450\" src=\"https://contents.codetree.ai/problems/4037/images/d1bacfec-877b-45a4-864d-aaf6c079828c.png\" >\n</p>\n\n10초에는 $sam$이 $x = 3$ 위치에 와서 착석합니다. $sam$은 1개의 초밥을 먹어야 합니다. 동시에 $june$은 10초에 자신의 이름이 적힌 초밥을 하나 먹게 됩니다.\n\n<p align=\"center\">\n  <img width=\"450\" src=\"https://contents.codetree.ai/problems/4037/images/e850ebef-64df-4227-9569-45392e95a75e.png\" >\n</p>\n\n<p align=\"center\">\n  <img width=\"450\" src=\"https://contents.codetree.ai/problems/4037/images/133bbe91-bf34-4d3d-a4e6-e84fd6332e63.png\" >\n</p>\n\n11초에는 $x=4$위치에 $june$ 이름이 붙어있는 초밥이 올라갑니다. 초밥이 올라감과 동시에 $june$은 자신의 자리 앞에 있는 해당 초밥을 먹고 바로 자리를 떠납니다.\n\n<p align=\"center\">\n  <img width=\"450\" src=\"https://contents.codetree.ai/problems/4037/images/2dc04f22-99be-4b49-b2d0-191a44ab7f33.png\" >\n</p>\n\n<p align=\"center\">\n  <img width=\"450\" src=\"https://contents.codetree.ai/problems/4037/images/8b4a8bb6-0ea6-44a1-b5e4-5d783448bded.png\" >\n</p>\n\n13초에는 $x=3$위치로 온 초밥을 하나 먹고 $sam$은 자리를 떠납니다. 따라서 사람도 0명, 초밥도 0개가 남게 됩니다.\n\n<p align=\"center\">\n  <img width=\"450\" src=\"https://contents.codetree.ai/problems/4037/images/dcfa79d2-cd37-4e93-8d38-cf3ba2a337d6.png\" >\n</p>\n\n<p align=\"center\">\n  <img width=\"450\" src=\"https://contents.codetree.ai/problems/4037/images/76026f73-245a-4d09-b8a4-9eac920b1c85.png\" >\n</p>",
+  ""
+ ]
+}

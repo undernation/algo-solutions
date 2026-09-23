@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "904",
+ "title": "왔다 갔던 구역 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-area-been-to-and-from2/description",
+ "alias": "area-been-to-and-from2",
+ "pid": 904,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 I",
+ "lesson": "구간 칠하기",
+ "card": "challenge-area-been-to-and-from2",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "43.1",
+  "submissions": "7716"
+ },
+ "sample_count": 1,
+ "statement_len": 283,
+ "fetched_at": "2026-09-23",
+ "statement": "수직선의 위치 $0$에서 시작하여 $N$번의 명령에 걸쳐 움직인 뒤, $2$번 이상 지나간 영역의 크기를 출력하는 프로그램을 작성해보세요.\n\n명령은 “x L”, “x R” 형태로만 주어집니다. \"x L\"은 왼쪽으로 $x$만큼, \"x R\"은 오른쪽으로 $x$만큼 이동해야 함을 뜻합니다.\n\n영역의 크기는 길이로 셉니다. 즉 정수 좌표 $k$와 $k+1$ 사이의 길이 $1$인 구간을 단위로 보고, 그 단위 구간을 $2$번 이상 지나간 것의 개수가 답입니다. 지나간 좌표의 개수를 세는 것이 아님에 유의합니다.",
+ "input_spec": "첫 번째 줄에 정수 $N$이 주어집니다.\n\n이어지는 $N$개의 줄에는 각 줄마다 명령이 “x L” 또는 “x R” 형태로 주어집니다.",
+ "output_spec": "첫 번째 줄에 명령을 주어진 순서대로 수행했을 때, $2$번 이상 지나간 영역의 크기를 출력합니다. 크기는 위에서 정의한 길이 $1$인 단위 구간의 개수입니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- 각 명령의 이동 거리를 $x$라고 할 때, $1 \\le x \\le 10$인 정수입니다.",
+ "samples": [
+  {
+   "in": "6\n2 R\n6 L\n1 R\n8 L\n1 R\n2 R\n",
+   "out": "6\n"
+  }
+ ],
+ "sample_notes": [
+  "![](https://contents.codetree.ai/problems/904/images/problems-31f04cc2-a873-4721-9541-1093fd296786.svg)\n\n$2$번 이상 지나간 구간은 위와 같으므로 답은 $6$이 됩니다."
+ ]
+}

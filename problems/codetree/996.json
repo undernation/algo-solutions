@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "996",
+ "title": "정수 명령어",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-Integer-command/description",
+ "alias": "Integer-command",
+ "pid": 996,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "중급 자료구조",
+ "lesson": "TreeSet",
+ "card": "intro-Integer-command",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "100 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "70.5",
+  "submissions": "1127"
+ },
+ "sample_count": 2,
+ "statement_len": 190,
+ "fetched_at": "2026-09-23",
+ "statement": "정수만 저장하는 큐가 있습니다. 이 큐에는 다음의 연산을 수행할 수 있습니다.\n\n1. $I$ $n$ : 정수 $n$을 큐에 삽입합니다.\n2. $D$ $1$ : 큐에서 최댓값을 삭제합니다.\n3. $D$ $-1$ : 큐에서 최솟값을 삭제합니다.\n\n삽입되는 값은 중복되지 않으며, 큐가 비어있을 때 $D$ 연산이 주어지면 해당 연산은 무시합니다.",
+ "input_spec": "첫 번째 줄에는 입력의 테스트 데이터의 수를 나타내는 정수 $T$가 주어집니다.\n\n각 테스트 데이터의 첫째 줄에는 큐에 적용할 연산의 개수를 나타내는 정수 $K$가 주어집니다.\n\n이어지는 $K$ 줄 각각엔 연산을 나타내는 문자($I$ 또는 $D$)와 정수 $n$이 주어집니다.",
+ "output_spec": "각 테스트 데이터에 대해 각 줄에 모든 연산을 처리한 후 큐에 남아 있는 값 중 최댓값과 최솟값을 공백을 두고 출력합니다. 만약 큐가 비어있다면 $\\texttt{EMPTY}$를 출력합니다.",
+ "constraints": "- $1 \\le T \\le 3$\n- $1 \\le K \\le 100\\,000$\n- $-10^{9} \\le n \\le 10^{9}$\n- 연산을 나타내는 문자는 모두 $I$ 또는 $D$입니다.",
+ "samples": [
+  {
+   "in": "3\n5\nI 16\nI -56\nD 1\nD 1\nD 1\n6\nI -48\nI 65\nD 1\nI -68\nI 48\nD -1\n4\nI -48\nD 1\nD 1\nD 1\n",
+   "out": "EMPTY\n48 -48\nEMPTY\n"
+  },
+  {
+   "in": "2\n7\nI 16\nI -5643\nD -1\nD 1\nD 1\nI 123\nD -1\n9\nI -45\nI 653\nD 1\nI -642\nI 45\nI 97\nD 1\nD -1\nI 333\n",
+   "out": "EMPTY\n333 -45\n"
+  }
+ ]
+}

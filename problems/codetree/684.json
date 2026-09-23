@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "684",
+ "title": "출력결과 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201520/description",
+ "alias": "reading-k201520",
+ "pid": 684,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "1차원 배열",
+ "lesson": "Min/Max",
+ "card": "challenge-reading-k201520",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "80.6",
+  "submissions": "3384"
+ },
+ "sample_count": 0,
+ "statement_len": 928,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 프로그램의 출력 결과는 무엇인가?\n\n## Python3 코드\n```python\na = [1, 8, 9, 10, 10, 2, 6]\nresult = a[0]\n\nfor i in a:\n    if i > result:\n        result = i\n\nprint(result)\n```\n\n## C 코드\n\n```cpp\nint a[7] = {1, 8, 9, 10, 10, 2, 6}; \nint result = a[0];\nfor (int i = 0; i < 7; i++) {\n    if (a[i] > result) result = a[i]; \n}\nprintf(\"%d\\n\", result);\n```\n\n## C++ 코드\n\n```cpp\nint a[7] = {1, 8, 9, 10, 10, 2, 6}; \nint result = a[0];\nfor (int i = 0; i < 7; i++) {\n    if (a[i] > result) result = a[i]; \n}\ncout << result << endl;\n```\n\n## Java 코드\n\n```java\nint[] a = new int[]{1, 8, 9, 10, 10, 2, 6}; \nint result = a[0];\nfor (int i = 0; i < 7; i++) {\n    if (a[i] > result) result = a[i]; \n}\nSystem.out.println(result);\n```\n\n## JavaScript 코드\n\n```JavaScript\nlet a = [1, 8, 9, 10, 10, 2, 6];\nlet result = a[0];\n\nfor (let i = 0; i < 7; i++) {\n    if (a[i] > result) result = a[i];\n}\n\nconsole.log(result);\n```\n\n**보기** — 하나 고르기\n\n1. `6`\n2. `7`\n3. `8`\n4. `9`\n5. `10`"
+}

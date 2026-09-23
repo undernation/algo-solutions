@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "928",
+ "title": "괄호 쌍 만들어주기 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-pair-parentheses-2/description",
+ "alias": "pair-parentheses-2",
+ "pid": 928,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 I",
+ "lesson": "자리 수 단위로 완전탐색",
+ "card": "challenge-pair-parentheses-2",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "84.4",
+  "submissions": "2442"
+ },
+ "sample_count": 1,
+ "statement_len": 308,
+ "fetched_at": "2026-09-23",
+ "statement": "문자 `(`와 `)`로만 이루어진 문자열 $A$가 주어집니다.\n\n$A$에서 연속한 두 문자가 `((`인 위치와, 그보다 뒤에서 연속한 두 문자가 `))`인 위치를 하나씩 골라 짝지으려고 합니다. 즉 $A_i = A_{i+1} =$ `(` 이고 $A_j = A_{j+1} =$ `)` 이면서 $i + 2 \\le j$인 위치의 쌍 $(i,\\ j)$를 고르는 것입니다.\n\n이러한 쌍 $(i,\\ j)$가 모두 몇 개인지 구하는 프로그램을 작성해보세요. 서로 다른 $(i,\\ j)$는 각각 다른 경우로 세며, 두 위치가 겹쳐 나타나는 경우도 모두 따로 셉니다.",
+ "input_spec": "첫 번째 줄에 문자열 $A$가 주어집니다.",
+ "output_spec": "첫 번째 줄에 조건을 만족하는 쌍 $(i,\\ j)$의 개수를 출력합니다.",
+ "constraints": "- $1 \\le |A| \\le 100$\n- $A$는 문자 `(`와 `)`로만 이루어져 있습니다.",
+ "samples": [
+  {
+   "in": ")((()())())\n",
+   "out": "4\n"
+  }
+ ],
+ "sample_notes": [
+  "문자열의 위치를 $1$부터 셀 때, 연속한 `((`는 위치 $2$와 $3$에서 시작하고 연속한 `))`는 위치 $7$과 $10$에서 시작합니다.\n\n```\n)((()())())\n 23    7  10\n```\n\n따라서 고를 수 있는 쌍은 $(2,\\ 7)$, $(2,\\ 10)$, $(3,\\ 7)$, $(3,\\ 10)$의 $4$가지입니다."
+ ]
+}

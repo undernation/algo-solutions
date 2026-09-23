@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "551",
+ "title": "복잡복잡 그래프 (2)",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-graph-concept-2/description",
+ "alias": "graph-concept-2",
+ "pid": 551,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 탐색",
+ "lesson": "Graph 정의",
+ "card": "challenge-graph-concept-2",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "62.4",
+  "submissions": "3453"
+ },
+ "sample_count": 0,
+ "statement_len": 302,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 그래프를 기반으로 빈칸을 채워보세요.\n\n![](https://contents.codetree.ai/problems/551/images/problems-81b44431-8d9c-4a89-83ae-d8d5c3303f00.svg)\n\n```\n- 이 그래프에는 사이클이 (1)\n- 4번 노드의 진입 차수는 (2) 이다\n- 4번 노드의 진출 차수는 (3) 이다\n- 이 그래프는 (4) 이다\n```\n\n**보기** — 순서대로 4개 고르기\n\n1. 있다\n2. 없다\n3. `1`\n4. `2`\n5. `3`\n6. `4`\n7. 무방향 그래프\n8. 방향 그래프"
+}

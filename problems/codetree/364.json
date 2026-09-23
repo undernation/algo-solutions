@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "364",
+ "title": "두 배열의 곱",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-multiple-of-two-arrays/description",
+ "alias": "multiple-of-two-arrays",
+ "pid": 364,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "2차원 배열",
+ "lesson": "새로운 2차원 배열의 선언",
+ "card": "challenge-multiple-of-two-arrays",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "89.2",
+  "submissions": "5733"
+ },
+ "sample_count": 1,
+ "statement_len": 60,
+ "fetched_at": "2026-09-23",
+ "statement": "3행 3열의 배열 두 개가 주어지면 두 배열의 같은 위치에 있는 수의 곱을 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "3행 3열의 배열 두 개가 줄 간격을 사이에 두고 주어집니다.",
+ "output_spec": "주어진 두 배열의 곱을 3행 3열의 배열로 입출력 예제와 같이 출력합니다.",
+ "constraints": "+ 1 ≤ 배열 요소 범위 ≤ 100",
+ "samples": [
+  {
+   "in": "1 2 3\n4 5 6\n7 8 9\n\n2 3 4\n5 6 7\n8 9 10\n",
+   "out": "2 6 12 \n20 30 42\n56 72 90\n"
+  }
+ ]
+}

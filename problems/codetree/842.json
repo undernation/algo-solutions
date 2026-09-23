@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "842",
+ "title": "출력결과 84",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-reading-84/description",
+ "alias": "reading-84",
+ "pid": 842,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "함수",
+ "lesson": "변수의 영역",
+ "card": "intro-reading-84",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "61.5",
+  "submissions": "4106"
+ },
+ "sample_count": 0,
+ "statement_len": 2161,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 코드1과 코드2의 출력 결과는?\n\n## Python3 코드\n\n코드1\n```python\nproduct = 1\n\ndef f(n):\n    for i in range(1, n + 1):\n        product *= i\n\nf(5)\n\nprint(product)\n\n```\n\n코드2\n```python\narr = [1, 2, 3, 4, 5]\n\ndef f(n):\n    product = 1\n    for i in range(n):\n        product *= arr[i]\n    return product\n\nprint(f(5))\n\n```\n\n## C 코드\n\n코드1\n```c\nint f(int n) {  \n    for(int i = 1; i <= n; i++)\n        product *= i;\n}\n\nint main() {\n    int product = 1;\n    f(5);\n    printf(\"%d\", product);\n}\n```\n\n코드2\n```c\nint arr[] = {1, 2, 3, 4, 5};\nint f(int n) {  \n    int product = 1;\n    for(int i = 0; i < n; i++)\n        product *= arr[i];\n    return product;\n}\n\nint main() {\n    printf(\"%d\", f(5));\n}\n```\n\n## C++ 코드\n\n코드1\n```cpp\nint f(int n) {  \n    for(int i = 1; i <= n; i++)\n        product *= i;\n}\n\nint main() {\n    int product = 1;\n    f(5);\n    cout << product;\n}\n```\n\n코드2\n```cpp\nint arr[] = {1, 2, 3, 4, 5};\nint f(int n) {  \n    int product = 1;\n    for(int i = 0; i < n; i++)\n        product *= arr[i];\n    return product;\n}\n\nint main() {\n    cout << f(5);\n}\n```\n\n## Java 코드\n\n코드1\n```java\npublic class Main {\n    public static void f(int n) {\n        for(int i = 1; i <= n; i++)\n            product *= i;\n    }\n\n    public static void main(String[] args) {\n        int product = 1;\n        f(5);\n        System.out.println(product);\n    }\n}\n```\n\n코드2\n```java\npublic class Main {\n    public static int[] arr = new int[]{1, 2, 3, 4, 5};\n\n    public static int f(int n) {\n        int product = 1;\n        for(int i = 0; i < n; i++)\n            product *= arr[i];\n        return product;\n    }\n\n    public static void main(String[] args) {\n        System.out.println(f(5));\n    }\n}\n```\n\n## JavaScript 코드\n\n코드1\n```JavaScript\nfunction f(n) {\n    let product = 1;\n    for (let i = 1; i <= n; i++) {\n        product *= i;\n    }\n}\n\nf(5);\n\nconsole.log(product);\n```\n\n코드2\n```JavaScript\nlet arr = [1, 2, 3, 4, 5];\n\nfunction f(n) {\n    let product = 1;\n    for (let i = 0; i < n; i++) {\n        product *= arr[i];\n    }\n\n    return product;\n}\n\nconsole.log(f(5));\n```\n\n**보기** — 하나 고르기\n\n1. 코드1, 코드2 둘 다 `1`\n2. 코드1, 코드2 둘 다 `120`\n3. 코드1은 에러가 발생, 코드2는 `120`\n4. 코드1은 `120`, 코드2는 에러가 발생\n5. 코드1, 코드2 둘 다 에러 발생"
+}

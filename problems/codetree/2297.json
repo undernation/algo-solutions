@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2297",
+ "title": "공약수의 유무",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-presence-or-absence-of-a-common-divisor/description",
+ "alias": "presence-or-absence-of-a-common-divisor",
+ "pid": 2297,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "단 하나라도 만족하는 경우",
+ "card": "test-presence-or-absence-of-a-common-divisor",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "67.2",
+  "submissions": "5279"
+ },
+ "sample_count": 2,
+ "statement_len": 90,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $A$, $B$가 주어지면, $A$ 이상 $B$ 이하의 수 중에서 $1\\,920$과 $2\\,880$의 공약수가 존재하는지 판단해보는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 두 정수 $A$, $B$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에, 공약수가 존재한다면 $1$을, 존재하지 않는다면 $0$을 출력합니다.",
+ "constraints": "- $1 \\le A \\le B \\le 1\\,000$",
+ "samples": [
+  {
+   "in": "12 14\n",
+   "out": "1\n"
+  },
+  {
+   "in": "42 45\n",
+   "out": "0\n"
+  }
+ ],
+ "sample_notes": [
+  "$12$는 $1\\,920$과 $2\\,880$의 공약수입니다.",
+  "$42$ 이상 $45$ 이하에는 $1\\,920$과 $2\\,880$의 공약수가 존재하지 않습니다."
+ ]
+}

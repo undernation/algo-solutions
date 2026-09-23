@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "701",
+ "title": "출력결과 19",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201542/description",
+ "alias": "reading-k201542",
+ "pid": 701,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "재귀함수",
+ "lesson": "값을 반환하는 재귀함수",
+ "card": "challenge-reading-k201542",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "59.0",
+  "submissions": "3457"
+ },
+ "sample_count": 0,
+ "statement_len": 1307,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 프로그램의 출력 결과는 무엇인가?\n\n## Python3 코드\n```python\ndef g(x):\n    return 10 if x < 10 else g(int(x / 10)) + (x % 10)\n\ndef f(a, b):\n    c = 1\n    while b:\n        c *= a\n        b -= 1\n    return g(c)\n\nprint(f(2, 5))\n```\n\n## C/ 코드\n\n```cpp\nint g(int x){\n    if (x < 10) \n     return 10;\n    else \n     return g(x / 10) + (x % 10);\n}\nint f(int a, int b) {\n    int c = 1;\n    while (b--) c *= a;\n    return g(c);\n}\nint main() {\n    printf(\"%d\\n\", f(2,5)); \n    return 0;\n}\n```\n\n## C++ 코드\n\n```cpp\nint g(int x){\n    if (x < 10) \n     return 10;\n    else \n     return g(x / 10) + (x % 10);\n}\nint f(int a, int b) {\n    int c = 1;\n    while (b--) c *= a;\n    return g(c);\n}\nint main() {\n    cout << f(2, 5);\n    return 0;\n}\n```\n\n## Java 코드\n\n```java\npublic static int g(int x){\n    if (x < 10) \n    return 10;\n    else \n    return g(x / 10) + (x % 10);\n}\n\npublic static int f(int a, int b) {\n    int c = 1;\n    while (b-- > 0) c *= a;\n    return g(c);\n}\n\npublic static void main(String[] args) {\n    System.out.print(f(2, 5));\n}\n```\n\n## JavaScript 코드\n```JavaScript\nfunction g(x) {\n    return 10 < x ? g(parseInt(x / 10)) + x % 10 : 10;\n}\n\nfunction f(a, b) {\n    let c = 1;\n    while (b) {\n        c *= a;\n        b -= 1;\n    }\n    return g(c);\n}\n\nconsole.log(f(2, 5));\n```\n\n**보기** — 하나 고르기\n\n1. 5\n2. 12\n3. 32\n4. 64\n5. 14783"
+}

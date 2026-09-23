@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "45",
+ "title": "연속 부분 합의 최댓값 구하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-max-of-partial-sum/description",
+ "alias": "max-of-partial-sum",
+ "pid": 45,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "DP II",
+ "lesson": "원하는 State를 정의하여 한 칸씩 나아가는 DP",
+ "card": "intro-max-of-partial-sum",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "62.9",
+  "submissions": "2830"
+ },
+ "sample_count": 2,
+ "statement_len": 109,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 정수가 입력으로 주어지고, 이 중 연속한 부분 수열에 속한 원소들의 합이 최대가 될 때의 값을 출력하는 코드를 작성해보세요. (단, 부분 수열은 최소 한 개 이상의 원소를 포함합니다.)",
+ "input_spec": "첫 번째 줄에는 원소의 개수 $N$이 주어지고,\n두 번째 줄에는 $N$개의 정수가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "연속한 부분 수열의 원소들의 합이 최대가 될 때의 값을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100\\,000$\n- $-1\\,000 \\le \\texttt{정수} \\le 1\\,000$",
+ "samples": [
+  {
+   "in": "7\n4 -1 2 -19 3 6 9\n",
+   "out": "18\n"
+  },
+  {
+   "in": "2\n-2 -1\n",
+   "out": "-1\n"
+  }
+ ],
+ "sample_notes": [
+  "[$3$, $6$, $9$] 일 때 부분합이 최대가 됩니다.",
+  "[$-1$] 일 때 부분합이 최대가 됩니다."
+ ]
+}

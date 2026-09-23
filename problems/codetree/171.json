@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "171",
+ "title": "A의 B승",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-a-to-the-power-of-b/description",
+ "alias": "a-to-the-power-of-b",
+ "pid": 171,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "prod 계산하기",
+ "card": "challenge-a-to-the-power-of-b",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "83.3",
+  "submissions": "4362"
+ },
+ "sample_count": 2,
+ "statement_len": 48,
+ "fetched_at": "2026-09-23",
+ "statement": "$A, B$ 두 자연수를 입력받아 $A^{B}$ 값을 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 정수 $A, B$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 $A^{B}$ 값을 출력합니다.",
+ "constraints": "- $1 \\le A \\le 10$\n- $0 \\le B \\le 8$",
+ "samples": [
+  {
+   "in": "2 5\n",
+   "out": "32\n"
+  },
+  {
+   "in": "1 1\n",
+   "out": "1\n"
+  }
+ ]
+}

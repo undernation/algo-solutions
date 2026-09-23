@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2204",
+ "title": "부분수열 여부 판단하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-determine-subsequence/description",
+ "alias": "determine-subsequence",
+ "pid": 2204,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shorten time Technique",
+ "lesson": "Two Pointer",
+ "card": "intro-determine-subsequence",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "74.3",
+  "submissions": "909"
+ },
+ "sample_count": 2,
+ "statement_len": 361,
+ "fetched_at": "2026-09-23",
+ "statement": "두 수열 $A$와 $B$가 주어졌을 때 $B$가 $A$의 부분수열인지 판단하는 프로그램을 작성해보세요. $B$가 $A$의 부분수열이라 함은 $B$의 원소가 차례대로 $A$의 원소에 존재할 때를 의미합니다.\n\n예를 들어 $A =$ [$5$, $1$, $20$, $3$, $4$] 일 때, $B =$ [$5$, $1$, $4$] 라면 $5$ $1$ $4$가 차례대로 수열 $A$에 존재하므로\n$B$는 $A$의 부분수열입니다. 하지만 만약 $A =$ [$5$, $1$, $20$, $3$, $4$], $B =$ [$5$, $3$, $1$] 이라면 $5$ $3$ $1$이 수\n열 $A$에 차례대로 존재하지 않으므로 $B$는 $A$의 부분수열이 아닙니다.",
+ "input_spec": "첫 번째 줄에 수열 $A$의 원소의 개수 $N$과 수열 $B$의 원소의 개수 $M$가 공백으로 구분되어 주어집니다.  \n\n두 번째 줄에 수열 $A$의 원소 $N$개가 공백을 사이에 두고 주어집니다.  \n\n세 번째 줄에 수열 $B$의 원소 $M$개가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "수열 $B$가 수열 $A$의 부분수열이라면 \"Yes\"를, 그렇지 않다면 \"No\"를 출력합니다.",
+ "constraints": "- $1 \\le N, M \\le 100\\,000$\n- $1 \\le \\texttt{주어지는 원소의 값} \\le 10^9$",
+ "samples": [
+  {
+   "in": "5 3\n5 1 20 3 4\n5 1 4\n",
+   "out": "Yes\n"
+  },
+  {
+   "in": "5 3\n5 1 20 3 4\n5 3 1\n",
+   "out": "No\n"
+  }
+ ],
+ "sample_notes": [
+  "예제 $1$번에서, $5$ $1$ $4$은 차례대로 수열 $A$의 $1$, $2$, $5$ 번째에 등장합니다.",
+  "예제 $2$번에서, $5$ $3$ $1$는 수열 $A$에서 차례대로 등장하지 않습니다."
+ ]
+}

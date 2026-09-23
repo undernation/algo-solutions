@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2460",
+ "title": "격자 칠하기 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-painting-the-grid-2/description",
+ "alias": "painting-the-grid-2",
+ "pid": 2460,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Parametric Search",
+ "lesson": "Parametric Search",
+ "card": "challenge-painting-the-grid-2",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 3초 · C++17 1초",
+  "memory": "320 MB",
+  "time_sec": 3.0
+ },
+ "stats": {
+  "accept_rate": "47.2",
+  "submissions": "593"
+ },
+ "sample_count": 1,
+ "statement_len": 256,
+ "fetched_at": "2026-09-23",
+ "statement": "$0$과 자연수로만 이루어진 $N\\times N$ 크기의 격자가 있습니다. 임의로 시작칸을 잘 정한 후, 칸에 쓰인 숫자가 현재 칸의 숫자와 $D$ 이하로 차이나는 상, 하, 좌, 우로 인접한 칸으로 이동해 색칠하는 것을 반복합니다. 시작 칸은 마음대로 정할 수 있다고 가정할 때, 색칠된 칸이 전체 칸의 반 이상이 되기 위한 $D$ 값의 최솟값을 구하는 프로그램을 작성하세요. 만약 전체 칸 수가 홀수라면 전체 칸의 반은 반올림해서 생각하는 것으로 합니다.",
+ "input_spec": "첫 번째 줄에는 $N$이 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 각 줄에 격자에 적힌 숫자들이 공백을 사이에 두고 차례대로 주어집니다.",
+ "output_spec": "첫 번째 줄에 색칠된 칸이 전체 칸의 반 이상이 되기 위한 $D$ 값의 최솟값을 출력합니다.",
+ "constraints": "- $1\\le N\\le 100$\n- $0\\le \\texttt{칸에 적힌 숫자} \\le 1\\,000\\,000$",
+ "samples": [
+  {
+   "in": "5\n0 0 0 3 3\n0 0 0 0 3\n0 9 9 3 3\n9 9 9 3 3\n9 9 9 9 3\n",
+   "out": "3\n"
+  }
+ ],
+ "sample_notes": [
+  "$D$값을 $3$으로 할 경우, $0$이 쓰여진 칸에서 시작하면 $0$과 $3$이 쓰여진 칸은 모두 색칠됩니다. 전체 $25$개의 칸 중 $16$개가 색칠되어 반 이상이 색칠됩니다. $3$보다 작은 수로 $D$ 값을 설정할 경우, 과반수의 칸이 색칠되지 못합니다.\n\n**0 0 0 3 3**\n\n**0 0 0 0 3**\n\n**0** 9 9 **3 3**\n\n9 9 9 **3 3**\n\n9 9 9 9 **3**"
+ ]
+}

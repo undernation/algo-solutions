@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "587",
+ "title": "은행",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-dp-modeling-bank/description",
+ "alias": "dp-modeling-bank",
+ "pid": 587,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "DP",
+ "lesson": "아이템을 적절히 고르는 문제",
+ "card": "intro-dp-modeling-bank",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "54.4",
+  "submissions": "2350"
+ },
+ "sample_count": 0,
+ "statement_len": 540,
+ "fetched_at": "2026-09-23",
+ "statement": "가치가 $1$, $4$, $5$, $9$인 $4$가지의 동전이 주어졌을 때, 금액 $21$을 거슬러 주기 위해 필요한 최소 동전의 수를 구해보려고 합니다.\n\n이 문제를 해결하기 위해 $dp[i]$를 지금까지 선택한 동전의 합이 i라 했을 때, 필요한 최소 동전 횟수라고 정의하여 dp table을 완성시켜보려고 합니다.\n\n다음 빈칸에 들어갈 숫자를 순서대로 골라보세요.\n\n|$i$|$dp[i]$|\n|:--:|:--:|\n|$0$|$(1)$|\n|$1$|$1$|\n|$2$|$2$|\n|$3$|$3$|\n|$4$|$1$|\n|$5$|$1$|\n|$6$|$2$|\n|$7$|$3$|\n|$8$|$2$|\n|$9$|$1$|\n|$10$|$2$|\n|$11$|$(2)$|\n|$12$|$3$|\n|$13$|$2$|\n|$14$|$2$|\n|$15$|$3$|\n|$16$|$(3)$|\n|$17$|$(4)$|\n|$18$|$2$|\n|$19$|$3$|\n|$20$|$4$|\n|$21$|$(5)$|\n\n**보기** — 순서대로 5개 고르기\n\n1. `0`\n2. `1`\n3. `2`\n4. `3`\n5. `4`\n6. `5`"
+}

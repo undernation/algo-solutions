@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "883",
+ "title": "최소 와이파이 수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-minimum-number-of-wifi/description",
+ "alias": "minimum-number-of-wifi",
+ "pid": 883,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "Ad-Hoc",
+ "lesson": "지극히 최선인 전략이 확실히 정해지는 경우",
+ "card": "intro-minimum-number-of-wifi",
+ "card_type": "Introduction",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "39.4",
+  "submissions": "1787"
+ },
+ "sample_count": 1,
+ "statement_len": 348,
+ "fetched_at": "2026-09-23",
+ "statement": "$0$과 $1$로만 이루어진 $n$개의 정수가 주어지며, 이 정수들은 $x = 1$인 위치에서부터 $x = n$인 위치까지 각 정수 위치에 사람이 살고 있는지를 나타냅니다. $1$이면 사람이 살고 있는 곳이고, $0$이면 그렇지 않습니다.\n\n이 지역에 와이파이를 설치하려 합니다. 와이파이를 설치하면 설치한 위치로부터 거리 $m$ 이내에 있는 사람들까지 전부 사용이 가능하며, 꼭 사람이 살고 있는 곳이 아니더라도 설치가 가능하지만 정수 위치에만 설치가 가능합니다.\n\n사람들이 사는 지역 정보가 주어졌을 때, 모든 사람들이 와이파이를 사용할 수 있도록 하기 위해 필요한 최소 와이파이 수를 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 정수 $n$과 $m$이 공백을 사이에 두고 주어집니다.\n\n두 번째 줄에 $0$과 $1$로만 이루어진 $n$개의 정수 $a_1, a_2, \\dots, a_n$이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 필요한 최소 와이파이 수의 최솟값을 출력합니다.",
+ "constraints": "- $1 \\le n \\le 100$\n- $0 \\le m \\le 100$\n- $a_i \\in \\{0, 1\\}$ ($1 \\le i \\le n$)",
+ "samples": [
+  {
+   "in": "6 1\n1 1 0 1 1 1\n",
+   "out": "2\n"
+  }
+ ]
+}

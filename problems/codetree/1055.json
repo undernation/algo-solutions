@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1055",
+ "title": "트리에서 공 떨어뜨리기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-drop-a-ball-in-a-tree/description",
+ "alias": "drop-a-ball-in-a-tree",
+ "pid": 1055,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Tree",
+ "lesson": "이진 트리와 탐색",
+ "card": "challenge-drop-a-ball-in-a-tree",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "44.7",
+  "submissions": "320"
+ },
+ "sample_count": 1,
+ "statement_len": 449,
+ "fetched_at": "2026-09-23",
+ "statement": "루트가 있는 이진 트리가 주어지고, 이 이진 트리에서 공을 루트 노드에서 떨어뜨리고자 합니다.\n\n공은 다음과 같은 규칙에 따라 떨어집니다.\n\n1. 현재 노드의 자식 노드가 한 개라면 해당 자식 노드로 전달됩니다.\n2. 현재 노드의 자식 노드가 두 개라면, 현재 노드의 왼쪽 서브트리에 있는 모든 공의 수가 오른쪽 서브트리에 있는 모든 공의 수보다 작거나 같을 경우, 왼쪽 자식 노드로 전달됩니다. 그 외의 경우에는 오른쪽 자식 노드로 전달됩니다.\n3. 현재 노드의 자식 노드가 없다면 그 자리에서 멈춥니다.\n\n따라서, 공은 항상 자식 노드가 없는 리프 노드에서 멈추게 됩니다. 이제 이러한 공을 차례대로 $K$개를 떨어뜨리고자 합니다.\n\n$K$번째 공이 어느 노드에서 멈출지 계산하는 프로그램을 작성해보세요.\n\n주어지는 트리는 항상 올바른 이진 트리임이 보장되며, 루트 노드는 항상 $1$번 노드입니다.",
+ "input_spec": "첫 번째 줄에 트리의 노드의 수 $N$이 주어집니다.\n\n두 번째 줄부터 $N$ 개의 줄에 각 노드의 왼쪽 자식노드와 오른쪽 자식노드가 공백을 두고 차례대로 주어집니다. \n\n만약 $-1$이 나온다면 해당 위치에는 자식노드가 존재하지 않는다는 것입니다.\n\n마지막 줄에는 $K$가 주어집니다.",
+ "output_spec": "$K$번째 공이 멈추는 노드의 번호를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 200\\,000$\n- $2 \\le \\texttt{노드의 번호} \\le N$\n- $1 \\le K \\le 10^{18}$",
+ "samples": [
+  {
+   "in": "5\n2 3\n-1 -1\n4 5\n-1 -1\n-1 -1\n5\n",
+   "out": "2\n"
+  }
+ ]
+}

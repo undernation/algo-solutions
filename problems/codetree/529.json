@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "529",
+ "title": "모양 예측하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-binary-tree-shape/description",
+ "alias": "binary-tree-shape",
+ "pid": 529,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "트리",
+ "lesson": "이진 트리 개념",
+ "card": "test-binary-tree-shape",
+ "card_type": "Test",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "54.0",
+  "submissions": "4186"
+ },
+ "sample_count": 0,
+ "statement_len": 579,
+ "fetched_at": "2026-09-23",
+ "statement": "다음과 같은 트리가 있다고 가정해 봅시다.\n\n![](https://contents.codetree.ai/problems/529/images/problems-2d0a5797-3578-4dad-aadb-2c6939f20b84.png)\n\n이진 트리를 배열을 이용해 구현하고자 합니다. 배열의 $1$번 인덱스를 루트 노드로 설정하고, 각 노드의 왼쪽 자식은 부모 노드의 인덱스를 두 배 한 위치에, 오른쪽 자식은 두 배에 하나를 더한 위치에 저장합니다.\n\n예를 들어, 루트 노드가 배열의 $1$번 인덱스에 있다면, 그 왼쪽 자식은 $2$번 인덱스, 오른쪽 자식은 $3$번 인덱스에 위치하게 됩니다. 이어서 $2$번 인덱스의 왼쪽 자식은 $4$번, 오른쪽 자식은 $5$번 인덱스에 배치됩니다.\n\n만약 특정 위치에 자식 노드가 존재하지 않는 경우, 해당 배열 인덱스에는 $0$을 채워 비어있는 상태를 표시합니다. 이러한 방식으로 위 그림의 트리를 배열로 구현할 경우, 배열의 $1$번부터 $7$번 인덱스까지의 값이 어떻게 될까요?\n\n**보기** — 순서대로 7개 고르기\n\n1. `0`\n2. `1`\n3. `2`\n4. `3`\n5. `4`\n6. `5`"
+}

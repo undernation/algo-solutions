@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "723",
+ "title": "출력결과 41",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201714/description",
+ "alias": "reading-k201714",
+ "pid": 723,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "prod 계산하기",
+ "card": "challenge-reading-k201714",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "67.7",
+  "submissions": "5094"
+ },
+ "sample_count": 0,
+ "statement_len": 533,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 프로그램의 출력 결과는 무엇인가?\n\n## Python3 코드\n```python\nc = 1\nfor i in range(-3, 4):\n    c *= i\nprint(c)\n```\n\n## C 코드\n```cpp\nint c = 1;\nfor(int i = -3; i <= 3; i++)\n    c *= i;\nprintf(\"%d\\n\", c);\n```\n\n## C++ 코드\n```cpp\nint c = 1;\nfor(int i = -3; i <= 3; i++)\n    c *= i;\ncout << c << endl;\n```\n\n## Java 코드\n```java\nint c = 1;\nfor(int i = -3; i <= 3; i++)\n    c *= i;\nSystem.out.println(c);\n```\n\n## JavaScript 코드\n```JavaScript\nlet c = 1;\nfor(let i = -3; i <= 3; i++)\n    c *= i;\nconsole.log(c);\n```\n\n**보기** — 하나 고르기\n\n1. 0\n2. 1\n3. 36\n4. -36\n5. -0"
+}

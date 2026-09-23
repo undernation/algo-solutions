@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "288",
+ "title": "친근하지 않은 수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-unfriendly-number/description",
+ "alias": "unfriendly-number",
+ "pid": 288,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "continue문",
+ "card": "intro-unfriendly-number",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "81.1",
+  "submissions": "8414"
+ },
+ "sample_count": 1,
+ "statement_len": 92,
+ "fetched_at": "2026-09-23",
+ "statement": "1이상 $N$이하의 정수 중 친근하지 않은 수의 개수를 출력하는 프로그램을 작성해보세요. 친근한 수란 $2$, $3$ 또는 $5$로 나누어 떨어지는 수를 의미합니다.",
+ "input_spec": "첫 번째 줄에 정수 $N$이 주어집니다.",
+ "output_spec": "첫 번째 줄에 $1$이상 $N$이하의 수 중 친근하지 않은 수의 개수를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 1\\,000$",
+ "samples": [
+  {
+   "in": "10\n",
+   "out": "2\n"
+  }
+ ],
+ "sample_notes": [
+  "$1$이상 $10$이하의 친근하지 않은 수는 $1$, $7$ 두 개 뿐입니다."
+ ]
+}

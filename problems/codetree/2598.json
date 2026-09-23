@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2598",
+ "title": "경험치를 빠르게 얻기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-gain-exp-quickly/description",
+ "alias": "gain-exp-quickly",
+ "pid": 2598,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "DP I",
+ "lesson": "아이템을 적절히 고르는 문제",
+ "card": "challenge-gain-exp-quickly",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "51.4",
+  "submissions": "669"
+ },
+ "sample_count": 2,
+ "statement_len": 134,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 퀘스트 정보가 주어졌을 때 수행할 퀘스트를 잘 골라 각 퀘스트로부터 얻은 경험치의 총 합이 $M$ 이상이며 걸리는 총 시간이 최소가 되도록 하는 프로그램을 작성해보세요. 단, 동일한 퀘스트는 여러 번 진행할 수 없음에 유의합니다.",
+ "input_spec": "첫 번째 줄에는 $N$과 $M$이 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터는 $N$개의 줄에 걸쳐 각 퀘스트의 정보 $(e,\\ t)$가 공백을 사이에 두고 주어집니다. 이는 해당 퀘스트를 깨면 경험치를 $e$만큼 얻을 수 있으며, 퀘스트를 깨는데 시간 $t$만큼 소요됨을 뜻합니다. 퀘스트는 $1$번부터 $N$번까지 차례대로 주어집니다.",
+ "output_spec": "경험치를 $M$ 이상 얻기 위해 필요한 최소 시간을 출력합니다. 만약 불가능하다면 $-1$을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le M \\le 1\\,000\\,000$\n- $1 \\le e \\le 1\\,000\\,000$\n- $1 \\le t \\le 100$",
+ "samples": [
+  {
+   "in": "3 5\n2 3\n5 4\n3 2\n",
+   "out": "4\n"
+  },
+  {
+   "in": "4 14\n5 6\n6 5\n8 10\n5 2\n",
+   "out": "13\n"
+  }
+ ],
+ "sample_notes": [
+  "이 예제에서는 $2$번 퀘스트만 진행하면 경험치 $5$를 얻으며 $4$ 만큼의 시간이 걸립니다.",
+  "이 예제에서는 $1$, $2$, $4$번 퀘스트를 진행하면 경험치 $16$을 얻으며 $13$ 만큼의 시간이 소요됩니다."
+ ]
+}

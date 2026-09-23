@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "686",
+ "title": "출력결과 4",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201523/description",
+ "alias": "reading-k201523",
+ "pid": 686,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "1차원 배열",
+ "lesson": "인덱스 참조",
+ "card": "challenge-reading-k201523",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "64.8",
+  "submissions": "4470"
+ },
+ "sample_count": 0,
+ "statement_len": 1165,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 프로그램의 출력 결과는 무엇인가?\n\n## Python3 코드\n```python\narr = [0, 1, 1, 1, 0, 0, 1, 1, 1, 1]\ncnt = 0\nfor i in range(1, 10):\n    if arr[i] == arr[i - 1]:\n        cnt += 1\n    else:\n        cnt -= 1\n\nprint(cnt)\n```\n\n## C 코드\n\n```cpp\nint arr[10] = {0, 1, 1, 1, 0, 0, 1, 1, 1, 1}; \nint cnt = 0;\nfor (int i = 1; i < 10; i++) {\n    if (arr[i] == arr[i - 1]) \n        cnt = cnt + 1;\n    else\n        cnt = cnt - 1;\n}\nprintf(\"%d\\n\", cnt);\n```\n\n## C++ 코드\n\n```cpp\nint arr[10] = {0, 1, 1, 1, 0, 0, 1, 1, 1, 1}; \nint cnt = 0;\nfor (int i = 1; i < 10; i++) {\n    if (arr[i] == arr[i - 1]) \n        cnt = cnt + 1;\n    else\n        cnt = cnt - 1;\n}\ncout << cnt << endl;\n```\n\n## Java 코드\n\n```java\nint[] arr = new int[]{0, 1, 1, 1, 0, 0, 1, 1, 1, 1}; \nint cnt = 0;\nfor (int i = 1; i < 10; i++) {\n    if (arr[i] == arr[i - 1]) \n        cnt = cnt + 1;\n    else\n        cnt = cnt - 1;\n}\nSystem.out.println(cnt);\n```\n\n## JavaScript 코드\n\n```JavaScript\nlet arr = [0, 1, 1, 1, 0, 0, 1, 1, 1, 1];\nlet cnt = 0;\nfor (let i = 1; i < 10; i++) {\n    if (arr[i] === arr[i - 1])\n        cnt = cnt + 1;\n    else\n        cnt = cnt - 1;\n}\nconsole.log(cnt);\n```\n\n**보기** — 하나 고르기\n\n1. `1`\n2. `2`\n3. `3`\n4. `4`\n5. `5`"
+}

@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "68",
+ "title": "지그재그로 정수 채우기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-zigzag-numbering/description",
+ "alias": "zigzag-numbering",
+ "pid": 68,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "2차원 배열",
+ "lesson": "2차원 배열과 패턴",
+ "card": "challenge-zigzag-numbering",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "78.8",
+  "submissions": "3166"
+ },
+ "sample_count": 2,
+ "statement_len": 200,
+ "fetched_at": "2026-09-23",
+ "statement": "$N \\times M$크기의 직사각형에 정수를 $0$부터 순서대로 $1$씩 증가시키며 왼쪽 위에서부터 시작하여 다음과 같이 지그재그 모양으로 쭉 채우는 코드를 작성해보세요.\n\n![](https://contents.codetree.ai/problems/68/images/problems-10514dbc-8137-4792-ac3d-96a28e535d2d.png)",
+ "input_spec": "$N$과 $M$이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "정수로 채워진 완성된 형태의 $N \\times M$크기의 사각형을 출력합니다. \n(정수끼리는 공백을 사이에 두고 출력합니다.)",
+ "constraints": "- $1 \\le N, M \\le 100$",
+ "samples": [
+  {
+   "in": "4 2\n",
+   "out": "0 7 \n1 6 \n2 5 \n3 4 \n"
+  },
+  {
+   "in": "5 5\n",
+   "out": "0 9 10 19 20 \n1 8 11 18 21 \n2 7 12 17 22 \n3 6 13 16 23 \n4 5 14 15 24\n"
+  }
+ ]
+}

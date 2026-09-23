@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "490",
+ "title": "이진탐색?",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-binary-search/description",
+ "alias": "binary-search",
+ "pid": 490,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "이진탐색",
+ "lesson": "이진탐색",
+ "card": "intro-binary-search",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "59.5",
+  "submissions": "3263"
+ },
+ "sample_count": 0,
+ "statement_len": 458,
+ "fetched_at": "2026-09-23",
+ "statement": "정렬된 배열에서 이진탐색을 사용하면 찾고자 하는 값을 빠르게 찾을 수 있습니다.\n\n다음 코드의 빈칸을 번호에 맞게 채워넣어 완성시켜봅시다.\n\n```jsx\nfunction solution(arr, target)\n  set left = 0\n  set right = arr.size - 1\n  while left <= right\n    set mid = (left + right) / 2\n    if arr[mid] == target\n      return (1)\n\n    if arr[mid] > target\n      (2) = (3)\n    else\n      (4) = (5)\n      \n  return -1\n```\n\n**보기** — 순서대로 5개 고르기\n\n1. `mid`\n2. `mid+1`\n3. `mid-1`\n4. `left`\n5. `left+1`\n6. `left-1`\n7. `right`\n8. `right-1`"
+}

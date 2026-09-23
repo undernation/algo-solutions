@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2200",
+ "title": "양쪽 모두 존재하는 구간",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-both-exist-section/description",
+ "alias": "both-exist-section",
+ "pid": 2200,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shorten time Technique",
+ "lesson": "Two Pointer",
+ "card": "challenge-both-exist-section",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "43.8",
+  "submissions": "354"
+ },
+ "sample_count": 1,
+ "statement_len": 146,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 숫자가 주어지고, 특정 구간을 잡았을 때 구간 안에도 $1$이상 $M$이하의 숫자가 전부 적어도 하나씩 존재하고 구간 밖에서도 $1$이상 $M$이하의 숫자가 전부 적어도 하나씩 존재하는 경우 중 가장 짧은 구간의 길이를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $N$과 $M$이 공백을 사이에 두고 주어집니다.  \n\n두 번째 줄에는 $N$개의 숫자가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "구간 내에서도, 구간 밖에서도 모두 $1$이상 $M$이하의 숫자가 적어도 하나씩 존재하도록 하는 구간 중 가장 짧은 구간의 길이를 출력합니다. 단, 그런 구간이 없을 경우 $-1$을 출력합니다.",
+ "constraints": "- $1 \\le M \\le N \\le 100\\,000$ \n- $1 \\le 주어지는 수 \\le M$",
+ "samples": [
+  {
+   "in": "10 4\n1 2 3 1 1 4 2 4 3 3\n",
+   "out": "5\n"
+  }
+ ],
+ "sample_notes": [
+  "$1$, [$2$, $3$, $1$, $1$, $4$], $2$, $4$, $3$, $3$ 로 구간을 선택하면 구간 길이 $5$로 조건을 만족시킬 수 있습니다."
+ ]
+}

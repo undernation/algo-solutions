@@ -1,0 +1,37 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "151",
+ "title": "2줄 출력",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-print-two-lines/description",
+ "alias": "print-two-lines",
+ "pid": 151,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "출력",
+ "lesson": "기본 출력",
+ "card": "intro-print-two-lines",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "81.8",
+  "submissions": "54014"
+ },
+ "sample_count": 1,
+ "statement_len": 40,
+ "fetched_at": "2026-09-23",
+ "statement": "```\nHello\nWorld\n```\n를 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "입력이 주어지지 않습니다.",
+ "output_spec": "```\nHello\nWorld\n```\n를 출력합니다.",
+ "samples": [
+  {
+   "in": "",
+   "out": "Hello\nWorld\n"
+  }
+ ]
+}

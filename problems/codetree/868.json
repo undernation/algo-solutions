@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "868",
+ "title": "단어 정렬",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-sorting-words/description",
+ "alias": "sorting-words",
+ "pid": 868,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "정렬",
+ "lesson": "일반 정렬",
+ "card": "intro-sorting-words",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "93.4",
+  "submissions": "4401"
+ },
+ "sample_count": 1,
+ "statement_len": 82,
+ "fetched_at": "2026-09-23",
+ "statement": "소문자 알파벳으로만 이루어져 있는 단어가 $n$개 주어졌을 때, 사전순으로 앞선 단어가 더 먼저 나오도록 정렬하여 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $n$이 주어집니다.\n\n두 번째 줄부터 $n$개의 줄에 걸쳐 각 줄에 단어가 하나씩 주어집니다.",
+ "output_spec": "$n$개의 줄에 걸쳐 정렬된 단어들을 한 줄에 하나씩 출력합니다.",
+ "constraints": "- $1 \\le n \\le 100$\n- 각 단어의 길이는 $1$ 이상 $100$ 이하입니다.",
+ "samples": [
+  {
+   "in": "7\naba\na\ncf\nab\nba\nbd\nad\n",
+   "out": "a\nab\naba\nad\nba\nbd\ncf\n"
+  }
+ ]
+}

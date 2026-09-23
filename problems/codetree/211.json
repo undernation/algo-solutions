@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "211",
+ "title": "큰 수에서 빼기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-subtract-from-large-number/description",
+ "alias": "subtract-from-large-number",
+ "pid": 211,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "조건문",
+ "lesson": "if 조건문",
+ "card": "challenge-subtract-from-large-number",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "66.2",
+  "submissions": "11094"
+ },
+ "sample_count": 1,
+ "statement_len": 49,
+ "fetched_at": "2026-09-23",
+ "statement": "두 개의 정수를 입력받아 큰 수에서 작은 수를 뺀 차를 출력하는 프로그램을 작성해주세요.",
+ "input_spec": "첫 번째 줄에 정수 $A, B$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "큰 수에서 작은 수를 뺀 값을 출력합니다.",
+ "constraints": "- $1 \\le A, B \\le 100$",
+ "samples": [
+  {
+   "in": "31 64\n",
+   "out": "33\n"
+  }
+ ]
+}

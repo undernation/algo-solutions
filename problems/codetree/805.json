@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "805",
+ "title": "겹치지 않는 사각형의 넓이",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-area-of-non-overlapping-rectangle/description",
+ "alias": "area-of-non-overlapping-rectangle",
+ "pid": 805,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 I",
+ "lesson": "사각형 칠하기",
+ "card": "intro-area-of-non-overlapping-rectangle",
+ "card_type": "Introduction",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "192 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "79.1",
+  "submissions": "4480"
+ },
+ "sample_count": 1,
+ "statement_len": 156,
+ "fetched_at": "2026-09-23",
+ "statement": "좌표평면 위에 직사각형 $A$, $B$를 먼저 붙이고 그 위에 직사각형 $M$을 붙였습니다. 아직 남아있는 ($M$으로 덮이지 못한) 직사각형 $A$, $B$의 넓이의 합을 구하는 프로그램을 작성해보세요. 단, 직사각형 $A$, $B$는 겹치지 않게 주어진다고 가정해도 좋습니다.",
+ "input_spec": "첫 번째 줄에는 직사각형 $A$의 좌측 최하단의 좌표$(x_1,\\ y_1)$와 우측 최상단의 좌표$(x_2,\\ y_2)$가 공백을 사이에 두고 주어집니다.\n\n두 번째 줄에는 직사각형 $B$의 좌측 최하단의 좌표$(x_1,\\ y_1)$와 우측 최상단의 좌표$(x_2,\\ y_2)$가 공백을 사이에 두고 주어집니다.\n\n세 번째 줄에는 직사각형 $M$의 좌측 최하단의 좌표$(x_1,\\ y_1)$와 우측 최상단의 좌표$(x_2,\\ y_2)$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 $M$으로 덮이지 못한 직사각형 $A$, $B$의 넓이의 합을 출력합니다.",
+ "constraints": "- 모든 좌표는 정수입니다.\n- 직사각형 $A$, $B$, $M$ 각각에 대해 $-1\\,000 \\le x_1 < x_2 \\le 1\\,000$입니다.\n- 직사각형 $A$, $B$, $M$ 각각에 대해 $-1\\,000 \\le y_1 < y_2 \\le 1\\,000$입니다.\n- 직사각형 $A$와 $B$는 서로 겹치지 않는 것이 보장됩니다.",
+ "samples": [
+  {
+   "in": "1 2 3 5\n6 0 10 4\n2 1 8 3\n",
+   "out": "17\n"
+  }
+ ],
+ "sample_notes": [
+  "직사각형 $A$와 $B$그리고 그 둘을 가리고 있는 직사각형 $M$의 초기모습은 아래 그림과 같습니다.\n\n<br/>\n\n![](https://contents.codetree.ai/problems/805/images/problems-c43dd29a-b74d-4821-9c26-922ac0fe5140.svg)\n\n<br/>\n\n$M$과 겹치지 않는 $A$의 넓이는 $5$, $M$과 겹치지 않는 $B$의 넓이는 $12$이므로 그 둘의 합은 $17$입니다.\n\n<br/>\n\n![](https://contents.codetree.ai/problems/805/images/problems-48608e45-bf4d-429f-b4bd-f33d6ac90d8d.svg)"
+ ]
+}

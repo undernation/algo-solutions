@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1036",
+ "title": "트리 전달",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-tree-forwarding/description",
+ "alias": "tree-forwarding",
+ "pid": 1036,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Tree",
+ "lesson": "Tree DP",
+ "card": "challenge-tree-forwarding",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "256 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "60.5",
+  "submissions": "210"
+ },
+ "sample_count": 1,
+ "statement_len": 311,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$번부터 $N$번까지 $N$개의 노드로 구성된 트리가 있습니다. 이 트리에서 초기 연산 $M$번이 주어집니다.\n\n연산은 다음과 같이 진행됩니다.\n\n- 연산 $i \\space w$ : $i$번 노드에서 점수 $w$점을 획득합니다. 그 후 $i$번 노드의 자식 노드들을 $c_1$, $c_2$, ..., $c_k$,라고 할 때, 연산 $c_1 \\space w$, 연산 $c_2 \\space w$, ..., 연산 $c_k \\space w$를 수행합니다.\n\n최종적으로 초기 연산 $M$번이 수행된 후, 각 노드가 받게 되는 점수를 구하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 정수 $N$과 $M$이 주어집니다.\n\n두 번째 줄에 노드 $N$개의 부모 노드의 번호가 차례대로 주어집니다. 부모 노드의 번호는 자신의 번호보다 작으며, 최종적으로는 $1$번이 루트 노드입니다. (루트 노드는 부모 노드가 없으므로 $-1$로 표현합니다.)\n\n세 번째 줄부터 $M$개의 줄에 걸쳐 연산의 정보 $i$, $w$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 $1$번부터 $N$번까지의 노드가 받게 되는 점수를 수치를 공백을 사이에 두고 출력하세요.",
+ "constraints": "- $2 \\le N, M \\le 100\\,000$\n- $1$번 노드의 부모 노드 번호는 $-1$로 주어집니다.\n- $1$번 노드를 제외한 노드들의 부모 노드 번호는 $1$ 이상 $N$ 이하의 정수이며, 부모 노드를 모두 연결할 때 올바른 트리가 되도록 주어집니다.\n- $1 \\le i \\le N$\n- $1 \\le w \\le 1\\,000$",
+ "samples": [
+  {
+   "in": "5 4\n-1 1 2 3 4\n2 2\n3 4\n4 1\n5 6\n",
+   "out": "0 2 6 7 13\n"
+  }
+ ]
+}

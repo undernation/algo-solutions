@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1843",
+ "title": "크기 비교",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-size-comparison/description",
+ "alias": "size-comparison",
+ "pid": 1843,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shortest Path",
+ "lesson": "Floyd Warshall",
+ "card": "challenge-size-comparison",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "86.7",
+  "submissions": "263"
+ },
+ "sample_count": 1,
+ "statement_len": 151,
+ "fetched_at": "2026-09-23",
+ "statement": "서로 다른 크기를 가진 정수 $N$개에 대해서, $1$번부터 $N$번까지의 정수 중 임의의 두 정수의 크기를 비교한 결과가 $M$번 주어집니다.\n\n$M$번의 비교 결과를 통해, 각 정수가 다른 몇 개의 정수와 크기 비교 결과를 알 수 없는지 구하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 정수 $N$, $M$이 공백을 두고 주어집니다.\n\n두 번째 줄부터 $M$개의 줄에 걸쳐 한 줄에 두 개의 정수가 공백을 두고 주어지는데, 앞의 정수가 뒤의 정수보다 숫자가 더 크다는 뜻입니다.",
+ "output_spec": "첫 번째 줄부터 $N$개의 줄에 걸쳐 $1$번 정수부터 $N$번 정수까지, 각 정수마다 크기 비교 결과를 추론할 수 없는 정수의 개수를 출력합니다.",
+ "constraints": "- $5 \\le N \\le 100$\n- $0 \\le M \\le 2\\,000$",
+ "samples": [
+  {
+   "in": "6 5\n1 2\n2 3\n3 4\n5 4\n6 5\n",
+   "out": "2\n2\n2\n0\n3\n3\n"
+  }
+ ]
+}

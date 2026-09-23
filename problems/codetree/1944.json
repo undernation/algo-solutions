@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1944",
+ "title": "트리 파악하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-figure-out-the-tree/description",
+ "alias": "figure-out-the-tree",
+ "pid": 1944,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "String",
+ "lesson": "Trie",
+ "card": "challenge-figure-out-the-tree",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "87.0",
+  "submissions": "54"
+ },
+ "sample_count": 1,
+ "statement_len": 520,
+ "fetched_at": "2026-09-23",
+ "statement": "다음과 같이 여러개의 트리가 있습니다.\n\n![](https://contents.codetree.ai/problems/1944/images/problems-d0f6fdf7-d9c5-40d3-b2e1-80bed4055150.png)\n\n이 트리들을 조사하기 위해 루트 노드에서 시작해 해당 노드의 자식으로 차례 차례 내려와 리프 노드까지 내려가는 발굴단을 모집했습니다. 이 트리를 바탕으로 발굴단이 얻어낸 정보는 다음과 같습니다.\n\n```\nBB AA\nAA BB CZZ DD\nAA CC\n```\n\n이 정보를 바탕으로 역으로 트리의 구조를 알아보고자 합니다.\n\n트리는 층을 구분해서, 각 레벨은 \"--\"로 구분하여 출력합니다. 한 노드에 여러 자식이 있을 경우 사전 순으로 가장 작은 것부터 출력합니다. 이를 바탕으로 위 트리의 구조를 출력한 결과는 다음과 같습니다.\n\n```\nAA\n--BB\n----CZZ\n------DD\n--CC\nBB\n--AA\n```\n\n주어진 정보에 따른 트리의 모양을 조건에 규칙에 따라 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 입력할 줄의 개수 $N$이 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 각 줄에, 각 정보의 노드의 개수 $k$와 각 노드의 이름 $x$가 공백을 두고 차례대로 주어집니다.",
+ "output_spec": "주어진 정보에 따른 트리의 모양을 조건에 규칙에 따라 출력합니다.",
+ "constraints": "- $1 \\le N \\le 1\\,000$\n- $1 \\le k \\le 15$\n- $1 \\le x \\texttt{의 길이} \\le 15$\n- $x$는 알파벳 대문자만으로 이루어져 있습니다.",
+ "samples": [
+  {
+   "in": "3\n2 BB AA\n4 AA BB CZZ DD\n2 AA CC\n",
+   "out": "AA\n--BB\n----CZZ\n------DD\n--CC\nBB\n--AA\n"
+  }
+ ]
+}

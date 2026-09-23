@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2149",
+ "title": "정원 입장은 선착순",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-admission-to-the-garden-is-on-a-first-come-first-served-basis/description",
+ "alias": "admission-to-the-garden-is-on-a-first-come-first-served-basis",
+ "pid": 2149,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "중급 자료구조",
+ "lesson": "Priority Queue",
+ "card": "challenge-admission-to-the-garden-is-on-a-first-come-first-served-basis",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "52.2",
+  "submissions": "717"
+ },
+ "sample_count": 1,
+ "statement_len": 332,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$부터 $N$까지 번호표를 든 $N$명의 사람들이 있습니다. $i$번 사람은 $a_i$ 시간에 정원 입구에 도착해서 $t_i$ 시간 동안 정원에 머무르다 갑니다. 정원에는 한 번에 한 명의 사람만이 들어갈 수 있으며, i번 사람이 정원 입구에 도착했을 때, 이미 누군가가 정원에 있다면 정원 안에 있는 사람이 떠날때 까지 기다렸다가 이후에 정원을 출입할 수 있습니다. 기다리는 사람이 여러명이라면 번호표의 숫자가 작은 사람부터 들어갈 수 있습니다. 모든 사람이 정원을 한 번씩 들려서 머물렀다 갈 때, 이들 중 가장 오래 기다려야 하는 사람이 기다리는 시간을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다. \n\n두 번째 줄부터 $N$개의 줄에 걸쳐 $i+1$번째 줄에 $a_i$, $t_i$가 공백을 사이에 두고 차례대로 주어집니다. 번호표 순으로 $1$번부터 $N$번까지 순서대로 주어집니다.",
+ "output_spec": "첫 번째 줄에 이들 중 가장 오래 기다려야 하는 사람이 기다리는 시간을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 10^5$ \n- $t_i$ ≤ $10^4$, $t_i$는 자연수입니다. \n- $a_i$ ≤ $10^9$, $a_i$는 자연수입니다.",
+ "samples": [
+  {
+   "in": "5\n25 3\n105 30\n20 50\n10 17\n100 10\n",
+   "out": "10\n"
+  }
+ ],
+ "sample_notes": [
+  "$4$번 사람이 $10$ 시간에 도착해 $27$ 시간까지 정원에 머무르다가 갑니다.\n\n$4$번 사람이 정원에 있을 때 $1, 3$번 사람이 정원 입구에 도착하는데 번호표의 숫자가 더 작은 $1$번 사람이 $2$시간 기다려 $27$시간에 정원에 출입합니다. \n\n$3$번 사람은 $1$번 사람이 떠나는 $30$시간까지 총 $10$시간 기다렸다 정원에 출입합니다.\n\n$3$번 사람은 $80$시간까지 정원에 머무릅니다. \n\n이후 $100$시간에 $5$번 사람이 들어와 $110$ 시간까지 머무르고, 그 사이에 2번 사람이 도착해 $5$시간 기다렸다가 $110$시간에 정원에 들어가서 $140$ 시간까지 머무릅니다.\n\n따라서, 가장 오래 기다린 사람은 $10$시간 기다린 $3$번 사람입니다."
+ ]
+}

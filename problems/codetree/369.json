@@ -1,0 +1,37 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "369",
+ "title": "배열로 사각형 만들기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-print-array-in-rectangle/description",
+ "alias": "print-array-in-rectangle",
+ "pid": 369,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "2차원 배열",
+ "lesson": "순서대로 채우기",
+ "card": "intro-print-array-in-rectangle",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "96.4",
+  "submissions": "2192"
+ },
+ "sample_count": 1,
+ "statement_len": 132,
+ "fetched_at": "2026-09-23",
+ "statement": "배열을 만들어서 아래 조건을 만족해 출력하는 프로그램을 작성해보세요.\n+ 첫 번째 행과 첫 번째 열은 모두 $1$로 초기화 합니다.\n+ 나머지 칸들은 바로 위의 값과 바로 왼쪽의 값을 더합니다.\n+ 크기는 $5 \\times 5$ 입니다.",
+ "input_spec": "입력이 주어지지 않습니다.",
+ "output_spec": "입출력 예제와 같이 출력합니다.",
+ "samples": [
+  {
+   "in": "",
+   "out": "1 1 1 1 1\n1 2 3 4 5\n1 3 6 10 15\n1 4 10 20 35\n1 5 15 35 70\n"
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "386",
+ "title": "문자열 돌리기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-SPin-SPring/description",
+ "alias": "SPin-SPring",
+ "pid": 386,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "문자열",
+ "lesson": "문자열 밀기",
+ "card": "challenge-SPin-SPring",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "90.0",
+  "submissions": "1859"
+ },
+ "sample_count": 1,
+ "statement_len": 143,
+ "fetched_at": "2026-09-23",
+ "statement": "알파벳으로 이루어진 문자열이 주어지면, 문자열의 길이를 $L$이라고 했을 때 오른쪽으로 한 글자씩 밀어서 출력하는 것을 $L$회 반복하는 프로그램을 작성해보세요.\n\n예) \n\nABCD가 주어지는 경우\n```\nABCD\nDABC\nCDAB\nBCDA\nABCD\n```",
+ "input_spec": "첫 번째 줄에 길이가 $2$이상 $10$이하의 문자열이 주어집니다. 단, 공백은 없다고 가정해도 좋습니다.",
+ "output_spec": "첫 번째 줄에는 주어진 문자열을 출력해 주고 그 다음 줄부터 각 줄마다 한 글자씩 밀린 문자열을 출력합니다.",
+ "constraints": "- $2 \\le L \\le 10$\n- 문자열에 공백이 포함되지 않음이 보장됩니다.",
+ "samples": [
+  {
+   "in": "Apple\n",
+   "out": "Apple\neAppl\nleApp\npleAp\nppleA\nApple\n"
+  }
+ ]
+}

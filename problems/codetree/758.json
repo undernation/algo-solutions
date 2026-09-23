@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "758",
+ "title": "출력결과 76",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201831/description",
+ "alias": "reading-k201831",
+ "pid": 758,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "문자열",
+ "lesson": "아스키 코드",
+ "card": "challenge-reading-k201831",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "48.6",
+  "submissions": "3073"
+ },
+ "sample_count": 0,
+ "statement_len": 1168,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 프로그램의 출력 결과는 무엇인가?\n\n## Python3 코드\n```python\nstr1 = \"Lucky Boy\"\nscore = 0\nfor c in str1:\n    if c >= 'A' and c <= 'Z':\n        score += ord(c) - ord('A') + 1\n\nprint(score)\n```\n\n## C 코드\n\n```c\nchar str[] = \"Lucky Boy\";\nint score = 0;\nfor (int i = 0; str[i]; i++) {\n    char ch = str[i];\n    if (ch >= 'A' && ch <= 'Z') {    \n        score += ch - 'A' + 1;  \n    }\n}\nprintf(\"%d\\n\", score);\n```\n\n## C++ 코드\n\n```cpp\nstring str = \"Lucky Boy\";\nint score = 0;\nfor (int i = 0; str[i]; i++) {  \n    char ch = str[i];\n    if (ch >= 'A' && ch <= 'Z') {    \n        score += ch - 'A' + 1;  \n    }\n}\ncout << score << endl;\n```\n\n## Java 코드\n\n```java\nString str = \"Lucky Boy\";\nint score = 0;\nfor (int i = 0; i < str.length(); i++) {  \n    char ch = str.charAt(i); \n    if (ch >= 'A' && ch <= 'Z') {    \n        score += ch - 'A' + 1;  \n    }\n}\nSystem.out.println(score);\n```\n\n## JavaScript 코드\n\n```JavaScript\nlet str = \"Lucky Boy\";\nlet score = 0;\n\nfor (let i = 0; i < str.length; i++) {\n    let ch = str[i];\n    if (ch >= \"A\" && ch <= \"Z\") {\n        score += ch.charCodeAt(0) - \"A\".charCodeAt(0) + 1;\n    }\n}\n\nconsole.log(score);\n```\n\n**보기** — 하나 고르기\n\n1. 14\n2. 114\n3. 274\n4. 306\n5. 334"
+}

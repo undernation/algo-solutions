@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "830",
+ "title": "G & H 반전시키기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-reversing-g-and-h/description",
+ "alias": "reversing-g-and-h",
+ "pid": 830,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Greedy",
+ "lesson": "상태 반전이 가능한 문제",
+ "card": "intro-reversing-g-and-h",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "78.0",
+  "submissions": "549"
+ },
+ "sample_count": 1,
+ "statement_len": 152,
+ "fetched_at": "2026-09-23",
+ "statement": "'G', 'H'로만 이루어져 있는 길이가 $N$인 초기 문자열과 원하는 목표 문자열이 주어졌을 때, 구간을 최소 횟수로 잡아 해당 구간에 있는 문자를 'G' $\\to$ 'H', 'H' $\\to$ 'G'로 반전시켜 원하는 목표 문자열이 나오도록 하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $N$이 주어집니다.\n\n두 번째 줄에는 길이가 $N$인 초기 문자열이 주어집니다.\n\n세 번째 줄에는 길이가 $N$인 목표 문자열이 주어집니다.",
+ "output_spec": "초기 문자열이 목표 문자열이 되기 위해 잡아야 하는 최소 구간의 수를 출력합니다.",
+ "constraints": "- $1\\le N\\le 1,000$\n- 문자열은 'G', 'H'로만 이루어져 있습니다.",
+ "samples": [
+  {
+   "in": "7\nGHHHGHH\nHHGGGHH\n",
+   "out": "2\n"
+  }
+ ],
+ "sample_notes": [
+  "시작은 `GHHHGHH`입니다.\n\n여기서 처음 구간 $[3,\\ 4]$를 잡으면 해당 구간의 문자들은 반전되어 `GHGGGHH`가 됩니다.\n\n이후 구간 $[1,\\ 1]$을 잡아 반전시키면 목표 문자열은 `HHGGGHH`를 얻게 됩니다.\n\n$2$개 미만의 구간을 잡아 목표 문자열을 만들 수는 없습니다."
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1560",
+ "title": "수도코드 3",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-pseudo-code-3/description",
+ "alias": "pseudo-code-3",
+ "pid": 1560,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "시간, 공간복잡도",
+ "lesson": "수도코드",
+ "card": "test-pseudo-code-3",
+ "card_type": "Test",
+ "level": "Medium",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "73.8",
+  "submissions": "7121"
+ },
+ "sample_count": 0,
+ "statement_len": 175,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 코드의 출력값은 무엇일까요?\n\n```js\nset arr = [1, 1, 0, 0, 0, 0]\n\nfor i = 2 ... i <= 5\n    arr[i] = arr[i - 1] + arr[i - 2]\n\nprint(arr[5])\n```\n\n**보기** — 하나 고르기\n\n1. 0\n2. 2\n3. 3\n4. 5\n5. 8"
+}

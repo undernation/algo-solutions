@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "588",
+ "title": "타일 채우기 (2)",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-dp-modeling-tile2/description",
+ "alias": "dp-modeling-tile2",
+ "pid": 588,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "DP",
+ "lesson": "subproblem을 그대로 합치면 되는 DP",
+ "card": "challenge-dp-modeling-tile2",
+ "card_type": "Problem",
+ "level": "Hard",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "50.1",
+  "submissions": "3117"
+ },
+ "sample_count": 0,
+ "statement_len": 241,
+ "fetched_at": "2026-09-23",
+ "statement": "$2 \\times N$ 크기의 벽을 $2 \\times 1, 1 \\times 2, 2 \\times 2$ 크기의 타일로 채우려고 합니다\n\n만약 $2 \\times 3$ 크기의 벽을 채우려고 한다면, $5$가지의 경우가 있습니다.\n\n그렇다면, 벽의 크기가 $2 \\times 7$ 이라면, 벽을 채울 수 있는 경우의 수는 몇 개 일까요?\n\n**보기** — 하나 고르기\n\n1. `21`\n2. `42`\n3. `43`\n4. `64`\n5. `85`"
+}

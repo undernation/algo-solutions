@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2538",
+ "title": "최대 최소간의 차",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-difference-between-maximum-and-minimum/description",
+ "alias": "difference-between-maximum-and-minimum",
+ "pid": 2538,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 III",
+ "lesson": "기준을 새로 설정하여 완전탐색",
+ "card": "test-difference-between-maximum-and-minimum",
+ "card_type": "Test",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "54.4",
+  "submissions": "1165"
+ },
+ "sample_count": 1,
+ "statement_len": 285,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 수가 주어졌을 때, 각각의 수에 변화를 적절하게 주어, 최종적으로 나오는 수들 중 최대와 최소 간의 차가 $K$ 이하가 되게끔 만들려고 합니다. 수 $a$가 수 $b$로 바뀌는데 드는 비용이 $|a-b|$라 했을 때, 필요한 최소 비용을 구하는 프로그램을 작성해보세요.\n\n예를 들어 수가 $6$, $3$, $7$, $3$, $5$와 같이 주어졌을 때 각 수를 $6$, $4$, $6$, $4$, $5$로 만들면 최대와 최소 간의 차가 $2$가 되며, 비용은 $0+1+1+1+0=3$만큼이 발생합니다.",
+ "input_spec": "첫 번째 줄에는 정수 $N$과 $K$가 공백을 사이에 두고 주어집니다.\n\n두 번째 줄에는 $N$개의 정수 $A_1$, $A_2$, $\\dots$, $A_N$이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 발생하는 최소 비용을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le K \\le 10\\,000$\n- $1 \\le A_i \\le 10\\,000$ ($1 \\le i \\le N$)\n- 모든 입력값은 정수입니다.",
+ "samples": [
+  {
+   "in": "5 2\n6 3 7 3 5\n",
+   "out": "3\n"
+  }
+ ],
+ "sample_notes": [
+  "$6$, $3$, $7$, $3$, $5$ 수들을 $6$, $4$, $6$, $4$, $5$으로 바꾸면 최대와 최소 간의 차가 $2$ 이하가 되면서 비용은 $3$만큼이 들게 됩니다. 이보다 더 적은 비용으로 조건을 만족하게 만들 수는 없습니다."
+ ]
+}

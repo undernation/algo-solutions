@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "890",
+ "title": "두 선분",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-two-lines/description",
+ "alias": "two-lines",
+ "pid": 890,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "케이스별로 나누기",
+ "lesson": "겹치는 경우",
+ "card": "intro-two-lines",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "57.5",
+  "submissions": "1577"
+ },
+ "sample_count": 1,
+ "statement_len": 135,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$차원 직선 상에 두 선분이 놓여 있습니다. 두 선분의 위치는 각각 $(x_1,\\ x_2)$, $(x_3,\\ x_4)$로 표현됩니다. 두 선분의 교차 여부를 판단하는 프로그램을 작성해보세요. 단, 경계에서 만나더라도 겹치는 것으로 봅니다.",
+ "input_spec": "첫 번째 줄에 정수 $x_1$, $x_2$, $x_3$, $x_4$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "두 선분의 교차 여부를 출력합니다. 두 선분이 겹치면 \"intersecting\", 겹치지 않는다면 \"nonintersecting\"을 출력합니다.",
+ "constraints": "- $1 \\le x_1 \\lt x_2 \\le 100$\n- $1 \\le x_3 \\lt x_4 \\le 100$",
+ "samples": [
+  {
+   "in": "1 5 4 6\n",
+   "out": "intersecting\n"
+  }
+ ],
+ "sample_notes": [
+  "아래 그림과 같이 $4$ ~ $5$ 구간이 교차합니다.\n\n\n![](https://contents.codetree.ai/problems/890/images/problems-cd92f232-fa9a-4c53-aaa6-6f2417f06b9e.svg)"
+ ]
+}

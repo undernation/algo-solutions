@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "355",
+ "title": "특이한 출력",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-special-print/description",
+ "alias": "special-print",
+ "pid": 355,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "다중 반복문",
+ "lesson": "포맷에 맞춰 숫자 출력",
+ "card": "intro-special-print",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "87.4",
+  "submissions": "2123"
+ },
+ "sample_count": 2,
+ "statement_len": 155,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $N$의 값이 주어지면 $(1,\\ 1)$에서 $(N,\\ N)$까지 특이한 조건을 만족하며 출력하는 프로그램을 작성해보세요.\n\n+ $(1,\\ 1)$에서 오른쪽으로 차례대로 출력합니다\n+  $(i,\\ j)$ 에서 $i + j$가 $4$의 배수가 되는순간 다음 줄로 넘어갑니다.",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.",
+ "output_spec": "$N$의 값에 따른 특이한 조건을 만족하는 출력을 입출력 예제와 같이 출력합니다.",
+ "constraints": "- $1 \\le N \\le 9$",
+ "samples": [
+  {
+   "in": "3\n",
+   "out": "(1, 1) (1, 2) (1, 3)\n(2, 1) (2, 2)\n(2, 3) (3, 1)\n(3, 2) (3, 3)\n"
+  },
+  {
+   "in": "4\n",
+   "out": "(1, 1) (1, 2) (1, 3)\n(1, 4) (2, 1) (2, 2)\n(2, 3) (2, 4) (3, 1)\n(3, 2) (3, 3) (3, 4) (4, 1) (4, 2) (4, 3) (4, 4)\n"
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2139",
+ "title": "최대 길이를 위해 선분 제거하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-remove-the-line-segment-for-the-maximum-length/description",
+ "alias": "remove-the-line-segment-for-the-maximum-length",
+ "pid": 2139,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shorten time Technique",
+ "lesson": "+1-1 technique",
+ "card": "challenge-remove-the-line-segment-for-the-maximum-length",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 3초 · C++17 1초",
+  "memory": "160 MB",
+  "time_sec": 3.0
+ },
+ "stats": {
+  "accept_rate": "58.0",
+  "submissions": "255"
+ },
+ "sample_count": 1,
+ "statement_len": 178,
+ "fetched_at": "2026-09-23",
+ "statement": "수평선 위에 $N$개의 선분이 있습니다. 각 선분의 양 끝점은 주어졌으며 선분의 양 끝점은 선분마다 상이합니다. 또, 두개 이상의 선분의 영역이 겹칠 수 있습니다. 선분이 그어진 영역의 길이가 최대가 되도록 선분 하나를 제거하려 합니다. 선분을 제거한 후 선분이 그어진 영역의 총 길이를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다. \n\n두 번째 줄부터 $N$개의 줄에 걸쳐 각 선분의 양 끝점($x_1, x_2$)이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 선분을 제거한 후 선분이 그어진 영역의 총 길이를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100\\,000$ \n- $0 \\le x_1 < x_2 \\le 10^9$",
+ "samples": [
+  {
+   "in": "3\n5 9\n1 4\n3 7\n",
+   "out": "7\n"
+  }
+ ],
+ "sample_notes": [
+  "$3, 7$을 양 끝점으로 갖는 선분을 삭제하면 선분이 그어진 영역의 총 길이는 $4+3=7$이 됩니다. 이보다 더 긴 경우는 없습니다.\n\n\n<br>\n\n![](https://contents.codetree.ai/problems/2139/images/problems-19d057bd-f253-4153-a6f6-f9fdf6e8fe19.png)\n\n<br>"
+ ]
+}

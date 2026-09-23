@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "754",
+ "title": "출력결과 72",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201827/description",
+ "alias": "reading-k201827",
+ "pid": 754,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "함수",
+ "lesson": "값을 반환하지 않는 함수",
+ "card": "challenge-reading-k201827",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "79.6",
+  "submissions": "5460"
+ },
+ "sample_count": 0,
+ "statement_len": 1065,
+ "fetched_at": "2026-09-23",
+ "statement": "함수 `f`를 구현하였을 때, 문자열 \"Lee\"를 출력하는 경우는 무엇인가?\n\n## Python3 코드\n```python\ndef f(a, b):\n    d = 0; e = 17\n    c = a + 5\n    if a + b < c:\n        if a == b:\n            print(\"Lee\")\n```\n\n## C 코드\n\n```c\nvoid f(int a, int b) {  \n    int c, d = 0, e = 17;  \n    c = a + 5;  \n    if (a + b < c) {     \n        if (a == b) {      \n            printf(\"Lee\");   \n        }     \n    }\n}\n```\n\n## C++ 코드\n\n```cpp\nvoid f(int a, int b) {  \n    int c, d = 0, e = 17;  \n    c = a + 5;  \n    if (a + b < c) {     \n        if (a == b) {      \n            cout << \"Lee\";\n        }     \n    }\n}\n```\n\n## Java 코드\n\n```java\nvoid f(int a, int b) {  \n    int c, d = 0, e = 17;  \n    c = a + 5;  \n    if (a + b < c) {     \n        if (a == b) {   \n            System.out.print(\"Lee\");\n        }     \n    }\n}\n```\n\n## JavaScript 코드\n\n```JavaScript\nfunction f(a, b) {  \n    let c, d = 0, e = 17;  \n    c = a + 5;  \n    if (a + b < c) {     \n        if (a === b) {   \n            console.log(\"Lee\");\n        }     \n    }\n}\n```\n\n**보기** — 하나 고르기\n\n1. f(3, 3)\n2. f(3, 5)\n3. f(4, 10)\n4. f(10, 10)\n5. f(20, 20)"
+}

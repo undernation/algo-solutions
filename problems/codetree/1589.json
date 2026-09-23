@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1589",
+ "title": "자연수 n개의 합",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-sum-of-n-natural-numbers/description",
+ "alias": "sum-of-n-natural-numbers",
+ "pid": 1589,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Parametric Search",
+ "lesson": "Parametric Search",
+ "card": "intro-sum-of-n-natural-numbers",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "50.1",
+  "submissions": "1813"
+ },
+ "sample_count": 2,
+ "statement_len": 64,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$부터 $N$까지의 자연수의 합이 $S$ 이하인 경우 중 가능한 $N$의 최댓값을 구하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 자연수 $S$가 주어집니다.",
+ "output_spec": "첫 번째 줄에 가능한 $N$의 최댓값을 출력합니다.",
+ "constraints": "- $1 \\le S \\le 10^{18}$",
+ "samples": [
+  {
+   "in": "200\n",
+   "out": "19\n"
+  },
+  {
+   "in": "15\n",
+   "out": "5\n"
+  }
+ ],
+ "sample_notes": [
+  "$1$부터 $19$까지 자연수의 합은 $190$ 입니다.",
+  "$1$부터 $5$까지 자연수의 합은 $15$ 입니다."
+ ]
+}

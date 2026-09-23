@@ -1,0 +1,43 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f2",
+ "title": "2048 게임",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/2048-game/description",
+ "alias": "2048-game",
+ "pid": 2,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2016 하반기 2번 문제",
+ "level": "L14",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "55.9",
+  "submissions": "1501"
+ },
+ "sample_count": 3,
+ "statement_len": 2025,
+ "fetched_at": "2026-09-23",
+ "statement": "2048게임은 4 * 4 격자 안에서 이루어지는 게임입니다. 이 2048 게임에서는 상하좌우 중 한 방향을 정하게 되면, 모든 수들이 해당 방향으로 전부 밀리게 됩니다.\n\n예를 들어 다음 판에서 밑으로 방향을 정하게 되면, 다음과 같이 아래로 중력이 작용한 이후의 결과를 얻게 됩니다.\n\n<p align=\"center\">\n<img width=\"500\" height=\"220\" src=\"https://contents.codetree.ai/problems/120/images/183f1e82-f9f0-4f3a-9ccf-705aea846b13.png\">\n</p>\n\n하지만 2048 게임에서는 같은 숫자끼리 만나게 되는 경우 두 숫자가 합쳐지게 됩니다. 다음의 경우 아래로 움직이는 예를 보면 2 두 개가 합쳐서 숫자 4가 됩니다.\n\n<p align=\"center\">\n<img width=\"500\" height=\"220\" src=\"https://contents.codetree.ai/problems/120/images/46da5af0-7391-4aba-90ef-acf25673a57b.png\">\n</p>\n\n또한, 단 한 번의 중력작용으로 이미 합쳐진 숫자가 연쇄적으로 합쳐지진 않습니다. 다음의 경우 아래로 움직이는 예를 보면 숫자 2 두 개가 이미 한번 합쳐져 4가 되었기 때문에, 위의 4와 다시 합쳐지진 않습니다.\n\n<p align=\"center\">\n<img width=\"500\" height=\"220\" src=\"https://contents.codetree.ai/problems/120/images/442a6a9b-8ecf-49a7-a4fe-1552c26b22f8.png\">\n</p>\n\n그리고 세 개 이상의 같은 숫자가 중력작용 방향으로 놓여 있으면, 중력에 의해 부딪히게 될 벽(바닥)에서 가까운 숫자부터 두 개씩만 합쳐집니다. 즉, 서너개 이상의 숫자가 하나로 합쳐질 순 없고 아래 예시처럼 바닥에 가까운 순서대로 한 쌍씩 짝을 이뤄 합쳐집니다. 다음 예시는 아래로 중력이 작용해서 숫자 2 네개가 4 두개로 합쳐진 것입니다.\n<p align=\"center\">\n<img width=\"500\" height=\"220\" src=\"https://contents.codetree.ai/problems/120/images/e9b9e72a-b439-43a2-96ee-1a20f86235fb.png\">\n</p>\n\n2, 4, 8, 16 등 2의 거듭제곱꼴로 나타나는 2 이상 2048 이하의 숫자들로 구성된 4 * 4 격자 판이 주어졌을 때, 5번 움직인 이후에 격자판에서 가장 큰 값의 최댓값을 구하는 프로그램을 작성해보세요.\n\n예를 들어 다음 격자의 경우 위, 아래, 왼쪽, 오른쪽으로 이동하게 되면, 각각 아래 그림과 같은 결과들을 얻을 수 있습니다.\n\n<p align=\"center\">\n<img width=\"500\" height=\"220\" src=\"https://contents.codetree.ai/problems/120/images/19f4953c-bb19-47a5-8f53-d23eceb01077.png\">\n</p>\n \n<p align=\"center\">\n<img width=\"500\" height=\"240\" src=\"https://contents.codetree.ai/problems/120/images/d491caff-e180-44d3-8a22-7ee7dd1fee1a.png\">\n</p>\n\n<p align=\"center\">\n<img width=\"500\" height=\"220\" src=\"https://contents.codetree.ai/problems/120/images/908058a0-e798-4b01-a793-3b3d1f1c71ad.png\">\n</p>\n\n<p align=\"center\">\n<img width=\"500\" height=\"220\" src=\"https://contents.codetree.ai/problems/120/images/f159a85b-0dfb-4400-bfd9-8229b1ee1592.png\">\n</p>\n\n격자 판이 주어질 때, 5번 이동하여 얻을 수 있는 가장 큰 블록의 수를 구하세요.",
+ "input_spec": "첫째 줄에는 격자의 크기를 의미하는 정수 $n$이 주어집니다.\n\n둘째 줄부터 $(n+1)$번째 줄까지 격자의 각 행, 블록에 적힌 정수 $n$개가 공백으로 구분되어 주어집니다.\n\n격자의 빈칸은 $0$으로 나타내며, 블록들은 $2$의 거듭제곱 형태로 나타납니다.\n\n블록은 적어도 하나 이상 주어진다고 가정해도 좋습니다.",
+ "output_spec": "격자를 5번 이동해서 얻을 수 있는 가장 큰 블록의 수를 출력하세요.",
+ "constraints": "- $1 \\le n \\le 20$\n- $2 \\le$ 블록의 값 $\\le 1024$",
+ "samples": [
+  {
+   "in": "4\n4 2 0 8\n4 2 2 4\n0 8 8 2\n4 2 2 2\n",
+   "out": "32\n"
+  },
+  {
+   "in": "2\n8 16\n16 8\n",
+   "out": "16\n"
+  },
+  {
+   "in": "4\n8 16 0 0\n0 0 16 8\n0 0 0 0\n0 0 0 0\n",
+   "out": "32\n"
+  }
+ ]
+}

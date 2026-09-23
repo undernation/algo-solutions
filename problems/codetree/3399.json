@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3399",
+ "title": "친구의 키 3",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-height-of-friends-3/description",
+ "alias": "height-of-friends-3",
+ "pid": 3399,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "위상정렬",
+ "lesson": "Topological Sort",
+ "card": "test-height-of-friends-3",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "77.4",
+  "submissions": "84"
+ },
+ "sample_count": 3,
+ "statement_len": 206,
+ "fetched_at": "2026-09-23",
+ "statement": "$n$명의 친구가 키가 큰 사람부터 내림차순으로 순서대로 서있습니다. 이때 $n$명의 친구는 모두 키가 다르며, 어떤 순서로 서있는지에 대한 단서로 $m$개의 정보가 주어집니다. 각 정보는 $(a, b)$ 형태로 주어지며, 이는 $a$번 친구가 $b$번 친구보다 키가 크다는 것을 의미합니다. 친구들이 서있는 순서를 앞에서부터 차례대로 구해주는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $n, m$이 공백을 사이에 두고 주어집니다.  \n두 번째 줄부터는 $m$개의 줄에 걸쳐 두 사람의 키에 대한 정보 $(a, b)$가 공백을 사이에 두고 주어집니다. 이는 $a$번 친구가 $b$번 친구보다 키가 크다는 것을 의미합니다.",
+ "output_spec": "친구들이 서있는 순서를 앞에서부터 차례대로 공백을 사이에 두고 출력합니다. 단 만약 그러한 조건을 만족하는 것이 불가능하다면 -1을, 답이 여러 개라면 사전순으로 가장 앞선 답을 출력하도록 합니다.",
+ "constraints": "- $1 \\le n, m \\le 100,000$\n - $1 \\le a, b \\le n$\n - $a \\neq b$",
+ "samples": [
+  {
+   "in": "5 5\n3 2\n1 5\n2 1\n3 4\n4 2\n",
+   "out": "3 4 2 1 5\n"
+  },
+  {
+   "in": "5 4\n3 2\n1 5\n2 1\n3 4\n",
+   "out": "3 2 1 4 5\n"
+  },
+  {
+   "in": "5 5\n3 2\n1 5\n2 1\n4 2\n5 2\n",
+   "out": "-1\n"
+  }
+ ]
+}

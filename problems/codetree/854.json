@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "854",
+ "title": "함수를 이용한 합과 소수 판별",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-use-functions-to-determine-sums-and-decimals/description",
+ "alias": "use-functions-to-determine-sums-and-decimals",
+ "pid": 854,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "함수",
+ "lesson": "값을 반환하는 함수",
+ "card": "challenge-use-functions-to-determine-sums-and-decimals",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "88.1",
+  "submissions": "3043"
+ },
+ "sample_count": 1,
+ "statement_len": 145,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $A$와 $B$가 주어지면, $A$ 이상 $B$ 이하의 수 중 소수이면서 모든 자릿수의 합이 짝수인 수의 개수를 구하는 프로그램을 작성해보세요.\n\n이 문제는 각 조건의 판별을 함수로 분리해 작성하는 연습을 목표로 합니다. 채점은 출력값만으로 이루어집니다.",
+ "input_spec": "첫 번째 줄에 정수 $A$와 $B$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 조건을 만족하는 수의 개수를 정수 하나로 출력합니다.",
+ "constraints": "- $1 \\le A \\le B \\le 100$",
+ "samples": [
+  {
+   "in": "10 30\n",
+   "out": "4\n"
+  }
+ ],
+ "sample_notes": [
+  "$10$과 $30$ 사이의 소수는 $11$, $13$, $17$, $19$, $23$, $29$이고, 이 중 모든 자릿수의 합이 짝수인 수는 $11$, $13$, $17$, $19$이므로 총 $4$개입니다."
+ ]
+}

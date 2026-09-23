@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "469",
+ "title": "선택 정렬의 과정",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-selection-sort-progress/description",
+ "alias": "selection-sort-progress",
+ "pid": 469,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "정렬",
+ "lesson": "선택 정렬",
+ "card": "test-selection-sort-progress",
+ "card_type": "Test",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "67.0",
+  "submissions": "2670"
+ },
+ "sample_count": 0,
+ "statement_len": 479,
+ "fetched_at": "2026-09-23",
+ "statement": "선택 정렬의 코드는 다음과 같습니다.\n```jsx\nfunction selection_sort(arr[])\n  set len = arr.size\n  for i = 0 ... i < len-1\n    set min = i\n    for j = i+1 ... j < len\n      if arr[j] < arr[min]\n        min = j\n    set tmp = arr[i]\n    arr[i] = arr[min]\n    arr[min] = tmp\n  \n  return arr\n```\n\n다음과 같은 배열에 선택 정렬을 진행한다고 가정합시다.\n```jsx\narr = [5, 2, 4, 7, 1, 6, 3]\n```\n선택 정렬에서 3회차 반복이 완료된 시점(외부 루프가 3번 실행된 후)에, 전체 배열의 상태는 어떻게 될까요?\n\n**보기** — 순서대로 7개 고르기\n\n1. `1`\n2. `2`\n3. `3`\n4. `4`\n5. `5`\n6. `6`\n7. `7`"
+}

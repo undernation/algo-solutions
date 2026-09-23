@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "931",
+ "title": "체크판위에서 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-on-the-checkboard-2/description",
+ "alias": "on-the-checkboard-2",
+ "pid": 931,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 I",
+ "lesson": "자리 수 단위로 완전탐색",
+ "card": "intro-on-the-checkboard-2",
+ "card_type": "Introduction",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "54.0",
+  "submissions": "5047"
+ },
+ "sample_count": 1,
+ "statement_len": 421,
+ "fetched_at": "2026-09-23",
+ "statement": "$R \\times C$ 크기인 직사각형의 각 칸이 $'W'$, $'B'$로 표현되어 있습니다. $'W'$는 하얀색으로, $'B'$는 검은색으로 칸이 채워져 있는것을 뜻합니다. 왼쪽 상단에서 출발하여 우측 하단으로 이동할 때, 특정 룰을 만족하면서 이동에 성공할 수 있는 경우의 수를 구하는 프로그램을 작성해보세요. 아래가 특정 룰입니다.\n\n1. 이동은 항상 점프를 통해서만 가능합니다. 또, 점프 진행시 항상 현재 위치에 적혀있는 색과, 점프한 이후의 칸에 적혀있는 색이 달라야만 합니다.\n\n2. 점프 진행시 현재 위치에서 적어도 한칸 이상 오른쪽에 있는 위치이며 동시에 현재 위치에서 적어도 한칸 이상 아래쪽에 있는 위치인 곳으로만 점프가 가능합니다.\n\n3. 정확히 시작, 도착 지점을 제외하고 점프하며 도달한 위치가 정확히 $2$곳 뿐이어야 합니다.",
+ "input_spec": "첫 번째 줄에 $R$, $C$가 공백을 사이에 두고 주어집니다. $R$은 직사각형의 세로변, $C$는 가로변을 뜻합니다.\n\n두 번째 줄부터 $R$개의 줄에 걸쳐 $R \\times C$ 크기의 직사각형이 주어집니다. 각 줄에는 $C$개의 문자 $'W'$ 또는 $'B'$가 공백으로 구분되어 주어집니다.",
+ "output_spec": "첫 번째 줄에 룰을 만족하면서 이동에 성공할 수 있는 경우의 수를 출력합니다.",
+ "constraints": "- $5 \\le R,\\ C \\le 15$\n- 직사각형에 주어지는 문자는 $'W'$, $'B'$중 하나입니다.",
+ "samples": [
+  {
+   "in": "5 5\nW W W W W\nW W W W W\nW B W W W\nW W W W W\nW W W W B\n",
+   "out": "2\n"
+  }
+ ],
+ "sample_notes": [
+  "(행, 열) 기준으로 다음 $2$가지 방법이 가능합니다.  \n두 방법 모두 밟게되는 위치에 적혀있는 색이 $'W'$, $'B'$, $'W'$, $'B'$ 순으로 조건을 만족하게 됩니다.\n- $(1,\\ 1) \\to (3,\\ 2) \\to (4,\\ 3) \\to (5,\\ 5)$\n- $(1,\\ 1) \\to (3,\\ 2) \\to (4,\\ 4) \\to (5,\\ 5)$"
+ ]
+}

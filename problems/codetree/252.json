@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "252",
+ "title": "두 수의 짝홀 여부",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-parity-of-two-numbers/description",
+ "alias": "parity-of-two-numbers",
+ "pid": 252,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "조건문",
+ "lesson": "if else if else 조건문",
+ "card": "intro-parity-of-two-numbers",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "88.7",
+  "submissions": "5882"
+ },
+ "sample_count": 2,
+ "statement_len": 67,
+ "fetched_at": "2026-09-23",
+ "statement": "2개의 정수 a, b를 입력받아 첫 번째 수의 짝홀 여부와, 두 번째 수의 짝홀 여부를 출력하는 프로그램을 작성해주세요.",
+ "input_spec": "첫 번째 줄에 정수 a, b가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에는 정수 a에 대한 정보를 출력합니다. a가 짝수라면 `even`을, 홀수라면 `odd`를 출력합니다.\n\n두 번째 줄에는 정수 b에 대한 정보를 출력합니다. b가 짝수라면 `even`을, 홀수라면 `odd`를 출력합니다.",
+ "constraints": "- $1 \\le a, b \\le 100$",
+ "samples": [
+  {
+   "in": "8 15\n",
+   "out": "even\nodd\n"
+  },
+  {
+   "in": "15 19\n",
+   "out": "odd\nodd\n"
+  }
+ ]
+}

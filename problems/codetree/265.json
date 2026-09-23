@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "265",
+ "title": "특정 수 맞히기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-catching-specific-number/description",
+ "alias": "catching-specific-number",
+ "pid": 265,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "Infinite Loop",
+ "card": "challenge-catching-specific-number",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "89.6",
+  "submissions": "7728"
+ },
+ "sample_count": 1,
+ "statement_len": 131,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $25$를 맞히는 게임을 합니다. 주어지는 정수값이 $25$보다 작으면 `Higher`를, $25$보다 크면 `Lower`를 출력하는 작업을 반복하다가, $25$가 주어지면 `Good`을 출력하고 중단하는 프로그램을 작성해보세요.",
+ "input_spec": "입력으로 몇 개의 수가 들어올지는 정해져 있지는 않습니다. 첫 번째 줄부터 정수의 값이 한 줄에 하나씩 주어집니다. 단, $25$가 최소 한 번 이상 나온다는 가정을 해도 좋습니다.",
+ "output_spec": "입력값에 따른 문자열 출력값을 한 줄에 하나씩 출력합니다.",
+ "constraints": "- $1 \\le \\texttt{주어지는 수} \\le 100$",
+ "samples": [
+  {
+   "in": "27\n10\n25\n\n",
+   "out": "Lower\nHigher\nGood\n"
+  }
+ ]
+}

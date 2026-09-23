@@ -1,0 +1,43 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f342",
+ "title": "고대 문명 유적 탐사",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/ancient-ruin-exploration/description",
+ "alias": "ancient-ruin-exploration",
+ "pid": 342,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2024 상반기 오전 1번 문제",
+ "level": "L12",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "50.0",
+  "submissions": "7846"
+ },
+ "sample_count": 2,
+ "statement_len": 3302,
+ "fetched_at": "2026-09-23",
+ "statement": "수천 년 동안 잊혀진 고대 문명의 유적을 발견하게 되었습니다. 이 유적지는 $5 \\times 5$ 격자 형태로 되어 있으며, 각 칸에는 다양한 유물의 조각이 배치되어 있습니다. 유물 조각은 총 $7$가지 종류로, 각각 숫자 $1$부터 $7$로 표현됩니다.\n\n### [1] 탐사 진행\n\n#### **$3 \\times 3$ 격자 선택**\n\n당신은 고고학자로서 $5 \\times 5$ 격자 내에서 $3 \\times 3$ 격자를 선택하여 격자를 회전시킬 수 있습니다. 선택된 격자는 시계 방향으로 $90$도, $180$도, $270$도 중 하나의 각도만큼 회전시킬 수 있습니다. 단, 선택된 격자는 항상 회전을 진행해야만 합니다.\n\n예를 들어, 다음과 같이 유적지가 존재한다고 가정해보겠습니다.\n\n<p align=\"center\">\n  <img width=\"250\" src=\"https://contents.codetree.ai/problems/4128/images/fceacbfa-e3e4-49c1-9e85-40a5358e1d87.png\" >\n</p>\n<br/>\n\n만약 회전 중심 좌표를 $(3,\\ 3)$으로 설정하고, $90$도 회전하면 유적지는 다음과 같이 바뀌게 됩니다.\n\n<p align=\"center\">\n  <img width=\"550\" src=\"https://contents.codetree.ai/problems/4128/images/2829f2a7-3190-4503-8add-1757002db913.png\" >\n</p>\n\n#### **회전 목표**\n\n가능한 회전의 방법 중 (1) 유물 $1$차 획득 가치를 최대화하고, 그러한 방법이 여러가지인 경우 (2) 회전한 각도가 가장 작은 방법을 선택합니다. 그러한 경우도 여러가지인 경우 (3) 회전 중심 좌표의 열이 가장 작은 구간을, 그리고 열이 같다면 행이 가장 작은 구간을 선택합니다.\n\n### [2] 유물 획득\n\n#### **유물 1차 획득**\n\n상하좌우로 인접한 같은 종류의 유물 조각은 서로 연결되어 있습니다. 이 조각들이 **$3$개 이상** 연결된 경우, 조각이 모여 유물이 되고 사라집니다. 유물의 가치는 모인 조각의 개수와 같습니다.\n\n예를 들어, 아래와 같이 유적지가 존재한다면 유물은 총 $7$개의 조각으로 이루어지게 됩니다.\n\n<p align=\"center\">\n  <img width=\"250\" src=\"https://contents.codetree.ai/problems/4128/images/badfe16d-ab84-4b71-8eca-fafce2b67e4b.png\" >\n</p>\n<br/>\n\n각각 $3$개, $4$개의 조각이 모이므로 얻게 되는 유물의 가치는 총 $7$이 됩니다.\n\n이 유적지에서 유물이 사라지고 난 이후의 모습은 다음과 같습니다.\n\n<p align=\"center\">\n  <img width=\"250\" src=\"https://contents.codetree.ai/problems/4128/images/46808e73-f2a9-460f-9a03-ef3a63e449e8.png\" >\n</p>\n<br/>\n\n유적의 벽면에는 $1$부터 $7$ 사이의 숫자가 $M$개 적혀 있습니다. 이들은 유적에서 조각이 사라졌을 때 새로 생겨나는 조각에 대한 정보를 담고 있습니다. \n\n예를 들어, 유적의 벽면에 아래와 같이 새로 생겨나는 조각에 대한 정보는 아래와 같습니다.\n\n<p align=\"center\">\n  <img width=\"550\" src=\"https://contents.codetree.ai/problems/4128/images/56a7c17b-f54a-42f0-ab79-ad86af1ffa78.png\" >\n</p>\n<br/>\n\n조각이 사라진 위치에는 유적의 벽면에 적혀있는 순서대로 새로운 조각이 생겨납니다. 새로운 조각은 (1) 열 번호가 작은 순으로 조각이 생겨납니다. 만약 열 번호가 같다면 (2) 행 번호가 큰 순으로 조각이 생겨납니다. 단, 벽면의 숫자는 충분히 많이 적혀 있어 생겨날 조각의 수가 부족한 경우는 없다고 가정해도 좋습니다. \n\n위의 예시에서 새로운 조각들이 채워지는 방법에 따른 순서를 나타내면 다음과 같습니다.\n\n<p align=\"center\">\n  <img width=\"550\" src=\"https://contents.codetree.ai/problems/4128/images/948b9c15-849f-49b3-9cba-f13b74f2efa7.png\" >\n</p>\n<br/>\n\n따라서 조각은 아래와 같이 채워집니다.\n\n<p align=\"center\">\n  <img width=\"550\" src=\"https://contents.codetree.ai/problems/4128/images/00e70c7a-4215-41b6-8281-e8103f484332.png\" >\n</p>\n<br/>\n\n단, 유적의 벽면에 써 있는 숫자를 사용한 이후에는 다시 사용할 수 없으므로 이후 부터는 남은 숫자부터 순서대로 사용합니다. 즉, 이후에는 아래 그림에서 $8$번째로 적혀있는 수인 $1$부터 다시 사용이 가능합니다.\n\n<p align=\"center\">\n  <img width=\"550\" src=\"https://contents.codetree.ai/problems/4128/images/9704d794-f2e2-4925-bb08-b8d2e42c48ed.png\" >\n</p>\n<br/>\n\n\n#### **유물 연쇄 획득**\n\n새로운 유물 조각이 생겨난 이후에도 조각들이 $3$개 이상 연결될 수 있습니다. 이 경우 앞과 같은 방식으로 조각이 모여 유물이 되고 사라집니다. 사라진 위치에는 또다시 새로운 조각이 생겨나며 이는 더 이상 조각이 $3$개 이상 연결되지 않아 유물이 될 수 없을 때까지 반복됩니다.\n\n위의 예시에서는 새로운 유물 조각이 생겨난 이후에도 다음과 같이 유물이 만들어집니다. 따라서 연쇄적으로 유물을 획득하는 과정을 반복해야 합니다.\n\n<p align=\"center\">\n  <img width=\"250\" src=\"https://contents.codetree.ai/problems/4128/images/6d25a30e-e456-4cdd-9281-e47897e6c7e9.png\" >\n</p>\n<br/>\n\n### [3] 탐사 반복\n\n이 문제에서는 탐사 진행 ~ 유물 연쇄 획득의 과정까지를 $1$턴으로 생각하며, 총 $K$ 번의 턴에 걸쳐 진행됩니다. \n\n각 턴마다 획득한 유물의 가치의 총합을 출력하는 프로그램을 작성해야 합니다. 단, 아직 $K$번의 턴을 진행하지 못했지만, 탐사 진행 과정에서 어떠한 방법을 사용하더라도 유물을 획득할 수 없었다면 모든 탐사는 그 즉시 종료됩니다. 이 경우 얻을 수 있는 유물이 존재하지 않음으로, 종료되는 턴에 아무 값도 출력하지 않음에 유의합니다.",
+ "input_spec": "첫 번째 줄에 탐사의 반복 횟수 $K$와 벽면에 적힌 유물 조각의 개수 $M$이 공백을 사이에 두고 주어집니다.\n\n그 다음 $5$개의 줄에 걸쳐 유물의 각 행에 있는 유물 조각에 적혀 있는 숫자들이 공백을 사이에 두고 순서대로 주어집니다.\n\n그 다음 줄에는 벽면에 적힌 $M$개의 유물 조각 번호가 공백을 사이에 두고 순서대로 주어집니다.",
+ "output_spec": "첫 번째 줄에 각 턴 마다 획득한 유물의 가치의 총합을 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $1 \\le K \\le 10$\n- $10 \\le M \\le  300$\n- $1 \\le \\texttt{유물 조각 번호} \\le 7$\n- **단, 초기에 주어지는 유적지에서는 탐사 진행 이전에 유물이 발견되지 않으며, 첫 번째 턴에서 탐사를 진행한 이후에는 항상 유물이 발견됨을 가정해도 좋습니다.**",
+ "samples": [
+  {
+   "in": "2 20\n7 6 7 6 7\n6 7 6 7 6\n6 7 1 5 4\n7 6 3 2 1\n5 4 3 2 7\n3 2 3 5 2 4 6 1 3 2 5 6 2 1 5 6 7 1 2 3\n",
+   "out": "17\n"
+  },
+  {
+   "in": "2 30\n7 6 7 6 7\n6 7 6 7 6\n6 7 1 5 4\n7 6 3 2 1\n5 4 3 2 7\n3 2 3 5 2 4 6 1 3 2 5 6 2 1 6 6 7 5 4 2 2 3 1 3 1 2 4 2 1 3\n",
+   "out": "17 3\n"
+  }
+ ],
+ "sample_notes": [
+  "$1$번 예제에서 처음 유적지는 다음과 같이 존재합니다.\n\n<p align=\"center\">\n  <img width=\"250\" src=\"https://contents.codetree.ai/problems/4128/images/fceacbfa-e3e4-49c1-9e85-40a5358e1d87.png\" >\n</p>\n<br/>\n\n만약 회전 중심 좌표를 $(3,\\ 3)$으로 설정하고, $90$도 회전하면 유적지는 다음과 같이 바뀌게 됩니다.\n\n<p align=\"center\">\n  <img width=\"550\" src=\"https://contents.codetree.ai/problems/4128/images/2829f2a7-3190-4503-8add-1757002db913.png\" >\n</p>\n\n만약 회전 중심 좌표를 $(2,\\ 3)$으로 설정하고, $180$도 회전하면 유적지는 다음과 같이 바뀌게 됩니다.\n\n<p align=\"center\">\n  <img width=\"550\" src=\"https://contents.codetree.ai/problems/4128/images/ecd89dc8-bd70-4849-a0a9-46e4d5596af0.png\" >\n</p>\n<br/>\n\n각각의 경우 다음과 같이 유물이 생성됩니다.\n\n<p align=\"center\">\n  <img width=\"550\" src=\"https://contents.codetree.ai/problems/4128/images/abad38e0-7928-48f6-9a44-fc2e1fcf8b87.png\" >\n</p>\n<br/>\n\n두 경우 모두 유물 획득 가치가 $7$로 가장 크지만, 우선순위 규칙에 따라 회전한 각도가 더 작은 $(3,\\ 3)$의 방법이 선택됩니다.\n\n따라서 $(3,\\ 3)$의 방법대로 탐사를 진행하고 유물 조각이 사라지고 난 후의 모습은 다음과 같습니다. \n\n<p align=\"center\">\n  <img width=\"250\" src=\"https://contents.codetree.ai/problems/4128/images/46808e73-f2a9-460f-9a03-ef3a63e449e8.png\" >\n</p>\n<br/>\n\n유적의 벽면에 써 있는 숫자에 따라 새로운 조각들이 채워지는 방법에 따른 순서를 나타내면 다음과 같습니다.\n\n<p align=\"center\">\n  <img width=\"550\" src=\"https://contents.codetree.ai/problems/4128/images/948b9c15-849f-49b3-9cba-f13b74f2efa7.png\" >\n</p>\n<br/>\n\n따라서 조각은 다음과 같이 채워집니다.\n\n<p align=\"center\">\n  <img width=\"550\" src=\"https://contents.codetree.ai/problems/4128/images/a9f52c28-88a6-47ef-8501-2d321eca927f.png\" >\n</p>\n<br/>\n\n새로운 유물 조각이 생겨난 이후에도 유물이 존재하기 때문에 유물 연쇄 획득 과정을 진행해야 합니다. 이어서 생기는 유물은 다음과 같습니다. \n\n\n<p align=\"center\">\n  <img width=\"250\" src=\"https://contents.codetree.ai/problems/4128/images/defef8ac-be9c-45f2-834b-67e9eb27fc6b.png\" >\n</p>\n<br/>\n\n유물 조각이 사라지고 난 후, 새로 생겨나는 조각들은 다음과 같은 방법으로 채워집니다.\n\n<p align=\"center\">\n  <img width=\"550\" src=\"https://contents.codetree.ai/problems/4128/images/9ba2e5af-8321-4636-abc1-b08337381368.png\" >\n</p>\n<br/>\n\n따라서 조각은 다음과 같이 채워집니다.\n\n<p align=\"center\">\n  <img width=\"550\" src=\"https://contents.codetree.ai/problems/4128/images/63a484f0-82bc-43f9-8aa8-320c7448d69f.png\" >\n</p>\n<br/>\n\n다음으로 생기는 유물은 아래와 같습니다.\n\n<p align=\"center\">\n  <img width=\"250\" src=\"https://contents.codetree.ai/problems/4128/images/dc65b5f6-164a-4d22-b4da-fbfd2e119899.png\" >\n</p>\n<br/>\n\n유물 조각이 사라지고 난 후, 새로 생겨나는 조각들은 다음과 같은 방법으로 채워집니다.\n\n<p align=\"center\">\n  <img width=\"250\" src=\"https://contents.codetree.ai/problems/4128/images/8ed3615b-8387-45b5-a05a-b52b9ca3bc83.png\" >\n</p>\n<br/>\n\n따라서 조각은 다음과 같이 채워집니다.\n\n<p align=\"center\">\n  <img width=\"250\" src=\"https://contents.codetree.ai/problems/4128/images/e09a7acc-870d-4090-b52d-6f0c9db1b581.png\" >\n</p>\n<br/>\n\n더 이상 유물이 발견되지 않으므로 이 과정을 끝으로 첫 번째 턴이 마무리 되며, 첫 번째 턴에서 얻은 유물 가치의 총 합인 $17(=7 + 7 + 3)$이 출력됩니다. 두 번째 턴에서는 탐사 진행 과정에서 어떠한 방법을 사용하더라도 유물을 획득할 수 없기 때문에 탐사가 즉시 종료됩니다.",
+  ""
+ ]
+}

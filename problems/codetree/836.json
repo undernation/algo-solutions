@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "836",
+ "title": "특정 구간의 원소 평균값",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-elemental-mean-value-for-a-particular-interval/description",
+ "alias": "elemental-mean-value-for-a-particular-interval",
+ "pid": 836,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 I",
+ "lesson": "구간 단위로 완전탐색",
+ "card": "intro-elemental-mean-value-for-a-particular-interval",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "192 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "71.6",
+  "submissions": "2620"
+ },
+ "sample_count": 1,
+ "statement_len": 273,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 정수 $A_1, A_2, \\ldots, A_N$이 주어집니다.\n\n$1 \\le l \\le r \\le N$을 만족하는 구간 $[l,\\ r]$에 대해, 그 구간에 속한 원소 $A_l, A_{l+1}, \\ldots, A_r$의 평균값이 그 구간 안의 원소 중 하나와 같다면 이 구간은 조건을 만족한다고 합니다.\n\n조건을 만족하는 구간이 몇 개인지 세는 프로그램을 작성해보세요. 두 구간은 $l$과 $r$의 쌍 $(l,\\ r)$이 다르면 원소의 값이 같더라도 서로 다른 구간으로 셉니다.",
+ "input_spec": "첫 번째 줄에는 정수 $N$이 주어집니다.\n\n두 번째 줄에는 $N$개의 정수 $A_1, A_2, \\ldots, A_N$이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 조건을 만족하는 구간 $[l,\\ r]$의 개수를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le A_i \\le 1\\,000$ ($1 \\le i \\le N$)",
+ "samples": [
+  {
+   "in": "4\n1 1 2 3\n",
+   "out": "6"
+  }
+ ],
+ "sample_notes": [
+  "구간 $[1,\\ 1]$, $[2,\\ 2]$, $[3,\\ 3]$, $[4,\\ 4]$ 는 구간 안에 원소가 하나밖에 없으므로 평균이 곧 그 원소가 되기 때문에 조건을 만족하게 됩니다.\n\n구간 $[1,\\ 2]$에서는 평균이 $1$이며 구간 $[1,\\ 2]$ 내에 원소 $1$이 있기 때문에 조건을 만족합니다.\n\n구간 $[2,\\ 4]$에서는 평균이 $2$이며 구간 $[2,\\ 4]$ 내에 원소 $2$가 있기 때문에 조건을 만족합니다.\n\n따라서 총 $6$개의 구간이 조건을 만족시킵니다."
+ ]
+}

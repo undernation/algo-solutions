@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "119",
+ "title": "상한 귤",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-oranges-have-gone-bad/description",
+ "alias": "oranges-have-gone-bad",
+ "pid": 119,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "BFS",
+ "lesson": "가중치가 동일한 그래프에서의 BFS",
+ "card": "test-oranges-have-gone-bad",
+ "card_type": "Test",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "72.0",
+  "submissions": "1477"
+ },
+ "sample_count": 2,
+ "statement_len": 242,
+ "fetched_at": "2026-09-23",
+ "statement": "$0$, $1$, $2$로만 이루어진 $N \\times N$ 격자에서 $0$초에 $K$개의 상한 귤로부터 시작하여 $1$초에 한 번씩 모든 상한 귤로부터 상하좌우로 인접한 곳에 있는 귤이 동시에 전부 상하게 될 때, 각 귤마다 최초로 상하게 되는 시간을 구하는 프로그램을 작성해보세요. $0$은 해당 칸에 아무것도 놓여있지 않음을, $1$은 해당 칸에 귤이 놓여있음을, $2$는 해당 칸에 상한 귤이 처음부터 놓여 있음을 의미합니다.",
+ "input_spec": "첫 번째 줄에 격자의 크기를 나타내는 $N$과 초기에 상해있는 귤의 수를 나타내는 $K$가 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터는 $N$개의 줄에 걸쳐 각 행에 해당하는 $N$개의 정수가 순서대로 공백을 사이에 두고 주어집니다.",
+ "output_spec": "$N$개의 줄에 걸쳐 각 행마다 각 칸에 대한 정보를 공백을 사이에 두고 출력합니다. 만약 처음부터 비어있던 칸이라면 $-1$을 출력합니다. 처음에 귤이 들어있던 칸이라면 상하는 데 까지 걸리는 시간을 출력합니다. 만약 끝까지 상하지 않는 귤이라면 $-2$를 출력합니다.",
+ "constraints": "- $2 \\le N \\le 100$\n- $1 \\le K \\le N \\times N$\n- $0 \\le \\texttt{주어지는 정수} \\le 2$\n- 격자 내 값이 $2$인 칸은 정확히 $K$개입니다.",
+ "samples": [
+  {
+   "in": "3 1\n1 1 1\n1 0 1\n1 0 2\n",
+   "out": "4 3 2\n5 -1 1\n6 -1 0\n"
+  },
+  {
+   "in": "4 2\n0 0 1 0\n1 1 1 2\n0 2 1 0\n0 0 0 1\n",
+   "out": "-1 -1 2 -1\n2 1 1 0\n-1 0 1 -1\n-1 -1 -1 -2\n"
+  }
+ ]
+}

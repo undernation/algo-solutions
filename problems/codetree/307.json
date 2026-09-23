@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "307",
+ "title": "1부터 곱셈하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-multiple-from-one/description",
+ "alias": "multiple-from-one",
+ "pid": 307,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "break문",
+ "card": "challenge-multiple-from-one",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "85.2",
+  "submissions": "3784"
+ },
+ "sample_count": 2,
+ "statement_len": 120,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$이 주어졌을 때, $1$부터 차례대로 $10$까지 $1$씩 증가시키며 그 수들의 곱을 구합니다. 수들의 곱이 처음으로 $N$ 이상이 되는 순간 마지막으로 곱해진 수가 무엇인지를 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$의 값이 주어집니다.",
+ "output_spec": "첫 번째 줄에 마지막으로 곱해진 수를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 3\\,000\\,000$",
+ "samples": [
+  {
+   "in": "5\n",
+   "out": "3\n"
+  },
+  {
+   "in": "121\n",
+   "out": "6\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 예제에서는 $N$이 $5$이므로 $1\\times2\\times3$이 되는 순간에 $5$ 이상이 되므로 답은 $3$이 됩니다.",
+  ""
+ ]
+}

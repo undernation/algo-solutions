@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "56",
+ "title": "4가지 연산을 이용하여 1 만들기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-make-one-using-four-operations/description",
+ "alias": "make-one-using-four-operations",
+ "pid": 56,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "BFS",
+ "lesson": "가중치가 동일한 그래프에서의 BFS",
+ "card": "challenge-make-one-using-four-operations",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 2초 · C++17 0.5초",
+  "memory": "256 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "48.1",
+  "submissions": "2058"
+ },
+ "sample_count": 2,
+ "statement_len": 404,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $N$이 주어졌을 때, 다음 $4$가지 연산을 적절히 사용하여 연산의 횟수를 최소화 하여 $1$을 만들어 내려고 합니다.\n\n- 현재 수에서 $1$을 뺍니다.\n- 현재 수에 $1$을 더합니다.\n- 현재 수가 $2$로 나누어 떨어질 경우, 현재 수를 $2$로 나눕니다.\n- 현재 수가 $3$으로 나누어 떨어질 경우, 현재 수를 $3$으로 나눕니다.\n\n예를 들어 수 $11$에서 시작하여 수 $1$을 만들어 내기 위해서는 최소 $4$번의 연산이 필요합니다.\n\n![](https://contents.codetree.ai/problems/56/images/problems-d29709de-c7a4-408c-83a2-3e266a5bf73c.png)\n\n$1$을 만들기 위해 필요한 최소 연산 횟수를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 수 $N$이 주어집니다.",
+ "output_spec": "수 $N$을 $1$로 만드는 데 필요한 최소 연산 횟수를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 1\\,000\\,000$",
+ "samples": [
+  {
+   "in": "11\n",
+   "out": "4\n"
+  },
+  {
+   "in": "15\n",
+   "out": "4\n"
+  }
+ ]
+}

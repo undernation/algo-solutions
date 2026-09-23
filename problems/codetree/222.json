@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "222",
+ "title": "점수 비교",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-score-comparison/description",
+ "alias": "score-comparison",
+ "pid": 222,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "조건문",
+ "lesson": "and 연산자",
+ "card": "intro-score-comparison",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "82.8",
+  "submissions": "16914"
+ },
+ "sample_count": 2,
+ "statement_len": 54,
+ "fetched_at": "2026-09-23",
+ "statement": "$A$와 $B$의 수학과 영어의 점수를 입력받아 누가 더 높은지 비교하는 프로그램을 작성해주세요.",
+ "input_spec": "첫번째 줄에 $A$의 수학과 영어점수가 공백을 사이에 두고 주어집니다.\n\n두번째 줄에 $B$의 수학과 영어점수가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "$A$가 $B$보다 수학의 점수도 크고 영어의 점수도 크면 $1$, 그렇지 않으면 $0$을 출력합니다.",
+ "constraints": "- $1 \\le \\texttt{입력으로 주어지는 점수} \\le 100$",
+ "samples": [
+  {
+   "in": "100 85\n98 78\n",
+   "out": "1\n"
+  },
+  {
+   "in": "86 93\n86 90\n",
+   "out": "0\n"
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1718",
+ "title": "3개의 선 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-three-lines-2/description",
+ "alias": "three-lines-2",
+ "pid": 1718,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 III",
+ "lesson": "상황을 일일이 가정해보고 진행하는 완전탐색",
+ "card": "challenge-three-lines-2",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "51.9",
+  "submissions": "1648"
+ },
+ "sample_count": 1,
+ "statement_len": 200,
+ "fetched_at": "2026-09-23",
+ "statement": "좌표평면 위에 서로 다른 $N$개의 점이 주어졌을 때, 직선 $3$개로 주어진 모든 점을 전부 지나게 할 수 있는지를 판단하는 프로그램을 작성해보세요.\n\n각 직선은 $x$축에 평행하거나 $y$축에 평행해야 하며, 세 직선의 방향은 서로 같아도 되고 달라도 됩니다. 즉 세 직선이 모두 가로일 수도, 모두 세로일 수도, 가로와 세로가 섞여 있을 수도 있습니다.",
+ "input_spec": "첫 번째 줄에 점의 개수 $N$이 주어집니다.\n\n이후 $N$개의 줄에 걸쳐 각 줄마다 한 점의 $x$좌표와 $y$좌표가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 직선 $3$개로 모든 점을 지날 수 있다면 $1$을, 직선 $3$개로 부족하다면 $0$을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 20$\n- $0 \\le x, y \\le 10$\n- 주어지는 $N$개의 점은 서로 모두 다릅니다.\n- 주어지는 모든 좌표는 정수입니다.",
+ "samples": [
+  {
+   "in": "6\n1 7\n0 0\n1 2\n2 0\n1 4\n3 4\n",
+   "out": "1\n"
+  }
+ ]
+}

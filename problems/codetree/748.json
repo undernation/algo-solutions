@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "748",
+ "title": "출력결과 66",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201820/description",
+ "alias": "reading-k201820",
+ "pid": 748,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "함수",
+ "lesson": "값을 반환하는 함수",
+ "card": "challenge-reading-k201820",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "73.4",
+  "submissions": "3225"
+ },
+ "sample_count": 0,
+ "statement_len": 2078,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 프로그램의 출력 결과는 무엇인가?\n\n## Python3 코드\n```python\ndef f(x, y, z):\n    if (x > y):\n        if (x > z):\n            return x\n        else:\n            return z\n    else:\n        if (y > z):\n            return y\n        else:\n            return z\n\nprint(f(2, 3, 4), f(4, 3, 2), f(3, 2, 4))\n```\n\n## C 코드\n\n```c\nint f(int x, int y, int z) {  \n    if (x > y) {    \n        if (x > z) {      \n            return x;    \n        }    \n        else {      \n            return z;    \n        }  \n    }  \n    else {   \n        if (y > z) {     \n            return y;   \n        }   \n        else {     \n            return z;   \n        }  \n    }\n}\nint main() {  \n    printf(\"%d %d %d\\n\", f(2,3,4), f(4,3,2), f(3,2,4));  \n    return 0;\n}\n```\n\n## C++ 코드\n\n```cpp\nint f(int x, int y, int z) {  \n    if (x > y) {    \n        if (x > z) {      \n            return x;    \n        }    \n        else {      \n            return z;    \n        }  \n    }  \n    else {   \n        if (y > z) {     \n            return y;   \n        }   \n        else {     \n            return z;   \n        }  \n    }\n}\nint main() {  \n    cout << f(2, 3, 4) << \" \" << f(4, 3, 2) << \" \" << f(3, 2, 4) << endl;\n    return 0;\n}\n```\n\n## Java 코드\n\n```java\npublic static int f(int x, int y, int z) {  \n    if (x > y) {    \n        if (x > z) {      \n            return x;    \n        }    \n        else {      \n            return z;    \n        }  \n    }  \n    else {   \n        if (y > z) {     \n            return y;   \n        }   \n        else {     \n            return z;   \n        }  \n    }\n}\n\npublic static void main(String[] args) {\n    System.out.print(f(2, 3, 4) + \" \" + f(4, 3, 2) + \" \" + f(3, 2, 4));\n}\n```\n\n## JavaScript 코드\n```JavaScript\nfunction f(x, y, z) {\n    if (x > y) {\n        if (x > z) {\n            return x;\n        }\n        else {\n            return z;\n        }\n    }\n    else {\n        if (y > z) {\n            return y;\n        }\n        else {\n            return z;\n        }\n    }\n}\n\nconsole.log(f(2, 3, 4), f(4, 3, 2), f(3, 2, 4));\n```\n\n**보기** — 하나 고르기\n\n1. 2 4 3\n2. 3 3 2\n3. 4 2 4\n4. 2 2 2\n5. 4 4 4"
+}

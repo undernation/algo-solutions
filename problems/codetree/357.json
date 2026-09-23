@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "357",
+ "title": "ab 사이에 있는 c",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-c-between-a-and-b/description",
+ "alias": "c-between-a-and-b",
+ "pid": 357,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "단 하나라도 만족하는 경우",
+ "card": "intro-c-between-a-and-b",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "76.4",
+  "submissions": "4469"
+ },
+ "sample_count": 2,
+ "statement_len": 68,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $a, b$가 주어지면, $a$이상 $b$이하에 $c$의 배수가 단 하나라도 있는지 판단하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 정수 $a, b, c$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "$a$이상 $b$이하에 $c$의 배수가 있다면 `YES`를, 없다면 `NO`를 출력해보세요.",
+ "constraints": "- $1 \\le a, b, c \\le 100$\n- $a \\le b$",
+ "samples": [
+  {
+   "in": "9 20 7\n",
+   "out": "YES\n"
+  },
+  {
+   "in": "53 64 13\n",
+   "out": "NO\n"
+  }
+ ]
+}

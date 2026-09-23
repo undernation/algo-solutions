@@ -18,5 +18,12 @@
  "machineFactor": null,
  "_machineFactor": "null 이면 judge/_bench.py 로 자동 측정(기준 1.0초 대비 배율). 숫자를 넣으면 고정.",
  "_공식2": "언어별 제한 명시 시 = 문제제한 x nativeMargin x machineFactor",
- "nativeMargin": 1.5
+ "nativeMargin": 1.5,
+ "privateSites": [],
+ "_privateSites": [
+  "지문·입출력 설명·제약·힌트·예제를 repo 에 넣지 않을 사이트 목록. 비어 있으면 BOJ/SWEA 처럼 전부 공개 저장한다.",
+  "소유자 결정(2026-09-23): 코드트리(CT)도 공개 저장. 유료 콘텐츠 재배포 위험(DMCA 로 repo·Pages 전체 삭제, 계정 정지)을 인지하고 감수함. 에이전트는 다시 묻지 않는다.",
+  "다시 숨기려면 [\"CT\"] 로 바꾸고 python _meta/crawl_codetree.py 로 공개 파일을 다시 만든 뒤 허브를 재시작한다. 이 값을 못 읽으면 모든 도구가 안전하게 [\"CT\"] 로 동작한다.",
+  "⚠️ 이미 push 된 지문은 히스토리·포크·캐시에 남는다(되돌리려면 히스토리 재작성)."
+ ]
 }

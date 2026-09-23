@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1034",
+ "title": "그래프와 트리",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-graphs-and-trees/description",
+ "alias": "graphs-and-trees",
+ "pid": 1034,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Tree",
+ "lesson": "트리",
+ "card": "test-graphs-and-trees",
+ "card_type": "Test",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "58.4",
+  "submissions": "293"
+ },
+ "sample_count": 3,
+ "statement_len": 352,
+ "fetched_at": "2026-09-23",
+ "statement": "입력으로 무방향 그래프가 주어집니다. 이 그래프는 연결 그래프가 아닐 수 있습니다. 다시 말해서, 여러 개의 연결 요소로 이루어져 있을 수 있습니다. \n\n여기서 연결 요소는 (1) 모든 정점이 서로 연결되어 있는 정점의 부분집합이며 (2) 이 연결 요소에 포함되는 정점들은 외부 정점들과 연결되어서는 안됩니다.\n\n트리는 다음 조건을 만족하는 연결 요소입니다. 셋 중 하나만 만족해도 나머지를 만족하게 됩니다.\n\n+ 사이클이 없습니다.\n+ 정점이 $N$개이면, 간선이 $N - 1$개 있습니다\n+ 임의의 두 정점에 대해서 경로가 유일합니다.\n\n이 그래프상의 연결 요소 중, 트리에 해당하는 것의 개수를 세는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 정점의 개수 $N$, 간선의 개수 $M$이 주어집니다.\n\n두 번째 줄부터 $M+1$ 번째 줄에 각각 걸쳐 간선으로 연결된 두 개의 노드가 공백을 두고 차례대로 주어집니다. 주어지는 노드의 번호는 $1$에서 $N$ 사이입니다.",
+ "output_spec": "주어진 그래프의 연결 요소 중 트리인 것의 개수를 출력합니다.",
+ "constraints": "- $2 \\le N \\le 500$\n- $1 \\le M \\le N(N-1)/2$\n- $1 \\le \\texttt{주어지는 노드의 번호} \\le N$",
+ "samples": [
+  {
+   "in": "6 3\n1 2\n2 3\n3 4\n",
+   "out": "3\n"
+  },
+  {
+   "in": "6 5\n1 2\n2 3\n3 4\n4 5\n5 6\n",
+   "out": "1\n"
+  },
+  {
+   "in": "6 6\n1 2\n2 3\n1 3\n4 5\n5 6\n6 4\n",
+   "out": "0\n"
+  }
+ ]
+}

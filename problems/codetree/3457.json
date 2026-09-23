@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3457",
+ "title": "두 사람과 카드",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-two-people-and-cards/description",
+ "alias": "two-people-and-cards",
+ "pid": 3457,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Advanced DP",
+ "lesson": "Bitonic Cycle",
+ "card": "challenge-two-people-and-cards",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 2초 · C++17 0.5초",
+  "memory": "192 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "67.6",
+  "submissions": "74"
+ },
+ "sample_count": 2,
+ "statement_len": 453,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 값이 적혀있는 $n$개의 카드가 주어지고 두 사람이 협력하여 게임을 진행합니다. 왼쪽에서부터 카드를 보며 두 사람 중 한 사람이 그 카드를 가져갑니다.\n\n이때 각 사람의 점수는 뽑은 수들을 순서대로 나열했을 때 인접한 수들간의 차이의 합이 됩니다. 카드를 적절하게 분배하여 두 사람의 점수의 합이 최소가 되도록 하는 프로그램을 작성해보세요.\n\n예를 들어 {5, 2, 6, 1, 9} 순으로 주어졌을 때 첫 번째 사람이 순서대로 {5, 2, 9}, 두 번째 사람이 순서대로 {6, 1}을 뽑았다면 두 사람은 각각 |5 - 2| + |2 - 9| = 10, |6 - 1| = 5 점을 얻게 됩니다. 하지만 만약 첫 번째 사람이 {5, 6, 9}, 두 번째 사람이 {2, 1}를 뽑았다면 두 사람은 각각 |5 - 6| + |6 - 9| = 4, |2 - 1| = 1 점을 얻게되어 합이 5점으로 최소가 됩니다.",
+ "input_spec": "첫 번째 줄에 $n$이 주어집니다.\n\n두 번째 줄에는 $n$개의 카드 정보가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "카드를 적절하게 분배했을 때 가능한 두 사람의 점수의 합 중 최솟값을 출력합니다.",
+ "constraints": "- $1 \\le n \\le 2,000$\n - $1 \\le$ 카드에 적혀있는 수 $\\le 1,000,000$",
+ "samples": [
+  {
+   "in": "5\n5 2 6 1 9\n",
+   "out": "5"
+  },
+  {
+   "in": "5\n1 2 3 4 5\n",
+   "out": "3"
+  }
+ ]
+}

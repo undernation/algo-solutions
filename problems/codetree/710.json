@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "710",
+ "title": "출력결과 28",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201629/description",
+ "alias": "reading-k201629",
+ "pid": 710,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "재귀함수",
+ "lesson": "값을 반환하는 재귀함수",
+ "card": "challenge-reading-k201629",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "58.0",
+  "submissions": "3635"
+ },
+ "sample_count": 0,
+ "statement_len": 501,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 프로그램에서 `f(4)`를 호출할 때 `f(1)`은 몇 번 호출되는가?\n\n## Python3 코드\n```python\ndef f(n):\n    if n <= 1:\n        return n\n    return f(n-1) + 2 * f(n-2)\n```\n\n## C/C++ 코드\n```cpp\nint f(int n) {\n    if (n <= 1) return n;\n    return f(n-1) + 2 * f(n-2);\n}\n```\n\n## Java 코드\n```java\nint f(int n) {\n    if (n <= 1) return n;\n    return f(n-1) + 2 * f(n-2);\n}\n```\n\n## JavaScript 코드\n```JavaScript\nfunction f(n) {\n    if (n <= 1) return n;\n    return f(n - 1) + 2 * f(n - 2);\n}\n```\n\n**보기** — 하나 고르기\n\n1. 1\n2. 2\n3. 3\n4. 4\n5. 5"
+}

@@ -6,8 +6,14 @@
     python _meta/fetch_problem.py https://cosal.aviss.kr/problems/detail/2618
     python _meta/fetch_problem.py "https://swexpertacademy.com/...contestProbId=AWIe..."
     python _meta/fetch_problem.py https://school.programmers.co.kr/learn/courses/30/lessons/12345
-    python _meta/fetch_problem.py https://www.codetree.ai/...      # 코드트리
+    python _meta/fetch_problem.py https://www.codetree.ai/...      # 코드트리 (API, crawl_codetree.py)
+    python _meta/fetch_problem.py ct:196                           # 코드트리 트레일 번호 (카탈로그에 있을 때)
+    python _meta/fetch_problem.py ct:f386                          # 코드트리 기출 번호 (기출은 번호 체계가 달라 f)
     python _meta/fetch_problem.py 2618 --print                     # 저장 없이 출력만
+
+코드트리는 _meta/judge_config.json 의 "privateSites" 스위치를 따른다: 공개([], 기본)면
+problems/codetree/<no>.json 에 지문까지, 비공개(["CT"])면 메타만. 지문·예제는 모드와 무관하게
+_meta/tc_store/codetree/<no>.json (gitignore) 에도 둔다. --print 출력에는 늘 지문까지 들어간다.
 
 결과: problems/<site>/<no>.json
 
@@ -505,17 +511,62 @@ def parse_pgs(t, url):
 
 
 # ── 코드트리 ──────────────────────────────────────────────────
+# 코드트리는 화면을 긁지 않고 사이트 API 로 받는다(_meta/crawl_codetree.py).
+# 예전 파서는 innerText 에서 "문제/입력 형식/예제" 경계를 추측했는데, SPA 라 메뉴 글자가
+# 섞이고 수식·그림·여러 개의 예제를 제대로 못 담았다. API 는 마크다운 원문과 예제를 그대로 준다.
+# 공개 여부는 _meta/judge_config.json 의 "privateSites" 한 곳에서 정한다(crawl_codetree.PRIVATE_SITES).
+#    --save 는 problems/codetree/<no>.json(공개면 지문 포함, 비공개면 메타만) +
+#    _meta/tc_store/codetree/<no>.json(지문·예제, gitignore) 두 곳에 쓴다. --print 는 늘 전체 dict.
+def is_codetree(ref):
+    low = (ref or "").strip().lower()
+    return low.startswith("ct:") or "codetree.ai" in low
+
+
+def load_codetree():
+    """_meta/crawl_codetree.py 를 모듈로(_meta 는 패키지가 아니라 경로로 부른다 — crawl_all.py 와 같은 방식).
+
+    playwright 는 그 안에서도 함수 안에서 늦게 import 한다. 클라우드 허브(플레이라이트 없음)가
+    CT 주소를 받아도 SyntaxError 가 아니라 ImportError("playwright")로 떨어져야 needsLocal 안내가 뜬다.
+    """
+    import importlib.util
+    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "crawl_codetree.py")
+    spec = importlib.util.spec_from_file_location("crawl_codetree", p)
+    m = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    return m
+
+
 def parse_codetree(t, url):
-    d = {"site": "CT", "platform": "코드트리", "url": url}
-    lines = [x.strip() for x in t.split("\n") if x.strip()]
-    d["title"] = next((x for x in lines[:25] if 2 < len(x) < 50
-                       and x not in ("코드트리", "문제", "제출", "채점")), "")
-    d["statement"] = clean(sect(t, "문제", "입력 형식", "입력형식"))
-    d["input_spec"] = clean(sect(t, "입력 형식", "출력 형식") or sect(t, "입력형식", "출력형식"))
-    d["output_spec"] = clean(sect(t, "출력 형식", "예제") or sect(t, "출력형식", "예제"))
-    si = clean(sect(t, "예제 입력 1", "예제 출력 1") or sect(t, "예제 입력", "예제 출력"))
-    so = clean(sect(t, "예제 출력 1", "해설", "제출") or sect(t, "예제 출력", "해설", "제출"))
-    d["samples"] = [{"in": si, "out": so}] if si else []
+    # resolve() 의 (url, parser) 형식을 지키려고 남겨 둔 자리. 실제로는 main() 이 먼저 main_codetree 로 보낸다.
+    raise SystemExit("❌ 코드트리는 화면 파싱을 쓰지 않습니다 → crawl_codetree.fetch_one: %s" % url[:70])
+
+
+def main_codetree(ref):
+    ct = load_codetree()
+    printing = "--print" in sys.argv
+    save = "--save" in sys.argv or not printing   # 다른 사이트와 같은 규칙: --print 만이면 파일을 안 쓴다
+    try:
+        d = ct.fetch_one(ref, save=save)
+    except ct.CTError as e:
+        raise SystemExit(str(e))
+    if d.get("locked"):
+        # 지문이 없으니 허브의 "빈 문제" 판정에 맡기지 않고 이유를 분명히 알려 준다.
+        raise SystemExit("🔒 코드트리 %s %s — 이 계정으로는 열 수 없는 문제입니다(403). "
+                         "구독·잠금 상태를 확인하세요." % (d.get("no", ""), d.get("title", "")))
+    if printing:
+        print(json.dumps(d, ensure_ascii=False, indent=2))
+        return d
+    pub = os.path.relpath(ct.pub_path(d["no"]), ROOT).replace(os.sep, "/")
+    sto = os.path.relpath(ct.store_path(d["no"]), ROOT).replace(os.sep, "/")
+    print("✅ %s %s  %s" % (d["site"], d.get("no", ""), d.get("title", "")))
+    if d.get("limits"):
+        print("   한도  :", " / ".join("%s %s" % (k, v) for k, v in d["limits"].items()))
+    print("   지문  : %d자" % len(d.get("statement", "")))
+    print("   예제  : %d개" % len(d.get("samples", [])))
+    if ct.SITE in ct.PRIVATE_SITES:
+        print("   저장  : %s (메타만) · %s (🔒 지문·예제, 커밋 안 됨)" % (pub, sto))
+    else:
+        print("   저장  : %s (지문 포함, 공개) · 보관소 %s" % (pub, sto))
     return d
 
 
@@ -545,6 +596,8 @@ def main():
     if not args:
         print(__doc__)
         sys.exit(1)
+    if is_codetree(args[0]):
+        return main_codetree(args[0])
     url, parser = resolve(args[0])
 
     pw = pg = None

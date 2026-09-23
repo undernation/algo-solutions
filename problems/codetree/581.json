@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "581",
+ "title": "이상한 파도반",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-dp-padovan-wrong/description",
+ "alias": "dp-padovan-wrong",
+ "pid": 581,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "DP",
+ "lesson": "Tabulation",
+ "card": "test-dp-padovan-wrong",
+ "card_type": "Test",
+ "level": "Medium",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "59.8",
+  "submissions": "2848"
+ },
+ "sample_count": 0,
+ "statement_len": 478,
+ "fetched_at": "2026-09-23",
+ "statement": "아래 코드는 파도반 수열을 바텀업 방식을 통해 구하는 코드입니다.\n\n파도반 수열이란 다음을 만족하는 수열입니다.\n\n```\n점화식   - P(N) = P(N-2) + P(N-3)    (N > 3)\n초기 조건 - P(1) = 1, P(2) = 1, P(3) = 1\n```\n\n빈 칸에 알맞은 코드를 넣어주세요.\n\n```jsx\nfunction solution(n)\n    dp = [0, 0, 0, ...]\n    dp[1] = 1\n    dp[2] = 1\n       (1)\n\n    for i = 4 ... i <= n\n        dp[i] = (2) + dp[i - 2]\n  \n    return (3)\n```\n\n**보기** — 순서대로 3개 고르기\n\n1. `dp[i]`\n2. `dp[i - 1]`\n3. `dp[i - 2]`\n4. `dp[i - 3]`\n5. `dp[n]`\n6. `dp[n - 1]`\n7. `dp[2] = 1`\n8. `dp[3] = 1`"
+}

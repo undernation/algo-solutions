@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "747",
+ "title": "출력결과 65",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201819/description",
+ "alias": "reading-k201819",
+ "pid": 747,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "함수",
+ "lesson": "Call by value / Call by reference",
+ "card": "challenge-reading-k201819",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "60.1",
+  "submissions": "3651"
+ },
+ "sample_count": 0,
+ "statement_len": 1282,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 프로그램의 출력 결과는 무엇인가?\n\n## Python3 코드\n```python\ndef f(n, a):\n    t = 0\n    while (n > 0):\n        t = n % 10\n        a[t] = a[t] + 1\n        n //= 10\n\na = [0, 1, 2, 0]\nf(1202, a)\nprint(a[2])\n```\n\n## C 코드\n\n```c\nvoid f(int n, int a[]) {  \n    int t;  \n    while (n > 0) {    \n        t = n % 10;    \n        a[t] = a[t] + 1;    \n        n = n / 10;  \n    }\n}\nint main() {\n    int a[] = {0,1,2,0};  \n    f(1202,a);  \n    printf (\"%d\\n\", a[2]);\n}\n```\n\n## C++ 코드\n\n```cpp\nvoid f(int n, int a[]) {  \n    int t;  \n    while (n > 0) {    \n        t = n % 10;    \n        a[t] = a[t] + 1;    \n        n = n / 10;  \n    }\n}\nint main() {\n    int a[] = {0,1,2,0};  \n    f(1202,a);  \n    cout << a[2] << '\\n';\n}\n```\n\n## Java 코드\n\n```java\npublic static void f(int n, int a[]) {  \n    int t;  \n    while (n > 0) {    \n        t = n % 10;    \n        a[t] = a[t] + 1;    \n        n = n / 10;  \n    }\n}\npublic static void main(String[] args) {\n    int[] a = new int[]{0, 1, 2, 0};  \n    f(1202, a);\n    System.out.print(a[2]);\n}\n```\n\n## JavaScript 코드\n```JavaScript\nfunction f(n, a) {\n    let t = 0;\n    while (n > 0) {\n        t = n % 10;\n        a[t] = a[t] + 1;\n        n = parseInt(n / 10);\n    }\n}\n\nlet a = [0, 1, 2, 0];\nf(1202, a);\nconsole.log(a[2]);\n```\n\n**보기** — 하나 고르기\n\n1. 0\n2. 1\n3. 2\n4. 3\n5. 4"
+}

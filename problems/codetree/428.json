@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "428",
+ "title": "기호 변환",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-translate-notation/description",
+ "alias": "translate-notation",
+ "pid": 428,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "시간, 공간복잡도",
+ "lesson": "점근 표기법",
+ "card": "intro-translate-notation",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Multiple choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "26.4",
+  "submissions": "14227"
+ },
+ "sample_count": 0,
+ "statement_len": 359,
+ "fetched_at": "2026-09-23",
+ "statement": "두 함수 $f(x), g(x)$가 있습니다.  \n두 함수의 관계를 점근적 표기법을 통해 표현하려고 할 때, 다음 중 옳은 것을 모두 고르세요.\n\n(1) $f(x) = x^8$, $g(x) = x^4$  \n\n(2) $f(x) = x^2 - 1$, $g(x) = x^2 + x + 1$\n\n**보기** — 모두 고르기\n\n1. (1) $f(x) = \\mathcal{O}(g(x))$\n2. (1) $f(x) = \\Omega(g(x))$\n3. (1) $f(x) = \\Theta(g(x))$\n4. (2) $f(x) = \\mathcal{O}(g(x))$\n5. (2) $f(x) = \\Omega(g(x))$\n6. (2) $f(x) = \\Theta(g(x))$"
+}

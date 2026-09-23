@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "118",
+ "title": "비를 피하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-stay-out-of-rain/description",
+ "alias": "stay-out-of-rain",
+ "pid": 118,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "BFS",
+ "lesson": "가중치가 동일한 그래프에서의 BFS",
+ "card": "challenge-stay-out-of-rain",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "66.5",
+  "submissions": "2109"
+ },
+ "sample_count": 2,
+ "statement_len": 366,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $0$, $1$, $2$, $3$로만 이루어진 $N \\times N $격자에서 사람이 $H$명 겹치지 않게 서 있고, 비를 피할 수 있는 공간의 위치 $M$개가 주어졌을 때 각 사람마다 비를 피할 수 있는 가장 가까운 공간까지의 거리를 구하는 프로그램을 작성해보세요. 정수 $0$은 해당 칸이 이동할 수 있는 곳임을, 정수 $1$은 벽이 있어 해당 칸이 이동할 수 없는 곳임을 의미합니다. 정수 $2$는 해당 칸에 사람이 서있음을 의미하고, 정수 $3$은 해당 공간이 비를 피할 수 있는 공간임을 의미합니다. 사람은 상하좌우 인접한 곳으로만 움직일 수 있으며 한 칸 움직이는 데 정확히 $1$초가 소요됩니다. 벽이 아닌 곳은 전부 이동이 가능합니다.",
+ "input_spec": "첫 번째 줄에 격자의 크기를 나타내는 $N$과 사람의 수를 나타내는 $H$ 그리고 비를 피할 수 있는 공간의 수를 나타내는 $M$이 각각 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터는 $N$개의 줄에 걸쳐 각 행에 해당하는 $N$개의 정수가 순서대로 공백을 사이에 두고 주어집니다.",
+ "output_spec": "$N$개의 줄에 걸쳐 각 행마다 각 칸에 대한 정보를 공백을 사이에 두고 출력합니다. 만약 해당 칸이 사람이 있던 칸이 아니라면 $0$을 출력하고, 사람이 있던 칸이라면 해당 사람이 비를 피할 수 있는 공간까지 가는데 걸리는 최소 시간을 출력합니다. 만약 해당 위치에 있는 사람이 절대 비를 피할 수 없다면 $-1$을 출력합니다.",
+ "constraints": "- $2 \\le N \\le 100$\n- $1 \\le H,\\ M \\le N \\times N$\n- $H + M \\le N \\times N$\n- $\\texttt{격자 값} \\in \\{0, 1, 2, 3\\}$\n- 격자 내 값이 $2$인 칸은 정확히 $H$개, 값이 $3$인 칸은 정확히 $M$개입니다.",
+ "samples": [
+  {
+   "in": "3 1 1\n1 2 0\n3 1 0\n0 0 0\n",
+   "out": "0 6 0\n0 0 0\n0 0 0\n"
+  },
+  {
+   "in": "4 5 2\n1 2 0 1\n3 1 1 2\n2 1 2 0\n2 0 0 3\n",
+   "out": "0 -1 0 0\n0 0 0 2\n1 0 2 0\n2 0 0 0\n"
+  }
+ ]
+}

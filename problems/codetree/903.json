@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "903",
+ "title": "블럭쌓는 명령2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-block-stacking-commands2/description",
+ "alias": "block-stacking-commands2",
+ "pid": 903,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 I",
+ "lesson": "구간 칠하기",
+ "card": "intro-block-stacking-commands2",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "69.3",
+  "submissions": "6625"
+ },
+ "sample_count": 1,
+ "statement_len": 281,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$번 칸부터 $N$번 칸까지 순서대로 총 $N$개의 칸이 있습니다. 처음에는 모든 칸에 블럭이 $0$개 놓여 있습니다.\n\n명령은 총 $K$번 주어집니다. $i$번째 명령은 두 정수 $A_i$, $B_i$로 주어지며, $A_i$번 칸부터 $B_i$번 칸까지 양 끝 칸을 포함한 모든 칸에 블럭을 각각 $1$개씩 쌓으라는 뜻입니다. ($1 \\le i \\le K$)\n\n명령을 주어진 순서대로 모두 수행한 이후, $1$번 칸부터 $N$번 칸까지 쌓인 블럭의 수 중 최댓값을 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$과 $K$가 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터 $K$개의 줄에 걸쳐 명령이 주어진 순서대로 한 줄에 하나씩 주어집니다. 그중 $i$번째 줄에는 두 정수 $A_i$와 $B_i$가 공백을 사이에 두고 주어집니다. ($1 \\le i \\le K$)",
+ "output_spec": "첫 번째 줄에 각 칸에 있는 블럭의 수 중 최댓값을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le K \\le 100$\n- $1 \\le A_i \\le B_i \\le N$ ($1 \\le i \\le K$)",
+ "samples": [
+  {
+   "in": "7 4\n5 5\n2 4\n4 6\n3 5\n",
+   "out": "3\n"
+  }
+ ],
+ "sample_notes": [
+  "총 $7$개의 칸이 있으며, 처음 $7$개의 칸에는 블럭이 전혀 놓여져 있지 않습니다.\n\n이제 순서대로 $5$번째 칸에서 $5$번째 칸까지, $2$번째 칸에서 $4$번째 칸까지, $4$번째 칸에서 $6$번째 칸까지, 그리고 $3$번째 칸에서 $5$번째 칸까지 쌓습니다.\n\n모든 명령을 수행하고 나면 $1$번 칸부터 $7$번 칸까지 순서대로 [$0$, $1$, $2$, $3$, $3$, $1$, $0$] 개의 블럭이 쌓여있게 됩니다. 따라서 최댓값은 $3$이 됩니다."
+ ]
+}

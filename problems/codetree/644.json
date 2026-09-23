@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "644",
+ "title": "선두를 지켜라",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-keep-the-lead/description",
+ "alias": "keep-the-lead",
+ "pid": 644,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 II",
+ "lesson": "배열 기록",
+ "card": "challenge-keep-the-lead",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "192 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "49.0",
+  "submissions": "4239"
+ },
+ "sample_count": 1,
+ "statement_len": 213,
+ "fetched_at": "2026-09-23",
+ "statement": "$A$와 $B$가 동일한 시작점에서 같은 방향으로 출발합니다. 도중에 방향을 바꾸는 경우는 없고, $A$, $B$는 각각 $N$번, $M$번에 걸쳐 주어지는 특정 속도로 특정 시간만큼 이동한다고 합니다. 선두가 몇 번 바뀌는지 찾아 출력하는 프로그램을 작성해보세요.\n\n단, 두 사람이 공동으로 선두를 지키는 경우, 어느 한 쪽이 앞서가기 전까지는 선두가 바뀌지 않았다고 판단합니다.",
+ "input_spec": "첫 번째 줄에 $N$과 $M$이 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터는 $N$개의 줄에 걸쳐 각 줄마다 $A$가 어떤 속도로 몇 시간 동안 이동했는지를 나타내는 $(v,\\ t)$ 값이 공백을 사이에 두고 주어집니다.\n\n그 다음 줄부터는 $M$개의 줄에 걸쳐 각 줄마다 $B$가 어떤 속도로 몇 시간 동안 이동했는지를 나타내는 $(v,\\ t)$ 값이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 선두가 몇 번 바뀌는지 출력합니다.",
+ "constraints": "- $1 \\le N, M \\le 1\\,000$\n- $0 \\le v, t \\le 1\\,000$\n- $A$가 총 이동한 시간과 $B$가 총 이동한 시간은 항상 동일하게 주어짐을 가정해도 좋습니다.",
+ "samples": [
+  {
+   "in": "4 3\n1 2\n4 1\n1 1\n2 10\n2 3\n1 2\n3 9\n",
+   "out": "2\n"
+  }
+ ],
+ "sample_notes": [
+  "![](https://contents.codetree.ai/problems/644/images/problems-c60a8ae0-7216-448d-8e20-0c814984be8d.svg)\n\n</br>\n\n처음 $3$시간 동안은 $B$가 선두로 나가지만, 이후에는 $A$가 선두로 치고 나갑니다. 시작으로부터 $7$시간이 흐른 뒤에는 다시 $B$가 선두가 됩니다."
+ ]
+}

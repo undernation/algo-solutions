@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "216",
+ "title": "세 실수의 반올림",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-rounding-of-three-actual-numbers/description",
+ "alias": "rounding-of-three-actual-numbers",
+ "pid": 216,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "입출력",
+ "lesson": "2개의 줄에 걸쳐 입력",
+ "card": "challenge-rounding-of-three-actual-numbers",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "83.1",
+  "submissions": "23212"
+ },
+ "sample_count": 1,
+ "statement_len": 50,
+ "fetched_at": "2026-09-23",
+ "statement": "세 개의 실수를 입력 받아 반올림하여 소수 셋째 자리까지 출력하는 프로그램을 작성해주세요.",
+ "input_spec": "한 줄에 하나씩 세 실수 $a, b, c$가 주어집니다.",
+ "output_spec": "한 줄에 하나씩 세 실수를 반올림하여 소수 셋째 자리까지 출력합니다.",
+ "constraints": "- $0 \\le a, b, c \\le 1\\,000$",
+ "samples": [
+  {
+   "in": "1.1278\n85.21344\n577.999564\n",
+   "out": "1.128\n85.213\n578.000\n"
+  }
+ ]
+}

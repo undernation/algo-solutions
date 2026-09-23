@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "163",
+ "title": "비교 연산",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-comparison-operator/description",
+ "alias": "comparison-operator",
+ "pid": 163,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "조건문",
+ "lesson": "비교 연산자와 조건문",
+ "card": "intro-comparison-operator",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "84.3",
+  "submissions": "18780"
+ },
+ "sample_count": 2,
+ "statement_len": 168,
+ "fetched_at": "2026-09-23",
+ "statement": "두 정수 $A, B$를 입력받아 다음 조건들이 각각 참인지 거짓인지를 판단하는 프로그램을 작성해보세요.\n\n- $A$가 $B$보다 같거나 큰가?\n- $A$가 $B$보다 큰가?\n- $B$가 $A$보다 같거나 큰가?\n- $B$가 $A$보다 큰가?\n- $A$와 $B$가 같은가?\n- $A$와 $B$가 다른가?",
+ "input_spec": "첫 번째 줄에 정수 $A, B$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "각각의 경우에 대해 참이라면 $1$을, 거짓이라면 $0$을 출력합니다.\n\n첫 번째 줄에는 $A$가 $B$보다 같거나 큰지,\n\n두 번째 줄에는 $A$가 $B$보다 큰지, \n\n세 번째 줄에는 $B$가 $A$보다 같거나 큰지,\n\n네 번째 줄에는 $B$가 $A$보다 큰지,\n\n다섯 번째 줄에는 $A$와 $B$가 같은지,\n\n여섯 번째 줄에는 $A$와 $B$가 다른지에 대한 결과를 출력합니다.",
+ "constraints": "- $1 \\le A, B \\le 100$",
+ "samples": [
+  {
+   "in": "4 3\n",
+   "out": "1\n1\n0\n0\n0\n1\n"
+  },
+  {
+   "in": "3 3\n",
+   "out": "1\n0\n1\n0\n1\n0\n"
+  }
+ ]
+}

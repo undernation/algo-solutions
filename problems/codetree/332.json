@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "332",
+ "title": "배열의 특정 위치 찾기 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-find-specific-location-fo-array-2/description",
+ "alias": "find-specific-location-fo-array-2",
+ "pid": 332,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "1차원 배열",
+ "lesson": "인덱스 참조",
+ "card": "challenge-find-specific-location-fo-array-2",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "91.8",
+  "submissions": "3206"
+ },
+ "sample_count": 1,
+ "statement_len": 88,
+ "fetched_at": "2026-09-23",
+ "statement": "$10$개의 정수를 입력받아 홀수 번째 입력받은 정수의 합과 짝수 번째 입력받은 정수의 합 중 큰 수에서 작은 수를 뺀 값을 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $10$개의 정수가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 두 합의 차를 출력합니다.",
+ "constraints": "+ $1\\le \\texttt{주어지는 정수} \\le100$",
+ "samples": [
+  {
+   "in": "1 3 5 7 9 10 12 14 16 18\n",
+   "out": "9\n"
+  }
+ ],
+ "sample_notes": [
+  "홀수 번째의 합은 $1+5+9+12+16=43$이고, 짝수 번째의 합은 $3+7+10+14+18=52$이다. 이 중 더 큰 수는 $52$이므로 $52-43=9$이다."
+ ]
+}

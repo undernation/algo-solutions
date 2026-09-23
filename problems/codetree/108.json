@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "108",
+ "title": "사다리 타기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-ladder-game/description",
+ "alias": "ladder-game",
+ "pid": 108,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Backtracking",
+ "lesson": "K개 중 하나를 N번 선택하기(Simple)",
+ "card": "challenge-ladder-game",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "55.1",
+  "submissions": "1799"
+ },
+ "sample_count": 2,
+ "statement_len": 672,
+ "fetched_at": "2026-09-23",
+ "statement": "사다리 타기 게임은 사람 수 $N$만큼 세로줄을 긋고 위쪽 편에는 $1$부터 $N$까지의 숫자를 순서대로 적은 다음, 몇몇 인접한 세로줄 사이에 가로줄 $M$개를 서로 겹치지 않게 긋습니다.\n\n이후 위쪽에 있는 각 숫자에서부터 시작하여 내려가다가 교점을 만날 때마다 $90$도로 방향을 꺾다 끝에 도착하게 되면 해당 숫자를 적는 게임입니다.\n\n예를 들어 $N$이 $4$, $M$이 $6$이고 다음과 같이 가로줄이 주어졌을 때의 결과는 $3$, $4$, $1$, $2$가 됩니다.\n\n![](https://contents.codetree.ai/problems/108/images/problems-72462dfd-437c-46c1-ad10-e88905b8959a.png)\n\n하지만 주어진 가로줄 중 다음과 같이 $4$개의 가로줄만 갖고 사다리 게임을 진행해도 처음 주어진 사다리와 동일한 결과를 얻을 수 있습니다.\n\n![](https://contents.codetree.ai/problems/108/images/problems-5c66b307-fcd0-4a37-ba18-2e5b08b968c6.png)\n\n세로줄의 수 $N$과 $M$개의 가로줄의 상태가 주어졌을 때, 사용한 가로줄을 적절하게 선택해 모든 가로줄을 이용했을 때의 결과와 동일하게 되도록 하는 최소 가로줄의 수를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 세로줄의 수 $N$과 가로줄의 수 $M$이 공백을 사이에 두고 주어집니다.\n\n그다음 줄부터는 $M$개의 줄에 걸쳐 각 가로줄의 상태 $a_i$, $b_i$가 공백을 사이에 두고 주어집니다. 이는 $i$번째 가로줄이 왼쪽에서부터 $a_i$번째 세로줄과 $a_i+1$번째 세로줄을 연결하며, 위에서부터 $b_i$번째 위치에 그어짐을 나타냅니다.",
+ "output_spec": "처음 상황에서의 결과와 동일한 결과를 얻기 위해 필요한 최소 가로줄의 수를 출력합니다.",
+ "constraints": "- $2 \\le N \\le 11$\n- $1 \\le M \\le 15$\n- $1 \\le a_i \\lt N$ $(1 \\le i \\le M)$\n- $1 \\le b_i \\le 15$ $(1 \\le i \\le M)$\n- 서로 겹치거나 맞닿아 있는 가로줄은 주어지지 않습니다.",
+ "samples": [
+  {
+   "in": "4 6\n1 1\n1 3\n2 2\n2 4\n3 3\n3 5\n",
+   "out": "4\n"
+  },
+  {
+   "in": "4 6\n1 1\n2 2\n3 3\n3 4\n2 5\n1 6\n",
+   "out": "0\n"
+  }
+ ]
+}

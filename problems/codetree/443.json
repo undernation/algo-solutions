@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "443",
+ "title": "공간복잡도 계산",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-space-complexity-cal/description",
+ "alias": "space-complexity-cal",
+ "pid": 443,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "시간, 공간복잡도",
+ "lesson": "공간복잡도",
+ "card": "challenge-space-complexity-cal",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "87.0",
+  "submissions": "2850"
+ },
+ "sample_count": 0,
+ "statement_len": 532,
+ "fetched_at": "2026-09-23",
+ "statement": "공간복잡도를 추론할 때 중요한 점은, 값이 생성되었다가 없어질 수 있다는 것입니다. \n\n만약에 함수 내 정의한 값이 함수가 종료되어 사라졌다면, 공간복잡도 계산할 때 단순히 모든 것을 더하는 것이 아니라 특정 시점에 메모리를 차지 하고 있는 값들이 가장 많을 때, 그 시점에서의 메모리 사용량을 확인해야 합니다.\n\n다음 코드를 잘 읽고, 공간복잡도를 추론해봅시다.\n```js\nfunction solution(N)\n  set list = [N][N]\n  for i = 0 ... i < N\n    list[i][i] = N\n  for i = 0 ... i < N\n    set tmp = [N-1][N-1]\n    for j = 0 ... j < N-1\n      tmp[j][0] = list[0][j]\n```\n\n**보기** — 하나 고르기\n\n1. $\\mathcal{O}(N^3)$\n2. $\\mathcal{O}(N^2)$\n3. $\\mathcal{O}(N\\log{N})$\n4. $\\mathcal{O}(N)$\n5. $\\mathcal{O}(\\log{N})$"
+}

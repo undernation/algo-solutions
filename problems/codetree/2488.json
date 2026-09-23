@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2488",
+ "title": "정수 사각형 최댓값의 최소",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-minimax-path-in-square/description",
+ "alias": "minimax-path-in-square",
+ "pid": 2488,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "DP I",
+ "lesson": "격자 안에서 한 칸씩 전진하는 DP",
+ "card": "test-minimax-path-in-square",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "64.0",
+  "submissions": "1443"
+ },
+ "sample_count": 2,
+ "statement_len": 121,
+ "fetched_at": "2026-09-23",
+ "statement": "$N \\times N$ 행렬이 주어졌을 때, $(1, 1)$에서 시작하여 오른쪽 혹은 밑으로만 이동하여 $(N, N)$으로 간다고 했을 때 거쳐간 위치에 적혀있는 수들 중 최댓값을 최소로 하는 프로그램을 작성해보세요.",
+ "input_spec": "첫째 줄에는 $N$이 주어집니다.\n\n두 번째 줄 부터 $N$개의 줄에 각각 각 행에 해당하는 $N$개의 정수 값이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "가능한 경로의 수들 중 최댓값의 최솟값을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le \\texttt{행렬에 주어지는 수} \\le 1\\,000\\,000$",
+ "samples": [
+  {
+   "in": "3\n1 4 3\n3 4 5\n5 4 2\n",
+   "out": "4\n"
+  },
+  {
+   "in": "3\n5 6 7\n6 5 4\n5 7 1\n",
+   "out": "6\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 예제의 경우 다음과 같이 이동하면 지나는 경로에 적혀있는 수들 중 최댓값이 $4$가 되며, 더 작게 답을 만들 수가 없습니다.\n\n![](https://contents.codetree.ai/problems/2488/images/problems-f2bfe1c0-1e1a-4dff-9a4d-2db60f98faa2.png)",
+  ""
+ ]
+}

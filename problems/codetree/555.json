@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "555",
+ "title": "인접 리스트 해독기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-decode-adjust-list/description",
+ "alias": "decode-adjust-list",
+ "pid": 555,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 탐색",
+ "lesson": "Graph 구현",
+ "card": "test-decode-adjust-list",
+ "card_type": "Test",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "72.0",
+  "submissions": "2604"
+ },
+ "sample_count": 0,
+ "statement_len": 854,
+ "fetched_at": "2026-09-23",
+ "statement": "다음과 같은 인접 리스트가 존재합니다.\n\n![](https://contents.codetree.ai/problems/555/images/problems-667bf56c-56b3-40cf-9c92-9cd2296b4b68.svg)\n\n이 인접 리스트가 표현하는 그래프로 올바른 것을 찾아보세요.\n\n**보기** — 하나 고르기\n\n1. <p align='center'>\n   <img src='https://contents.codetree.ai/problems/555/images/94284f43-7532-4ca1-b498-a3cb7a2773e7.svg'>\n   </p>\n2. <p align='center'>\n   <img src='https://contents.codetree.ai/problems/555/images/e970159e-f26b-4840-85a1-99b2b561a44e.svg'>\n   </p>\n3. <p align='center'>\n   <img src='https://contents.codetree.ai/problems/555/images/11a566c0-fbdf-47be-832b-c538a63c2f84.svg'>\n   </p>\n4. <p align='center'>\n   <img src='https://contents.codetree.ai/problems/555/images/ea41a926-f356-48ad-8bbb-5e0141cc85f9.svg'>\n   </p>\n5. <p align='center'>\n   <img src='https://contents.codetree.ai/problems/555/images/977f48a5-d885-465a-b3a4-f0b5a8c3e921.svg'>\n   </p>"
+}

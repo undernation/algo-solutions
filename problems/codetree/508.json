@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "508",
+ "title": "스택 체험",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-stack-practice/description",
+ "alias": "stack-practice",
+ "pid": 508,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "스택, 큐, 덱",
+ "lesson": "Stack",
+ "card": "test-stack-practice",
+ "card_type": "Test",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "75.5",
+  "submissions": "1883"
+ },
+ "sample_count": 0,
+ "statement_len": 368,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 코드를 실행했을 때, 반환되는 결과값은 무엇일까요?\n\n```jsx\nfunction solution()\n    set s = empty stack\n    s.push(10)\n    s.push(15)\n    s.pop()\n    s.push(20)\n    s.pop()\n    s.push(12)\n\n    set result = s.size()\n    result += s.pop()\n    result += s.pop()\n    if s.empty() == true\n        result *= 2\n    \n    return result\n```\n\n**보기** — 하나 고르기\n\n1. `52`\n2. `50`\n3. `48`\n4. `46`\n5. `44`"
+}

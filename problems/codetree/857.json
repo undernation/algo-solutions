@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "857",
+ "title": "palindrome 여부 판단하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-determine-whether-palindrome-is-present/description",
+ "alias": "determine-whether-palindrome-is-present",
+ "pid": 857,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "함수",
+ "lesson": "Call by value / Call by reference",
+ "card": "intro-determine-whether-palindrome-is-present",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "82.2",
+  "submissions": "3474"
+ },
+ "sample_count": 2,
+ "statement_len": 144,
+ "fetched_at": "2026-09-23",
+ "statement": "palindrome이란 문자열을 뒤집었을 때도 동일한 문자열인 경우를 뜻합니다.\n\n소문자 알파벳으로만 이루어진 문자열 $A$가 주어졌을 때, 문자열 $A$가 palindrome인지를 판단하는 프로그램을 작성해보세요. 단, 함수를 이용하여 문제를 해결해주세요.",
+ "input_spec": "첫 번째 줄에 소문자 알파벳으로만 이루어진 문자열 $A$가 주어집니다.",
+ "output_spec": "문자열 $A$가 palindrome이라면 \"Yes\", 아니라면 \"No\"를 출력합니다.",
+ "constraints": "- 문자열 $A$의 길이를 $|A|$라고 할 때, $1 \\le |A| \\le 100$입니다.\n- 문자열 $A$는 소문자 알파벳으로만 이루어져 있습니다.",
+ "samples": [
+  {
+   "in": "aoa\n",
+   "out": "Yes\n"
+  },
+  {
+   "in": "codetree\n",
+   "out": "No\n"
+  }
+ ],
+ "sample_notes": [
+  "문자열 `aoa`를 뒤집으면 `aoa`가 되어 원래 문자열과 같으므로 palindrome입니다. 따라서 \"Yes\"를 출력합니다.",
+  "문자열 `codetree`를 뒤집으면 `eertedoc`가 되어 원래 문자열과 다르므로 palindrome이 아닙니다. 따라서 \"No\"를 출력합니다."
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1574",
+ "title": "시간복잡도와 반복문 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-time-complexity-and-for-loop-2/description",
+ "alias": "time-complexity-and-for-loop-2",
+ "pid": 1574,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "시간, 공간복잡도",
+ "lesson": "반복문의 시간복잡도",
+ "card": "challenge-time-complexity-and-for-loop-2",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "36.9",
+  "submissions": "10182"
+ },
+ "sample_count": 0,
+ "statement_len": 578,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 코드의 가장 일반적인 시간복잡도를 순서대로 골라주세요.\n\n ```js\nfunction solution1(n)\n    set sum = 0\n    for i = 1 ... i <= n\n        for j = 1 ... j <= i\n            sum += i * j\n```\n\n```js\nfunction solution2(n, m)\n    set sum = 0\n    for i = 1 ... i <= n\n        for j = 1 ... j <= m\n            sum += i * j\n```\n\n```js\nfunction solution3(n, m)\n    set sum = 0\n    for i = 1 ... i <= n \n        sum += i * i\n\n    for i = 1 ... i <= m \n        sum -= i * i * i\n```\n\n**보기** — 순서대로 3개 고르기\n\n1. $\\mathcal{O}(N^2)$\n2. $\\mathcal{O}(N^2 / 2)$\n3. $\\mathcal{O}(NM)$\n4. $\\mathcal{O}(N)$\n5. $\\mathcal{O}(N+M)$"
+}

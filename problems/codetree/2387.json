@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2387",
+ "title": "자리 바꾸기 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-changing-seats-2/description",
+ "alias": "changing-seats-2",
+ "pid": 2387,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "중급 자료구조",
+ "lesson": "HashSet",
+ "card": "challenge-changing-seats-2",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "120 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "64.8",
+  "submissions": "1189"
+ },
+ "sample_count": 1,
+ "statement_len": 684,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$부터 $N$까지 번호표를 든 $N$명의 사람이 $1$부터 $N$까지 번호가 매겨진 자리에 번호 순서대로 앉아있습니다. 이 사람들은 주어진 $(a_1,\\ b_1)$, $(a_2,\\ b_2)$, ... $(a_K,\\ b_K)$를 참고해 자리를 바꾸는데, 이는 $i = 1 \\dots K$에 대해 $i$분에 $a_i$번째 자리의 사람과 $b_i$번째 자리의 사람이 자리를 서로 바꾼다는 뜻 입니다. $K$분 동안 $K$번 자리 바꾸기가 진행 된 후에 $K+1 \\dots 2K$ 분 동안은 똑같은 방식으로 $K$번의 자리 바꿈이 반복되고, $2K+1 \\dots 3K$ 분 동안 또 같은 방식으로 K번의 자리 바꿈이 반복되는 식으로 자리 바꿈이 계속 진행 됩니다. \n\n예를 들어, \n\n- $1$분에는 $a_1$, $b_1$ 자리의 사람들이 서로 자리를 바꿉니다. \n- $2$분에는 $a_2$, $b_2$ 자리의 사람들이 서로 자리를 바꿉니다.\n- $\\cdots$\n- $K$분에는 $a_K$, $b_K$ 자리의 사람들이 서로 자리를 바꿉니다. \n- $K+1$분에는 $a_1$, $b_1$ 자리의 사람들이 서로 자리를 바꿉니다. \n- $K+2$분에는 $a_2$, $b_2$ 자리의 사람들이 서로 자리를 바꿉니다. \n\n$3K$번에 걸쳐 자리바꿈이 진행될 동안, 각자 몇 군데의 자리에 앉을 수 있는지 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N, K$가 공백을 사이에 두고 차례대로 주어집니다.  \n두 번째 줄부터 $K$개의 줄에 걸쳐 $i+1$번째 줄에 $a_i$, $b_i$가 공백을 사이에 두고 차례대로 주어집니다.",
+ "output_spec": "첫 번째 줄부터 $N$개의 줄에 걸쳐 $i$번째 줄에 $i$번 사람이 자리 바꿈이 이뤄지는 동안 앉게 되는 자리의 개수를 출력합니다.",
+ "constraints": "- $2 \\le N \\le 10^5$\n- $1 \\le K \\le 10^5$\n- $1 \\le a_i \\lt b_i \\le N$",
+ "samples": [
+  {
+   "in": "5 4\n1 3\n1 2\n2 3\n2 4\n",
+   "out": "4\n4\n3\n4\n1\n"
+  }
+ ],
+ "sample_notes": [
+  "밑의 그림은 예제 $1$번에서 각 시간별로 자리에 앉아있는 사람을 나타낸 것 입니다.\n\n\n![](https://contents.codetree.ai/problems/2387/images/problems-985e430f-5cb4-40a6-95b2-69e9bd4a1d68.png)\n\n$1$번 사람은 $(1, 2, 3, 4)$번 자리에 갈 수 있습니다.\n \n$2$번 사람은 $(1, 2, 3, 4)$번 자리에 갈 수 있습니다. \n\n$3$번 사람은 $(1, 2, 3)$번 자리에 갈 수 있습니다. \n\n$4$번 사람은 $(1, 2, 3, 4)$번 자리에 갈 수 있습니다. \n\n$5$번 사람은 움직이지 않기 때문에 $5$번 자리에만 있을 수 있습니다."
+ ]
+}

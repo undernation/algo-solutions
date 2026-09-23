@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "337",
+ "title": "특정 조건에 맞게 출력하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-print-in-specific-conditions/description",
+ "alias": "print-in-specific-conditions",
+ "pid": 337,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "1차원 배열",
+ "lesson": "배열 만들기",
+ "card": "challenge-print-in-specific-conditions",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "82.8",
+  "submissions": "3608"
+ },
+ "sample_count": 1,
+ "statement_len": 112,
+ "fetched_at": "2026-09-23",
+ "statement": "정수가 차례로 주어지다가 $0$이 주어지면 $0$을 제외하고 그때까지 주어진 정수를 차례로 출력하되 그 수가 홀수이면 $3$을 더한 값을, 짝수이면 $2$로 나눈 몫을 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 최대 $100$개의 정수가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 주어진 정수들을 규칙에 맞추어 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $\\texttt{정수의 개수} \\le 100$\n- $0 \\le \\texttt{주어지는 정수} \\le 100$",
+ "samples": [
+  {
+   "in": "1 2 3 4 5 6 7 8 9 19 0\n",
+   "out": "4 1 6 2 8 3 10 4 12 22 \n"
+  }
+ ]
+}

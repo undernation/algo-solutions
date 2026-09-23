@@ -1,0 +1,37 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "329",
+ "title": "특정 위치의 문자 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-char-in-specific-location-2/description",
+ "alias": "char-in-specific-location-2",
+ "pid": 329,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "1차원 배열",
+ "lesson": "인덱스 참조",
+ "card": "challenge-char-in-specific-location-2",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "94.0",
+  "submissions": "3142"
+ },
+ "sample_count": 1,
+ "statement_len": 67,
+ "fetched_at": "2026-09-23",
+ "statement": "$10$개의 문자를 입력받아서 두 번째, 다섯 번째, 여덟 번째 입력받은 문자를 차례로 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "$10$개의 문자가 공백을 사이에 두고 차례로 입력됩니다.",
+ "output_spec": "주어지는 문자중 두 번째, 다섯 번째, 여덟 번째 문자를 차례로 공백을 사이에 두고 출력합니다.",
+ "samples": [
+  {
+   "in": "L E B R O S C O D E\n",
+   "out": "E O O\n"
+  }
+ ]
+}

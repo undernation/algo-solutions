@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "704",
+ "title": "출력결과 22",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201547/description",
+ "alias": "reading-k201547",
+ "pid": 704,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "함수",
+ "lesson": "값을 반환하는 함수",
+ "card": "challenge-reading-k201547",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "52.3",
+  "submissions": "4576"
+ },
+ "sample_count": 0,
+ "statement_len": 1063,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 프로그램의 출력 결과는 무엇인가?\n\n## Python3 코드\n```python\ndef f(x, y):\n    return 2 * y - x\n\nx = 1\nfor i in range(6):\n    x = f(x, -i)\n    x = f(x, i)\n\nprint(x)\n```\n\n## C 코드\n\n```cpp\nint f(int x, int L) { \n    return 2 * L - x;\n}\nint main() {\n    int i, x = 1;\n    for (i = 0; i < 6; i++) {\n        x = f(x, -i);\n        x = f(x, i); \n    }\n    printf(\"%d\\n\", x);\n    return 0; \n}\n```\n\n## C++ 코드\n\n```cpp\nint f(int x, int L) { \n    return 2 * L - x;\n}\nint main() {\n    int i, x = 1;\n    for (i = 0; i < 6; i++) {\n        x = f(x, -i);\n        x = f(x, i); \n    }\n    cout << x;\n    return 0; \n}\n```\n\n## Java 코드\n\n```java\npublic static int f(int x, int L) { \n    return 2 * L - x;\n}\n\npublic static void main(String[] args) {\n    int i, x = 1;\n    for (i = 0; i < 6; i++) {\n        x = f(x, -i);\n        x = f(x, i); \n    }\n    System.out.println(x);\n}\n```\n\n## JavaScript 코드\n\n```JavaScript\nfunction f(x, L) {\n    return 2 * L - x;\n}\n\nlet x = 1;\nfor (let i = 0; i < 6; i++) {\n    x = f(x, -i);\n    x = f(x, i);\n}\nconsole.log(x);\n```\n\n**보기** — 하나 고르기\n\n1. 60\n2. 61\n3. 62\n4. 63\n5. 64"
+}

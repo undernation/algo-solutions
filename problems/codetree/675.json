@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "675",
+ "title": "십진수로 변환하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-convert-to-decimal/description",
+ "alias": "convert-to-decimal",
+ "pid": 675,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 I",
+ "lesson": "Notation",
+ "card": "intro-convert-to-decimal",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "87.1",
+  "submissions": "3993"
+ },
+ "sample_count": 1,
+ "statement_len": 64,
+ "fetched_at": "2026-09-23",
+ "statement": "$0$과 $1$로 이루어진 이진수로 어떤 수가 주어지면 그 수를 십진수로 변환하여 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $8$자리 이하의 이진수로 되어있는 수가 주어집니다.",
+ "output_spec": "첫 번째 줄에 주어진 이진수를 십진수로 변환하여 출력합니다.",
+ "constraints": "- $1 \\le \\texttt{이진수의 자릿수} \\le 8$",
+ "samples": [
+  {
+   "in": "11101\n",
+   "out": "29\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 예제에서 입력으로 주어진 $11101$을 십진수로 변환하면 \n\n$1 \\times 2^4 + 1 \\times 2^3 + 1 \\times 2^2 + 0 \\times 2^1 + 1 \\times 2^0 = 16 + 8 + 4 + 1 = 29$ 이다."
+ ]
+}

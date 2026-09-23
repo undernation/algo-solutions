@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2218",
+ "title": "가장 가까운 두 점 사이의 거리를 최대화하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-maximize-dist-of-nearest-points/description",
+ "alias": "maximize-dist-of-nearest-points",
+ "pid": 2218,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Parametric Search",
+ "lesson": "Parametric Search",
+ "card": "challenge-maximize-dist-of-nearest-points",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "69.4",
+  "submissions": "310"
+ },
+ "sample_count": 1,
+ "statement_len": 147,
+ "fetched_at": "2026-09-23",
+ "statement": "수직선상에 $N$개의 선분이 주어졌을 때, 각 선분 위에 정확히 하나의 점을 잡아 $x$축 기준으로 가장 가까운 두 점 사이의 거리를 최대화하는 프로그램을 작성해보세요. 단, 한 선분이 다른 선분을 완전히 포함하는 경우는 절대 주어지지 않는다고 가정해도 좋습니다.",
+ "input_spec": "첫 번째 줄에는 $N$이 주어집니다.  \n\n두 번째 줄부터는 $N$개의 줄에 걸쳐 각 선분을 나타내는 정보를 나타내는 $x_1$, $x_2$ 값이 공백을 사이에 두고 주어집니다. 주어지는 모든 좌표 값은 서로 다름을 가정해도 좋습니다.",
+ "output_spec": "가장 가까운 두 점 사이의 거리를 최대로 했을 때의 거리를 출력합니다.",
+ "constraints": "- $3 \\le N \\le 100\\,000$\n- $1 \\le x_1 < x_2 \\le 10^9$\n- 주어지는 모든 좌표 값은 서로 다름을 가정해도 좋습니다.",
+ "samples": [
+  {
+   "in": "4\n4 7\n1 3\n6 10\n11 13\n",
+   "out": "4\n"
+  }
+ ],
+ "sample_notes": [
+  "예제 1번에서, 다음 그림과 같이 각 선분 위의 점을 $1$, $5$, $9$, $13$으로 잡는다면 가장 가까운 두 점 사이의 거리를 $4$로 만들 수 있습니다.\n\n<br>\n\n![](https://contents.codetree.ai/problems/2218/images/problems-3d5ea6cd-99e7-49b7-91b8-46b327b0cb6d.png)"
+ ]
+}

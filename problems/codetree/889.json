@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "889",
+ "title": "상하좌우 반전시키기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-flip-up-down-left-right/description",
+ "alias": "flip-up-down-left-right",
+ "pid": 889,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Greedy",
+ "lesson": "상태 반전이 가능한 문제",
+ "card": "challenge-flip-up-down-left-right",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "70.2",
+  "submissions": "171"
+ },
+ "sample_count": 1,
+ "statement_len": 676,
+ "fetched_at": "2026-09-23",
+ "statement": "숫자 0과 1로만 이루어진 $n \\times n$ 크기의 격자 상태가 주어집니다. 첫 번째 행을 제외한 위치에 있는 칸을 누르는 것이 가능하고, 특정 칸을 누르게 되면 해당 칸에 있는 숫자 뿐 아니라 바로 상하좌우 인접한 칸에 있는 숫자 까지도 전부 반전시키게 됩니다. 여기서 반전이란 숫자 0이 1이 되고, 숫자 1이 0이 되는 것을 의미합니다. 적절하게 칸을 눌러 최종적으로 $n \\times n$ 크기의 격자에 적혀있는 숫자가 전부 1이 되도록 하는 최소 클릭 횟수를 출력하는 프로그램을 작성해보세요. 단, 상하좌우 인접한 칸 중 격자를 벗어나는 칸에 대해서는 반전이 일어나지 않으며, 누른 칸을 또 누르는 것 역시 가능함에 유의합니다.\n\n예를 들어, $n$이 3이고 입력으로 주어진 격자 상태가 다음과 같은 경우를 생각해봅시다.\n```\n0 1 0\n0 1 0\n0 1 0\n```\n<br/>\n\n이때 처음 2행 1열 칸을 선택하면 다음과 같이 상태가 바뀌게 됩니다.\n```\n0 1 0         1 1 0\n0 1 0   ->    1 0 0\n0 1 0         1 1 0\n```\n<br/>\n\n그 다음 2행 3열 칸을 선택하면 다음과 같이 숫자를 전부 1로 만들 수 있게 됩니다.\n```\n1 1 0         1 1 1\n1 0 0   ->    1 1 1\n1 1 0         1 1 1\n```",
+ "input_spec": "첫 번째 줄에 $n$이 주어집니다.\n\n두 번째 줄부터는 $n$개의 줄에 걸쳐 각 줄마다 각각의 행에 해당하는 $n$개의 숫자가 공백을 사이에 두고 주어집니다. 전부 0과 1로 이루어져 있다고 가정해도 좋습니다.",
+ "output_spec": "숫자를 전부 1로 만들기 위해 눌러야 할 최소 횟수를 출력합니다. 만약 전부 1로 만드는 것이 불가능하다면 -1을 출력하세요.",
+ "constraints": "- $1 \\le n \\le 100$",
+ "samples": [
+  {
+   "in": "3\n0 1 0\n0 1 0\n0 1 0\n",
+   "out": "2\n"
+  }
+ ]
+}

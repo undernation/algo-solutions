@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "256",
+ "title": "범위 밖의 수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-number-out-of-range/description",
+ "alias": "number-out-of-range",
+ "pid": 256,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "조건문",
+ "lesson": "or 연산자",
+ "card": "intro-number-out-of-range",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "89.9",
+  "submissions": "5387"
+ },
+ "sample_count": 2,
+ "statement_len": 61,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $a$를 입력받아 $a$가 $10$보다 작거나 $20$보다 큰 수인지를 판단하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $a$가 주어집니다.",
+ "output_spec": "첫 번째 줄에 $a$에 대한 정보를 출력합니다. $a$가 $10$보다 작거나 $20$보다 크다면 `yes`를, 아니라면 `no`를 출력합니다.",
+ "constraints": "- $1 \\le a \\le 100$",
+ "samples": [
+  {
+   "in": "10\n",
+   "out": "no\n"
+  },
+  {
+   "in": "26\n",
+   "out": "yes\n"
+  }
+ ]
+}

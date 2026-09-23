@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "278",
+ "title": "높은 수에서 낮은 수까지",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-from-high-to-low/description",
+ "alias": "from-high-to-low",
+ "pid": 278,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "if 안의 for",
+ "card": "challenge-from-high-to-low",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "69.2",
+  "submissions": "6006"
+ },
+ "sample_count": 1,
+ "statement_len": 57,
+ "fetched_at": "2026-09-23",
+ "statement": "두 개의 정수 $A, B$를 입력받아 큰 수부터 작은 수까지 차례대로 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "정수 $A, B$를 공백을 사이에 두고 주어집니다.",
+ "output_spec": "$A, B$중 큰 수에서 작은 수까지 차례로 $1$씩 감소하며 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $1 \\le A, B \\le 50$",
+ "samples": [
+  {
+   "in": "22 31\n",
+   "out": "31 30 29 28 27 26 25 24 23 22\n"
+  }
+ ]
+}

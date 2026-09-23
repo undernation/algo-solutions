@@ -1,0 +1,37 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2237",
+ "title": "정수 선언하고 곱 출력",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-Declare-an-integer-and-print-the-multiplication/description",
+ "alias": "Declare-an-integer-and-print-the-multiplication",
+ "pid": 2237,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "출력",
+ "lesson": "변수와 자료형",
+ "card": "test-Declare-an-integer-and-print-the-multiplication",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "88.9",
+  "submissions": "20247"
+ },
+ "sample_count": 1,
+ "statement_len": 87,
+ "fetched_at": "2026-09-23",
+ "statement": "두 개의 정수형 변수를 선언하고 각각 $26$, $5$ 값을 대입합니다. 이 두 변수를 활용하여 출력 형식에 맞게 곱셈식을 출력하는 프로그램을 작성해주세요.",
+ "input_spec": "입력이 주어지지 않습니다.",
+ "output_spec": "`26 * 5 = 130` 의 형태로 출력합니다.",
+ "samples": [
+  {
+   "in": "",
+   "out": "26 * 5 = 130\n"
+  }
+ ]
+}

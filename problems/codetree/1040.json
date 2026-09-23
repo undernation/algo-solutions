@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1040",
+ "title": "트리의 지름",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-diameter-of-tree/description",
+ "alias": "diameter-of-tree",
+ "pid": 1040,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Tree",
+ "lesson": "트리",
+ "card": "intro-diameter-of-tree",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "160 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "61.9",
+  "submissions": "889"
+ },
+ "sample_count": 1,
+ "statement_len": 110,
+ "fetched_at": "2026-09-23",
+ "statement": "트리의 지름이란, 임의의 두 정점 사이의 거리 중 가장 긴 거리를 뜻합니다.\n\n$1$번부터 $N$번까지 $N$ 개의 정점으로 이루어진 트리가 주어질 때,\n트리의 지름을 구하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 트리의 정점의 개수를 나타내는 정수 $N$이 주어집니다.\n\n그다음 줄부터 $N-1$ 개의 줄에 걸쳐, 트리의 각 간선이 연결하는 두 정점의 번호와 그 간선의 길이가 공백으로 구분되어 주어집니다.",
+ "output_spec": "첫 번째 줄에 트리의 지름을 출력합니다.",
+ "constraints": "- $2 \\le N \\le 100\\,000$\n- $1 \\le \\texttt{간선이 연결하는 정점 번호} \\le N$\n- 주어지는 간선의 거리는 $1 $ 이상 $10\\,000$ 이하입니다.\n- 주어지는 그래프는 트리입니다.",
+ "samples": [
+  {
+   "in": "5\n1 3 2\n2 4 4\n3 4 3\n4 5 6\n",
+   "out": "11\n"
+  }
+ ]
+}

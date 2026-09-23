@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "261",
+ "title": "일 수 구하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-number-of-days-in-month/description",
+ "alias": "number-of-days-in-month",
+ "pid": 261,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "조건문",
+ "lesson": "중첩 조건문",
+ "card": "challenge-number-of-days-in-month",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "61.1",
+  "submissions": "7899"
+ },
+ "sample_count": 2,
+ "statement_len": 73,
+ "fetched_at": "2026-09-23",
+ "statement": "윤년이 아닌 해에 $n$월에는 며칠이 있는지를 출력하는 프로그램을 작성하세요. 윤년이 아닌 해의 $2$월은 $28$일까지 있습니다.",
+ "input_spec": "첫 번째 줄에 n이 주어집니다.",
+ "output_spec": "해당 월의 일 수를 출력합니다.",
+ "constraints": "- $1 \\le n \\le 12$",
+ "samples": [
+  {
+   "in": "1\n",
+   "out": "31\n"
+  },
+  {
+   "in": "2\n",
+   "out": "28\n"
+  }
+ ]
+}

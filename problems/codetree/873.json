@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "873",
+ "title": "코드네임",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-code-name/description",
+ "alias": "code-name",
+ "pid": 873,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "정렬",
+ "lesson": "객체",
+ "card": "intro-code-name",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "81.2",
+  "submissions": "4568"
+ },
+ "sample_count": 1,
+ "statement_len": 195,
+ "fetched_at": "2026-09-23",
+ "statement": "$5$명의 코드네임과 점수를 입력받아 점수가 제일 낮은 요원의 정보를 출력하는 프로그램을 작성해보세요.\n\n단, 코드네임과 점수를 함께 저장할 수 있는 자료형으로 요원 $5$명의 정보를 담아야 합니다. C 언어에서는 구조체를 사용하고, 그 외 언어에서는 class 또는 pair·tuple처럼 여러 값을 하나로 묶을 수 있는 자료형을 사용해야 합니다.",
+ "input_spec": "총 $5$개의 줄이 주어집니다.\n\n각 줄에는 대문자 알파벳 한 글자인 코드네임과 정수인 점수가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 점수가 제일 낮은 요원의 코드네임과 점수를 공백을 사이에 두고 출력합니다.",
+ "constraints": "- 요원은 항상 $5$명입니다.\n- 코드네임은 대문자 알파벳 한 글자입니다.\n- 점수를 $S$라고 할 때, $S$는 $1 \\le S \\le 100$인 정수입니다.\n- $5$명의 코드네임은 서로 모두 다릅니다.\n- $5$명의 점수는 서로 모두 다릅니다. 따라서 점수가 제일 낮은 요원은 항상 한 명입니다.",
+ "samples": [
+  {
+   "in": "A 50\nB 80\nC 79\nZ 90\nF 100\n",
+   "out": "A 50\n"
+  }
+ ],
+ "sample_notes": [
+  "$5$명의 점수는 $50$, $80$, $79$, $90$, $100$이고 이 중 가장 낮은 점수는 $50$입니다. 해당 요원의 코드네임이 `A`이므로 `A 50`을 출력합니다."
+ ]
+}

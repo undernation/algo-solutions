@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "606",
+ "title": "Union-Find",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-ga-uf/description",
+ "alias": "ga-uf",
+ "pid": 606,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 알고리즘",
+ "lesson": "Kruskal",
+ "card": "intro-ga-uf",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "65.2",
+  "submissions": "1604"
+ },
+ "sample_count": 0,
+ "statement_len": 412,
+ "fetched_at": "2026-09-23",
+ "statement": "다음은 Union-Find에 대한 코드입니다.\n\nUnion-Find의 동작 과정을 기반으로, 코드를 완성해봅시다.\n\n```jsx\nfunction init(size)\n  set uf = [0] with size\n  for i = 1 ... size\n    uf[i] = i\n  return uf\n\nfunction find(x)\n  if uf[x] (1) x\n    return x\n  return find((2))\n  \nfunction union(x, y)\n  set X = find(x), Y = find(y)\n  (3)\n```\n\n**보기** — 순서대로 3개 고르기\n\n1. `==`\n2. `!=`\n3. `x`\n4. `uf[x]`\n5. `X = Y`\n6. `x = uf[y]`\n7. `uf[x] = uf[Y]`\n8. `uf[X] = Y`"
+}

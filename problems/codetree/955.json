@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "955",
+ "title": "등차수열",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-arithmetic-sequence/description",
+ "alias": "arithmetic-sequence",
+ "pid": 955,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 II",
+ "lesson": "값을 기준으로 완전탐색",
+ "card": "challenge-arithmetic-sequence",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "66.7",
+  "submissions": "1345"
+ },
+ "sample_count": 2,
+ "statement_len": 259,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 정수 $a_1$, $a_2$, $\\dots$, $a_N$이 주어집니다.\n\n자연수 $K$를 하나 정했을 때, $1 \\le i \\lt j \\le N$인 두 인덱스 $i$, $j$에 대해 ($a_i$, $K$, $a_j$)가 등차수열을 이룬다는 것은 $a_j - K$가 $K - a_i$와 같다는 것을 의미합니다.\n\n$K$를 적절히 정해 등차수열을 이루는 인덱스 쌍 ($i$, $j$)의 개수를 최대로 만들 때, 그 최댓값을 구하는 프로그램을 작성해 보세요.",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.\n\n두 번째 줄에 $N$개의 정수 $a_1$, $a_2$, $\\dots$, $a_N$이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 구한 최댓값을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le a_i \\le 100$ ($1 \\le i \\le N$)\n- $N$과 $a_i$는 모두 정수입니다.\n- 입력으로 주어지는 $N$개의 정수는 모두 서로 다릅니다.",
+ "samples": [
+  {
+   "in": "4\n7 6 4 3\n",
+   "out": "2\n"
+  },
+  {
+   "in": "4\n3 4 6 7\n",
+   "out": "2\n"
+  }
+ ],
+ "sample_notes": [
+  "이 예제에서 $K = 5$라 하면 ($7$, $5$, $3$), ($6$, $5$, $4$) 이렇게 $2$개의 등차수열을 만들 수 있으며, 이보다 더 많이 만들 수 있는 방법은 없습니다.",
+  "이 예제에서 $K = 5$라 하면 ($3$, $5$, $7$), ($4$, $5$, $6$) 이렇게 $2$개의 등차수열을 만들 수 있으며, 이보다 더 많이 만들 수 있는 방법은 없습니다."
+ ]
+}

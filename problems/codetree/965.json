@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "965",
+ "title": "이상한 폭탄 3",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-strange-bomb-3/description",
+ "alias": "strange-bomb-3",
+ "pid": 965,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 III",
+ "lesson": "기준을 새로 설정하여 완전탐색",
+ "card": "challenge-strange-bomb-3",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "37.8",
+  "submissions": "1692"
+ },
+ "sample_count": 1,
+ "statement_len": 301,
+ "fetched_at": "2026-09-23",
+ "statement": "이상한 폭탄이 $N$개 한 줄로 놓여 있습니다. 첫 번째 폭탄부터 $N$번째 폭탄까지 각 폭탄에 정수가 하나씩 부여되며, $i$번째 폭탄에 부여된 정수를 $A_i$라고 합니다.\n\n부여된 정수가 같은 두 폭탄 $i$, $j$의 위치 차이가 $K$ 이하이면($\\lvert i - j \\rvert \\le K$) 그 두 폭탄은 모두 폭발합니다. 한 폭탄이 여러 폭탄과 짝을 이루더라도 그 폭탄은 **폭발한 폭탄 한 개로만** 셉니다.\n\n폭발한 폭탄을 부여된 정수별로 세었을 때, 폭발한 폭탄이 가장 많은 정수를 출력하는 프로그램을 작성해 보세요.",
+ "input_spec": "첫 번째 줄에 $N$과 $K$가 공백을 사이에 두고 주어집니다.\n\n이후 $N$개의 줄에 걸쳐 한 줄에 하나씩, $i$번째 줄에 $i$번째 폭탄에 부여된 정수 $A_i$가 주어집니다.",
+ "output_spec": "첫 번째 줄에 폭발한 폭탄이 가장 많은 정수를 출력합니다. 그런 정수가 여러 개인 경우 가장 큰 정수를 출력하고, 폭발한 폭탄이 하나도 없으면 $0$을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le K \\le N$\n- $0 \\le A_i \\le 1\\,000\\,000$ ($1 \\le i \\le N$)\n- $N$, $K$, $A_i$는 모두 정수입니다.",
+ "samples": [
+  {
+   "in": "6 3\n7\n2\n4\n2\n2\n4\n",
+   "out": "2\n"
+  }
+ ],
+ "sample_notes": [
+  "$2$번째부터 $6$번째 폭탄까지는 전부 터지게 됩니다. 정수 $2$가 부여된 폭탄은 $3$개, 정수 $4$가 부여된 폭탄은 $2$개가 터지므로, 폭발한 폭탄이 가장 많은 정수는 $2$입니다."
+ ]
+}

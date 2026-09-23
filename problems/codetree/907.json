@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "907",
+ "title": "사각형의 총 넓이 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-total-width-of-a-rectangle2/description",
+ "alias": "total-width-of-a-rectangle2",
+ "pid": 907,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 I",
+ "lesson": "사각형 칠하기",
+ "card": "intro-total-width-of-a-rectangle2",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "75.2",
+  "submissions": "4955"
+ },
+ "sample_count": 1,
+ "statement_len": 169,
+ "fetched_at": "2026-09-23",
+ "statement": "이차원 평면 위에 $N$개의 직사각형이 주어집니다. 각 직사각형은 모든 변이 좌표축에 평행합니다.\n\n이 직사각형들이 덮는 영역 전체의 넓이를 구하는 프로그램을 작성해보세요. 두 개 이상의 직사각형이 겹치는 부분은 한 번만 셉니다. 즉 각 직사각형 넓이의 단순 합이 아니라 합집합의 넓이를 구해야 합니다.",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 각 줄마다 정수 $x_1$, $y_1$, $x_2$, $y_2$가 공백을 사이에 두고 주어집니다. 이는 $(x_1,\\ y_1)$과 $(x_2,\\ y_2)$를 마주 보는 두 꼭짓점으로 하고 각 변이 좌표축에 평행한 직사각형을 의미합니다. 즉 $x$좌표가 $x_1$ 이상 $x_2$ 이하이고 $y$좌표가 $y_1$ 이상 $y_2$ 이하인 영역입니다.",
+ "output_spec": "첫 번째 줄에 직사각형들이 덮는 영역 전체의 넓이를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 10$\n- $-100 \\le x_1 \\le x_2 \\le 100$\n- $-100 \\le y_1 \\le y_2 \\le 100$\n- 주어지는 모든 좌표는 정수입니다.",
+ "samples": [
+  {
+   "in": "2\n0 1 4 5\n2 2 6 4\n",
+   "out": "20\n"
+  }
+ ],
+ "sample_notes": [
+  "주어진 두 개의 직사각형은 다음과 같습니다.\n\n![](https://contents.codetree.ai/problems/907/images/problems-daf959ac-b70f-4c6f-8e19-a96267283cc2.png)\n\n총 넓이는 $20$이므로 출력값은 $20$입니다."
+ ]
+}

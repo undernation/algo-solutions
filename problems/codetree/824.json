@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "824",
+ "title": "개발자의 순위",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-developers-rank/description",
+ "alias": "developers-rank",
+ "pid": 824,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 II",
+ "lesson": "물체 단위로 완전탐색",
+ "card": "challenge-developers-rank",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "74.6",
+  "submissions": "1290"
+ },
+ "sample_count": 1,
+ "statement_len": 109,
+ "fetched_at": "2026-09-23",
+ "statement": "$K$번의 경기에 대해 $N$명의 개발자의 순위가 주어졌을 때, 항상 $a$번 개발자가 $b$번 개발자보다 더 높은 순위였던 서로 다른 $(a,\\ b)$ 쌍의 수를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $K$와 $N$이 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터 $K$개의 줄에 걸쳐 각 경기의 결과가 주어집니다. 각 줄에는 $N$개의 정수가 공백을 사이에 두고 주어지며, 개발자 번호를 순위가 높은 순서대로 나열한 것입니다. 즉, 먼저 나오는 개발자일수록 그 경기에서 순위가 높습니다.",
+ "output_spec": "$a$번 개발자가 모든 경기에서 $b$번 개발자보다 순위가 높았던 서로 다른 순서쌍 $(a, b)$의 개수를 첫 번째 줄에 출력합니다.",
+ "constraints": "- $1 \\le K \\le 10$\n- $1 \\le N \\le 20$\n- 각 경기의 결과는 $1$부터 $N$까지의 개발자 번호가 한 번씩 나오는 순열임이 보장됩니다.",
+ "samples": [
+  {
+   "in": "3 4\n4 1 2 3\n4 1 3 2\n4 2 1 3\n",
+   "out": "4\n"
+  }
+ ]
+}

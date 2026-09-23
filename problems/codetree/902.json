@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "902",
+ "title": "달리자",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-run-and-run/description",
+ "alias": "run-and-run",
+ "pid": 902,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "케이스별로 나누기",
+ "lesson": "일어난 상황에 대한 추론",
+ "card": "challenge-run-and-run",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "192 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "85.9",
+  "submissions": "707"
+ },
+ "sample_count": 1,
+ "statement_len": 336,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 집이 $1$차원 직선 위에 놓여 있습니다. 집은 $x = 1$부터 $x = N$까지 일렬로 놓여 있고, 처음에 $i$번 집에는 $A_i$명이 살고 있습니다.\n\n어느 날 사람들이 자리를 옮겼습니다. 각 사람은 원래 집에 그대로 머무르거나, 자기 집보다 $x$ 값이 큰 집 (즉 오른쪽에 있는 집) 중 한 곳으로만 이동할 수 있습니다. 이동이 끝난 뒤 $i$번 집에는 $B_i$명이 남았습니다.\n\n한 사람이 $x = p$에서 $x = q$로 이동하면 그 사람의 이동 거리는 $q - p$입니다. 이런 결과가 되기 위해 필요한 모든 사람의 이동 거리 합의 최솟값을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $N$이 주어집니다.\n\n두 번째 줄에는 $A_1, A_2, \\ldots, A_N$이 공백을 사이에 두고 순서대로 주어집니다.\n\n세 번째 줄에는 $B_1, B_2, \\ldots, B_N$이 공백을 사이에 두고 순서대로 주어집니다.",
+ "output_spec": "가능한 이동 거리의 합 중 최솟값을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $0 \\le A_i \\le 100\\,000$ ($1 \\le i \\le N$)\n- $0 \\le B_i \\le 100\\,000$ ($1 \\le i \\le N$)\n- $A_1 + A_2 + \\cdots + A_N = B_1 + B_2 + \\cdots + B_N$ 입니다. 즉 전체 인원 수는 변하지 않습니다.\n- 모든 $k$ ($1 \\le k \\le N$)에 대해 $A_1 + \\cdots + A_k \\ge B_1 + \\cdots + B_k$ 입니다. 즉 주어진 결과를 항상 만들 수 있음이 보장됩니다.",
+ "samples": [
+  {
+   "in": "4\n5 4 3 1\n3 2 3 5\n",
+   "out": "10\n"
+  }
+ ],
+ "sample_notes": [
+  "$3$번 집에 있던 $2$명이 $4$번 집으로 가고, $2$번 집에 있던 $2$명이 $4$번 집으로 가고, $1$번 집에 있던 $2$명이 $3$번 집으로 가면 총 이동거리 $10(= 2 \\times 1 + 2 \\times 2 + 2 \\times 2)$으로 모든 이동을 끝낼 수 있게 됩니다. 이보다 더 좋은 답은 없습니다."
+ ]
+}

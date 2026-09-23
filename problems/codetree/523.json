@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "523",
+ "title": "덱",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-deque-basic/description",
+ "alias": "deque-basic",
+ "pid": 523,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "스택, 큐, 덱",
+ "lesson": "Deque",
+ "card": "intro-deque-basic",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "85.2",
+  "submissions": "1530"
+ },
+ "sample_count": 0,
+ "statement_len": 627,
+ "fetched_at": "2026-09-23",
+ "statement": "덱(deque)은 양쪽 끝에서 데이터를 추가하거나 제거할 수 있는 자료구조로, 큐와 스택의 기능을 동시에 제공합니다.\n\n아래 코드를 실행하면 어떤 결과가 나올까요?\n\n- `push_front()`는 덱의 앞쪽에 새 요소를 추가합니다.\n- `push_back()`은 덱의 뒤쪽에 새 요소를 추가합니다.\n- `pop_front()`는 덱의 앞쪽에서 요소를 제거하고 반환합니다.\n- `pop_back()`은 덱의 뒤쪽에서 요소를 제거하고 반환합니다.\n- `size()`는 현재 덱에 포함된 요소의 개수를 반환합니다.\n\n\n```jsx\nfunction solution()\n  set dq = empty deque\n  dq.push_back(15)\n  dq.push_front(20)\n  dq.push_back(25)\n  dq.push_back(30)\n  print(dq.pop_back())\n  print(dq.pop_front())\n  dq.push_back(27)\n  print(dq.size())\n  print(dq.pop_back())\n  print(dq.pop_front())\n```\n\n**보기** — 순서대로 5개 고르기\n\n1. `3`\n2. `4`\n3. `15`\n4. `20`\n5. `25`\n6. `27`\n7. `30`"
+}

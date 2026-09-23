@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2092",
+ "title": "같은 길, 다른 '거리'",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-same-road-different-distance/description",
+ "alias": "same-road-different-distance",
+ "pid": 2092,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shortest Path",
+ "lesson": "Dijkstra",
+ "card": "challenge-same-road-different-distance",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "46.6",
+  "submissions": "204"
+ },
+ "sample_count": 1,
+ "statement_len": 603,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 서로 다른 정점과 이 정점들을 잇는 $M$개의 서로 다른 간선이 있습니다. \n\n두 개의 정점을 잇는 간선은 $1$개 이상 있을 수 있으며, 각 간선을 통해서는 일방향으로만 이동이 가능합니다. 단, 이러한 동일한 그래프가 간선의 길이는 서로 다르게 그림 A, 그림 B에 각각 주어져 있습니다. \n\n$1$번부터 $N$번 정점까지 간선들을 통해 이동하려 하는데, 현재 서 있는 정점을 기점으로 그림 A에서 (도착점까지) 최단거리가 아닌 간선을 택할 경우, 경고가 울리며 그림 B에서도 마찬가지입니다. 두 그림 모두에서 최단거리가 아닌 간선을 택할 경우, 경고는 $2$번 울립니다. \n\n$1$번부터 $N$번 정점까지 이동하려고 할 때 경고가 울리는 횟수의 최솟값을 구하는 프로그램을 작성해보세요.\n\n![](https://contents.codetree.ai/problems/2092/images/problems-9050f3d3-9ac2-4ed0-8434-343da354aff3.png)\n\n![](https://contents.codetree.ai/problems/2092/images/problems-f091cb56-639d-4edf-91f6-b469ba24c633.png)",
+ "input_spec": "첫 번째 줄에 $N$, $M$이 공백을 사이에 두고 차례대로 주어집니다.\n\n두 번째 줄에서부터 $M$개의 줄에 걸쳐 각 줄에 각 간선의 출발 정점, 도착 정점, 그림 A에서의 간선 길이, 그림 B에서의 간선 길이가 공백을 사이에 두고 차례대로 주어집니다.",
+ "output_spec": "첫 번째 줄에 $1$번부터 $N$번 정점으로 이동할 때 까지 경고가 울리는 횟수의 최솟값을 출력합니다. $1$번 정점에서 $N$번 정점으로 이동하는 경로는 항상 존재함을 가정해도 좋습니다.",
+ "constraints": "- $2 \\le N \\le 10\\,000$\n- $1 \\le M \\le 50\\,000$\n- $1 \\le \\texttt{각 간선을 이동하는데 걸리는 시간} \\le 100\\,000$",
+ "samples": [
+  {
+   "in": "5 7\n3 4 7 1\n1 3 2 20\n1 4 17 18\n4 5 25 3\n1 2 10 1\n3 5 4 14\n2 4 6 5\n",
+   "out": "1\n"
+  }
+ ],
+ "sample_notes": [
+  "$1 \\to 2 \\to 4 \\to 5$로 이동했을 때, \n\n그림 A에서는 첫 번째 이동에서 $1 \\to 3$이 최단거리라고 생각하기 때문에 경고가 울립니다. 이후에는 경고가 울리지 않습니다.\n\n그림 B에서는 경고가 울리지 않습니다.\n\n따라서 총 경고 횟수는 $1$회이고, 이것보다 적게 경고가 울리는 경우는 없습니다.\n\n![](https://contents.codetree.ai/problems/2092/images/problems-73aa2f4b-5dba-4b6d-9e94-3553d60e867f.png)\n\n![](https://contents.codetree.ai/problems/2092/images/problems-3cb2ade1-5085-4676-b656-0911a776c012.png)"
+ ]
+}

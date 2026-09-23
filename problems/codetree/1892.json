@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1892",
+ "title": "연결된 정점",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-connected-vertex/description",
+ "alias": "connected-vertex",
+ "pid": 1892,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "MST",
+ "lesson": "Disjoint Set (Union Find)",
+ "card": "challenge-connected-vertex",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "120 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "43.5",
+  "submissions": "787"
+ },
+ "sample_count": 1,
+ "statement_len": 180,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$부터 $N$까지의 정점이 있습니다.\n\n이 정점들로 다음과 같은 입력에 따라 연산을 하려 합니다.\n\n1. $x\\ a\\ b$ : 정점 $a$와 정점 $b$를 간선으로 연결합니다.\n\n2. $y\\ a$ : 정점 $a$ 와 연결되어있는 정점의 개수를 출력합니다.\n\n위와 같은 연산을 총 $M$번 실행하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 정수$N$과, $M$이 공백을 두고 주어집니다.\n\n두 번째 줄부터 $x\\ a\\ b$ 또는 $y\\ a$ 의 형태로 연산의 종류와 각 연산에 필요한 정점 두 개를 나타내는 정수들이 공백을 두고 주어집니다.",
+ "output_spec": "각 줄마다 $2$번 연산의 결과값을 출력합니다.",
+ "constraints": "- $1 \\le N , M \\le 100\\,000$",
+ "samples": [
+  {
+   "in": "4 4\nx 1 2\nx 3 2\ny 1\ny 4\n",
+   "out": "3\n1\n"
+  }
+ ]
+}

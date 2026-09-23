@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2275",
+ "title": "서로 다른 구간의 수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-number-of-distinct-segments/description",
+ "alias": "number-of-distinct-segments",
+ "pid": 2275,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shorten time Technique",
+ "lesson": "+1-1 technique",
+ "card": "intro-number-of-distinct-segments",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "80.6",
+  "submissions": "816"
+ },
+ "sample_count": 1,
+ "statement_len": 75,
+ "fetched_at": "2026-09-23",
+ "statement": "수직선 상에 $N$개의 구간이 주어졌을 때, 모든 구간을 합친 이후의 남아 있는 서로 다른 구간의 수를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $N$이 주어집니다. \n\n두 번째 줄 부터는 $N$개의 줄에 걸쳐 각 구간을 나타내는 정보 $a_i, b_i$ 값이 공백을 사이에 두고 주어집니다. 주어지는 모든 좌표 값은 서로 다름을 가정해도 좋습니다.",
+ "output_spec": "주어진 모든 구간이 합쳐진 이후 남아 있는 서로 다른 구간의 수를 출력합니다.",
+ "constraints": "- $3 \\le N \\le 100\\,000$\n - $1 \\le a_i \\lt b_i \\le 10^9$",
+ "samples": [
+  {
+   "in": "6\n1 5\n4 7\n3 6\n9 13\n8 15\n12 16\n",
+   "out": "2\n"
+  }
+ ],
+ "sample_notes": [
+  "<br>\n\n![](https://contents.codetree.ai/problems/2275/images/problems-cd575690-1210-4419-8a95-1d19b771ef18.png)\n\n<br>"
+ ]
+}

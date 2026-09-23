@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2233",
+ "title": "빽 투더 블랙 닷 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-back-to-the-black-dot-2/description",
+ "alias": "back-to-the-black-dot-2",
+ "pid": 2233,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shortest Path",
+ "lesson": "Dijkstra",
+ "card": "challenge-back-to-the-black-dot-2",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "100 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "44.6",
+  "submissions": "390"
+ },
+ "sample_count": 1,
+ "statement_len": 339,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 서로 다른 점이 있고, 이 점들 중 정확히 $2$개의 점들은 빨간색, 나머지는 검정색 점입니다. 이 $N$개의 점들 중 $2$개의 점들을 각각 잇는 서로 다른 선 $M$개가 있고, 각 선의 길이는 주어진 값과 같습니다. 빨간색 점들을 방문하는 순서는 상관이 없다고 할 때, 특정 검정색 점에서 시작하여 모든 빨간색 점들을 방문하고 다시 해당 점으로 돌아오는 거리가 최소가 되도록 검정색 시작점을 하나 고르려고 합니다. 이때 빨간 점들을 다 방문하고 다시 시작점으로 돌아오는 데 걸리는 최단거리를 구하는 프로그램을 작성해보세요. 단, 이동 시 이미 방문했던 점을 다시 방문하는 것 역시 가능합니다.",
+ "input_spec": "첫 번째 줄에는 $N$, $M$가 공백을 사이에 두고 차례대로 주어집니다. 점들의 번호는 편의상 $1$번부터 $N$번까지 붙여져 있다고 가정합니다.\n\n두 번째 줄에는 빨간 점에 해당하는 점의 번호 $2$개가 공백을 사이에 두고 주어집니다.\n\n세 번째 줄부터는 $M$개의 줄에 걸쳐 각 줄에 $i$번째 점, $j$번째 점, $i$번째 점에서 $j$번째 점까지의 거리가 공백을 사이에 두고 차례대로 주어집니다.",
+ "output_spec": "첫 번째 줄에 모든 빨간색 점들을 방문하고 돌아오는 최단 거리를 출력하세요. 만약 검은색 점에서 출발하여 다시 해당 점으로 되돌아오는 것이 불가능하다면 -1을 출력합니다.",
+ "constraints": "- $3 \\le N \\le 100\\,000$\n- $1 \\le M \\le 100\\,000$\n- $1 \\le i, j \\le N$\n- $1 \\le \\texttt{점들 사이 거리} \\le 1000$",
+ "samples": [
+  {
+   "in": "5 6\n4 5\n1 2 1\n1 5 2\n3 2 3\n3 4 5\n4 2 9\n4 5 100\n",
+   "out": "22\n"
+  }
+ ],
+ "sample_notes": [
+  "![](https://contents.codetree.ai/problems/2233/images/problems-881a14fa-779c-440e-b818-435edde4cf08.png)\n\n\n총 $5$개의 점이 있고 그 중 $4$, $5$번 점이 빨간색 점입니다. 두 점을 잇는 선은 총 $6$개 있습니다. 검정점인 $1$번 점을 선택할 경우, `1 - 5 - 1 - 2 - 3 - 4 - 3 - 2 - 1` 순서로 이동하면 이동 거리 $22$로 모든 빨간점을 방문하는 최단 경로가 됩니다. 아래 그림에서 초록색, 보라색, 노란색 순서로 이동하면 됩니다.\n\n![](https://contents.codetree.ai/problems/2233/images/problems-29c17a3c-df34-4e2d-99d9-c6913415de7f.png)"
+ ]
+}

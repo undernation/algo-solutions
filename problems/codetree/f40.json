@@ -1,0 +1,39 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f40",
+ "title": "이상한 체스",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/odd-chess/description",
+ "alias": "odd-chess",
+ "pid": 40,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2018 상반기 오전 1번 문제",
+ "level": "L12",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "66.9",
+  "submissions": "908"
+ },
+ "sample_count": 2,
+ "statement_len": 1459,
+ "fetched_at": "2026-09-23",
+ "statement": "이상한 체스에서 사용되는 말의 종류는 다음과 같습니다.\n\n<p align=\"center\">\n<img width=\"500\" height=\"200\" src=\"https://contents.codetree.ai/problems/127/images/9b005676-5733-4f8a-93f7-5ab2d9a83a74.png\">\n</p>\n\n$1$번째 말은 한 방향으로만 이동 가능하며, 다른 말들은 위의 그림과 같이 이동할 수 있습니다.\n\n각각의 말들은 네 방향 중 한 가지 방향을 선택할 수 있으며 선택하는 방향에 따라 이동할 수 있는 격자의 범위가 달라집니다. 아래는 3번 말이 방향에 따라 이동할 수  있는 격자의 범위가 달라지는 것을 보여주는 그림입니다.\n\n<p align=\"center\">\n<img width=\"500\" height=\"300\" src=\"https://contents.codetree.ai/problems/127/images/861d6904-d102-44f5-b0aa-40ec2b9430a9.png\">\n</p>\n \n<p align=\"center\">\n<img width=\"500\" height=\"300\" src=\"https://contents.codetree.ai/problems/127/images/d514730e-44b8-46b1-9873-34e3eace0998.png\">\n</p>\n \n한 $n \\times m$ 크기의 체스판이 주어질 때, $1 \\times 1$ 크기의 말이 다음과 같이 놓여져고, $1$의 말의 방향이 왼쪽이라면 말이 이동할 수 있는 격자의 범위는 다음과 같습니다.\n\n<p align=\"center\">\n<img width=\"400\" height=\"500\" src=\"https://contents.codetree.ai/problems/127/images/6e1c4aca-e9e8-4c5c-ad23-10e28b3faa8e.png\">\n</p>\n\n이때 $1$이 바라보는 방향에 따라 이동할 수 있는 격자의 범위가 달라지는 것을 알 수 있습니다. 나머지 말들 또한 독립적으로 바라보는 방향을 정해줄 수 있습니다. 체스판에 놓인 말들의 방향을 적절히 설정하여 갈 수 없는 격자의 크기를 최소화하는 프로그램을 만들고자 합니다.\n\n말의 이동에는 다음과 같은 특징을 가집니다.\n\n본인의 말은 뛰어넘어서 지나갈 수 있습니다.\n\n다만 상대편의 말은 뛰어넘어서 지나갈 수 없습니다. 이후 갈 수 없는 격자의 크기를 계산할 때 상대편 말이 있는 격자는 계산하지 않습니다.\n\n예를 들어 상대편 말을 $6$이라고 표현한다면, 아래 그림과 같이 말이 이동할 수 있으며 비어있지만 가지 못하는 격자 크기의 최솟값은 $8$이 됩니다.\n\n<p align=\"center\">\n<img width=\"400\" height=\"500\" src=\"https://contents.codetree.ai/problems/127/images/b356c1b2-efb1-4113-9689-93322c2309c7.png\">\n</p>",
+ "input_spec": "첫 번째 줄에 체스판의 세로 크기와 가로 크기를 의미하는 정수  $n$과 $m$이 주어집니다.\n\n두 번째 줄부터 $(n+1)$번째 줄까지 체스판의 정보가 주어집니다.\n체스판의 정보는 $0$부터 $6$까지의 정수만 주어집니다. 0은 비어있는 칸을 의미하며, $1$부터 $5$까지의 경우 자신의 말의 종류를 의미하고, $6$은 상대편의 말을 의미합니다.",
+ "output_spec": "비어있음에도 자신의 말을 이용해서 갈 수 없는 체스판의 영역 넓이의 총 합의 최솟값을 출력하세요.",
+ "constraints": "- $1 \\le n, m \\le 8$\n- 자신의 말의 개수는 최대 $8$개를 넘지 않는다고 가정해도 좋습니다.",
+ "samples": [
+  {
+   "in": "5 4\n0 0 0 0\n0 2 0 6\n0 0 0 5\n0 1 0 0\n0 0 0 0\n",
+   "out": "8\n"
+  },
+  {
+   "in": "7 5\n0 6 6 6 6\n6 0 6 4 6\n6 6 1 2 6\n6 0 1 6 0\n6 6 0 0 6\n0 6 0 6 6\n3 0 6 0 0\n",
+   "out": "6\n"
+  }
+ ]
+}

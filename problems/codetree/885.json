@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "885",
+ "title": "A, B, C, D 찾기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-find-a-b-c-d/description",
+ "alias": "find-a-b-c-d",
+ "pid": 885,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "Ad-Hoc",
+ "lesson": "고려해야 할 대상이 뚜렷이 정해지는 경우",
+ "card": "challenge-find-a-b-c-d",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "89.0",
+  "submissions": "474"
+ },
+ "sample_count": 1,
+ "statement_len": 263,
+ "fetched_at": "2026-09-23",
+ "statement": "$A \\le B \\le C \\le D$ 그리고 $C \\le A+B$ 조건을 만족하는 4개의 정수 $A$, $B$, $C$, $D$를 구하려고 합니다. $A$, $B$, $C$, $D$, $A+B$, $B+C$, $C+D$, $D+A$, $A+C$, $B+D$, $A+B+C$, $A+B+D$, $A+C+D$, $B+C+D$, $A+B+C+D$에 해당하는 값이 랜덤한 순서로 주어지면 그 단서들을 이용해 $A$, $B$, $C$, $D$를 찾아내는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $A$, $B$, $C$, $D$, $A+B$, $B+C$, $C+D$, $D+A$, $A+C$, $B+D$, $A+B+C$, $A+B+D$, $A+C+D$, $B+C+D$, $A+B+C+D$에 해당하는 15개의 정수가 공백을 사이에 두고 랜덤한 순서로 주어집니다.",
+ "output_spec": "한 줄에 $A$, $B$, $C$, $D$를 순서대로 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $A \\le B \\le C \\le D$\n- $C \\le A+B$\n- 입력으로 주어지는 $15$개의 정수를 $v_1$, $v_2$, $\\ldots$, $v_{15}$라고 할 때, $1 \\le v_i \\le 10^9$입니다. ($1 \\le i \\le 15$)\n- 가능한 답이 유일한 경우만 주어지는 것이 보장됩니다.",
+ "samples": [
+  {
+   "in": "10 10 10 7 4 3 7 7 3 14 14 11 13 6 17\n",
+   "out": "3 3 4 7\n"
+  }
+ ],
+ "sample_notes": [
+  "$A=3$, $B=3$, $C=4$, $D=7$인 경우에 $A$, $B$, $C$, $D$, $A+B$, $B+C$, $C+D$, $D+A$, $A+C$, $B+D$, $A+B+C$, $A+B+D$, $A+C+D$, $B+C+D$, $A+B+C+D$를 나열하면 $3$, $3$, $4$, $7$, $6$, $7$, $11$, $10$, $7$, $10$, $10$, $13$, $14$, $14$, $17$이 되므로 입력으로 주어진 $15$개의 값과 (중복까지) 동일합니다."
+ ]
+}

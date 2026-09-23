@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2291",
+ "title": "총합 구하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-find-the-total/description",
+ "alias": "find-the-total",
+ "pid": 2291,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "sum 계산하기",
+ "card": "test-find-the-total",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "93.0",
+  "submissions": "4283"
+ },
+ "sample_count": 1,
+ "statement_len": 98,
+ "fetched_at": "2026-09-23",
+ "statement": "두 정수 $A, B$를 입력받고, $A$이상 $B$이하 수 중 다음 조건에 맞는 수들의 합을 구하는 프로그램을 작성해보세요.\n\n- $6$의 배수이면서, $8$의 배수가 아닌 수",
+ "input_spec": "첫 번째 줄에 두 정수 $A, B$가 공백을 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 $A$이상 $B$이하의 수 중, 문제의 조건에 맞는 수들의 합을 출력합니다.",
+ "constraints": "- $1 \\le A, B \\le 100$",
+ "samples": [
+  {
+   "in": "15 30\n",
+   "out": "48\n"
+  }
+ ]
+}

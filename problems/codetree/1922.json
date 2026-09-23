@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1922",
+ "title": "bound 코드",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-bound-code/description",
+ "alias": "bound-code",
+ "pid": 1922,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "이진탐색",
+ "lesson": "Lower/Upper Bound",
+ "card": "challenge-bound-code",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "36.8",
+  "submissions": "3194"
+ },
+ "sample_count": 0,
+ "statement_len": 1354,
+ "fetched_at": "2026-09-23",
+ "statement": "다음과 같이 4개의 함수를 구현한 코드가 주어져 있습니다.\n\n```jsx\nfunction bound1(arr, target)\n  set left = 0\n  set right = arr.size - 1\n  set min_idx = arr.size\n  while left <= right\n    set mid = (left + right) / 2\n    if arr[mid] >= target\n      right = mid - 1\n      min_idx = min(min_idx, mid)\n    else\n      left = mid + 1\n\n  return min_idx\n\nfunction bound2(arr, target)\n  set left = 0\n  set right = arr.size - 1\n  set min_idx = arr.size\n  while left <= right\n    set mid = (left + right) / 2\n    if arr[mid] > target\n      right = mid - 1\n      min_idx = min(min_idx, mid)\n    else\n      left = mid + 1\n\n  return min_idx\n\nfunction bound3(arr, target)\n  set left = 0\n  set right = arr.size - 1\n  set max_idx = -1\n  while left <= right\n    set mid = (left + right) / 2\n    if arr[mid] <= target\n      left = mid + 1\n      max_idx = max(max_idx, mid)\n    else\n      right = mid - 1\n\n  return max_idx\n\nfunction bound4(arr, target)\n  set left = 0\n  set right = arr.size - 1\n  set max_idx = -1\n  while left <= right\n    set mid = (left + right) / 2\n    if arr[mid] < target\n      left = mid + 1\n      max_idx = max(max_idx, mid)\n    else\n      right = mid - 1\n\n  return max_idx\n```\n\n다음 값들에 대해 `bound1`, `bound2`, `bound3`, `bound4`의 반환 값들을 순서대로 골라보세요.\n\n```jsx\narr = [8, 10, 12, 14, 14, 16, 16, 16, 18, 20, 22]\ntarget = 16\n```\n\n**보기** — 순서대로 4개 고르기\n\n1. 3\n2. 4\n3. 5\n4. 6\n5. 7\n6. 8"
+}

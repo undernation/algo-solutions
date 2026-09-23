@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "110",
+ "title": "최소 점프 횟수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-min-num-of-jumps/description",
+ "alias": "min-num-of-jumps",
+ "pid": 110,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Backtracking",
+ "lesson": "K개 중 하나를 N번 선택하기(Conditional)",
+ "card": "test-min-num-of-jumps",
+ "card_type": "Test",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "60.0",
+  "submissions": "1791"
+ },
+ "sample_count": 2,
+ "statement_len": 410,
+ "fetched_at": "2026-09-23",
+ "statement": "각 위치로부터의 최대 점프 가능 거리를 의미하는 $N$개의 정수가 첫 번째 위치부터 순서대로 주어졌을 때, 첫 번째 위치로부터 $N$번째 위치에 도달하기 위해 필요한 최소 점프 횟수를 구하는 프로그램을 작성해보세요.\n\n여기서 최대 점프 가능 거리란 현재 위치로부터 추가적으로 나아갈 수 있는 최대 칸의 수를 의미하며, 매 점프마다 $1$칸 이상 최댓값 이하의 거리를 자유롭게 선택할 수 있습니다. 점프는 앞으로만 가능합니다.\n\n예를 들어 다음과 같이 $N$개의 정수가 주어진 경우라면, $2$번 점프하여 $N$번째 위치에 도달할 수 있습니다.\n\n\n\n![Image](https://contents.codetree.ai/problem_factory/images/314303a6-f8b5-4f2a-bdd1-5a36150d5f6e.webp)",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.\n\n두 번째 줄에는 $N$개의 정수가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 위치로부터 $N$번째 위치에 도달하기 위해 필요한 최소 점프 횟수를 출력합니다. 만약 불가능하다면 $-1$을 출력합니다.",
+ "constraints": "- $2 \\le N \\le 10$\n- $0 \\le \\texttt{주어지는 수} \\le 4$",
+ "samples": [
+  {
+   "in": "5\n2 3 1 1 4\n",
+   "out": "2\n"
+  },
+  {
+   "in": "5\n2 1 1 0 4\n",
+   "out": "-1\n"
+  }
+ ]
+}

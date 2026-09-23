@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1014",
+ "title": "트리 순회",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-the-tree-traversal/description",
+ "alias": "the-tree-traversal",
+ "pid": 1014,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Tree",
+ "lesson": "이진 트리와 탐색",
+ "card": "intro-the-tree-traversal",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "71.1",
+  "submissions": "336"
+ },
+ "sample_count": 1,
+ "statement_len": 54,
+ "fetched_at": "2026-09-23",
+ "statement": "입력받은 이진트리로 전위 순회, 중위 순회, 후위 순회 한 값을 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 이진 트리의 노드의 개수 $N$이 주어집니다.\n\n두 번째 줄에는 $N$개의 줄에 걸쳐 각 노드와 그의 왼쪽 자식 노드, 오른쪽 자식 노드가 공백을 두고 차례대로 주어집니다. 자식 노드가 없는 경우에는 \" . \" 으로 표현합니다.\n\n노드의 이름은 \"A\"부터 차례대로 영문자 대문자로 매겨지며, \"A\"가 루트 노드가 됩니다.",
+ "output_spec": "첫 번째 줄에 전위 순회를 공백없이 출력합니다.\n\n두 번째 줄에 중위 순회를 공백없이 출력합니다.\n\n세 번째 줄에 후위 순회를 공백없이 출력합니다.",
+ "constraints": "- $1 \\le N \\le 26$",
+ "samples": [
+  {
+   "in": "7\nA B C\nB D .\nC E F\nE . .\nF . G\nD . .\nG . .\n",
+   "out": "ABDCEFG\nDBAECFG\nDBEGFCA\n"
+  }
+ ]
+}

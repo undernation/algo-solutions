@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3467",
+ "title": "n개의 합 최대화하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-maximize-n-sums/description",
+ "alias": "maximize-n-sums",
+ "pid": 3467,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Advanced DP",
+ "lesson": "Bitmask DP",
+ "card": "challenge-maximize-n-sums",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 5초 · C++17 1초",
+  "memory": "288 MB",
+  "time_sec": 5.0
+ },
+ "stats": {
+  "accept_rate": "76.1",
+  "submissions": "46"
+ },
+ "sample_count": 2,
+ "statement_len": 151,
+ "fetched_at": "2026-09-23",
+ "statement": "각 칸에 정수 값이 하나씩 적혀있는 $N\\times N$ 크기의 격자 정보가 주어집니다. 각 행과 열에 정확히 하나의 색칠된 칸만 놓여지도록 정확히 $N$개의 칸에 색칠을 진행한다고 했을 때, 색칠된 칸에 적혀있는 수들의 합이 최대가 되도록 하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.\n\n두 번째 줄부터는 $N$개의 줄에 걸쳐 한 줄에 $N$개씩 각 행에 해당하는 수들이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "조건을 만족하도록 적절하게 색칠하여 얻을 수 있는 최대 합을 출력합니다.",
+ "constraints": "- $2\\le N\\le 16$\n- $1\\le$ 주어지는 수 $\\le10\\,000$",
+ "samples": [
+  {
+   "in": "3\n3 5 3\n5 8 4\n2 7 1\n",
+   "out": "15\n"
+  },
+  {
+   "in": "4\n1 2 3 4\n1 2 4 3\n3 4 1 2\n1 3 2 4\n",
+   "out": "14\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 예제에서 ($1$행, $3$열), ($2$행, $1$열), ($3$행, $2$열) 이렇게 색칠하면 합 $15$를 얻게 됩니다.",
+  ""
+ ]
+}

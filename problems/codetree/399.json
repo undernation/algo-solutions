@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "399",
+ "title": "단어로 구분하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-separate-words-with-words/description",
+ "alias": "separate-words-with-words",
+ "pid": 399,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "문자열",
+ "lesson": "문자열 리스트 관리",
+ "card": "challenge-separate-words-with-words",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "95.5",
+  "submissions": "2131"
+ },
+ "sample_count": 1,
+ "statement_len": 75,
+ "fetched_at": "2026-09-23",
+ "statement": "알파벳으로 이루어져 있고 공백을 포함한 $10$개의 문자열이 주어지면 공백으로 구분하여 단어로 나누어 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 공백을 포함하고있는 $10$개의 문자열이 주어집니다.",
+ "output_spec": "각 줄마다 공백으로 구분한 문자열을 출력합니다.",
+ "constraints": "- $\\texttt{문자열의 총 길이} \\le 200$",
+ "samples": [
+  {
+   "in": "Hello CodeTree My Name Is Will Nice To Meet You\n",
+   "out": "Hello\nCodeTree\nMy\nName\nIs\nWill\nNice\nTo\nMeet\nYou\n"
+  }
+ ]
+}

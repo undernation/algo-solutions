@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2285",
+ "title": "짝수만 출력",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-output-only-even/description",
+ "alias": "output-only-even",
+ "pid": 2285,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "while문 a → b 2씩 증가",
+ "card": "test-output-only-even",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "90.2",
+  "submissions": "5407"
+ },
+ "sample_count": 1,
+ "statement_len": 86,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $A, B$이 주어졌을 때, $A$부터 $B$까지의 자연수중 짝수만 출력하는 프로그램을 작성해보세요.\n\n단, `while`문을 사용하여 해결해봅니다.",
+ "input_spec": "첫 번째 줄에 정수 $A$와 $B$가 공백을 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 $A$부터 $B$까지의 자연수중 짝수들만 공백을 두고 오름차순으로 출력합니다.",
+ "constraints": "- $1 \\le A \\le B \\le 50$\n- $A, B$는 짝수",
+ "samples": [
+  {
+   "in": "10 20\n",
+   "out": "10 12 14 16 18 20\n"
+  }
+ ]
+}

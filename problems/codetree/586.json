@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "586",
+ "title": "타일 채우기 (1)",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-dp-modeling-tile1/description",
+ "alias": "dp-modeling-tile1",
+ "pid": 586,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "DP",
+ "lesson": "subproblem을 그대로 합치면 되는 DP",
+ "card": "intro-dp-modeling-tile1",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "68.4",
+  "submissions": "2539"
+ },
+ "sample_count": 0,
+ "statement_len": 669,
+ "fetched_at": "2026-09-23",
+ "statement": "$2 \\times N$ 크기의 벽을 $2 \\times 1$, $1 \\times 2$ 크기의 타일로 채우려고 합니다\n\n만약 $2 \\times 3$ 크기의 벽을 채우려고 한다면, 다음과 같은 $3$가지의 경우가 있습니다.\n\n![](https://contents.codetree.ai/problems/586/images/problems-0d7989e6-e160-448c-929e-2303c9786fa1.svg)\n\n그렇다면, 벽의 크기가 $2 \\times 7$ 이라면 벽을 채울 수 있는 경우의 수는 몇 개가 될까요?\n\n이를 계산하기 위해 $dp[n]$를 $2 \\times n$ 크기의 벽을 $2 \\times 1$, $1 \\times 2$ 크기의 타일로 채우는 데 가능한 서로 다른 가짓수라고 정의하여 dp table을 완성시켜보려고 합니다.\n\n다음 빈칸에 들어갈 수를 순서대로 골라보세요.\n\n|$DP$|$0$|$1$|$2$|$3$|$4$|$5$|$6$|$7$|\n|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|\n||$(1)$|$1$|$(2)$|$3$|$(3)$|$(4)$|$13$|$(5)$|\n\n**보기** — 순서대로 5개 고르기\n\n1. `0`\n2. `1`\n3. `2`\n4. `3`\n5. `5`\n6. `8`\n7. `13`\n8. `21`\n9. `34`\n10. `55`"
+}

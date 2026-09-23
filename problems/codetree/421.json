@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "421",
+ "title": "붙여서 합하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-add-and-add/description",
+ "alias": "add-and-add",
+ "pid": 421,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "문자열",
+ "lesson": "문자열을 정수로 변환하기",
+ "card": "intro-add-and-add",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "94.9",
+  "submissions": "2005"
+ },
+ "sample_count": 1,
+ "statement_len": 94,
+ "fetched_at": "2026-09-23",
+ "statement": "숫자로만 이루어진 문자열 $A$와 $B$가 주어집니다. $A$와 $B$를 그대로 이어붙인 $AB$와 순서를 바꿔 이어붙인 $BA$의 합을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $A$와 $B$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 해당하는 정수값을 출력합니다.",
+ "constraints": "- $1 \\le A, B \\le 1\\,000$",
+ "samples": [
+  {
+   "in": "97 456\n",
+   "out": "143153\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 예제에서 문자열 $A$인 $97$과 $B$인 $456$을 그대로 이어붙인 $AB$는 $97456$이고, 순서를 바꿔 이어붙인 $BA$는 $45697$이다. 이 두 수의 합은 $143153$이다."
+ ]
+}

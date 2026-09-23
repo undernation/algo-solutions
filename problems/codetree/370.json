@@ -1,0 +1,37 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "370",
+ "title": "주사위 놀이",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-play-with-dice/description",
+ "alias": "play-with-dice",
+ "pid": 370,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "1차원 배열",
+ "lesson": "Count 배열",
+ "card": "challenge-play-with-dice",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "92.4",
+  "submissions": "3354"
+ },
+ "sample_count": 1,
+ "statement_len": 74,
+ "fetched_at": "2026-09-23",
+ "statement": "주사위를 $10$번 던진다고 합니다. 던질 때마다 나온 숫자가 주어지면 각 숫자가 몇 번씩 나왔는지 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "$1$이상 $6$이하의 주사위 결과가 $10$번 공백을 사이에 두고 주어집니다.",
+ "output_spec": "각 줄에 $1$~$6$까지 \"주사위 숫자 - 나온 횟수\"형식으로 출력합니다.",
+ "samples": [
+  {
+   "in": "6 2 4 5 4 1 5 4 2 6\n",
+   "out": "1 - 1\n2 - 2\n3 - 0\n4 - 3\n5 - 2\n6 - 2\n"
+  }
+ ]
+}

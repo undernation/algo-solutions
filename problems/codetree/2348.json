@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2348",
+ "title": "좌우반전시킨 정사각형",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-left-right-inverted-square/description",
+ "alias": "left-right-inverted-square",
+ "pid": 2348,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "다중 반복문",
+ "lesson": "수학적 규칙에 따라 숫자 출력",
+ "card": "test-left-right-inverted-square",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "90.4",
+  "submissions": "2706"
+ },
+ "sample_count": 3,
+ "statement_len": 188,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $N$이 주어지면 다음과 같은 정사각형 모양을 좌우반전시켜 출력하는 프로그램을 작성해보세요.\n\n예) $N = 4$\n\n```\n1 2 3 4\n2 4 6 8\n3 6 9 12\n4 8 12 16\n```\n\n위와 같은 정사각형을 좌우반전시켜 아래와 같이 출력합니다.\n\n```\n4 3 2 1\n8 6 4 2\n12 9 6 3\n16 12 8 4\n```",
+ "input_spec": "첫 번째 줄에 정수 $N$이 주어집니다.",
+ "output_spec": "예제의 형식과 같이 정사각형을 좌우반전시켜 출력합니다.",
+ "constraints": "- $1 \\le N \\le 9$",
+ "samples": [
+  {
+   "in": "4\n",
+   "out": "4 3 2 1\n8 6 4 2\n12 9 6 3\n16 12 8 4\n"
+  },
+  {
+   "in": "5\n",
+   "out": "5 4 3 2 1\n10 8 6 4 2\n15 12 9 6 3\n20 16 12 8 4\n25 20 15 10 5\n"
+  },
+  {
+   "in": "6\n",
+   "out": "6 5 4 3 2 1\n12 10 8 6 4 2\n18 15 12 9 6 3\n24 20 16 12 8 4\n30 25 20 15 10 5\n36 30 24 18 12 6\n"
+  }
+ ]
+}

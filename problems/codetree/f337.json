@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f337",
+ "title": "코드트리 채점기",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/codetree-judger/description",
+ "alias": "codetree-judger",
+ "pid": 337,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2023 상반기 오후 2번 문제",
+ "level": "L16",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "19.5",
+  "submissions": "4680"
+ },
+ "sample_count": 1,
+ "statement_len": 1381,
+ "fetched_at": "2026-09-23",
+ "statement": "코드트리에 코드 제출이 올라오면 이를 어떻게 처리하는지에 대한 정보는 아래와 같습니다.\n\n(1) **코드트리 채점기 준비**\n \n$N$개의 채점기가 준비되어 있고, 초기 문제 url에 해당하는 $u_0$가 주어집니다. 문제에서의 url은 `도메인/문제ID` 형태로 주어집니다. 도메인은 알파벳 소문자와 '.'으로만 이루어져 있고, 문제 ID는 1이상 10억 이하의 정수값으로 이루어져 있습니다. $N$개의 채점기에는 1번부터 N번까지 번호가 붙어있고, 0초에 채점 우선순위가 1이면서 url이 $u_0$인 초기 문제에 대한 채점 요청이 들어오게 됩니다. 채점 task는 채점 대기 큐에 들어가게 됩니다.\n\n(2) **채점 요청**\n\n$t$초에 채점 우선순위가 $p$이면서 url이 $u$인 문제에 대한 채점 요청이 들어오게 됩니다. 채점 task는 채점 대기 큐에 들어가게 됩니다. 단, 채점 대기 큐에 있는 task 중 정확히 $u$와 일치하는 url이 단 하나라도 존재한다면 큐에 추가하지 않고 넘어갑니다.\n\n(3) **채점 시도**\n\n$t$초에 채점 대기 큐에서 즉시 채점이 불가능한 경우를 제외하고 남은 task 중 우선순위가 가장 높은 채점 task를 골라 채점을 진행합니다. \n\n우선 어떠한 task가 채점이 될 수 없는 조건은 다음과 같습니다.\n- 해당 task의 도메인이 현재 채점을 진행중인 도메인 중 하나라면 불가능합니다.\n- 해당 task의 도메인과 정확히 일치하는 도메인에 대해 가장 최근에 진행된 채점 시작 시간이 $start$, 종료 시간이 $start + gap$ 였고 현재 시간 $t$가 $start + 3 \\times gap$ 보다 작다면, 부적절한 채점이라 의심되기에 채점이 불가합니다.\n\n즉시 채점이 가능한 경우 중 우선순위가 가장 높은 채점 task는 아래 조건에 따라 골라집니다.\n- 채점 우선순위 $p$의 번호가작을수록 우선순위가 높습니다.\n- 만약 채점 우선순위가 동일하다면 채점 task가 채점 대기 큐에 들어온 시간이 더 빠를수록 우선순위가 높습니다.\n\n$t$초에 채점이 가능한 task가 단 하나라도 있었다면, 쉬고 있는 채점기 중 가장 번호가 작은 채점기가 우선순위가 가장 높은 채점 task에 대한 채점을 시작합니다. 만약 쉬고 있는 채점기가 없다면 요청을 무시하고 넘어갑니다.\n\n(4) **채점 종료**\n\n$t$초에 $J_{id}$번 채점기가 진행하던 채점이 종료됩니다. $J_{id}$ 채점기는 다시 쉬는 상태가 됩니다.\n\n만약 $J_{id}$번 채점기가 진행하던 채점이 없었다면 이 명령은 무시됩니다.\n\n(5) **채점 대기 큐 조회**\n\n시간 $t$에 채점 대기 큐에 있는 채점 task의 수를 출력합니다.\n \n<br/>\n\n$Q$번에 걸쳐 명령을 순서대로 진행하며 알맞은 답을 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 명령의 수 $Q$가 주어집니다. \n\n두 번째 줄부터는 $Q$개의 줄에 걸쳐 명령의 정보가 주어집니다. 각 명령에 따른 형태는 다음과 같습니다.\n\n- 코드트리 채점기 준비\n   \n  `100 N u0` 형태로 공백을 사이에 두고 주어집니다. 이는 $N$개의 채점기가 있으며 초기 문제 url이 $u_0$임을 뜻합니다. **이 명령은 항상 첫 번째 명령으로만 주어지며, 항상 주어집니다.** \n\n- 채점 요청\n   \n  `200 t p u` 형태로 공백을 사이에 두고 주어집니다. 이는 $t$초에 채점 우선순위가 $p$이며 url이 $u$인 문제에 대한 채점 요청이 들어왔음을 의미합니다.\n\n- 채점 시도\n\n  `300 t` 형태로 공백을 사이에 두고 주어집니다. 이는 $t$초에 채점 대기 큐에서 즉시 채점이 가능한 경우 중 우선순위가 가장 높은 채점 task를 골라 채점을 진행하게 됨을 뜻합니다. \n\n- 채점 종료\n   \n  `400 t J_id` 형태로 공백을 사이에 두고 주어집니다. 이는 $t$초에 $J_{id}$번 채점기가 진행하던 채점이 종료됨을 뜻합니다.\n\n- 채점 대기 큐 조회\n   \n  `500 t` 형태로 공백을 사이에 두고 주어집니다. 이 경우 시간 $t$에 채점 대기 큐에 있는 채점 task의 수를 출력해야합니다.",
+ "output_spec": "500명령어에 대해 채점 대기 큐에 있는 task의 수를 한 줄에 하나씩 출력합니다.",
+ "constraints": "- $1 \\le Q \\le 50\\,000$  \n- $1 \\le N \\le 50\\,000$  \n- 도메인 문자열은 소문자 알파벳(a–z)과 마침표('.')로만 이루어져 있습니다.  \n- 도메인 문자열의 길이는 $1 \\le \\texttt{길이} \\le 19$  \n- 서로 다른 도메인의 수는 최대 $300$  \n- 문제 ID는 $1 \\le \\texttt{문제 ID} \\le 10^{9}$  \n- URL $u$는 “도메인/문제ID” 형태입니다.  \n- $1 \\le p \\le N$  \n- $1 \\le J_{\\mathrm{id}} \\le N$  \n- $1 \\le t \\le 10^{6}$, 모든 $t$는 서로 다르며 오름차순으로 주어집니다.",
+ "samples": [
+  {
+   "in": "19\n100 3 codetree.ai/16\n300 1\n400 4 1\n200 5 1 codetree.ai/17\n200 6 1 codetree.ai/17\n500 7\n300 8\n500 9\n300 11\n400 12 1\n500 13\n200 14 3 codetree.ai/18\n200 15 2 codetree.ai/20\n200 16 2 tree.ai/1\n500 17\n300 18\n500 19\n200 20 1 codetree.ai/20\n500 21\n",
+   "out": "1 \n1\n0\n3\n2\n3\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 예제에 대해 자세히 알아보겠습니다.\n\n먼저 `100 3 codetree.ai/16` 명령을 통해 3개의 채점기가 있으며 처음 0초에 채점 우선순위가 1이며 url이 codetree.ai/16인 task가 채점 대기 큐에 추가됩니다.\n\n<p align=\"center\">\n  <img width=\"800\" src=\"https://contents.codetree.ai/problems/3509/images/f1a33317-dd64-46ee-bc39-5fb356a5cb3f.png\" >\n</p>\n\n이후 `300 1` 명령을 통해 1번 채점기가 1초에 `codetree.ai/16`에 해당하는 task에 대한 채점을 시작합니다.\n\n<p align=\"center\">\n  <img width=\"800\" src=\"https://contents.codetree.ai/problems/3509/images/cafc6f76-9c6c-437e-a274-646ce23b1674.png\" >\n</p>\n\n다음 `400 4 1` 명령을 통해 `codetree.ai/16`에 해당하는 task가 4초에 종료됩니다.\n\n<p align=\"center\">\n  <img width=\"800\" src=\"https://contents.codetree.ai/problems/3509/images/2c1086f2-38e0-49d5-8ed1-f4fde5cffce8.png\" >\n</p>\n\n다음 `200 5 1 codetree.ai/17` 명령을 통해 5초에 채점 우선순위가 1이며 url이 codetree.ai/17인 task가 채점 대기 큐에 추가됩니다.\n\n<p align=\"center\">\n  <img width=\"800\" src=\"https://contents.codetree.ai/problems/3509/images/e33de3ce-9b24-41f5-ba91-0fb77af78a45.png\" >\n</p>\n\n다음 `200 6 1 codetree.ai/17` 명령이 들어왔지만 이미 채점 대기 큐에 url이 `codetree.ai/17`인 task가 있기 때문에 큐에 추가되지 않고 넘어갑니다.\n\n<p align=\"center\">\n  <img width=\"800\" src=\"https://contents.codetree.ai/problems/3509/images/54fbb247-9163-4f0a-897d-a3334dbfcf74.png\" >\n</p>\n\n다음 `500 7` 명령이 들어왔기에 현재 채점 대기 큐에 있는 task의 수인 1이 답으로 출력됩니다.\n\n직후 `300 8`명령이 들어왔지만 현재 채점 대기중인 task의 도메인 `codetree.ai`는 1초($start$)~4초($start + gap$) 때 이미 채점이 진행된 적이 있기 때문에 $8초 <start + 3 \\times gap = 10초$ 를 만족하게 되어 채점이 불가능합니다.\n\n<p align=\"center\">\n  <img width=\"800\" src=\"https://contents.codetree.ai/problems/3509/images/ae512ffc-f174-4c71-8c05-5f302757bb90.png\" >\n</p>\n\n다음 `500 9` 명령이 들어왔기에 현재 채점 대기 큐에 있는 task의 수인 1이 답으로 출력됩니다.\n\n다음 `300 11` 명령이 들어오면  $11초 > start + 3 \\times gap = 10초$를 만족하므로 11초에 `codetree.ai/17`에 해당하는 task에 대한 채점을 시작합니다.\n\n<p align=\"center\">\n  <img width=\"800\" src=\"https://contents.codetree.ai/problems/3509/images/aa77ebda-4022-482e-abe4-08aac00dc665.png\" >\n</p>\n\n다음 `400 12 1` 명령을 통해 `codetree.ai/17`에 해당하는 task가 12초에 종료됩니다.\n\n<p align=\"center\">\n  <img width=\"800\" src=\"https://contents.codetree.ai/problems/3509/images/1e5db8ab-cb23-4704-be9a-904cff8fd414.png\" >\n</p>\n\n다음 `500 13` 명령이 들어왔기에 현재 채점 대기 큐에 있는 task의 수인 0이 답으로 출력됩니다.\n\n다음 `200 14 3 codetree.ai/18`명령을 통해 14초에 채점 우선순위가 3이며 url이 codetree.ai/18인 task가 채점 대기 큐에 추가됩니다.\n\n<p align=\"center\">\n  <img width=\"800\" src=\"https://contents.codetree.ai/problems/3509/images/112dd824-6879-405b-ace7-342110ce95f5.png\" >\n</p>\n\n다음 `200 15 2 codetree.ai/20`명령을 통해 15초에 채점 우선순위가 2이며 url이 codetree.ai/20인 task가 채점 대기 큐에 추가됩니다.\n\n<p align=\"center\">\n  <img width=\"800\" src=\"https://contents.codetree.ai/problems/3509/images/5ae5ac88-43c6-47f4-997f-481c13cae7ed.png\" >\n</p>\n\n다음 `200 16 2 tree.ai/1`명령을 통해 16초에 채점 우선순위가 2이며 url이 tree.ai/1인 task가 채점 대기 큐에 추가됩니다.\n\n<p align=\"center\">\n  <img width=\"800\" src=\"https://contents.codetree.ai/problems/3509/images/cbaff51a-309e-440b-85bc-b8e774eb3f12.png\" >\n</p>\n\n다음 `500 17` 명령이 들어왔기에 현재 채점 대기 큐에 있는 task의 수인 3이 답으로 출력됩니다.\n\n다음 `300 18` 명령이 들어오면 18초에 `codetree.ai/20`에 해당하는 task에 대한 채점을 시작합니다.\n\n<p align=\"center\">\n  <img width=\"800\" src=\"https://contents.codetree.ai/problems/3509/images/cce2cf82-ece7-4627-b5f4-98e229ea8a81.png\" >\n</p>\n\n다음 `500 19` 명령이 들어왔기에 현재 채점 대기 큐에 있는 task의 수인 2가 답으로 출력됩니다.\n\n다음 `200 20 1 codetree.ai/20`명령을 통해 20초에 채점 우선순위가 1이며 url이 codetree.ai/20인 task가 채점 대기 큐에 추가됩니다.\n\n<p align=\"center\">\n  <img width=\"800\" src=\"https://contents.codetree.ai/problems/3509/images/86eef2ba-ab3c-4c18-8c76-d372851585d4.png\" >\n</p>\n\n최종적으로 `500 21` 명령이 들어왔기에 현재 채점 대기 큐에 있는 task의 수인 3이 답으로 출력됩니다."
+ ]
+}

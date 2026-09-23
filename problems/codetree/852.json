@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "852",
+ "title": "함수를 이용한 윤년 판별",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-tell-the-function-using-a-leap-year/description",
+ "alias": "tell-the-function-using-a-leap-year",
+ "pid": 852,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "함수",
+ "lesson": "값을 반환하는 함수",
+ "card": "intro-tell-the-function-using-a-leap-year",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "67.4",
+  "submissions": "4565"
+ },
+ "sample_count": 1,
+ "statement_len": 193,
+ "fetched_at": "2026-09-23",
+ "statement": "$y$가 주어졌을 때, $y$년이 윤년인지를 판단하는 프로그램을 작성해보세요. 단, 윤년인지를 판단하는 함수를 직접 작성하여 문제를 해결해주세요.\n\n윤년의 조건은 다음과 같습니다.\n+ 4로 나누어 떨어지는 해는 윤년, 그 밖의 해는 평년입니다.\n+ 단, 예외적으로 100으로 나누어 떨어지되 400으로 나누어 떨어지지 않는 해는 평년으로 합니다.",
+ "input_spec": "첫 번째 줄에 정수 $y$가 주어집니다.",
+ "output_spec": "입력받은 연도가 윤년이라면 `true`를 아니라면 `false`를 출력합니다.",
+ "constraints": "- $1 \\le y \\le 2021$",
+ "samples": [
+  {
+   "in": "2020\n",
+   "out": "true\n"
+  }
+ ]
+}

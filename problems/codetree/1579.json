@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1579",
+ "title": "공간복잡도의 쓰임",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-usage-of-space-complexity/description",
+ "alias": "usage-of-space-complexity",
+ "pid": 1579,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "시간, 공간복잡도",
+ "lesson": "공간복잡도",
+ "card": "challenge-usage-of-space-complexity",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Multiple choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "45.2",
+  "submissions": "5622"
+ },
+ "sample_count": 0,
+ "statement_len": 483,
+ "fetched_at": "2026-09-23",
+ "statement": "C++에서 int자료형은 $4$ byte, char자료형은 $1$ byte, double자료형은 $8$ byte입니다. 다음 중 C++ 기준에서 바라볼 때 메모리에 대한 설명으로 옳은 것을 모두 고르세요.\n\n**보기** — 모두 고르기\n\n1. int로 크기가 `2000`만인 배열을 만들면, 약 `80`MB 정도의 메모리가 사용된다.\n2. 메모리 제한이 `8`MB인 문제가 주어졌을 때 int로 크기가 `100`만인 배열을 만들면 메모리 초과가 발생하지 않는다.\n3. 메모리 제한이 `40`MB인 문제가 주어졌을 때 char로 크기가 `2000`만인 배열을 만들면 메모리 초과가 발생하지 않는다.\n4. 메모리 제한이 `160`MB인 문제가 주어졌을 때 double로 크기가 `1000`만인 배열을 만들면 메모리 초과가 발생하지 않는다.\n5. 메모리 제한이 `256`MB인 문제가 주어졌을 때 int로 크기가 `1`억인 배열을 만들면 메모리 초과가 발생하지 않는다."
+}

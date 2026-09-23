@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "546",
+ "title": "탐정",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-heap-find/description",
+ "alias": "heap-find",
+ "pid": 546,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "트리",
+ "lesson": "Heap",
+ "card": "challenge-heap-find",
+ "card_type": "Problem",
+ "level": "Hard",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "38.0",
+  "submissions": "3312"
+ },
+ "sample_count": 0,
+ "statement_len": 502,
+ "fetched_at": "2026-09-23",
+ "statement": "최소 힙이 있습니다. 해당 힙에 여러 삽입 연산을 수행하여 다음과 같은 최소 힙의 모양을 얻었습니다.\n\n![](https://contents.codetree.ai/problems/546/images/problems-c3fe3e21-7ded-4d1f-8a3b-0c0ae235657b.svg)\n\n하지만, 수행된 연산의 순서를 기억하지 못하는 상황에 처했습니다. 다행히 수행된 연산 목록은 다음과 같이 복구되었습니다.\n\n- `p.insert(1)`  // 힙에 1을 삽입\n- `p.insert(2)`  // 힙에 2를 삽입\n- `p.insert(3)`  // 힙에 3을 삽입\n- `p.insert(4)`  // 힙에 4를 삽입\n- `p.insert(5)`  // 힙에 5를 삽입\n\n모든 연산은 단 한번만 수행되었다고 가정할 때, 가능한 경우의 수를 추측해봅시다.\n\n**보기** — 하나 고르기\n\n1. `1`\n2. `2`\n3. `3`\n4. `6`\n5. `12`\n6. `18`\n7. `42`\n8. `120`"
+}

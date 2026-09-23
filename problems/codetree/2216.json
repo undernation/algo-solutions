@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2216",
+ "title": "최대 구간의 크기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-size-of-largest-interval/description",
+ "alias": "size-of-largest-interval",
+ "pid": 2216,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shorten time Technique",
+ "lesson": "+1-1 technique",
+ "card": "challenge-size-of-largest-interval",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "81.9",
+  "submissions": "332"
+ },
+ "sample_count": 1,
+ "statement_len": 80,
+ "fetched_at": "2026-09-23",
+ "statement": "수직선 상에 $N$개의 구간이 주어졌을 때, 모든 구간을 합친 이후 남아 있는 구간들 중 가장 큰 구간의 크기를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $N$이 주어집니다.  \n두 번째 줄 부터는 $N$개의 줄에 걸쳐 각 구간을 나타내는 정보 $a_i, b_i$ 값이 공백을 사이에 두고 주어집니다. 주어지는 모든 좌표 값은 서로 다름을 가정해도 좋습니다.",
+ "output_spec": "주어진 모든 구간이 합쳐진 이후 남아있는 구간들 중 가장 큰 구간의 크기를 출력합니다.",
+ "constraints": "- $3 \\le N \\le 100\\,000$\n- $1 \\le a_i \\lt b_i \\le 10^9$",
+ "samples": [
+  {
+   "in": "5\n4 8\n2 3\n1 6\n9 15\n12 14\n",
+   "out": "7\n"
+  }
+ ],
+ "sample_notes": [
+  "<br>\n\n![](https://contents.codetree.ai/problems/2216/images/problems-e5fded00-6050-4a21-8df2-781180672f19.png)\n\n<br>"
+ ]
+}

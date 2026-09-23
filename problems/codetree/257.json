@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "257",
+ "title": "정수의 조건 여부 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-numbers-condition-2/description",
+ "alias": "numbers-condition-2",
+ "pid": 257,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "조건문",
+ "lesson": "if if 조건문",
+ "card": "challenge-numbers-condition-2",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "87.0",
+  "submissions": "6205"
+ },
+ "sample_count": 2,
+ "statement_len": 109,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $a$를 입력받았을 때 $a$의 값이 $5$인 경우엔 `A`를, $2$의 배수인 경우엔 `B`를 출력하는 프로그램을 작성해보세요. 둘 다 해당하지 않는 경우에는 아무 값도 출력하지 않습니다.",
+ "input_spec": "첫 번째 줄에 정수 $a$가 주어집니다.",
+ "output_spec": "조건에 맞는 값을 출력합니다.",
+ "constraints": "- $1 \\le a \\le 1,000$",
+ "samples": [
+  {
+   "in": "5\n",
+   "out": "A\n"
+  },
+  {
+   "in": "6\n",
+   "out": "B\n"
+  }
+ ]
+}

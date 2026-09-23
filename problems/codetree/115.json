@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "115",
+ "title": "우리는 하나",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-we-are-the-one/description",
+ "alias": "we-are-the-one",
+ "pid": 115,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "BFS",
+ "lesson": "BFS 탐색",
+ "card": "test-we-are-the-one",
+ "card_type": "Test",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 4초 · C++17 1초",
+  "memory": "192 MB",
+  "time_sec": 4.0
+ },
+ "stats": {
+  "accept_rate": "58.7",
+  "submissions": "2008"
+ },
+ "sample_count": 3,
+ "statement_len": 319,
+ "fetched_at": "2026-09-23",
+ "statement": "$N \\times N$ 크기의 격자로 이루어져 있는 나라의 정보가 주어집니다. 각 칸마다 하나의 도시가 있고, 각 도시마다의 높이 정보가 주어집니다. 이때 $K$개의 도시를 겹치지 않게 적절하게 골라, 골라진 $K$개의 도시로부터 갈 수 있는 서로 다른 도시의 수를 최대화 하고자 합니다. 이때 이동은 상하좌우로 인접한 도시간의 이동만 가능하며, 그 중에서도 두 도시간의 높이의 차가 $U$ 이상 $D$ 이하인 경우에만 가능합니다.\n\n$K$개의 도시를 적절하게 골라 갈 수 있는 서로 다른 도시의 수를 최대로 하는 프로그램을 작성해보세요. (시작 도시를 포함하여 셉니다)",
+ "input_spec": "첫 번째 줄에 격자의 크기를 나타내는 $N$과 고를 도시의 수를 나타내는 $K$ 그리고 $U$, $D$ 값이 각각 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터는 $N$개의 줄에 걸쳐 각 행에 해당하는 $N$개의 정수가 순서대로 공백을 사이에 두고 주어집니다.",
+ "output_spec": "$K$개의 도시를 적절하게 골라 갈 수 있는 서로 다른 도시의 수 중 최댓값을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 8$\n- $1 \\le K \\le \\min(N,\\ 3)$\n- $0 \\le U \\le D \\le 100$\n- $1 \\le \\texttt{입력으로 주어지는 정수} \\le 100$",
+ "samples": [
+  {
+   "in": "3 1 2 3\n1 2 3\n2 4 5\n2 1 5\n",
+   "out": "4\n"
+  },
+  {
+   "in": "3 2 2 3\n1 2 3\n2 4 5\n2 1 5\n",
+   "out": "6\n"
+  },
+  {
+   "in": "3 1 2 3\n1 3 5\n3 5 7\n5 7 9\n",
+   "out": "9\n"
+  }
+ ]
+}

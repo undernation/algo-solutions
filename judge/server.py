@@ -9,6 +9,7 @@ http://localhost:12014 를 직접 호출한다.
     python judge/server.py
     python judge/server.py --port 12014 --no-push
     python judge/server.py --runner /opt/pypy3.9-v7.3.9-linux64/bin/pypy3
+    python judge/server.py --no-push --sync-url http://127.0.0.1:12099   # 동기화 대상 지정(테스트)
 
 제출 코드는 PyPy 로 실행한다(있으면 자동 탐색). 백준·코딩살구의 시간 제한이
 사실상 C++/PyPy 기준이라, CPython 으로 채점하면 실제 제출 결과와 어긋난다.
@@ -21,7 +22,8 @@ http://localhost:12014 를 직접 호출한다.
     POST /save        풀이 저장 + git commit/push
     POST /fetch       문제 크롤링 (fetch_problem.py 위임)
     POST /tc          보관된 전체 테스트케이스 정보/미리보기 {site, no, index?}
-    POST /tcupload    전체 테스트케이스 업로드 {site, no, samples, private}
+    POST /tcupload    전체 테스트케이스 업로드 {site, no, samples, private, problem?}
+    POST /prob        보관소의 지문·예제 {site, no}  — 비공개 사이트(privateSites)는 여기서만 나온다
     POST /note        복기 메모 저장 {site, no, date, status, body, mode}
     POST /delete      풀이기록/문제자료 삭제 {kind, site, no, date?}
     POST /toolinfo    배포용 도구 파일 정보 {name?}
@@ -101,8 +103,10 @@ def load_config():
        코딩살구는 언어별 추가시간을 제공하지 않고(C++ 단일 기준),
        백준 본 사이트는 서비스 종료라 공식 배수를 확인할 수 없었다.
        이 채점기의 정책값이므로 설정 파일에서 자유롭게 바꾼다.
+    privateSites(PRIVATE_SITES)도 여기서 다시 읽는다 — 못 읽으면 {"CT"}.
     """
-    global PY_MULT, PY_ADD, NATIVE_MARGIN
+    global PY_MULT, PY_ADD, NATIVE_MARGIN, PRIVATE_SITES
+    PRIVATE_SITES = load_private_sites()
     fixed = None
     if os.path.exists(CONFIG_FILE):
         try:
@@ -182,15 +186,17 @@ def uses_total_time(site, no, body=None):
     """
     if body is not None and body.get("totalTime") is not None:
         return bool(body["totalTime"])
-    sub = SUB.get(site, site.lower())      # SUB 는 아래에서 정의된다(호출 시점엔 존재)
-    f = os.path.join(ROOT, "problems", sub, "%s.json" % no)
-    try:
-        d = json.load(io.open(f, encoding="utf-8"))
-        t = str(((d.get("limits") or {}).get("time")) or "")
-        if "합쳐서" in t or "합산" in t:
-            return True
-    except Exception:
-        pass
+    # site·no 가 이상하면(경로 조작) 원문을 읽지 않고 '못 찾음'과 똑같이 사이트 관례로 간다.
+    # SUB·site_no_error 는 아래에서 정의된다(호출 시점엔 존재).
+    if not site_no_error(site, no):
+        f = os.path.join(ROOT, "problems", SUB[site], "%s.json" % no)
+        try:
+            d = json.load(io.open(f, encoding="utf-8"))
+            t = str(((d.get("limits") or {}).get("time")) or "")
+            if "합쳐서" in t or "합산" in t:
+                return True
+        except Exception:
+            pass
     # 원문을 못 찾으면 사이트 관례를 따른다. SWEA 는 합계가 기본이다.
     return site == "SWEA"
 
@@ -216,6 +222,38 @@ def load_token():
     return t
 
 SUB = {"BOJ": "boj", "SWEA": "swea", "PGS": "programmers", "CT": "codetree"}
+NO_RE = re.compile(r"[A-Za-z0-9_-]{1,12}")      # 문제 번호 — 파일 이름(<no>.json·<no>.md·<no>_*.py)에 그대로 들어간다
+
+
+def site_no_error(site, no):
+    """경로에 들어갈 site·no 검사. 이상하면 오류 응답(dict), 괜찮으면 None.
+
+    no 는 파일 이름으로, site 는 SUB 를 거쳐 폴더 이름으로 그대로 들어간다. 예전엔
+    tc_upload·save_solution 만 번호를 검사하고 나머지는 그냥 경로를 만들어서,
+    no="../../x" 로 보관소 밖의 아무 .json 이나 읽혔다(/tc·/tcfile·/judge 의 useStoredTC,
+    2026-09-23 확인). 같은 식으로 /note 는 notes/ 밖에 .md 를 쓰고, /delete 는
+    problems/<sub>/ 밖의 .json 을 지울 수 있었다. 토큰 뒤라 나만 쓸 수 있지만 막는다.
+    site 도 모르는 값이면 예전엔 조용히 boj 폴더를 썼다.
+    """
+    if site not in SUB:
+        return {"ok": False, "error": "알 수 없는 사이트입니다"}
+    if not NO_RE.fullmatch(str(no or "")):
+        return {"ok": False, "error": "문제 번호가 이상합니다"}
+    return None
+
+
+def _inside(path, base):
+    """path 가 base 폴더 '아래'에 있나(base 자체는 아님).
+
+    '..'·절대경로·다른 드라이브로 빠져나가는 것을 막는다. 대소문자·심볼릭 링크를
+    정리한 실제 경로끼리 비교한다(Windows 는 C:\\A 와 c:\\a 가 같다).
+    """
+    p = os.path.normcase(os.path.realpath(path))
+    b = os.path.normcase(os.path.realpath(base))
+    try:
+        return p != b and os.path.commonpath([p, b]) == b
+    except ValueError:                 # Windows 에서 드라이브가 다르면
+        return False
 
 # 지문·예제를 저장물에서 제외할지 여부. 사용자 결정(2026-08-11)으로 기본 OFF —
 # 지문·예제 입출력·테스트케이스를 그대로 커밋한다.
@@ -225,11 +263,87 @@ REDACT = ("statement", "samples", "testcases", "private_testcases",
           "description", "input_desc", "output_desc", "html",
           "input_spec", "output_spec")
 
+# 🔒 지문을 repo 에 쓰지 않는 사이트 — 스위치는 한 곳, _meta/judge_config.json 의 "privateSites".
+# 비공개 사이트는 PUBLIC_SAFE 와 상관없이 지문·입출력 설명·제약·힌트·예제를 repo 에 넣지 않고
+# (풀이 파일 헤더의 [문제]/[예제]/제약 줄, problems/<sub>/<no>.json 둘 다) TC 보관소(git 밖)에만
+# 둔다 — 내 PC 는 _meta/tc_store/(gitignore), 클라우드 VM 은 ~/algo-tc/. 대시보드는 토큰이
+# 있을 때 POST /prob 로 받아 그린다.
+# 2026-09-23 코드트리를 붙이며 처음엔 여기 {"CT"} 로 박았다(트레일은 유료 콘텐츠). 같은 날
+# 소유자가 위험(재배포 → DMCA 로 repo·Pages 삭제·계정 정지)을 알고도 BOJ/SWEA 처럼 공개 저장하기로
+# 해서 설정값(지금 [])으로 옮겼다. 크롤러(crawl_codetree.load_private_sites)·selfcheck·훅도 같은 값을 본다.
+# 파일·키를 못 읽으면 {"CT"}(비공개)로 넘어진다 — 설정 사고로 유료 지문이 새는 쪽으로 넘어지지 않게.
+# import 시점에 읽는다(main() 없이 쓰는 테스트·도구도 같은 값을 보게). load_config() 가 다시 읽는다.
+# ⚠️ 비공개로 되돌려도 이미 push 된 지문은 히스토리·포크·캐시에 남는다(2026-08-12 재작성 참고).
+PRIVATE_WHY = ""        # 설정을 못 읽어 {"CT"} 로 넘어졌으면 그 이유(시작 로그에 찍는다)
 
-def redact(prob):
-    """공개 저장용으로 저작물 부분을 제거한 사본."""
+
+def load_private_sites():
+    """judge_config.json 의 privateSites → {"CT", ...}. 못 읽으면 {"CT"}(fail-closed)."""
+    global PRIVATE_WHY
+    try:
+        with io.open(CONFIG_FILE, encoding="utf-8") as f:
+            v = json.load(f)["privateSites"]
+        if not isinstance(v, list):
+            raise ValueError("privateSites 가 목록이 아님")
+        PRIVATE_WHY = ""
+        return set(str(x).strip().upper() for x in v if str(x).strip())
+    except Exception as e:
+        PRIVATE_WHY = "%s: %s" % (type(e).__name__, str(e)[:80])
+        return {"CT"}
+
+
+PRIVATE_SITES = load_private_sites()
+# 문제 JSON(problems/<sub>/<no>.json)을 크롤러가 관리하는 사이트 — 공개/비공개와 상관없이
+# /save 가 이미 있는 파일을 덮지 않는다(크롤러가 채운 트레일·출처·한도가 날아가지 않게).
+KEEP_PROBLEM_FILE = {"CT"}
+# 공개 여부와 상관없이 저장하지 않는 키 — 기출의 유형 태그·선수 레슨(유형 스포 금지), 내 진행상태.
+SPOILER_KEYS = ("tags", "prerequisite_lessons", "progress_status")
+# 비공개 사이트에서 빼는 키. 코드트리는 제약·힌트까지 마크다운 원문(저작물)이라 REDACT 보다 넓다.
+# input_format/output_format/code_block 은 코드트리 API 원본 이름이다 — 원본 dict 가 그대로
+# 흘러들어와도 걸러지게 같이 둔다(code_block 안에 test_cases 가 통째로 들어 있다).
+# tags·prerequisite_lessons 는 유형 스포(사용자 규칙), progress_status 는 내 진행상태라 뺀다.
+PRIVATE_REDACT = REDACT + (
+    "constraints", "hint", "sample_notes", "problem", "examples_text", "samples_raw",
+    "input_format", "output_format", "code_block", "tc_preview") + SPOILER_KEYS
+# 보관소 파일의 "problem" 에 담기는 필드(계약: _meta/tc_store/<sub>/<no>.json)
+PRIVATE_PROBLEM_KEYS = ("title", "statement", "input_spec", "output_spec",
+                        "constraints", "hint", "sample_notes")
+
+
+def is_private(site):
+    """지문을 repo 에 쓰면 안 되는 사이트인가.
+
+    대시보드·크롤러가 "ct" 처럼 소문자로 보내도 새지 않게 여기서 정규화한다
+    (build_header 는 요청의 site 를 대문자로 바꾸지 않고 그대로 쓴다).
+    """
+    return str(site or "").strip().upper() in PRIVATE_SITES
+
+
+def redact_private(prob):
+    """비공개 사이트용 공개 사본 — 메타데이터만 남기고 예제 수·지문 길이만 적어 둔다."""
+    if not isinstance(prob, dict):
+        return {"private_content": True}
+    out = {k: v for k, v in prob.items() if k not in PRIVATE_REDACT}
+    smp = prob.get("samples")
+    if isinstance(smp, list) and smp:
+        out["sample_count"] = len(smp)
+    st = prob.get("statement")
+    if isinstance(st, str) and st.strip():
+        out["statement_len"] = len(st)
+    out["private_content"] = True
+    return out
+
+
+def redact(prob, site=None):
+    """공개 저장용으로 저작물 부분을 제거한 사본.
+
+    비공개 사이트(PRIVATE_SITES)는 PUBLIC_SAFE 와 상관없이 항상 걸러낸다.
+    요청의 site 와 문제 dict 의 site 중 하나라도 비공개면 비공개로 본다.
+    """
     if not prob:
         return prob
+    if is_private(site) or (isinstance(prob, dict) and is_private(prob.get("site"))):
+        return redact_private(prob)
     if not PUBLIC_SAFE:
         return prob
     out = {k: v for k, v in prob.items() if k not in REDACT}
@@ -288,16 +402,22 @@ def norm(s):
 
 
 NUM = re.compile(r"^[+-]?(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?$")
+INT = re.compile(r"^[+-]?\d+$")
 EPS_ABS, EPS_REL = 1e-9, 1e-6
 
 
 def same(got, want):
     """정답 비교. 문자열이 같으면 통과.
 
-    다르면 토큰 단위로 보되, 양쪽 다 수치인 토큰은 허용오차 안이면 같다고 본다.
-    실수를 출력하는 문제(예: BOJ 1344 축구 → 0.5265618908306351)를 정확일치로만
-    보면 맞는 풀이가 오답으로 찍힌다. 정수만 있는 출력은 문자열 비교와 동일하게
-    동작하므로(값이 다르면 오차 검사도 실패) 판정이 느슨해지지 않는다.
+    다르면 토큰 단위로 보되, **정답 토큰이 실수**(소수점·지수 표기)일 때만 허용오차
+    안이면 같다고 본다. 실수를 출력하는 문제(예: BOJ 1344 축구 → 0.5265618908306351)를
+    정확일치로만 보면 맞는 풀이가 오답으로 찍힌다.
+
+    🚩 정답 토큰이 정수면 오차를 주지 않는다(2026-09-23 수정). 예전엔 정수에도 상대오차
+    1e-6 을 적용해서, 답이 100만 이상이면 ±1 틀린 답이 '맞았습니다'로 나갔다
+    (1000001 vs 1000000 → 통과, 123456789013 vs 123456789012 → 통과). 원래 주석은
+    "정수만 있는 출력은 문자열 비교와 동일하게 동작한다"였는데 사실이 아니었다 —
+    코드트리 생성 TC 도구를 시험하다 일부러 틀린 풀이가 통과해서 드러났다.
     """
     g, w = norm(got), norm(want)
     if g == w:
@@ -310,6 +430,8 @@ def same(got, want):
         if a == b:
             continue
         if not (NUM.match(a) and NUM.match(b)):
+            return False
+        if INT.match(b):             # 정답이 정수인데 글자가 다르면 그냥 오답
             return False
         try:
             fa, fb = float(a), float(b)
@@ -556,14 +678,23 @@ def build_header(d, verdict=None):
     L.append("")
     L.append("풀이일 : %s   결과: %s" % (d.get("date") or today_kst(),
                                      d.get("status") or "품"))
-    p = d.get("problem") or {}
+    p = d.get("problem") if isinstance(d.get("problem"), dict) else {}
+    # 🔒 비공개 사이트(코드트리)는 풀이 파일도 public repo 에 커밋되므로 지문·예제·제약을
+    #    헤더에 넣지 않는다. 브라우저가 실수로 지문을 실어 보내도 여기서 걸러진다.
+    priv = is_private(site) or is_private(p.get("site"))
     lim = p.get("limits") or {}
     if lim:
         L.append("한도   : " + " / ".join("%s %s" % (k, v) for k, v in lim.items()))
     if p.get("level") or (p.get("stats") or {}).get("accept_rate"):
         L.append("난이도 : %s  |  정답률 %s%%" % (p.get("level", "?"),
                                              (p.get("stats") or {}).get("accept_rate", "?")))
-    for c in (p.get("constraints") or [])[:6]:
+    # 제약: BOJ/SWEA 는 줄 목록인데 코드트리는 마크다운 문자열 한 덩어리다. 문자열을 그대로
+    # 돌리면 앞 6'글자'가 한 줄씩 찍힌다(옛 서버로 확인) — 줄로 나눠 빈 줄을 뺀 앞 6줄만 쓴다.
+    # 비공개 사이트는 통째로 뺀다.
+    cons = [] if priv else (p.get("constraints") or [])
+    if isinstance(cons, str):
+        cons = [x.strip() for x in cons.splitlines() if x.strip()]
+    for c in cons[:6]:
         L.append("제약   : " + c)
     if d.get("tags"):
         L.append("분류   : " + ", ".join(d["tags"]))
@@ -572,10 +703,15 @@ def build_header(d, verdict=None):
         L.append("")
         L.append("[채점] %s  %s/%s  (%ss)" % (verdict.get("verdict"), s.get("passed"),
                                             s.get("total"), verdict.get("elapsedSec")))
-    if PUBLIC_SAFE:
+    if priv:
+        ps = str(site if is_private(site) else p.get("site")).strip().upper()
+        L += ["", "[문제] %s 지문은 비공개(허브 보관) — 위 URL 참조" % SITE_NAME.get(ps, ps)]
+    elif PUBLIC_SAFE:
         if p.get("statement") or p.get("samples"):
             L += ["", "[문제] 지문·예제는 저작권상 저장하지 않음 — 위 URL 참조"]
     else:
+        # 지문·예제만 넣는다. 힌트(코드트리 hint)는 공개 모드여도 넣지 않는다 —
+        # 다시 풀 때 파일을 열면 풀이 방향이 바로 보이는 스포다.
         if p.get("statement"):
             L += ["", "[문제]", p["statement"].strip()]
         for i, smp in enumerate(p.get("samples") or [], 1):
@@ -607,16 +743,32 @@ def save_solution(d):
     rel = "%s/%s.py" % (sub, name)
     path = os.path.join(ROOT, rel)
     os.makedirs(os.path.dirname(path), exist_ok=True)
-    io.open(path, "w", encoding="utf-8", newline="").write(
-        build_header(d, d.get("verdict")) + code.rstrip() + "\n")
+    # 헤더를 먼저 만든다. open(...,"w") 안에서 만들다 예외가 나면 기존 풀이 파일이
+    # 빈 파일로 잘린 채 남는다(open 이 인자보다 먼저 평가된다).
+    text = build_header(d, d.get("verdict")) + code.rstrip() + "\n"
+    io.open(path, "w", encoding="utf-8", newline="").write(text)
 
     # 문제 메타 별도 저장
-    if d.get("problem"):
-        pd = os.path.join(ROOT, "problems", sub)
-        os.makedirs(pd, exist_ok=True)
-        io.open(os.path.join(pd, "%s.json" % (no or safe(title))), "w",
-                encoding="utf-8", newline="").write(
-            json.dumps(redact(d["problem"]), ensure_ascii=False, indent=1))
+    prob = d.get("problem")
+    if prob:
+        priv = is_private(site) or (isinstance(prob, dict) and is_private(prob.get("site")))
+        own = priv or site in KEEP_PROBLEM_FILE
+        pj = os.path.join(ROOT, "problems", sub, "%s.json" % (no or safe(title)))
+        # 코드트리는 문제 JSON 을 크롤러가 관리한다(트레일·출처·한도 …). 이미 있으면 덮지 않는다 —
+        # 브라우저가 보낸 dict 로 덮으면 크롤러가 채운 필드가 날아가거나, 비공개 모드면 빼먹은
+        # 비공개 필드가 섞여 커밋될 수 있다. 없을 때만 새로 만든다(대시보드가 문제 페이지를 열 수 있게).
+        # 비공개면 공개 필드만(redact), 공개면 그대로 — 유형 태그·진행상태는 어느 쪽이든 뺀다.
+        if not (own and os.path.exists(pj)):
+            pub = redact(prob, site)
+            if own and isinstance(pub, dict):
+                pub = {k: v for k, v in pub.items() if k not in SPOILER_KEYS}
+                for k, v in (("site", site), ("platform", SITE_NAME.get(site, site)),
+                             ("no", no), ("title", title), ("url", d.get("url") or "")):
+                    if v and not pub.get(k):
+                        pub[k] = v
+            os.makedirs(os.path.dirname(pj), exist_ok=True)
+            io.open(pj, "w", encoding="utf-8", newline="").write(
+                json.dumps(pub, ensure_ascii=False, indent=1))
 
     # history.json 에 직접 기록.
     # 예전엔 build_heatmap 이 .py 헤더의 '풀이일' 을 긁는 것에만 의존했는데,
@@ -699,6 +851,7 @@ def save_solution(d):
 
     msg = "[%s %s] %s — %s" % (site, no, title, d.get("status") or "품")
     git("add", "-A")
+    guard_private_staged()
     c = git("commit", "-m", msg)
     committed = c.returncode == 0
     pushed, perr = False, ""
@@ -731,14 +884,21 @@ def save_solution(d):
     log("   💾 %s  commit=%s push=%s" % (rel, committed, pushed))
     return {"ok": True, "file": rel, "message": msg, "at": at,
             "committed": committed, "pushed": pushed, "pushError": perr,
+            "commitError": commit_error(c),
             "stdout": (c.stdout or "")[-300:] if not committed else ""}
 
 
 def note_path(site, no):
-    return os.path.join(ROOT, "notes", SUB.get(site, "boj"), "%s.md" % no)
+    # 쓰는 경로라 여기서 막는다 — 예전엔 no="../../x" 면 notes/ 밖에 .md 를 쓰고
+    # 그대로 git add -A 로 커밋까지 했다. 호출하는 쪽이 검사를 빼먹어도 밖으로 못 나간다.
+    if site_no_error(site, no):
+        raise ValueError("메모 경로 키가 이상합니다: %r / %r" % (site, str(no)[:20]))
+    return os.path.join(ROOT, "notes", SUB[site], "%s.md" % no)
 
 
 def read_note(site, no):
+    if site_no_error(site, no):
+        return ""
     p = note_path(site, no)
     return io.open(p, encoding="utf-8").read() if os.path.exists(p) else ""
 
@@ -760,6 +920,9 @@ def save_note(d):
     body = (d.get("body") or "").rstrip()
     if not no:
         return {"ok": False, "error": "no 가 필요합니다"}
+    err = site_no_error(site, no)
+    if err:
+        return err
     mode = d.get("mode") or "append"
     date = (d.get("date") or today_kst()).strip()
     status = (d.get("status") or "").strip()
@@ -803,6 +966,7 @@ def save_note(d):
         subprocess.run([PY, s], cwd=ROOT, capture_output=True,
                        env={**os.environ, "PYTHONIOENCODING": "utf-8"})
     git("add", "-A")
+    guard_private_staged()
     c = git("commit", "-m", "[메모] %s %s %s" % (site, no, date))
     committed = c.returncode == 0
     pushed, perr = False, ""
@@ -821,7 +985,8 @@ def save_note(d):
                 perr = "" if pushed else (p2.stderr or "")[-300:]
     log("   📝 %s  commit=%s push=%s" % (rel, committed, pushed))
     return {"ok": True, "file": rel, "text": text,
-            "committed": committed, "pushed": pushed, "pushError": perr}
+            "committed": committed, "pushed": pushed, "pushError": perr,
+            "commitError": commit_error(c)}
 
 
 # ── 전체 테스트케이스 보관소 ────────────────────────────────
@@ -837,7 +1002,10 @@ TC_STORE_ALT = os.path.join(ROOT, "_meta", "tc_store")
 
 
 def tc_path(site, no, write=False):
-    sub = SUB.get(site, "boj")
+    # 경로를 만드는 곳에서 한 번 더 막는다 — 호출하는 쪽이 검사를 빼먹어도 밖으로 못 나간다.
+    if site_no_error(site, no):
+        raise ValueError("보관소 키가 이상합니다: %r / %r" % (site, str(no)[:20]))
+    sub = SUB[site]
     primary = os.path.join(TC_STORE, sub, "%s.json" % no)
     if write or os.path.exists(primary):
         return primary
@@ -846,7 +1014,12 @@ def tc_path(site, no, write=False):
 
 
 def load_stored_tc(site, no):
-    """보관된 전체 테스트케이스. 없으면 None."""
+    """보관된 전체 테스트케이스. 없거나 site·no 가 이상하면 None.
+
+    읽는 길은 전부 여기를 지난다 — /judge(useStoredTC)·/tc·/tcfile·/prob·tc_upload(지문 보존).
+    """
+    if site_no_error(site, no):
+        return None
     p = tc_path(site, no)
     if not os.path.exists(p):
         return None
@@ -857,20 +1030,28 @@ def load_stored_tc(site, no):
 
 
 def tc_info(site, no):
+    err = site_no_error(site, no)
+    if err:
+        return err
     d = load_stored_tc(site, no)
     if not d:
-        return {"ok": True, "stored": False}
+        return {"ok": True, "stored": False, "hasProblem": False}
     pv = d.get("private") or []
     cases = [{"i": i, "in": len(t.get("in", "")), "out": len(t.get("out", ""))}
              for i, t in enumerate(pv)]
+    # hasProblem: 비공개 사이트 지문이 보관돼 있나. sync_tc.py 가 이걸 보고 TC 만 있고
+    # 지문이 빠진 항목(예전 sync 로 올라간 것)을 '이미 있음'으로 건너뛰지 않는다.
     return {"ok": True, "stored": True,
             "samples": len(d.get("samples") or []), "private": len(pv),
             "bytes": sum(c["in"] + c["out"] for c in cases),
-            "cases": cases}
+            "cases": cases, "hasProblem": bool(d.get("problem"))}
 
 
 def tc_preview(site, no, idx, limit=200_000, full=False):
     """케이스 하나를 미리보기용으로 잘라서 준다(브라우저 표시용)."""
+    err = site_no_error(site, no)
+    if err:
+        return err
     d = load_stored_tc(site, no)
     if not d:
         return {"ok": False, "error": "보관된 테스트케이스가 없습니다"}
@@ -896,6 +1077,9 @@ def tc_file(site, no, kind, idx=0):
     로컬에서 돌려보려면 파일 자체가 필요해서, 브라우저가 받아 저장할 수 있게 연다.
     (repo 에는 앞부분 미리보기만 있고 전체본은 여기 보관소에만 있다)
     """
+    err = site_no_error(site, no)
+    if err:
+        return err
     d = load_stored_tc(site, no)
     if not d:
         return {"ok": False, "error": "보관된 테스트케이스가 없습니다"}
@@ -910,19 +1094,120 @@ def tc_file(site, no, kind, idx=0):
 
 
 def tc_upload(d):
-    """로컬에서 크롤링한 전체 TC 를 보관소에 저장."""
+    """로컬에서 크롤링한 전체 TC 를 보관소에 저장.
+
+    problem(선택): 비공개 사이트(코드트리)의 지문·입출력 설명·제약·힌트.
+    repo 에 못 넣는 것이라 여기가 유일한 보관처다. 요청에 problem 이 없으면 이미 보관된
+    것을 그대로 둔다 — TC 만 다시 올렸다고 지문이 지워지면 안 되기 때문이다.
+    """
     site = (d.get("site") or "BOJ").upper()
     no = str(d.get("no") or "").strip()
-    if not no or not re.fullmatch(r"[A-Za-z0-9_-]{1,12}", no):
-        return {"ok": False, "error": "문제 번호가 이상합니다"}
+    err = site_no_error(site, no)
+    if err:
+        return err
+    prob = d.get("problem")
+    if prob is not None and not isinstance(prob, dict):
+        return {"ok": False, "error": "problem 은 객체(dict)여야 합니다"}
     p = tc_path(site, no, write=True)
     os.makedirs(os.path.dirname(p), exist_ok=True)
     body = {"site": site, "no": no,
             "samples": d.get("samples") or [], "private": d.get("private") or []}
+    if prob:
+        body["problem"] = prob
+    else:
+        old = load_stored_tc(site, no) or {}
+        if isinstance(old.get("problem"), dict) and old["problem"]:
+            body["problem"] = old["problem"]
     io.open(p, "w", encoding="utf-8", newline="").write(
         json.dumps(body, ensure_ascii=False))
     return {"ok": True, "path": os.path.relpath(p, TC_STORE).replace(os.sep, "/"),
-            "private": len(body["private"])}
+            "private": len(body["private"]), "hasProblem": "problem" in body}
+
+
+def prob_info(site, no):
+    """POST /prob — 보관소에 있는 비공개 지문·예제를 내준다(토큰 뒤).
+
+    코드트리 지문은 repo 에 없으므로(PRIVATE_SITES) 대시보드는 문제 페이지를 열 때
+    공개 JSON 의 private_content 를 보고 여기서 받아 그린다. 보관소에 TC 만 있고
+    지문이 없으면 stored=False 다(그릴 지문이 없으니까).
+    """
+    site = (site or "").strip().upper()
+    no = str(no or "").strip()
+    err = site_no_error(site, no)
+    if err:
+        return err
+    d = load_stored_tc(site, no) or {}
+    if not isinstance(d.get("problem"), dict) or not d["problem"]:
+        return {"ok": True, "stored": False}
+    return {"ok": True, "stored": True, "problem": d["problem"],
+            "samples": d.get("samples") or []}
+
+
+def keep_private_copy(site, no, prob):
+    """공개 파일에 섞여 들어온 비공개 부분을 보관소로 옮겨 둔다(보관소에 지문이 없을 때만).
+
+    guard_private_staged() 가 공개 파일을 걸러 다시 쓰기 직전에 부른다. 크롤러가
+    보관소 쓰기까지 빼먹은 상태라면, 걸러내는 순간 지문이 어디에도 안 남기 때문이다.
+    """
+    if site_no_error(site, no):         # 번호가 이상하면 옮기지 않는다(공개 파일 걸러내기는 그대로 한다)
+        return False
+    cur = load_stored_tc(site, no) or {}
+    if cur.get("problem"):
+        return False
+    pp = {k: prob[k] for k in PRIVATE_PROBLEM_KEYS if prob.get(k)}
+    if not pp.get("statement"):
+        return False
+    # 읽는 쪽(load_stored_tc)이 보는 파일에 쓴다. 둘 다 없으면 내 PC 의 보관소
+    # (_meta/tc_store — sync_tc.py 가 올리는 곳)에 둔다. 클라우드에서도 폴백으로 읽힌다.
+    p = tc_path(site, no)
+    if not os.path.exists(p):
+        p = os.path.join(TC_STORE_ALT, SUB.get(site, "boj"), "%s.json" % no)
+    body = dict(cur)
+    body.update({"site": site, "no": no, "problem": pp,
+                 "samples": cur.get("samples") or prob.get("samples") or [],
+                 "private": cur.get("private") or []})
+    os.makedirs(os.path.dirname(p), exist_ok=True)
+    io.open(p, "w", encoding="utf-8", newline="").write(json.dumps(body, ensure_ascii=False))
+    return True
+
+
+def guard_private_staged():
+    """커밋 직전 마지막 관문 — 비공개 자료가 스테이징됐으면 걷어낸다. 걷어낸 경로 목록 반환.
+
+    정상이라면 걸릴 일이 없다. _meta/tc_store/ 는 .gitignore 에 있고, 비공개 사이트의
+    공개 JSON 은 크롤러와 save_solution 이 이미 걸러서 쓴다. 그래도 .gitignore 한 줄이나
+    크롤러 버그 하나로 유료 지문이 통째로 public repo 에 올라가는 구조라(한 번 push 하면
+    되돌릴 수 없다), 커밋하는 쪽인 허브가 한 번 더 막는다.
+      1) _meta/tc_store/ 아래가 스테이징돼 있으면 내린다.
+      2) problems/<비공개 sub>/<no>.json 에 지문·예제 키가 있으면, 보관소에 옮겨 두고
+         공개 필드만 남겨 다시 쓴 뒤 다시 스테이징한다.
+    """
+    r = git("-c", "core.quotepath=false", "diff", "--cached", "--name-only")
+    names = [x.strip() for x in (r.stdout or "").split("\n") if x.strip()]
+    fixed = [x for x in names if x.startswith("_meta/tc_store/")]
+    if fixed:
+        git("reset", "-q", "--", "_meta/tc_store")
+    subs = dict((SUB[s], s) for s in PRIVATE_SITES if s in SUB)
+    for x in names:
+        m = re.match(r"problems/([^/]+)/([^/]+)\.json$", x)
+        if not m or m.group(1) not in subs:
+            continue
+        fp = os.path.join(ROOT, x.replace("/", os.sep))
+        try:
+            pd = json.load(io.open(fp, encoding="utf-8"))
+        except Exception:
+            continue                       # 삭제 커밋이라 파일이 없는 경우 등
+        if not isinstance(pd, dict) or not any(pd.get(k) for k in PRIVATE_REDACT):
+            continue
+        site = subs[m.group(1)]
+        keep_private_copy(site, str(pd.get("no") or m.group(2)), pd)
+        io.open(fp, "w", encoding="utf-8", newline="").write(
+            json.dumps(redact(pd, site), ensure_ascii=False, indent=1))
+        git("add", "--", x)
+        fixed.append(x)
+    if fixed:
+        slog("   🔒 비공개 자료가 커밋에 섞여 걷어냄: %s" % ", ".join(fixed)[:400])
+    return fixed
 
 
 def delete_item(d):
@@ -942,7 +1227,15 @@ def delete_item(d):
         return {"ok": False, "error": "kind 는 submission 또는 problem 이어야 합니다"}
     if not site or not no:
         return {"ok": False, "error": "site/no 가 필요합니다"}
-    sub = SUB.get(site, "boj")
+    # no 는 지울 파일 이름(problems/<sub>/<no>.json · <sub>/<no>_*.py)에 그대로 들어간다.
+    # 예전엔 검사가 없어 kind=problem, no="../../_meta/history" 로 history.json 이 지워지고,
+    # 빌드가 다시 만든 빈약한 판(-3,816/+2,131줄)이 그대로 커밋됐다(2026-09-23 버리는
+    # 클론에서 확인). 알려진 사이트 + 번호 규칙일 때만 지운다.
+    # (번호가 빈 옛 제목 전용 기록은 위에서 예전처럼 'site/no 가 필요합니다' 로 끝난다)
+    err = site_no_error(site, no)
+    if err:
+        return err
+    sub = SUB[site]
     removed = []
 
     if kind == "submission":
@@ -1037,6 +1330,8 @@ def delete_item(d):
         msg = "[삭제] %s %s 풀이기록 %s" % (site, no, date)
 
     else:  # problem
+        # 보관소(_meta/tc_store · ~/algo-tc)는 일부러 안 건드린다. 코드트리 지문은 repo 에
+        # 없어서 보관소가 유일한 사본이다 — 공개 JSON 만 지우고 다시 가져오면 그대로 이어진다.
         pj = os.path.join(ROOT, "problems", sub, "%s.json" % no)
         imgs = []
         if os.path.exists(pj):
@@ -1046,9 +1341,17 @@ def delete_item(d):
                 imgs = []
             os.remove(pj)
             removed.append("problems/%s/%s.json" % (sub, no))
+        # images 목록은 문제 JSON 안의 값이라 그대로 믿지 않는다 — 이 문제 폴더의
+        # img/ 아래 파일만 지운다("../../_meta/history.json" 이 들어 있어도 안 지운다).
+        img_dir = os.path.join(ROOT, "problems", sub, "img")
         for rel in imgs:
+            if not isinstance(rel, str) or not rel:
+                continue
             fp = os.path.join(ROOT, rel.replace("/", os.sep))
-            if rel and os.path.exists(fp):
+            if not _inside(fp, img_dir):
+                log("   ⚠️ 이미지 경로가 %s/img 밖이라 안 지움: %s" % (sub, rel[:120]))
+                continue
+            if os.path.isfile(fp):
                 try:
                     os.remove(fp)
                     removed.append(rel)
@@ -1065,9 +1368,25 @@ def delete_item(d):
     return _commit_delete(msg, removed)
 
 
+def commit_error(c):
+    """커밋이 '변경 없음'이 아닌 이유로 실패했으면 그 이유(없으면 빈 문자열).
+
+    pre-commit 훅(공개 금지 검사)이 커밋을 막으면 git 은 이유를 **stderr** 로 낸다.
+    예전 응답은 stdout 만 실어서, 대시보드에는 '변경 없음'처럼 보이고 이유가 사라졌다.
+    """
+    if c.returncode == 0:
+        return ""
+    t = ((c.stderr or "") + "\n" + (c.stdout or "")).strip()
+    if "nothing to commit" in t or "nothing added to commit" in t or "no changes added" in t:
+        return ""
+    log("   ⛔ 커밋 실패:", t[-300:])
+    return t[-600:]
+
+
 def _commit_delete(msg, removed):
     """삭제 후 커밋·푸시. 회차 하나만 지우는 경로에서도 그대로 쓴다."""
     git("add", "-A")
+    guard_private_staged()
     c = git("commit", "-m", msg)
     committed = c.returncode == 0
     pushed, perr = False, ""
@@ -1086,11 +1405,49 @@ def _commit_delete(msg, removed):
                 perr = "" if pushed else (p.stderr or "")[-300:]
     log("   🗑️ %s  (%d개)  commit=%s push=%s" % (msg, len(removed), committed, pushed))
     return {"ok": True, "removed": removed, "message": msg,
-            "committed": committed, "pushed": pushed, "pushError": perr}
+            "committed": committed, "pushed": pushed, "pushError": perr,
+            "commitError": commit_error(c)}
+
+
+SYNC_URL = ""      # --sync-url. 비우면 sync_tc.py 가 _meta/endpoint.json(클라우드 터널)을 따른다
+
+
+def sync_private(site, no):
+    """로컬 보관소의 문제 하나를 클라우드 허브로 올린다(best-effort). (성공 여부, 사유) 반환.
+
+    비공개 사이트(코드트리)의 지문·예제는 repo 로 퍼지지 않으므로, 크롤링한 내 PC 의
+    _meta/tc_store/ 에만 있다. 클라우드 허브가 /prob·채점을 하려면 거기도 있어야 해서
+    크롤링 직후 바로 올린다. 크롤링 직후라 내용이 바뀌었을 수 있어 --force 로 덮는다.
+    --no-push 로 띄웠으면(테스트) --sync-url 을 따로 주지 않는 한 밖으로 보내지 않는다.
+    """
+    if not AUTO_PUSH and not SYNC_URL:
+        return False, "--no-push 라 클라우드 동기화 생략 (--sync-url 로 지정 가능)"
+    if site_no_error(site, no):
+        return False, "사이트/문제 번호가 이상합니다"
+    argv = [PY, "_meta/sync_tc.py", "--only", "%s/%s" % (SUB[site], no), "--force"]
+    if SYNC_URL:
+        argv += ["--url", SYNC_URL]
+    try:
+        r = subprocess.run(argv, cwd=ROOT, capture_output=True, text=True, timeout=90,
+                           encoding="utf-8", errors="replace",
+                           env={**os.environ, "PYTHONIOENCODING": "utf-8"})
+    except subprocess.TimeoutExpired:
+        return False, "동기화 시간 초과(90초)"
+    except Exception as e:
+        return False, str(e)[:200]
+    if r.returncode == 0:
+        return True, ""
+    return False, ((r.stdout or "") + (r.stderr or "")).strip()[-300:]
 
 
 def fetch_problem(ref, save=False):
-    """ref(URL 또는 BOJ 번호) 크롤링. save=True 면 problems/ 에 저장하고 커밋까지."""
+    """ref(URL 또는 BOJ 번호) 크롤링. save=True 면 problems/ 에 저장하고 커밋까지.
+
+    코드트리(비공개 사이트)는 크롤러가 공개 JSON(problems/)과 비공개 보관본
+    (_meta/tc_store/, gitignore)을 나눠 쓰고, stdout 에는 지문까지 든 전체 dict 를 찍는다.
+    브라우저(토큰 보유자)에는 전체를 돌려주되, 커밋은 공개 파일만 하고
+    보관본은 클라우드 허브로 올린다(synced).
+    """
     argv = [PY, "_meta/fetch_problem.py", ref, "--print"]
     if save:
         argv.append("--save")
@@ -1118,10 +1475,11 @@ def fetch_problem(ref, save=False):
 
     # 빈 페이지(로그인 만료·없는 문제)를 저장해 쓰레기 파일을 남기지 않는다.
     if not prob.get("no") or not (prob.get("statement") or "").strip():
-        junk = os.path.join(ROOT, "problems",
-                            SUB.get(prob.get("site", "BOJ"), "boj"),
-                            "%s.json" % (prob.get("no") or "unknown"))
-        if os.path.exists(junk):
+        js = str(prob.get("site") or "BOJ").strip().upper()
+        jn = str(prob.get("no") or "unknown")
+        junk = os.path.join(ROOT, "problems", SUB.get(js, "boj"), "%s.json" % jn)
+        # 크롤러가 준 번호로 파일을 지우므로 같은 검사를 건다(problems/ 밖을 지우지 않게).
+        if not site_no_error(js, jn) and os.path.exists(junk):
             try:
                 os.remove(junk)
             except OSError:
@@ -1136,11 +1494,15 @@ def fetch_problem(ref, save=False):
                    env={**os.environ, "PYTHONIOENCODING": "utf-8"})
     subprocess.run([PY, "_meta/build_heatmap.py"], cwd=ROOT, capture_output=True,
                    env={**os.environ, "PYTHONIOENCODING": "utf-8"})
+    # "_meta" 를 통째로 add 해도 _meta/tc_store/ 는 .gitignore 라 안 들어간다.
+    # 그 한 줄에만 기대지 않도록 커밋 직전에 guard_private_staged() 로 한 번 더 거른다.
     git("add", "problems", "_meta", "index.html", "assets", "README.md", "HEATMAP.md")
+    guard_private_staged()
     msg = "[문제추가] %s %s %s" % (prob.get("site", ""), prob.get("no", ""),
                                 prob.get("title", ""))
     c = git("commit", "-m", msg.strip())
     res["committed"] = c.returncode == 0
+    res["commitError"] = commit_error(c)
     res["pushed"] = False
     if res["committed"] and AUTO_PUSH:
         p = git("push")
@@ -1153,6 +1515,14 @@ def fetch_problem(ref, save=False):
                 p = git("push")
         res["pushed"] = p.returncode == 0
     log("   ➕ %s  commit=%s push=%s" % (msg, res["committed"], res["pushed"]))
+    # 동기화 실패로 요청을 실패시키지 않는다 — 공개 파일은 이미 커밋됐고,
+    # 나중에 python _meta/sync_tc.py --site CT 로 다시 올리면 된다.
+    if is_private(prob.get("site")):
+        res["synced"], why = sync_private(str(prob.get("site")).strip().upper(),
+                                          str(prob.get("no")))
+        if why:
+            res["syncError"] = why
+        log("   ☁️ 보관소 동기화 %s%s" % (res["synced"], ("  (%s)" % why[:120]) if why else ""))
     return res
 
 
@@ -1237,7 +1607,7 @@ def status():
             "branch": br, "ahead": ah, "dirty": dirty, "solutions": n,
             "autoPush": AUTO_PUSH,
             "endpoints": ["/judge", "/run", "/exec", "/save", "/fetch", "/note",
-                          "/tc", "/tcfile", "/tcupload", "/delete", "/problems"],
+                          "/tc", "/tcfile", "/tcupload", "/prob", "/delete", "/problems"],
             "tcStore": (len(glob.glob(os.path.join(TC_STORE, "*", "*.json"))) +
                         len(glob.glob(os.path.join(TC_STORE_ALT, "*", "*.json"))))}
 
@@ -1428,6 +1798,19 @@ class H(BaseHTTPRequestHandler):
                         cases = pub + prv
                         nstored = len(prv)
                         body["publicTestCaseCount"] = len(pub)
+                if not cases:
+                    # 케이스가 하나도 없다(보관본이 없는데 브라우저도 안 보냈거나, 예제 0개 보관본).
+                    # 이대로 judge() 에 넘기면 빈 루프라 초기값 그대로 0/0 'accepted' 가 나온다
+                    # (2026-09-23 확인). 코드트리는 예제가 보관소에만 있어서, 클라우드에 동기화가
+                    # 안 된 문제를 채점하면 이 길로 '맞았습니다'가 뜬다 — 봐주기 금지라 여기서 끊는다.
+                    log("\n▶ 채점  problemId=%s  테스트케이스 없음" % body.get("problemId"))
+                    return self._send(200, {
+                        "ok": False, "verdict": "no_testcases",
+                        "error": ("이 허브에 보관된 테스트케이스가 없습니다. "
+                                  "python _meta/sync_tc.py 로 올린 뒤 다시 채점하세요."
+                                  if body.get("useStoredTC") else "채점할 테스트케이스가 없습니다."),
+                        "summary": {"passed": 0, "total": 0, "firstFailedIndex": None},
+                        "judgedAt": iso_now(), "elapsedSec": 0.0, "detail": []})
                 try:
                     tl = allowed_time(body.get("timeLimit"),
                                       bool(body.get("langAdjusted")),
@@ -1482,6 +1865,9 @@ class H(BaseHTTPRequestHandler):
 
             if p == "/tcupload":
                 return self._send(200, tc_upload(body))
+
+            if p == "/prob":
+                return self._send(200, prob_info(body.get("site"), body.get("no")))
 
             if p == "/note":
                 log("\n▶ 메모  %s %s %s" % (body.get("site"), body.get("no"),
@@ -1545,9 +1931,12 @@ def main():
     # 클라우드는 터널(localhost)로만 들어오고, 로컬은 같은 PC 브라우저가 쓰므로
     # 127.0.0.1 로 충분하다. LAN 에서 붙어야 하면 --bind 0.0.0.0.
     ap.add_argument("--bind", default="127.0.0.1", help="바인딩 주소 (기본 127.0.0.1)")
+    ap.add_argument("--sync-url", default="",
+                    help="코드트리 보관본을 올릴 허브 (기본: _meta/endpoint.json 의 클라우드)")
     a = ap.parse_args()
-    global TOKEN
+    global TOKEN, SYNC_URL
     PY, PORT, VERBOSE, AUTO_PUSH = a.python, a.port, not a.quiet, not a.no_push
+    SYNC_URL = a.sync_url.strip().rstrip("/")
     TOKEN = "" if a.no_auth else load_token()
     global RUNNER, RUNNER_NAME, SPEED
     RUNNER, RUNNER_NAME = find_runner(a.runner)
@@ -1562,6 +1951,9 @@ def main():
     print("  채점러너 : %s" % RUNNER_NAME)
     print("             %s" % RUNNER)
     print("  자동푸시 : %s" % ("ON" if AUTO_PUSH else "OFF"))
+    print("  비공개 사이트: %s%s" % (", ".join(sorted(PRIVATE_SITES)) or "없음",
+                                   ("  ⚠️ 설정을 못 읽어 안전하게 비공개 (%s)" % PRIVATE_WHY)
+                                   if PRIVATE_WHY else "  (_meta/judge_config.json privateSites)"))
     print("  허용식   : (제한 x %.1f + %.1f) x 기기보정 %.2f" % (PY_MULT, PY_ADD, SPEED))
     print("             1초 제한 -> %.1f초  |  언어별 제한 명시 시 -> 제한 x %.2f"
           % (allowed_time(1), SPEED))

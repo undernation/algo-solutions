@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "528",
+ "title": "이진 트리",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-binary-tree-introduction/description",
+ "alias": "binary-tree-introduction",
+ "pid": 528,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "트리",
+ "lesson": "이진 트리 개념",
+ "card": "intro-binary-tree-introduction",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "72.0",
+  "submissions": "3027"
+ },
+ "sample_count": 0,
+ "statement_len": 554,
+ "fetched_at": "2026-09-23",
+ "statement": "이진 트리는 각 노드가 최대 두 개의 자식을 가질 수 있는 트리입니다. 자식의 수가 제한되어 있어 구현이 비교적 간단하며, 특히 배열을 사용할 경우 부모 노드에서 자식 노드로의 이동 연산을 손쉽게 구현할 수 있습니다. 이진 트리를 배열로 구현할 때는 루트 노드를 $1$번 인덱스에 두는 **1-based 인덱스**를 사용하는 것이 일반적입니다.\n\n다음 코드를 완성해봅시다. `move_to_left_child` 함수는 왼쪽 자식으로 이동하는 함수이며, `move_to_right_child`는 오른쪽 자식으로 이동하는 함수이고, `move_to_parent`는 부모로 이동하는 함수입니다.\n\n```jsx\nfunction move_to_left_child(n)\n  return (1)\n  \nfunction move_to_right_child(n)\n  return (2)\n\nfunction move_to_parent(n)\n  return (3)\n```\n\n**보기** — 순서대로 3개 고르기\n\n1. `n/2`\n2. `n/2 - 1`\n3. `n*2 + 1`\n4. `n*2`\n5. `n*2 - 1`"
+}

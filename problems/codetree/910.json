@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "910",
+ "title": "요일 맞추기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-guess-day-of-week/description",
+ "alias": "guess-day-of-week",
+ "pid": 910,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 I",
+ "lesson": "날짜와 시간 계산",
+ "card": "challenge-guess-day-of-week",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "45.5",
+  "submissions": "7558"
+ },
+ "sample_count": 1,
+ "statement_len": 125,
+ "fetched_at": "2026-09-23",
+ "statement": "$2011$년 $m_1$월 $d_1$일이 월요일 이었다면, $2011$년 $m_2$월 $d_2$은 어떤 요일인지를 구하는 프로그램을 작성해보세요. $2011$년은 윤년이 아닌 해이기 때문에 $2$월은 $28$일까지 있습니다.",
+ "input_spec": "첫 번째 줄에 $m_1$, $d_1$, $m_2$, $d_2$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 $2011$년 $m_2$월 $d_2$일에 해당하는 요일을 출력합니다.  \n각 요일에 따라 Sun, Mon, Tue, Wed, Thu, Fri, Sat 형태로 출력합니다.",
+ "constraints": "- $1 \\le m_1, m_2 \\le 12$\n- $1 \\le d_1, d_2 \\le 31$\n- $m_1$월 $d_1$일과 $m_2$월 $d_2$일은 모두 $2011$년에 실제로 존재하는 날짜입니다. 즉 각 월의 일수를 넘는 날짜는 주어지지 않습니다.",
+ "samples": [
+  {
+   "in": "5 4 5 3\n",
+   "out": "Sun\n"
+  }
+ ],
+ "sample_notes": [
+  "$2011$년 $5월 4$일이 월요일이라면, $2011$년 $5$월 $3$일은 일요일 입니다."
+ ]
+}

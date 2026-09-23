@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1712",
+ "title": "팰린드롬과 연결리스트",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-palindrome-and-linkedlist/description",
+ "alias": "palindrome-and-linkedlist",
+ "pid": 1712,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "배열, 연결 리스트",
+ "lesson": "Iterator",
+ "card": "challenge-palindrome-and-linkedlist",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "68.8",
+  "submissions": "2271"
+ },
+ "sample_count": 0,
+ "statement_len": 609,
+ "fetched_at": "2026-09-23",
+ "statement": "이중 연결 리스트가 하나 주어집니다.  리스트 내의 데이터의 개수가 짝수일 때, 리스트 내의 원소가 대칭으로 주어져 있는지를 판단하려고 합니다.\n\n이때 리스트가 대칭이라는 말은 [$1$, $2$, $9$, $9$, $2$, $1$] 과 같이 처음 원소가 끝 원소와 같고, 두 번째 원소와 끝에서 두 번째 원소가 같고, ... 이렇게 가운데를 기준으로 대칭인 위치에 있는 모든 원소의 값이 같은 경우를 뜻합니다.\n\n다음 코드의 빈칸을 채워 함수를 완성해보세요. 이때, `DLL`이라는 것은 Doubly Linked List의 약자로, 이중 연결리스트를 의미합니다.\n\n```js\nfunction solution(DLL)\n  set node1 = DLL.(1)\n  set node2 = DLL.(2)\n  while node1 != null\n    if node1.data != node2.data\n      return false\n\n    node1 = node1.prev\n    node2 = node2.(3)\n\n  return true\n```\n\n**보기** — 순서대로 3개 고르기\n\n1. `head`\n2. `tail`\n3. `next`\n4. `prev`\n5. `null`\n6. `data`"
+}

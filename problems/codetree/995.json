@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "995",
+ "title": "배열 추출 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-array-extraction-2/description",
+ "alias": "array-extraction-2",
+ "pid": 995,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "중급 자료구조",
+ "lesson": "Priority Queue",
+ "card": "challenge-array-extraction-2",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "83.5",
+  "submissions": "533"
+ },
+ "sample_count": 2,
+ "statement_len": 242,
+ "fetched_at": "2026-09-23",
+ "statement": "배열에 다음과 같은 연산을 할 수 있습니다.\n\n배열에 다음과 같은 연산을 수행할 수 있습니다.\n\n1. $x$가 $0$이 아니라면, 정수 $x$ ($x\\neq0$)를 배열에 추가합니다.  \n2. 정수 $x$가 $0$이면, 배열에서 절댓값이 가장 작은 정수를 출력한 후 제거합니다. 절댓값이 가장 작은 정수가 여러 개라면, 그 중 가장 작은 수를 선택합니다.\n\n빈 배열에서 시작하여 주어진 연산을 순서대로 실행하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 연산의 개수 $N$이 주어집니다.\n\n다음 $N$개의 줄에는 연산에 대한 정보를 나타내는 정수 $x$가 주어집니다.",
+ "output_spec": "입력에서 $0$이 주어진 횟수만큼 답을 출력합니다.\n\n만약 배열이 비어 있는 경우인데 절댓값이 가장 작은 값을 출력하라고 한 경우에는 $0$을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100\\,000$\n - $-2^{31} < x < 2^{31}$",
+ "samples": [
+  {
+   "in": "12\n-1\n1\n0\n0\n0\n-1\n-1\n1\n0\n0\n0\n0\n",
+   "out": "-1\n1\n0\n-1\n-1\n1\n0\n"
+  },
+  {
+   "in": "13\n1\n1\n-1\n-1\n2\n-2\n0\n0\n0\n0\n0\n0\n0\n",
+   "out": "-1\n-1\n1\n1\n-2\n2\n0\n"
+  }
+ ]
+}

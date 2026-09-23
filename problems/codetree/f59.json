@@ -1,0 +1,39 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f59",
+ "title": "불안한 무빙워크",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/unstable-moving-walk/description",
+ "alias": "unstable-moving-walk",
+ "pid": 59,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2020 하반기 오전 1번 문제",
+ "level": "L11",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "43.6",
+  "submissions": "2211"
+ },
+ "sample_count": 2,
+ "statement_len": 1491,
+ "fetched_at": "2026-09-23",
+ "statement": "길이가 $n$의 무빙 워크의 안정성 테스트를 하고자 합니다. 무빙워크는 사람을 한 쪽 끝에서 반대쪽 끝으로 옮겨주는 기계를 의미하며 다음과 같이 총 $2n$개의 판으로 구성됩니다.\n\n<p align=\"center\">\n<img width=\"500\" height=\"130\" src=\"https://contents.codetree.ai/problems/144/images/c50884da-db79-47d1-b5c9-32fb4e95a863.png\">\n</p>\n\n무빙워크의 레일은 시계 방향으로 회전합니다. $1$번 칸부터 $2n-1$번 칸은 한 번 회전할 때 $2n$번째 칸의 위치로 이동하게 되고 $2n$번째 칸은 $1$번째 칸의 위치로 이동하게 됩니다. 무빙워크의 안정성을 평가하기 위해 실제 사람을 대상으로 시험 운행을 해보고자 합니다. 각 사람은 $1$번 칸에 올라서서 $n$번 칸에서 내리게 됩니다. 사람이 어떤 칸에 올라가거나 이동하면 그 칸의 안정성은 즉시 $1$만큼 감소하게 되며 안정성이 $0$인 칸에는 올라갈 수 없습니다. 안정성 테스트는 다음 과정을 거쳐서 진행됩니다.\n\n1. 무빙워크가 한 칸 회전합니다.\n\n2. 가장 먼저 무빙워크에 올라간 사람부터 무빙워크가 회전하는 방향으로 한 칸 이동할 수 있으면 이동합니다. 만약 앞선 칸에 사람이 이미 있거나 앞선 칸의 안정성이 $0$인 경우에는 이동하지 않습니다.\n\n3. $1$번 칸에 사람이 없고 안정성이 $0$이 아니라면 사람을 한 명 더 올립니다.\n\n4. 안정성이 $0$인 칸이 $k$개 이상이라면 과정을 종료합니다. 그렇지 않다면 다시 위의 과정을 반복합니다.\n\n단, $1$부터 $3$까지의 과정 중 $n$번 칸 위치에 사람이 위치하면 그 즉시 내리게 됩니다.\n\n각 칸의 안정성은 시간에 지남에 따라 다시 상승하지 않습니다.\n\n예를 들어 각 칸의 안정성이 $2$이고 $0$인 칸이 $1$ 이상일 때 실험을 종료한다고 할 때 아래와 같은 과정으로 실험이 진행됩니다.\n\n<p align=\"center\">\n<img width=\"550\" height=\"130\" src=\"https://contents.codetree.ai/problems/144/images/45cfcd2e-5b0a-43bc-844d-2cdbebb92f19.png\">\n</p>\n\n<p align=\"center\">\n<img width=\"550\" height=\"130\" src=\"https://contents.codetree.ai/problems/144/images/f56a4917-6c97-4bb8-89b0-6b722dcca12c.png\">\n</p>\n\n<p align=\"center\">\n<img width=\"400\" height=\"130\" src=\"https://contents.codetree.ai/problems/144/images/b6d384ca-acfa-4967-a04d-1e39f06085e0.png\">\n</p>\n\n위의 과정이 한 번의 실험이라고 할 때 과정이 종료될 때 몇 번째 실험을 하고 있었는지 구하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에는 무빙워크의 길이 $n$, 실험을 종료하게 하는 안정성이 $0$인 판의 개수 $k$가 공백을 사이에 두고 주어집니다.\n\n두 번째 줄에는 무빙워크 각각의 칸의 안정성이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "무빙워크가 종료될 때 몇 번째 실험 중이었는지를 출력하세요.",
+ "constraints": "- $2 \\le n \\le 100$\n- $1 \\le k \\le 2n$\n- $1 \\le$ 판의 안정성 $\\le 1\\,000$\n- $n, k,$ 판의 안정성은 모두 정수입니다.",
+ "samples": [
+  {
+   "in": "3 1\n2 2 2 2 2 2\n",
+   "out": "3\n"
+  },
+  {
+   "in": "3 3\n1 1 1 1 1 1\n",
+   "out": "2\n"
+  }
+ ]
+}

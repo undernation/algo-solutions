@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "565",
+ "title": "리스트로 BFS하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-bfs-using-adjustg-list/description",
+ "alias": "bfs-using-adjustg-list",
+ "pid": 565,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 탐색",
+ "lesson": "BFS 탐색",
+ "card": "test-bfs-using-adjustg-list",
+ "card_type": "Test",
+ "level": "Medium",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "88.8",
+  "submissions": "2215"
+ },
+ "sample_count": 0,
+ "statement_len": 320,
+ "fetched_at": "2026-09-23",
+ "statement": "한 그래프를 표현한 인접 리스트가 다음과 같습니다.\n\n![](https://contents.codetree.ai/problems/565/images/problems-48500bce-25e5-49c1-b849-ead30efb22cf.svg)\n\n$1$번을 기점으로 탐색을 시작한다고 할 때, 이 리스트를 기반으로 BFS를 수행한 결과를 추측해봅시다. 단, 탐색을 진행하다 어떤 시점에 방문 할 수 있는 지점이 여러 개인 경우 번호가 낮은 정점부터 큐에 넣는다고 가정합니다.\n\n**보기** — 순서대로 5개 고르기\n\n1. `1`\n2. `2`\n3. `3`\n4. `4`\n5. `5`"
+}

@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "757",
+ "title": "출력결과 75",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201830/description",
+ "alias": "reading-k201830",
+ "pid": 757,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "함수",
+ "lesson": "Call by value / Call by reference",
+ "card": "challenge-reading-k201830",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "71.3",
+  "submissions": "3359"
+ },
+ "sample_count": 0,
+ "statement_len": 1249,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 프로그램의 출력 결과는 무엇인가?\n\n## Python3 코드\n```python\ndef swap(a, b):\n    tmp = a\n    a = b; b = tmp\n    print('{}, {}, '.format(a, b), end='')\n\na = 2;b = 3\nswap(a, b)\nprint('{}, {}'.format(a, b))\n```\n\n## C 코드\n\n```c\nvoid swap(int a, int b) {    \n    int temp = a;    \n    a = b; b = temp;    \n    printf(\"%d, %d, \", a, b);\n}\nint main() {    \n    int a = 2; int b = 3;    \n    swap(a, b);    \n    printf(\"%d, %d\", a, b);\n}\n```\n\n## C++ 코드\n\n```cpp\nvoid swap(int a, int b) {    \n    int temp = a;    \n    a = b; b = temp;    \n    cout << a << \", \" << b << \", \";\n}\nint main() {    \n    int a = 2; int b = 3;    \n    swap(a, b);    \n    cout << a << \", \" << b;\n}\n```\n\n## Java 코드\n\n```java\npublic static void swap(int a, int b) {    \n    int temp = a;    \n    a = b; b = temp;    \n    System.out.print(a + \", \" + b + \", \");\n}\npublic static void main(String[] args) {\n    int a = 2; int b = 3;    \n    swap(a, b);\n    System.out.print(a + \", \" + b);\n}\n```\n\n## JavaScript 코드\n\n```JavaScript\nfunction swap(a, b) {\n    let temp = a;\n    a = b;\n    b = temp;\n    process.stdout.write(a + \", \" + b + \", \");\n}\n\nlet a = 2;\nlet b = 3;\nswap(a, b);\nprocess.stdout.write(a + \", \" + b);\n```\n\n**보기** — 하나 고르기\n\n1. 2, 3, 3, 3\n2. 2, 3, 3, 2\n3. 2, 3, 2, 3\n4. 3, 2, 3, 2\n5. 3, 2, 2, 3"
+}

@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1880",
+ "title": "크기 비교 3",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-size-comparison-3/description",
+ "alias": "size-comparison-3",
+ "pid": 1880,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "위상정렬",
+ "lesson": "Topological Sort",
+ "card": "intro-size-comparison-3",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "75.7",
+  "submissions": "255"
+ },
+ "sample_count": 1,
+ "statement_len": 96,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$번 부터 $N$번 까지의 $N$개의 정수와 $M$개의 크기 비교 결과가 주어졌을 때, $N$개의 번호의 크기순으로 작은것부터 나열하여 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 정수의 개수 $N$, 크기 비교 결과의 개수 $M$ 이 공백을 두고 주어집니다.\n\n두 번째 줄부터 $M$개의 줄에 걸쳐 두 정수가 공백을 두고 주어지는데, $a\\ b$라고 주어지면 앞의 정수($a$번째 정수)가 뒤의 정수($b$번째 정수)보다 작다는 뜻입니다.",
+ "output_spec": "$N$개의 정수를 크기순으로 작은것부터 나열하여 공백을 두고 출력합니다.\n\n답이 여러가지인 경우에는 사전 순으로 가장 앞선 순서 순열을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 32\\,000$\n- $1 \\le M \\le 100\\,000$",
+ "samples": [
+  {
+   "in": "3 2\n1 3\n2 3\n",
+   "out": "1 2 3\n"
+  }
+ ]
+}

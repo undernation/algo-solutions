@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3407",
+ "title": "갈 수 있는 경우의 수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-possible-path-of-travel/description",
+ "alias": "possible-path-of-travel",
+ "pid": 3407,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "위상정렬",
+ "lesson": "Graph DP",
+ "card": "challenge-possible-path-of-travel",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "69.9",
+  "submissions": "176"
+ },
+ "sample_count": 2,
+ "statement_len": 144,
+ "fetched_at": "2026-09-23",
+ "statement": "$n$개의 노드와 $m$개의 간선으로 이루어진 단방향 그래프가 주어졌을 때, $1$번 노드에서 출발하여 $n$번 노드로 이동 가능한 서로 다른 경로의 수를 구하는 프로그램을 작성해보세요. 단, 주어지는 그래프에서는 사이클이 존재하지 않음을 가정해도 좋습니다.",
+ "input_spec": "첫 번째 줄에 $n$과 $m$이 공백을 사이에 두고 주어집니다.\n\n두 번째 줄 부터는 $m$개의 줄에 걸쳐 간선의 정보 $(x, y)$가 공백을 사이에 두고 주어집니다. 이는 $x$에서 $y$로 가는 간선이 존재함을 의미합니다.",
+ "output_spec": "첫 번째 줄에 가능한 서로 다른 경우의 수 10억 7로 나눈 나머지를 출력합니다.",
+ "constraints": "- $1 \\le n, m \\le 100\\,000$\n - $1 \\le x, y \\le n, x \\neq y$",
+ "samples": [
+  {
+   "in": "4 4\n2 3\n3 4\n1 2\n1 4\n",
+   "out": "2\n"
+  },
+  {
+   "in": "4 3\n2 4\n3 2\n1 3\n",
+   "out": "1\n"
+  }
+ ]
+}

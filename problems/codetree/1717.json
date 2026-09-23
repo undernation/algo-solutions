@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1717",
+ "title": "흥미로운 숫자 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-interesting-numbers-2/description",
+ "alias": "interesting-numbers-2",
+ "pid": 1717,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 II",
+ "lesson": "값을 기준으로 완전탐색",
+ "card": "challenge-interesting-numbers-2",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "71.6",
+  "submissions": "1640"
+ },
+ "sample_count": 1,
+ "statement_len": 286,
+ "fetched_at": "2026-09-23",
+ "statement": "두 개의 정수 $X$, $Y$가 주어지면 $X$ 이상 $Y$ 이하에 있는 ‘흥미로운 숫자’의 개수를 세려고 합니다. 여기서 말하는 ‘흥미로운 숫자’란 모든 자릿수에 있는 숫자들이 같지만, 정확히 한 자리만 다른 수를 의미합니다. 예를 들어 $33335$와 $1118$은 정확히 한 자리만 다르므로 ‘흥미로운 숫자’지만, $333333$는 전부 같은 숫자로만 이루어져 있고 $11188$은 정확히 한 자리만 다른 것은 아니므로 ‘흥미로운 숫자’가 아닙니다. ‘흥미로운 숫자’의 개수를 세는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $X$와 $Y$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 흥미로운 숫자의 개수를 출력합니다.",
+ "constraints": "- $100 \\le X \\le Y \\le 1\\,000\\,000$",
+ "samples": [
+  {
+   "in": "110 133\n",
+   "out": "13\n"
+  }
+ ],
+ "sample_notes": [
+  "$110$ 이상 $133$ 이하에 있는 흥미로운 숫자들은 $110$, $112$, $113$, $114$, $115$, $116$, $117$, $118$, $119$, $121$, $122$, $131$, $133$로 총 $13$개가 있습니다."
+ ]
+}

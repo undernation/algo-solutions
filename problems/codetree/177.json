@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "177",
+ "title": "좌우 지그재그 출력",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-print-lr-zigzag/description",
+ "alias": "print-lr-zigzag",
+ "pid": 177,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "다중 반복문",
+ "lesson": "행, 열에 따라 다르게 숫자 출력",
+ "card": "challenge-print-lr-zigzag",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "82.5",
+  "submissions": "2721"
+ },
+ "sample_count": 2,
+ "statement_len": 171,
+ "fetched_at": "2026-09-23",
+ "statement": "자연수 $N$이 주어집니다. $1$부터 $N \\times N$까지 다음 규칙에 따라 출력하는 프로그램을 작성해보세요. \n\n![](https://contents.codetree.ai/problems/177/images/problems-338c24e0-a9e5-4c38-a114-bbbdd85fe4fb.png)",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.",
+ "output_spec": "$1$부터 $N \\times N$까지 규칙에 맞춰 적었을 때의 결과를 $N$개의 줄에 걸쳐 출력합니다. \n\n각 줄에는 각 행에 해당하는 $N$개의 수를 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $1 \\leq N \\leq 100$",
+ "samples": [
+  {
+   "in": "3\n",
+   "out": "1 2 3\n6 5 4\n7 8 9\n"
+  },
+  {
+   "in": "4\n",
+   "out": "1 2 3 4\n8 7 6 5\n9 10 11 12\n16 15 14 13\n"
+  }
+ ]
+}

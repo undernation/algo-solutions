@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "431",
+ "title": "시간복잡도 입문",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-time-complexity-1/description",
+ "alias": "time-complexity-1",
+ "pid": 431,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "시간, 공간복잡도",
+ "lesson": "시간복잡도의 정의",
+ "card": "challenge-time-complexity-1",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "90.9",
+  "submissions": "3645"
+ },
+ "sample_count": 0,
+ "statement_len": 203,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 코드의 시간복잡도를 판단해봅시다.\n```js\nfunction solution()\n  set x = 0\n  set y = 0\n  set z = []\n  if x == y\n    print(z)\n```\n\n**보기** — 하나 고르기\n\n1. $$O(1)$$\n2. $$O(\\log N)$$\n3. $$O(N)$$\n4. $$O(\\log N)$$\n5. $$O(N^2)$$"
+}

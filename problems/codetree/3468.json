@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3468",
+ "title": "물체 놓기 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-place-object-2/description",
+ "alias": "place-object-2",
+ "pid": 3468,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Advanced DP",
+ "lesson": "Bitmask DP",
+ "card": "challenge-place-object-2",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 5초 · C++17 1초",
+  "memory": "288 MB",
+  "time_sec": 5.0
+ },
+ "stats": {
+  "accept_rate": "81.6",
+  "submissions": "49"
+ },
+ "sample_count": 2,
+ "statement_len": 333,
+ "fetched_at": "2026-09-23",
+ "statement": "$n$개의 정점에 물체를 놓으려 하는데 물체를 놓는 방식은 총 $2$가지입니다.\n\n1. 각 정점에 물체를 직접 놓습니다. 각 정점에 직접 물체를 직접 놓는데 드는 비용이 주어져 있습니다.\n\n2. 이미 물체가 존재하는 정점에서부터 다른 정점에 단방향 간선을 연결하였을 때, 연결된 정점에도 물체가 생깁니다. 이 경우 간선을 연결하는데 비용이 듭니다. 간선을 연결하는 비용은 행렬의 형태로 주어지는데, $i$ 번 정점에서 $j$ 번 정점을 연결하는데 드는 비용은 행렬의 $(i, j)$칸에 주어집니다.\n\n최소 $k$개 이상의 칸에 물체를 놓기 위해 필요한 최소 비용을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $n$과 $k$가 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터 $n$개의 줄에 걸쳐 각 정점에 직접 물체를 놓는 비용이 주어집니다.\n\n$n+2$ 번째 줄부터 $n$개의 줄에 걸쳐 한 줄에 $n$개씩 비용이 주어지는데, 행렬의 $(i, j)$칸은 $i$ 번 정점과 $j$ 번 정점을 연결하는데 드는 비용을 의미합니다. $(i, i)$ 값은 항상 $0$으로 주어지며, 다른 칸에 $0$이 주어지는 경우는 없습니다.",
+ "output_spec": "$k$개 이상의 정점에 물체를 놓기 위해 필요한 최소 비용을 출력합니다.",
+ "constraints": "- $1 \\le k \\le n \\le 16$\n - $1 \\le$ 직접 물체를 놓는 비용 $\\le 100,000$\n - $1 \\le$ 연결하는데 드는 비용 $\\le 100,000$",
+ "samples": [
+  {
+   "in": "4 2\n5\n4\n4\n3\n0 2 2 2\n2 0 3 3\n2 3 0 4\n2 3 4 0\n",
+   "out": "5\n"
+  },
+  {
+   "in": "4 3\n4\n4\n6\n4\n0 5 5 5\n5 0 5 5\n1 1 0 5\n5 5 5 0\n",
+   "out": "8\n"
+  }
+ ]
+}

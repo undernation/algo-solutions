@@ -1,0 +1,39 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f326",
+ "title": "예술성",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/artistry/description",
+ "alias": "artistry",
+ "pid": 326,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2022 상반기 오전 2번 문제",
+ "level": "L13",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "70.0",
+  "submissions": "4623"
+ },
+ "sample_count": 2,
+ "statement_len": 1986,
+ "fetched_at": "2026-09-23",
+ "statement": "예술가 Sam은 그림에 대한 예술성을 평가하는 알고리즘을 만들어냈습니다. 그림을 편의상 n * n 크기의 격자로 생각하고, 각 칸의 색깔을 1이상 10이하의 숫자로 표현하여 이 알고리즘을 적용해보려 합니다.\n\n다음은 5 * 5 크기의 그림의 예시입니다.\n\n<p align=\"center\">\n<img width=\"300\" src=\"https://contents.codetree.ai/problems/2413/images/70c1000f-57c9-41df-9627-43ca58533984.png\">\n</p>\n\n먼저 이 그림에서 동일한 숫자가 상하좌우로 인접해있는 경우 동일한 그룹이라 본다면, 총 4개의 그룹이 만들어지게 됩니다.\n\n<p align=\"center\">\n<img width=\"300\" src=\"https://contents.codetree.ai/problems/2413/images/af4e33b2-b1d5-44bd-b302-f493b7d28216.png\">\n</p>\n\n예술 점수는 모든 그룹 쌍의 조화로움의 합으로 정의됩니다. 그룹 a와 그룹 b의 조화로움은 `(그룹 a에 속한 칸의 수 + 그룹 b에 속한 칸의 수 ) x 그룹 a를 이루고 있는 숫자 값 x 그룹 b를 이루고 있는 숫자 값 x 그룹 a와 그룹 b가 서로 맞닿아 있는 변의 수`로 정의됩니다.\n\n예로 `<Figure 2>` 에서 두 그룹 G2, G4의 조화로움은 `(11 + 8) x 2 x 1 x 4 = 152`가 됩니다.\n\n<p align=\"center\">\n<img width=\"300\" src=\"https://contents.codetree.ai/problems/2413/images/4105ebe8-2aa4-46b8-845c-633e13cd7c76.png\">\n</p>\n\n그룹 쌍 간의 조화로움 값이 0보다 큰 조합인 (G1, G2), (G2, G3), (G2, G4), (G3, G4) 의 조화로움 값을 전부 더하면 `48 + 192 + 152 + 156 = 548`이 됩니다. 이를 초기 예술 점수라 부르겠습니다.\n\n초기 예술 점수를 구한 뒤에는 그림에 대한 회전을 진행합니다. \n\n회전은 정중을 기준으로 두 선을 그어 만들어지는 십자 모양과 그 외 부분으로 나뉘어 진행됩니다.\n\n<p align=\"center\">\n<img width=\"300\" src=\"https://contents.codetree.ai/problems/2413/images/e339e06c-0dbf-41ea-ba9d-9e558c61cb60.png\">\n</p>\n\n- 십자 모양의 경우 통째로 반시계 방향으로 90' 회전합니다.\n\n<p align=\"center\">\n<img width=\"600\" src=\"https://contents.codetree.ai/problems/2413/images/6d0d5fd0-dfe4-4c33-8695-bfcb5758c48a.png\">\n</p>\n\n- 십자 모양을 제외한 4개의 정사각형은 각각 개별적으로 시계 방향으로 90'씩 회전이 진행됩니다.\n\n<p align=\"center\">\n<img width=\"600\" src=\"https://contents.codetree.ai/problems/2413/images/ffc44531-025b-4e35-b573-068498be5b15.png\">\n</p>\n\n두 부분에 대한 회전이 동시에 진행되므로 회전 이후 `<Figure 4>`는 다음 모습이 됩니다.\n\n<p align=\"center\">\n<img width=\"300\" src=\"https://contents.codetree.ai/problems/2413/images/f92a9f13-2db2-4689-a23e-c6a7580ef568.png\">\n</p>\n\n이제 `<Figure 7>`의 예술 점수 역시 마찬가지 방법으로 구하면 442점이 됩니다. 이는 1회전 이후 예술 점수가 됩니다.\n\nn * n 크기의 그림 정보가 주어졌을 때, 초기 예술 점수, 1회전 이후 예술 점수, 2회전 이후 예술 점수, 그리고 3회전 이후 예술 점수의 합을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 정수 $n$이 주어집니다. $n$은 홀수입니다.  \n그 다음 줄부터 $n$개의 줄에 걸쳐, 각 행에 칠해져 있는 색깔 정보를 나타내는 정수들이 공백으로 구분되어 주어집니다.",
+ "output_spec": "첫 번째 줄에 초기 예술 점수, 1회전 이후 예술 점수, 2회전 이후 예술 점수, 그리고 3회전 이후 예술 점수를 모두 합한 값을 출력합니다.",
+ "constraints": "- $3 \\le n \\le 29$  ($n$은 홀수)\n- $1 \\le \\texttt{각 칸의 색깔 값} \\le 10$",
+ "samples": [
+  {
+   "in": "5\n1 2 2 3 3\n2 2 2 3 3\n2 2 1 3 1\n2 2 1 1 1\n2 2 1 1 1\n",
+   "out": "1771\n"
+  },
+  {
+   "in": "5\n1 2 2 2 2\n1 1 1 3 3\n1 2 1 3 1\n1 1 1 1 1\n2 2 1 1 1\n",
+   "out": "2374\n"
+  }
+ ]
+}

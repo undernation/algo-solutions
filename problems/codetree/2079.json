@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2079",
+ "title": "폭탄 해체 작업",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-the-bomb-dismantling/description",
+ "alias": "the-bomb-dismantling",
+ "pid": 2079,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Greedy",
+ "lesson": "Greedy Algorithm",
+ "card": "challenge-the-bomb-dismantling",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "41.4",
+  "submissions": "700"
+ },
+ "sample_count": 1,
+ "statement_len": 243,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 시한 폭탄이 있습니다. 각 폭탄을 해체하는데는 $1$시간 걸리며, 폭탄마다 해체하면 얻을 수 있는 점수가 있습니다. 각 폭탄마다 해체해야만 하는 시간 제한이 정해져 있으며, 시간이 다 되어 터진 폭탄은 이후 해체할 수는 없게 되지만 다른 폭탄 해체 작업에 영향을 주지는 않습니다. 폭탄 해체 작업은 모든 폭탄이 해체되거나 터질 때까지 진행합니다. 폭탄을 해체해서 얻을 수 있는 점수의 최댓값을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $N$이 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 각 줄에 각 폭탄을 해체해서 얻을 수 있는 점수와 시간 제한이 공백을 사이에 두고 차례대로 주어집니다.",
+ "output_spec": "첫 번째 줄에 폭탄을 해체해서 얻을 수 있는 점수의 최댓값을 출력합니다.",
+ "constraints": "- $1\\le N\\le10\\,000$\n- $1\\le \\texttt{폭탄 당 점수} \\le1\\,000$\n- $1\\le \\texttt{폭탄 당 시간 제한} \\le10\\,000$",
+ "samples": [
+  {
+   "in": "4\n10 3\n7 5\n8 1\n2 1\n",
+   "out": "25\n"
+  }
+ ],
+ "sample_notes": [
+  "시간 제한으로 인해 $3$번과 $4$번 폭탄 중 하나만 해체할 수 있습니다. 점수가 더 큰 $3$번 폭탄을 해체하고 $1$번, $2$번 폭탄을 순서대로 해체하면 $8+10+7=25$ 점을 얻을 수 있습니다."
+ ]
+}

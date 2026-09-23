@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3472",
+ "title": "인접한 칸 선택",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-pick-adjacent-cells/description",
+ "alias": "pick-adjacent-cells",
+ "pid": 3472,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Advanced DP",
+ "lesson": "Bitmask DP",
+ "card": "challenge-pick-adjacent-cells",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 5초 · C++17 1초",
+  "memory": "288 MB",
+  "time_sec": 5.0
+ },
+ "stats": {
+  "accept_rate": "67.4",
+  "submissions": "43"
+ },
+ "sample_count": 2,
+ "statement_len": 135,
+ "fetched_at": "2026-09-23",
+ "statement": "$0, 1$ 숫자로만 이루어진 $n \\times m$ 크기의 격자 정보가 주어집니다. $0$은 빈 칸을, $1$은 벽을 나타냅니다.\n\n최대한 많은 빈 칸을 선택하되 상하좌우로 인접한 칸이 동시에 선택되지는 않도록 하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $n$과 $m$이 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터는 $n$개의 줄에 걸쳐 한 줄에 $m$개씩 각 행에 해당하는 숫자 값이 공백을 사이에 두고 주어집니다. 주어지는 숫자는 $0$ 또는 $1$이며 $0$은 빈 칸을, $1$은 벽을 나타냅니다.",
+ "output_spec": "인접한 칸을 선택하지 않으면서 최대로 선택할 수 있는 빈 칸의 수를 출력합니다.",
+ "constraints": "- $1 \\le n, m \\le 10$",
+ "samples": [
+  {
+   "in": "3 3\n0 0 0\n0 0 0\n0 0 0\n",
+   "out": "5\n"
+  },
+  {
+   "in": "3 3\n0 0 1\n1 0 1\n1 0 1\n",
+   "out": "2\n"
+  }
+ ]
+}

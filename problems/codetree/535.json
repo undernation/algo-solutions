@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "535",
+ "title": "이진 탐색 트리",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-bst-concept/description",
+ "alias": "bst-concept",
+ "pid": 535,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "트리",
+ "lesson": "이진 탐색 트리",
+ "card": "challenge-bst-concept",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Multiple choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "37.2",
+  "submissions": "4253"
+ },
+ "sample_count": 0,
+ "statement_len": 228,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 중 옳은 것을 모두 고르세요.\n\n**보기** — 모두 고르기\n\n1. 노드가 `1`개인 트리는 반드시 이진 탐색 트리이다.\n2. 노드가 `2`개인 트리는 반드시 이진 탐색 트리이다.\n3. 노드가 `4`개이면서, 높이가 `4`인 이진 탐색 트리는 존재하지 않는다.\n4. 특정 노드가 부모 노드의 왼쪽 자식이라면, 부모의 오른쪽 자식 노드를 포함한 해당 서브트리의 모든 노드는 해당 노드보다 큰 값을 갖는다."
+}

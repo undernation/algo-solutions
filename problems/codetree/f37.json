@@ -1,0 +1,39 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f37",
+ "title": "조삼모사",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/three-at-dawn-and-four-at-dusk/description",
+ "alias": "three-at-dawn-and-four-at-dusk",
+ "pid": 37,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2017 하반기 오전 1번 문제",
+ "level": "L9",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "57.0",
+  "submissions": "2233"
+ },
+ "sample_count": 2,
+ "statement_len": 1110,
+ "fetched_at": "2026-09-23",
+ "statement": "$n$개의 일이 주어질 때 이를 아침과 저녁으로 $\\frac{n}{2}$개씩 나누어처리하고자 합니다.\n\n일마다 특성이 다르기 때문에 같이할 때의 업무 강도를 나타내는 업무 간의 상성 $P_{ij}$가 존재합니다. 예를 들어 업무 상성이 다음과 같이 주어질 때,\n\n<p align=\"center\">\n<img width=\"400\" height=\"400\" src=\"https://contents.codetree.ai/problems/124/images/ea1b2228-639d-406d-9319-187f7d73ce75.png\">\n</p>\n\n$1, 2$번 일을 아침에 $3, 4$번일을 저녁에 한다면\n\n아침에 하는 일의 총 업무 강도는 $P_{12}$ + $P_{21}$ = 8이 되고\n\n저녁의 경우 $P_{34}$ + $P_{43}$ = 13이 됩니다.\n\n만약 $1,4$번 일을 아침에 $2, 3$번 일을 저녁에 한다면,\n\n아침의 경우 $P_{14}$ + $P_{41}$ = 2\n\n저녁의 경우 $P_{23}$ + $P_{32}$ = 9가 됩니다. \n\n아침과 저녁의 일의 힘든 정도가 너무 차이가 나면 일하기가 싫어지기 때문에, 아침의 하는 일의 업무 강도와 저녁에 하는 일의 업무 강도의 차이의 최솟값을 구하고자 합니다.\n\n위의 예시의 경우 $1,2$번 일과 $3, 4$번의 일로 나누어서 하는 것이 힘듦의 합의 차이가 $5$로 최솟값이 됩니다.\n\n<p align=\"center\">\n<img width=\"500\" height=\"500\" src=\"https://contents.codetree.ai/problems/124/images/ea891384-039b-4e05-aea7-7efd92b67008.png\">\n</p>\n\n6개의 일이 주어질 때 아침에 $2, 3, 4$번일, 저녁에 $1, 5, 6$ 번 일을 한다고 했을 때,\n\n아침의 경우 $P_{23}$ + $P_{32}$ + $P_{34}$ + $P_{43}$ + $P_{24}$ + $P_{42} = 64$,\n\n저녁의 경우 $P_{15}$ + $P_{51}$ + $P_{56}$ + $P_{65}$ + $P_{16}$ + $P_{61} = 45$가 됩니다.\n\n 아침과 저녁의 업무 강도의 차이의 최솟값을 구하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 일의 양을 의미하는 정수 $n$이 주어집니다.\n\n두 번째 줄부터 $(n+1)$번째 줄까지는 업무 간의 상성 $P_{ij}$이 주어집니다.",
+ "output_spec": "아침에 하는 일과 저녁에 하는 일의 업무 강도 차이의 최솟값을 출력하세요.",
+ "constraints": "- $4 \\le n \\le 20$\n- $n$ 은 $2$의 배수입니다.\n- $P_{ij} = 0$, ($i = j$)\n- $1 \\le P_{ij} \\le 100$ ($i \\neq j$)\n- $P_{ij}$ 는 정수입니다.",
+ "samples": [
+  {
+   "in": "4\n0 5 9 1\n3 0 5 10\n4 4 0 7\n1 12 6 0\n",
+   "out": "5\n"
+  },
+  {
+   "in": "6\n0 100 1 1 1 1\n1 0 30 30 1 1\n1 1 0 1 1 1\n1 1 1 0 1 1\n1 1 1 1 0 1\n1 1 1 1 40 0\n",
+   "out": "19\n"
+  }
+ ]
+}

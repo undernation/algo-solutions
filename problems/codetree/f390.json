@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f390",
+ "title": "아기 고래의 첫 항해",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/baby-whale-first-voyage/description",
+ "alias": "baby-whale-first-voyage",
+ "pid": 390,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2026 상반기 오후 1번 문제",
+ "level": "L12",
+ "limits": {
+  "time": "Python3 1.5초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.5
+ },
+ "stats": {
+  "accept_rate": "35.3",
+  "submissions": "1549"
+ },
+ "sample_count": 1,
+ "statement_len": 1451,
+ "fetched_at": "2026-09-23",
+ "statement": "넓은 바다에 갓 태어난 아기 고래 한 마리가 있습니다. 아기 고래는 엄마 고래로부터 독립하여 처음으로 넓은 바다를 탐험하려 합니다.\n\n바다는 $N \\times N$ 크기의 격자로 표현됩니다. 격자의 각 칸은 헤엄칠 수 있는 바다($0$)이거나, 지나갈 수 없는 암초($1$)입니다. 격자에서 $i$행 $j$열의 칸을 $(i, j)$로 표현합니다.\n\n아기 고래는 위치 $(r, c)$에서 출발하며, 처음에 바라보는 방향은 $d$입니다. 방향은 $1$이 상, $2$가 하, $3$이 좌, $4$가 우를 의미합니다.\n\n아기 고래의 목표는 헤엄칠 수 있는 모든 바다를 탐험하는 것입니다. 아기 고래는 다음 두 단계를 반복하며 이동합니다.\n\n### 1단계: 인접 탐험\n\n아기 고래는 현재 위치에서 상하좌우로 인접한 칸 중, 아직 방문하지 않은 바다 칸이 있다면 다음의 우선순위대로 한 칸 이동합니다.\n\n1. 현재 바라보는 방향으로 직진\n2. 좌회전($90$도 반시계 방향 회전) 후 직진\n3. 우회전($90$도 시계 방향 회전) 후 직진\n4. $180$도 회전 후 직진\n\n이동하면 바라보는 방향은 이동한 방향으로 갱신됩니다. 이 과정을 인접한 칸에 방문 가능한 바다가 없을 때까지 반복합니다.\n\n\n\n![Image](https://contents.codetree.ai/problem_factory/images/c063bda6-6c81-4a2d-8b5b-da2c33013477.webp)\n\n\n### 2단계: 가장 가까운 바다로 이동\n\n인접한 칸 모두에 방문 가능한 바다가 없다면, 아직 방문하지 않은 바다 칸 중 현재 위치에서 가장 가까운 칸을 찾아 이동합니다.\n\n- 거리는 상하좌우로 인접한 칸을 한 칸씩 이동하여 도달하는 데 필요한 최소 이동 횟수입니다. 암초는 지나갈 수 없지만, 이미 방문한 바다는 지나갈 수 있습니다.\n- 가장 가까운 칸이 여러 개라면, 행 번호가 가장 작은 칸을 선택합니다. 행 번호도 같다면 열 번호가 가장 작은 칸을 선택합니다.\n- 선택한 칸까지 최단 거리로 이동합니다. 매 이동마다 선택한 칸까지의 거리가 $1$ 줄어드는 인접한 칸 중 하나로 이동하며, 그러한 칸이 여러 개라면 좌, 하, 우, 상 순서의 우선순위로 선택합니다.\n- 도착 후 바라보는 방향은 마지막 이동 방향으로 갱신됩니다.\n\n\n\n![Image](https://contents.codetree.ai/problem_factory/images/676c191d-48a5-4145-ba7f-dbd14a130d74.webp)\n![Image](https://contents.codetree.ai/problem_factory/images/23dc3cad-adb8-44aa-942c-8715e24851cf.webp)\n\n\n\n\n\n\n도착 후에는 다시 1단계부터 반복합니다. 헤엄칠 수 있는 모든 바다를 방문하면 종료합니다.\n\n아기 고래가 방문하는 바다 칸의 위치를 방문 순서대로 출력해 주세요. 시작 위치도 출력에 포함합니다.",
+ "input_spec": "첫 번째 줄에 $N$, $r$, $c$, $d$가 공백을 두고 입력으로 주어집니다.\n\n다음 $N$개의 줄에 걸쳐, 격자 정보가 입력으로 주어집니다. 이 중 $i$번째 줄에는 $i$행의 칸 정보가 $N$개의 정수로 공백을 두고 주어지며, $0$은 바다, $1$은 암초를 의미합니다.",
+ "output_spec": "헤엄칠 수 있는 바다 칸의 개수를 $K$라 할 때, $K$개의 줄에 걸쳐 아기 고래가 방문하는 칸의 위치를 순서대로 출력합니다. 이 중 $i$번째 줄에는 $i$번째로 방문하는 칸의 행 번호와 열 번호를 공백을 두고 출력합니다.",
+ "constraints": "- $1 \\le N \\le 50$\n- $1 \\le r, c \\le N$\n- $1 \\le d \\le 4$\n- 격자의 각 칸의 값은 $0$ 또는 $1$입니다.\n- 위치 $(r, c)$의 칸은 바다($0$)입니다.\n- 모든 바다 칸은 바다 칸만을 거쳐 서로 도달 가능합니다.\n- 바다 칸은 $1$개 이상 존재합니다.",
+ "samples": [
+  {
+   "in": "4 4 4 4\n0 1 0 1\n0 0 0 0\n0 0 0 1\n1 1 0 0\n",
+   "out": "4 4\n4 3\n3 3\n2 3\n1 3\n2 2\n2 1\n3 1\n3 2\n1 1\n2 4\n"
+  }
+ ],
+ "sample_notes": [
+  "![Image](https://contents.codetree.ai/problem_factory/images/bef6d59d-844f-4057-970c-50cf0c7b71ed.webp)\n![Image](https://contents.codetree.ai/problem_factory/images/962ec965-49d4-4a73-b81f-ce182e163415.webp)\n![Image](https://contents.codetree.ai/problem_factory/images/104b071f-9720-485d-b1ff-97e46c0afc7a.webp)\n![Image](https://contents.codetree.ai/problem_factory/images/47adb9a3-9841-4651-94b6-eb9710544fd6.webp)\n![Image](https://contents.codetree.ai/problem_factory/images/3ae02dc5-db3a-4d0e-8f58-a076ee152322.webp)\n![Image](https://contents.codetree.ai/problem_factory/images/7d46a246-7673-41ed-b42e-63446ffa6054.webp)\n![Image](https://contents.codetree.ai/problem_factory/images/c5527972-1a5c-4a50-83c8-ad31b6eaae46.webp)\n![Image](https://contents.codetree.ai/problem_factory/images/ab534bb0-22bf-4ae9-abe8-fe8e65218391.webp)\n![Image](https://contents.codetree.ai/problem_factory/images/7ad31e4c-d6e6-4c06-8b06-92af60a33c92.webp)\n![Image](https://contents.codetree.ai/problem_factory/images/e5d20c90-4780-4664-841a-e6bb503fc96b.webp)\n![Image](https://contents.codetree.ai/problem_factory/images/a0d8f4c2-2ae1-4767-a0e8-5e1925a1702b.webp)\n![Image](https://contents.codetree.ai/problem_factory/images/abac3c1c-e065-4522-91a9-4d2c42c43c4e.webp)\n![Image](https://contents.codetree.ai/problem_factory/images/de14ebf7-08ee-493e-810e-5b5a63d6882d.webp)\n![Image](https://contents.codetree.ai/problem_factory/images/61d2a713-4a89-4e13-b728-98830f9e5d21.webp)\n![Image](https://contents.codetree.ai/problem_factory/images/50567ce6-08d5-4a16-a097-b7cb90b0ae99.webp)\n![Image](https://contents.codetree.ai/problem_factory/images/2b153992-da85-4f8d-861b-044cda2cde02.webp)"
+ ]
+}

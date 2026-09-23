@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "951",
+ "title": "선분 3개 지우기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-remove-three-segments/description",
+ "alias": "remove-three-segments",
+ "pid": 951,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 II",
+ "lesson": "물체 단위로 완전탐색",
+ "card": "challenge-remove-three-segments",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "79.8",
+  "submissions": "1092"
+ },
+ "sample_count": 1,
+ "statement_len": 231,
+ "fetched_at": "2026-09-23",
+ "statement": "직선 위에 선분 $N$개가 주어집니다. $i$번째 선분은 두 끝점 $a_i$와 $b_i$로 정해지는 구간 $[a_i,\\ b_i]$입니다.\n\n이 중 서로 다른 선분 $3$개를 제거하여, 남은 $N - 3$개의 선분이 서로 어느 것도 겹치지 않도록 만들려고 합니다. 이때 두 선분이 경계에서 닿는 경우도 겹치는 것으로 봅니다.\n\n제거할 선분 $3$개를 고르는 서로 다른 방법의 수를 출력하는 프로그램을 작성해 보세요.",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.\n\n이후 $N$개의 줄에 걸쳐 한 줄에 한 선분씩, $i$번째 선분의 두 끝점 $a_i$와 $b_i$가 공백을 사이에 두고 주어집니다. ($1 \\le i \\le N$)",
+ "output_spec": "첫 번째 줄에 선분 $3$개를 제거해 남은 선분이 모두 겹치지 않도록 하는 서로 다른 가짓수를 출력합니다.",
+ "constraints": "- $4 \\le N \\le 10$\n- $0 \\le a_i \\lt b_i \\le 100$ ($1 \\le i \\le N$)\n- $N$, $a_i$, $b_i$는 모두 정수입니다.\n- 같은 구간의 선분이 여러 개 주어질 수 있습니다.",
+ "samples": [
+  {
+   "in": "5\n1 3\n2 4\n3 5\n6 8\n7 9\n",
+   "out": "6\n"
+  }
+ ],
+ "sample_notes": [
+  "![](https://contents.codetree.ai/problems/951/images/problems-dae250cb-17f4-4ca6-b12a-b791e4af2ca5.svg)\n\n$1$, $2$, $3$번 선분은 서로 겹치므로 이 중 $2$개를 제거해야 하고, $4$, $5$번 선분도 서로 겹치므로 이 중 $1$개를 제거해야 합니다. 따라서 답은 $3 \\times 2 = 6$가지입니다."
+ ]
+}

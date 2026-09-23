@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2287",
+ "title": "N번 더하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-add-n-times/description",
+ "alias": "add-n-times",
+ "pid": 2287,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "n번 반복하기",
+ "card": "test-add-n-times",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "89.1",
+  "submissions": "15198"
+ },
+ "sample_count": 1,
+ "statement_len": 87,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $A, N$이 주어졌을 때, $A$에 $N$을 더하는 과정을 $N$번 반복하려고 합니다.\n\n각 연산 결과값을 순서대로 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 정수 $A,N$ 가 공백을 두고 주어집니다.",
+ "output_spec": "첫 번째 줄부터 $N$개의 줄에 걸쳐, $A$에 $N$을 더한 결과값을 한 줄에 하나씩 출력합니다.",
+ "constraints": "- $1 \\le A, N \\le 10$",
+ "samples": [
+  {
+   "in": "5 6\n",
+   "out": "11\n17\n23\n29\n35\n41\n"
+  }
+ ]
+}

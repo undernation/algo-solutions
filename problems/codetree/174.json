@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "174",
+ "title": "0 나올때까지 출력",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-print-until-zero-is-given/description",
+ "alias": "print-until-zero-is-given",
+ "pid": 174,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "Infinite Loop",
+ "card": "intro-print-until-zero-is-given",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "91.5",
+  "submissions": "6846"
+ },
+ "sample_count": 2,
+ "statement_len": 54,
+ "fetched_at": "2026-09-23",
+ "statement": "정수를 계속 입력받다가 $0$이 입력되기 전까지의 결과를 그대로 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "입력으로 몇 개의 줄이 들어올지는 정해져 있지는 않습니다.\n각 줄에는 하나의 정수가 주어지며, 그 중 적어도 하나는 $0$임을 가정해도 좋습니다.",
+ "output_spec": "$0$이 주어지기 전까지의 결과를 한 줄에 하나씩 순서대로 출력합니다.",
+ "constraints": "- $0 \\le \\texttt{주어지는 수} \\le 100$",
+ "samples": [
+  {
+   "in": "3\n5\n0\n",
+   "out": "3\n5\n"
+  },
+  {
+   "in": "3\n2\n4\n6\n0\n",
+   "out": "3\n2\n4\n6\n"
+  }
+ ]
+}

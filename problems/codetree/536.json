@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "536",
+ "title": "이진 중위 순회",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-bst-inorder/description",
+ "alias": "bst-inorder",
+ "pid": 536,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "트리",
+ "lesson": "이진 탐색 트리",
+ "card": "challenge-bst-inorder",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "83.6",
+  "submissions": "1930"
+ },
+ "sample_count": 0,
+ "statement_len": 302,
+ "fetched_at": "2026-09-23",
+ "statement": "이진 탐색 트리의 흥미로운 특성 중 하나는 중위 순회의 결과가 매우 특이하다는 점입니다.\n\n직접 확인해 봅시다.\n\n다음과 같은 이진 탐색 트리가 있을 때, 이 트리에 중위 순회를 시행합시다. 어떤 결과가 나올까요?\n\n![](https://contents.codetree.ai/problems/536/images/problems-af20c158-38e0-49ea-be46-1a794d3df31d.png)\n\n**보기** — 순서대로 7개 고르기\n\n1. `8`\n2. `13`\n3. `17`\n4. `22`\n5. `31`\n6. `39`\n7. `50`"
+}

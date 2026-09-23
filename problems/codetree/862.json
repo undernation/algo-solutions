@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "862",
+ "title": "재귀함수의 꽃",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-the-flower-of-the-recursive-function/description",
+ "alias": "the-flower-of-the-recursive-function",
+ "pid": 862,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "재귀함수",
+ "lesson": "값을 반환하지 않는 재귀함수",
+ "card": "challenge-the-flower-of-the-recursive-function",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "93.0",
+  "submissions": "3375"
+ },
+ "sample_count": 1,
+ "statement_len": 188,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$이 주어지면 재귀함수를 단 하나만 이용하여 다음과 같이 출력하는 프로그램을 작성해보세요.\n\n$N$에서 $1$까지 $1$씩 감소하며 하나씩 출력했다가, 다시 $1$부터 $N$까지 $1$씩 증가하며 출력합니다.\n\nex) $N \\, N-1 \\, N-2 \\, N-3 \\ldots 2 \\, 1 \\, 1 \\, 2 \\ldots N-1 \\, N$",
+ "input_spec": "첫 번째 줄에 정수 $N$이 주어집니다.",
+ "output_spec": "첫 번째 줄에 $N$부터 $1$까지 $1$씩 감소했다가 다시 $1$부터 $N$까지 $1$씩 증가하며 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$",
+ "samples": [
+  {
+   "in": "5\n",
+   "out": "5 4 3 2 1 1 2 3 4 5\n"
+  }
+ ]
+}

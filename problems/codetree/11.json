@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "11",
+ "title": "뱀은 사과를 좋아해",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-snake-loves-apples/description",
+ "alias": "snake-loves-apples",
+ "pid": 11,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Simulation",
+ "lesson": "격자 안에서 단일 객체를 이동",
+ "card": "challenge-snake-loves-apples",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1.5초 · C++17 1초",
+  "memory": "128 MB",
+  "time_sec": 1.5
+ },
+ "stats": {
+  "accept_rate": "41.9",
+  "submissions": "1725"
+ },
+ "sample_count": 3,
+ "statement_len": 794,
+ "fetched_at": "2026-09-23",
+ "statement": "$N \\times N$ 크기의 격자 안에서 사과들의 위치와 뱀의 움직임이 주어졌을 때, 게임이 끝나는데 몇 초가 걸리는지를 구하는 프로그램을 작성해보세요.\n\n뱀은 처음에 좌측 상단 $(1,\\ 1)$에서 길이 $1$의 상태로 있습니다.\n\n![](https://contents.codetree.ai/problems/11/images/problems-a19c5881-1b86-4d2b-a726-959c5ff0a280.png)\n\n일반적으로 뱀은 이동시에 머리를 특정 방향으로 한 칸 옮기게 되고, 가장 끝에 있던 꼬리가 사라지게 되며 이 과정은 동시에 일어납니다. 특히 새로 이동한 머리 자리가 이번 이동으로 사라지는 꼬리 자리와 같더라도, 꼬리가 먼저 빠지는 것으로 간주하여 몸이 겹치지 않은 것으로 처리합니다.\n\n![](https://contents.codetree.ai/problems/11/images/problems-c4953ae1-3bbb-4a6c-9351-66c57b6ae6c1.png)\n\n\n이때 만약 움직인 장소에 사과가 존재한다면 꼬리가 사라지지 않고 몸의 길이가 1 늘어나게 됩니다. 또, 사과는 먹는 즉시 사라지게 됩니다.\n\n![](https://contents.codetree.ai/problems/11/images/problems-e06f4244-81f6-417d-b1ef-177357607336.png)\n\n\n뱀이 움직이는 데에는 $1$초의 시간이 소요됩니다.\n\n게임은 주어진 $K$개의 명령을 모두 수행했거나, 움직이는 도중 격자를 벗어났거나, 움직이는 도중 몸이 꼬여 서로 겹쳐졌을 경우 종료됩니다.",
+ "input_spec": "첫째 줄에는 격자의 크기를 나타내는 $N$과 사과의 개수 $M$ 그리고 뱀의 방향 변환 횟수 $K$가 공백을 사이에 두고 주어집니다.\n\n둘째 줄부터 $M$개의 줄에 걸쳐 각각 사과의 위치 $(x,\\ y)$가 공백을 사이에 두고 주어집니다. $x$번째 행, $y$번째 열에 사과가 있음을 의미합니다.\n\n그 다음 $K$개의 줄에 걸쳐 각각 뱀의 방향 변환 정보 $(d,\\ p)$가 공백을 사이에 두고 주어집니다. $d$는 ‘U', ‘D’, ‘R’, 'L’중에 하나이며 각각 위, 아래, 오른쪽, 왼쪽 방향으로 뱀이 움직임을 의미합니다. $p$는 뱀이 해당 방향으로 얼마나 움직일지를 나타내는 값입니다.",
+ "output_spec": "게임이 몇 초 뒤에 종료되는지를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $0 \\le M \\lt N \\times N$\n- $0 \\le K \\le 1\\,000$\n- $1 \\le x \\le N$\n- $1 \\le y \\le N$\n- $1 \\le  p \\le 100$\n- $0 \\le S \\le 10\\,000$ (여기서 $S$는 주어진 모든 $p$의 합)\n- $d$는 'U', 'D', 'R', 'L' 중 하나입니다.\n- 사과의 위치 $(x, y)$는 서로 중복되지 않으며, $(1, 1)$이 아닙니다.",
+ "samples": [
+  {
+   "in": "3 0 2\nR 2\nD 2\n",
+   "out": "4\n"
+  },
+  {
+   "in": "2 0 2\nR 3\nD 2\n",
+   "out": "2\n"
+  },
+  {
+   "in": "5 4 5\n1 2\n1 3\n1 4\n1 5\nR 4\nD 1\nL 1\nU 1\nL 2\n",
+   "out": "7\n"
+  }
+ ]
+}

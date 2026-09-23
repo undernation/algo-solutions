@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "960",
+ "title": "가장 많이 나온 쌍",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-the-most-frequent-pair/description",
+ "alias": "the-most-frequent-pair",
+ "pid": 960,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 III",
+ "lesson": "기준을 새로 설정하여 완전탐색",
+ "card": "intro-the-most-frequent-pair",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "84.5",
+  "submissions": "1052"
+ },
+ "sample_count": 1,
+ "statement_len": 264,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$ 이상 $N$ 이하의 수로만 이루어진 수 쌍 $(a,\\ b)$가 총 $M$번 주어질 때, 가장 많이 나온 수 쌍이 몇 번 나왔는지 세는 프로그램을 작성해보세요. 단, $(a,\\ b)$와 $(b,\\ a)$는 같은 수 쌍이라고 생각합니다.\n\n이때 입력으로 주어진 $M$개의 수 쌍을 저장하는 용도 외에는 이차원 배열을 사용하지 않고 문제를 해결해야 합니다. 예를 들어 각 수 쌍이 몇 번 등장했는지를 담아 두는 $N \\times N$ 크기의 배열을 만들어서는 안 됩니다.",
+ "input_spec": "첫 번째 줄에는 정수 $N$과 $M$이 공백을 사이에 두고 주어집니다.\n\n이후 $M$개의 줄에 걸쳐 각 줄마다 수 쌍을 이루는 두 정수 $a$와 $b$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 가장 많이 등장한 쌍이 등장한 횟수를 출력합니다.",
+ "constraints": "- $2 \\le N \\le 10$\n- $1 \\le M \\le 100$\n- $1 \\le a,\\ b \\le N$\n- $a \\neq b$\n- 주어지는 모든 값은 정수입니다.",
+ "samples": [
+  {
+   "in": "3 8\n1 2\n2 1\n3 1\n1 3\n2 3\n2 3\n2 1\n1 2\n",
+   "out": "4\n"
+  }
+ ],
+ "sample_notes": [
+  "$(1,\\ 2)$ 쌍은 총 $4$번, $(1,\\ 3)$과 $(2,\\ 3)$ 쌍은 총 $2$번씩 등장했으므로 답은 $4$가 됩니다."
+ ]
+}

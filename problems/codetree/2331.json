@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2331",
+ "title": "짝수 번째만 거꾸로 출력",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-print-only-even-numbers-backwards/description",
+ "alias": "print-only-even-numbers-backwards",
+ "pid": 2331,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "문자열",
+ "lesson": "문자열 순회하기",
+ "card": "test-print-only-even-numbers-backwards",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "76.9",
+  "submissions": "2857"
+ },
+ "sample_count": 3,
+ "statement_len": 69,
+ "fetched_at": "2026-09-23",
+ "statement": "알파벳 소문자로 이루어진 문자열이 주어집니다.\n\n주어진 문자열의 짝수 번째 문자만 역순으로 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 줄에 영어 알파벳 소문자로 이루어진 문자열이 주어집니다.",
+ "output_spec": "첫 줄에, 문자열의 짝수 번째 문자만 역순으로 공백 없이 출력합니다.",
+ "constraints": "- 주어진 문자열의 길이는 $2$ 이상 $100$ 이하입니다.",
+ "samples": [
+  {
+   "in": "fedabc\n",
+   "out": "cae\n"
+  },
+  {
+   "in": "hello\n",
+   "out": "le\n"
+  },
+  {
+   "in": "codetree\n",
+   "out": "ereo\n"
+  }
+ ]
+}

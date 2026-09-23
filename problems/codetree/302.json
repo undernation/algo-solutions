@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "302",
+ "title": "숫자의 증감",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-increasing-and-decreasing-numbers/description",
+ "alias": "increasing-and-decreasing-numbers",
+ "pid": 302,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "if 안의 for",
+ "card": "intro-increasing-and-decreasing-numbers",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "75.8",
+  "submissions": "11923"
+ },
+ "sample_count": 2,
+ "statement_len": 120,
+ "fetched_at": "2026-09-23",
+ "statement": "문자 $C$와 숫자 $N$을 입력받아, 만약 $C$가 '$A$'이면 $1$부터 $N$까지 숫자를 증가하는 순으로 출력하고, '$D$'이면 $N$부터 $1$까지 숫자를 감소하는 순으로 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 문자 $C$와 숫자 $N$을 공백을 사이에 두고 입력받습니다. $C$는 '$A$' 또는 '$D$'로 주어진다고 가정해도 좋습니다.",
+ "output_spec": "모든 출력값 사이엔 공백을 두고 있습니다.",
+ "constraints": "- $1 \\le N \\le 10$",
+ "samples": [
+  {
+   "in": "A 9\n",
+   "out": "1 2 3 4 5 6 7 8 9\n"
+  },
+  {
+   "in": "D 7\n",
+   "out": "7 6 5 4 3 2 1\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 예제에서는 $C$가 '$A$'이기 때문에 $1$부터 $N$까지 증가합니다.",
+  "두 번째 예제에서는 $C$가 '$D$'이기 때문에 $N$부터 $1$까지 감소하게 됩니다."
+ ]
+}

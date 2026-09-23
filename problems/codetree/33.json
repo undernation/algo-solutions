@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "33",
+ "title": "네 방향 탈출 가능 여부 판별하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-determine-escapableness-with-4-ways/description",
+ "alias": "determine-escapableness-with-4-ways",
+ "pid": 33,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "BFS",
+ "lesson": "BFS 탐색",
+ "card": "intro-determine-escapableness-with-4-ways",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "61.4",
+  "submissions": "6284"
+ },
+ "sample_count": 2,
+ "statement_len": 342,
+ "fetched_at": "2026-09-23",
+ "statement": "$N \\times M$ 크기의 이차원 영역의 좌측 상단에서 출발하여 우측 하단까지 뱀에게 물리지 않고 탈출하려고 합니다. 이동을 할 때에는 반드시 상하좌우에 인접한 칸으로만 이동할 수 있으며, 뱀이 있는 칸으로는 이동을 할 수 없습니다. 예를 들어 <그림 1>과 같이 뱀이 배치되어 있는 경우 실선과 같은 경로로 탈출을 할 수 있습니다. 이때 뱀에게 물리지 않고 탈출 가능한 경로가 있는지 여부를 판별하는 코드를 작성해보세요.\n\n![](https://contents.codetree.ai/problems/33/images/problems-bf87e555-f698-444a-816c-5683e094439d.png)",
+ "input_spec": "첫 번째 줄에는 $N$과 $M$이 공백을 사이에 두고 주어집니다.\n\n다음 $N$개의 줄에는 각 행에 $M$개의 정수 $A_{i1}, A_{i2}, \\ldots, A_{iM}$이 공백을 사이에 두고 주어집니다. $A_{ij}$는 $i$행 $j$열 칸의 값을 나타내며, 뱀이 없는 칸은 $1$, 뱀이 있는 칸은 $0$으로 표시됩니다.",
+ "output_spec": "좌측 상단에서 출발하여 우측 하단까지 뱀에게 물리지 않고 탈출 가능한 경로가 있으면 $1$, 없으면 $0$을 출력합니다.",
+ "constraints": "- $2 \\le N,\\ M \\le 100$\n- $A_{ij}$는 $0$ 또는 $1$입니다. $(1 \\le i \\le N, 1 \\le j \\le M)$\n- 시작 칸 $(1, 1)$과 끝 칸 $(N, M)$에는 뱀이 주어지지 않습니다.",
+ "samples": [
+  {
+   "in": "5 5\n1 0 1 1 1\n1 0 1 0 1\n1 0 1 1 1\n1 0 1 0 1\n1 1 1 0 1\n",
+   "out": "1\n"
+  },
+  {
+   "in": "5 5\n1 0 1 1 1\n1 0 1 0 1\n1 1 1 0 1\n1 0 1 1 0\n0 1 1 0 1\n",
+   "out": "0\n"
+  }
+ ]
+}

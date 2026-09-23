@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "450",
+ "title": "올바른 삽입 메서드",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-correct-insertion/description",
+ "alias": "correct-insertion",
+ "pid": 450,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "배열, 연결 리스트",
+ "lesson": "단일 연결 리스트",
+ "card": "challenge-correct-insertion",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "77.0",
+  "submissions": "3511"
+ },
+ "sample_count": 0,
+ "statement_len": 619,
+ "fetched_at": "2026-09-23",
+ "statement": "연결 리스트에 대해 학습한 Sam은 코딩을 하다가 연결 리스트의 삽입 메서드가 기억이 안 나는 상황을 마주쳤습니다.\n\nSam은 열심히 기억을 더듬으며 $3$가지 방식으로 메서드를 작성했는데, 이 메서드 중 어떤게 올바른 메서드인지 감을 못 잡고 있습니다.\n단, `insert_front` 함수는 $head$ 앞에 노드를 추가하는 함수입니다.\n\n```jsx\n#1\nfunction SLL.insert_front(x)\n  SLL.head = node()\n  SLL.head.data = x\n  SLL.head.next = SLL.head\n  \n#2\nfunction SLL.insert_front(x)\n  set new_node = node()\n  new_node.data = x\n  new_node.next = SLL.head\n  \n#3\nfunction SLL.insert_front(x)\n  set new_node = node()\n  new_node.data = x\n  new_node.next = SLL.head\n  SLL.head = new_node\n```\n위 세 메서드 중 올바르게 작동하는 메서드를 모두 고르세요.\n\n**보기** — 하나 고르기\n\n1. `1`\n2. `2`\n3. `3`\n4. `정답 없음`"
+}

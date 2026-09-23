@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1930",
+ "title": "격자 위의 연결",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-connections-on-the-grid/description",
+ "alias": "connections-on-the-grid",
+ "pid": 1930,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "MST",
+ "lesson": "Kruskal",
+ "card": "challenge-connections-on-the-grid",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "120 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "74.9",
+  "submissions": "199"
+ },
+ "sample_count": 2,
+ "statement_len": 353,
+ "fetched_at": "2026-09-23",
+ "statement": "$N \\times M$ 크기의 격자 위의 각 칸을 연결하는 선이 존재합니다.\n\n각 선마다 가중치가 주어져 있습니다. 모든 칸이 연결되도록 선을 연결하되 연결된 모든 선의 가중치의 합이 최소가 되도록 연결하려 할 때, 그 최솟값을 출력하는 프로그램을 작성해보세요.\n\n\n![Image](https://contents.codetree.ai/problem_factory/images/fc119344-1c7a-41b8-aa35-892437952f4c.webp)\n\n\n다음 그림은 $N = 2, M = 3$인 경우 중 하나입니다. 간선의 가중치들이 다음과 같이 주어졌다면 빨간색만을 연결했을 때 모든 선의 가중치의 합이 $8$로 최소가 됩니다.",
+ "input_spec": "첫 번째 줄에는 $N, M$이 공백을 두고 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 각 행의 칸들 사이의 (ㅡ모양) 간선들의 가중치가 공백을 두고 주어집니다.\n\n그 뒤에 $N - 1$개의 줄에 걸쳐 각 열의 칸들 사이의 (ㅣ모양) 간선들의 가중치가 공백을 두고 주어집니다.",
+ "output_spec": "모든 칸이 연결되도록 선을 연결하고, 모든 선의 가중치의 합이 최소 되게 연결하려 할 때, 그 최솟값을 출력합니다.",
+ "constraints": "- $2 \\le N , M \\le 300$\n- $1 \\le \\texttt{각 선의 가중치} \\le 300$",
+ "samples": [
+  {
+   "in": "2 3\n20 5\n1 1\n1 4 1\n",
+   "out": "8\n"
+  },
+  {
+   "in": "3 3\n1 5\n1 1\n5 1\n5 1 1\n1 1 5\n",
+   "out": "8\n"
+  }
+ ]
+}

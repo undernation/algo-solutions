@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "28",
+ "title": "특정 조건에 맞게 K개 중에 1개를 N번 뽑기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-n-permutations-of-k-with-repetition-under-constraint/description",
+ "alias": "n-permutations-of-k-with-repetition-under-constraint",
+ "pid": 28,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Backtracking",
+ "lesson": "K개 중 하나를 N번 선택하기(Conditional)",
+ "card": "intro-n-permutations-of-k-with-repetition-under-constraint",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "62.3",
+  "submissions": "5053"
+ },
+ "sample_count": 2,
+ "statement_len": 247,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$이상 $K$이하의 정수를 하나 고르는 행위를 $N$번 반복하여 나올 수 있는 모든 서로 다른 수열을 구해주는 프로그램을 작성해보세요. 단, 연속하여 같은 정수가 $3$번 이상 나오는 경우는 제외합니다.\n\n예를 들어 $K$가 $2$, $N$이 $3$인 경우 다음과 같이 $6$개의 조합이 가능합니다.\n\n- $1\\ 1\\ 2$\n\n- $1\\ 2\\ 1$\n\n- $1\\ 2\\ 2$\n\n- $2\\ 1\\ 1$\n\n- $2\\ 1\\ 2$\n\n- $2\\ 2\\ 1$",
+ "input_spec": "첫째 줄에 $K$와 $N$이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "조건을 만족하는 서로 다른 수열의 개수만큼의 줄에 걸쳐 한 줄에 하나씩 수열의 상태를 공백을 사이에 두고 출력합니다. 이때 앞에서부터 봤을 때 사전순으로 앞선 수열부터 출력합니다.",
+ "constraints": "- $1 \\le K \\le 4$\n- $1 \\le N \\le 8$",
+ "samples": [
+  {
+   "in": "2 1\n",
+   "out": "1\n2\n"
+  },
+  {
+   "in": "2 3\n",
+   "out": "1 1 2\n1 2 1\n1 2 2\n2 1 1\n2 1 2\n2 2 1\n"
+  }
+ ]
+}

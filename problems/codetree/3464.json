@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3464",
+ "title": "유효한 문자열",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-valid-string/description",
+ "alias": "valid-string",
+ "pid": 3464,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Advanced DP",
+ "lesson": "작은 구간에서 큰 구간으로 확장되는 DP",
+ "card": "challenge-valid-string",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "51.9",
+  "submissions": "54"
+ },
+ "sample_count": 2,
+ "statement_len": 264,
+ "fetched_at": "2026-09-23",
+ "statement": "어떤 문자열이 주어졌을 때 유효한 문자열은 다음과 같이 정의됩니다.\n- 빈 문자열은 유효한 문자열입니다.\n- 문자열 A가 유효한 문자열이란 {A}, [A], (A) 모두 유효한 문자열입니다.\n- 문자열 A, B 모두 유효한 문자열이라면 AB 역시 유효한 문자열입니다. \n\n아직 결정되지 못한 문자를 뜻하는 ?를 포함한 문자열이 주어졌을 때, ?에 해당하는 문자를 잘 결정하여 주어진 문자열을 유효한 문자열로 만들 수 있는 서로 다른 가짓수를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 문자열이 하나 주어집니다. 문자열은 '{', '}', '[', ']', '(', ')', '?' 문자로만 이루어져 있습니다.",
+ "output_spec": "'?' 문자를 괄호로 잘 대체하여 만들 수 있는 서로 다른 유효한 문자열의 수를 10,007로 나눈 나머지를 출력합니다.",
+ "constraints": "- $1 \\leq$ 주어진 문자열의 길이 $\\leq 200$",
+ "samples": [
+  {
+   "in": "?{}[()]?\n",
+   "out": "3\n"
+  },
+  {
+   "in": "{??}\n",
+   "out": "4\n"
+  }
+ ]
+}

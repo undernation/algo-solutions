@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "575",
+ "title": "중복된 피보나치",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-dp-fibbo/description",
+ "alias": "dp-fibbo",
+ "pid": 575,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "DP",
+ "lesson": "Memoization",
+ "card": "intro-dp-fibbo",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "26.9",
+  "submissions": "6964"
+ },
+ "sample_count": 0,
+ "statement_len": 585,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 두 함수에 대해 각각 `fibbo(7)` 호출시 `fibbo(5)` 와 `fibbo(2)` 는 몇 번이나 실행 되는지를 골라주세요.  \n1번 코드에서 `fibbo(5)`, `fibbo(2)`에 해당하는 답, 2번 코드에서 `fibbo(5)`, `fibbo(2)`에 해당하는 답 순서대로 골라주세요.\n\n### 1번\n```jsx\nfunction fibbo(n)\n    if n <= 2\n        return 1\n    else\n        return fibbo(n - 1) + fibbo(n - 2)\n```\n\n### 2번\n```jsx\nmemo = [-1, -1, -1, ... ]\n\nfunction fibbo(n)\n    if memo[n] != -1\n        return memo[n]\n    if n <= 2\n        memo[n] = 1\n    else\n        memo[n] = fibbo(n - 1) + fibbo(n - 2)\n\n    return memo[n]\n```\n\n**보기** — 순서대로 4개 고르기\n\n1. `1`\n2. `2`\n3. `3`\n4. `4`\n5. `5`\n6. `6`\n7. `7`\n8. `8`"
+}

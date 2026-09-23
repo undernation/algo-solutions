@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1045",
+ "title": "트리 최적의 노드",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-tree-optimal-node/description",
+ "alias": "tree-optimal-node",
+ "pid": 1045,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Tree",
+ "lesson": "트리",
+ "card": "challenge-tree-optimal-node",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "280 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "59.9",
+  "submissions": "394"
+ },
+ "sample_count": 2,
+ "statement_len": 174,
+ "fetched_at": "2026-09-23",
+ "statement": "모든 간선의 길이가 $1$인 트리가 주어집니다.\n\n다음의 조건을 만족하는 노드를 구하고 싶습니다.\n\n+ 다른 모든 정점과의 거리의 최댓값이, 최소가 되는 노드\n\n\n다시 말하면, 가장 먼 노드까지의 거리가 최소가 되는 노드입니다.\n\n\n\n이 노드에서 트리의 가장 먼 노드까지의 거리를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 트리 노드의 수 $N$이 주어집니다.\n\n두 번째 줄부터 $N$번째 줄에 총 $N-1$개의 줄에 걸쳐 간선으로 연결된 두 개의 노드가 공백을 두고 차례대로 주어집니다.",
+ "output_spec": "첫 번째 줄에 조건을 만족하는 노드로부터 가장 먼 거리의 노드까지의 길이를 출력합니다.",
+ "constraints": "- $2 \\le N \\le 100\\,000$\n- $1 \\le \\texttt{노드의 크기} \\le N$",
+ "samples": [
+  {
+   "in": "5\n4 5\n4 2\n2 3\n1 2\n",
+   "out": "2\n"
+  },
+  {
+   "in": "5\n1 3\n1 2\n3 5\n2 4\n",
+   "out": "2\n"
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "843",
+ "title": "출력결과 85",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-reading-85/description",
+ "alias": "reading-85",
+ "pid": 843,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "함수",
+ "lesson": "변수의 영역",
+ "card": "intro-reading-85",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "70.4",
+  "submissions": "3442"
+ },
+ "sample_count": 0,
+ "statement_len": 1410,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 코드의 출력 결과는?\n\n## Python3 코드\n\n```python\nnum = 5\n\ndef g():\n    print(num, end=\" \")\n\ndef f():\n    num = 9\n    while num < 8:\n        num += 1\n    print(num, end=\" \")\n    g()\n\nf()\n\nprint(num, end=\" \")\n\n```\n\n## C 코드\n\n```c\nint num = 5;\n\nvoid g() {\n    printf(\"%d \", num);\n}\nvoid f() {  \n    int num = 9;\n    while(num < 8)\n        num++;\n    printf(\"%d \", num);\n    g();\n}\n\nint main() {\n    f();\n\n    printf(\"%d\", num);\n    return 0;\n}\n```\n\n## C++ 코드\n\n```cpp\nint num = 5;\n\nvoid g() {\n    cout << num << \" \";\n}\nvoid f() {  \n    int num = 9;\n    while(num < 8)\n        num++;\n    cout << num << \" \";\n    g();\n}\n\nint main() {\n    f();\n\n    cout << num;\n    return 0;\n}\n```\n\n## Java 코드\n\n```java\npublic class Main {\n    public static int num = 5;\n\n    public static void g() {\n        System.out.print(num + \" \");\n    }\n\n    public static void f() {\n        int num = 9;\n        while(num < 8)\n            num++;\n        System.out.print(num + \" \");\n        g();\n    }\n\n    public static void main(String[] args) {\n        f();\n\n        System.out.print(num);\n    }\n}\n\n```\n\n## JavaScript 코드\n\n```JavaScript\nlet num = 5;\n\nfunction g() {\n    process.stdout.write(num + \" \");\n}\n\nfunction f() {\n    let num = 9;\n\n    while (num < 8) {\n        num += 1;\n    }\n    process.stdout.write(num + \" \");\n\n    g();\n}\n\nf();\n\nprocess.stdout.write(num + \" \");\n```\n\n**보기** — 하나 고르기\n\n1. `5 5 5`\n2. `9 5 5`\n3. `9 5 9`\n4. `9 9 5`\n5. `9 9 9`"
+}

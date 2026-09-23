@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "947",
+ "title": "좌표평면 위의 특정 구역 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-specific-zone-above-the-2d-coordinate-2/description",
+ "alias": "specific-zone-above-the-2d-coordinate-2",
+ "pid": 947,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 II",
+ "lesson": "물체 단위로 완전탐색",
+ "card": "intro-specific-zone-above-the-2d-coordinate-2",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "73.3",
+  "submissions": "2059"
+ },
+ "sample_count": 1,
+ "statement_len": 133,
+ "fetched_at": "2026-09-23",
+ "statement": "좌표평면 위에 점 $N$개가 있습니다. 이 $N$개의 점 중 정확히 하나를 제외했을 때, 남은 점들을 모두 포함하는 각 변이 좌표축에 평행한 직사각형의 넓이를 최소로 만들려고 합니다.\n\n가능한 최소 넓이를 구하는 프로그램을 작성해 보세요.",
+ "input_spec": "첫 번째 줄에 정수 $N$이 주어집니다.\n\n그 다음 줄부터는 $N$개의 줄에 걸쳐 한 줄에 하나씩 각 점의 위치 $(x,\\ y)$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 남은 점들을 모두 포함하는, 각 변이 좌표축에 평행한 직사각형의 최소 넓이를 출력합니다. 단, 남은 점들이 모두 $x$값이 같거나 $y$값이 같은 경우에는 필요한 직사각형의 넓이가 $0$이 될 수도 있음에 유의합니다.",
+ "constraints": "- $3 \\le N \\le 100$\n- $1 \\le x,\\ y \\le 40\\,000$",
+ "samples": [
+  {
+   "in": "4\n2 4\n1 1\n5 2\n17 25\n",
+   "out": "12\n"
+  }
+ ],
+ "sample_notes": [
+  "![](https://contents.codetree.ai/problems/947/images/problems-e6f8ba43-2710-4cca-8f46-69f3defe0e9a.svg)\n\n위 그림과 같이 $(2,\\ 4)$, $(1,\\ 1)$, $(5,\\ 2)$, $(17,\\ 25)$ 중 $(17,\\ 25)$점을 빼면, 가로길이 $4$, 세로길이 $3$, 넓이 $12$인 직사각형 만으로 나머지 $3$개의 점을 포함할 수 있게됩니다."
+ ]
+}

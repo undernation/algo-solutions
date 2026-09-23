@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "786",
+ "title": "구역 청소",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-district-cleaning/description",
+ "alias": "district-cleaning",
+ "pid": 786,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "케이스별로 나누기",
+ "lesson": "겹치는 경우",
+ "card": "challenge-district-cleaning",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "45.7",
+  "submissions": "2605"
+ },
+ "sample_count": 1,
+ "statement_len": 261,
+ "fetched_at": "2026-09-23",
+ "statement": "$A$, $B$는 1차원 수직선 상에서 구역 청소를 진행하려고 합니다.  \n$A$는 $x=a$ 구역부터 $x=b$ 구역까지 청소를 진행하고, $B$는 $x=c$ 구역부터 $x=d$ 구역까지 청소를 진행한다고 합니다. 여기서 $x=p$부터 $x=q$까지 청소하는 것은 구간 $[p, q)$, 즉 $q-p$개의 구역을 청소함을 의미합니다. 총 몇 구역이나 청소가 될지를 계산하는 프로그램을 작성해보세요. 단, $A$, $B$가 청소하는 구역은 겹칠 수 있음에 유의합니다.",
+ "input_spec": "첫 번째 줄에 $a$, $b$가 공백을 사이에 두고 주어집니다.\n\n두 번째 줄에 $c$, $d$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 오늘 몇 구역이나 청소됐는지 출력합니다.",
+ "constraints": "- $0 \\le a < b \\le 100$\n- $0 \\le c < d \\le 100$",
+ "samples": [
+  {
+   "in": "7 10\n4 8\n",
+   "out": "6\n"
+  }
+ ],
+ "sample_notes": [
+  "$A$가 $x=7$ 구역에서 $x=10$ 구역까지 청소했고, $B$는 $x=4$ 구역에서 $x=8$ 구역까지 청소했습니다. 총 청소된 구역은 $x=4$ 구역에서 $x=10$ 구역까지이므로 총 6칸에 대한 청소가 진행되었습니다.\n\n![](https://contents.codetree.ai/problems/786/images/problems-097bca0a-be54-4a40-b279-93194d96c540.svg)"
+ ]
+}

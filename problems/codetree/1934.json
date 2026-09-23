@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1934",
+ "title": "원형 이동",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-circular-movement/description",
+ "alias": "circular-movement",
+ "pid": 1934,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "MST",
+ "lesson": "Prim",
+ "card": "challenge-circular-movement",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 3초 · C++17 1초",
+  "memory": "220 MB",
+  "time_sec": 3.0
+ },
+ "stats": {
+  "accept_rate": "36.4",
+  "submissions": "319"
+ },
+ "sample_count": 2,
+ "statement_len": 896,
+ "fetched_at": "2026-09-23",
+ "statement": "남우는 거대한 원형 건물을 구경하고 있습니다. 이 건물에는 가장자리에 $N$개의 구역이 있습니다. 각 구역은 $1$번부터 $N$번 구역까지 원형 모양으로 순서대로 번호가 붙어 있습니다. 따라서 $1$번 구역 옆에는 $2$번 구역이, $2$번 구역 옆에는 $3$번 구역이 있습니다. 원형으로 이어져 있기 때문에 $N$번 구역과 $1$번 구역 역시 붙어있습니다. 붙어있는 모든 구역끼리는 서로 이동이 가능합니다.\n\n하지만 남우는 공사 시기에 왔기 때문에, $M$개의 구간에서 공사를 진행하고 있습니다. 공사 중인 지역은 이동이 불가능합니다. 예를 들어, $1$번 구역과 $2$번 구역 사이에서 공사가 진행되고 있다면 서로의 구역에서 서로의 구역으로 이동이 불가능합니다.\n\n건물의 중앙에서는 모든 구역으로 이동할 수 있기 때문에, 길이 막혀있다면 중앙으로 이동했다가 다시 원하는 지점으로 이동하면 됩니다. 하지만 특정 구역과 중앙 사이를 이동하기 위해서는 각 구역의 통행권이 필요합니다.\n\n$K$원의 비용으로 적절히 통행권을 잘 샀을 때, 모든 구역을 이동할 수 있는지 판단하는 프로그램을 작성해보세요.\n\n![](https://contents.codetree.ai/problems/1934/images/problems-40d5c291-b402-4780-9a5f-571c4316d8c7.png)\n\n예를 들어서, 다음과 같은 건물이 있다고 합시다. 빨간색 간선은 공사가 진행중이여서 이동이 불가능한 간선입니다.\n\n![](https://contents.codetree.ai/problems/1934/images/problems-65fec0d2-4ebd-4f8c-b2ce-4df4db109c29.png)\n\n\n다음과 같이 $3$원 통행증과 $2$원 통행증을 구입하면 $5$원으로 모든 구역을 이동할 수 있게 됩니다.",
+ "input_spec": "첫 번째 줄에는 구역의 개수 $N$, 공사중인 구간의 수 $M$, 가진 비용 $K$ 가 공백을 두고 주어집니다.\n\n두 번째 줄에는 원의 중심에서 각 지점과 이동하기 위한 통행증의 비용이 공백을 두고 주어집니다.\n\n다음 $M$개의 줄에 걸쳐 공사 중인 구간의 정보 $(a,\\ b)$가 주어집니다. $a$번 구간과 $b$번 구간이 공사중이라는 뜻입니다. $a$와 $b$는 반드시 붙어있는 구역으로 주어집니다.",
+ "output_spec": "가지고 있는 비용을 넘기지 않고 모든 지점을 이동할 수 있다면 $1$을, 없다면 $0$을 출력합니다.",
+ "constraints": "- $3 \\le N \\le 200\\,000$\n- $1 \\le M \\le N$\n- $1 \\le \\texttt{각 통행증의 비용} \\le 10^9$\n- $0 \\le K \\le 10^9$",
+ "samples": [
+  {
+   "in": "6 2 9\n3 2 3 4 3 5\n1 2\n5 6\n",
+   "out": "1\n"
+  },
+  {
+   "in": "6 2 4\n3 2 3 4 3 5\n1 2\n5 6\n",
+   "out": "0\n"
+  }
+ ]
+}

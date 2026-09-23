@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "949",
+ "title": "스승의 은혜 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-the-grace-form-teacher-2/description",
+ "alias": "the-grace-form-teacher-2",
+ "pid": 949,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 II",
+ "lesson": "물체 단위로 완전탐색",
+ "card": "challenge-the-grace-form-teacher-2",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "49.4",
+  "submissions": "2332"
+ },
+ "sample_count": 1,
+ "statement_len": 176,
+ "fetched_at": "2026-09-23",
+ "statement": "선생님이 $N$명의 학생에게 $B$만큼의 예산으로 선물을 주려고 합니다. 학생 $i$가 원하는 선물의 가격 $P(i)$가 있고, 선생님에게는 선물 하나를 정해서 반값으로 할인받을 수 있는 쿠폰이 있습니다. 선생님이 선물 가능한 학생의 최대 명수를 구하는 프로그램을 작성해보세요. 단, 선물의 가격은 항상 짝수입니다.",
+ "input_spec": "첫 번째 줄에 학생 수 $N$과 예산 $B$가 공백을 사이에 두고 주어집니다.\n\n이후 $N$개의 줄에 걸쳐 한 줄에 하나씩, $i$번째 줄에 학생 $i$가 원하는 선물의 가격 $P(i)$가 주어집니다.",
+ "output_spec": "첫 번째 줄에 선생님이 선물 가능한 학생의 최대 명수를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 1\\,000$\n- $1 \\le B \\le 1\\,000$\n- $0 \\le P(i) \\le 1\\,000$ ($1 \\le i \\le N$), $P(i)$는 짝수",
+ "samples": [
+  {
+   "in": "5 18\n4\n2\n8\n6\n12\n",
+   "out": "4\n"
+  }
+ ],
+ "sample_notes": [
+  "선생님이 만약에 $3$번 학생의 선물에 쿠폰을 쓴다면 $1$번 학생부터 $4$번 학생까지 선물해줄 수 있습니다. ($4 + 2 + 4 + 6 = 16$)   \n만약에 $1$번 학생이나 $4$번 학생의 선물에 쿠폰을 썼어도 여전히 $1$번부터 $4$번 학생까지 선물해 줄 수 있습니다."
+ ]
+}

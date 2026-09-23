@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2299",
+ "title": "정사각형 두 개 출력",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-output-two-rectangles/description",
+ "alias": "output-two-rectangles",
+ "pid": 2299,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "다중 반복문",
+ "lesson": "사각형 별 출력",
+ "card": "test-output-two-rectangles",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "92.1",
+  "submissions": "4243"
+ },
+ "sample_count": 1,
+ "statement_len": 94,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $N$이 주어졌을 때, 다음과 같은 형식으로 `*` 로 이루어진 $N \\times N$ 크기의 정사각형을 두 개 출력합니다.\n\n```\n**\n**\n\n**\n**\n```",
+ "input_spec": "첫 번째 줄에 정수 $N$이 주어집니다.",
+ "output_spec": "문제의 형식에 맞게 $N \\times N$ 크기의 정사각형을 두 개 출력합니다.",
+ "constraints": "- $1 \\le N \\le 9$",
+ "samples": [
+  {
+   "in": "4\n",
+   "out": "****\n****\n**** \n****\n\n****\n****\n****\n****\n"
+  }
+ ]
+}

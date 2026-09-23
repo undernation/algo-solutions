@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1988",
+ "title": "위상정렬 가능성",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-possibility-of-topological-sort/description",
+ "alias": "possibility-of-topological-sort",
+ "pid": 1988,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 알고리즘",
+ "lesson": "Topological Sort",
+ "card": "challenge-possibility-of-topological-sort",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Multiple choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "41.8",
+  "submissions": "1989"
+ },
+ "sample_count": 0,
+ "statement_len": 607,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 그래프들 중 위상정렬이 가능한 경우를 모두 골라보세요.\n\n**보기** — 모두 고르기\n\n1. <p align='center'>\n   <img src='https://contents.codetree.ai/problem_factory/images/b6db2833-877f-4b29-8ffa-6e490d811756.webp'>\n   </p>\n2. <p align='center'>\n   <img src='https://contents.codetree.ai/problem_factory/images/407643cb-df42-4f72-ac60-dabb39d052fd.webp'>\n   </p>\n3. <p align='center'>\n   <img src='https://contents.codetree.ai/problem_factory/images/4da20437-aa5c-42e0-b1de-47187f57ec32.webp'>\n   </p>\n4. <p align='center'>\n   <img src='https://contents.codetree.ai/problem_factory/images/7b5bd0d5-3efe-44ff-b257-c7bde9833766.webp'>\n   </p>"
+}

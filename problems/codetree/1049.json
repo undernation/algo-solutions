@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1049",
+ "title": "노드의 정수 계산",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-calculating-an-integer-for-a-node/description",
+ "alias": "calculating-an-integer-for-a-node",
+ "pid": 1049,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Tree",
+ "lesson": "Tree DP",
+ "card": "intro-calculating-an-integer-for-a-node",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "320 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "71.2",
+  "submissions": "434"
+ },
+ "sample_count": 2,
+ "statement_len": 334,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$번부터 $N$번까지 $N$개의 노드를 가진 트리가 있습니다. 이 트리는 $1$번 노드가 루트 노드가 됩니다.\n\n또한 $1$번 노드를 제외한 각각의 노드에는 정수가 적혀있습니다.\n\n다음과 같은 규칙으로, 트리에 적혀있는 값들을 전파하고자 합니다.\n\n- 자신의 모든 자식 노드가 자신에게 값을 전파한 뒤에만 값을 전파할 수 있습니다.\n- 적혀있는 수가 양수일 경우, 부모 노드에 자신의 값을 더해줍니다.\n- 적혀있는 수가 양수가 아닐 경우, 아무것도 하지 않습니다.\n\n다음과 같은 규칙으로 트리에 적혀있는 값들을 전파했을 때, 최종적으로 $1$번 노드에 적히는 값을 구하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 노드의 개수 $N$이 주어집니다.\n\n두 번째 줄부터 $N-1$개의 줄에 $2$번 노드부터 $N$번 노드까지 노드의 정보를 나타내는 $t, a, p$ 가 주어집니다.\n\n$t$가 $1$인 경우 해당 노드에 $+a$가 적혀있음을, $t$가 $0$인 경우 해당 노드에 $-a$가 적혀있음을 의미합니다. $p$는 해당 노드의 부모가 $p$임을 의미합니다.",
+ "output_spec": "첫 번째 줄에 $1$번 노드에 최종적으로 적히는 값을 출력해주세요.",
+ "constraints": "- $2 \\le N \\le 100\\,000$\n- $0 \\le t \\le 1$\n- $1 \\le a \\le 1\\,000$\n- $1 \\le p \\le N$\n- 주어지는 모든 값은 정수입니다.\n- $p$는 루트가 $1$인 트리가 완성될 수 있도록 주어집니다.",
+ "samples": [
+  {
+   "in": "4\n1 100 3\n0 50 1\n1 10 1\n",
+   "out": "60\n"
+  },
+  {
+   "in": "7\n1 100 1\n1 100 1\n0 100 1\n1 1000 2\n0 1000 2\n1 900 6\n",
+   "out": "1200\n"
+  }
+ ]
+}

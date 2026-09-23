@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "52",
+ "title": "편집거리",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-edit-distance/description",
+ "alias": "edit-distance",
+ "pid": 52,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "DP II",
+ "lesson": "String Matching",
+ "card": "challenge-edit-distance",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "55.0",
+  "submissions": "665"
+ },
+ "sample_count": 2,
+ "statement_len": 495,
+ "fetched_at": "2026-09-23",
+ "statement": "길이가 $N$인 문자열 $A$와 길이가 $M$인 문자열 $B$가 주어졌을 때 두 문자열의 편집 거리를 구하는 프로그램을 작성해보세요. 이 때 편집 거리란 문자열 $A$를 문자열 $B$로 바꾸기 위해 필요한 최소 연산 횟수를 의미하며, 사용 가능한 연산으로는 하나의 문자를 원하는 위치에 삽입하거나, 특정 문자를 삭제하거나, 특정 문자를 다른 문자로 바꾸는 세 가지 연산이 있습니다.\n\n예를 들어 문자열 $A$가 $\"SABSBA\"$, 문자열 $B$가 $\"ABABSA\"$라고 했을 때\n\n다음과 같은 방식으로 $4$번의 연산을 거쳐 문자열 $A$를 문자열 $B$로 만드는 것도 가능하지만 \n\n$\"SABSBA\" \\to \"ABSBA\" \\to \"ABASBA\" \\to \"ABABBA\" \\to \"ABABSA\"$\n\n다음의 방식으로 $3$번의 연산으로 문자열 $A$를 문자열 $B$로 만드는 것이 가능합니다.\n\n$\"SABSBA\" \\to \"ASABSBA\" \\to \"ABABSBA\" \\to \"ABABSA\"$",
+ "input_spec": "첫째 줄에는 문자열 $A$가 주어집니다.\n\n두 번째 줄에는 문자열 $B$가 주어집니다.",
+ "output_spec": "문자열 $A$, $B$ 사이의 편집 거리를 출력합니다.",
+ "constraints": "- $1 \\le N,\\ M \\le 1\\,000$\n- 문자열 $A$, $B$는 알파벳 대문자로만 이루어져 있다고 가정해도 좋습니다.",
+ "samples": [
+  {
+   "in": "ABA\nBAB\n",
+   "out": "2\n"
+  },
+  {
+   "in": "SABSBA\nABABSA\n",
+   "out": "3\n"
+  }
+ ]
+}

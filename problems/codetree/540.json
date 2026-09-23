@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "540",
+ "title": "때려 맞추기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-bst-inference/description",
+ "alias": "bst-inference",
+ "pid": 540,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "트리",
+ "lesson": "이진 탐색 트리",
+ "card": "challenge-bst-inference",
+ "card_type": "Problem",
+ "level": "Hard",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "48.1",
+  "submissions": "3119"
+ },
+ "sample_count": 0,
+ "statement_len": 423,
+ "fetched_at": "2026-09-23",
+ "statement": "이진 탐색 트리에 값을 넣는 과정을 생각해봅시다.\n\n트리에 값을 넣을 때 동일한 값을 트리에 저장하더라도, 값을 어떤 순서로 넣느냐에 따라 트리의 형태가 달라집니다.\n\n다음과 같은 트리가 있다고 가정합시다.\n\n![](https://contents.codetree.ai/problems/540/images/problems-bb84ce45-842b-4b44-bbf0-007bfaf7ecdf.png)\n\n이 트리를 만들기 위해서는 $3 - 1 - 6 - 4 - 8$라는 순서로 값을 넣으면 되지만, 이 순서가 아닌 방법으로 삽입해도 해당 트리를 만들 수 있습니다.\n\n그렇다면, 해당 트리를 만들 수 있는 모든 순서의 경우의 수를 찾아봅시다.\n\n**보기** — 하나 고르기\n\n1. `1`\n2. `2`\n3. `4`\n4. `6`\n5. `8`\n6. `12`\n7. `24`"
+}

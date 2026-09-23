@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2394",
+ "title": "T를 초과하는 연속 부분 수열",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-subsequence-above-t/description",
+ "alias": "subsequence-above-t",
+ "pid": 2394,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 II",
+ "lesson": "최장 연속 부분 수열",
+ "card": "test-subsequence-above-t",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "54.1",
+  "submissions": "3976"
+ },
+ "sample_count": 1,
+ "statement_len": 151,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 수로 이루어진 수열 정보와 정수 $T$가 주어졌을 때, $T$보다 큰 수로만 이루어진 연속 부분 수열 중 최대 길이를 구하는 프로그램을 작성해보세요. 연속 부분 수열이란, 어떤 수열에서 특정 구간에 속하는 수들을 모두 뽑았을 때 나오는 부분 수열을 의미합니다.",
+ "input_spec": "첫 번째 줄에 $N$과 $T$가 공백을 사이에 두고 주어집니다.  \n두 번째 줄에는 $N$개의 수가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 조건을 만족하는 연속 부분 수열 중 최대 길이를 출력합니다. 만약 그러한 수열이 없다면 $0$을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 1\\,000$\n- $1 \\le T \\le 1\\,000$\n- $1 \\le \\texttt{주어지는 정수} \\le 1\\,000$",
+ "samples": [
+  {
+   "in": "7 3\n1 6 7 8 3 4 5\n",
+   "out": "3\n"
+  }
+ ],
+ "sample_notes": [
+  "$T$의 값이 $3$이므로, $3$보다 큰 수로만 이루어진 연속 부분 수열 중 최대 길이를 가지고 있는 수열은 $6$ $7$ $8$이므로 답은 $3$이 됩니다."
+ ]
+}

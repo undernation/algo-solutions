@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "317",
+ "title": "특정 위치의 수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-numbers-in-specific-location/description",
+ "alias": "numbers-in-specific-location",
+ "pid": 317,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "1차원 배열",
+ "lesson": "인덱스 참조",
+ "card": "intro-numbers-in-specific-location",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "88.5",
+  "submissions": "10279"
+ },
+ "sample_count": 1,
+ "statement_len": 74,
+ "fetched_at": "2026-09-23",
+ "statement": "$10$개의 정수를 입력받습니다.  \n입력받은 정수에서 세 번째, 다섯 번째, 열 번째 정수의 합을 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $10$개의 정수가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 정수의 합을 출력합니다.",
+ "constraints": "- $0 \\le \\texttt{주어지는 정수} \\le 100$",
+ "samples": [
+  {
+   "in": "1 3 5 7 9 10 12 14 16 18\n",
+   "out": "32\n"
+  }
+ ]
+}

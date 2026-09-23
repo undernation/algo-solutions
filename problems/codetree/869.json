@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "869",
+ "title": "두 개의 동일한 수열",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-two-equal-series/description",
+ "alias": "two-equal-series",
+ "pid": 869,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "정렬",
+ "lesson": "일반 정렬",
+ "card": "challenge-two-equal-series",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "79.6",
+  "submissions": "4481"
+ },
+ "sample_count": 2,
+ "statement_len": 243,
+ "fetched_at": "2026-09-23",
+ "statement": "$n$개의 원소로 이루어진 수열 $A$와 $n$개의 원소로 이루어진 수열 $B$가 주어졌을 때, 두 수열이 순서에 관계없이 서로 같은 원소들로 이루어져 있는지를 판단하는 프로그램을 작성해보세요.\n\n예를 들어 수열 $A = [1, 2, 3]$, 수열 $B = [3, 1, 2]$라면 순서만 다르고 같은 원소로 이루어져 있지만, 수열 $A = [1, 2, 5]$, 수열 $B = [3, 1, 2]$라면 같은 원소로 이루어져 있지 않습니다.",
+ "input_spec": "첫 번째 줄에 정수 $n$이 주어집니다.\n\n두 번째 줄에는 수열 $A$의 원소 $A_1$, $A_2$, $\\ldots$, $A_n$이 공백을 사이에 두고 주어집니다.\n\n세 번째 줄에는 수열 $B$의 원소 $B_1$, $B_2$, $\\ldots$, $B_n$이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "두 수열이 서로 같은 원소들로 이루어져 있다면 \"Yes\"를, 아니라면 \"No\"를 출력합니다.",
+ "constraints": "- $1 \\le n \\le 100$\n- $1 \\le A_i, B_i \\le 100$ ($1 \\le i \\le n$)\n- 수열 $A$의 원소는 서로 모두 다르며, 수열 $B$의 원소도 서로 모두 다릅니다.",
+ "samples": [
+  {
+   "in": "3\n1 2 3\n3 1 2\n",
+   "out": "Yes\n"
+  },
+  {
+   "in": "3\n1 2 5\n3 1 2\n",
+   "out": "No\n"
+  }
+ ],
+ "sample_notes": [
+  "수열 $A = [1, 2, 3]$과 수열 $B = [3, 1, 2]$는 나열된 순서만 다르고 원소는 $1$, $2$, $3$으로 같으므로 \"Yes\"를 출력합니다.",
+  "수열 $A = [1, 2, 5]$에는 $5$가 있지만 수열 $B = [3, 1, 2]$에는 없고, 반대로 $B$에는 $3$이 있지만 $A$에는 없으므로 \"No\"를 출력합니다."
+ ]
+}

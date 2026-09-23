@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "164",
+ "title": "2개 중 최대",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-max-of-two-nums/description",
+ "alias": "max-of-two-nums",
+ "pid": 164,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "조건문",
+ "lesson": "삼항 연산자",
+ "card": "intro-max-of-two-nums",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "89.9",
+  "submissions": "7521"
+ },
+ "sample_count": 2,
+ "statement_len": 42,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $2$개를 입력받아 두 값중 최댓값을 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 정수 $A, B$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 최댓값을 출력합니다.",
+ "constraints": "- $1 \\le A,\\ B \\le 100$",
+ "samples": [
+  {
+   "in": "2 5\n",
+   "out": "5\n"
+  },
+  {
+   "in": "4 1\n",
+   "out": "4\n"
+  }
+ ]
+}

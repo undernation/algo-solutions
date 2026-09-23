@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2389",
+ "title": "최소공배수 구하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-find-the-least-common-multiple/description",
+ "alias": "find-the-least-common-multiple",
+ "pid": 2389,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "함수",
+ "lesson": "값을 반환하지 않는 함수",
+ "card": "test-find-the-least-common-multiple",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "74.8",
+  "submissions": "6504"
+ },
+ "sample_count": 1,
+ "statement_len": 104,
+ "fetched_at": "2026-09-23",
+ "statement": "$n$과 $m$이 주어졌을 때, $n$과 $m$의 최소공배수를 출력하는 프로그램을 작성해보세요.\n\n단, 두 수를 인자로 받아 최소공배수를 구해 반환하는 함수를 만들어 문제를 해결해주세요.",
+ "input_spec": "첫 번째 줄에 정수 $n$과 $m$이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 $n$과 $m$의 최소공배수를 출력합니다.",
+ "constraints": "- $1 \\le n, m \\le 100$",
+ "samples": [
+  {
+   "in": "12 18\n",
+   "out": "36\n"
+  }
+ ]
+}

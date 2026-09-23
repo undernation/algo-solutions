@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "479",
+ "title": "도토리 키재기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-acorn-sort/description",
+ "alias": "acorn-sort",
+ "pid": 479,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "정렬",
+ "lesson": "정렬 속도 비교",
+ "card": "challenge-acorn-sort",
+ "card_type": "Problem",
+ "level": "Hard",
+ "ptype": "Multiple choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "38.2",
+  "submissions": "4177"
+ },
+ "sample_count": 0,
+ "statement_len": 627,
+ "fetched_at": "2026-09-23",
+ "statement": "$4$개의 정렬(거품 정렬, 선택 정렬, 삽입 정렬, 기수 정렬)이 자신의 성능이 가장 좋다면서 싸우고 있었습니다. \n\n한참을 싸우던 끝에, 누가 가장 훌륭한 정렬 알고리즘인지 확인하기 위해 동일한 배열을 정렬하고, 그 시간복잡도를 비교하기로 했습니다.\n\n어? 그런데 누군가 이상한 데이터를 들고 왔습니다. 데이터는 총 $N$개의 수로 구성된 배열으로, 다음과 같습니다.\n\n```\narr = [10, 10, 10, 10, 10, 10, 10, 10, ..., 10]\n```\n\n서로 누가 이런 데이터를 들고 왔는지 의심했지만, 결국 범인을 찾을 수 없었습니다. 하는 수 없이 네 정렬은 해당 데이터를 기반으로 정렬 속도를 측정하기로 했습니다.\n\n이 경우, 네 정렬의 시간복잡도는 변화할까요? 다음 보기중 옳은 것을 모두 골라보세요.\n\n**보기** — 모두 고르기\n\n1. 거품 정렬의 경우 시간복잡도가 변화하며, $\\mathcal{O}(N)$ 이 된다.\n2. 선택 정렬의 경우 시간복잡도가 변화하며, $\\mathcal{O}(N)$ 이 된다.\n3. 삽입 정렬의 경우 시간복잡도가 변화하며, $\\mathcal{O}(N)$ 이 된다.\n4. 기수 정렬의 경우 시간복잡도가 변화하며, $\\mathcal{O}(\\log N)$ 이 된다."
+}

@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2269",
+ "title": "3 또는 5의 배수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-multiples-of-3-or-5/description",
+ "alias": "multiples-of-3-or-5",
+ "pid": 2269,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "조건문",
+ "lesson": "if else if else 조건문",
+ "card": "test-multiples-of-3-or-5",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "82.3",
+  "submissions": "7369"
+ },
+ "sample_count": 2,
+ "statement_len": 91,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $A$가 $3$의 배수라면 `YES`를, 아니라면 `NO`를 출력하고, 또 $5$의 배수라면 `YES`를, 아니라면 `NO` 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 정수 $A$가 주어집니다.",
+ "output_spec": "첫 번째 줄에 정수 $A$가 $3$의 배수라면 `YES`를, 아니라면 `NO`를 출력합니다.\n\n두 번째 줄에 정수 $A$가 $5$의 배수라면 `YES`를, 아니라면 `NO` 출력합니다.",
+ "constraints": "- $1 \\le A \\le 100$",
+ "samples": [
+  {
+   "in": "15\n",
+   "out": "YES\nYES\n"
+  },
+  {
+   "in": "10\n",
+   "out": "NO\nYES\n"
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "808",
+ "title": "잔해물을 덮기 위한 사각형의 최소 넓이",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-minimum-area-of-rectangle-to-cover-debris/description",
+ "alias": "minimum-area-of-rectangle-to-cover-debris",
+ "pid": 808,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 I",
+ "lesson": "사각형 칠하기",
+ "card": "challenge-minimum-area-of-rectangle-to-cover-debris",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "192 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "34.4",
+  "submissions": "6985"
+ },
+ "sample_count": 1,
+ "statement_len": 107,
+ "fetched_at": "2026-09-23",
+ "statement": "첫 번째 직사각형이 먼저 놓여 있고, 두 번째 직사각형이 그 다음 놓아졌을 때 그 이후에 남아있는 첫 번째 직사각형의 잔해물을 덮기 위한 최소 직사각형의 넓이를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 첫 번째 직사각형에 해당하는 좌측하단의 좌표와 우측상단의 좌표 $(x_1,\\ y_1)$, $(x_2,\\ y_2)$가 공백을 사이에 두고 주어집니다.\n\n두 번째 줄에 두 번째 직사각형에 해당하는 좌측하단의 좌표와 우측상단의 좌표 $(x_1,\\ y_1)$, $(x_2,\\ y_2)$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 남아있는 첫 번째 직사각형의 잔해물을 덮기 위한 최소 직사각형의 넓이를 출력합니다.",
+ "constraints": "- $-1\\,000 \\le x_1 < x_2 \\le 1\\,000$\n - $-1\\,000 \\le y_1 < y_2 \\le 1\\,000$",
+ "samples": [
+  {
+   "in": "2 1 7 4\n5 -1 10 3\n",
+   "out": "15\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 직사각형에 두 번째 직사각형 사각형이 아래와 같이 놓아졌습니다. \n\n<br/>\n\n![](https://contents.codetree.ai/problems/808/images/problems-f88b988f-7180-472f-9da5-8cd3020ed928.svg)\n\n<br/>\n\n그 이후에 남아있는 첫 번째 직사각형의 잔해물을 덮기 위해 최소 직사각형의 넓이는 가로 $5$ 세로 $3$해서 총 $15$가 됩니다.\n\n<br/>\n\n![](https://contents.codetree.ai/problems/808/images/problems-2ed0b5b9-0c0e-44b5-b66f-8d690a6f6a4a.svg)"
+ ]
+}

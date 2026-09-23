@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "277",
+ "title": "문자열 출력하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-print-string/description",
+ "alias": "print-string",
+ "pid": 277,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "n번 반복하기",
+ "card": "challenge-print-string",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "89.4",
+  "submissions": "15532"
+ },
+ "sample_count": 1,
+ "statement_len": 59,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $N$의 값을 입력받고 그 값의 횟수만큼 `LeebrosCode`를 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 정수 $N$이 주어집니다.",
+ "output_spec": "입력받은 값의 횟수만큼 `LeebrosCode`를 줄에 한 번씩 출력합니다.",
+ "constraints": "- $1 \\le N \\le 10$",
+ "samples": [
+  {
+   "in": "6\n",
+   "out": "LeebrosCode\nLeebrosCode\nLeebrosCode\nLeebrosCode\nLeebrosCode\nLeebrosCode\n"
+  }
+ ]
+}

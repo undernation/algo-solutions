@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "457",
+ "title": "중간에서 삽입, 삭제하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-doubly-linked-list-iterator/description",
+ "alias": "doubly-linked-list-iterator",
+ "pid": 457,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "배열, 연결 리스트",
+ "lesson": "Iterator",
+ "card": "test-doubly-linked-list-iterator",
+ "card_type": "Test",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "55.5",
+  "submissions": "2764"
+ },
+ "sample_count": 0,
+ "statement_len": 665,
+ "fetched_at": "2026-09-23",
+ "statement": "Iterator를 사용하면 원하는 곳에서 삭제, 삽입을 조금 더 편하게 할 수 있습니다.\n\n이중연결리스트 내에서 Iterator를 사용하여 두 함수 `insert_at_iterator`, `delete_at_iterator`를 만들고자 합니다. 여기서 `insert_at_iterator` 는 해당 위치 바로 뒤에 데이터를 추가하는 함수이며, `delete_at_iterator`는 해당 위치를 삭제하는 함수입니다. 또, 두 함수에 넘어온 $node$ 값이 이중 연결리스트에서의 iterator 입니다.\n\n```jsx\nfunction insert_at_iterator(node, data)\n  set new_node = new node\n  new_node.data = data\n  new_node.next = node.next\n  new_node.prev = node\n  node.next.prev = (1)\n  node.(2) = new_node\n  \nfunction delete_at_iterator(node)\n  node.next.(3) = node.prev\n  node.prev.next = node.next\n```\n\n남은 코드를 완성해봅시다.\n\n**보기** — 순서대로 3개 고르기\n\n1. `node`\n2. `new_node`\n3. `data`\n4. `next`\n5. `prev`"
+}

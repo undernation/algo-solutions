@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2540",
+ "title": "전부 겹치는 선분 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-overlapping-line-segments-2/description",
+ "alias": "overlapping-line-segments-2",
+ "pid": 2540,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "케이스별로 나누기",
+ "lesson": "겹치는 경우",
+ "card": "test-overlapping-line-segments-2",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "59.8",
+  "submissions": "1177"
+ },
+ "sample_count": 1,
+ "statement_len": 134,
+ "fetched_at": "2026-09-23",
+ "statement": "1차원 직선상에 $N$개의 선분이 놓여 있습니다. 하나의 선분을 적절하게 제거하여 나머지 $N - 1$개의 선분이 전부 겹치는 지점이 있도록 만들 수 있는지를 판단하는 프로그램을 작성해보세요. 단, 경계에서 만나더라도 겹치는 것으로 봅니다.",
+ "input_spec": "첫 번째 줄에는 정수 $N$이 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 각 줄마다 선분의 두 끝점을 나타내는 두 정수 $x_{i,1}$과 $x_{i,2}$가 공백을 사이에 두고 주어집니다. 이는 $i$번째 선분이 $[x_{i,1},\\ x_{i,2}]$임을 뜻합니다.",
+ "output_spec": "$N - 1$개의 선분이 모두 겹치는 지점이 있다면 \"Yes\", 그렇지 않다면 \"No\"를 출력합니다.",
+ "constraints": "- $3 \\le N \\le 100$\n- $1 \\le x_{i,1} \\lt x_{i,2} \\le 100$ ($1 \\le i \\le N$)\n- 모든 입력값은 정수입니다.",
+ "samples": [
+  {
+   "in": "4\n1 5\n4 6\n7 10\n2 4\n",
+   "out": "Yes\n"
+  }
+ ],
+ "sample_notes": [
+  "$[7,\\ 10]$ 선분을 제거하면 아래 그림과 같이 나머지 세 선분이 $x = 4$에서 모두 겹치게 됩니다.\n\n![](https://contents.codetree.ai/problems/2540/images/problems-ce382ebd-1dd2-48c5-931f-1d0e637fdf8e.svg)"
+ ]
+}

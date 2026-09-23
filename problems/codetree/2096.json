@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2096",
+ "title": "길이가 무한대인 수평선 트랙",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-horizontal-track-with-infinite-length/description",
+ "alias": "horizontal-track-with-infinite-length",
+ "pid": 2096,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "중급 자료구조",
+ "lesson": "TreeSet",
+ "card": "challenge-horizontal-track-with-infinite-length",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 5초 · C++17 1초",
+  "memory": "128 MB",
+  "time_sec": 5.0
+ },
+ "stats": {
+  "accept_rate": "44.6",
+  "submissions": "592"
+ },
+ "sample_count": 1,
+ "statement_len": 330,
+ "fetched_at": "2026-09-23",
+ "statement": "길이가 무한대인 수평선 트랙을 달리는 $N$명의 사람들이 있습니다. 사람들은 각자 다른 위치에서 동시에 출발해서 $T$분 동안 트랙을 달립니다. 사람들의 속력은 서로 같을수도, 다를수도 있습니다. 만약 사람 $A$가 달리다 사람 $B$와 만나게 되면 속력을 줄여 $B$와 함께 뛰어야하며, $A$와 $B$를 하나의 달리기 그룹이 되었다고 표현합니다. 달리기를 모두 마쳤을 때 총 몇 개의 달리기 그룹이 있는지 구하는 프로그램을 작성해보세요. 즉, $T$분에 같은 위치에 있는 사람들을 한 그룹이라고 하면 총 몇개의 그룹이 생기는지 구해야합니다. 각 그룹은 $1$명 이상의 사람을 포함합니다.",
+ "input_spec": "첫 번째 줄에 $N, T$가 공백을 사이에 두고 차례대로 주어집니다. \n\n두 번째 줄부터 $N$개의 줄에 걸쳐 각 사람의 출발점과 분 당 속력이 공백을 사이에 두고 차례대로 주어집니다.",
+ "output_spec": "첫 번째 줄에 달리기를 모두 마쳤을 때 존재하는 달리기 그룹의 수를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100\\,000$\n- $1 \\le T \\le 10^9$\n- $0 \\le \\texttt{출발점} \\le 10^9$\n- $1 \\le \\texttt{속력} \\le 10^9$\n- 출발점과 속력은 모두 정수입니다.\n- 출발점이 앞선 사람의 정보가 먼저 주어진다고 가정해도 좋습니다.",
+ "samples": [
+  {
+   "in": "5 3\n0 1\n1 2\n2 3\n3 2\n6 1\n",
+   "out": "3\n"
+  }
+ ],
+ "sample_notes": [
+  "$2$, $3$, $6$번에서 출발한 사람들은 한 그룹에 있고 $0$번에서 출발한 사람과 $1$번에서 출발한 사람은 각각 혼자 위치하게 됩니다.\n\n![](https://contents.codetree.ai/problems/2096/images/problems-ad6acd74-d261-4454-a96a-f9d04821dce6.png)"
+ ]
+}

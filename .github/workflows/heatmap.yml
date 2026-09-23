@@ -6,8 +6,10 @@ on:
     paths:                      # 풀이/문제 자료/생성 코드가 바뀔 때
       - 'boj/**'
       - 'swea/**'
+      - 'codetree/**'
       - 'problems/**'
       - '_meta/history.json'
+      - '_meta/codetree_list.json'    # 번호 없는 옛 기록 ↔ 코드트리 문제 연결에 쓰인다
       - '_meta/_dashboard_tpl.py'
       - '_meta/build_probindex.py'
       - '_meta/build_heatmap.py'

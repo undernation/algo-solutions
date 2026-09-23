@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "749",
+ "title": "출력결과 67",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201821/description",
+ "alias": "reading-k201821",
+ "pid": 749,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "함수",
+ "lesson": "값을 반환하는 함수",
+ "card": "challenge-reading-k201821",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "67.7",
+  "submissions": "3327"
+ },
+ "sample_count": 0,
+ "statement_len": 1710,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 프로그램의 출력 결과는 무엇인가?\n\n## Python3 코드\n```python\ndef f(n):\n    if (n < 2):\n        return 0\n    for d in range(n - 1, 1, -1):\n        if n % d == 0:\n            return 0\n    return 1\n\nprint(f(1), f(11), f(21), f(31))\n```\n\n## C 코드\n\n```c\nint f(int n) {  \n    if (n < 2)    \n        return 0;  \n    for(int d = n - 1; d > 1; d--) {    \n        if (n % d == 0)      \n            return 0;  \n    }  \n    return 1;\n}\nint main() {  \n    printf(\"%d \", f(1));  \n    printf(\"%d \", f(11));  \n    printf(\"%d \", f(21));  \n    printf(\"%d \", f(31));  \n    return 0;\n}\n```\n\n## C++ 코드\n\n```cpp\nint f(int n) {  \n    if (n < 2)    \n        return 0;  \n    for(int d = n - 1; d > 1; d--) {    \n        if (n % d == 0)      \n            return 0;  \n    }  \n    return 1;\n}\nint main() {  \n    cout << f(1) << \" \";\n    cout << f(11) << \" \";\n    cout << f(21) << \" \";\n    cout << f(31) << \" \";\n    return 0;\n}\n```\n\n## Java 코드\n\n```java\npublic static int f(int n) {  \n    if (n < 2)    \n        return 0;  \n    for(int d = n - 1; d > 1; d--) {    \n        if (n % d == 0)      \n            return 0;  \n    }  \n    return 1;\n}\n\npublic static void main(String[] args) {\n    System.out.print(f(1) + \" \");\n    System.out.print(f(11) + \" \");\n    System.out.print(f(21) + \" \");\n    System.out.print(f(31) + \" \");\n}\n```\n\n## JavaScript 코드\n```JavaScript\nfunction f(n) {\n    if (n < 2) {\n        return 0;\n    }\n\n    for (let i = n - 1; i > 1; i--) {\n        if (n % i === 0) {\n            return 0;\n        }\n    }\n\n    return 1;\n}\n\nprocess.stdout.write(f(1) + \" \");\nprocess.stdout.write(f(11) + \" \");\nprocess.stdout.write(f(21) + \" \");\nprocess.stdout.write(f(31) + \" \");\n```\n\n**보기** — 하나 고르기\n\n1. 0 0 1 1\n2. 0 0 1 0\n3. 0 1 1 0\n4. 0 1 0 1\n5. 1 0 1 0"
+}

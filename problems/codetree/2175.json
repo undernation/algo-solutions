@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2175",
+ "title": "삼 오 무",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-three-five-moo/description",
+ "alias": "three-five-moo",
+ "pid": 2175,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Parametric Search",
+ "lesson": "Parametric Search",
+ "card": "challenge-three-five-moo",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "39.8",
+  "submissions": "1341"
+ },
+ "sample_count": 1,
+ "statement_len": 222,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$부터 차례대로 숫자를 적는데, $3$이나 $5$의 배수는 숫자 대신 \"Moo\"라고 적습니다. 예를 들어 $1$부터 $16$까지의 숫자를 적는다면 아래와 같습니다. \n\n$1$, $2$, Moo, $4$, Moo, Moo, $7$, $8$, Moo, Moo, $11$, Moo, $13$, $14$, Moo, $16$\n\n이 때, $N$번째로 적히는 숫자는 무엇인지 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.",
+ "output_spec": "첫 번째 줄에 $N$번째로 적히는 숫자를 출력합니다.",
+ "constraints": "- $1\\le N\\le10^9$",
+ "samples": [
+  {
+   "in": "4\n",
+   "out": "7\n"
+  }
+ ],
+ "sample_notes": [
+  "적히는 숫자들은 $1$, $2$, $4$, $7$, $\\dots$ 이므로 $4$번째 적히는 숫자는 $7$입니다."
+ ]
+}

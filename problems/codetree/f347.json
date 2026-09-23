@@ -1,0 +1,39 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f347",
+ "title": "코드트리 DB",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/codetree-db/description",
+ "alias": "codetree-db",
+ "pid": 347,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2024 하반기 오전 2번 문제",
+ "level": "L19",
+ "limits": {
+  "time": "Python3 8초 · C++17 2초",
+  "memory": "420 MB",
+  "time_sec": 8.0
+ },
+ "stats": {
+  "accept_rate": "22.9",
+  "submissions": "1539"
+ },
+ "sample_count": 2,
+ "statement_len": 567,
+ "fetched_at": "2026-09-23",
+ "statement": "신생 IT 기업, 코드트리가 특수한 구조의 DB(Database) 사업에 진출하려고 합니다. 코드트리가 제공하는 DB는 오직 하나의 테이블을 유지하며, 다음 5가지 쿼리만을 지원합니다.\n\n코드트리 DB는 다음 구조의 테이블을 가지고 있습니다:\n\n|name|value|\n|---|---|\n|||\n\n예제 1번의 쿼리를 모두 실행 후, 테이블 모습은 다음과 같습니다:\n\n|name|value|\n|---|---|\n|Udon|7000|\n|EelSushi|17000|\n|Sushi|14000|\n\n사용 가능한 쿼리의 종류는 다음과 같습니다:\n\n(1) **init**\n\n테이블을 초기화 합니다.\n\n(2) **insert**\n\n테이블에 새로운 데이터를 추가합니다.\n\n(3) **delete**\n\n테이블에서 데이터를 삭제합니다.\n\n(4) **rank**\n\n테이블에서 k번째로 작은 value를 가진 데이터를 조회합니다.\n\n(5) **sum**\n\n테이블에서 특정 값 이하의 value를 가진 데이터들의 합을 계산합니다.\n\n신생 기업 코드트리를 도와 $Q$번에 걸친 DB query들을  순서대로 처리할 수 있는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 쿼리의 수 $Q$가 주어집니다. \n\n두 번째 줄부터는 $Q$개의 줄에 걸쳐 쿼리의 정보가 주어집니다. 각 쿼리에 따른 형태는 다음과 같습니다.\n\n1.**init**\n\n  `init` 형태로 주어집니다. 이는 table에 포함된 모든 데이터를 삭제합니다. **해당 쿼리는 가장 처음에 항상 주어지며, 최대 50번 주어집니다.**\n\n2.**insert**\n   \n  `insert name value` 형태로 공백을 사이에 두고 주어집니다. 이 쿼리에서는 table에 새로운 row(name, value)를 추가하려 시도합니다. `name`, `value` 각각의 field에는 unique key가 설정되어있습니다. 때문에 만약 이미 존재하는 name 혹은 value라면 0을 출력하고, 새로운 name과 새로운 value의 조합이라면 성공적으로 추가한 후 1을 출력합니다. 이때 주어지는 name의 길이는 10보다 작거나 같음을, value의 값은 1 이상 1,000,000,000 이하의 정수임을 가정해도 좋으며, **해당 쿼리는 최대 100,000번 주어집니다.**\n\n3.**delete**\n   \n  `delete name` 형태로 공백을 사이에 두고 주어집니다. 이 쿼리에서는 table에서 name과 같은 값을 가지는 row를 제거합니다. name과 같은 값을 가지는 row가 없다면 0을 출력하고, 존재한다면 제거된 row의 value를 출력합니다. 이때 주어지는 name의 길이는 10보다 작거나 같음을 가정해도 좋으며, **해당 쿼리는 최대 100,000번 주어집니다.**\n\n4.**rank**\n\n  `rank k` 형태로 공백을 사이에 두고 주어집니다. 이 쿼리에서는 테이블에서 k번째로 작은 value를 가진 row의 name을 출력합니다. 테이블이 가진 row의 수가 k보다 작다면 `None`을 출력합니다. 이때 주어지는 k는 100,000 이하의 양의 정수를 가정해도 좋으며, **해당 쿼리는 최대 100,000번 주어집니다.**\n\n5.**sum**\n\n  `sum k` 형태로 주어집니다. 이 쿼리에서는 테이블 내에서 k 이하의 value를 가진 row를 모두 찾아서 그들의 value를 합한값을 출력합니다. 만약 해당되는 row가 없다면 0을 출력합니다. 이때 주어지는 k는 1 이상 1,000,000,000 이하의 정수임을 가정해도 좋으며, **해당 쿼리는 최대 100,000번 주어집니다.**\n\n</br>",
+ "output_spec": "각 쿼리에 걸맞는 출력을 줄별로 순서에 맞게 출력하세요.",
+ "constraints": "- $1 \\le Q \\le 300\\,000$\n- 문자열 $name$은 공백을 포함하지 않은 알파벳 대소문자로만 이루어져 있으며, 길이 $1 \\le |name| \\le 10$.\n- init 쿼리는 항상 가장 처음에 주어지며, 최대 $50$번 호출됩니다.\n- insert 쿼리는 최대 $100\\,000$번 호출됩니다.  \n  - $1 \\le value \\le 1\\,000\\,000\\,000$\n- delete 쿼리는 최대 $100\\,000$번 호출됩니다.\n- rank 쿼리는 최대 $100\\,000$번 호출됩니다.  \n  - $1 \\le k \\le 100\\,000$\n- sum 쿼리는 최대 $100\\,000$번 호출됩니다.  \n  - $1 \\le k \\le 1\\,000\\,000\\,000$",
+ "samples": [
+  {
+   "in": "10\ninit\ninsert Gimbab 3000\ndelete Kimbab\ninsert Udon 6000\ninit\ninsert Udon 7000\ninsert EelSushi 17000\ninsert Sushi 14000\nrank 3\nsum 15000\n",
+   "out": "1\n0\n1\n1\n1\n1\nEelSushi\n21000\n"
+  },
+  {
+   "in": "32\ninit\ndelete hat\ndelete hop\ndelete dong\ninsert jack 2000\nsum 13000\ninit\ninsert hat 18000\nsum 1000\nrank 4\nsum 16000\ninsert lip 20000\ninsert bow 20000\ndelete map\nrank 3\nsum 19000\ninsert lucas 9000\nrank 4\nsum 4000\ninsert david 12000\nsum 19000\ndelete cat\nsum 11000\ninsert fly 5000\ninsert dong 16000\nsum 10000\ninsert will 5000\ninsert dong 13000\nsum 10000\nrank 3\nsum 17000\nrank 6\n",
+   "out": "0\n0\n0\n1\n2000\n1\n0\nNone\n0\n1\n0\n0\nNone\n18000\n1\nNone\n0\n1\n39000\n0\n9000\n1\n1\n14000\n0\n0\n14000\ndavid\n42000\nlip\n"
+  }
+ ]
+}

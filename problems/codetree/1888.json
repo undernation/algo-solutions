@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1888",
+ "title": "이동하는 경우의 수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-number-of-moving-cases/description",
+ "alias": "number-of-moving-cases",
+ "pid": 1888,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "위상정렬",
+ "lesson": "Graph DP",
+ "card": "challenge-number-of-moving-cases",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "46.0",
+  "submissions": "176"
+ },
+ "sample_count": 1,
+ "statement_len": 571,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 정점과 $M$개의 단방향 간선으로 이루어진 그래프가 있습니다.\n\n남우는 $1$번 정점에서 $N$번 정점으로 이동하려 합니다. 그런데 너무 짧은 경로는 싫기 때문에, n번 정점까지 이동하는데 가장 오래 걸리는 경로와 그 경로에 쓰이는 간선들을 알아보려 합니다.\n\n모든 경로 중에서 이동에 걸리는 총 시간이 가장 긴 경우의 시간과, 해당시간이 걸리는 경로들에 포함된 간선의 개수를 구하는 프로그램을 작성하세요.\n\n\n![](https://contents.codetree.ai/problems/1888/images/problems-0f6eb7de-59f3-4222-90d3-a9fce69e0d9f.png)\n\n예를 들어, 다음과 같은 그래프가 있습니다.\n\n![](https://contents.codetree.ai/problems/1888/images/problems-92a80770-a1d8-4635-b6a6-ec618e72329c.png)\n\n이 그래프에서 가장 이동시간이 긴 경우 $30$만큼의 시간이 필요하며 $30$의 시간이 필요한 경로는 다음과 같습니다. 총 $5$개의 간선이 해당 경로들에 포함되어 있습니다.",
+ "input_spec": "첫 번째 줄에 정점의 개수 $N$, 간선의 개수 $M$ 이 공백을 두고 주어집니다.\n\n두 번째 줄부터 $M$개의 줄에 걸쳐 각 간선의 출발 정점과 도착 정점과, 해당 간선을 지나는데 걸리는 시간이 공백을 두고 주어집니다.",
+ "output_spec": "모든 경로 중에서 이동에 걸리는 총 시간이 가장 긴 경우의 시간과, 해당시간이 걸리는 경로들에 포함된 간선의 개수를 공백을 두고 출력합니다.",
+ "constraints": "- $1 \\le N , M \\le 100\\,000$\n- $1 \\le \\texttt{간선을 지나는데 걸리는 시간} \\le 10\\,000$\n- 모든 정점에서 $N$번 정점으로 이동이 가능하며, 사이클이 없는 그래프만 입력으로 주어집니다.",
+ "samples": [
+  {
+   "in": "5 6\n1 2 5\n1 4 10\n2 3 3\n3 4 2\n3 5 8\n4 5 20\n",
+   "out": "30 5\n"
+  }
+ ]
+}

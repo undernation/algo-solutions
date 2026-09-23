@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2117",
+ "title": "특정 조건으로 묶여있는 수 그룹",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-a-group-of-numbers-tied-to-specific-conditions/description",
+ "alias": "a-group-of-numbers-tied-to-specific-conditions",
+ "pid": 2117,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shorten time Technique",
+ "lesson": "Two Pointer",
+ "card": "challenge-a-group-of-numbers-tied-to-specific-conditions",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "51.2",
+  "submissions": "299"
+ },
+ "sample_count": 1,
+ "statement_len": 194,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 정수 $A_1, A_2, \\dots, A_N$을 두개의 그룹으로 묶으려고 합니다. 각 그룹 내의 수들끼리는 차가 $K$를 넘지 않아야하며, 한 수는 최대 한 개의 그룹에만 속할 수 있고, 어느 그룹에도 속하지 않는 수들이 있을 수도 있습니다. $K$값이 주어질 때, 그룹에 속해있는 수들은 최대 몇 개인지 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N, K$가 공백을 사이에 두고 차례대로 주어집니다. \n\n두 번째 줄부터 $N$개의 줄에 걸쳐 $A_1, A_2, \\dots, A_N$ 이 한 줄에 하나씩 주어집니다.",
+ "output_spec": "첫 번째 줄에 그룹에 속해있는 수 개수의 최댓값을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 50\\,000$\n- $0 \\le K \\le 10^9$\n- $0 \\le A_i \\le 10^9$",
+ "samples": [
+  {
+   "in": "7 3\n10\n5\n1\n12\n9\n5\n14\n",
+   "out": "5\n"
+  }
+ ],
+ "sample_notes": [
+  "그룹을 다음과 같이 나누면 그룹에 속해있는 수들의 개수가 최대가 됩니다. 이보다 더 많은 수들이 그룹에 속할 수 있는 경우는 없습니다. \n\n$(5,\\ 5)$ $(9,\\ 10,\\ 12)$"
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2235",
+ "title": "가장 오래 걸리는 학생 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-longest-student-2/description",
+ "alias": "longest-student-2",
+ "pid": 2235,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shortest Path",
+ "lesson": "Dijkstra",
+ "card": "intro-longest-student-2",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "73.7",
+  "submissions": "760"
+ },
+ "sample_count": 1,
+ "statement_len": 280,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 서로 다른 장소가 있습니다. $1$번부터 $N-1$번 장소에는 학생이 한 명씩 살고 있고, $N$번 장소는 학교입니다. 두 개의 장소를 연결하는 간선은 없거나, 있다면 최대 $1$개만 있으며, 주어지는 모든 간선은 방향성을 갖습니다. 간선마다 길이 $d$가 주어지며, 각 학생은 등교 시 최단거리로 학교로 이동한다고 합니다. 모든 학생은 거리 $1$을 이동하는 데 $1$초의 시간이 걸린다고 했을 때, 학교에 등교하는 데 가장 오래 걸리는 학생의 소요 시간을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 장소의 개수인 $N$과 간선의 개수인 $M$이 공백을 사이에 두고 차례대로 주어집니다.\n\n두 번째 줄부터는 간선을 이루고 있는 두 장소의 번호 $i$와 $j$, 그리고 간선의 길이 $d$가 각각 공백을 사이에 두고 차례대로 주어집니다. 이는 장소 $i$에서 장소 $j$로 가는 데 길이가 $d$임을 뜻합니다.",
+ "output_spec": "첫 번째 줄에 가장 등교하는 데 오래 걸리는 학생의 소요 시간을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100\\,000$\n- $1 \\le M \\le 100\\,000$\n- $1 \\le d \\le 1\\,000$\n- 모든 학생이 등교하는 것이 가능함을 가정해도 좋습니다.",
+ "samples": [
+  {
+   "in": "5 6\n2 1 1\n1 5 2\n4 5 100\n4 2 9\n3 2 3\n4 3 5\n",
+   "out": "11\n"
+  }
+ ],
+ "sample_notes": [
+  "![](https://contents.codetree.ai/problems/2235/images/problems-8605ed5a-cc82-4efe-8c23-f14c249b7412.png)\n\n$1$번 장소에서 시작하여 학교로 이동할 때 필요한 간선은 한 개입니다. 따라서 간선 길이의 합은 $2$입니다.\n\n![](https://contents.codetree.ai/problems/2235/images/problems-e9a6b124-18b0-46ec-8617-6066a7bd3e81.png)\n\n$2$번 장소에서 시작하여 학교로 이동할 때 거쳐야 하는 간선 길이의 합은 $1+2=3$입니다.\n\n![](https://contents.codetree.ai/problems/2235/images/problems-193be4b6-437a-42be-a69d-18b7bdfb2006.png)\n\n$3$번 장소에서 시작하여 학교로 이동할 때 거쳐야 하는 간선 길이의 합은 $3+1+2=6$입니다.\n\n![](https://contents.codetree.ai/problems/2235/images/problems-cfb5f64e-1649-4311-84c5-a2c9b78f94ce.png)\n\n$4$번 장소에서 시작하여 학교로 이동할 때 거쳐야 하는 간선 길이의 합은 $5+3+1+2=11$입니다.\n\n![](https://contents.codetree.ai/problems/2235/images/problems-33a8e741-ed7a-41e4-a31f-8878d4c665ce.png)\n\n즉, $4$번 장소에 있는 학생이 학교로 가기 위한 최단 거리는 $11$입니다. 이보다 더 오래 걸리는 학생은 없습니다."
+ ]
+}

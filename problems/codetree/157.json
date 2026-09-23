@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "157",
+ "title": "1시간 뒤 시간 출력",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-print-one-hour-later/description",
+ "alias": "print-one-hour-later",
+ "pid": 157,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "입출력",
+ "lesson": "특정 문자를 사이에 두고 입력",
+ "card": "intro-print-one-hour-later",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "84.0",
+  "submissions": "10681"
+ },
+ "sample_count": 2,
+ "statement_len": 68,
+ "fetched_at": "2026-09-23",
+ "statement": "$h$:$m$ 모양의 시간과 분으로 이루어져 있는 시간을 입력받아 $1$시간 뒤의 시간을 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 현재 시간이 $h$:$m$ 형태로 주어집니다. $h$는 시간을, $m$은 분을 나타냅니다.",
+ "output_spec": "입력받은 시간으로부터 $1$시간 뒤의 시간을 입력과 동일한 형태 $h$:$m$에 맞춰 출력합니다.",
+ "constraints": "- $1 \\le h \\le 22$\n- $0 \\le m \\lt 60$",
+ "samples": [
+  {
+   "in": "1:59\n",
+   "out": "2:59\n"
+  },
+  {
+   "in": "22:1\n",
+   "out": "23:1\n"
+  }
+ ]
+}

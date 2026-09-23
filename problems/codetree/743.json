@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "743",
+ "title": "출력결과 61",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201814/description",
+ "alias": "reading-k201814",
+ "pid": 743,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "조건문",
+ "lesson": "중첩 조건문",
+ "card": "challenge-reading-k201814",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "78.4",
+  "submissions": "6161"
+ },
+ "sample_count": 0,
+ "statement_len": 874,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 프로그램의 출력 결과는 무엇인가?\n\n## Python3 코드\n```python\nx = 9\ny = 11\nif x < 10:\n    if y > 10:\n        print('A', end = '')\n    else:\n        print('B', end = '')\nprint('C', end = '')\n```\n\n## C 코드\n\n```c\nint x = 9, y = 11;\nif (x < 10)  \n    if (y > 10)    \n        printf(\"A\");  \n    else    \n        printf(\"B\");\nprintf(\"C\");\n```\n\n## C++ 코드\n\n```cpp\nint x = 9, y = 11;\nif (x < 10)  \n    if (y > 10)    \n        cout << \"A\";\n    else    \n        cout << \"B\";\ncout << \"C\";\n```\n\n## Java 코드\n\n```java\nint x = 9, y = 11;\nif (x < 10)  \n    if (y > 10)\n        System.out.print(\"A\");\n    else\n        System.out.print(\"B\");\nSystem.out.print(\"C\");\n```\n\n## JavaScript 코드\n\n```JavaScript\nlet x = 9, y = 11;\nlet answer = \"\";\nif (x < 10)  \n    if (y > 10)\n        answer += \"A\";\n    else\n        answer += \"B\";\nanswer += \"C\";\nconsole.log(answer);\n```\n\n**보기** — 하나 고르기\n\n1. A\n2. AB\n3. BC\n4. AC\n5. ABC"
+}

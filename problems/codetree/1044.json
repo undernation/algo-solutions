@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1044",
+ "title": "노드의 공통 조상 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-common-ancestor-of-node-2/description",
+ "alias": "common-ancestor-of-node-2",
+ "pid": 1044,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Tree",
+ "lesson": "LCA",
+ "card": "intro-common-ancestor-of-node-2",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "256 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "61.7",
+  "submissions": "193"
+ },
+ "sample_count": 1,
+ "statement_len": 336,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$번부터 $N$번까지 $N$개의 정점으로 이루어진 트리가 주어집니다.\n이 트리의 루트는 $1$번 정점입니다.\n\n어떤 정점 $v$의 조상이란, 정점 $v$에서 $1$번 정점에 도달할 때까지 부모 정점을 따라 올라갈 때 방문하는 모든 정점들을 뜻합니다. $1$번 정점의 조상은 유일하게 자기자신 뿐이며, 모든 정점은 자기자신을 조상으로 갖습니다.\n\n두 정점의 최소 공통 조상이란, 두 정점 모두의 조상이 되는 정점 중에서 깊이가 가장 깊은 정점을 뜻합니다.\n이러한 정점은 항상 유일하게 존재함을 증명할 수 있습니다.\n\n두 정점이 주어질 때마다, 이 둘의 최소 공통 조상을 구하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 정점의 수 $N$이 주어집니다.\n\n그다음 줄부터 $N-1$개의 줄에 걸쳐, 한 줄에 간선 하나씩, 각 간선이 연결하는 두 정점의 번호가 공백으로 구분되어 주어집니다.\n\n그다음 줄에 질의 횟수 $Q$가 주어집니다.\n\n그다음 줄부터 $Q$개의 줄에 걸쳐, 한 줄에 질의 하나씩, 최소 공통 조상을 구하고자 하는 두 정점의 번호가 공백으로 구분되어 주어집니다.",
+ "output_spec": "첫 번째 줄부터 $Q$ 개의 줄에 걸쳐, 각 질의의 최소 공통 조상의 번호를 한 줄에 하나씩 차례대로 출력합니다.",
+ "constraints": "- $2 \\le N \\le 50\\,000$\n- $1 \\le \\texttt{간선이 연결하는 정점 번호} \\le N$\n- $1 \\le Q \\le 10\\,000$\n- $1 \\le \\texttt{질의로 주어지는 정점 번호} \\le N$\n- 주어지는 그래프는 트리입니다.",
+ "samples": [
+  {
+   "in": "3\n1 2\n3 1\n3\n2 2\n1 3\n3 2\n",
+   "out": "2\n1\n1\n"
+  }
+ ]
+}

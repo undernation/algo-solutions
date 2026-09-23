@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "347",
+ "title": "행 단위로 반복하여 출력",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-print-in-row/description",
+ "alias": "print-in-row",
+ "pid": 347,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "다중 반복문",
+ "lesson": "일반적인 순서로 숫자 출력",
+ "card": "intro-print-in-row",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "94.5",
+  "submissions": "2658"
+ },
+ "sample_count": 2,
+ "statement_len": 45,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $N$의 값이 주어지면 행 단위로 반복하여 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.",
+ "output_spec": "$N$의 값에 따른 숫자를 행 단위로 출력합니다.",
+ "constraints": "- $1 \\le N \\le 9$",
+ "samples": [
+  {
+   "in": "3\n",
+   "out": "123\n123\n123\n"
+  },
+  {
+   "in": "4\n",
+   "out": "1234\n1234\n1234\n1234\n"
+  }
+ ]
+}

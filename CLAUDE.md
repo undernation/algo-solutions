@@ -8,7 +8,7 @@
 
 ## 0. 이 repo는 무엇인가
 
-**코딩테스트 풀이 아카이브** (BOJ / SWEA). 사용자가 푼 코드를 문제 단위로 보관한다.
+**코딩테스트 풀이 아카이브** (BOJ / SWEA / 코드트리). 사용자가 푼 코드를 문제 단위로 보관한다.
 
 | | |
 |---|---|
@@ -35,6 +35,22 @@
 - 참고로만 남겨둔 사실: SWEA 문제 페이지에는 *"※ SW Expert 아카데미의 문제를 무단 복제하는 것을 금지합니다."* 고지가 있고,
   SSAFY가 준 허용 조건은 *"private이면 보관 가능"* 이었다. **소유자가 위험을 인지한 상태에서 public 저장을 선택했다.**
 - ⚠️ 한 번 public으로 push된 내용은 히스토리·포크·캐시에 남는다. 되돌리려면 히스토리 재작성이 필요하다.
+
+> 🔓 **코드트리(CT)도 공개 저장 — 소유자 결정 (2026-09-23).**
+> 코드트리 트레일은 **유료 콘텐츠**다(계정 결제됨). 에이전트가 "public repo 에 올리면 재배포가 되어
+> DMCA 로 repo·Pages 전체가 내려가거나 계정이 정지될 수 있다"고 알렸고, 소유자가 **위험을 감수하고**
+> BOJ/SWEA 처럼 지문·예제를 그대로 저장하기로 했다. **에이전트는 다시 묻지 않는다.**
+>
+> | 코드트리 | 저장 |
+> |---|---|
+> | 번호·제목·URL·트레일/챕터/레슨·기출 출처·난이도·한도 | ✅ `problems/codetree/`, `_meta/codetree_list.json` |
+> | 지문·입출력 설명·제약·힌트·예제 | ✅ `problems/codetree/<no>.json` (+ 보관소 `_meta/tc_store/codetree/` 에도 사본) |
+> | 기출의 **유형 태그·선수 레슨**, 내 코드트리 진행상태 | ❌ 어디에도 저장 안 함 (**유형 스포 금지** — 공개 여부와 무관) |
+>
+> - **스위치 한 곳: `_meta/judge_config.json` 의 `"privateSites"`** (지금 `[]`).
+>   `["CT"]` 로 바꾸면 지문을 repo 에서 빼고 허브 보관소(`/prob`, 토큰 필요)에서만 내준다.
+>   서버·크롤러·selfcheck·pre-commit 훅이 모두 이 값을 읽고, **못 읽으면 안전하게 `["CT"]`** 로 동작한다.
+> - 비공개로 되돌려도 **이미 push 된 지문은 히스토리에 남는다**(위 ⚠️ 와 같다).
 - 비공개로 돌리려면:
   ```bash
   gh repo edit --visibility private --accept-visibility-change-consequences   # ※ 무료 계정은 Pages 중단
@@ -236,6 +252,60 @@ python _meta/selfcheck.py            # 이상 없나 확인
 → `_meta/swea_ids.json` 에 `{"2382": "AWXRQm6q…"}` 를 채워야 자동 크롤링 대상이 된다.
 → 없으면 대시보드에서 **문제 다시 가져오기** 클릭 시 URL 을 물어본다.
 
+### 🌳 코드트리 (CT) — 2026-09-23 추가
+
+**대상**: 트레일 6개(Novice Low ~ Intermediate High, 1,334카드) + 기출 3종(삼성 SW 역량테스트 78 · 현대 HSAT 22 · ACPC 17) = **1,451문제**.
+
+| | |
+|---|---|
+| 번호 | 코드트리 `problem_id`. **트레일은 숫자(`196`), 기출은 `f` + 번호(`f386`)** |
+| 왜 f 인가 | 트레일과 기출은 번호 체계가 달라 106개가 겹친다(386 = 트레일 "문자열 돌리기" = 기출 "AI 로봇청소기"). 합치면 기출이 엉뚱한 문제 밑으로 사라진다 |
+| 목록 | `_meta/codetree_list.json` (트레일 → 챕터 → 레슨 / 기출 → 회차). 대시보드가 필요할 때만 받는다(index.html 에 안 박음) |
+| 문제 자료 | `problems/codetree/<no>.json` (지문·예제 포함 — 위 소유자 결정) + 사본 `_meta/tc_store/codetree/<no>.json` |
+| 풀이 파일 | `codetree/<no>_<제목>.py` (예: `codetree/f386_AI로봇청소기.py`) |
+| URL | 트레일 `…/trails/complete/curated-cards/<card>/description` · 기출 `…/frequent-problems/<source>/problems/<alias>/description` |
+
+**크롤링** — 디버그 크롬(9222)에서 코드트리 **로그인** 필요(세션은 프로필에 남는다):
+```bash
+python _meta/crawl_codetree.py list [--refresh]        # 목록(트레일 6 + 기출 3)
+python _meta/crawl_codetree.py fetch [--group samsung-sw] [--no 196 --no f386] [--force] [--retry-locked]
+python _meta/crawl_codetree.py all                     # list + fetch
+python _meta/crawl_codetree.py rebuild-public [--no f386]   # 보관소로 공개 JSON 다시 만들기(브라우저 불필요)
+python _meta/fetch_problem.py <코드트리 URL | ct:196 | ct:f386> --print [--save]   # 단건(대시보드 '새 문제')
+```
+- 코드트리 API(`api-prod.codetree.ai/api/v2/`)를 **브라우저 페이지 안에서** 부른다. JWT(`localStorage.CODETREE_GLOBAL_TOKEN`)는 페이지 밖으로 꺼내지 않는다.
+- 계정 보호: 동시 3·초당 4건 이하. 429/403 이 연달아 나오면 받은 데까지 저장하고 멈춘다(exit 3, 다시 돌리면 이어 받음).
+- 토큰 수명이 15분이라 긴 크롤링 중 401 이 나면 탭을 새로고침해 사이트가 스스로 갱신하게 한다.
+- 그림은 받지 않는다(`contents.codetree.ai` 공개 CDN URL 그대로). 옛 기출 88문제는 마크다운이 아니라 `<p align>`/`<img>`/`<br>` **HTML** 로 그림을 넣는다 — 대시보드는 이 네 태그만 허용 목록으로 되살린다.
+- 퀴즈형 283문제(`ptype`: Single/Multiple/Sequential choice)는 예제·한도가 없고 보기가 지문 끝에 붙는다. 대시보드는 채점 대신 "코드트리에서 풀기"만 띄운다.
+- 🚩 **유형 스포 금지**: 기출의 `tags`·`prerequisite_lessons`, 내 `progress_status` 는 어디에도 저장하지 않는다(selfcheck 가 막는다).
+
+**옛 기록 연결** — 실수노트에 번호 없이 적힌 코드트리 기록(`## 코드트리 나무박멸 (틀림)`, `## 여왕개미` …)을
+`build_heatmap.py` 가 카탈로그 제목으로 찾아 `CT/<no>` 로 잇는다(2026-09-23 기준 29제목 · 48건).
+제목에 `코드트리`가 있으면 전체에서, 없으면 **기출에서만**, **정확히 하나**와 맞을 때만 잇고 원래 제목은 `title_raw` 에 남긴다.
+프로그래머스·SWEA 제목은 건드리지 않는다.
+
+**생성 테스트케이스(삼성 기출)** — 코드트리는 히든 TC 를 주지 않는다(예제만 준다):
+```bash
+python _meta/ct_tcgen.py prep --group samsung-sw      # 작업 폴더(지문·예제·그림 PNG)
+python _meta/ct_tcgen.py cross f386                    # 독립 풀이 A/B 를 랜덤 입력에서 교차검증
+python _meta/ct_tcgen.py emit f386                     # 일치하면 30케이스를 보관소 private 로
+python _meta/ct_tcgen.py status --group samsung-sw
+python _meta/crawl_codetree.py rebuild-public          # 보관소 → 공개 JSON(private_testcases 200KB 상한)
+python _meta/sync_tc.py --site CT                      # VM 보관소로(큰 케이스 채점용)
+```
+- 문제마다 **서로 모르는 두 풀이**(A: 생성기+풀이 / B: 입력 검증기+풀이)가 공식 예제를 통과하고,
+  랜덤 입력 수백 개에서 끝까지 같은 답을 낼 때만 케이스로 남긴다. 입력은 검증기가 통과시킨 것만 쓴다.
+- 기준 풀이는 **스포일러라 repo 밖** `~/_스포주의_CT기출_참고풀이/<no>/` 에 둔다(`_스포주의_B형_참고풀이` 와 같은 관례).
+- 대시보드는 `tc_generated` 인 문제에 **"생성 TC (공식 아님)"** 을 붙인다. 여기서 맞아도 코드트리 채점 통과와 같지 않다.
+- ❌ 다른 사용자 제출 결과에서 히든 케이스를 긁어모으는 방법은 쓰지 않는다(목록의 실패 케이스는 127자에서 잘려 있기도 하다).
+
+**공개/비공개 스위치** (`_meta/judge_config.json` 의 `privateSites`) — 비공개로 돌리려면:
+1. `"privateSites": ["CT"]` 로 바꾸고
+2. `python _meta/crawl_codetree.py rebuild-public` (공개 JSON 에서 지문 제거)
+3. `python _meta/sync_tc.py --site CT` (공개 모드에선 크롤링 뒤 VM 동기화를 안 하므로 **꼭** 올릴 것)
+4. 허브 재시작(로컬·VM). 대시보드는 `/prob` 로 허브 보관소에서 지문을 받는다.
+
 ### 🧰 스크립트 한눈에 (전부 repo 안에 있다)
 
 | 파일 | 하는 일 |
@@ -243,7 +313,9 @@ python _meta/selfcheck.py            # 이상 없나 확인
 | `_meta/debug_chrome.py` | 크롤링용 **디버그 크롬(9222)** 실행. 평소 크롬과 프로필 분리 |
 | `_meta/crawl_cosal_list.py` | 코딩살구 전체 문제 **목록** → `cosal_list.json` |
 | `_meta/crawl_all.py` | 지문·예제·이미지·히든TC **수집** (`--htc --empty --bad --force --site --limit`) |
-| `_meta/fetch_problem.py` | URL/번호 하나로 **단건 크롤링** (4개 사이트) |
+| `_meta/fetch_problem.py` | URL/번호 하나로 **단건 크롤링** (4개 사이트 — 코드트리는 crawl_codetree 로 넘긴다) |
+| `_meta/crawl_codetree.py` | 코드트리 **목록·지문·예제** (트레일 6 + 기출 3, `list/fetch/all/rebuild-public`) |
+| `_meta/ct_tcgen.py` | 코드트리 기출 **생성 테스트케이스** (`prep/check/cross/emit/status`) |
 | `_meta/map_swea_ids.py` | SWEA 번호 → `contestProbId` 매핑 |
 | `_meta/sync_tc.py` | 전체 테스트케이스를 **채점 서버로 업로드** |
 | `_meta/build_probindex.py` | 문제 **색인** → `problems/index.json` |
@@ -251,8 +323,8 @@ python _meta/selfcheck.py            # 이상 없나 확인
 | `_meta/build_index.py` | README 현황표 |
 | `_meta/install_hooks.py` | pre-commit 훅 + 커밋 이메일 + merge 드라이버 (**새 PC 1회**) |
 | `_meta/publish_endpoint.py` | 터널 URL 을 `endpoint.json` 에 publish (서버에서 timer 로) |
-| `_meta/selfcheck.py` | **저장소 자체 점검** — 조용히 망가지는 것 탐지 |
-| `judge/server.py` | 허브 서버(채점·저장·크롤링·메모·삭제·TC) |
+| `_meta/selfcheck.py` | **저장소 자체 점검** — 조용히 망가지는 것 탐지. `--leak-only [--staged]` 는 공개 금지 검사(훅이 쓴다) |
+| `judge/server.py` | 허브 서버(채점·저장·크롤링·메모·삭제·TC·`/prob`) — **CPython 으로만** 띄울 것(아래 5장) |
 | `judge/_bench.py` | 기기 속도 벤치(시간 보정에 사용) |
 
 > 📌 `C:/Users/solom/crawler.py` 는 **SSAFY 강의자료 전용**이고 이 repo 와 무관하다.
@@ -333,7 +405,12 @@ git pull --rebase       # 다른 PC에서 올린 게 있을 수 있음
 ```
 boj/<번호>.py                  예: boj/2293.py
 swea/<번호>_<제목>.py           예: swea/2382_미생물격리.py
+codetree/<번호>_<제목>.py       예: codetree/f386_AI로봇청소기.py · codetree/196_한줄출력.py
+                               (번호 = 코드트리 problem_id — 트레일은 숫자, 기출은 f+숫자)
 ```
+
+> 코드트리 풀이 헤더도 BOJ/SWEA 처럼 `[문제]`·`[예제]` 가 들어간다(공개 모드). 단 힌트는 넣지 않고,
+> 제약은 마크다운 문자열이라 앞 6줄만 적는다. 비공개 모드(`privateSites: ["CT"]`)면 한 줄 안내로 바뀐다.
 
 - 제목은 **공백 제거**, 특수문자 `\ / : * ? " < > |` 제거
 - 같은 문제를 다시 풀면 **파일을 덮어쓰고**, 헤더의 회차·날짜를 갱신한다 (파일을 새로 만들지 않는다)
@@ -466,6 +543,14 @@ git push
 | 트리가 비어 있음 | `problems/index.json` 또는 `_meta/cosal_list.json` 누락 → 위 파이프라인 재실행 |
 | SWEA 를 번호로 가져오기 실패 | 정상. `contestProbId` 필요 → URL 을 직접 입력하거나 `_meta/swea_ids.json` 채우기 |
 | 옵시디언에 오늘 기록이 없음 | **싱크 지연** — 파일 mtime 확인하고, 없으면 사용자에게 알림 |
+| 코드트리 크롤링이 `로그인 필요` 로 멈춤 | 디버그 크롬에서 코드트리 로그인이 풀렸다 → 그 창에서 로그인(비밀번호는 에이전트가 넣지 않는다) 후 다시 실행(이어 받음) |
+| 코드트리 크롤링이 exit 3 으로 멈춤 | 429/403 연속 — 계정 보호용 자동 정지. 시간을 두고 다시 돌리면 이어 받는다 |
+| CT 문제가 트리에 안 보임 | `_meta/codetree_list.json` 누락/깨짐 → `python _meta/crawl_codetree.py list` |
+| CT 기록이 "번호 없는 BOJ" 로 보임 | 실수노트 제목이 카탈로그 제목과 정확히 안 맞는다(예: "퇴근 버스"). 실수노트 헤딩을 코드트리 제목으로 고치면 다음 빌드에서 이어진다 |
+| 채점 결과가 `no_testcases` | 채점할 케이스가 0개(보관본 없음). 예전엔 이때 **accepted 0/0(가짜 정답)** 이 나갔다 |
+| 커밋이 "공개 금지 검사" 로 막힘 | `privateSites` 에 든 사이트의 지문이 공개 파일에 들어갔거나, 유형 태그·진행상태 키가 들어갔다. `python _meta/selfcheck.py --leak-only` 로 원인 확인. 허브 응답의 `commitError` 에 이유가 실린다 |
+| VM 허브가 배포 뒤 안 뜸 | VM 은 **Python 3.8** 이다. `server.py`·`build_*.py`·`sync_tc.py` 에 3.9+ 문법(`removeprefix`, `dict \| dict`, `list[str]` …)을 쓰면 죽는다 — `ast.parse(..., feature_version=(3,8))` 로 확인 |
+| 허브를 PyPy 로 띄웠더니 보관소 파일이 0바이트 | `server.py` 는 파일을 닫지 않고 쓰는 곳이 있어 PyPy 에서는 바로 안 써진다. **서버는 CPython 으로만** (채점 러너만 PyPy) |
 
 ---
 
@@ -476,11 +561,17 @@ git push
 | | 어디서 | 언제 | 데이터 |
 |---|---|---|---|
 | **pre-commit 훅** | 로컬 PC | **커밋할 때마다** | `history.json` + **실수노트** + repo 파일 (완전) |
-| **GitHub Actions** | GitHub 서버 | 매일 **KST 01:00** + `boj//swea//history.json` push + 수동 | `history.json` + repo 파일 (실수노트 접근 불가) |
+| **GitHub Actions** | GitHub 서버 | 매일 **KST 01:00** + `boj/`·`swea/`·`codetree/`·`problems/`·`_meta/codetree_list.json`·`history.json` push + 수동 | `history.json` + repo 파일 (실수노트 접근 불가) |
 
-- 훅 설치: `python _meta/install_hooks.py` (**PC마다 1회**. `.git/hooks`는 push 안 됨)
+- 훅 설치: `python _meta/install_hooks.py` (**PC마다 1회**. `.git/hooks`는 push 안 됨. 워크트리끼리는 공유)
 - Actions 수동 실행: `gh workflow run heatmap.yml`
-- 훅이 실패해도 **커밋을 막지 않는다** (`exit 0`)
+- 빌드 단계는 실패해도 **커밋을 막지 않는다** (`exit 0`). **단 하나 — 공개 금지 검사(`selfcheck.py --leak-only --staged`)만은 막는다**
+  (`privateSites` 사이트의 지문 누출, 유형 태그·진행상태 키, `_meta/tc_store/` 추적). 2026-09-23 추가.
+
+### 🚩 채점 비교 규칙 (2026-09-23 수정)
+`judge/server.py same()` 은 **정답 토큰이 실수(소수점·지수)일 때만** 1e-6 오차를 준다. 정답이 정수면 글자가 같아야 한다.
+예전엔 정수에도 상대오차를 줘서 **답이 100만 이상이면 ±1 오답이 '맞았습니다'** 였다(1000001 vs 1000000 통과).
+코드트리 생성 TC 도구를 시험하다 일부러 틀린 풀이가 통과해서 드러났다. 그 전 채점 기록 중 큰 정수 답 문제는 봐준 판정이 섞여 있을 수 있다.
 
 수동 실행이 필요하면:
 ```bash

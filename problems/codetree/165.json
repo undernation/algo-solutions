@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "165",
+ "title": "수의 계절은",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-season-of-num/description",
+ "alias": "season-of-num",
+ "pid": 165,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "조건문",
+ "lesson": "and, or 혼합",
+ "card": "intro-season-of-num",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "76.4",
+  "submissions": "6775"
+ },
+ "sample_count": 2,
+ "statement_len": 110,
+ "fetched_at": "2026-09-23",
+ "statement": "몇 월인지를 입력받아, 어떤 계절인지를 출력하는 프로그램을 작성해보세요.\n\n$3$\\~$5$월이 봄, $6$\\~$8$월이 여름, $9$\\~$11$월이 가을, $12$\\~$2$월이 겨울이라 가정합니다.",
+ "input_spec": "첫 번째 줄에 월을 나타내는 $M$이 주어집니다.",
+ "output_spec": "첫 번째 줄에 어떤 계절인지를 출력합니다.   \n\n단, 봄의 경우에는 Spring을,  \n여름의 경우에는 Summer를,  \n가을의 경우에는 Fall을,  \n겨울의 경우에는 Winter를 출력합니다.",
+ "constraints": "- $1 \\le M \\le 12$",
+ "samples": [
+  {
+   "in": "2\n",
+   "out": "Winter\n"
+  },
+  {
+   "in": "6\n",
+   "out": "Summer\n"
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "876",
+ "title": "사는 지역",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-where-live/description",
+ "alias": "where-live",
+ "pid": 876,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "정렬",
+ "lesson": "객체",
+ "card": "challenge-where-live",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "75.5",
+  "submissions": "4637"
+ },
+ "sample_count": 1,
+ "statement_len": 226,
+ "fetched_at": "2026-09-23",
+ "statement": "이름, 번지수, 지역으로 이루어진 $n$명의 자료가 주어집니다. 이 중 이름이 사전순으로 가장 마지막에 오는 사람의 자료를 출력하는 프로그램을 작성해보세요.\n\n단, 한 사람의 정보를 하나로 묶는 타입을 직접 정의해 자료 $n$개를 만들어 문제를 해결해주세요. C, Go, Rust처럼 구조체를 제공하는 언어에서는 구조체(struct)를, 클래스를 지원하는 언어에서는 클래스(class)를 사용하면 됩니다.",
+ "input_spec": "첫 번째 줄에 사람의 수 $n$이 주어집니다.\n\n이어지는 $n$개의 줄에는 각 줄마다 한 사람의 자료가 공백으로 구분되어 주어집니다. 각 줄의 형식은 다음과 같습니다.\n\n- 이름: 알파벳 소문자로만 이루어진 문자열\n- 번지수: `XXX-XXX` 형태의 문자열 (각 `X`는 숫자 `0`-`9`)\n- 지역: 알파벳 대소문자로 이루어진 문자열",
+ "output_spec": "총 세 줄을 출력합니다.\n\n- 첫 번째 줄에는 `name ` 뒤에 해당 사람의 이름을 출력합니다.\n- 두 번째 줄에는 `addr ` 뒤에 해당 사람의 번지수를 출력합니다.\n- 세 번째 줄에는 `city ` 뒤에 해당 사람의 지역을 출력합니다.\n\n각 줄에서 라벨과 값 사이에는 공백이 하나 있습니다.",
+ "constraints": "- $1 \\le n \\le 10$\n- 이름의 길이는 $1$ 이상 $10$ 이하입니다.\n- 지역의 길이는 $1$ 이상 $10$ 이하입니다.\n- 번지수는 `XXX-XXX` 형태의 문자열이며, 선행 `0`도 그대로 유지됩니다.\n- $n$명의 이름은 서로 모두 다른 것이 보장됩니다.",
+ "samples": [
+  {
+   "in": "3\nkim 987-123 Seoul\nlee 888-345 Busan\npark 743-866 Daegu\n",
+   "out": "name park\naddr 743-866\ncity Daegu\n"
+  }
+ ],
+ "sample_notes": [
+  "이름 `kim`, `lee`, `park` 중 사전순으로 가장 마지막에 오는 이름은 `park`입니다. 따라서 `park`의 자료를 세 줄에 걸쳐 출력합니다."
+ ]
+}

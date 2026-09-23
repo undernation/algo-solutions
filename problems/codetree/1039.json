@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1039",
+ "title": "노드 맞추기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-nodes-guessing/description",
+ "alias": "nodes-guessing",
+ "pid": 1039,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "위상정렬",
+ "lesson": "Topological Sort",
+ "card": "challenge-nodes-guessing",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "41.3",
+  "submissions": "247"
+ },
+ "sample_count": 1,
+ "statement_len": 296,
+ "fetched_at": "2026-09-23",
+ "statement": "노드마다 이름이 있는 트리들이 있습니다. (하나의 트리일 수도 있습니다)\n\n현재는 트리의 정보는 유실된 상태이지만, 각각의 노드의 조상에 대한 정보가 남아 있습니다. \n\n조상은, \"자신의 부모\"와 \"부모의 조상\"을 합한 것으로 재귀적으로 정의됩니다. \n\n각 노드에 대해서, 모든 조상에 대한 정보가 주어집니다. 예를 들어서, $a$ 의 자손이 $b$ 이고, $b$ 의 자손이 $c$ 라고 하면 $c$ 의 조상 정보로는 $a$ 와 $b$ 모두 주어집니다.\n\n이러한 조상 정보를 입력받고 트리 정보를 재구성하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 노드의 수 $N$ 이 주어집니다.\n\n두 번째 줄에 모든 노드의 이름이 차례대로 공백을 두고 주어집니다.\n\n세 번째 줄에 노드의 관계의 개수 $M$ 이 주어집니다.\n\n이어지는 $M$ 개의 줄에는 $x\\ y$ 의 형태로 노드가 중복 없이 주어지는데 이는 $x$ 의 조상 노드 중 $y$ 가 있다는 것을 의미합니다.",
+ "output_spec": "첫 번째 줄에 복원되어 만들어진 트리의 수를 출력합니다.\n\n두 번째 줄에 루트 노드의 이름을 사전 순으로 공백을 사이에 두고 출력합니다.\n\n세 번째 줄부터 사전 순으로 앞선 노드부터 한 줄에 하나씩 정보를 출력합니다.  \n \n각 노드마다 이름과 자식 노드의 수, 그리고 자식 노드의 이름을 사전순으로 앞선 것부터 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $1 \\le N \\le 1\\,000$\n- $1 \\le \\texttt{노드의 이름 길이} \\le 10$ \n- 노드의 이름은 알파벳 소문자로만 이루어져 있으며, 중복된 이름은 주어지지 않습니다.\n- $0 \\le M \\le N \\times (N - 1)/2$\n- 모든 입력은 모순이 없습니다.",
+ "samples": [
+  {
+   "in": "7\na b c d e f g\n7\nd b\nc e\nd a\na b\ng f\nf e\ng e\n",
+   "out": "2\nb e\na 1 d\nb 1 a\nc 0\nd 0\ne 2 c f\nf 1 g \ng 0\n"
+  }
+ ],
+ "sample_notes": [
+  "이 예제에 대한 설명입니다.\n![](https://contents.codetree.ai/problems/1039/images/problems-934adc93-90aa-4b55-aaa2-d8f0f43f39ba.png)"
+ ]
+}

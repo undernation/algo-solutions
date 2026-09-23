@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "244",
+ "title": "입력받아 계산 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-input-calculate-2/description",
+ "alias": "input-calculate-2",
+ "pid": 244,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "입출력",
+ "lesson": "공백을 사이에 두고 입력",
+ "card": "intro-input-calculate-2",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "88.5",
+  "submissions": "11559"
+ },
+ "sample_count": 2,
+ "statement_len": 58,
+ "fetched_at": "2026-09-23",
+ "statement": "두 정수 $a$와 $b$를 입력 받은 후, $a$와 $b$를 곱한 값을 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 줄에 두 정수 $a$와 $b$가 공백으로 구분되어 주어집니다.",
+ "output_spec": "첫 줄에 $a$와 $b$를 곱한 값을 출력합니다.",
+ "constraints": "- $1 \\le a \\le 100$\n- $1 \\le b \\le 100$",
+ "samples": [
+  {
+   "in": "3 2\n",
+   "out": "6\n"
+  },
+  {
+   "in": "13 17\n",
+   "out": "221\n"
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "617",
+ "title": "크루스컬과 프림 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-ga-kruskal-prim-2/description",
+ "alias": "ga-kruskal-prim-2",
+ "pid": 617,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 알고리즘",
+ "lesson": "Prim",
+ "card": "challenge-ga-kruskal-prim-2",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "48.6",
+  "submissions": "1616"
+ },
+ "sample_count": 0,
+ "statement_len": 302,
+ "fetched_at": "2026-09-23",
+ "statement": "다음과 같은 그래프가 있습니다.\n\n이 그래프에 대해 크루스컬과 프림 알고리즘을 각각 적용했을 때, 두 MST에서 공통으로 선택되는 간선의 개수를 구해보세요. 단, 프림 알고리즘은 $1$번 정점에서 시작합니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/40d13670-9e17-4740-809e-703ae86f6dd7.webp)\n\n**보기** — 하나 고르기\n\n1. `0`\n2. `1`\n3. `2`\n4. `3`\n5. `4`\n6. `5`\n7. `6`\n8. `7`\n9. `8`"
+}

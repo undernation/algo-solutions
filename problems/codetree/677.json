@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "677",
+ "title": "색종이의 총 넓이",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-the-total-area-of-colored-paper/description",
+ "alias": "the-total-area-of-colored-paper",
+ "pid": 677,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 I",
+ "lesson": "사각형 칠하기",
+ "card": "challenge-the-total-area-of-colored-paper",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "82.7",
+  "submissions": "3255"
+ },
+ "sample_count": 1,
+ "statement_len": 247,
+ "fetched_at": "2026-09-23",
+ "statement": "좌표평면위에 가로세로 길이가 $8$이고 넓이가 $64$인 색종이가 $N$장 주어집니다. 이 $N$장 색종이의 각 좌측하단의 꼭지점이 주어졌을 때 모든 색종이가 붙여진 이후의 총 넓이를 구하는 프로그램을 작성해보세요. 단, 모든 색종이는 좌표평면위에서 $(-100,\\ -100)$을 좌측하단으로 $(100,\\ 100)$을 우측상단으로 하는 정사각형 범위를 벗어나지 않는다고 가정해도 좋습니다. 또한 겹치는 영역은 단 한번만 넓이에 포함시킵니다.",
+ "input_spec": "첫 번째 줄에는 정수 $N$이 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 각 색종이의 좌측하단 꼭지점의 위치가 주어집니다. 그 중 $i$번째 줄에는 $i$번째 색종이의 좌측하단 꼭지점 좌표를 나타내는 두 정수 $x_i$와 $y_i$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 색종이의 총 넓이를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le i \\le N$\n- $-100 \\le x_i \\le 92$\n- $-100 \\le y_i \\le 92$",
+ "samples": [
+  {
+   "in": "3\n0 0\n4 0\n0 4\n",
+   "out": "128\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 예제에서 $3$개의 점의 좌표가 주어집니다. $(0,\\ 0)$, $(4,\\ 0)$, $(0,\\ 4)$의 점에서 시작하는 사각형을 그리게 되면 아래와 같이 됩니다. 겹치는 부분은 넓이에 한 번씩만 포함시켜 계산했을 때, 좌표평면 위의 모든 사각형의 넓이는 총 $128$입니다.\n\n</br>\n\n\n\n![](https://contents.codetree.ai/problems/677/images/problems-dc25fa73-3768-4c21-b708-240fc4dbd1a4.svg)"
+ ]
+}

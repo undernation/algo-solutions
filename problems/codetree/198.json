@@ -1,0 +1,37 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "198",
+ "title": "다양하게 출력",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-print-in-variety/description",
+ "alias": "print-in-variety",
+ "pid": 198,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "출력",
+ "lesson": "기본 출력",
+ "card": "test-print-in-variety",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "83.9",
+  "submissions": "26421"
+ },
+ "sample_count": 1,
+ "statement_len": 83,
+ "fetched_at": "2026-09-23",
+ "statement": "```\nTotal days in Year\n365\nCircumference rate\n3.1415926535\n```\n를 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "입력이 주어지지 않습니다.",
+ "output_spec": "```\nTotal days in Year\n365\nCircumference rate\n3.1415926535\n```\n\n를 출력합니다.",
+ "samples": [
+  {
+   "in": "",
+   "out": "Total days in Year\n365\nCircumference rate\n3.1415926535\n"
+  }
+ ]
+}

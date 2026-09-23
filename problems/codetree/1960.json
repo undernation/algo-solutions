@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1960",
+ "title": "이진 탐색 트리의 탐색",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-bst-search/description",
+ "alias": "bst-search",
+ "pid": 1960,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "트리",
+ "lesson": "이진 탐색 트리",
+ "card": "intro-bst-search",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "56.9",
+  "submissions": "3534"
+ },
+ "sample_count": 0,
+ "statement_len": 385,
+ "fetched_at": "2026-09-23",
+ "statement": "다음은 이진 탐색 트리에서 탐색을 수행하는 코드입니다. 코드의 빈 칸에 적절한 내용을 채워주세요.\n\n```jsx\nfunction bst.search(x)\n    set node = (1)\n    while node != null and (2)\n        if (3)\n            node = node.left\n        else\n            node = (4)\n    \n    return node\n```\n\n**보기** — 순서대로 4개 고르기\n\n1. `null`\n2. `node.value != x`\n3. `node.value < x`\n4. `node.value > x`\n5. `bst.root`\n6. `node.value == x`\n7. `node.right`"
+}

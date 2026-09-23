@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "637",
+ "title": "좌우로 움직이는 로봇",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-robot-moving-from-side-to-side/description",
+ "alias": "robot-moving-from-side-to-side",
+ "pid": 637,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 II",
+ "lesson": "배열 기록",
+ "card": "challenge-robot-moving-from-side-to-side",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "192 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "45.8",
+  "submissions": "4084"
+ },
+ "sample_count": 1,
+ "statement_len": 391,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$차원 직선 위에서 $1$초에 한 칸씩 좌우로만 왔다 갔다 하는 로봇 $A$와 $B$가 있습니다. $A$가 움직이는 횟수 $N$과 $B$가 움직이는 횟수 $M$이 주어지고 각각 로봇들이 어느 방향으로 얼마나 움직였는지가 주어졌을 때, 로봇 $A$와 $B$가 바로 직전에는 다른 위치에 있다가 그 다음 번에 같은 위치에 오게 되는 경우가 총 몇 번인지를 구하는 프로그램을 작성해봅니다. 단, 로봇 $A$, $B$는 처음에 같은 지점에서 움직이며 이는 횟수에 포함시키지 않습니다. 또한, 각 로봇이 움직임을 종료한 이후에는 같은 위치에 계속 머물러 있으며 이때 역시 다른 로봇이 움직임에 따라 두 로봇이 같은 위치에 오게 될 수 있습니다. 다만, 모든 로봇이 움직인 이후의 상황은 생각하지 않습니다.",
+ "input_spec": "첫 번째 줄에 각 로봇이 움직인 횟수 $N$과 $M$이 각각 공백을 사이에 두고 주어집니다. \n\n두 번째 줄부터는 $N$개의 줄에 걸쳐 로봇 $A$가 움직인 정보가 ($t$, $d$) 형태로 공백을 사이에 두고 주어집니다. $t$초 만큼 방향 $d$로 이동함을 의미하며, $d$는 'L' 또는 'R'로만 주어집니다. \n\n그 다음 줄부터는 $M$개의 줄에 걸쳐 로봇 $B$가 움직인 정보가 ($t$, $d$) 형태로 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 두 로봇이 직전에는 서로 다른 위치에 있다가 같은 위치에서 만나는 횟수를 출력합니다.",
+ "constraints": "- $1 \\le N, M \\le 50\\,000$\n- $1 \\le t \\le 2\\,000\\,000$\n- 로봇 $A$와 $B$ 모두 움직인 거리의 총 합은 $2\\,000\\,000$을 넘지 않음을 가정해도 좋습니다.",
+ "samples": [
+  {
+   "in": "4 5\n3 L\n5 R\n1 L\n2 R\n4 R\n1 L\n3 L\n4 R\n2 L\n",
+   "out": "3\n"
+  }
+ ],
+ "sample_notes": [
+  "시간 $7$, $9$, $13$일때 서로 마주칩니다.\n\n\n![Image](https://contents.codetree.ai/problem_factory/images/79b84405-7849-4749-b727-871d698e8a68.webp)\n\n<br/>\n\n![Image](https://contents.codetree.ai/problem_factory/images/f37c15b3-957e-434b-9c72-be50da10ec0b.webp)\n\n\n\n\n\n$10$, $11$초에도 두 로봇은 같은 위치에 있기는 하지만, 바로 직전에도 같은 위치에 있었으므로 횟수로 세지 않습니다."
+ ]
+}

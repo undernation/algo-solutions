@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "91",
+ "title": "떨어지는 1자 블록",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-falling-horizontal-block/description",
+ "alias": "falling-horizontal-block",
+ "pid": 91,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Simulation",
+ "lesson": "격자 안에서 단일 객체를 이동",
+ "card": "challenge-falling-horizontal-block",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "192 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "43.6",
+  "submissions": "3919"
+ },
+ "sample_count": 2,
+ "statement_len": 687,
+ "fetched_at": "2026-09-23",
+ "statement": "$0$과 $1$로만 채워져 있는 $N \\times N$ 크기의 격자판 정보가 주어집니다. $0$은 빈 칸을, $1$은 해당 칸에 블럭이 채워져 있음을 뜻합니다. \n\n이때 $1 \\times  M$ 크기의 블럭이 격자판 위에서 떨어집니다. 이 블럭은 $K$번째 열 부터 $K + M - 1$번째 열까지의 공간을 차지하며, 가장 위에서부터 밑으로 떨어집니다. 만약 이 블럭이 떨어지는 도중 단 한곳에라도 이미 격자판 위에 놓여있던 블럭과 맞닿게 된다거나, 혹은 바닥에 닿게 된다면 떨어지는 것을 멈추게 됩니다.\n\n예를 들어, 다음과 같이 블럭이 채워져 있던 경우를 생각해봅시다.\n\n![](https://contents.codetree.ai/problems/91/images/problems-8903676d-b4a5-47a8-9128-de482c5162f9.png)\n\n이때 만약 $1 \\times 3$ 크기의 블럭을 첫 번째 열부터 $3$번째 열까지의 공간을 차지하게 떨어뜨리게 되면 다음과 같이 블럭이 격자판 위에 안착하게 됩니다.\n\n![](https://contents.codetree.ai/problems/91/images/problems-9cefe554-a23b-4841-8ccc-54da7ed7468a.png)\n\n격자판의 정보와 떨어질 블럭의 정보가 주어졌을 때, 블럭이 떨어진 이후의 상태를 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 격자의 크기를 나타내는 $N$과 블록의 크기를 나타내는 $M$, 그리고 블록이 떨어질 위치에 대한 정보를 나타내는 $K$값이 각각 공백을 사이에 두고 주어집니다. 이는 $1 \\times M$ 크기의 블록이 $K$번째 열 부터 $K + M - 1$번째 열까지의 공간을 차지하며 떨어짐을 의미합니다. \n두 번째 줄 부터는 $N$개의 줄에 걸쳐 각 행에 해당하는 $N$개의 수가 공백을 사이에 두고 주어집니다. 주어지는 수는 항상 $1$ 또는 $0$이며, $1$은 블럭이 들어있음을, $0$은 비어있음을 의미합니다. 단, 첫 번째 행의 경우에는 전부 값이 $0$으로 주어짐을 가정해도 좋습니다.",
+ "output_spec": "블럭이 떨어진 이후의 격자판 상태를 출력합니다.\n\n$N$개의 줄에 걸쳐 각 행에 대한 정보를 공백을 사이에 두고 출력합니다. 블럭이 들어있는 칸이라면 $1$을, 비어있는 칸이라면 $0$을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le M \\le N$\n- $1 \\le K \\le N - M + 1$",
+ "samples": [
+  {
+   "in": "4 3 1\n0 0 0 0\n0 0 0 1\n1 0 0 1\n1 1 1 1\n",
+   "out": "0 0 0 0\n1 1 1 1\n1 0 0 1\n1 1 1 1\n"
+  },
+  {
+   "in": "4 2 2\n0 0 0 0\n0 0 0 1\n1 0 0 1\n1 1 1 1\n",
+   "out": "0 0 0 0\n0 0 0 1\n1 1 1 1\n1 1 1 1\n"
+  }
+ ]
+}

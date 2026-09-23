@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3496",
+ "title": "인접한 두 수와 차",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-two-adjacent-numbers-and-difference/description",
+ "alias": "two-adjacent-numbers-and-difference",
+ "pid": 3496,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Advanced DP",
+ "lesson": "작은 구간에서 큰 구간으로 확장되는 DP",
+ "card": "challenge-two-adjacent-numbers-and-difference",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 10초 · C++17 3초",
+  "memory": "80 MB",
+  "time_sec": 10.0
+ },
+ "stats": {
+  "accept_rate": "56.9",
+  "submissions": "144"
+ },
+ "sample_count": 2,
+ "statement_len": 205,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 수가 왼쪽부터 순서대로 주어졌을 때, 하나의 수가 남을 때까지 인접한 두 수를 골라 없애는 것을 반복하려고 합니다. 인접한 두 수를 고르게 되면 두 수의 합 만큼의 점수를 얻게 되고 두 수가 사라짐과 동시에 해당 위치에 두 수의 차만큼에 해당하는 새로운 수가 추가된다고 합니다. 이러한 조건 하에서 얻을 수 있는 최대 점수를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.\n\n두 번째 줄에는 $N$개의 수가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "하나의 수가 남기 전까지 얻을 수 있는 최대 점수를 출력합니다.",
+ "constraints": "- $1\\le N\\le200$\n- $1\\le \\texttt{주어지는 수} \\le10$",
+ "samples": [
+  {
+   "in": "4\n6 5 8 2\n",
+   "out": "29\n"
+  },
+  {
+   "in": "4\n6 5 8 10\n",
+   "out": "39\n"
+  }
+ ],
+ "sample_notes": [
+  "예제 1번에서는 다음 전략을 통해 $29$점을 얻을 수 있습니다.\n\n- 처음 ($6,\\ 5$)를 골라 점수 $11$을 얻고 수 $1$을 새로 적어줍니다. 즉, $1$ $8$ $2$가 남게 됩니다.\n- ($1,\\ 8$)을 골라 점수 $9$를 얻고 수 $7$을 새로 적어줍니다. 즉, $7$ $2$가 됩니다.\n- ($7,\\ 2$)를 골라 점수 $9$를 얻고 수 $5$를 새로 적어줍니다.\n\n따라서 $11+9+9=29$점을 얻게 됩니다.",
+  ""
+ ]
+}

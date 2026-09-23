@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2026",
+ "title": "두 수의 합",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-sum-of-two-num/description",
+ "alias": "sum-of-two-num",
+ "pid": 2026,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "중급 자료구조",
+ "lesson": "HashMap",
+ "card": "challenge-sum-of-two-num",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "37.8",
+  "submissions": "3792"
+ },
+ "sample_count": 1,
+ "statement_len": 85,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 정수가 입력으로 주어지고, 이 중 서로 다른 위치에 있는 두 개의 수를 뽑아 더했을 때 $K$가 되는 가짓수를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 원소의 개수 $N$과 두 수의 합이 될 $K$가 공백을 사이에 두고 주어집니다.\n\n두 번째 줄에는 $N$개의 정수가 공백을 사이에 두고 주어집니다. 수가 중복되어 주어질 수 있습니다.",
+ "output_spec": "입력으로 주어진 수들 중 서로 다른 위치에 있는 두 개의 수를 골랐을 때 두 수의 합이 $K$가 되는 가짓수를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100\\,000$\n- $-2^{31} \\le K \\le 2^{31}-1$\n- $-10^9 \\le \\texttt{정수} \\le 10^9$",
+ "samples": [
+  {
+   "in": "5 9\n4 6 5 3 7\n",
+   "out": "2\n"
+  }
+ ],
+ "sample_notes": [
+  "$(4, 5)$, $(6, 3)$을 고르면 합이 $9$가 됩니다."
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3346",
+ "title": "인접하지 않게 색칠하기 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-coloring-not-adjacently-2/description",
+ "alias": "coloring-not-adjacently-2",
+ "pid": 3346,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Tree",
+ "lesson": "Tree DP",
+ "card": "challenge-coloring-not-adjacently-2",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 4초 · C++17 1초",
+  "memory": "480 MB",
+  "time_sec": 4.0
+ },
+ "stats": {
+  "accept_rate": "80.0",
+  "submissions": "75"
+ },
+ "sample_count": 1,
+ "statement_len": 252,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 정점으로 이루어진 정 이진 트리 (Full binary tree)가 주어집니다. 정 이진 트리는 모든 노드에 대해 자식이 $2$개 또는 $0$개인 이진 트리입니다.\n\n각 노드는 $1$번부터 $N$번까지 번호를 가지며 번호와 별개로 값 또한 가집니다. 이때 트리의 루트는 $1$번입니다.\n\n이 중에서 서로 인접하지 않는 최대 $K$개의 노드를 색칠하고, 색칠된 노드 값의 합이 최대로 하게 하고자합니다.\n\n이를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 노드의 개수 $N$이 주어집니다.\n\n두 번째 줄부터 $N$ 번째 줄까지 총 $N-1$개의 줄에 걸쳐 간선으로 연결된 두 개의 노드가 공백을 두고 차례대로 주어집니다.\n\n$N+1$ 번째 줄부터 $2N$줄까지 총 $N$개의 줄에 걸쳐 각 노드들이 가지는 값이 주어집니다.\n\n$2N+1$ 번째 줄에 색칠할 수 있는 최대 노드 수 $K$가 주어집니다.",
+ "output_spec": "주어진 정 이진 트리에서 최대 $K$개를 색칠 했을 때 색칠된 노드가 가지는 값의 최대합을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100\\,000$\n- $1 \\le K \\le 10$\n- $1 \\le \\texttt{노드의 번호} \\le N$\n- $1 \\le \\texttt{노드가 가지는 값} \\le 100\\,000$",
+ "samples": [
+  {
+   "in": "15\n1 2\n1 3\n2 4\n3 7\n3 8\n6 8\n4 9\n2 5\n5 11\n7 13\n10 4\n8 15\n12 5\n14 7\n10\n5\n5\n5\n10\n1\n1\n1\n6\n7\n7\n10\n1\n1\n10\n5\n",
+   "out": "44\n"
+  }
+ ],
+ "sample_notes": [
+  "$1$번, $10$번, $11$번, $12$번, $15$번 노드를 색칠했을 때가 최대이다."
+ ]
+}

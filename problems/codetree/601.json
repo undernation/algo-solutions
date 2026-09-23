@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "601",
+ "title": "플로이드",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-ga-floyd/description",
+ "alias": "ga-floyd",
+ "pid": 601,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 알고리즘",
+ "lesson": "Floyd Warshall",
+ "card": "intro-ga-floyd",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "85.8",
+  "submissions": "1433"
+ },
+ "sample_count": 0,
+ "statement_len": 465,
+ "fetched_at": "2026-09-23",
+ "statement": "다익스트라 알고리즘과 달리, 플로이드-워셜 알고리즘은 모든 지점 간의 최단 거리를 한 번에 계산할 수 있습니다.\n\n다음 코드를 완성해봅시다.\n\n```jsx\nfunction floyd()\n  set dist = arr with |V|+1 * |V|+1 size initialized to INF\n  for each edge(u, v)\n    set dist[u][v] = length(u, v)\n  for k = 1 ... |V|\n    for i = 1 ... |V|\n      for j = 1 ... |V|\n        if dist[(1)][(2)] > dist[i][(3)] + dist[(4)][j]\n          dist[(1)][(2)] = dist[i][(3)] + dist[(4)][j]\n  return dist\n```\n\n**보기** — 순서대로 4개 고르기\n\n1. `i`\n2. `j`\n3. `k`\n4. `0`"
+}

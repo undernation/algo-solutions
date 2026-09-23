@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "919",
+ "title": "작은 구슬의 이동",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-small-marble-movement/description",
+ "alias": "small-marble-movement",
+ "pid": 919,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 II",
+ "lesson": "dx dy technique",
+ "card": "intro-small-marble-movement",
+ "card_type": "Introduction",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "55.6",
+  "submissions": "7940"
+ },
+ "sample_count": 1,
+ "statement_len": 1158,
+ "fetched_at": "2026-09-23",
+ "statement": "벽으로 둘러싸인 $N$ 행 $N$ 열의 격자 안에 한 개의 구슬이 놓여져 있습니다.\n이 구슬은 상하좌우 중 특정 방향으로 $1$초에 한 칸씩 움직입니다.\n\n가장 왼쪽 위 격자 칸을 $1$행 $1$열, 가장 오른쪽 아래 격자 칸을 $N$ 행 $N$ 열이라고 합시다.\n아래의 그림은 초기에 $1$행 $2$열에 놓여 있고 왼쪽을 향하는 구슬을 나타낸 것입니다.\n\n![](https://contents.codetree.ai/problems/919/images/problems-8d8d8c15-c2a7-4a33-9e14-bb2912010704.svg)\n\n구슬이 벽에 부딪히면 움직이는 방향이 반대로 뒤집혀 동일한 속도로 움직이는 것을 반복합니다.\n이때 방향을 바꾸는 데에는 $1$초의 시간이 소요되며, 방향을 바꾸는 그 $1$초 동안 구슬은 원래 있던 칸에 그대로 머무릅니다.\n즉 매 초마다, 바라보는 방향의 바로 앞 칸이 벽이라면 이동하지 않고 방향만 반대로 바꾸고, 벽이 아니라면 그 칸으로 한 칸 이동합니다.\n\n![](https://contents.codetree.ai/problems/919/images/problems-0f676408-4ad9-4edd-a1ea-b545922513c7.svg)\n\n처음 주어진 배치를 예로 $1$초 뒤부터 $4$초 뒤까지의 모습을 순서대로 그려보면 다음과 같습니다.\n\n![](https://contents.codetree.ai/problems/919/images/problems-e07f60b6-c40c-44d9-ae9e-dbdd74402f8f.svg)\n\n![](https://contents.codetree.ai/problems/919/images/problems-5588d131-0500-4209-8d8e-30ea38e4b8b0.svg)\n\n![](https://contents.codetree.ai/problems/919/images/problems-3deb97b0-8328-46ed-80de-1eb6423f05ef.svg)\n\n![](https://contents.codetree.ai/problems/919/images/problems-59ed2777-2356-4ab7-8ae7-cd1b81252da0.svg)\n\n구슬의 처음 위치와 초기 방향이 주어졌을 때, $T$초가 지난 이후에 해당 구슬의 위치를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 줄에 두 정수 $N$과 $T$가 공백으로 구분되어 주어집니다.\n\n두 번째 줄에 구슬의 초기 정보를 나타내는 $R$, $C$, $D$가 공백으로 구분되어 주어집니다.\n$R$과 $C$는 정수로, 초기에 구슬이 $R$행 $C$열에 놓여 있음을 나타냅니다.\n$D$는 네 개의 문자 U, D, R, L 중 하나로, 초기에 구슬의 이동 방향이 각각 위, 아래, 오른쪽, 왼쪽임을 나타냅니다.",
+ "output_spec": "첫 줄에 $T$초 후 구슬이 위치한 격자 칸의 행 번호와 열 번호를 공백으로 구분하여 출력합니다.",
+ "constraints": "- $2 \\le N \\le 50$\n- $1 \\le T \\le 100$\n- $1 \\le R, C \\le N$\n- $D$는 네 개의 문자 U, D, R, L 중 하나입니다.",
+ "samples": [
+  {
+   "in": "4 4\n1 2 L\n",
+   "out": "1 3\n"
+  }
+ ]
+}

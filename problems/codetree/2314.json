@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2314",
+ "title": "짝수의 합 n번 구하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-find-the-sum-of-even-numbers-n-times/description",
+ "alias": "find-the-sum-of-even-numbers-n-times",
+ "pid": 2314,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "다중 반복문",
+ "lesson": "n번 반복",
+ "card": "test-find-the-sum-of-even-numbers-n-times",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "92.2",
+  "submissions": "9688"
+ },
+ "sample_count": 1,
+ "statement_len": 75,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$번에 걸쳐 두 정수 $a, b$가 주어졌을 때, $a$부터 $b$까지의 짝수를 모두 합한 결과를 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 테스트케이스의 수 $N$이 주어집니다.\n\n두 번째 줄 부터 $N$개의 줄에 걸쳐 한 줄에 두 정수 $a, b$가 공백을 두고 주어집니다.",
+ "output_spec": "첫 번째 줄부터 $N$개의 줄에 걸쳐, 각 줄에 각 테스트 케이스마다 $a$이상 $b$이하의 짝수들의 합을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 10$\n- $1 \\le A \\le B \\le 100$",
+ "samples": [
+  {
+   "in": "3\n1 10\n1 20\n5 30\n",
+   "out": "30\n110\n234\n"
+  }
+ ]
+}

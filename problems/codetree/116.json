@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "116",
+ "title": "나이트",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-knight-movements/description",
+ "alias": "knight-movements",
+ "pid": 116,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "BFS",
+ "lesson": "가중치가 동일한 그래프에서의 BFS",
+ "card": "challenge-knight-movements",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "56.4",
+  "submissions": "3217"
+ },
+ "sample_count": 2,
+ "statement_len": 238,
+ "fetched_at": "2026-09-23",
+ "statement": "나이트는 다음과 같이 노란색 위치를 기준으로 검은색 $8$곳으로 움직임이 가능합니다. $N \\times N$ 격자 위에서 격자를 벗어나지 않고 나이트가 시작점에서 도착점까지 가는 데 걸리는 최소 이동 횟수를 구하는 프로그램을 작성해보세요.\n\n![](https://contents.codetree.ai/problems/116/images/problems-a68e3409-6e4a-44b8-b7bd-b583d6db5aa4.png)",
+ "input_spec": "첫 번째 줄에는 격자의 크기를 나타내는 $N$이 주어집니다.\n\n두 번째 줄에는 나이트의 시작 위치 $(r_1,\\ c_1)$과 끝 위치 $(r_2,\\ c_2)$가 각각 공백을 사이에 두고 주어집니다. 이는 $r_1$행 $c_1$열에서 $r_2$행 $c_2$열로 이동해야 함을 의미합니다.",
+ "output_spec": "시작 위치에서 도착 위치까지 나이트가 도달하는 데 필요한 최소 이동 횟수를 출력합니다. 불가능하다면 $-1$을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le r_1,\\ c_1,\\ r_2,\\ c_2 \\le N$",
+ "samples": [
+  {
+   "in": "5\n3 3 3 2\n",
+   "out": "3\n"
+  },
+  {
+   "in": "3\n3 3 1 1\n",
+   "out": "4\n"
+  }
+ ]
+}

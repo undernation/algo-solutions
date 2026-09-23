@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "550",
+ "title": "복잡복잡 그래프",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-graph-concept-1/description",
+ "alias": "graph-concept-1",
+ "pid": 550,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 탐색",
+ "lesson": "Graph 정의",
+ "card": "test-graph-concept-1",
+ "card_type": "Test",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "56.4",
+  "submissions": "3880"
+ },
+ "sample_count": 0,
+ "statement_len": 306,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 그래프를 기반으로 빈칸을 채워보세요.\n\n![](https://contents.codetree.ai/problems/550/images/problems-6b8be318-bcfb-45d9-8c21-a95a7531b4e2.svg)\n\n```\n- 이 그래프에는 단순 사이클이 (1)\n- 이 그래프의 정점은 (2) 개다\n- 4번 노드의 차수는 (3) 이다\n- 이 그래프는 (4) 이다\n```\n\n**보기** — 순서대로 4개 고르기\n\n1. 있다\n2. 없다\n3. `3`\n4. `4`\n5. `5`\n6. `6`\n7. `7`\n8. 무방향 그래프\n9. 방향 그래프"
+}

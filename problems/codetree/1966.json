@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1966",
+ "title": "좀 더 어려운 수학 점수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-math-scores-are-more-difficult/description",
+ "alias": "math-scores-are-more-difficult",
+ "pid": 1966,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "조건문",
+ "lesson": "and, or 혼합",
+ "card": "challenge-math-scores-are-more-difficult",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "76.2",
+  "submissions": "6838"
+ },
+ "sample_count": 2,
+ "statement_len": 274,
+ "fetched_at": "2026-09-23",
+ "statement": "이번 중간고사에는 영어보다 수학이 특별히 더 어려웠습니다. 학생 A와 B가 서로의 점수를 가지고 우선순위를 나누려고 합니다. 영어 점수와 상관없이 수학 점수가 높다면 더 높은 학생의 이름을 출력하고, 만약 수학 점수가 같다면 영어 점수가 더 높은 학생의 이름을 출력하려고 합니다. 두 학생의 수학 점수와 영어 점수가 주어질 때, 위의 조건을 만족하는 학생의 이름을 출력하는 프로그램을 작성해보세요. (단, 수학 점수와 영어 점수가 둘 다 동일하게 주어지는 경우는 없다고 생각해도 좋습니다.)",
+ "input_spec": "첫 번째 줄에 A 학생의 수학 점수와 영어 점수가 공백을 사이에 두고 주어집니다.\n\n두 번째 줄에 B 학생의 수학 점수와 영어 점수가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 우선순위가 더 높은 학생의 이름을 출력합니다.",
+ "constraints": "- $0 \\le$ 수학, 영어 점수 $\\le 100$",
+ "samples": [
+  {
+   "in": "80 90\n90 80\n",
+   "out": "B\n"
+  },
+  {
+   "in": "95 90\n95 80\n",
+   "out": "A\n"
+  }
+ ]
+}

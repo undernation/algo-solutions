@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "962",
+ "title": "A, B, C, D 찾기 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-find-a-b-c-d-2/description",
+ "alias": "find-a-b-c-d-2",
+ "pid": 962,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 III",
+ "lesson": "기준을 새로 설정하여 완전탐색",
+ "card": "challenge-find-a-b-c-d-2",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "74.8",
+  "submissions": "874"
+ },
+ "sample_count": 1,
+ "statement_len": 371,
+ "fetched_at": "2026-09-23",
+ "statement": "$A \\le B \\le C \\le D$ 조건을 만족하는 $4$개의 정수 $A$, $B$, $C$, $D$를 구하려고 합니다.\n\n$A$, $B$, $C$, $D$, $A + B$, $B + C$, $C + D$, $D + A$, $A + C$, $B + D$, $A + B + C$, $A + B + D$, $A + C + D$, $B + C + D$, $A + B + C + D$에 해당하는 $15$개의 값이 임의의 순서로 주어집니다. 값이 같은 식이 여러 개 있으면 그 값도 개수만큼 그대로 주어지므로, 입력은 정확히 $15$개의 정수로 이루어진 다중집합입니다.\n\n이 $15$개의 값으로부터 $A$, $B$, $C$, $D$를 찾아내는 프로그램을 작성해 보세요.",
+ "input_spec": "첫 번째 줄에 $A$, $B$, $C$, $D$, $A + B$, $B + C$, $C + D$, $D + A$, $A + C$, $B + D$, $A + B + C$, $A + B + D$, $A + C + D$, $B + C + D$, $A + B + C + D$에 해당하는 $15$개의 정수 $v_1$, $v_2$, $\\dots$, $v_{15}$가 공백을 사이에 두고 임의의 순서로 주어집니다.",
+ "output_spec": "한 줄에 $A$, $B$, $C$, $D$를 순서대로 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $1 \\le v_i \\le 40$ ($1 \\le i \\le 15$)\n- $1 \\le A \\le B \\le C \\le D$\n- $A$, $B$, $C$, $D$, $v_i$는 모두 정수입니다.\n- 조건을 만족하는 $(A,\\ B,\\ C,\\ D)$는 항상 유일합니다.",
+ "samples": [
+  {
+   "in": "10 10 10 7 4 3 7 7 3 14 14 11 13 6 17\n",
+   "out": "3 3 4 7\n"
+  }
+ ],
+ "sample_notes": [
+  "$A = 3$, $B = 3$, $C = 4$, $D = 7$인 경우에 $A$, $B$, $C$, $D$, $A + B$, $B + C$, $C + D$, $D + A$, $A + C$, $B + D$, $A + B + C$, $A + B + D$, $A + C + D$, $B + C + D$, $A + B + C + D$를 나열하면 $3$, $3$, $4$, $7$, $6$, $7$, $11$, $10$, $7$, $10$, $10$, $13$, $14$, $14$, $17$이 되므로, 입력으로 주어진 $15$개의 값과 다중집합으로서 동일합니다."
+ ]
+}

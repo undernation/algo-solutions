@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "87",
+ "title": "단 한 번의 2048 시도",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-one-trial-of-2048-game/description",
+ "alias": "one-trial-of-2048-game",
+ "pid": 87,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Simulation",
+ "lesson": "격자 안에서 터지고 떨어지는 경우",
+ "card": "challenge-one-trial-of-2048-game",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "59.4",
+  "submissions": "1953"
+ },
+ "sample_count": 2,
+ "statement_len": 1287,
+ "fetched_at": "2026-09-23",
+ "statement": "$2048$게임은 $4 \\times 4$ 격자 안에서 이루어지는 게임입니다. 이 $2048$ 게임에서는 상하좌우 중 한 방향을 정하게 되면, 모든 값들이 해당 방향으로 전부 밀리게 됩니다.\n\n예를 들어 다음 판에서 밑으로 방향을 정하게 되면, 다음과 같이 아래로 중력이 작용한 이후의 결과를 얻게 됩니다.\n\n![](https://contents.codetree.ai/problems/87/images/problems-f6c01647-5412-4f91-8df7-5fccbb73cb09.png)\n\n하지만 $2048$ 게임에서는 같은 값끼리 만나게 되는 경우 두 값이 합쳐지게 됩니다. 다음의 경우 아래로 움직이는 예를 보면 값 $2$ 두 개가 합쳐서 값 $4$가 됩니다.\n\n![](https://contents.codetree.ai/problems/87/images/problems-19574441-5f88-4bce-b686-c026f9d66ba1.png)\n\n또한, 단 한 번의 중력작용으로 이미 합쳐진 값이 연쇄적으로 합쳐지진 않습니다. 다음의 경우 아래로 움직이는 예를 보면 값 $2$ 두 개가 이미 한번 합쳐져 $4$가 되었기 때문에, 위의 $4$와 다시 합쳐지진 않습니다.\n\n![](https://contents.codetree.ai/problems/87/images/problems-e7bbb22a-0b4d-43a8-8aaf-ba685f7c5a2a.png)\n\n그리고 세 개 이상의 같은 값이 중력작용 방향으로 놓여 있으면, 중력에 의해 부딪히게 될 벽(바닥)에서 가까운 값부터 두 개씩만 합쳐집니다. 즉, 서너개 이상의 값이 하나로 합쳐질 순 없고 아래 예시처럼 바닥에 가까운 순서대로 한 쌍씩 짝을 이뤄 합쳐집니다. 다음 예시는 아래로 중력이 작용해서 값 $2$ 네개가 $4$ 두개로 합쳐진 것입니다.\n\n![](https://contents.codetree.ai/problems/87/images/problems-94033b88-e306-4653-a201-f3de16f2096e.png)\n\n$2$, $4$, $8$, $16$ 등 $2$의 거듭제곱꼴로 나타나는 $2$ 이상 $2048$ 이하의 값들로 구성된 $4 \\times 4$ 격자 판이 주어졌을 때, 특정 방향으로 움직인 이후의 결과를 구하는 프로그램을 작성해보세요.\n\n예를 들어 다음의 경우 오른쪽으로 이동하게 되면, 다음과 같은 결과를 얻게 됩니다.\n\n![](https://contents.codetree.ai/problems/87/images/problems-9c0033d3-e34f-4011-a2fb-d40548d345dd.png)",
+ "input_spec": "첫 번째 줄부터 $4$번째 줄까지는 각각의 행에 놓여진 정수 $4$개가 공백을 사이에 두고 주어집니다. 만약 값이 적혀 있지 않은 경우에는 $0$이 주어집니다.\n\n$5$번째 줄에는 움직일 방향을 나타내는 $dir$ 값이 주어집니다. $dir$ 값은 `L`, `R`, `U`, `D` 중 하나이며, 각각 왼쪽 오른쪽 위 아래 방향으로 움직여야 함을 의미합니다.",
+ "output_spec": "$dir$ 방향으로 움직인 이후의 결과를 $4$개의 줄에 걸쳐 출력합니다. 각각의 줄에는 해당 행에 적혀있는 정수 $4$개를 공백을 사이에 두고 출력하며, 만약 값이 적혀있지 않은 위치의 경우에는 $0$을 출력합니다.",
+ "constraints": "- 격자에 주어진 값은 $0$ 또는 $2$ 이상 $2048$ 이하의 $2$의 거듭제곱입니다.\n- $dir$은 `L`, `R`, `U`, `D` 중 하나입니다.",
+ "samples": [
+  {
+   "in": "4 2 0 8\n4 2 2 4\n0 8 8 2\n4 2 2 2\nR\n",
+   "out": "0 4 2 8\n0 4 4 4\n0 0 16 2\n0 4 2 4\n"
+  },
+  {
+   "in": "4 2 0 8\n4 2 2 4\n0 8 8 2\n4 2 2 2\nL\n",
+   "out": "4 2 8 0\n4 4 4 0\n16 2 0 0\n4 4 2 0\n"
+  }
+ ]
+}

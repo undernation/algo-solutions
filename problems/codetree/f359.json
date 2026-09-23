@@ -1,0 +1,43 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f359",
+ "title": "MST를 구하는 방법을 까먹었다",
+ "url": "https://www.codetree.ai/ko/frequent-problems/acpc/problems/forgot-how-to-find-mst/description",
+ "alias": "forgot-how-to-find-mst",
+ "pid": 359,
+ "group": "acpc",
+ "kind": "frequent",
+ "origin": "2025 ACPC",
+ "level": "L21",
+ "limits": {
+  "time": "Python3 5초 · C++17 1.5초",
+  "memory": "512 MB",
+  "time_sec": 5.0
+ },
+ "stats": {
+  "accept_rate": "13.0",
+  "submissions": "108"
+ },
+ "sample_count": 2,
+ "statement_len": 595,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 정점, $M$개의 간선으로 이루어진 그래프가 있습니다. 모든 간선은 양방향 간선이며, 간선의 가중치는 서로 다릅니다.\n\n코디는 그래프의 최소 스패닝 트리(Minimum Spanning Tree, MST)를 구하고자 합니다. 하지만 MST를 구하는 방법을 까먹은 코디는, MST를 구하기 위해 다음과 같은 전략을 구상했습니다.\n\n1. 먼저 $1$ 이상 $N$ 이하의 임의의 정수 $X$를 선택합니다.\n2. $X$번 정점에서 출발하여 나머지 모든 정점까지의 최단 거리를 계산합니다.\n3. $X$번 정점으로부터 다른 정점 사이의 거리가 위에서 계산한 $X$번 정점과 다른 정점 사이의 최단 거리와 정확히 일치하도록, 원래 그래프의 간선 중에서 간선 $N - 1$개를 선택해 트리를 구성합니다.\n4. 이렇게 만들어진 트리를 코디는 MST라고 간주합니다.\n\n그런데 한 정점으로 가는 최단 경로가 여러 개 존재할 수 있으므로, 위의 방법으로 구성할 수 있는 트리의 형태가 여러 가지일 수도 있습니다.\n\n여러 가지 가능한 트리 형태 중에서 실제 MST가 될 수 있는 트리를 하나라도 만들 수 있는 정수 $X$를 모두 찾아 오름차순으로 출력하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 정수 $N$, $M$이 공백을 두고 주어집니다. $N$은 그래프의 정점의 개수, $M$은 간선의 개수를 의미합니다.\n\n그 다음 줄부터 $M$개의 줄에 걸쳐 간선의 정보가 주어집니다. 그 중 $i$번째 줄에는 정수 $u_i, v_i, w_i$가 공백을 두고 주어집니다. 이는 $i$번째 간선이 $u_i$번 정점과 $v_i$번 정점을 이으며, 간선의 가중치가 $w_i$임을 의미합니다.",
+ "output_spec": "첫 번째 줄에 MST가 될 가능성이 있는 정수 $X$를 오름차순으로, 공백을 두고 출력합니다.\n\n만약 그러한 $X$가 없다면, `-1`을 출력합니다.",
+ "constraints": "- $3 \\le N, M \\le 200\\,000$\n- $1 \\le u_i, v_i \\le N$, $u_i \\neq v_i$\n- $1 \\le w_i \\le 10^9$, $i \\neq j$이면 $w_i \\neq w_j$\n- 주어지는 그래프에서 서로 다른 두 정점을 골랐을 때 반드시 도달 가능함이 보장됩니다.\n- 두 정점을 직접 연결하는 간선은 최대 하나만 존재합니다.",
+ "samples": [
+  {
+   "in": "5 5\n1 2 3\n2 3 5\n2 4 4\n4 5 6\n1 5 7\n",
+   "out": "2 3 4\n"
+  },
+  {
+   "in": "4 6\n1 2 20\n2 3 21\n3 4 22\n4 1 23\n1 3 24\n2 4 25\n",
+   "out": "-1\n"
+  }
+ ],
+ "sample_notes": [
+  "![Image](https://contents.codetree.ai/problem_factory/images/1d42a7e3-2f2c-4299-aef4-16c9a1e2e7d1.webp)\n\n다음과 같은 그래프에서, $X = 2$를 선택했을 때, 트리는 두 가지가 나올 수 있습니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/e536e7d3-fad4-403c-b6e3-c67b588527bf.webp)\n\n다음은 $X = 2$의 첫 번째 트리입니다. 이는 MST가 되지 않습니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/5036dea7-4ac6-45d3-bcfd-f39fedda0f09.webp)\n\n다음은 $X = 2$의 두 번째 트리입니다. 이는 MST가 되므로, 조건에 맞는 $X$가 됩니다.",
+  "어느 $X$를 선택해 트리를 만들더라도, MST가 되지 않습니다."
+ ]
+}

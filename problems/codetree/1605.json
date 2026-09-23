@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1605",
+ "title": "이차원 배열의 오름차순 정리",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-ascending-order-of-two-dimensional-array/description",
+ "alias": "ascending-order-of-two-dimensional-array",
+ "pid": 1605,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Parametric Search",
+ "lesson": "Parametric Search",
+ "card": "challenge-ascending-order-of-two-dimensional-array",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "62.7",
+  "submissions": "699"
+ },
+ "sample_count": 2,
+ "statement_len": 150,
+ "fetched_at": "2026-09-23",
+ "statement": "$N\\times N$ 크기의 이차원 배열 $A$에 들어있는 수는 $A[i][j] = i \\times j$ 입니다.\n\n이 수들을 모두 오름차순으로 정렬하였을 때, $K$번째로 오는 수를 구하는 프로그램을 작성해보세요.\n\n단, 배열 $A$의 인덱스는 $1$부터 시작합니다.",
+ "input_spec": "첫 번째 줄에는 $N$이 주어집니다.\n\n두 번째 줄에는 $K$가 주어집니다.",
+ "output_spec": "$K$번째로 오는 수를 출력합니다.",
+ "constraints": "- $1\\le N\\le100\\,000$\n- $1\\le K\\le\\min(10^9,N^2)$",
+ "samples": [
+  {
+   "in": "3\n5\n",
+   "out": "3\n"
+  },
+  {
+   "in": "3\n7\n",
+   "out": "6\n"
+  }
+ ],
+ "sample_notes": [
+  "$3\\times 3$ 크기의 격자는 다음과 같습니다.\n\n```\n1 2 3\n2 4 6\n3 6 9\n```\n\n이 수들을 오름차순으로 정리하면 [$1$, $2$, $2$, $3$, $3$, $4$, $6$, $6$, $9$]가 됩니다.\n\n$5$번째로 오는 숫자는 $3$입니다.",
+  "$7$번째로 오는 숫자는 $6$입니다."
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1013",
+ "title": "트리의 부모 노드",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-parent-node-of-the-tree/description",
+ "alias": "parent-node-of-the-tree",
+ "pid": 1013,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Tree",
+ "lesson": "트리",
+ "card": "intro-parent-node-of-the-tree",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "100 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "68.5",
+  "submissions": "953"
+ },
+ "sample_count": 1,
+ "statement_len": 47,
+ "fetched_at": "2026-09-23",
+ "statement": "루트 노드가 $1$인 트리에서 각 노드의 부모 노드를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 노드의 개수 $N$이 주어집니다.\n\n두 번째 줄 부터 $N$번째 줄까지 트리 상에서 연결된 두 정점이 주어집니다.",
+ "output_spec": "한 줄에 하나씩 $2$번 노드부터 $N$번 노드까지 각 노드의 부모 노드 번호를 순서대로 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100\\,000$",
+ "samples": [
+  {
+   "in": "12\n1 2\n1 3\n2 4\n3 5\n3 6\n4 7\n4 8\n5 9\n5 10\n6 11\n6 12\n",
+   "out": "1\n1\n2\n3\n3\n4\n4\n5\n5\n6\n6\n"
+  }
+ ]
+}

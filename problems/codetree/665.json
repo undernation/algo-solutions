@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "665",
+ "title": "수 차례로 출력하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-to-output-numerically/description",
+ "alias": "to-output-numerically",
+ "pid": 665,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "재귀함수",
+ "lesson": "값을 반환하지 않는 재귀함수",
+ "card": "intro-to-output-numerically",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "89.8",
+  "submissions": "3652"
+ },
+ "sample_count": 1,
+ "statement_len": 157,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $N$이 주어지면 재귀함수를 2개 작성하여 첫 번째 재귀함수를 이용하여 $1$부터 $N$까지의 수를 차례대로 출력하고, 두 번째 재귀함수를 이용하여 $N$부터 $1$까지 차례로 출력하는 프로그램을 작성해보세요. 단, 두 재귀함수 모두 인자로 $N$을 넘기는 함수여야만 합니다.",
+ "input_spec": "첫 번째 줄에 정수 $N$이 주어집니다.",
+ "output_spec": "첫 번째 줄에는 $1$부터 $N$까지 차례로 공백을 사이에 두고 출력합니다.  \n두 번째 줄에는 $N$부터 $1$까지 차례로 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$",
+ "samples": [
+  {
+   "in": "7\n",
+   "out": "1 2 3 4 5 6 7\n7 6 5 4 3 2 1\n"
+  }
+ ]
+}

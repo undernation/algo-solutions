@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2226",
+ "title": "가장 먼저 나오는 숫자",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-first-appear-number/description",
+ "alias": "first-appear-number",
+ "pid": 2226,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Parametric Search",
+ "lesson": "이진탐색",
+ "card": "challenge-first-appear-number",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "61.3",
+  "submissions": "1205"
+ },
+ "sample_count": 1,
+ "statement_len": 117,
+ "fetched_at": "2026-09-23",
+ "statement": "오름차순으로 정렬되어있는 $N$개의 수가 주어집니다. 이후 $M$개의 질의가 주어지며 각 질의마다 하나의 수 $x$가 주어졌을 때, 주어진 $x$ 중에서 최초로 등장하는 위치를 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $N$과 $M$이 공백을 사이에 두고 주어집니다.   \n\n두 번째 줄에는 $N$개의 수가 공백을 사이에 두고 주어집니다.  \n\n세 번째 줄에는 $M$개의 질의에 해당하는 수가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "각 질의마다 한 줄에 하나씩 수 $x$가 최초로 등장한 위치를 출력합니다. 만약 그러한 수가 등장한 적이 없다면, $-1$을 출력합니다.",
+ "constraints": "- $1 \\le N, M \\le 100\\,000$\n - $1 \\le \\texttt{주어진 수} \\le 10^9$",
+ "samples": [
+  {
+   "in": "6 3\n1 2 2 5 9 9\n2 5 6\n",
+   "out": "2 \n4 \n-1\n"
+  }
+ ],
+ "sample_notes": [
+  "$2$가 최초로 주어진 위치는 $2$번째 위치 입니다.  \n\n$5$는 최초로 $4$번째 위치에 주어졌으며, $6$은 주어지지 않았습니다."
+ ]
+}

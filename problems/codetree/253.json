@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "253",
+ "title": "최대 2번의 연산",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-up-to-2-calculations/description",
+ "alias": "up-to-2-calculations",
+ "pid": 253,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "조건문",
+ "lesson": "if if 조건문",
+ "card": "intro-up-to-2-calculations",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "69.9",
+  "submissions": "7986"
+ },
+ "sample_count": 2,
+ "statement_len": 291,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $a$를 입력받아 다음 $2$개의 과정을 순서대로 거친 이후의 결과를 출력하는 프로그램을 작성해주세요.\n\n1. 만약 $a$가 짝수라면 $2$로 나눠줍니다.\n2. 만약 $a$가 홀수라면 $1$을 더한 뒤 $2$로 나눠줍니다.\n\n예를 들어 $a$가 $10$이었다면 $1$번 과정을 거쳐 $5$가 되고, 연달아 $2$번 과정을 거쳐 $3$이 됩니다. 하지만 $a$가 $8$이었다면 $1$번 과정을 거쳐 $4$가 되지만, 연달아 $2$번 과정을 거쳤을 때에는 조건을 만족하지 않으므로 변화없이 최종 결과는 $4$가 됩니다.",
+ "input_spec": "첫 번째 줄에 정수 $a$가 주어집니다.",
+ "output_spec": "최종 결과를 출력합니다. 단, 최종 결과를 소수점이 없는 정수 형태로 출력합니다.",
+ "constraints": "- $1 \\le a \\le 100$",
+ "samples": [
+  {
+   "in": "10\n",
+   "out": "3\n"
+  },
+  {
+   "in": "3\n",
+   "out": "2\n"
+  }
+ ]
+}

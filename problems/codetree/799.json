@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "799",
+ "title": "개발자의 가위바위보",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-developers-rock-paper-scissors/description",
+ "alias": "developers-rock-paper-scissors",
+ "pid": 799,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "케이스별로 나누기",
+ "lesson": "좋은 전략을 추려내기",
+ "card": "challenge-developers-rock-paper-scissors",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "72.7",
+  "submissions": "735"
+ },
+ "sample_count": 1,
+ "statement_len": 193,
+ "fetched_at": "2026-09-23",
+ "statement": "개발자 두 명이 가위바위보를 합니다. 가위바위보가 정수 $1$, $2$, $3$으로 표현되어 주어지는데, 어떤 정수가 무엇을 나타내는지는 아직 정해지지 않았습니다. 가위바위보를 한 횟수와 서로 어떤 것을 냈는지 정수로만 주어질 때, 적절하게 정수와 가위바위보를 매칭시켜 첫 번째 개발자가 이기는 횟수가 최대가 되도록 하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 정수 $N$이 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 각 줄마다 두 개발자가 낸 가위바위보 결과가 두 정수 $a_i$, $b_i$로 표현되어 공백을 사이에 두고 주어집니다. $a_i$는 첫 번째 개발자가, $b_i$는 두 번째 개발자가 낸 정수입니다. ($1 \\le i \\le N$)",
+ "output_spec": "첫 번째 줄에 첫 번째 개발자가 이길 수 있는 최대 횟수를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le a_i \\le 3$ ($1 \\le i \\le N$)\n- $1 \\le b_i \\le 3$ ($1 \\le i \\le N$)",
+ "samples": [
+  {
+   "in": "5\n1 2\n2 2\n1 3\n1 1\n3 2\n",
+   "out": "2\n"
+  }
+ ],
+ "sample_notes": [
+  "$1$이 ‘가위’, $2$가 ‘주먹’, $3$이 ‘보’인 경우 첫 번째 개발자가 $2$번 이기게 되며, $2$번 보다 더 많이 이길 수 있는 방법은 없습니다."
+ ]
+}

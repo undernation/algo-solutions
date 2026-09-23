@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "966",
+ "title": "구간 잘 나누기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-divide-sections-well/description",
+ "alias": "divide-sections-well",
+ "pid": 966,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 III",
+ "lesson": "기준을 새로 설정하여 완전탐색",
+ "card": "challenge-divide-sections-well",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "50.6",
+  "submissions": "1163"
+ },
+ "sample_count": 1,
+ "statement_len": 187,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 정수 $A_1, A_2, \\dots, A_N$이 주어지면, 수 사이에 칸막이를 $M - 1$개 두어 총 $M$개의 연속한 구간으로 나누려고 합니다. 각 구간에는 적어도 하나의 수가 들어가야 합니다.\n\n칸막이를 놓는 모든 방법 중에서 구간 합들의 최댓값이 가장 작아지도록 했을 때, 그 최댓값을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$과 $M$이 공백을 사이에 두고 주어집니다.\n\n두 번째 줄에 $N$개의 정수 $A_1, A_2, \\dots, A_N$이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 구간 합들 중 최댓값을 구하여 나올 수 있는 값들 중 최솟값을 출력합니다.",
+ "constraints": "- $2 \\le M \\le N \\le 100$\n- $1 \\le A_i \\le 100$ ($1 \\le i \\le N$)\n- 주어지는 모든 값은 정수입니다.",
+ "samples": [
+  {
+   "in": "6 3\n7 2 1 5 6 3\n",
+   "out": "9\n"
+  }
+ ],
+ "sample_notes": [
+  "$7$ $2$ $|$ $1$ $5$ $|$ $6$ $3$ 과 같이 나누면 구간 합 중 최댓값이 $9$가 됩니다. 이보다 더 작게 최댓값이 나오도록 구간을 나눌 수 있는 방법은 없습니다."
+ ]
+}

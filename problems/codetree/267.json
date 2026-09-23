@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "267",
+ "title": "출석 부르기 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-calling-attendance-2/description",
+ "alias": "calling-attendance-2",
+ "pid": 267,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "Infinite Loop",
+ "card": "challenge-calling-attendance-2",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "87.6",
+  "submissions": "3603"
+ },
+ "sample_count": 2,
+ "statement_len": 159,
+ "fetched_at": "2026-09-23",
+ "statement": "$A$반의 출석번호 $1$번은 `John`, $2$번은 `Tom`, $3$번은 `Paul`, $4$번은 `Sam`입니다. 번호를 입력하면 해당하는 학생의 이름을 출력하는 작업을 반복하다가 해당하는 번호 이외의 수가 입력되면 `Vacancy`를 출력하고 종료하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄부터 한 줄에 하나씩 최대 $100$개의 출석번호가 주어집니다. 단, 출석번호로 $5$이상의 번호가 한 번 이상 주어진다고 가정해도 좋고, 같은 번호가 여러번 주어질 수 있습니다.",
+ "output_spec": "입력받은 출석번호에 해당하는 출력값을 한 줄에 하나씩 출력합니다.",
+ "constraints": "- $1 \\le \\texttt{출석번호} \\le 100$",
+ "samples": [
+  {
+   "in": "2\n4\n7\n",
+   "out": "Tom\nSam\nVacancy\n"
+  },
+  {
+   "in": "1\n2\n4\n3\n2\n9\n",
+   "out": "John\nTom\nSam\nPaul\nTom\nVacancy\n"
+  }
+ ]
+}

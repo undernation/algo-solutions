@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "281",
+ "title": "범위 안의 수 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-number-in-range-2/description",
+ "alias": "number-in-range-2",
+ "pid": 281,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "sum 계산하기",
+ "card": "challenge-number-in-range-2",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "84.4",
+  "submissions": "4047"
+ },
+ "sample_count": 1,
+ "statement_len": 78,
+ "fetched_at": "2026-09-23",
+ "statement": "$10$개의 정수가 주어집니다. 입력으로 주어지는 수들 중 $0$이상 $200$이하의 정수들의 합과 평균을 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "$10$개의 정수가 한 줄에 하나씩 주어집니다. 단, $0$이상 $200$이하의 수가 반드시 한 번 이상 주어진다고 가정해도 좋습니다.",
+ "output_spec": "합과 평균을 공백을 사이에 두고 차례로 출력합니다. 평균은 반올림하여 소수 첫째자리까지 출력합니다.",
+ "constraints": "- $-500 \\le \\texttt{입력으로 주어지는 수} \\le 500$",
+ "samples": [
+  {
+   "in": "-100\n80\n135\n103\n5\n205\n45\n66\n50\n-5\n",
+   "out": "484 69.1\n"
+  }
+ ]
+}

@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "83",
+ "title": "기울어진 직사각형의 회전",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-rotate-slanted-rectangle/description",
+ "alias": "rotate-slanted-rectangle",
+ "pid": 83,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Simulation",
+ "lesson": "격자 안에서 밀고 당기기",
+ "card": "challenge-rotate-slanted-rectangle",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "71.5",
+  "submissions": "1331"
+ },
+ "sample_count": 2,
+ "statement_len": 1103,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$ 이상 $100$ 이하의 정수로만 이루어져 있는 $N \\times N$ 크기의 격자 정보가 주어집니다.\n\n![](https://contents.codetree.ai/problems/83/images/problems-8fcfe0ab-9f15-48a1-9a00-5f80356edd73.png)\n\n이때, 이 격자 내에 있는 임의의 기울어진 직사각형을 잡아 회전시키려고 합니다.\n\n기울어진 직사각형이란, 격자내에 있는 한 지점으로부터 체스의 비숍처럼 대각선으로 움직이며 반시계 순회를 했을 때 지나왔던 지점들의 집합을 일컫습니다. 이 때 반드시 아래에서 시작해서 $1$, $2$, $3$, $4$번 방향순으로 순회해야하며 각 방향으로 최소 $1$번은 움직여야 합니다. 또한, 이동하는 도중 격자 밖으로 넘어가서는 안됩니다.\n\n![](https://contents.codetree.ai/problems/83/images/problems-3b947b0b-2be9-4f4b-85dc-e03e10f006de.png)\n\n예를 들어 위의 규칙에 따라 다음과 같이 기울어진 직사각형을 잡아볼 수 있습니다.\n\n![](https://contents.codetree.ai/problems/83/images/problems-eda92fb0-b4a4-41f9-83e7-e55fcb572873.png)\n\n위의 기울어진 직사각형의 경우 $4$행 $2$열 위치에서 시작하여 순서대로 $1$번 방향으로 $2$칸, $2$번 방향으로 $1$칸, $3$번 방향으로 $2$칸, $4$번 방향으로 $1$칸 이동했으므로 이는 편의상 $4$, $2$, $2$, $1$, $2$, $1$로 나타낼 수 있습니다. 만약 이 직사각형의 순회경로상에 있는 색칠된 정수들에 대해서만 반시계 방향으로 한 칸씩 정수들을 움직이게 된다면, 다음과 같이 정수들이 바뀌게 됩니다.\n\n![](https://contents.codetree.ai/problems/83/images/problems-2b7286fc-1cda-479b-a5b9-67ee368ddfb9.png)\n\n초기 격자의 정보와 특정 기울어진 사각형에 대해서 반시계 혹은 시계 방향으로 회전해야 하는 정보가 주어졌을 때, 회전 이후의 결과를 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 격자의 크기를 나타내는 $N$이 주어집니다.\n\n두 번째 줄부터는 $N$개의 줄에 걸쳐 격자에 대한 정보가 주어집니다. 각 줄에는 각각의 행에 대한 정보가 주어지며, 이 정보는 정수로 각각 공백을 사이에 두고 주어집니다.\n\n그 다음 줄에는 기울어진 직사각형의 정보와 회전 방향을 나타내는 $(r, c, m_1, m_2, m_3, m_4, dir)$값이 각각 공백을 사이에 두고 주어집니다. 이는 기울어진 직사각형이 $r$행, $c$열에서 시작하여 $1$번, $2$번, $3$번, $4$번 방향으로 각각 $m_1$, $m_2$, $m_3$, $m_4$만큼 순서대로 이동했을 때 그려지는 직사각형임을 의미하며, $dir$이 $0$인 경우에는 반시계 방향으로 $1$칸씩 회전해야 함을, $dir$이 $1$인 경우에는 시계 방향으로 $1$칸씩 회전해야 함을 의미합니다.",
+ "output_spec": "회전 이후 격자의 상태를 출력합니다. $N$개의 줄에 걸쳐 각 행에 적혀있는 $N$개의 정수를 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $3 \\le N \\le 100$\n- $1 \\le A_{i,j} \\le 100$ $(1 \\le i, j \\le N)$\n- $1 \\le r, c \\le N$\n- $1 \\le m_1, m_2, m_3, m_4 \\le N-1$\n- $m_1 = m_3,\\ m_2 = m_4$\n- $dir \\in \\{0, 1\\}$\n- 기울어진 직사각형의 순회 경로는 항상 격자 안에 있음이 보장됩니다. 즉, $r \\ge m_1 + m_2 + 1$, $c \\ge m_2 + 1$, $c \\le N - m_1$을 만족합니다.",
+ "samples": [
+  {
+   "in": "5\n1 2 2 2 2\n1 3 4 4 4\n1 2 3 3 3\n1 2 3 3 3\n1 2 3 3 3\n4 2 2 1 2 1 0\n",
+   "out": "1 2 4 2 2\n1 2 4 3 4\n3 2 2 3 3\n1 1 3 3 3\n1 2 3 3 3\n"
+  },
+  {
+   "in": "5\n1 2 2 2 2\n1 3 4 4 4\n1 2 3 3 3\n1 2 3 3 3\n1 2 3 3 3\n4 2 2 1 2 1 1\n",
+   "out": "1 2 3 2 2\n1 1 4 2 4\n2 2 4 3 3\n1 3 3 3 3\n1 2 3 3 3\n"
+  }
+ ]
+}

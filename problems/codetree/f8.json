@@ -1,0 +1,43 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f8",
+ "title": "방화벽 설치하기",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/firewall-installation/description",
+ "alias": "firewall-installation",
+ "pid": 8,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2017 상반기 오후 2번 문제",
+ "level": "L12",
+ "limits": {
+  "time": "Python3 5초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 5.0
+ },
+ "stats": {
+  "accept_rate": "71.7",
+  "submissions": "1388"
+ },
+ "sample_count": 2,
+ "statement_len": 488,
+ "fetched_at": "2026-09-23",
+ "statement": "$n \\times m$ 크기의 이차원 영역에 방화벽을 설치하여 불로 인한 피해를 최소화 하고자 합니다. 불은 상하좌우의 인접한 공간으로 모두 번지는 특성을 지니고 있으며, 방화벽을 뚫을 수는 없습니다. 예를 들어 \\[그림 1]과 같이 불과 방화벽이 배치되어 있을 경우, 불이 모두 번지고 난 후에는 \\[그림 2]와 같은 상태로 변하게 됩니다. 기존에 이미 설치되어 있는 방화벽을 제외하고 추가로 3개의 방화벽을 설치할 수 있을 때 정확히 3개의 방화벽을 추가로 설치하여 불이 퍼지지 않는 영역이 최대일 때의 크기를 출력하는 코드를 작성해보세요. 단, 방화벽을 불이 있는 위치에 설치할 수는 없습니다.\n\n<p align=\"center\">\n  <img width=\"550\" height=\"350\" src=\"https://contents.codetree.ai/problems/34/images/97343705-13a6-487e-913f-80b499ee8556.png\">\n</p>",
+ "input_spec": "첫 번째 줄에는 정수 $n$과 $m$이 공백을 사이에 두고 주어지고,\n\n두 번째 줄부터 $(n+1)$번째 줄까지는 각 행에 불이 있는 경우 $2$, 방화벽이 있는 경우 $1$, 빈 칸인 경우 $0$이 입력으로 공백을 사이에 두고 주어집니다.",
+ "output_spec": "방화벽 $3$개를 추가로 설치 했을 때 방화벽을 제외하고 불이 퍼지지 않는 영역 크기의 최댓값을 출력합니다.",
+ "constraints": "- $3 \\le n, m \\le 8$\n- $2 \\le $ 총 불의 개수 $\\le 10$\n- $3 \\le $ 총 빈칸의 개수\n- 방화벽을 불이 있는 위치에 설치할 수는 없습니다.",
+ "samples": [
+  {
+   "in": "3 4\n0 0 0 0\n0 2 0 0\n0 0 0 2\n",
+   "out": "2\n"
+  },
+  {
+   "in": "5 5\n2 1 0 0 0\n0 1 0 1 1\n1 0 1 2 0\n0 0 1 0 0\n0 1 0 0 0\n",
+   "out": "12\n"
+  }
+ ],
+ "sample_notes": [
+  "예제 $1$에서는 $1$행 $2$열, $2$행 $3$열, $2$행 $4$열에 방화벽을 추가로 설치하면 불이 퍼지지 않는 2개의 영역을 얻게 됩니다.",
+  ""
+ ]
+}

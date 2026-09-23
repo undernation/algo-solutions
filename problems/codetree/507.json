@@ -1,0 +1,27 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "507",
+ "title": "스택",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-stack-concept/description",
+ "alias": "stack-concept",
+ "pid": 507,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "스택, 큐, 덱",
+ "lesson": "Stack",
+ "card": "intro-stack-concept",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "68.9",
+  "submissions": "3076"
+ },
+ "sample_count": 0,
+ "statement_len": 376,
+ "fetched_at": "2026-09-23",
+ "statement": "스택은 먼저 들어간 데이터가 나중에 나오는 자료구조로, 우리는 이 구조를 LIFO (Last in First Out) 이라고 부르고 있습니다.\n\n기본적인 메서드가 포함된 다음의 코드를 실행하면, 출력 값은 어떻게 될까요?\n\n```jsx\nfunction solution()\n  set s = empty stack\n  s.push(15)\n  s.push(20)\n  s.push(35)\n  s.push(20)\n  print(s.pop())\n  print(s.pop())\n  print(s.size())\n  print(s.top())\n  print(s.pop())\n```\n\n**보기** — 순서대로 5개 고르기\n\n1. `2`\n2. `15`\n3. `20`\n4. `35`\n5. `4`",
+ "hint": "`push()` : 인자로 전달한 원소를 스택의 가장 위에 삽입합니다.\n\n`pop()` : 스택에 가장 마지막으로 들어온 원소를 반환하며, 해당 원소는 스택에서 제거됩니다.\n\n`size()` : 현재 스택에 들어있는 원소의 개수를 반환합니다."
+}

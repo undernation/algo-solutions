@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "438",
+ "title": "1/3",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-time-complexity-4/description",
+ "alias": "time-complexity-4",
+ "pid": 438,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "시간, 공간복잡도",
+ "lesson": "재귀함수의 시간복잡도",
+ "card": "test-time-complexity-4",
+ "card_type": "Test",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "56.1",
+  "submissions": "5429"
+ },
+ "sample_count": 0,
+ "statement_len": 289,
+ "fetched_at": "2026-09-23",
+ "statement": "계속해서 $3$으로 나누는 재귀 함수가 존재합니다.\n\n```js\nfunction solution(N, count)\n  if N <= 1\n     return count\n  return solution(N / 3, count * 3)\n```\n\n이 함수의 시간복잡도는 어떻게 될까요?\n\n**보기** — 하나 고르기\n\n1. $\\mathcal{O}(1)$\n2. $\\mathcal{O}(\\log{N})$\n3. $\\mathcal{O}(N)$\n4. $\\mathcal{O}(N\\log{N})$\n5. $\\mathcal{O}(N^2)$"
+}

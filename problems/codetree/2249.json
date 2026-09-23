@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2249",
+ "title": "각 정점까지의 최단 경로 3",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-shortest-path-to-each-vertex-3/description",
+ "alias": "shortest-path-to-each-vertex-3",
+ "pid": 2249,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shortest Path",
+ "lesson": "Dijkstra",
+ "card": "intro-shortest-path-to-each-vertex-3",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "60.4",
+  "submissions": "1488"
+ },
+ "sample_count": 1,
+ "statement_len": 137,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 정점이 존재하고 $M$개의 간선의 양 끝 정점과 가중치가 주어질 때, $1$번 정점에서 다른 모든 정점으로 가는 최단 경로를 구하는 프로그램을 작성해보세요. 이때 주어지는 정점과 간선들로 구성되는 그래프는 단방향 그래프라고 가정합니다.",
+ "input_spec": "첫 번째 줄에 정점의 개수 $N$과 간선의 개수 $M$이 공백을 두고 주어집니다.\n\n두 번째 줄부터 $M$개의 줄에 걸쳐, 각 간선의 시작 정점의 번호, 끝 정점의 번호, 그리고 해당 간선에 주어진 가중치가 공백을 두고 주어집니다.",
+ "output_spec": "첫 번째 줄부터 $N-1$개의 줄에 걸쳐, $1$번 정점에서 출발하여 $2$번 정점, $3$번 정점, $\\cdots$, $N$번 정점까지 이동하기 위한 최단 거리를 한 줄에 하나씩 출력합니다. 만약 도달이 불가능하다면 $-1$을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le M \\le 1\\,000$\n- $1 \\le \\texttt{간선의 가중치} \\le 10$\n- 동일한 간선이 여러 번 주어지는 경우는 없다고 가정해도 좋습니다.",
+ "samples": [
+  {
+   "in": "5 6\n2 1 1\n1 5 2\n4 2 9\n4 3 5\n5 4 3\n3 2 3\n",
+   "out": "13\n10\n5\n2\n"
+  }
+ ],
+ "sample_notes": [
+  "![](https://contents.codetree.ai/problems/2249/images/problems-c3acd9c1-c239-4bc6-a058-850d63d351ec.png)\n\n$1$번 정점에서 시작하여 $2$번 정점까지 이동할 때 거쳐야 하는 간선 가중치 합의 최솟값은 $2+3+5+3=13$ 입니다.\n\n![](https://contents.codetree.ai/problems/2249/images/problems-33556ae6-bbad-4d83-82fa-e92b516c1091.png)\n\n\n$1$번 정점에서 시작하여 $3$번 정점까지 이동할 때 거쳐야 하는 간선 가중치 합의 최솟값은 $2+3+5=10$ 입니다.\n\n![](https://contents.codetree.ai/problems/2249/images/problems-f320a826-8f01-42ad-82ee-a7550a7fb337.png)\n\n\n$1$번 정점에서 시작하여 $4$번 정점까지 이동할 때 거쳐야 하는 간선 가중치 합의 최솟값은 $2+3=5$ 입니다.\n\n![](https://contents.codetree.ai/problems/2249/images/problems-aed42128-4a09-443c-af01-e52d732f3dc3.png)\n\n\n$1$번 정점에서 시작하여 $5$번 정점까지 이동할 때 거쳐야 하는 간선은 한 개 이므로 가중치의 합은 $2$ 입니다.\n\n![](https://contents.codetree.ai/problems/2249/images/problems-918b6718-7031-4d7b-b581-7ceb9ec3ebc7.png)"
+ ]
+}

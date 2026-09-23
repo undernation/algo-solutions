@@ -1,0 +1,39 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f44",
+ "title": "토스트 계란틀",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/toast-eggmold/description",
+ "alias": "toast-eggmold",
+ "pid": 44,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2018 하반기 오전 2번 문제",
+ "level": "L11",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "49.8",
+  "submissions": "1875"
+ },
+ "sample_count": 2,
+ "statement_len": 1176,
+ "fetched_at": "2026-09-23",
+ "statement": "$n \\times n$개의 격자에 $1 \\times 1$ 크기의 계란틀이 주어집니다.\n\n각각의 계란틀에 담긴 계란의 양이 주어지며 계란틀은 정사각형 형태입니다. 계란틀을 이루는 4개의 선은 분리가 가능합니다.\n\n계란틀이 있는 $n \\times n$ 격자가 주어질 때 다음과 같은 규칙을 따릅니다.\n\n* 계란의 양이 너무 차이나지 않게 하기 위해 하나의 선을 맞대고 있는 두 계란틀의 계란의 양의 차이가 $L$ 이상 $R$ 이하라면 계란틀의 해당 선을 분리합니다.\n\n* 모든 계란틀에 대해 검사를 실시하고 위의 규칙에 해당하는 모든 계란틀의 선을 분리합니다.\n\n* 선의 분리를 통해 합쳐진 계란틀의 계란은 하나로 합치고 이후에 다시 분리합니다.\n\n* 합쳤다 다시 분리한 이후의 각 계란틀별 계란의 양은 (합쳐진 계란의 총 합)/(합쳐진 계란틀의 총 개수)가 됩니다. 편의상 소숫점은 버립니다.\n\n예를 들어 아래 그림과 같이 계란틀의 계란의 양이 주어지고, 계란 이동의 범위가 $15$ 이상 $24$ 이하로 주어진다면,\n\n<p align=\"center\">\n<img width=\"300\" height=\"300\" src=\"https://contents.codetree.ai/problems/130/images/a24ed8ba-1325-43af-a345-b9605618e936.png\">\n</p>\n\n아래 그림과 같이 계란틀의 선을 분리하게 됩니다.\n\n<p align=\"center\">\n<img width=\"300\" height=\"300\" src=\"https://contents.codetree.ai/problems/130/images/1c54a6a6-3d65-487e-9b36-c5a5f37c93a6.png\">\n</p>\n\n계란이 모두 합쳐지고 난 뒤 계란의 양은 아래 그림과 같이 바뀌게 됩니다.\n\n<p align=\"center\">\n<img width=\"300\" height=\"300\" src=\"https://contents.codetree.ai/problems/130/images/fc4dc0e6-c008-44b1-9bc6-4db22dee5bc7.png\">\n</p>\n\n위의 과정이 한 번의 계란의 이동이며, 계란의 이동이 더 이상 필요 없을 때까지 해당 과정을 반복합니다.\n\n$n \\times n$ 격자의 계란틀에 있는 계란의 양이 주어질 때, 계란의 이동이 몇 번 일어나는지를 구하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 총 칸의 크기 $n$, 계란 이동의 범위의 최솟값 $L$, 계란 이동 범위의 최댓값 $R$이 공백으로 구분되어 주어집니다.\n두번째 줄부터 $(n+1)$번째 줄까지 각 칸의 계란의 양을 의미하는 정수가 공백을 사이에 두고 주어집니다.\n\n계란의 이동이 발생하는 총 횟수는 $2000$번보다 작다고 가정해도 좋습니다.",
+ "output_spec": "계란의 이동이 일어난 총 횟수를 출력하세요.",
+ "constraints": "- $1 \\le n \\le 50$\n- $1 \\le L \\le R \\le 100$\n- $0 \\le$ 각 칸의 계란의 양 $\\le 100$\n- $n, L, R$ 은 정수입니다.",
+ "samples": [
+  {
+   "in": "3 15 24\n20 25 40\n30 50 40\n10 30 45\n",
+   "out": "1\n"
+  },
+  {
+   "in": "3 15 30\n10 45 40\n45 40 45\n10 5 10\n",
+   "out": "0\n"
+  }
+ ]
+}

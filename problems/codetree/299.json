@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "299",
+ "title": "주어진 수까지의 곱",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-multiplication-up-to-a-given-number/description",
+ "alias": "multiplication-up-to-a-given-number",
+ "pid": 299,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "prod 계산하기",
+ "card": "intro-multiplication-up-to-a-given-number",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "93.6",
+  "submissions": "3785"
+ },
+ "sample_count": 1,
+ "statement_len": 49,
+ "fetched_at": "2026-09-23",
+ "statement": "$A, B$가 주어졌을 때 $A$부터 $B$까지의 곱을 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 정수 $A, B$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째줄에 $A$부터 $B$까지를 곱한 결과를 출력합니다.",
+ "constraints": "- $1 \\le A \\le B \\le 10$",
+ "samples": [
+  {
+   "in": "3 6\n",
+   "out": "360\n"
+  }
+ ]
+}

@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "228",
+ "title": "물의 상태",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-state-of-water/description",
+ "alias": "state-of-water",
+ "pid": 228,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "조건문",
+ "lesson": "if elif else 조건문",
+ "card": "intro-state-of-water",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "71.1",
+  "submissions": "21286"
+ },
+ "sample_count": 2,
+ "statement_len": 94,
+ "fetched_at": "2026-09-23",
+ "statement": "물의 온도를 정수로 입력받아 $0$℃ 미만일경우엔 `ice`, $100$℃ 이상일때는`vapor`, 그 외의 경우는 `water` 라고 출력하는 프로그램을 작성해주세요.",
+ "input_spec": "첫 번째 줄에는 물의 온도인 정수 $n$이 주어집니다.",
+ "output_spec": "물의 온도에 따른 현재 상태를 문자열로 출력해주세요.",
+ "constraints": "- $-200 \\le n \\le 200$",
+ "samples": [
+  {
+   "in": "-13\n",
+   "out": "ice\n"
+  },
+  {
+   "in": "98\n",
+   "out": "water\n"
+  }
+ ]
+}

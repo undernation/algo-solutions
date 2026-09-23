@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "855",
+ "title": "함수를 이용한 연속부분수열 여부 판단하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-to-determine-whether-a-continuous-subsequence-is-made-using-a-function/description",
+ "alias": "to-determine-whether-a-continuous-subsequence-is-made-using-a-function",
+ "pid": 855,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "함수",
+ "lesson": "값을 반환하는 함수",
+ "card": "challenge-to-determine-whether-a-continuous-subsequence-is-made-using-a-function",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "49.4",
+  "submissions": "5228"
+ },
+ "sample_count": 2,
+ "statement_len": 336,
+ "fetched_at": "2026-09-23",
+ "statement": "$n_1$개의 원소로 이루어진 수열 $A$와 $n_2$개의 원소로 이루어진 수열 $B$가 주어졌을 때, 수열 $B$가 수열 $A$의 연속부분수열인지를 판단하는 프로그램을 작성해보세요.\n\n수열 $B$가 수열 $A$의 원소들을 연속하게 뽑았을 때 나올 수 있는 수열이라면 연속부분수열이라 부릅니다.\n\n예를 들어 수열 $A$가 $[1, 7, 2, 8]$일 때 수열 $B$가 $[7, 2]$라면 수열 $B$는 수열 $A$의 연속부분수열이지만, 수열 $B$가 $[7, 8]$이라면 연속부분수열이 아닙니다.\n\n이 문제는 판단 과정을 함수로 분리해 작성하는 연습을 목표로 합니다. 채점은 출력값만으로 이루어집니다.",
+ "input_spec": "첫 번째 줄에 수열 $A$의 원소의 개수를 나타내는 $n_1$과 수열 $B$의 원소의 개수를 나타내는 $n_2$가 공백을 사이에 두고 주어집니다.\n\n두 번째 줄에는 수열 $A$의 원소 $A_1$, $A_2$, $\\ldots$, $A_{n_1}$이 공백을 사이에 두고 주어집니다.\n\n세 번째 줄에는 수열 $B$의 원소 $B_1$, $B_2$, $\\ldots$, $B_{n_2}$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "수열 $B$가 수열 $A$의 연속부분수열이라면 \"Yes\", 아니라면 \"No\"를 출력합니다.",
+ "constraints": "- $1 \\le n_1, n_2 \\le 100$\n- $1 \\le A_i \\le 100$ ($1 \\le i \\le n_1$)\n- $1 \\le B_i \\le 100$ ($1 \\le i \\le n_2$)",
+ "samples": [
+  {
+   "in": "6 3\n2 4 6 8 5 7\n4 6 8\n",
+   "out": "Yes\n"
+  },
+  {
+   "in": "4 2\n1 2 3 4\n2 4\n",
+   "out": "No\n"
+  }
+ ],
+ "sample_notes": [
+  "수열 $A = [2, 4, 6, 8, 5, 7]$에서 두 번째 원소부터 세 개를 연속하게 뽑으면 $[4, 6, 8]$이 되어 수열 $B$와 같으므로 \"Yes\"를 출력합니다.",
+  "수열 $A = [1, 2, 3, 4]$에서 두 개를 연속하게 뽑아 만들 수 있는 수열은 $[1, 2]$, $[2, 3]$, $[3, 4]$뿐이고 $[2, 4]$는 그중에 없으므로 \"No\"를 출력합니다."
+ ]
+}

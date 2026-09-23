@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "111",
+ "title": "뿌요뿌요",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-puyo-puyo/description",
+ "alias": "puyo-puyo",
+ "pid": 111,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "DFS",
+ "lesson": "DFS",
+ "card": "test-puyo-puyo",
+ "card_type": "Test",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "61.2",
+  "submissions": "2970"
+ },
+ "sample_count": 3,
+ "statement_len": 225,
+ "fetched_at": "2026-09-23",
+ "statement": "각 칸에 $1$이상 $100$이하의 정수가 적힌 $N \\times N$ 크기의 격자가 주어집니다. \n\n이때 상하좌우로 인접한 칸끼리 같은 정수로 이루어져 있는 경우 하나의 블럭으로 생각하며, 블럭을 이루고 있는 칸의 수가 $4$개 이상인 경우 해당 블럭은 터지게 됩니다.\n\n초기 상태가 주어졌을 때,\n터지게 되는 블럭은 몇 개인지,\n그리고 가장 큰 블럭의 크기는 얼마인지\n구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 격자의 크기를 나타내는 정수 $N$이 주어집니다.\n\n두 번째 줄부터는 $N$개의 줄에 걸쳐 각 행에 해당하는 $N$개의 수가 순서대로 공백을 사이에 두고 주어집니다.",
+ "output_spec": "터지게 되는 블럭의 수와 최대 블럭의 크기를 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le \\texttt{주어지는 수} \\le 100$",
+ "samples": [
+  {
+   "in": "3\n1 1 1\n2 1 2\n1 1 1\n",
+   "out": "1 7\n"
+  },
+  {
+   "in": "3\n1 2 2\n1 2 2\n1 1 1\n",
+   "out": "2 5\n"
+  },
+  {
+   "in": "3\n1 2 4\n1 2 2\n3 1 1\n",
+   "out": "0 3\n"
+  }
+ ]
+}

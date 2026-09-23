@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "656",
+ "title": "두 수의 거듭제곱",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-two-numbers-of-squares/description",
+ "alias": "two-numbers-of-squares",
+ "pid": 656,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "함수",
+ "lesson": "값을 반환하는 함수",
+ "card": "challenge-two-numbers-of-squares",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "91.2",
+  "submissions": "3131"
+ },
+ "sample_count": 1,
+ "statement_len": 115,
+ "fetched_at": "2026-09-23",
+ "statement": "두 정수 $a, b$의 값이 주어지면 $a^b$의 값을 출력하는 프로그램을 작성해보세요. 이때 $a, b$를 전달받아 $a^b$를 출력하는 함수를 작성하고, 주어진 $a, b$를 함수로 전달하여 출력합니다.",
+ "input_spec": "첫 번째 줄에 정수 $a, b$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 $a^b$의 값을 출력합니다.",
+ "constraints": "- $1 \\le a, b \\le 9$",
+ "samples": [
+  {
+   "in": "3 4\n",
+   "out": "81\n"
+  }
+ ]
+}

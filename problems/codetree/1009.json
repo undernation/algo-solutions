@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1009",
+ "title": "최소 정수 출력",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-min-integer-output/description",
+ "alias": "min-integer-output",
+ "pid": 1009,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "중급 자료구조",
+ "lesson": "Priority Queue",
+ "card": "intro-min-integer-output",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "78.7",
+  "submissions": "1303"
+ },
+ "sample_count": 1,
+ "statement_len": 152,
+ "fetched_at": "2026-09-23",
+ "statement": "비어있는 배열에 연산을 하려 합니다. 연산은 다음 $2$가지입니다.\n\n1. 입력이 자연수 $x$라면, 배열에 자연수 $x$를 넣습니다.\n2. 입력이 $0$이라면 배열에서 가장 작은 값을 출력하고 그 값을 배열에서 제거합니다.\n\n입력된 연산을 실행하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 연산의 개수 $N$이 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 정수 $x$ 가 주어집니다.",
+ "output_spec": "입력에서 $0$이 주어진 횟수만큼 각 줄에 걸쳐 답을 출력합니다. \n\n배열이 비어있고 $0$이 입력되었다면 $0$을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 200\\,000$\n - $0 \\le x \\le 2^{31} - 1$",
+ "samples": [
+  {
+   "in": "8\n0\n1\n324\n2346534\n5\n0\n0\n0\n",
+   "out": "0\n1\n5\n324\n"
+  }
+ ]
+}

@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "96",
+ "title": "수의 순차적 이동",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-sequential-movement-of-numbers/description",
+ "alias": "sequential-movement-of-numbers",
+ "pid": 96,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Simulation",
+ "lesson": "격자 안에서 여러 객체를 이동",
+ "card": "challenge-sequential-movement-of-numbers",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "83.2",
+  "submissions": "1715"
+ },
+ "sample_count": 2,
+ "statement_len": 1131,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$이상 $N \\times N$이하의 수들이 정확히 한번씩만 등장하는 $N \\times N$ 크기의 격자판 정보가 주어집니다. 이때 $M$번의 턴에 걸쳐 수들을 이동하려고 합니다. 한 번의 턴에는 수 $1$이 적힌 위치에서부터 수 $N \\times N$이 적힌 위치까지 순서대로 하나씩 보면서 특정 조건에 맞춰 다들 한번씩 움직입니다. 이 조건이란, 각 위치에서 여덟방향으로 인접한 칸들 중 가장 큰 수와 가운데 칸의 수를 교환하는 것입니다. 여덟방향으로 인접한 위치란, 예를 들어 아래 그림에서 노란색 위치를 기준으로 회색 위치를 의미합니다.\n\n![](https://contents.codetree.ai/problems/96/images/problems-2f12c85d-228d-48cc-a2a8-c650c35c1fc5.png)\n\n아래 그림을 살펴봅시다.\n\n![](https://contents.codetree.ai/problems/96/images/problems-8c7b120d-7448-4890-a927-cc64804bb2e3.png)\n\n첫 번째 턴에 대해 다음 과정을 밟게 됩니다.\n\n먼저 수 $1$부터 시작합니다. 이 경우 여덟방향으로 인접한 수들 중 가장 큰 값인 $13$과 위치를 바꾸게 됩니다.\n\n![](https://contents.codetree.ai/problems/96/images/problems-f9333e7b-1a61-460b-9172-84f6f1ec9b9e.png)\n\n그 다음 수 $2$를 움직입니다. 이 경우 여덟방향으로 인접한 수들 중 가장 큰 값인 $14$와 위치를 바꾸게 됩니다.\n\n![](https://contents.codetree.ai/problems/96/images/problems-cc9c1082-8527-4bbb-9bed-c8c7888e68fc.png)\n\n이 과정을 순차적으로 수 $16$까지 각각 한번씩 반복하게 되면, 결과는 다음과 같이 나오게 되며 이 과정을 거친 것을 한 번의 턴 이라고 부릅니다.\n\n![](https://contents.codetree.ai/problems/96/images/problems-b33bf0f2-b541-4ad8-8d9f-cba186c9a84a.png)\n\n$M$번의 턴을 거친 이후 격자판의 상태를 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 격자의 크기를 나타내는 $N$과 턴의 수를 나타내는 $M$ 값이 공백을 사이에 두고 주어집니다.\n\n두 번째 줄 부터는 $N$개의 줄에 걸쳐 각 행에 해당하는 $N$개의 수가 공백을 사이에 두고 주어집니다. $1$ 이상 $N \\times N$ 이하의 수가 정확히 한 번씩만 나온다고 가정해도 좋습니다.",
+ "output_spec": "$M$번의 턴을 거친 이후 격자판의 상태를 출력합니다.\n\n$N$개의 줄에 걸쳐 각 행에 해당하는 $N$개의 수를 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $2 \\le N \\le 20$\n- $1 \\le M \\le 100$\n- $1$ 이상 $N \\times N$ 이하의 수가 정확히 한 번씩만 나온다고 가정해도 좋습니다.",
+ "samples": [
+  {
+   "in": "4 1\n15 13 1 11\n4 8 3 5\n2 12 16 7\n14 6 9 10\n",
+   "out": "4 1 13 11\n8 12 5 7\n6 15 3 9\n2 14 16 10\n"
+  },
+  {
+   "in": "4 2\n15 13 1 11\n4 8 3 5\n2 12 16 7\n14 6 9 10\n",
+   "out": "13 4 1 9\n12 15 7 11\n14 2 5 16\n6 8 3 10\n"
+  }
+ ]
+}

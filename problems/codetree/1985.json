@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1985",
+ "title": "In-Degree 위상정렬",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-topological-sort-with-in-degree/description",
+ "alias": "topological-sort-with-in-degree",
+ "pid": 1985,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 알고리즘",
+ "lesson": "Topological Sort",
+ "card": "test-topological-sort-with-in-degree",
+ "card_type": "Test",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "28.0",
+  "submissions": "2646"
+ },
+ "sample_count": 0,
+ "statement_len": 341,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 그래프에서 큐를 사용한 In-Degree 방법으로 위상정렬을 진행했을 때의 순서를 골라보세요.\n\n단, 처음 In-Degree가 $0$인 정점이 여러 개이거나, 이후에 여러 정점의 In-Degree가 동시에 $0$이 된다면, 항상 번호가 작은 정점부터 큐에 삽입한다고 가정합니다.\n\n![](https://contents.codetree.ai/problems/1985/images/dd80af6c-a7f0-4aa8-bf37-d3ff7c3b3130.png)\n\n**보기** — 순서대로 9개 고르기\n\n1. `1`\n2. `2`\n3. `3`\n4. `4`\n5. `5`\n6. `6`\n7. `7`\n8. `8`\n9. `9`"
+}

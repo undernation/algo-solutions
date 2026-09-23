@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3463",
+ "title": "팰린드롬과 삭제",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-palindrome-and-remove/description",
+ "alias": "palindrome-and-remove",
+ "pid": 3463,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Advanced DP",
+ "lesson": "작은 구간에서 큰 구간으로 확장되는 DP",
+ "card": "challenge-palindrome-and-remove",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 5초 · C++17 1초",
+  "memory": "288 MB",
+  "time_sec": 5.0
+ },
+ "stats": {
+  "accept_rate": "69.8",
+  "submissions": "53"
+ },
+ "sample_count": 2,
+ "statement_len": 137,
+ "fetched_at": "2026-09-23",
+ "statement": "어떤 문자열이 주어졌을 때 해당 문자열과 문자들의 순서를 거꾸로 뒤집은 문자열이 완전히 일치한다면 이러한 문자열을 팰린드롬이라고 부릅니다.\n\n팰린드롬을 만들기 위해 주어진 문자열에서 제거해야 하는 최소 문자의 수를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 알파벳 소문자로 이루어진 단어가 하나 주어집니다.",
+ "output_spec": "팰린드롬을 만들기 위해 주어진 문자열에서 제거해야 하는 최소 문자의 수를 출력합니다.",
+ "constraints": "- $1 \\le$ 단어의 길이 $\\le 2\\,000$",
+ "samples": [
+  {
+   "in": "abracadabra\n",
+   "out": "4\n"
+  },
+  {
+   "in": "aaacabacabaca\n",
+   "out": "2\n"
+  }
+ ]
+}

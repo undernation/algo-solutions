@@ -1,0 +1,43 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "158",
+ "title": "날짜 변경하여 출력",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-print-date-with-different-format/description",
+ "alias": "print-date-with-different-format",
+ "pid": 158,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "입출력",
+ "lesson": "특정 문자를 사이에 두고 입력",
+ "card": "challenge-print-date-with-different-format",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "87.8",
+  "submissions": "8839"
+ },
+ "sample_count": 2,
+ "statement_len": 65,
+ "fetched_at": "2026-09-23",
+ "statement": "$yyyy.mm.dd$ 모양의 날짜 정보를 입력받아 $mm-dd-yyyy$ 형식으로 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 날짜 정보가 $yyyy.mm.dd$ 형태로 주어집니다. $yyyy$는 연도를, $mm$은 월을, $dd$는 일을 의미합니다.",
+ "output_spec": "입력받은 날짜를 $mm-dd-yyyy$ 형식으로 바꾸어 출력합니다.",
+ "constraints": "- $1 \\le yyyy \\le 2\\,021$\n- $1 \\le mm \\le 12$\n- $1 \\le dd \\le 28$",
+ "hint": "Java에서 useDelimiter를 사용할 경우 \".\"이 아닌, \"\\\\\\\\.\"를 적어주셔야 함에 유의합니다. Java에서 useDelimiter 안에 적어야 하는 내용은 실제 정규 표현식 (Regular expression)이기에, \".\" 문자를 문자 그대로 사용하고 싶을시 escape string인 \"\\\\\"를 붙여주셔야 합니다.",
+ "samples": [
+  {
+   "in": "1994.5.26\n",
+   "out": "5-26-1994\n"
+  },
+  {
+   "in": "1.2.28\n",
+   "out": "2-28-1\n"
+  }
+ ]
+}

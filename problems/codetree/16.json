@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "16",
+ "title": "2차원 바람",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-The-2D-wind-blows/description",
+ "alias": "The-2D-wind-blows",
+ "pid": 16,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Simulation",
+ "lesson": "격자 안에서 밀고 당기기",
+ "card": "challenge-The-2D-wind-blows",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "71.1",
+  "submissions": "2031"
+ },
+ "sample_count": 2,
+ "statement_len": 1248,
+ "fetched_at": "2026-09-23",
+ "statement": "$0$이상 $9$이하의 정수로만 이루어진 $N \\times M$ 행렬 모양의 건물에 총 $Q$번의 바람이 붑니다.\n\n이 바람은 굉장히 특이해서 특정 직사각형 영역의 경계에 있는 정수들을 시계 방향으로 한 칸씩 shift 하고 해당 직사각형 내 영역에 있는 값들을 각각 자신의 위치를 기준으로 자신과 인접한 원소들과의 평균 값으로 바꿉니다. (평균 계산시에는 항상 버림하여 정수값이 나오도록 합니다.)\n\n예를 들어 바람이 다음과 같은 영역에 영향을 미치게 되는 경우를 생각해봅시다.\n\n![](https://contents.codetree.ai/problems/16/images/problems-202ecc5d-28c1-41e5-915a-2b0b51011cf8.png)\n\n먼저 직사각형의 경계에 있는 정수들이 시계 방향으로 한 칸씩 회전을 하게 됩니다.\n\n![](https://contents.codetree.ai/problems/16/images/problems-a25992b2-aa19-4d54-b77e-798dff43e66a.png)\n\n그 다음 직사각형 영역 내에 있는 각각의 정수들의 값이 `현재 칸에 적혀있는 정수 + 인접한 곳에 적혀있는 정수들`의 평균 값으로 바뀌게 됩니다. 이 과정은 순차적으로 일어나는 것이 아니라 동시에 일어납니다.\n\n예를 들어 $(2,\\ 2)$ 위치에 있던 원소는 인접한 $4$개의 값들과의 평균값을 버림한 값인 $3$으로 바뀌어야 합니다.\n\n![](https://contents.codetree.ai/problems/16/images/problems-85c4e969-381a-43dc-bb48-297dee1f8133.png)\n\n$(4,\\ 6)$ 위치에 있던 원소는 인접한 정수가 $2$개밖에 없으므로, 그 정수들과의 평균값을 버림한 값인 $6$으로 바뀌게 됩니다.\n\n![](https://contents.codetree.ai/problems/16/images/problems-284eb239-5099-4f47-9758-0c7ebe210f23.png)\n\n예를 들어 다음 직사각형이 평균값이 변화는 과정을 거치면 다음과 같이 값이 변하게 됩니다.\n\n![](https://contents.codetree.ai/problems/16/images/problems-6103070e-5809-4b6a-bf45-1c5138dbd727.png)\n\n한 바람이 분 이후 모든 값 변경이 완료된 이후에 그 다음 바람이 불어 온다고 할 때, 총 $Q$개의 바람을 거친 이후 건물의 상태를 출력하는 프로그램을 작성해보세요",
+ "input_spec": "첫째 줄에는 행렬의 크기를 나타내는 $N$과 $M$ 그리고 총 바람이 불어온 횟수를 의미하는 $Q$가 공백을 사이에 두고 주어집니다.\n\n두 번째 줄 부터 $N$개의 줄에 걸쳐 한 줄에 $M$개 씩 건물의 상태를 나타내는 정수 $A_{i,j}$가 공백을 사이에 두고 주어집니다.\n\n그 다음 줄 부터는 $Q$개의 줄에 걸쳐 불어오는 바람에 대한 정보 $(r_1, c_1, r_2, c_2)$가 공백을 사이에 두고 주어집니다. $(r_1, c_1)$은 바람에 영향을 받는 직사각형의 좌측 상단의 위치이며 $(r_2, c_2)$는 바람에 영향을 받는 직사각형의 우측 하단의 위치입니다. 즉, 해당 바람에 의해 $r_1$행 $c_1$열부터 $r_2$행 $c_2$열까지의 직사각형이 영향을 받게 됨을 의미합니다.",
+ "output_spec": "$Q$개의 바람을 거친 이후 건물의 상태를 $N$개의 줄에 걸쳐 출력합니다. 각 줄마다 각각의 행에 해당하는 $M$개의 값을 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $2 \\le N \\le 100$\n- $2 \\le M \\le 100$\n- $0 \\le Q \\le 100$\n- $0 \\le A_{i,j} \\le 9$ $(1 \\le i \\le N,\\ 1 \\le j \\le M)$\n- $1 \\le r_1 < r_2 \\le N$\n- $1 \\le c_1 < c_2 \\le M$",
+ "samples": [
+  {
+   "in": "4 6 1\n4 5 2 5 6 6\n2 1 6 1 0 5\n5 2 2 1 6 5\n4 5 2 8 8 6\n2 2 4 6\n",
+   "out": "4 5 2 5 6 6 \n2 3 2 2 3 3 \n5 3 3 4 3 4 \n4 4 5 5 6 5 \n"
+  },
+  {
+   "in": "3 3 2\n1 2 3\n3 2 1\n3 3 3\n1 1 2 2\n2 2 3 3\n",
+   "out": "2 2 3 \n2 2 2 \n3 2 1 \n"
+  }
+ ]
+}

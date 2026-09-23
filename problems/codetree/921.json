@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "921",
+ "title": "방향에 맞춰 이동",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-move-in-direction/description",
+ "alias": "move-in-direction",
+ "pid": 921,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 II",
+ "lesson": "dx dy technique",
+ "card": "intro-move-in-direction",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "87.7",
+  "submissions": "7286"
+ },
+ "sample_count": 1,
+ "statement_len": 134,
+ "fetched_at": "2026-09-23",
+ "statement": "$(0,\\ 0)$에서 시작하여 총 $N$번 움직여보려고 합니다. $N$번에 걸쳐 움직이려는 방향과 움직일 거리가 주어졌을 때, 최종 위치를 출력하는 프로그램을 작성해보세요.  \n단, $dx$, $dy$ 테크닉을 활용하여 문제를 해결해주세요.",
+ "input_spec": "첫 번째 줄에 정수 $N$이 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 각 줄마다 이동 방향과 이동한 거리를 나타내는 정수 $d_i$가 공백을 사이에 두고 주어집니다. ($1 \\le i \\le N$) 방향은 W, S, N, E 중에 하나이며 각각 서, 남, 북, 동쪽으로 이동함을 의미합니다.",
+ "output_spec": "첫 번째 줄에 최종 위치 $x$, $y$를 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le d_i \\le 10$ ($1 \\le i \\le N$)",
+ "samples": [
+  {
+   "in": "4\nN 3\nE 2\nS 1\nE 2\n",
+   "out": "4 2\n"
+  }
+ ],
+ "sample_notes": [
+  "![](https://contents.codetree.ai/problems/921/images/problems-b1dff1ad-9a9c-4708-89de-a9e9b600cd9d.svg)\n\n위로 $3$칸, 오른쪽으로 $2$칸, 아래로 $1$칸 이동 후 오른쪽으로 다시 $2$칸 이동하면 최종 위치는 $(4,\\ 2)$가 됩니다."
+ ]
+}

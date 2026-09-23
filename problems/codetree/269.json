@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "269",
+ "title": "홀수로 이루어진 정사각형",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-square-with-odd-numbers/description",
+ "alias": "square-with-odd-numbers",
+ "pid": 269,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "다중 반복문",
+ "lesson": "수학적 규칙에 따라 숫자 출력",
+ "card": "challenge-square-with-odd-numbers",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "93.3",
+  "submissions": "2412"
+ },
+ "sample_count": 1,
+ "statement_len": 197,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $N$의 값을 입력받아 두자리 홀수로 이루어진 $N \\times N$ 정사각형을 출력하는 프로그램을 아래 예를 참고하여 작성해보세요.\n\n예)\n\n$N$이 $3$인 경우\n```\n11 13 15\n13 15 17\n15 17 19\n```\n$N$이 4인 경우\n```\n11 13 15 17\n13 15 17 19\n15 17 19 21\n17 19 21 23\n```",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.",
+ "output_spec": "$N$의 값에 따른 정수로 이루어진 $N \\times N$ 모양 정사각형을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 9$",
+ "samples": [
+  {
+   "in": "5\n",
+   "out": "11 13 15 17 19\n13 15 17 19 21\n15 17 19 21 23\n17 19 21 23 25\n19 21 23 25 27\n"
+  }
+ ]
+}

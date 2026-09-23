@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2454",
+ "title": "팰린드롬 수 찾기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-find-the-number-of-palindrome/description",
+ "alias": "find-the-number-of-palindrome",
+ "pid": 2454,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 II",
+ "lesson": "값을 기준으로 완전탐색",
+ "card": "test-find-the-number-of-palindrome",
+ "card_type": "Test",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "88.8",
+  "submissions": "1236"
+ },
+ "sample_count": 1,
+ "statement_len": 175,
+ "fetched_at": "2026-09-23",
+ "statement": "두 개의 정수 $X$, $Y$가 주어지면 $X$ 이상 $Y$ 이하의 값 중 팰린드롬의 개수를 세려고 합니다. 여기서 말하는 팰린드롬은 거꾸로 읽어도 제대로 읽는 것과 같은 수를 말합니다. 예를 들어 $34543$이나, $9009$ 등이 팰린드롬에 해당하는 수입니다. 팰린드롬의 개수를 세는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $X$와 $Y$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 팰린드롬의 개수를 출력합니다.",
+ "constraints": "- $10 \\le X \\le Y \\le 1\\,000\\,000$",
+ "samples": [
+  {
+   "in": "98 132\n",
+   "out": "5\n"
+  }
+ ],
+ "sample_notes": [
+  "$98$이상 $132$이하에 있는 팰린드롬의 수는 $99$, $101$, $111$, $121$, $131$로 총 5개 있습니다."
+ ]
+}

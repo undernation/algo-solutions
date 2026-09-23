@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "169",
+ "title": "A부터 B까지 짝수의 합",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-sum-of-even-nums-from-a-to-b/description",
+ "alias": "sum-of-even-nums-from-a-to-b",
+ "pid": 169,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "sum 계산하기",
+ "card": "challenge-sum-of-even-nums-from-a-to-b",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "90.1",
+  "submissions": "6930"
+ },
+ "sample_count": 2,
+ "statement_len": 59,
+ "fetched_at": "2026-09-23",
+ "statement": "$A, B$ 두 자연수를 입력받아 $A$부터 $B$까지 짝수의 합을 구해 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 정수 $A, B$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 $A$부터 $B$까지 짝수의 합을 출력합니다.",
+ "constraints": "- $1 \\le A \\le B \\le 100$",
+ "samples": [
+  {
+   "in": "2 5\n",
+   "out": "6\n"
+  },
+  {
+   "in": "5 5\n",
+   "out": "0\n"
+  }
+ ]
+}

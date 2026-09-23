@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1710",
+ "title": "tail로부터의 삭제 메서드",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-deletion-method-from-tail/description",
+ "alias": "deletion-method-from-tail",
+ "pid": 1710,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "배열, 연결 리스트",
+ "lesson": "Doubly-LinkedList",
+ "card": "test-deletion-method-from-tail",
+ "card_type": "Test",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "35.9",
+  "submissions": "5127"
+ },
+ "sample_count": 0,
+ "statement_len": 561,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 코드는 이중 연결 리스트(DLL)에서 주어진 $num$ 값과 일치하는 노드를 삭제하는 `delete` 함수를 구현한 일부입니다.\n\n- $DLL$은 $head$와 $tail$을 갖는 리스트 구조이며, 각 노드는 $data$와 이전 노드를 가리키는 $prev$, 다음 노드를 가리키는 $next$ 필드를 포함합니다.\n- $node$는 리스트 내 개별 노드를 순회하기 위한 변수로, 삭제할 노드는 $head$나 $tail$이 아닌 중간 노드라고 가정합니다.\n\n빈 칸에 알맞은 내용을 채워 코드를 완성해 보세요.\n\n```jsx\nfunction DLL.delete(num)\n  set node = DLL.tail\n  while node.(1) != (2):\n    node = node.prev\n  \n  node.(3) = node.prev\n  node.(4) = node.next\n```\n\n**보기** — 순서대로 4개 고르기\n\n1. `prev`\n2. `next`\n3. `num`\n4. `prev.prev`\n5. `prev.next`\n6. `next.prev`\n7. `next.next`\n8. `data`"
+}

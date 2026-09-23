@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "415",
+ "title": "특정 문자의 등장 횟수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-number-appearances-of-a-particular-character/description",
+ "alias": "number-appearances-of-a-particular-character",
+ "pid": 415,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "문자열",
+ "lesson": "문자열 찾기",
+ "card": "challenge-number-appearances-of-a-particular-character",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "82.2",
+  "submissions": "2296"
+ },
+ "sample_count": 2,
+ "statement_len": 63,
+ "fetched_at": "2026-09-23",
+ "statement": "문자열이 주어지면 주어진 문자열에 'ee', 'eb'가 각각 몇 번씩 나왔는지를 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 소문자 알파벳으로만 이루어졌고 길이가 20 이하인 문자열이 주어집니다.",
+ "output_spec": "첫 번째 줄에 'ee', 'eb'가 각각 몇 번씩 나왔는지를 공백을 사이에 두고 출력합니다.",
+ "constraints": "- 문자열의 길이 $\\le 20$",
+ "samples": [
+  {
+   "in": "ebcdee\n",
+   "out": "1 1\n"
+  },
+  {
+   "in": "eeeb\n",
+   "out": "2 1\n"
+  }
+ ]
+}

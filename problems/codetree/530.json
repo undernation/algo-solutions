@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "530",
+ "title": "이진 트리의 탐색",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-tree-traversal/description",
+ "alias": "tree-traversal",
+ "pid": 530,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "트리",
+ "lesson": "이진 트리와 탐색",
+ "card": "intro-tree-traversal",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "77.9",
+  "submissions": "2789"
+ },
+ "sample_count": 0,
+ "statement_len": 701,
+ "fetched_at": "2026-09-23",
+ "statement": "이진 트리를 탐색하는 방법에는 크게 세 가지가 있습니다.\n\n- 전위순회 (Pre-order Traversal): 현재 노드를 먼저 방문한 후, 왼쪽 서브트리와 오른쪽 서브트리를 순차적으로 탐색합니다.\n- 중위순회 (In-order Traversal): 왼쪽 서브트리를 먼저 탐색한 후, 현재 노드를 방문하고, 마지막으로 오른쪽 서브트리를 탐색합니다.\n- 후위순회 (Post-order Traversal): 왼쪽 서브트리와 오른쪽 서브트리를 먼저 탐색한 후, 현재 노드를 방문합니다.\n\n다음은 각 탐색 방법을 구현한 코드 일부입니다. 빈칸을 채워 전위순회, 중위순회, 후위순회를 완성해봅시다.\n\n```js\nfunction preorder(n)\n  if n == null\n    return\n  visit(n)\n  preorder(n.left)\n  preorder(n.right)\n  \nfunction inorder(n)\n  if n == null\n    return\n  (1)\n  (2)\n  (3)\n  \nfunction postorder(n)\n  if n == null\n    return\n  (4)\n  (5)\n  (6)\n```\n\n**보기** — 순서대로 6개 고르기\n\n1. `inorder(n.left)`\n2. `inorder(n.right)`\n3. `postorder(n.left)`\n4. `postorder(n.right)`\n5. `visit(n)`"
+}

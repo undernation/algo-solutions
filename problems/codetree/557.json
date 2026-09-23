@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "557",
+ "title": "DFS",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-dfs-code/description",
+ "alias": "dfs-code",
+ "pid": 557,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 탐색",
+ "lesson": "DFS",
+ "card": "intro-dfs-code",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Multiple choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "41.2",
+  "submissions": "5641"
+ },
+ "sample_count": 0,
+ "statement_len": 370,
+ "fetched_at": "2026-09-23",
+ "statement": "DFS(깊이 우선 탐색)는 그래프나 트리를 탐색할 때, 가능한 한 깊이 내려간 뒤 더 이상 갈 수 없으면 뒤로 돌아와 다른 경로를 탐색하는 방법입니다.\n\n다음 중 옳은 것을 모두 골라보세요.\n\n**보기** — 모두 고르기\n\n1. DFS에서는 특정 정점을 방문한 후, 그 정점과 연결된 노드들을 재귀적으로 계속 파고들어가며 탐색한다.\n2. DFS는 일반적으로 큐를 사용하여 구현한다.\n3. `1 - 2 - 3 - 4 - 5` 형태로 구성된 그래프가 있고 1에서 출발한다고 가정하면, (`1 → 2 → 3 → 4 → 5`) 순서로 DFS를 진행한다.\n4. 그래프에 정점이 `100`개 있더라도, DFS로 탐색하다 보면 재귀 함수의 깊이가 `50`을 초과할 수 있다."
+}

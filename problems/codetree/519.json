@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "519",
+ "title": "소요시간 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-asq-time-2/description",
+ "alias": "asq-time-2",
+ "pid": 519,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "스택, 큐, 덱",
+ "lesson": "Queue",
+ "card": "intro-asq-time-2",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "36.3",
+  "submissions": "4032"
+ },
+ "sample_count": 0,
+ "statement_len": 237,
+ "fetched_at": "2026-09-23",
+ "statement": "Linked List로 구현되어 있는 큐에 $N(≥ 8)$개의 원소가 들어있을 때, 소요시간이 오래 걸리는 것부터 순서대로 나열하세요.\n\n**보기** — 순서대로 4개 고르기\n\n1. 배열에서 맨 앞의 값을 $4$개 삭제\n2. 큐에서 맨 앞의 값을 $4$개 삭제\n3. 스택에 있는 $N$개의 값을 꺼내서 $N$개의 값이 들어있는 배열 맨 앞 부분에 추가함\n4. 큐를 분할하기 위해 $N/2$개의 원소를 꺼내서 두번째 큐에 넣음"
+}

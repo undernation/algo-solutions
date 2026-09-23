@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "763",
+ "title": "출력결과 81",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201838/description",
+ "alias": "reading-k201838",
+ "pid": 763,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "재귀함수",
+ "lesson": "값을 반환하지 않는 재귀함수",
+ "card": "challenge-reading-k201838",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "65.5",
+  "submissions": "4651"
+ },
+ "sample_count": 0,
+ "statement_len": 1609,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 프로그램의 출력 결과는?\n\n## Python3 코드\n\n```python\ndef f(a, t, l):\n    if t >= l:\n        return\n    print(a[t], end=' ')\n    f(a, t + 1, l)\n    print(a[t], end=' ')\n\na = [0 for i in range(10)]\na[0:9] = [1, 2, 3, 4, 5, 6, 7, 8, 9]\nn = 10\nf(a, 0, n)\n```\n\n## C 코드\n\n```c\nvoid f(int a[], int t, int l) {  \n    if (t >= l)  \n      return;  \n    printf(\"%d \", a[t]);  \n    f(a, t + 1, l);  \n    printf(\"%d \", a[t]);\n}\nint main() {\n    int a[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9};\n    int n;\n    n = 10;\n    f(a, 0, n);\n    return 0;\n}\n```\n\n## C++ 코드\n\n```cpp\nvoid f(int a[], int t, int l) {  \n    if (t >= l)  \n      return;  \n    cout << a[t] << \" \";\n    f(a, t + 1, l);  \n    cout << a[t] << \" \";\n}\nint main() {\n    int a[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9};\n    int n;\n    n = 10;\n    f(a, 0, n);\n    return 0;\n}\n```\n\n## Java 코드\n\n```java\npublic static void f(int a[], int t, int l) {  \n    if (t >= l)  \n        return;  \n    System.out.print(a[t] + \" \");\n    f(a, t + 1, l);  \n    System.out.print(a[t] + \" \");\n}\npublic static void main(String[] args) {\n    int[] a = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 0};\n    int n;\n    n = 10;\n    f(a, 0, n);\n}\n```\n\n## JavaScript 코드\n\n```JavaScript\nfunction f(a, t, l) {\n    if (t >= l) {\n        return;\n    }\n    process.stdout.write(a[t] + \" \");\n    f(a, t + 1, l);\n    process.stdout.write(a[t] + \" \");\n}\n\nlet a = Array(10).fill(0);\nfor (let i = 0; i < 9; i++) {\n    a[i] = i + 1;\n}\nlet n = 10;\nf(a, 0, n);\n```\n\n**보기** — 하나 고르기\n\n1. `1 2 3 4 5 6 7 8 9`\n2. `1 2 3 4 5 6 7 8 9 0`\n3. `1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9 0 0`\n4. `1 2 3 4 5 6 7 8 9 0 0 9 8 7 6 5 4 3 2 1`\n5. 프로그램이 끝나지 않는다."
+}

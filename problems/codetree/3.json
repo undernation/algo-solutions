@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3",
+ "title": "대각선으로 정수 채우기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-diagonal-numbering/description",
+ "alias": "diagonal-numbering",
+ "pid": 3,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "2차원 배열",
+ "lesson": "2차원 배열과 패턴",
+ "card": "challenge-diagonal-numbering",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "70.7",
+  "submissions": "3031"
+ },
+ "sample_count": 3,
+ "statement_len": 201,
+ "fetched_at": "2026-09-23",
+ "statement": "$N \\times M$크기의 직사각형에 정수를 1부터 순서대로 1씩 증가시키며 왼쪽 위에서부터 시작하여 오른쪽 아래 쪽까지 다음과 같은 방향으로 쭉 채우는 코드를 작성해보세요.\n\n![](https://contents.codetree.ai/problems/3/images/problems-bbe125e9-6f97-4a7e-86f4-394fb3d9f0bd.png)",
+ "input_spec": "$N$과 $M$이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "정수로 채워진 완성된 형태의 $N \\times M$크기의 사각형을 출력합니다. \n\n(정수끼리는 공백을 사이에 두고 출력합니다.)",
+ "constraints": "- $1 \\le N, M \\le 100$",
+ "samples": [
+  {
+   "in": "3 3\n",
+   "out": "1 2 4 \n3 5 7 \n6 8 9 \n"
+  },
+  {
+   "in": "4 2\n",
+   "out": "1 2 \n3 4 \n5 6 \n7 8 \n"
+  },
+  {
+   "in": "3 5\n",
+   "out": "1 2 4 7 10 \n3 5 8 11 13 \n6 9 12 14 15 \n"
+  }
+ ]
+}

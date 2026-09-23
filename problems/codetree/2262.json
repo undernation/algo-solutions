@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2262",
+ "title": "합과 차의 나눗셈",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-divide-of-sum-and-sub/description",
+ "alias": "divide-of-sum-and-sub",
+ "pid": 2262,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "연산자",
+ "lesson": "사칙연산",
+ "card": "test-divide-of-sum-and-sub",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "72.4",
+  "submissions": "11411"
+ },
+ "sample_count": 1,
+ "statement_len": 90,
+ "fetched_at": "2026-09-23",
+ "statement": "두 정수 $a$와 $b$가 주어질 때,\n합 $(a + b)$를 차 $(a - b)$로 나눈 값을 반올림하여 소수점 둘째 자리까지 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 줄에 두 정수 $a$와 $b$가 공백으로 구분되어 주어집니다.",
+ "output_spec": "첫 줄에 $(a + b)$를 $(a - b)$로 나눈 값을 반올림하여 소수점 둘째 자리까지 출력합니다.",
+ "constraints": "- $1 \\le b < a \\le 1\\,000$",
+ "samples": [
+  {
+   "in": "10 3\n",
+   "out": "1.86\n"
+  }
+ ]
+}

@@ -1,0 +1,37 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "846",
+ "title": "별 찍는 것을 5번 반복하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-repeat-shooting-the-stars-five-times/description",
+ "alias": "repeat-shooting-the-stars-five-times",
+ "pid": 846,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "함수",
+ "lesson": "값을 반환하지 않는 함수",
+ "card": "intro-repeat-shooting-the-stars-five-times",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "91.1",
+  "submissions": "7257"
+ },
+ "sample_count": 1,
+ "statement_len": 99,
+ "fetched_at": "2026-09-23",
+ "statement": "다음과 같이 별 $10$개를 찍는 것을 $5$번 반복하는 프로그램을 작성해보세요. 단, 정확히 별 $10$개를 출력하는 함수를 만들어 이를 $5$번 호출하여 문제를 해결해주세요.",
+ "input_spec": "이 문제는 입력이 주어지지 않습니다.",
+ "output_spec": "총 $5$개의 줄을 출력합니다. 각 줄에는 별 문자 `*`를 정확히 $10$개씩 출력합니다.",
+ "samples": [
+  {
+   "in": "",
+   "out": "**********\n**********\n**********\n**********\n**********\n"
+  }
+ ]
+}

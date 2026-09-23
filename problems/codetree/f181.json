@@ -1,0 +1,39 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f181",
+ "title": "정육면체 한번 더 굴리기",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/cube-rounding-again/description",
+ "alias": "cube-rounding-again",
+ "pid": 181,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2021 하반기 오전 1번 문제",
+ "level": "L13",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "52.5",
+  "submissions": "2608"
+ },
+ "sample_count": 2,
+ "statement_len": 2037,
+ "fetched_at": "2026-09-23",
+ "statement": "1이상 6이하 중 임의의 숫자가 그려진 n \\* n 격자판에 한 면이 1 \\* 1 크기인 정육면체를 놓여져 있습니다. 해당 격자판에서 정육면체를 굴리려합니다.\n\n다음과 같이 4 * 4 크기의 격자판이 주어졌다고 가정해보겠습니다.\n\n<p align=\"center\">\n  <img width=\"300\" src=\"https://contents.codetree.ai/problems/2002/images/9ec00b46-5bb1-4bd7-b6e9-d93c2b5fce69.png\">\n</p>\n\n처음 정육면체의 각 면에는 1부터 6까지의 숫자가 다음과 같이 쓰여져 있고 m번에 걸쳐 주사위를 계속 1칸씩 굴리게 됩니다. 이때, 마주보는 면에 적혀있는 숫자의 합은 정확히 7입니다.\n\n<p align=\"center\">\n  <img width=\"250\" height=\"250\" src=\"https://contents.codetree.ai/problems/2002/images/b8ba4801-5f6f-4c03-a61e-09ec9b56b31e.png\">\n</p>\n\n주사위는 항상 초기에 격자판의 1행 1열에 놓여져 있고, 처음에는 항상 오른쪽으로 움직입니다. \n\n<p align=\"center\">\n  <img width=\"500\" src=\"https://contents.codetree.ai/problems/2002/images/e73b1bd3-75a6-482c-864e-f89234138cba.png\">\n</p>\n</br>\n\n주사위를 움직일때마다, 격자판 위 주사위가 놓여있는 칸에 적혀있는 숫자와 상하좌우로 인접하며 같은 숫자가 적혀있는 모든 칸의 합만큼 점수를 얻게 됩니다.\n\n예를 들어 현재 주사위가 (1행, 2열)에 놓여져 있고, 격자 판이 다음과 같이 4 * 4 크기의 판이었다면, 1행 2열에 적혀있는 숫자는 2이므로, 상하좌우로 인접하게 숫자2가 적혀있는 총 개수는 5개이므로 총 10점을 얻게 됩니다.\n\n<p align=\"center\">\n  <img width=\"300\" src=\"https://contents.codetree.ai/problems/2002/images/d5b0eb2d-79c5-4be3-a66e-b424b0aca4f8.png\">\n</p>\n\n주사위를 구르면서 이동을 하기 때문에 이렇게 한 칸을 이동한 뒤에는 다음과 같이 바라보는 면이 바뀌게 될 것입니다.\n\n<p align=\"center\">\n  <img width=\"500\" src=\"https://contents.codetree.ai/problems/2002/images/cfc9c248-e5c3-4585-9d05-de596db12e78.png\">\n</p>\n</br>\n\n이때, 주사위의 아랫면이 보드의 해당 칸에 있는 숫자보다 크면 현재 진행방향에서 90' 시계방향으로 회전하여 다시 이동을 진행하게 되고, 주사위의 아랫면의 숫자가 더 작다면 현재 진행방향에서 90' 반시계방향으로 회전하게 되며, 동일하다면 현재 방향으로 계속 진행하게 됩니다. \n\n현재 상황에서는 주사위 아랫면에 적혀있는 숫자는 3인데, 닿아있는 격자판에 적혀있는 숫자는 2이므로 다음과 같이 진행방향이 시계방향으로 90' 틀어지게 됩니다.\n\n<p align=\"center\">\n  <img width=\"500\" src=\"https://contents.codetree.ai/problems/2002/images/7ce713b4-48ac-4ac2-9ee4-ac675c680387.png\">\n</p>\n</br>\n\n이제 또 움직임을 반복하고, 점수를 얻게 되는 과정을 m번 진행하게 되는 것입니다.\n\n하지만 만약 진행 도중 다음과 같이 격자판을 벗어나게 된다면, 반사되어 방향이 반대로 바뀌게 된 뒤 한 칸 움직이게 됩니다. \n\n<p align=\"center\">\n  <img width=\"900\" src=\"https://contents.codetree.ai/problem_factory/images/bcb0b77f-bd75-425d-83e3-06b30f323cde.webp\">\n</p>\n\nn * n 크기의 격자판의 상태가 주어졌을 때, m번 진행하며 얻게되는 점수의 총 합을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 정수 $n$과 정수 $m$이 공백을 사이에 두고 주어집니다.  \n그 다음 줄부터는 정수 $a_{i,j}$가 한 줄에 $n$개씩, 총 $n$개의 줄에 걸쳐 공백으로 구분되어 주어집니다.  \n여기서 $a_{i,j}$는 격자판의 $i$행 $j$열에 적힌 수를 의미합니다.",
+ "output_spec": "주사위를 m번 굴렸을 때 까지 얻게되는 총 점수의 합을 출력합니다.",
+ "constraints": "- $2 \\le n \\le 20$  \n- $1 \\le m \\le 1000$  \n- $1 \\le a_{i,j} \\le 6$",
+ "samples": [
+  {
+   "in": "4 3\n1 2 4 4\n4 2 2 2\n5 2 6 6\n5 3 3 1\n",
+   "out": "30\n"
+  },
+  {
+   "in": "4 4\n1 2 4 4\n4 2 2 2\n5 2 6 6\n5 3 3 1\n",
+   "out": "40\n"
+  }
+ ]
+}

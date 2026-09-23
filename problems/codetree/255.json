@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "255",
+ "title": "삼항연산자",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-ternary-operator/description",
+ "alias": "ternary-operator",
+ "pid": 255,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "조건문",
+ "lesson": "삼항 연산자",
+ "card": "challenge-ternary-operator",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "82.5",
+  "submissions": "8003"
+ },
+ "sample_count": 2,
+ "statement_len": 148,
+ "fetched_at": "2026-09-23",
+ "statement": "시험 결과가 $100$점일 경우에만 $0$등급을, 그 외엔 점수에 따른 등급 $1 \\sim 9$를 부여하기로 했다. 오로지 등급 $0$만 `pass`고, 나머지 등급을 받은 사람들의 점수를 `failure`라고 출력하는 프로그램을 삼항연산자를 사용하여 작성해보세요.",
+ "input_spec": "첫 번째 줄에 시험점수를 입력받습니다.",
+ "output_spec": "점수에 맞는 등급을 통해 `pass`인지 `failure`인지 출력한다.",
+ "constraints": "- $0 \\le  \\texttt{시험 점수}  \\le 100$",
+ "samples": [
+  {
+   "in": "100\n",
+   "out": "pass\n"
+  },
+  {
+   "in": "73\n",
+   "out": "failure\n"
+  }
+ ]
+}

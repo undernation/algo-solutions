@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "823",
+ "title": "L, R 그리고 B",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-l-r-and-b/description",
+ "alias": "l-r-and-b",
+ "pid": 823,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "케이스별로 나누기",
+ "lesson": "가능한 상황을 나열하기",
+ "card": "challenge-l-r-and-b",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "39.9",
+  "submissions": "1179"
+ },
+ "sample_count": 1,
+ "statement_len": 187,
+ "fetched_at": "2026-09-23",
+ "statement": "$10\\times10$ 크기의 격자가 주어지며, `L`, `R`, `B`가 정확히 한 칸씩에만 들어 있고 다른 칸에는 전부 `.`이 들어 있습니다. 이때 `L`이 쓰여 있는 칸에서 `R`이 쓰여 있는 칸을 피해 `B`가 쓰여 있는 칸으로 가는 최단거리를 구하는 프로그램을 작성해 주세요. 상하좌우로 인접한 칸으로만 이동할 수 있습니다.",
+ "input_spec": "$10$개의 줄에 걸쳐 한 줄에 하나씩, 각 행에 해당하는 문자 $10$개가 공백 없이 주어집니다.",
+ "output_spec": "`L`에서 `R`을 피해 `B`로 가는 최단거리를 출력합니다. 이때 최단거리는, `L`과 `B`가 있는 칸을 제외하고 거쳐가야 하는 `.`의 개수로 정의합니다.",
+ "constraints": "- 격자의 크기는 항상 $10 \\times 10$입니다\n- `L`, `R`, `B`는 격자 전체에서 각각 정확히 한 번씩 등장하며, 나머지 칸은 모두 `.`입니다",
+ "samples": [
+  {
+   "in": "..........\n..........\n..........\n..B.......\n..........\n.....R....\n..........\n..........\n.....L....\n..........\n",
+   "out": "7\n"
+  }
+ ],
+ "sample_notes": [
+  "`.`을 밟으면서 이동하고, 경로를 `V`로 표현하면 아래와 같이 됩니다. \n따라서 `L`, `B`가 쓰여있는 칸들을 제외하고 최소로 거쳐가야 하는 칸의 수는 $7$칸이 됩니다.\n```\n..........\n..........\n..........\n..B.......\n..V.......\n..VV.R....\n...VVV....\n.....V....\n.....L....\n..........\n```"
+ ]
+}

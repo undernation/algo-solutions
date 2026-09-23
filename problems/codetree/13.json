@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "13",
+ "title": "벽이 있는 충돌 실험",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-collision-experiment-with-wall/description",
+ "alias": "collision-experiment-with-wall",
+ "pid": 13,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Simulation",
+ "lesson": "격자 안에서 여러 객체를 이동",
+ "card": "challenge-collision-experiment-with-wall",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 7초 · C++17 1초",
+  "memory": "128 MB",
+  "time_sec": 7.0
+ },
+ "stats": {
+  "accept_rate": "36.6",
+  "submissions": "3132"
+ },
+ "sample_count": 2,
+ "statement_len": 909,
+ "fetched_at": "2026-09-23",
+ "statement": "$M$개의 구슬이 $N \\times N$ 격자 안에 놓여져 있고, 격자는 벽으로 둘러싸여 있습니다.\n\n![](https://contents.codetree.ai/problems/13/images/problems-8bd32285-4723-42d5-a01d-861de1e5f22c.png)\n\n각 구슬은 모두 $1$초에 한 칸씩 동일한 속도로 정해진 방향으로 움직이고 있습니다.\n\n![](https://contents.codetree.ai/problems/13/images/problems-705bcdf1-a7bd-42f7-874a-42c31ee0c00e.png)\n\n구슬이 벽에 부딪히면 움직이지 않고 움직이는 방향만 반대로 뒤집힙니다. 이때 방향을 바꾸는 작업에는 $1$초의 시간이 소요됩니다.\n\n![](https://contents.codetree.ai/problems/13/images/problems-a7c03cea-6f85-4ae6-8ace-facdcdc8e7dd.png)\n\n두 개 이상의 구슬이 충돌하게 되면 부딪힌 구슬 모두 사라지게 됩니다.\n\n![](https://contents.codetree.ai/problems/13/images/problems-be79233b-ff95-4c10-aa32-f6fd205ba953.png)\n\n이 때 충돌은 두 구슬이 이동 후 같은 위치에 있는 경우에만 일어납니다. \n\n예를 들어 다음과 같이 이동 중에 만나는 경우라면, 서로 충돌이 일어나지 않습니다.\n\n![](https://contents.codetree.ai/problems/13/images/problems-fcbc7b33-66ba-4270-b49d-268d7ab69c31.png)\n\n각 구슬의 초기상태가 주어졌을 때, 아주 오랜시간이 흐른 후에도 여전히 격자 안에 남아있는 구슬의 개수를 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫째 줄에는 총 테스트 케이스 수를 나타내는 $T$가 주어집니다.\n\n그 다음 줄 부터는 $T$개의 테스트 케이스에 대한 정보가 주어집니다.\n\n각 테스트 케이스 마다 주어지는 입력 형식은 다음과 같습니다.\n\n특정 테스트 케이스의 첫 번째 줄에는 $N$과 $M$이 공백을 사이에 두고 주어집니다.\n\n특정 테스트 케이스의 두 번째 줄 부터는 $M$개의 줄에 걸쳐 구슬의 정보 $(x, y, d)$가 공백을 사이에 두고 주어집니다. 각 구슬이 $x$행 $y$열에서 $d$방향으로 이동중이라는 의미이며 $d$는 위 아래 오른쪽 왼쪽을 의미하는 ‘U', ‘D’, ‘R’, 'L’ 4개의 문자 중 하나가 주어집니다. 처음부터 구슬이 겹쳐져 주어지는 경우는 없다고 가정해도 좋습니다.",
+ "output_spec": "한 줄에 하나씩 총 $T$개의 줄에 걸쳐 해당 테스트 케이스에 해당하는 남아있는 구슬의 수를 출력합니다.",
+ "constraints": "- $1 \\le T \\le 100$\n- $1 \\le N \\le 50$\n- $0 \\le M \\le N \\times N$\n- $1 \\le x \\le N$\n- $1  \\le y \\le N$\n- 처음부터 구슬이 겹쳐져 주어지는 경우는 없다고 가정해도 좋습니다.",
+ "samples": [
+  {
+   "in": "1\n4 5\n1 2 L\n2 3 U\n3 1 R\n3 4 D\n4 2 U\n",
+   "out": "1\n"
+  },
+  {
+   "in": "3\n2 2\n1 1 L\n2 2 R\n2 2\n1 1 D\n2 2 R\n2 2\n1 1 L\n1 2 R\n",
+   "out": "2\n0\n2\n"
+  }
+ ]
+}

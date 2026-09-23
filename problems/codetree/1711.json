@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1711",
+ "title": "Iterator 효과",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-Iterator-effect/description",
+ "alias": "Iterator-effect",
+ "pid": 1711,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "배열, 연결 리스트",
+ "lesson": "Iterator",
+ "card": "challenge-Iterator-effect",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "24.9",
+  "submissions": "6498"
+ },
+ "sample_count": 0,
+ "statement_len": 630,
+ "fetched_at": "2026-09-23",
+ "statement": "1부터 $N$까지의 정수가 순서대로 나열된 상황을 생각해봅시다. 정수 $S$에서 시작하여 주어진 $N - 1$개의 방향(왼쪽 혹은 오른쪽)들에 대해 현재 수를 삭제한 후 해당 방향으로 움직이는 것을 $N - 1$번 반복하려고 합니다. 주어진 방향으로 움직이는 것이 불가능한 경우는 주어지지 않는다고 합니다. 이때, 해당 문제를 다음 $3$가지로 해결했을 때 각각의 시간복잡도를 순서대로 구해보세요.\n\n- (1) 배열로 구현하였을 경우\n- (2) Iterator를 쓰지 않고 이중 연결리스트로 구현하였을 경우\n- (3) Iterator를 이용하여 이중 연결리스트로 구현하였을 경우\n\n예를 들어 $N = 5$, $S = 2$이고, 움직일 방향이 (오른쪽, 오른쪽, 왼쪽, 오른쪽) 으로 주어진 경우라면 다음과 같이 변하게 됩니다.\n\n![](https://contents.codetree.ai/problems/1711/images/problems-8c66d2b7-3741-4873-964e-42dec0cfc638.svg)\n\n**보기** — 순서대로 3개 고르기\n\n1. $\\mathcal{O}(\\log{N})$\n2. $\\mathcal{O}(N)$\n3. $\\mathcal{O}(N\\log{N})$\n4. $\\mathcal{O}(N^2)$"
+}

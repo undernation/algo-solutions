@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3442",
+ "title": "검색어와 접두사",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-search-terms-and-prefixes/description",
+ "alias": "search-terms-and-prefixes",
+ "pid": 3442,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "String",
+ "lesson": "Trie",
+ "card": "challenge-search-terms-and-prefixes",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 3초 · C++17 1초",
+  "memory": "460 MB",
+  "time_sec": 3.0
+ },
+ "stats": {
+  "accept_rate": "78.4",
+  "submissions": "102"
+ },
+ "sample_count": 2,
+ "statement_len": 179,
+ "fetched_at": "2026-09-23",
+ "statement": "사전에 포함된 $n$개의 단어가 주어졌을 때, 길이가 $m$인 문자열 $S$를 검색하려고 합니다. 검색을 위해 문자열 $S$의 첫 번째 문자부터 순서대로 하나씩 작성하는 것을 진행한다 했을 때, 각 문자가 추가되는 순간 해당 검색어를 접두사로 하는 사전 내에 있는 서로 다른 단어의 수를 구해주는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $n$과 $m$이 공백을 사이에 두고 주어집니다.\n\n두 번째 줄에는 $n$개의 단어가 공백을 사이에 두고 주어집니다.\n\n세 번째 줄에는 문자열 $S$가 주어집니다.\n\n단어와 문자열 $S$는 소문자 알파벳으로만 이루어져 있으며, 주어지는 $n$개의 단어는 모두 다른 단어임을 가정해도 좋습니다.",
+ "output_spec": "문자열 $S$를 검색하기 위해 문자를 하나씩 작성할 때마다 지금까지 작성된 문자열을 접두사로 하는 사전 내에 있는 서로 다른 단어의 수를 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $1 \\le n, m \\le 100,000$\n - $1 \\le$ 각 단어의 길이 $\\le 100,000$\n - $1 \\le$ 주어지는 $n$개의 단어의 길이의 합 $\\le 200,000$",
+ "samples": [
+  {
+   "in": "5 6\napple app application appointment banana\nappear\n",
+   "out": "4 4 4 0 0 0\n"
+  },
+  {
+   "in": "5 9\napple app application appointment banana\napplicant\n",
+   "out": "4 4 4 2 1 1 1 0 0\n"
+  }
+ ]
+}

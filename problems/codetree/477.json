@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "477",
+ "title": "속도 비교",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-sorting-speed/description",
+ "alias": "sorting-speed",
+ "pid": 477,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "정렬",
+ "lesson": "정렬 속도 비교",
+ "card": "intro-sorting-speed",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Multiple choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "22.1",
+  "submissions": "7220"
+ },
+ "sample_count": 0,
+ "statement_len": 329,
+ "fetched_at": "2026-09-23",
+ "statement": "다음과 같은 배열이 주어졌습니다.\n\n보기중 주어진 배열에 대한 설명으로 옳은 것을 모두 골라보세요.\n \n```python\narr = [6, 8, 120, 140, 314, 818, 1727, 2132, 2219, 3426]\n```\n\n**보기** — 모두 고르기\n\n1. 선택, 삽입 정렬 중 선택 정렬로 진행할 때의 속도가 더 느리다.\n2. 거품, 선택 정렬 중 거품 정렬이 더 빠르다.\n3. 기수 정렬의 경우 $\\mathcal{O}(N^2)$ 이하로 완료할 수 있다.\n4. 해당 배열을 배열이 아닌 이중 연결 리스트로 구상하게 된다면 거품, 선택, 삽입 정렬 중 선택 정렬이 가장 느리다."
+}

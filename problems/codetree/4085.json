@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "4085",
+ "title": "계단 오르기 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-climbing-stairs-2/description",
+ "alias": "climbing-stairs-2",
+ "pid": 4085,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "DP II",
+ "lesson": "원하는 State를 정의하여 한 칸씩 나아가는 DP",
+ "card": "intro-climbing-stairs-2",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "48.2",
+  "submissions": "1717"
+ },
+ "sample_count": 2,
+ "statement_len": 315,
+ "fetched_at": "2026-09-23",
+ "statement": "남우는 $N$층 높이의 계단을 오르려고 합니다. 남우는 계단을 오를 때 한 번에 정확히 $1$계단 혹은 $2$계단 단위로만 올라갈 수 있습니다.\n\n계단의 각 층에는 동전들이 떨어져 있습니다. 만약 남우가 해당 층을 밟고 지나가면, 아주 빠르게 해당 층에 있는 동전을 쓸어갈 수 있습니다.\n\n남우는 빠르게 계단을 올라가고 싶기 때문에, $1$계단 오르는 것을 좋아하지 않습니다. 따라서 이 행동은 최대 $3$번만 하고자 합니다.\n\n조건에 맞춰서 남우가 계단을 $N$층까지 올라가고자 할 때, 올라가면서 얻을 수 있는 동전의 최대 개수를 구하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.\n\n두 번째 줄에 각 층에 있는 동전의 개수를 나타내는 $N$개의 정수가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 $N$층 높이의 계단에 올라가면서 얻을 수 있는 동전의 개수의 총합을 출력합니다.",
+ "constraints": "- $2 \\le N \\le 1\\,000$\n- $1 \\le C_i \\le 1\\,000$ $(1 \\le i \\le N)$",
+ "samples": [
+  {
+   "in": "4\n1 2 3 4\n",
+   "out": "9\n"
+  },
+  {
+   "in": "6\n3 7 11 2 9 6\n",
+   "out": "33\n"
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "470",
+ "title": "책꽂이",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-bookshelf/description",
+ "alias": "bookshelf",
+ "pid": 470,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "정렬",
+ "lesson": "선택 정렬",
+ "card": "challenge-bookshelf",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "51.2",
+  "submissions": "3812"
+ },
+ "sample_count": 0,
+ "statement_len": 597,
+ "fetched_at": "2026-09-23",
+ "statement": "Sam은 이번에 학교 도서관 사서 아르바이트를 하게 되었습니다. 책 정리를 하던 중, $1$권부터 $200$권까지로 구성된 \"알고리즘 정석\" 책의 순서가 마구잡이로 섞인 것을 보았습니다. $200$권을 모두 꺼내서 정리하기엔 너무 힘들 것 같아, 최대한 힘을 덜 쓰는 방법을 고민하다가 다음과 같은 방식으로 책 정리를 하기로 결정했습니다.\n\n---\n\n1. $1$권의 위치를 찾습니다.\n2. $1$권의 위치를 찾으면 그 책을 꺼내고, 첫 번째 자리에 꽂혀있는 책도 꺼냅니다.\n3. 첫 번째 자리에 $1$권을 꽂고, 첫 번째 자리에 있었던 책은 $1$권이 꽂혀 있던 자리에 꽂습니다.\n4. 이것을 $2$권, $3$권, ... $200$권까지 반복합니다.\n\n---\n\n일하기 싫었던 Sam은 하라는 정리는 안 하고 잔꾀를 부리다가, 이미 자기 자리를 잘 지키고 있는 책은 굳이 빼고 다시 꽂을 필요가 없다는 것을 깨달았습니다.\n\n현재 앞에서부터 $K$권의 책이 순서대로 꽂혀있다고 가정하면, 절대 꺼내지 않을 책의 수는 몇 권일까요?\n\n**보기** — 하나 고르기\n\n1. `K`\n2. `200 - K`\n3. `K / 2`\n4. `(200 - K)/2`\n5. `100 - K`"
+}

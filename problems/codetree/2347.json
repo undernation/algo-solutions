@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2347",
+ "title": "열에 따라 감소하는 정사각형",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-a-square-that-decreases-with-heat/description",
+ "alias": "a-square-that-decreases-with-heat",
+ "pid": 2347,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "다중 반복문",
+ "lesson": "일반적인 순서로 숫자 출력",
+ "card": "test-a-square-that-decreases-with-heat",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "95.6",
+  "submissions": "2626"
+ },
+ "sample_count": 3,
+ "statement_len": 114,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $N$이 주어지면 다음과 같은 정사각형 모양을 각 행마다 1씩 감소하며 출력하는 프로그램을 작성해보세요.\n\n예) $N = 4$\n\n```\n4 3 2 1\n4 3 2 1\n4 3 2 1\n4 3 2 1\n```",
+ "input_spec": "첫 번째 줄에 정수 $N$이 주어집니다.",
+ "output_spec": "예제의 형식과 같이 열에 따라 감소하는 정사각형을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 9$",
+ "samples": [
+  {
+   "in": "4\n",
+   "out": "4 3 2 1\n4 3 2 1\n4 3 2 1\n4 3 2 1\n"
+  },
+  {
+   "in": "5\n",
+   "out": "5 4 3 2 1\n5 4 3 2 1\n5 4 3 2 1\n5 4 3 2 1\n5 4 3 2 1\n"
+  },
+  {
+   "in": "6\n",
+   "out": "6 5 4 3 2 1\n6 5 4 3 2 1\n6 5 4 3 2 1\n6 5 4 3 2 1\n6 5 4 3 2 1\n6 5 4 3 2 1\n"
+  }
+ ]
+}

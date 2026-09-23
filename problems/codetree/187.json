@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "187",
+ "title": "문자열에서 문자 출력",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-print-chars-from-word/description",
+ "alias": "print-chars-from-word",
+ "pid": 187,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "문자열",
+ "lesson": "문자열 순회하기",
+ "card": "intro-print-chars-from-word",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "96.0",
+  "submissions": "2272"
+ },
+ "sample_count": 2,
+ "statement_len": 53,
+ "fetched_at": "2026-09-23",
+ "statement": "문자열을 하나 입력받아 각각의 문자를 한 줄에 하나씩 순서대로 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 문자열이 하나 주어집니다. \n\n문자열은 소문자 알파벳으로만 이루어져 있다고 가정해도 좋습니다.",
+ "output_spec": "한 줄에 하나씩 입력으로 받은 문자열의 문자를 순서대로 출력합니다.",
+ "constraints": "$1 \\leq \\texttt{문자열의 길이} \\leq 9$",
+ "samples": [
+  {
+   "in": "abdc\n",
+   "out": "a\nb\nd\nc\n"
+  },
+  {
+   "in": "aab\n",
+   "out": "a\na\nb\n"
+  }
+ ]
+}

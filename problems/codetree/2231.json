@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2231",
+ "title": "최대 수 만들기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-make-biggest-num/description",
+ "alias": "make-biggest-num",
+ "pid": 2231,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Greedy",
+ "lesson": "Greedy Algorithm",
+ "card": "intro-make-biggest-num",
+ "card_type": "Introduction",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "64.3",
+  "submissions": "961"
+ },
+ "sample_count": 1,
+ "statement_len": 81,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 수가 주어졌을 때, 적당한 순서에 맞춰 나열하여 각 수들을 붙여 만들 수 있는 수 중 가능한 최댓값을 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.\n\n두 번째 줄부터 $N+1$번째 줄까지 $N$개의 수가 차례대로 주어집니다.",
+ "output_spec": "$N$개의 숫자를 적당한 순서에 맞춰 나열하여 각 숫자들을 붙였을 때 나올 수 있는 수 중 가장 큰 값을 출력합니다.",
+ "constraints": "- $1 \\le n \\le 50\\,000$\n- $1 \\le$ 주어지는 수 $\\le 10^9$",
+ "samples": [
+  {
+   "in": "3\n43\n37\n4\n",
+   "out": "44337\n"
+  }
+ ],
+ "sample_notes": [
+  "$4, 43, 37$ 순서로 나열하여 붙은 $44337$ 값이 만들 수 있는 최댓값입니다."
+ ]
+}

@@ -1,0 +1,39 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f38",
+ "title": "보도블럭",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/crosswalk/description",
+ "alias": "crosswalk",
+ "pid": 38,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2017 하반기 오전 2번 문제",
+ "level": "L13",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "63.8",
+  "submissions": "746"
+ },
+ "sample_count": 2,
+ "statement_len": 1191,
+ "fetched_at": "2026-09-23",
+ "statement": "크기가 $n \\times n$인 인도가 있습니다. 인도의 각 칸에는 해당 칸의 보도블럭의 높이가 적혀 있습니다.\n\n제대로 공사를 하지 않아 보도블럭의 크기가 일정하지 않습니다. 높이가 제각각이면 걷는데 위험할 수 있기 때문에 경사로를 설치하고자 합니다.\n\n경사로는 높이가 $1$이며 길이 $L$은 문제마다 다르게 주어집니다. 경사로를 설치할 수 있는 조건은 다음과 같습니다.\n\n* 경사로는 높이 차이가 $1$이 나는 보도블럭에 설치가능하며, 낮은 칸에 설치됩니다.\n\n* 경사로의 길이 $L$동안 바닥에 접촉해야하며, 경사로가 놓인 보도블럭의 높이는 모두 같아야 합니다.\n\n길이가 $L=3$인 경사로가 설치될 수 있는 보도블럭은 다음과 같습니다.\n\n<p align=\"center\">\n<img width=\"500\" height=\"150\" src=\"https://contents.codetree.ai/problems/125/images/eba661ed-04b3-495e-94eb-a20859296cef.png\">\n</p>\n\n다음과 같은 경우에는 경사로를 놓을 수 없습니다.\n\n* 높이 차이가 $1$ 보다 큰 경우\n\n* 경사로의 길이만큼 낮은 칸의 보도블럭이 연속하지 않는 경우\n\n* 경사로를 놓은 곳에 또 경사로를 놓은 경우\n\n<p align=\"center\">\n<img width=\"500\" height=\"280\" src=\"https://contents.codetree.ai/problems/125/images/d2191ff6-2983-4096-8ae9-b27c6d8d0b7a.png\">\n</p>\n\n지나갈 수 있다는 말은 특정 열이나 행에 속한 모든 보도블럭의 높이가 같거나 경사로를 설치하여 지나갈 수 있게 만들어져있음을 뜻합니다. \n\n예를 들어 다음과 같이 보도블럭이 있는 인도가 주어질 때 경사로의 길이가 $2$라면 지나갈 수 있는 행과 열은 총 $3$개가 됩니다. 각 열과 행에 설치된 경사로 끼리는 서로 영향을 끼치지 않음에 유의합니다.\n\n<p align=\"center\">\n<img width=\"400\" height=\"400\" src=\"https://contents.codetree.ai/problems/125/images/fc4f598c-5e11-4532-a290-bf5dd2f215af.png\">\n</p>\n\n인도와 경사로의 정보가 격자판으로 주어질 때 지나갈 수 있는 열과 행의 총 개수를 출력하는 프로그램을 작성하세요.",
+ "input_spec": "첫째 줄에 보도블럭의 크기와 연결할 수 있는 경사로의 길이를 의미하는 정수 $n$과 $L$이 공백으로 구분되어 주어집니다.\n\n두번째 줄부터 $(n+1)$번째 줄까지 보드블럭의 높이 정보가 숫자로 주어집니다.",
+ "output_spec": "지나갈 수 있는 행과 열의 총 개수를 출력하세요.",
+ "constraints": "- $2 \\le n \\le 100$\n- $1 \\le L \\le n$\n- $1 \\le$ 보도블럭의 높이 $\\le 10$\n- 보도블럭의 높이는 정수입니다.",
+ "samples": [
+  {
+   "in": "6 2\n1 3 2 2 1 3\n1 3 1 1 2 1\n2 2 2 1 1 1\n2 1 1 1 3 2\n2 1 1 1 2 2\n2 1 1 2 1 1\n",
+   "out": "3\n"
+  },
+  {
+   "in": "9 4\n4 4 3 3 3 3 2 2 2\n4 4 3 3 1 1 2 2 3\n3 3 2 2 1 1 1 1 2\n1 1 1 1 1 1 1 1 1\n1 1 1 1 1 1 1 1 1\n2 2 1 1 1 1 1 1 1\n2 2 1 1 1 1 1 1 1\n2 2 2 2 2 2 1 1 1\n3 3 3 3 2 2 2 2 1\n",
+   "out": "4\n"
+  }
+ ]
+}

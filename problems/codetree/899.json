@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "899",
+ "title": "독서실의 거리두기 3",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-study-cafe-keeping-distance-3/description",
+ "alias": "study-cafe-keeping-distance-3",
+ "pid": 899,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "케이스별로 나누기",
+ "lesson": "좋은 전략을 추려내기",
+ "card": "intro-study-cafe-keeping-distance-3",
+ "card_type": "Introduction",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "52.0",
+  "submissions": "1213"
+ },
+ "sample_count": 1,
+ "statement_len": 290,
+ "fetched_at": "2026-09-23",
+ "statement": "신종 전염병이 퍼짐으로써 리브로스 독서실은 이용자들의 좌석 간의 거리를 두려고 합니다.\n\n좌석은 일렬로 $N$개가 놓여 있고 왼쪽부터 차례로 $1$번, $2$번, $\\ldots$, $N$번입니다. 두 사람 사이의 거리는 두 사람이 앉은 좌석 번호의 차이로 정의합니다.\n\n현재 앉아 있는 사람들은 자리를 그대로 두고, 비어 있는 좌석 중 정확히 한 곳을 골라 새로운 사람 한 명을 앉히려고 합니다. 이때 가장 가까운 두 사람 사이의 거리가 최대가 되도록 자리를 고른다면 그 거리가 얼마인지 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 좌석의 개수 $N$이 주어집니다.\n\n두 번째 줄에 길이가 $N$이며 `0`과 `1`로만 이루어진 문자열이 하나 주어집니다. $i$번째 문자가 `0`이면 $i$번 좌석이 비어 있음을, `1`이면 이미 사람이 앉아 있음을 뜻합니다.",
+ "output_spec": "첫 번째 줄에 가능한 가장 가까운 두 사람의 거리의 최댓값을 출력합니다.",
+ "constraints": "- $3 \\le N \\le 1\\,000$\n- 문자열은 `0` 또는 `1`로만 이루어져 있습니다.\n- 첫 번째 좌석과 $N$번째 좌석에는 항상 사람이 앉아 있음이 보장됩니다.\n- 문자열에는 `0`이 최소 한 개 있습니다. 즉, 새로운 사람이 앉을 수 있는 빈 좌석이 항상 존재합니다.",
+ "samples": [
+  {
+   "in": "12\n100010010001\n",
+   "out": "2\n"
+  }
+ ],
+ "sample_notes": [
+  "새로운 사람이 앉을 빈 좌석을 $x$로 표시하면, 다음 $2$가지 경우에 대해서는 가장 가까운 두 사람의 거리를 $2$로 만들 수 있습니다. 이보다 더 크게 만들 수는 없습니다.\n\n```\n10x010010001\n   \n100010010x01\n```"
+ ]
+}

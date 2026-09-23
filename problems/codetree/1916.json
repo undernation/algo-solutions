@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1916",
+ "title": "최소 스패닝 트리 분할",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-minimum-spanning-tree-split/description",
+ "alias": "minimum-spanning-tree-split",
+ "pid": 1916,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "MST",
+ "lesson": "Kruskal",
+ "card": "challenge-minimum-spanning-tree-split",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "77.0",
+  "submissions": "174"
+ },
+ "sample_count": 1,
+ "statement_len": 373,
+ "fetched_at": "2026-09-23",
+ "statement": "정점이 $N$개이고, 간선이 $M$개인 가중치가 있는 양방향 그래프가 주어집니다. 이때 주어진 그래프는 연결그래프입니다. (연결 그래프란 임의의 두 정점간에 경로가 존재하는 그래프를 의미합니다)\n\n이 그래프를 두 개의 연결 그래프로 분할하고자 합니다. 그 뒤, 분할한 두 그래프 사이에 있는 간선은 모두 지울 수 있게 됩니다. 추가로 각 그래프 내에서도 연결 그래프임이 유지된다면 간선을 추가로 지울 수 있습니다.\n\n조건을 만족하며 그래프를 분할하는 여러 경우와, 간선을 지우는 여러 경우가 존재할 것입니다. 그 여러 경우 중, 남은 간선의 가중치의 합의 최소가 되는 경우가 궁금합니다.\n\n조건을 만족하며, 남은 가중치의 합이 최솟값을 구하는 프로그램을 작성해주세요.",
+ "input_spec": "첫 번째 줄에 정점의 개수 $N$, 간선의 개수 $M$이 공백을 두고 주어집니다.\n\n두 번째 줄부터 $M$개의 줄에 걸쳐, 각 간선의 양 끝점과 가중치가 공백을 두고 주어집니다.",
+ "output_spec": "조건을 만족하게 간선을 지웠을 때, 남은 간선의 가중치의 합의 최소를 출력합니다.",
+ "constraints": "- $2\\le N\\le10\\,000$\n- $1\\le M\\le100\\,000$\n- $1\\le$ 가중치 $\\le1\\,000$",
+ "samples": [
+  {
+   "in": "7 12\n1 2 3\n1 3 2\n3 2 1\n2 5 2\n3 4 4\n7 3 6\n5 1 5\n1 6 2\n6 4 1\n6 5 3\n4 5 3\n6 7 4\n",
+   "out": "8\n"
+  }
+ ],
+ "sample_notes": [
+  "예제 1번에서, \n그래프를 $(1,\\ 2,\\ 3,\\ 4,\\ 5,\\ 6)$ 과 $(7)$로 분할한 뒤, 간선을\n$(5-2)$, $(2-3)$, $(3-1)$, $(1-6)$, $(6-4)$ 만 남기게 되면, 가중치의 합은 $8$이며, 이 경우가 최소입니다."
+ ]
+}

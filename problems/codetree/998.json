@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "998",
+ "title": "비율 구하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-find-proportions/description",
+ "alias": "find-proportions",
+ "pid": 998,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "중급 자료구조",
+ "lesson": "TreeMap",
+ "card": "intro-find-proportions",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "82.9",
+  "submissions": "1139"
+ },
+ "sample_count": 1,
+ "statement_len": 79,
+ "fetched_at": "2026-09-23",
+ "statement": "알파벳 소문자와 대문자로만 구성된 여러 개의 문자열이 주어집니다. 각 문자열이 전체 문자열에서 차지하는 비율을 계산하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 문자열의 개수 $N$이 주어집니다.  \n\n두 번째 줄부터 $N$개의 줄에 걸쳐 각각의 문자열이 입력으로 주어집니다.",
+ "output_spec": "각 줄마다 주어진 문자열을 사전순으로 출력하고, 그 문자열이 차지하는 비율을 백분율로 소수점 아래 $4$번째자리까지 반올림하여 공백을 두고 출력합니다.",
+ "constraints": "- $1\\le N\\le 10\\,000$  \n- $1\\le\\texttt{문자열의 길이}\\le 30$\n- 문자열은 모두 알파벳 대소문자로 구성되어 있습니다.",
+ "samples": [
+  {
+   "in": "5\nred\nblue\ngreen\nyellow\nred\n",
+   "out": "blue 20.0000\ngreen 20.0000\nred 40.0000\nyellow 20.0000\n"
+  }
+ ],
+ "sample_notes": [
+  "각 색이 다음과 같은 비율로 등장합니다.\n\n```\nblue : 1\nred : 2\ngreen  : 1\nyellow : 1\n```"
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "62",
+ "title": "완전수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-perfect-number/description",
+ "alias": "perfect-number",
+ "pid": 62,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "다중 반복문",
+ "lesson": "n번 반복",
+ "card": "challenge-perfect-number",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "80.6",
+  "submissions": "2459"
+ },
+ "sample_count": 1,
+ "statement_len": 346,
+ "fetched_at": "2026-09-23",
+ "statement": "어떤 수 $n$의 진약수란, $n$을 나누어 떨어지게 하는 양의 정수 중에서 $n$이 아닌 수를 말합니다.  \n이때, $n$의 진약수의 총합이 $n$과 같다면, $n$을 완전수라고 말합니다.\n\n예를 들어, $28$의 진약수로는 $1$, $2$, $4$, $7$, $14$가 있고, 이들의 합은 $28$이므로, $28$은 완전수입니다.  \n그러나, $20$의 진약수로는 $1$, $2$, $4$, $5$, $10$이 있고, 이들의 합은 $22$이므로, $20$은 완전수가 아닙니다.\n\n두 정수 $start$와 $end$가 주어집니다.  \n$start$ 이상 $end$ 이하인 완전수의 개수를 세는 프로그램을 작성해보세요.",
+ "input_spec": "첫 줄에 두 정수 $start$와 $end$가 공백으로 구분되어 주어집니다.",
+ "output_spec": "첫 줄에 $start$ 이상 $end$ 이하인 완전수의 개수를 출력합니다.",
+ "constraints": "- $1 \\le start \\le end \\le 1\\,000$",
+ "samples": [
+  {
+   "in": "3 30\n",
+   "out": "2\n"
+  }
+ ],
+ "sample_notes": [
+  "$3$ 이상 $30$ 이하인 완전수는 $6$, $28$ 입니다."
+ ]
+}

@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1307",
+ "title": "겹치는 원소가 적은 부분 수열",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-subsequences-with-few-overlapping-elements/description",
+ "alias": "subsequences-with-few-overlapping-elements",
+ "pid": 1307,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shorten time Technique",
+ "lesson": "Two Pointer",
+ "card": "challenge-subsequences-with-few-overlapping-elements",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "53.1",
+  "submissions": "557"
+ },
+ "sample_count": 2,
+ "statement_len": 71,
+ "fetched_at": "2026-09-23",
+ "statement": "크기가 $N$인 수열에서, 같은 원소가 $K$개 이하로 들어있는 가장 긴 연속 부분 수열의 길이를 구하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 수열의 크기와 같은 원소의 등장 횟수를 나타내는 두 정수 $N$과 $K$가 공백을 두고 주어집니다.\n\n두 번째 줄에 수열의 각 원소가 공백을 두고 차례대로 주어집니다.",
+ "output_spec": "첫 번째 줄에 같은 원소가 $K$개 이하로 들어있는 가장 긴 연속 부분 수열의 길이를 출력합니다.",
+ "constraints": "- $1 \\le N, K \\le 100\\,000$\n- $1 \\le \\texttt{수열의 원소} \\le 10^9$\n- 수열의 원소는 모두 정수입니다.",
+ "samples": [
+  {
+   "in": "8 2\n3 4 5 6 6 7 8 6\n",
+   "out": "7\n"
+  },
+  {
+   "in": "9 2\n3 2 5 5 6 4 4 5 7\n",
+   "out": "7\n"
+  }
+ ],
+ "sample_notes": [
+  "같은 원소가 $2$번 이하로 나오는 가장 긴 연속 부분 수열은 $3\\, 4\\, 5\\, 6\\, 6\\, 7\\, 8$입니다.",
+  "같은 원소가 $2$번 이하로 나오는 가장 긴 연속 부분 수열은 $3\\, 2\\, 5\\, 5\\, 6\\, 4\\, 4$ 입니다."
+ ]
+}

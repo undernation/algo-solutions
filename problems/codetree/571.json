@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "571",
+ "title": "해시 퀴즈",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-hash-concept/description",
+ "alias": "hash-concept",
+ "pid": 571,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "해싱",
+ "lesson": "해싱",
+ "card": "challenge-hash-concept",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "62.8",
+  "submissions": "2858"
+ },
+ "sample_count": 0,
+ "statement_len": 265,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 중 해시를 사용하기에 **가장 적합한** 상황은 무엇일까요?\n\n**보기** — 하나 고르기\n\n1. 데이터 삽입과 삭제가 자주 일어나며, 최대 `100`개의 데이터가 저장될 경우\n2. 데이터 삽입과 삭제가 자주 일어나며, 데이터가 약 `10`만 개 이상 들어가는 신조어 사전\n3. 데이터가 약 `10`만 개 정도 들어가며, 데이터 중 가장 작은 값을 빠르게 찾고 싶은 경우\n4. 데이터가 약 `100`만 개 정도 들어가며, 검색은 잘 하지 않고 보존하는 것이 역할인 경우"
+}

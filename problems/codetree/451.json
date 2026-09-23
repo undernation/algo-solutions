@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "451",
+ "title": "연결 리스트 합치기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-linked-list-merge/description",
+ "alias": "linked-list-merge",
+ "pid": 451,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "배열, 연결 리스트",
+ "lesson": "단일 연결 리스트",
+ "card": "challenge-linked-list-merge",
+ "card_type": "Problem",
+ "level": "Hard",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "58.4",
+  "submissions": "4316"
+ },
+ "sample_count": 0,
+ "statement_len": 614,
+ "fetched_at": "2026-09-23",
+ "statement": "오름차순으로 정렬된 두 연결 리스트가 있습니다. 우리의 목표는 두 연결 리스트를 하나로 합치되, 합쳐진 결과물도 오름차순으로 정렬 되도록 하는 것입니다.\n\n다음 코드를 완성해봅시다.\n\n```jsx\nfunction solution(SLL1, SLL2)\n  set result = empty SLL\n  node1 = SLL1.head\n  node2 = SLL2.head\n  while node1 != null or node2 != null\n    if node2 == null or (1)\n      result.insert_end((2))\n      node1 = node1.next\n    else\n      result.insert_end((3))\n      node2 = node2.next\n  \n  return result\n```\n\n**보기** — 순서대로 3개 고르기\n\n1. `node1.data`\n2. `node2.data`\n3. `(node1 != null and node1.data < node2.data)`\n4. `(node1 != null and node2.data < node1.data)`\n5. `(node1 != null and node1.data == node2.data)`"
+}

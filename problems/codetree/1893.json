@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1893",
+ "title": "연결된 정점 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-connected-vertex-2/description",
+ "alias": "connected-vertex-2",
+ "pid": 1893,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "MST",
+ "lesson": "Disjoint Set (Union Find)",
+ "card": "test-connected-vertex-2",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "100 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "59.6",
+  "submissions": "193"
+ },
+ "sample_count": 2,
+ "statement_len": 234,
+ "fetched_at": "2026-09-23",
+ "statement": "무수히 많은 정점을 가진 그래프가 있습니다.\n초기에, 이 그래프는 간선을 가지고 있지 않습니다.\n\n다음과 같은 질의가 $N$ 개 주어집니다.\n\n- $a\\ b$ : 그래프에서 $a$번 정점과 $b$번 정점을 간선으로 잇습니다. 이후, $a$번 정점이 속한 연결 컴포넌트의 크기를 출력합니다.\n\n연결 컴포넌트의 크기란, 간선으로 연결된 정점의 개수를 뜻합니다.\n\n$N$ 개의 질의를 차례대로 수행하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 정수 $N$이 주어집니다.\n\n그다음 줄부터 $N$ 개의 줄에 걸쳐, 두 정점의 번호를 나타내는 두 정수 $a$와 $b$가 공백으로 구분되어 주어집니다.",
+ "output_spec": "두 개의 정점이 주어질 때 마다, 간선으로 연결한 후에 주어진 두 정점에서 간선으로 연결되어있는 모든 정점의 개수를 한 줄에 하나씩 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100\\,000$\n- $1 \\le a , b \\le 100\\,000$\n- $a \\ne b$",
+ "samples": [
+  {
+   "in": "3\n1 2\n2 3\n3 4\n",
+   "out": "2\n3\n4\n"
+  },
+  {
+   "in": "3\n1 2\n3 4\n1 4\n",
+   "out": "2\n2\n4\n"
+  }
+ ]
+}

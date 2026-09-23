@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "76",
+ "title": "행복한 수열의 개수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-number-of-happy-sequence/description",
+ "alias": "number-of-happy-sequence",
+ "pid": 76,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Simulation",
+ "lesson": "격자 안에서 완전탐색",
+ "card": "challenge-number-of-happy-sequence",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "39.9",
+  "submissions": "10536"
+ },
+ "sample_count": 2,
+ "statement_len": 458,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$ 이상 $100$ 이하의 정수로만 이루어져 있는 $N \\times N$ 크기의 격자 정보가 주어집니다.\n\n이때 행복한 수열은 다음과 같이 정의됩니다.\n\n- 행복한 수열: 동일한 원소가 연속하여 $M$개 이상 나오는 구간이 존재하는 수열\n\n각 행을 왼쪽에서 오른쪽으로 읽어 얻어지는 $N$개의 수열과 각 열을 위에서 아래로 읽어 얻어지는 $N$개의 수열, 총 $2N$개의 수열 중 행복한 수열의 개수를 세서 출력하는 프로그램을 작성해 주세요.\n\n예를 들어, $M = 2$이고 격자가 다음과 같은 경우라면, 첫 번째 행을 골랐을 경우와 첫 번째 열을 골랐을 경우에만 행복한 수열이 되므로, 총 행복한 수열의 수는 $2$개가 됩니다.\n\n![](https://contents.codetree.ai/problems/76/images/problems-c85fcc0c-41b0-4ae2-9149-a8f6020c1b19.png)",
+ "input_spec": "첫 번째 줄에 격자의 크기 $N$과 연속해야 하는 원소의 수 $M$이 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 격자의 정보가 주어집니다. 이 중 $i$번째 줄에는 격자의 $i$번째 행에 위치한 $N$개의 정수 $A_{i, 1}, A_{i, 2}, \\cdots, A_{i, N}$이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "$2N$개의 수열 중 행복한 수열의 개수를 출력합니다.",
+ "constraints": "- $1 \\le M \\le N \\le 100$\n- $1 \\le A_{i, j} \\le 100$ ($1 \\le i, j \\le N$)",
+ "samples": [
+  {
+   "in": "3 2\n1 2 2\n1 3 4\n1 2 3\n",
+   "out": "2\n"
+  },
+  {
+   "in": "3 1\n1 2 3\n4 5 6\n7 8 8\n",
+   "out": "6\n"
+  }
+ ]
+}

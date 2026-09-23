@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2395",
+ "title": "비오는 날",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-rainy-day/description",
+ "alias": "rainy-day",
+ "pid": 2395,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "정렬",
+ "lesson": "객체",
+ "card": "test-rainy-day",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "67.8",
+  "submissions": "3812"
+ },
+ "sample_count": 1,
+ "statement_len": 193,
+ "fetched_at": "2026-09-23",
+ "statement": "미래의 기상을 예측한 데이터가 $n$개 주어집니다. 각 데이터에는 날짜, 요일, 날씨의 정보가 순서대로 담겨 있을 때, 가장 이른 날짜에 비가 오는 날을 찾아 출력하는 프로그램을 작성해보세요.\n\n같은 날짜가 여러 번 주어질 수 있습니다. 비가 오는 날 중 가장 이른 날짜가 여러 줄에 걸쳐 주어진 경우에는, 입력에서 먼저 주어진 줄을 출력합니다.",
+ "input_spec": "첫 번째 줄에 정수 $n$이 주어집니다.   \n\n두 번째 줄부터는 $n$개의 줄에 걸쳐 각 예측 정보에 대한 날짜, 요일, 그리고 날씨에 대한 정보가 공백을 사이에 두고 주어집니다. 날짜는 `yyyy-mm-dd` 형태로 주어지며 요일, 날씨의 경우 알파벳으로만 이루어져 있는 단어 형태로 주어짐을 가정해도 좋습니다. 비가 오는 날씨의 경우 `Rain`이라는 이름으로 주어집니다.",
+ "output_spec": "첫 번째 줄에 비가 오는 날 중 가장 이른 날짜의 정보를 날짜, 요일, 날씨 순으로 입력과 동일한 포맷으로 출력합니다.",
+ "constraints": "- $1 \\le n \\le 100$\n- 날짜는 `yyyy-mm-dd` 형식이며, 그레고리력에서 실제로 존재하는 날짜입니다.\n- $2000 \\le \\texttt{yyyy} \\le 2100$, $1 \\le \\texttt{mm} \\le 12$이고, $\\texttt{dd}$는 해당 연도·월에 존재하는 날짜입니다. 윤년은 그레고리력 규칙을 따릅니다.\n- 요일을 나타내는 단어는 `Sun`, `Mon`, `Tue`, `Wed`, `Thu`, `Fri`, `Sat` 중 하나입니다. 이 단어는 해당 날짜의 실제 요일과 일치하지 않을 수도 있습니다.\n- 날씨 단어는 알파벳 대소문자로 이루어져 있으며, 최대 길이는 10입니다.\n- $n$개의 데이터 중에서 비가 오는 날이 적어도 하루 존재합니다.\n- 같은 날짜가 여러 번 주어질 수 있습니다.",
+ "samples": [
+  {
+   "in": "4\n2036-12-27 Sun Snow\n2052-08-28 Wed Rain\n2043-03-21 Sat Sun\n2077-08-19 Thu Rain\n",
+   "out": "2052-08-28 Wed Rain\n"
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2317",
+ "title": "전항의 두 배",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-twice-the-previous/description",
+ "alias": "twice-the-previous",
+ "pid": 2317,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "1차원 배열",
+ "lesson": "배열 만들기",
+ "card": "test-twice-the-previous",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "94.0",
+  "submissions": "3658"
+ },
+ "sample_count": 1,
+ "statement_len": 128,
+ "fetched_at": "2026-09-23",
+ "statement": "수열의 첫 번째 항($A_1$)과 두 번째 항($A_2$)이 주어졌을 때, 10번째 항까지 구하는 프로그램을 작성해보세요.    \n\n이 수열은 세 번째 항부터 $A_n = A_{n-1} + 2 A_{n-2}$ 를 만족해야 합니다.",
+ "input_spec": "첫 번째 줄에 첫 번째 항과 두 번째 항이 공백을 두고 주어집니다.",
+ "output_spec": "첫 번째 항부터 $10$번째 항까지 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $1 \\le A_1, A_2 \\le 100$",
+ "samples": [
+  {
+   "in": "2 3\n",
+   "out": "2 3 7 13 27 53 107 213 427 853\n"
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1914",
+ "title": "최소 스패닝 트리",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-minimum-spanning-tree/description",
+ "alias": "minimum-spanning-tree",
+ "pid": 1914,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "MST",
+ "lesson": "Kruskal",
+ "card": "intro-minimum-spanning-tree",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "67.0",
+  "submissions": "452"
+ },
+ "sample_count": 1,
+ "statement_len": 184,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$번부터 $N$번까지 $N$개의 정점과 $M$개의 간선에 대한 정보로, 간선의 양 끝 정점과 해당 간선의 가중치가 주어집니다.\n\n주어진 그래프에서 최소 스패닝 트리를 구하는 프로그램을 작성해보세요.\n\n최소 스패닝 트리란 그래프의 모든 정점을 연결하는 부분 그래프 중에서, 그 가중치의 합이 최소가 되는 부분그래프를 의미합니다.",
+ "input_spec": "첫 번째 줄에 정점의 개수 $N$, 간선의 개수 $M$이 공백을 두고 주어집니다.\n\n두 번째 줄부터 $M$개의 줄에 걸쳐, 각 간선의 양 끝 점과 가중치가 공백을 두고 주어집니다.",
+ "output_spec": "최소 스패닝 트리를 만드는 데 필요한 가중치를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 10\\,000$\n- $1 \\le M \\le 100\\,000$\n- $-1\\,000 \\le \\texttt{가중치} \\le 1\\,000$",
+ "samples": [
+  {
+   "in": "3 3\n1 2 1\n2 3 2\n1 3 3\n",
+   "out": "3\n"
+  }
+ ]
+}

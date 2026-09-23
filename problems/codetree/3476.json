@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3476",
+ "title": "사각형 채우기 6",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-rectangle-fill-6/description",
+ "alias": "rectangle-fill-6",
+ "pid": 3476,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Advanced DP",
+ "lesson": "Bitmask DP",
+ "card": "challenge-rectangle-fill-6",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "75.0",
+  "submissions": "36"
+ },
+ "sample_count": 2,
+ "statement_len": 239,
+ "fetched_at": "2026-09-23",
+ "statement": "$n \\times m$ 크기의 사각형을 $1 \\times 2$, $2 \\times 1$ 크기의 사각형들로 채우는 방법의 수를 구하는 프로그램을 작성해보세요\n\n예로 $n = 4, m = 2$일 때는 다음과 같이 $5$가지 방법이 가능합니다.\n\n![](https://contents.codetree.ai/problems/3476/images/problems-c720459e-3edb-4401-8ecf-38e21ec524c3.png)",
+ "input_spec": "첫 번째 줄에 $n$과 $m$이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "$n \\times m$ 크기의 사각형을 채우는 방법의 수를 10,007로 나눈 나머지를 출력합니다.",
+ "constraints": "- $1 \\le n, m \\le 11$",
+ "samples": [
+  {
+   "in": "4 2\n",
+   "out": "5\n"
+  },
+  {
+   "in": "3 4\n",
+   "out": "11\n"
+  }
+ ]
+}

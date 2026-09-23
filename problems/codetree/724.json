@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "724",
+ "title": "출력결과 42",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201715/description",
+ "alias": "reading-k201715",
+ "pid": 724,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "출력",
+ "lesson": "소수점 맞춰 출력",
+ "card": "challenge-reading-k201715",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "90.1",
+  "submissions": "13920"
+ },
+ "sample_count": 0,
+ "statement_len": 459,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 프로그램의 출력 결과는 무엇인가? \n\n## Python3 코드\n```python\na = 2.8437\nprint(f\"{a:.2f}\")\n```\n\n## C 코드\n```c\ndouble a = 2.8437;\nprintf(\"%.2f\\n\", a);\n```\n\n## C++ 코드\n```cpp\ncout << fixed;\ndouble a = 2.8437;\ncout.precision(2);\ncout << a << endl;\n```\n\n## Java 코드\n```java\ndouble a = 2.8437;\nSystem.out.printf(\"%.2f\\n\", a);\n```\n\n## JavaScript 코드\n```JavaScript\nlet a = 2.8437;\nconsole.log(\"%f\", a.toFixed(2));\n```\n\n**보기** — 하나 고르기\n\n1. 2.84\n2. 2.844\n3. 2.844\n4. 2.8437\n5. `2.844\\n`"
+}

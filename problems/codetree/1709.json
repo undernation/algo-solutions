@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1709",
+ "title": "올바른 삭제 메서드",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-correct-deletion/description",
+ "alias": "correct-deletion",
+ "pid": 1709,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "배열, 연결 리스트",
+ "lesson": "단일 연결 리스트",
+ "card": "challenge-correct-deletion",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "39.9",
+  "submissions": "6591"
+ },
+ "sample_count": 0,
+ "statement_len": 556,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 코드는 단일 연결 리스트에서 주어진 $num$ 값과 일치하는 노드를 삭제하는 `delete` 함수를 구현한 일부입니다. 빈 칸에 알맞은 내용을 채워 코드를 완성해 보세요.\n\n단, 삭제할 노드는 항상 존재하며 $head$나 $tail$이 아닌 중간 노드라고 가정합니다.\n\n- $SLL$은 단일 연결 리스트 구조로, 리스트의 시작을 나타내는 $head$와 마지막 요소를 가리키는 $tail$을 포함합니다.\n- 각 노드는 데이터를 저장하는 $data$ 필드와 다음 노드를 가리키는 $next$ 필드를 가진 요소로 구성됩니다.\n\n```jsx\nfunction SLL.delete(num)\n  set node = SLL.head\n  while node.(1) != (2):\n    node = node.next\n  \n  node.next = node.(3)\n```\n\n**보기** — 순서대로 3개 고르기\n\n1. `node`\n2. `node.data`\n3. `node.next`\n4. `node.next.data`\n5. `next`\n6. `next.data`\n7. `next.next`\n8. `num`"
+}

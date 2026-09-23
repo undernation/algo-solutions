@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3402",
+ "title": "사이클 없애기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-remove-cycle/description",
+ "alias": "remove-cycle",
+ "pid": 3402,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "위상정렬",
+ "lesson": "Topological Sort",
+ "card": "challenge-remove-cycle",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "72.4",
+  "submissions": "152"
+ },
+ "sample_count": 2,
+ "statement_len": 178,
+ "fetched_at": "2026-09-23",
+ "statement": "$n$개의 노드로 이루어져 있는 방향 그래프가 주어집니다. 이 그래프는 $m1$개의 단방향 간선과, $m2$개의 양방향 간선으로 이루어져 있습니다. 모든 양방향 간선의 방향을 잘 설정하였을 때 $(m1 + m2)$개의 단방향 간선으로 이루어진 그래프에 사이클이 없도록 만들 수 있는지를 판단하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $n, m1, m2$가 공백을 사이에 두고 주어집니다.  \n그 다음 줄부터는 $m1$개의 줄에 걸쳐 간선 정보 $(a1, b1)$ 값이 공백을 사이에 두고 주어집니다. 이는 정점 $a1$에서 정점 $b1$으로 가는 단방향 간선이 존재함을 의미합니다.  \n그 다음 줄부터는 $m2$개의 줄에 걸쳐 간선 정보 $(a2, b2)$ 값이 공백을 사이에 두고 주어집니다. 이는 정점 $a2$와 정점 $b2$를 연결하는 양방향 간선이 존재함을 의미합니다.\n\n처음 단방향 간선과 양방향 간선이 겹쳐져 주어지는 경우는 없다고 가정해도 좋습니다.",
+ "output_spec": "양방향 간선의 방향을 잘 설정하여 단방향 간선으로만 이루어진 그래프에서 사이클이 없도록 만들 수 있다면 \"Yes\", 그렇지 않다면 \"No\"를 출력합니다.",
+ "constraints": "- $1 \\le n, m_1 \\le 100,000$\n - $0 \\le m_2 \\le 100,000$\n - $1 \\le a_1, b_1 \\le n$\n - $a_1 \\neq b_1$\n - $1 \\le a_2, b_2 \\le n$\n - $a_2 \\neq b_2$",
+ "samples": [
+  {
+   "in": "5 5 0\n1 5\n2 1\n3 4\n4 2\n5 3\n",
+   "out": "No\n"
+  },
+  {
+   "in": "5 4 1\n1 5\n2 1\n3 4\n4 2\n3 2\n",
+   "out": "Yes\n"
+  }
+ ]
+}

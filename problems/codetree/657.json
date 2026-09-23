@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "657",
+ "title": "사칙연산 함수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-quadratic-operations-function/description",
+ "alias": "quadratic-operations-function",
+ "pid": 657,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "함수",
+ "lesson": "값을 반환하는 함수",
+ "card": "challenge-quadratic-operations-function",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "61.1",
+  "submissions": "4559"
+ },
+ "sample_count": 2,
+ "statement_len": 150,
+ "fetched_at": "2026-09-23",
+ "statement": "각 사칙연산에 해당하는 총 4개의 함수를 작성하고 정수의 연산식이 주어지면 적절한 함수를 호출하여 4칙연산의 연산결과를 출력하는 프로그램을 작성해보세요. 단, '/'의 결과는 정수 부분만 출력하고, 사칙연산자 이외의 문자가 주어지는 경우에는 `False`을 출력합니다.",
+ "input_spec": "첫 번째 줄에 연산식을 나타내는 $a, o, c$가 각각 순서대로 공백을 사이에 두고 주어집니다. $a, c$는 정수값이며, $o$는 문자로 주어집니다. $o$가 '+', '-', '/', '*' 중에 하나로 주어지면 사칙 연산을 수행해야만 합니다.",
+ "output_spec": "첫 번째 줄에 `a o c = 연산결과` 형태로 출력합니다. 단, `o`가 사칙연산자(`+`, `-`, `*`, `/`)가 아니면 `False`를 출력합니다.",
+ "constraints": "- $1 \\le a, c \\le 100$\n- $o$는 공백이 아닌 단일 문자로 주어집니다.",
+ "samples": [
+  {
+   "in": "10 * 3\n",
+   "out": "10 * 3 = 30\n"
+  },
+  {
+   "in": "5 ^ 4\n",
+   "out": "False\n"
+  }
+ ]
+}

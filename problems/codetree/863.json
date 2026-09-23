@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "863",
+ "title": "재귀함수를 이용한 피보나치 수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-fibonacci-using-recursive-function/description",
+ "alias": "fibonacci-using-recursive-function",
+ "pid": 863,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "재귀함수",
+ "lesson": "값을 반환하는 재귀함수",
+ "card": "intro-fibonacci-using-recursive-function",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "91.9",
+  "submissions": "3125"
+ },
+ "sample_count": 2,
+ "statement_len": 177,
+ "fetched_at": "2026-09-23",
+ "statement": "피보나치 수열이란 이전 두 항의 합이 그 다음 항이 되는 수열을 의미합니다.\n\n예를 들어 첫 번째 원소를 $1$, 두 번째 원소도 $1$이라 하면 그 다음 항은 $2$, $3$, $5$, $8$ .. 이 됩니다.\n\n$N$번째 피보나치 수를 구하는 프로그램을 작성해보세요. 단, 재귀함수를 이용하여 문제를 해결해주세요.",
+ "input_spec": "첫째 줄에는 $N$이 주어집니다.",
+ "output_spec": "$N$번째 피보나치 수를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 20$",
+ "samples": [
+  {
+   "in": "3\n",
+   "out": "2\n"
+  },
+  {
+   "in": "8\n",
+   "out": "21\n"
+  }
+ ]
+}

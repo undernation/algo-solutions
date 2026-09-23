@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "382",
+ "title": "문자열 범위 출력하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-print-string-in-range/description",
+ "alias": "print-string-in-range",
+ "pid": 382,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "문자열",
+ "lesson": "공백있는 문자열 한번에 입력받기",
+ "card": "intro-print-string-in-range",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "91.3",
+  "submissions": "2893"
+ },
+ "sample_count": 1,
+ "statement_len": 66,
+ "fetched_at": "2026-09-23",
+ "statement": "공백이 들어 있을 수 있는 문자열이 주어지면 3번째 문자부터 10번 문자까지 순서대로 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 길이가 10이상 100 이하인 문자열이 주어집니다. 단, 문자열에 공백이 포함되어 있을 수도 있으며 문자열의 맨 앞에는 공백이 주어지지 않습니다.",
+ "output_spec": "첫 번째 줄에 주어진 문자열의 3번째 부터 10번까지의 문자를 차례로 출력합니다.",
+ "constraints": "- $10 \\le \\texttt{문자열의 길이} \\le 100$\n- 문자열의 맨앞은 공백이 아님이 보장됩니다.",
+ "samples": [
+  {
+   "in": "Lee Bros Code\n",
+   "out": "e Bros C\n"
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2274",
+ "title": "가장 많이 겹치는 구간 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-section-with-maximum-overlap-2/description",
+ "alias": "section-with-maximum-overlap-2",
+ "pid": 2274,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shorten time Technique",
+ "lesson": "+1-1 technique",
+ "card": "challenge-section-with-maximum-overlap-2",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "77.8",
+  "submissions": "621"
+ },
+ "sample_count": 1,
+ "statement_len": 76,
+ "fetched_at": "2026-09-23",
+ "statement": "일직선 위에 $N$개의 구간이 주어졌을 때, 구간이 가장 많이 겹치는 부분에서 몇 개의 구간이 겹치는지를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 구간의 개수 $N$이 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 각 줄에 각 구간을 나타내는 정보 $(x_1,\\ x_2)$ 값이 공백을 사이에 두고 주어집니다.\n\n단, 주어지는 $x$값들은 모두 다름을 가정하여도 좋습니다.",
+ "output_spec": "가장 많이 겹치는 구간의 횟수를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100\\,000$\n - $1 \\le x_1 \\lt x_2 \\le 10^9$",
+ "samples": [
+  {
+   "in": "3\n2 16\n4 6\n7 10\n",
+   "out": "2\n"
+  }
+ ],
+ "sample_notes": [
+  "가장 많은 범위가 겹치는 구간은 [$4$, $6$] 과 [$7$, $10$] 이며, 이때 겹치는 범위의 개수는 $2$개입니다.\n\n<br>\n\n![](https://contents.codetree.ai/problems/2274/images/problems-0ffb7007-fd9a-4e25-a492-2f2655bf0b31.png)\n\n<br>"
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1982",
+ "title": "위상정렬 개념",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-topological-sort-concept/description",
+ "alias": "topological-sort-concept",
+ "pid": 1982,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 알고리즘",
+ "lesson": "Topological Sort",
+ "card": "intro-topological-sort-concept",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Multiple choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "37.3",
+  "submissions": "2476"
+ },
+ "sample_count": 0,
+ "statement_len": 358,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 중 위상정렬의 설명으로 옳은 것을 모두 고르세요.\n\n**보기** — 모두 고르기\n\n1. 위상정렬은 방향성 그래프에서만 사용 가능한 알고리즘이다.\n2. in-degree를 이용한 위상정렬 방법을 통해 답이 나오지 않는다면, 주어진 방향 그래프는 사이클을 포함하고 있다고 말할 수 있다.\n3. 주어진 방향 그래프에서 사이클이 없다면, 위상정렬은 항상 가능한 답을 구해준다.\n4. 주어진 그래프에서 모순 없이 순서대로 진행할 수 있는 방법 중 위상정렬을 통해 나온 답이 꼭 유일한 답이라고 말할 수는 없다.\n5. 잘 알려져 있는 위상정렬 방법은 크게 `2`가지 이다.\n6. 전부 연결되어 있지 않은 그래프에서는 위상정렬을 적용하기가 어렵다."
+}

@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "906",
+ "title": "최대로 겹치는 구간",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-maximum-overlapped-segments/description",
+ "alias": "maximum-overlapped-segments",
+ "pid": 906,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 I",
+ "lesson": "구간 칠하기",
+ "card": "intro-maximum-overlapped-segments",
+ "card_type": "Introduction",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "56.5",
+  "submissions": "7813"
+ },
+ "sample_count": 1,
+ "statement_len": 119,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$차원 직선 위에 $N$개의 선분이 놓여 있습니다. 가장 많이 겹치는 구간에서 몇 개의 선분이 겹치는지를 구하는 프로그램을 작성해보세요. 단, 두 선분이 끝점에서만 닿는 경우는 겹치는 것으로 생각하지 않습니다.",
+ "input_spec": "첫 번째 줄에는 $N$이 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 각 줄에 선분 하나의 왼쪽 끝점 $x_1$과 오른쪽 끝점 $x_2$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "가장 많이 겹치는 구간에서 몇 개의 선분이 겹치는지를 출력합니다.",
+ "constraints": "- $2 \\le N \\le 100$\n- $-100 \\le x_1 \\lt x_2 \\le 100$",
+ "samples": [
+  {
+   "in": "3\n1 5\n4 6\n3 5\n",
+   "out": "3\n"
+  }
+ ],
+ "sample_notes": [
+  "아래 그림과 같이 구간 [$4$, $5$]에서 최대 $3$개의 선분이 겹치게 됩니다.  \n\n\n![](https://contents.codetree.ai/problems/906/images/problems-61a43a9a-7341-4283-9838-13b8755c497b.svg)"
+ ]
+}

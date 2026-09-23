@@ -1,0 +1,40 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "393",
+ "title": "아스키코드의 합과 차",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-sum-and-subtract-in-ASCII/description",
+ "alias": "sum-and-subtract-in-ASCII",
+ "pid": 393,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "문자열",
+ "lesson": "아스키 코드",
+ "card": "intro-sum-and-subtract-in-ASCII",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "88.8",
+  "submissions": "2334"
+ },
+ "sample_count": 1,
+ "statement_len": 51,
+ "fetched_at": "2026-09-23",
+ "statement": "영문자 두 개가 주어지면 각 문자의 아스키코드의 합과 차를 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 영문자 두 개가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 합과 차를 사이에 공백을 두고 출력합니다. 차는 둘 중 더 큰 수에서 작은 수를 뺍니다.",
+ "samples": [
+  {
+   "in": "L e\n",
+   "out": "177 25\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 예제에서 $L$는 아스키코드에서 $76$이고 $e$는 $101$이다. 그러므로 합은 $177$이고 차는 $25$다."
+ ]
+}

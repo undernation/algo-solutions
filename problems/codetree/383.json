@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "383",
+ "title": "문자열 범위 출력하기 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-print-string-in-range-2/description",
+ "alias": "print-string-in-range-2",
+ "pid": 383,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "문자열",
+ "lesson": "문자열 순회하기",
+ "card": "challenge-print-string-in-range-2",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "44.3",
+  "submissions": "4359"
+ },
+ "sample_count": 1,
+ "statement_len": 63,
+ "fetched_at": "2026-09-23",
+ "statement": "문자열과 정수가 주어지면 문자열의 맨 뒤에서부터 차례대로 주어진 정수만큼 문자를 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 길이가 $100$ 이하인 문자열이 주어집니다.\n\n두 번째 줄에는 `정수 값`이 주어집니다.",
+ "output_spec": "첫 번째 줄에 문자열의 맨 뒤에서부터 차례대로 주어진 정수만큼 문자를 출력합니다. 만약 주어진 정수가 문자열의 길이보다 크다면 문자열을 모두 역순으로 출력합니다.",
+ "constraints": "- $\\texttt{문자열의 길이} \\le 100$\n- $1 \\le \\texttt{정수 값} \\le 100$",
+ "samples": [
+  {
+   "in": "FunLeeBrosCode\n11\n",
+   "out": "edoCsorBeeL\n"
+  }
+ ]
+}

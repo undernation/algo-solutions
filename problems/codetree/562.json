@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "562",
+ "title": "BFS",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-bfs-code/description",
+ "alias": "bfs-code",
+ "pid": 562,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 탐색",
+ "lesson": "BFS 탐색",
+ "card": "intro-bfs-code",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Multiple choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "28.9",
+  "submissions": "7397"
+ },
+ "sample_count": 0,
+ "statement_len": 328,
+ "fetched_at": "2026-09-23",
+ "statement": "DFS(깊이 우선 탐색)와 달리, BFS(너비 우선 탐색)는 현재 노드의 모든 이웃 노드를 먼저 방문하는 방식으로 탐색을 진행합니다.\n\n다음 중 BFS에 대한 설명으로 옳은 것을 모두 고르세요.\n\n**보기** — 모두 고르기\n\n1. 현재 노드의 모든 이웃을 먼저 방문한 후, 해당 노드를 방문 처리한다.\n2. 만약 그래프가 `1 - 2 - 3 - 4 - 5`로 되어있는 일자 구조이며 `1`번 정점에서 BFS를 시작한다면, 방문 순서는 정확히 하나로만 결정된다.\n3. 같은 그래프에서 DFS 탐색과 BFS 탐색의 시간복잡도는 동일하다.\n4. BFS는 일반적으로 스택을 사용하여 구현한다."
+}

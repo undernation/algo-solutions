@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "351",
+ "title": "상하로 반복하며 출력",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-print-in-up-down-reverse/description",
+ "alias": "print-in-up-down-reverse",
+ "pid": 351,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "다중 반복문",
+ "lesson": "행, 열에 따라 다르게 숫자 출력",
+ "card": "challenge-print-in-up-down-reverse",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "90.9",
+  "submissions": "8660"
+ },
+ "sample_count": 2,
+ "statement_len": 201,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $N$의 값이 주어지면 $N$값에 따라 $1$에서 $N$까지의 정수들을 상하로 반복하며 출력하는 프로그램을 작성해보세요.\n\n아래는 $N=4$인 경우에 대한 예시입니다.\n\n![](https://contents.codetree.ai/problems/351/images/problems-4baf76e2-e527-401c-8611-c1ee1024524e.png)",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.",
+ "output_spec": "$N$의 값에 따른 숫자들을 입출력 예제와 같이 출력합니다.",
+ "constraints": "- $1 \\le N \\le 9$",
+ "samples": [
+  {
+   "in": "4\n",
+   "out": "1414\n2323\n3232\n4141\n"
+  },
+  {
+   "in": "5\n",
+   "out": "15151\n24242\n33333\n42424\n51515\n"
+  }
+ ]
+}

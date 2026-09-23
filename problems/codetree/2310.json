@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2310",
+ "title": "구구단 만들기 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-print-multiplication-table-2/description",
+ "alias": "print-multiplication-table-2",
+ "pid": 2310,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "다중 반복문",
+ "lesson": "구구단",
+ "card": "test-print-multiplication-table-2",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "84.6",
+  "submissions": "2641"
+ },
+ "sample_count": 2,
+ "statement_len": 353,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $A, B$를 입력받은 후, $A$이상 $B$이하에 해당하는 수의 구구단을 예제와 같은 형식으로 출력하는 프로그램을 작성해보세요. \n\n아래 예시와 같이 각 열은 $B$단부터 $A$단까지 감속하는 순서대로 출력합니다. 그리고 각 행에는 $2, 4, 6, 8$을 곱한 값만 출력합니다.\n\n그 예로 $a = 2, b = 4$ 일 때의 출력은 다음과 같습니다.\n\n```\n4 * 2 = 8 / 3 * 2 = 6 / 2 * 2 = 4\n4 * 4 = 16 / 3 * 4 = 12 / 2 * 4 = 8\n4 * 6 = 24 / 3 * 6 = 18 / 2 * 6 = 12\n4 * 8 = 32 / 3 * 8 = 24 / 2 * 8 = 16\n```",
+ "input_spec": "첫 번째 줄에 정수 $A, B$를 공백을 사이에 두고 입력받습니다.",
+ "output_spec": "각 문자를 공백을 사이에 두고 위의 양식에 맞추어 출력합니다.",
+ "constraints": "- $2 \\le A \\le B \\le 9$",
+ "samples": [
+  {
+   "in": "2 4\n",
+   "out": "4 * 2 = 8 / 3 * 2 = 6 / 2 * 2 = 4\n4 * 4 = 16 / 3 * 4 = 12 / 2 * 4 = 8\n4 * 6 = 24 / 3 * 6 = 18 / 2 * 6 = 12\n4 * 8 = 32 / 3 * 8 = 24 / 2 * 8 = 16\n"
+  },
+  {
+   "in": "5 6\n",
+   "out": "6 * 2 = 12 / 5 * 2 = 10\n6 * 4 = 24 / 5 * 4 = 20\n6 * 6 = 36 / 5 * 6 = 30\n6 * 8 = 48 / 5 * 8 = 40\n"
+  }
+ ]
+}

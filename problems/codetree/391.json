@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "391",
+ "title": "정수만 추출하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-extract-only-integers/description",
+ "alias": "extract-only-integers",
+ "pid": 391,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "문자열",
+ "lesson": "문자열을 정수로 변환하기",
+ "card": "challenge-extract-only-integers",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "69.5",
+  "submissions": "2384"
+ },
+ "sample_count": 1,
+ "statement_len": 105,
+ "fetched_at": "2026-09-23",
+ "statement": "공백을 포함하지 않는 두 개의 문자열이 주어지면 앞에서부터 정수 이외의 문자가 나오기 전까지의 부분에서 정수로 변환 가능한 부분을 변환한 후 두 수의 합을 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 길이가 $8$ 이하인 $2$개의 문자열이 사이에 공백을 두고 주어집니다. 단, 첫 번째 문자열, 두 번째 문자열의 앞 부분에는 최소 $1$개 이상의 숫자가 주어진다고 가정해도 좋습니다.",
+ "output_spec": "첫 번째 줄에 두 문자열에서 추출 가능한 정수 부분의 합을 출력합니다.",
+ "constraints": "- $1 \\le \\texttt{문자열의 길이} \\le 8$\n- 주어지는 문자열은 공백을 포함하지 않습니다.",
+ "samples": [
+  {
+   "in": "12.52 87%23\n",
+   "out": "99\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 예제의 첫 번째 문자열에서 $12$ 다음에 문자 $.$이 등장하므로, 그 전까지의 문자 중 추출할 수 있는 정수 부분은 $12$이고, 두 번째 문자열에서 $87$ 다음으로 $\\%$가 등장하므로, 그 전까지의 문자 중 추출할 수 있는 정수 부분은 $87$입니다. 그 두 정수의 합은 $99$ 입니다."
+ ]
+}

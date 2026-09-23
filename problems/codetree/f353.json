@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f353",
+ "title": "미생물 연구",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/microbial-research/description",
+ "alias": "microbial-research",
+ "pid": 353,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2025 상반기 오후 1번 문제",
+ "level": "L13",
+ "limits": {
+  "time": "Python3 5초 · C++17 1초",
+  "memory": "384 MB",
+  "time_sec": 5.0
+ },
+ "stats": {
+  "accept_rate": "42.3",
+  "submissions": "4534"
+ },
+ "sample_count": 1,
+ "statement_len": 1779,
+ "fetched_at": "2026-09-23",
+ "statement": "미생물 연구자 Sam은 논문을 작성하기 위해 실험을 계획했습니다.\n\n실험은 $N \\times N$ 크기의 정사각형 형태의 배양 용기에서 진행됩니다. 이 배양 용기에는 좌표 평면이 그려져 있는데, 좌측 하단의 좌표는 $(0,\\ 0)$, 가장 우측 상단의 좌표는 $(N,\\ N)$으로 표현됩니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/d4ff9b08-f086-402d-a066-46a3bed7f8eb.webp)\n\nSam은 배양 용기에서 총 $Q$번의 실험을 진행하며 각 실험의 결과를 기록합니다. 각각의 실험은 다음과 같은 순서로 진행됩니다.\n\n1. 미생물 투입\n   - 좌측 하단 좌표가 $(r_1,\\ c_1)$이고 우측 상단 좌표가 $(r_2,\\ c_2)$인 직사각형 영역에 한 무리의 미생물을 투입합니다.\n   - 만약 영역 내에 다른 미생물이 존재한다면 새로 투입된 미생물이 그 영역 내의 미생물들을 잡아먹습니다. 즉, 영역 내에는 새로 투입된 미생물만 남게 됩니다.\n   - 만약 기존에 있던 어떤 미생물 무리 $A$가 새로 투입된 미생물 무리 $B$에게 잡아먹히면서 $A$ 무리가 차지한 영역이 둘 이상으로 나눠지게 될 경우, 나눠진 $A$ 무리의 미생물은 배양 용기에서 모두 사라집니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/7b8c69e2-5c2e-4d42-b208-27a3c831ec3e.webp)\n\n2. 배양 용기 이동\n   - Sam이 모든 미생물을 새로운 배양 용기로 이동시킵니다. 새로운 배양 용기의 크기도 기존 용기와 동일하며, 이 과정은 기존 배양 용기에 미생물이 한 마리도 존재하지 않을 때까지 다음 작업을 반복하는 것으로 진행됩니다.\n   - 기존 배양 용기에 있는 무리 중 가장 차지한 영역이 넓은 무리를 하나 선택합니다. 만약 이런 미생물 무리가 둘 이상이라면 가장 먼저 투입된 미생물을 선택합니다.\n   - 선택된 미생물 무리를 새 배양 용기에 옮깁니다. 이 때, 이 무리는 기존 용기에서의 형태를 유지해야 하며, 미생물 무리가 차지한 영역이 배양 용기의 범위를 벗어나지 않고, 다른 미생물의 영역과 겹치지 않도록 두어야 합니다. 이 조건 안에서 최대한 $x$좌표가 작은 위치로 미생물을 옮겨야 하며, 그런 위치가 둘 이상일 경우 최대한 $y$좌표가 작은 위치로 오도록 미생물을 옮깁니다.\n   - 옮기는 과정에서 어떤 곳에도 둘 수 없는 미생물 무리가 있을 수 있습니다. 이 경우 그 미생물은 새 용기에 옮겨지지 않고 사라집니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/e28aa3c5-818d-40dd-9f44-7e0bf70e8c45.webp)\n\n3. 실험 결과 기록\n   - 실험의 결과를 기록합니다. 실험의 결과는 다음과 같이 측정됩니다.\n   - 미생물 무리 중 상하좌우로 맞닿은 면이 있는 무리끼리는 `인접한 무리`라고 표현합니다.\n   - 모든 `인접한 무리`쌍을 확인합니다. 이 때, 두 무리 A와 B가 맞닿은 면이 둘 이상이더라도 (A, B) 쌍은 한 번만 확인합니다.\n   - 확인하는 두 무리가 A, B라면 (미생물 A의 영역의 넓이) $\\times$ (미생물 B의 영역의 넓이) 만큼의 성과를 얻습니다.\n   - 확인한 모든 쌍의 성과를 더한 값이 이 실험의 결과입니다. 이 값을 기록합니다.\n\n$N$과 Sam이 실험에서 투입한 미생물의 정보가 주어질 때, 각 실험의 결과를 출력하는 프로그램을 작성하세요.",
+ "input_spec": "첫 줄에 정수 $N$, $Q$가 공백으로 구분되어 주어집니다.\n\n그 다음 줄부터 $Q$줄에 걸쳐 추가 되는 미생물의 위치 정보가 주어집니다. 이 중 $i$번째 줄에는 $i$번째로 추가 되는 미생물의 $r_1$, $c_1$, $r_2$, $c_2$가 공백으로 구분되어 주어집니다.",
+ "output_spec": "$Q$줄에 걸쳐 각 실험의 결과를 출력합니다. 이 중 $i$번째 줄에는 $i$번째 실험의 결과를 출력합니다.",
+ "constraints": "- $2 \\le N \\le 15$\n- $1 \\le Q \\le 50$\n- $0 \\le r_1 \\lt r_2 \\le N$\n- $0 \\le c_1 \\lt c_2 \\le N$\n- 모든 입력은 음이 아닌 정수입니다.",
+ "samples": [
+  {
+   "in": "8 4\n2 2 5 6\n2 3 5 8\n2 0 5 3\n1 1 6 6\n",
+   "out": "0\n165\n108\n325"
+  }
+ ],
+ "sample_notes": [
+  "- 초기 배양 용기의 상태는 다음 그림과 같습니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/d4ff9b08-f086-402d-a066-46a3bed7f8eb.webp)\n\n\n- 첫 미생물을 $(2,\\ 2)$부터 $(5,\\ 6)$까지의 범위로 표현되는 직사각형 영역 안에 투입하면 다음 그림에 있는 영역에 미생물이 추가됩니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/77aa129d-5560-43f0-a24c-577300eaef58.webp)\n\n\n- 배양 용기 이동을 진행하면 미생물은 가장 $x$좌표가 작은 위치로, 그 안에서 가장 $y$좌표가 작은 위치로 이동합니다. 이 실험에는 미생물이 한 종류밖에 없으므로 결과는 $0$입니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/d6893602-d1d9-4465-84b8-aa7cd7a793cf.webp)\n\n\n- 두 번째 실험을 시작합니다. 이번에는 $(2,\\ 3)$부터 $(5,\\ 8)$까지의 범위에 새로운 미생물을 투입합니다. 이 영역 안에 있던 다른 미생물은 잡아먹히게 되어 아래와 같은 상태가 됩니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/7b8c69e2-5c2e-4d42-b208-27a3c831ec3e.webp)\n\n\n- 배양 용기 이동을 진행하면, 두 번째로 투입한 미생물의 영역이 더 넓기 때문에 먼저 배치되고, 그 후 겹치지 않는 범위 내에서 가장 $x$좌표가 작으면서 $y$좌표가 작은 위치로 첫 미생물이 배치됩니다. 배치 후 점수는, 인접한 미생물의 영역 넓이의 곱으로 $15 \\times 11 = 165$가 됩니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/e28aa3c5-818d-40dd-9f44-7e0bf70e8c45.webp)\n\n\n- 세 번째 실험을 시작합니다. 이번에는 $(2,\\ 0)$부터 $(5,\\ 3)$까지의 범위에 새로운 미생물을 투입합니다. 투입한 뒤에는 아래와 같은 상태가 됩니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/6d1cab6e-0f73-4b3a-9f0c-07bc7e5dc4a0.webp)\n\n\n- 위 그림에서 초록색으로 표시되는 미생물 무리는 두 영역으로 나눠졌습니다. 이렇게 둘 이상의 영역으로 나눠진 경우 미생물이 모두 사라져서 아래 그림과 같은 상태가 됩니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/37d1fec6-4a7e-4330-abaf-03d6a0e21cf2.webp)\n\n\n- 이제 배양 용기 이동을 진행하면 아래와 같은 상태가 되고, 실험 결과는 $9 \\times 12 = 108$이 됩니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/41262cd3-4bc4-4b5e-89a0-a1fa51913550.webp)\n\n\n- 마지막으로 네 번째 미생물을 $(1,\\ 1)$부터 $(6,\\ 6)$까지의 영역에 투입하면 다음 그림과 같은 상태가 됩니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/87676e47-7adc-4553-86a4-c6c92c2d2f30.webp)\n\n- 배양 용기 이동을 진행하면 다음 그림과 같은 상태가 됩니다. 이제 인접한 쌍을 구해보면, 분홍색으로 표현된 미생물과 빨간색으로 표현된 미생물이 인접해 있고, 분홍색으로 표현된 미생물과 파란색으로 표현된 미생물이 인접해 있습니다. 따라서 실험 결과는 $25 \\times 6 + 25 \\times 7 = 325$가 됩니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/bcbcc3cc-56ef-44fc-bdb8-c180412a420e.webp)"
+ ]
+}

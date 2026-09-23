@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "4088",
+ "title": "게임 스튜디오에서 살아남기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-surviving-in-a-game-studio/description",
+ "alias": "surviving-in-a-game-studio",
+ "pid": 4088,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "DP II",
+ "lesson": "원하는 State를 정의하여 한 칸씩 나아가는 DP",
+ "card": "challenge-surviving-in-a-game-studio",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "67.8",
+  "submissions": "453"
+ },
+ "sample_count": 2,
+ "statement_len": 472,
+ "fetched_at": "2026-09-23",
+ "statement": "남우가 최근 입사한 코디코디 게임 스튜디오는 사람을 해고하는 무서운 규칙이 있습니다.\n\n코디코디 게임 스튜디오는 매일 각 사람의 업무량을 평가합니다. 이는 $'G'$(Good), $'B'$(Bad), $'T'$(Terrible)로 나뉩니다.\n\n이때, $'T'$를 총합 세 번 이상 받았거나, 연속으로 $'B'$를 세 번 받은 사람은 코디코디 게임 스튜디오에서 해고됩니다.\n\n예를 들어, 이 사람의 매일 평가가 $\"TGGTT\"$라면 해고됩니다. $'T'$를 총합 세 번 받았기 때문입니다. 또한 매일 평가가 $\"BBTBBTBB\"$라면 해고되지 않습니다. $'T'$를 총합 세 번 받지도, $'B'$를 연속으로 세 번 받지도 않았기 때문입니다.\n\n이렇게 사람의 매일 평가를 문자열로 나타낸 것을 평가 문자열이라고 합니다. 총 $N$일을 살아남기 위해서 만들 수 있는 $N$자리의 평가 문자열의 가짓수를 $10^9 + 7$로 나눈 나머지를 구하세요.",
+ "input_spec": "첫 번째 줄에 $N$이 입력으로 주어집니다.",
+ "output_spec": "첫 번째 줄에 총 $N$일을 살아남기 위해 만들 수 있는 $N$자리의 평가 문자열의 가짓수를 $10^9 + 7$로 나눈 나머지를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 1\\,000$",
+ "samples": [
+  {
+   "in": "2\n",
+   "out": "9\n"
+  },
+  {
+   "in": "4\n",
+   "out": "67\n"
+  }
+ ]
+}

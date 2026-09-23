@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "969",
+ "title": "원형 순열에서의 인원 제거",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-josephus-permutations/description",
+ "alias": "josephus-permutations",
+ "pid": 969,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "스택, 큐, 덱",
+ "lesson": "Queue",
+ "card": "challenge-josephus-permutations",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "160 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "86.8",
+  "submissions": "1851"
+ },
+ "sample_count": 2,
+ "statement_len": 262,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$번부터 $N$번까지 $N$명의 사람이 원을 이루면서 앉아있고, 양의 정수 $K$가 주어집니다. \n\n다음의 연산을 $N$명의 사람들이 모두 제거될때까지 진행합니다. \n\n1. $1$번부터 순서대로 $K$번째 사람을 제거합니다. \n2. 한 사람이 제거되면 남은 사람들로 원을 이루고, 제거된 사람의 위치를 기준으로 다시 $K$번째 사람을 제거합니다.\n3. $2$번 연산 과정을 반복합니다. \n\n제거되는 사람의 번호를 순서대로 나열한 순열을 구하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 정수 $N$과 $K$가 공백을 두고 순서대로 주어집니다.",
+ "output_spec": "첫 번째 줄에 제거되는 사람의 번호를 순서대로 나열한 순열을 출력합니다.",
+ "constraints": "- $1 \\le K \\le N \\le 5\\,000$",
+ "samples": [
+  {
+   "in": "6 4\n",
+   "out": "4 2 1 3 6 5\n"
+  },
+  {
+   "in": "7 3\n",
+   "out": "3 6 2 7 5 1 4\n"
+  }
+ ],
+ "sample_notes": [
+  "첫번째 예제에서는 $6$명의 사람이 주어졌고, $4$번째 사람마다 제거합니다. 처음에는 $4$번이 제거되었습니다.\n\n![](https://contents.codetree.ai/problems/969/images/problems-37071b70-7fcc-47bd-9355-8fa03eaeec4b.png)\n\n이제 남은 사람들 $1$, $2$, $3$, $5$, $6$ 로 원을 이루어 $4$번째 사람을 제거합니다.\n\n![](https://contents.codetree.ai/problems/969/images/problems-6d542fc0-2a54-44b7-bdce-a635f6f6636d.png)\n\n이제 남은 사람들 $1$, $3$, $5$, $6$ 으로 원을 다시 이루어 $4$번째 사람을 제거합니다.\n\n![](https://contents.codetree.ai/problems/969/images/problems-a918afc4-2e9f-42fe-98a7-f7da6d86a331.png)",
+  ""
+ ]
+}

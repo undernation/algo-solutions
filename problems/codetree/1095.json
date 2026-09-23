@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1095",
+ "title": "회의실 준비 구현",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-implement-scheduling-meeting-room/description",
+ "alias": "implement-scheduling-meeting-room",
+ "pid": 1095,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Greedy",
+ "lesson": "Greedy Algorithm",
+ "card": "intro-implement-scheduling-meeting-room",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "78.8",
+  "submissions": "1041"
+ },
+ "sample_count": 1,
+ "statement_len": 173,
+ "fetched_at": "2026-09-23",
+ "statement": "하나의 회의실이 있고, $N$개의 회의 요청이 들어왔습니다. 각 회의의 시작 시간과 끝 시간이 주어져 있으며, 한 회의가 시작되면 도중에 그만둘 수 없고, 한 회의가 끝나는 직후에 동시에 다른 회의가 시작될 수 있습니다. 적절하게 회의 요청을 수락하여 최대로 많은 회의가 진행되도록 하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 회의 요청이 들어온 횟수 $N$이 주어집니다.\n\n두 번째 줄부터는 $N$개의 줄에 걸쳐 회의의 정보 $(s,\\ e)$가 한 줄에 하나씩 공백을 사이에 두고 주어집니다. 이는 해당 회의가 시간 $s$에서 시작하여 시간 $e$에 끝남을 의미합니다. 여기서 시간은 편의상 하나의 정수값으로 주어집니다.",
+ "output_spec": "첫 번째 줄에 최대로 진행할 수 있는 회의 수를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100\\,000$\n- $0 \\le s \\lt e \\le 100\\,000$",
+ "samples": [
+  {
+   "in": "7\n0 1\n1 9\n8 23\n2 3\n3 4\n7 8\n4 6\n",
+   "out": "6\n"
+  }
+ ],
+ "sample_notes": [
+  "$(0,\\ 1)$, $(2,\\ 3)$, $(3,\\ 4)$, $(4,\\ 6)$, $(7, 8)$, $(8, 23)$ 회의를 모두 진행할 수 있으므로 최대 6개의 회의 진행이 가능합니다."
+ ]
+}

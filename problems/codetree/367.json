@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "367",
+ "title": "정수 직사각형",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-rectangle-of-numbers/description",
+ "alias": "rectangle-of-numbers",
+ "pid": 367,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "2차원 배열",
+ "lesson": "새로운 2차원 배열의 선언",
+ "card": "intro-rectangle-of-numbers",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "89.1",
+  "submissions": "3911"
+ },
+ "sample_count": 1,
+ "statement_len": 168,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $N$과 $M$의 값을 입력받아 정수로 이루어진 직사각형을 출력하는 프로그램을 아래 예를 참고하여 작성해보세요. 단, 2차원 배열을 꼭 사용하여 해결해보세요.\n\n예)\n\n$N$에 $3$을 $M$에 $5$를 입력받는 경우\n```\n1 2 3 4 5\n6 7 8 9 10\n11 12 13 14 15\n```",
+ "input_spec": "첫 번째 줄에 세로변의 길이 $N$과, 가로변의 길이 $M$이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "주어지는 $N$과 $M$의 값에 따른 정수를 입출력 예제와 같이 출력합니다.",
+ "constraints": "- $1 \\le N, M \\le 100$",
+ "samples": [
+  {
+   "in": "4 3\n",
+   "out": "1 2 3\n4 5 6\n7 8 9\n10 11 12\n"
+  }
+ ]
+}

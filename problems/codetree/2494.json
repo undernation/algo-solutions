@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2494",
+ "title": "계단 오르기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-climbing-stairs/description",
+ "alias": "climbing-stairs",
+ "pid": 2494,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "DP I",
+ "lesson": "subproblem을 그대로 합치면 되는 DP",
+ "card": "challenge-climbing-stairs",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "45.0",
+  "submissions": "4764"
+ },
+ "sample_count": 2,
+ "statement_len": 362,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$층 높이의 계단을 오르려고 합니다. 한 번에 정확히 $2$계단 혹은 $3$계단 단위로만 올라갈 수 있다고 했을 때, $N$층 높이의 계단에 올라가기 위한 서로 다른 방법의 수를 구하는 프로그램을 작성해보세요. 단, 항상 $2$계단 혹은 $3$계단 단위로만 올라갈 수 있기에 $N$층까지 정확히 $1$계단이 남은 상황에서는 $N$층으로 올라갈 수 있는 방법이 전혀 없음에 유의합니다.\n\n예로 $N = 5$일 때는 다음과 같이 $2$가지 방법이 가능합니다.\n\n![](https://contents.codetree.ai/problems/2494/images/problems-7bee60e2-949c-4cba-b0ae-3399136249fc.svg)",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.",
+ "output_spec": "$N$층 높이의 계단에 올라가기 위한 서로 다른 방법의 수를 $10\\,007$로 나눈 나머지를 출력합니다. 만약 불가능하다면 $0$을 출력합니다.",
+ "constraints": "- $2 \\le N \\le 1\\,000$",
+ "samples": [
+  {
+   "in": "2\n",
+   "out": "1\n"
+  },
+  {
+   "in": "5\n",
+   "out": "2\n"
+  }
+ ]
+}

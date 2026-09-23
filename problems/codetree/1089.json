@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1089",
+ "title": "최소 에너지 비용",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-minimum-energy-cost/description",
+ "alias": "minimum-energy-cost",
+ "pid": 1089,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shorten time Technique",
+ "lesson": "전처리",
+ "card": "challenge-minimum-energy-cost",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "58.1",
+  "submissions": "602"
+ },
+ "sample_count": 2,
+ "statement_len": 215,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 서로 다른 장소가 일직선상에 주어집니다.\n\n각 장소마다 에너지 $1$을 채우는데 필요한 비용이 다르며, 장소와 장소를 이동할 때는 에너지를 소모합니다.\n\n`각 장소마다 에너지 1을 채우는데 필요한 비용` 과 `장소와 장소를 이동할 때 소모하는 에너지`가 주어질때, **제일 왼쪽 장소에서 제일 오른쪽 장소까지 이동할 때 드는 최소 비용**을 계산하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번재 줄에는 장소의 개수를 나타내는 $N$이 주어집니다.\n\n두 번째 줄에는 장소와 장소를 이동할 때 드는 에너지를 가장 왼쪽부터 차례대로 공백을 두고 주어집니다.\n\n세 번째 줄에는 각 장소마다 에너지 $1$을 채우는데 드는 비용이 제일 왼쪽 장소부터 차례대로 주어집니다.",
+ "output_spec": "첫 번째 줄에 가장 왼쪽 장소부터 가장 오른쪽 장소까지 이동하는데 드는 최소 비용을 출력합니다.",
+ "constraints": "- $2 \\le N \\le 100\\,000$\n- $1 \\le  \\texttt{장소와 장소 사이를 이동할 때 드는 에너지} \\le 1\\,000\\,000$\n- $1 \\le  \\texttt{에너지 1을 채우는데 드는 비용} \\le 1\\,000\\,000$",
+ "samples": [
+  {
+   "in": "4\n2 3 1\n5 2 4 1\n",
+   "out": "18\n"
+  },
+  {
+   "in": "3\n2 3\n120 3 4\n",
+   "out": "249\n"
+  }
+ ],
+ "sample_notes": [
+  "각 장소에서 에너지를 채우는데 드는 비용과 장소 사이를 이동할때 드는 에너지 비용을 나타낸 그림입니다. \n\n![](https://contents.codetree.ai/problems/1089/images/problems-65d79d46-f88c-4741-9400-3b2e4d83258f.png)\n\n$1$번 장소에서 $2$만큼 충전한 뒤, $2$번 장소에서 $4$만큼 충전하면 가장 오른쪽 장소까지 이동할 수 있습니다. 이때 드는 비용은 $5 \\times 2 + 2 \\times 4 = 18$로, 이보다 더 적은 비용으로 이동할 수는 없습니다.",
+  ""
+ ]
+}

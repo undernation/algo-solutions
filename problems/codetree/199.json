@@ -1,0 +1,37 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "199",
+ "title": "달에서 무게 구하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-weight-on-the-moon/description",
+ "alias": "weight-on-the-moon",
+ "pid": 199,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "출력",
+ "lesson": "소수점 맞춰 출력",
+ "card": "intro-weight-on-the-moon",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "82.3",
+  "submissions": "32649"
+ },
+ "sample_count": 1,
+ "statement_len": 117,
+ "fetched_at": "2026-09-23",
+ "statement": "추의 무게를 저장할 변수와 달에서의 무게 비율을 저장할 변수를 선언하고, 다음 두 값을 변수에 저장하여 계산해서 출력하는 프로그램을 작성해보세요.\n\n추의 무게 = $13$, 달에서 중력의 비율 = $0.165$",
+ "input_spec": "입력이 주어지지 않습니다.",
+ "output_spec": "추의 무게와 달에서 중력의 비율을 곱한 식과 결과를 출력합니다. 이때 실수값은 전부 소숫점 여섯째짜리까지만 표현합니다.",
+ "samples": [
+  {
+   "in": "",
+   "out": "13 * 0.165000 = 2.145000\n"
+  }
+ ]
+}

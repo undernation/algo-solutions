@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2397",
+ "title": "그 요일은",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-the-day-of-the-day/description",
+ "alias": "the-day-of-the-day",
+ "pid": 2397,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 I",
+ "lesson": "날짜와 시간 계산",
+ "card": "test-the-day-of-the-day",
+ "card_type": "Test",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "36.9",
+  "submissions": "7214"
+ },
+ "sample_count": 1,
+ "statement_len": 193,
+ "fetched_at": "2026-09-23",
+ "statement": "$2024$년 $m_1$월 $d_1$일이 월요일 이었다면, $2024$년 $m_2$월 $d_2$까지 $A$ 요일은 몇 번 등장하는지 구하는 프로그램을 작성해보세요. \n\n단, $2024$년은 윤년이기 때문에 $2$월은 $29$일까지 있으며, $(m_2, d_2)$이 $(m_1, d_1)$보다 앞선 날짜로 주어지는 경우는 없다고 가정해도 좋습니다.",
+ "input_spec": "첫 번째 줄에 $m_1$, $d_1$, $m_2$, $d_2$가 공백을 사이에 두고 주어집니다. (단, 모순된 경우는 주어지지 않는다고 가정해도 좋습니다.)  \n두 번째 줄에 $A$가 문자열 형태로 주어집니다. 문자열 $A$는 $Mon$, $Tue$, $Wed$, $Thu$, $Fri$, $Sat$, $Sun$ 중 하나의 값을 갖으며, 순서대로 월요일부터 일요일까지를 의미합니다.",
+ "output_spec": "첫 번째 줄에 $A$ 요일을 몇 번 등장하는지에 대한 값을 출력합니다.",
+ "constraints": "- $1 \\le m_1 \\le m_2 \\le 12$\n - $1 \\le d_1, d_2 \\le 31$",
+ "samples": [
+  {
+   "in": "2 5 3 9\nSat\n",
+   "out": "5\n"
+  }
+ ],
+ "sample_notes": [
+  "$2024$년 $2$월 $5$일이 월요일이라면, $2024$년 $2$월 $5$일부터 $2024$년 $3$월 $9$일까지 토요일은 총 $5$번 등장합니다."
+ ]
+}

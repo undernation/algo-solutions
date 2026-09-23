@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "225",
+ "title": "남녀노소 구분짓기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-sex-and-age/description",
+ "alias": "sex-and-age",
+ "pid": 225,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "조건문",
+ "lesson": "중첩 조건문",
+ "card": "intro-sex-and-age",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "80.4",
+  "submissions": "12920"
+ },
+ "sample_count": 2,
+ "statement_len": 171,
+ "fetched_at": "2026-09-23",
+ "statement": "성별에 대해 남자는 숫자 $0$, 여자는 숫자 $1$로 나타내기로 하고, $19$세 이상을 성인이라고 합시다.\n\n성별(숫자 $0$ 또는 $1$)과 나이를 입력받아 $MAN$(성인남자), $WOMAN$(성인여자), $BOY$(미성년남자), $GIRL$(미성년여자)을 구분하여 출력하는 프로그램을 작성해주세요.",
+ "input_spec": "첫 번째 줄에 성별에 해당하는 숫자가 주어지고,\n\n두 번째 줄에는 나이가 자연수로 주어집니다.",
+ "output_spec": "나이와 성별에 해당하는 문자를 출력합니다.",
+ "constraints": "- $1 \\le $ $\\texttt{나이}$ $ \\le 100$",
+ "samples": [
+  {
+   "in": "0\n23\n",
+   "out": "MAN\n"
+  },
+  {
+   "in": "1\n13\n",
+   "out": "GIRL\n"
+  }
+ ]
+}

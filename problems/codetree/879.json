@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "879",
+ "title": "상품 코드",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-product-code/description",
+ "alias": "product-code",
+ "pid": 879,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "정렬",
+ "lesson": "객체",
+ "card": "challenge-product-code",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "92.7",
+  "submissions": "2867"
+ },
+ "sample_count": 1,
+ "statement_len": 192,
+ "fetched_at": "2026-09-23",
+ "statement": "\"상품명\", \"상품코드\"를 같이 저장할 수 있는 형태(C 언어의 경우 구조체를, 다른 언어의 경우 class)를 정의하고, $2$개의 객체를 선언해주세요.\n\n하나의 객체는 \"상품명\"을 `codetree`, \"상품코드\"를 $50$으로 초기화하고, 다른 객체에는 입력으로 주어진 값을 저장한 뒤 아래 출력 형식대로 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 소문자 알파벳으로 이루어진 \"상품명\"과 \"상품코드\"가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "총 두 개의 줄을 출력합니다.\n\n첫 번째 줄에는 초기화한 객체의 정보를 `product 50 is codetree` 형태로 출력하고, 두 번째 줄에는 입력받은 객체의 정보를 `product {상품코드} is {상품명}` 형태로 출력합니다.",
+ "constraints": "- \"상품명\"의 길이는 $1$ 이상 $10$ 이하입니다.\n- \"상품코드\"는 $1$ 이상 $100$ 이하의 정수입니다.",
+ "samples": [
+  {
+   "in": "leebros 88\n",
+   "out": "product 50 is codetree\nproduct 88 is leebros\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 줄 `product 50 is codetree`는 초기화한 객체를 출력한 결과이고, 두 번째 줄 `product 88 is leebros`는 입력받은 객체를 출력한 결과입니다."
+ ]
+}

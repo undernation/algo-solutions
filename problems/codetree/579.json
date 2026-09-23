@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "579",
+ "title": "종이와 펜, 그리고 피보나치",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-dp-fibbo-memo/description",
+ "alias": "dp-fibbo-memo",
+ "pid": 579,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "DP",
+ "lesson": "Tabulation",
+ "card": "intro-dp-fibbo-memo",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "71.4",
+  "submissions": "2478"
+ },
+ "sample_count": 0,
+ "statement_len": 620,
+ "fetched_at": "2026-09-23",
+ "statement": "종이와 펜을 사용하여 피보나치 수열을 계산하는 과정을 생각해 봅시다. 특정 번째 피보나치 수를 구하기 위해, 우리는 수열의 시작부터 순차적으로 값을 계산해 올라가는 방식을 사용하나요? 아니면 원하는 위치부터 역으로 계산해 내려가는 방식을 사용하나요? 일반적으로 후자의 방법보다 전자의 방법이 더 많이 사용됩니다.\n\n기존에 사용하던 방식을 **탑다운 접근법**이라고 하며, 일상적인 계산 방식인 처음부터 차례대로 값을 계산하는 방법을 **바텀업 접근법**이라고 합니다.\n\n이제 바텀업 접근법을 사용하여 피보나치 수를 계산하는 코드를 완성해 봅시다. 단, 피보나치 수열은 처음 두 항이 각각 $1, \\ 1$로 시작한다고 가정합니다.\n\n\n```jsx\nfunction solution(n)\n    dp = [0, 0, 0, ...]\n    dp[1] = (1)\n    dp[2] = 1\n  \n    for i = 3 ... i <= n\n        (2) = dp[i - 1] + (3) \n  \n    return (4)\n```\n\n**보기** — 순서대로 4개 고르기\n\n1. `1`\n2. `0`\n3. `dp[n]`\n4. `dp[n - 1]`\n5. `dp[i - 2]`\n6. `dp[i - 1]`\n7. `dp[i]`"
+}

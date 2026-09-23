@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2432",
+ "title": "밭의 높이를 고르게하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-equalizing-the-height-of-the-field/description",
+ "alias": "equalizing-the-height-of-the-field",
+ "pid": 2432,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 I",
+ "lesson": "구간 단위로 완전탐색",
+ "card": "test-equalizing-the-height-of-the-field",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "56.9",
+  "submissions": "2318"
+ },
+ "sample_count": 1,
+ "statement_len": 190,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 밭의 높낮이가 너무 엉망진창이라 일정 구간만이라도 고르게 하려고합니다. 낮은 밭의 높이를 $1$ 올릴 때와, 높은 밭의 높이를 $1$ 낮출 때 소모되는 비용은 $1$로 같습니다. $N$개의 밭의 높이가 주어지면 연속하게 최소 $T$번 이상 $H$ 높이로 나오게끔 하려고 할 때, 필요한 최소 비용을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N,H,T$가 공백을 사이에 두고 주어집니다.  \n두 번째 줄에 $N$개의 높이 정보가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 조건을 만족시키기 위해 필요한 최소 비용을 출력합니다.",
+ "constraints": "- $1 \\le N,H \\le 100$\n- $1 \\le T \\le \\min(N,10)$\n- $0 \\le \\texttt{밭의 높이} \\le 200$",
+ "samples": [
+  {
+   "in": "6 3 3\n1 2 3 4 5 6\n",
+   "out": "2\n"
+  }
+ ],
+ "sample_notes": [
+  "$2$번째 높이를 $1$만큼 올리고, $4$번째 높이를 $1$만큼 낮추면 $2$번째부터 $4$번째까지의 높이가 전부 $3$이 되기에 문제 조건을 만족하게 됩니다. 이보다 더 적은 비용으로 높이 $3$을 연속 $3$번 이상 나오게 만들 수는 없습니다."
+ ]
+}

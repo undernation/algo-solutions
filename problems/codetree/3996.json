@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3996",
+ "title": "연결리스트 1",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-linked-list1/description",
+ "alias": "linked-list1",
+ "pid": 3996,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "중급 자료구조",
+ "lesson": "Doubly-LinkedList",
+ "card": "intro-linked-list1",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 2초 · C++17 2초",
+  "memory": "180 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "67.6",
+  "submissions": "525"
+ },
+ "sample_count": 2,
+ "statement_len": 411,
+ "fetched_at": "2026-09-23",
+ "statement": "문자열을 값으로 가지는 이중 연결 리스트의 노드를 구현합니다.\n\n초기에 문자열 $S_{init}$를 값으로 가지는 단일 노드 $cur$가 있습니다. 다음 네 가지 연산을 총 $N$ 번 구현하는 프로그램을 작성하세요.\n\n- $1\\ S_{value}$ : 문자열 $S_{value}$를 값으로 가지는 새로운 단일 노드를 생성하고, 이 단일 노드를 노드 $cur$의 앞에 삽입하세요.\n- $2\\ S_{value}$ : 문자열 $S_{value}$를 값으로 가지는 새로운 단일 노드를 생성하고, 이 단일 노드를 노드 $cur$의 뒤에 삽입하세요.\n- $3$ : 노드 $cur$의 이전 노드가 존재한다면, $cur$를 그 이전 노드로 변경하세요.\n- $4$ : 노드 $cur$의 다음 노드가 존재한다면, $cur$를 그 다음 노드로 변경하세요.",
+ "input_spec": "첫 번째 줄에 문자열 $S_{init}$가 주어집니다.\n\n두 번째 줄에 총 연산 횟수 $N$ 이 주어집니다.\n\n세 번째 줄부터 $N$ 개의 줄에 걸쳐, $N$ 개의 연산이 차례대로 주어집니다.",
+ "output_spec": "$N$ 개의 연산을 차례대로 수행합니다.\n\n각 연산을 수행할 때마다 직후에, 노드 $cur$의 이전 노드의 값, 노드 $cur$의 값, 노드 $cur$의 다음 노드의 값을 차례대로 한 줄에 출력합니다.\n\n만약, 이전 노드나 다음 노드가 존재하지 않는다면, 그 노드의 값 대신에 $(Null)$을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 250\\,000$\n- $1 \\le S_{init},\\ S_{value} 의 길이 \\le 8$\n- 문자열 $S_{init}$와 $S_{value}$는 알파벳으로만 이루어져 있습니다.",
+ "samples": [
+  {
+   "in": "world\n2\n1 Hello\n2 CodeTree\n",
+   "out": "Hello world (Null)\nHello world CodeTree\n"
+  },
+  {
+   "in": "Beta\n5\n2 Omega\n3\n1 Alpha\n2 Gamma\n4\n",
+   "out": "(Null) Beta Omega\n(Null) Beta Omega\nAlpha Beta Omega\nAlpha Beta Gamma\nBeta Gamma Omega\n"
+  }
+ ]
+}

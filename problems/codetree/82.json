@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "82",
+ "title": "삼각형 컨베이어 벨트",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-conveyor-belt-triangle/description",
+ "alias": "conveyor-belt-triangle",
+ "pid": 82,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Simulation",
+ "lesson": "격자 안에서 밀고 당기기",
+ "card": "challenge-conveyor-belt-triangle",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "72.5",
+  "submissions": "3098"
+ },
+ "sample_count": 2,
+ "statement_len": 404,
+ "fetched_at": "2026-09-23",
+ "statement": "시계 방향으로 한 칸씩 회전하는 삼각형 모양의 컨베이어 벨트가 있습니다. 각 변에 $N$개씩 총 $3N$개의 정수가 적혀 있고, $1$초에 한 칸씩 움직입니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/2d70d8a6-803f-4aee-85ed-8193a665e52b.webp)\n\n\n\n위의 그림에서 $1$초가 흐른 뒤에는 다음과 같이 그림이 바뀌게 됩니다.\n\n\n![Image](https://contents.codetree.ai/problem_factory/images/1f17e9bf-c4eb-463f-88e0-fe2e105cdfef.webp)\n\n\n\n$T$초의 시간이 흐른 뒤 컨베이어 벨트에 놓여있는 정수들의 상태를 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $N$과 $T$가 공백을 사이에 두고 주어집니다.\n\n두 번째 줄에는 삼각형의 왼쪽 위 변에 있는 초기 $N$개의 정수가 공백을 사이에 두고 주어집니다.\n\n세 번째 줄에는 삼각형의 오른쪽 위 변에 있는 초기 $N$개의 정수가 공백을 사이에 두고 주어집니다.\n\n네 번째 줄에는 삼각형의 아래 변에 있는 초기 $N$개의 정수가 공백을 사이에 두고 주어집니다.\n\n각 변의 정수는 해당 변의 정수가 올바르게 보이는 방향에서 바라봤을 때 왼쪽에서 오른쪽 순으로 주어집니다.",
+ "output_spec": "$T$초 후 컨베이어 벨트에 놓여있는 정수들의 상태를 출력합니다.\n\n첫 번째 줄에는 삼각형의 왼쪽 위 변에 있는 $N$개의 정수를 공백을 사이에 두고 출력합니다.\n\n두 번째 줄에는 삼각형의 오른쪽 위 변에 있는 $N$개의 정수를 공백을 사이에 두고 출력합니다.\n\n세 번째 줄에는 삼각형의 아래 변에 있는 $N$개의 정수를 공백을 사이에 두고 출력합니다.\n\n각 변의 정수는 입력에서 주어진 것과 같은 관점(정수가 올바르게 보이는 방향)에서 바라본 왼쪽에서 오른쪽 순으로 출력합니다.",
+ "constraints": "- $1 \\le N \\le 200$\n- $1 \\le T \\le 1\\,000$\n- $1 \\le \\texttt{주어지는 수} \\le 9$",
+ "samples": [
+  {
+   "in": "3 1\n1 2 4\n5 9 3\n6 5 1\n",
+   "out": "1 1 2\n4 5 9\n3 6 5\n"
+  },
+  {
+   "in": "3 3\n1 2 4\n5 9 3\n6 5 1\n",
+   "out": "6 5 1\n1 2 4\n5 9 3\n"
+  }
+ ]
+}

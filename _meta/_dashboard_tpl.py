@@ -193,6 +193,20 @@ td.n{font-variant-numeric:tabular-nums;color:var(--sub);font-size:13px}
  .leafhead{display:none}
  .leaf{grid-template-columns:52px 1fr 44px;grid-auto-rows:min-content}
  .leaf .dt,.leaf .tries{display:none}}
+/* 코드트리 잎 — 카드 종류(워밍업·챌린지·테스트)·기출 회차·난이도를 제목 옆에 작게 붙인다.
+   ⚠️ 유형(태그)·선행 레슨은 일부러 없다(유형 스포 금지). 데이터에도 없다. */
+.leaf .nmw{display:flex;align-items:center;gap:6px;min-width:0}
+.leaf .nmw .nm{min-width:0}
+.ctb{flex:none;font-size:10.5px;font-weight:700;line-height:1.6;padding:0 6px;border-radius:9px;
+ border:1px solid var(--bd2);background:var(--soft);color:var(--sub);white-space:nowrap}
+.ctb.k-in{color:var(--ok)}.ctb.k-pr{color:var(--ac)}.ctb.k-te{color:var(--tl)}.ctb.k-x{color:var(--no)}
+.ctl{flex:none;font-size:11px;color:var(--mute);white-space:nowrap;font-variant-numeric:tabular-nums}
+/* 챕터 폴더 안의 레슨 소제목 — 폴더를 한 겹 더 만들면 1,400개가 너무 깊어져 줄로만 나눈다 */
+.lsub{font-size:12px;font-weight:700;color:var(--sub);padding:10px 10px 3px;margin-bottom:2px;
+ border-bottom:1px dashed var(--bd2)}
+.tnode .gsub{color:var(--mute);font-weight:600}
+.tload{padding:8px 12px;font-size:12.5px;color:var(--sub)}
+@media(max-width:700px){.leaf .ctl{display:none}}
 
 /* ── 폼 ── */
 .bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
@@ -233,6 +247,49 @@ button.sm{padding:4px 10px;font-size:12.5px}
 .body .mdt tbody tr:nth-child(2n){background:var(--soft)}
 .body .mdt td{font-family:ui-monospace,Consolas,monospace;font-size:13px}
 .body .mdt td:first-child{text-align:right;color:var(--sub);width:1%;white-space:nowrap}
+/* ── 코드트리 지문(마크다운) ──
+   다른 사이트 지문(.body)은 크롤러가 줄글로 저장해 pre-wrap 으로 보여주지만, 코드트리는
+   원문이 마크다운이라 문단·목록·표·수식을 진짜 태그로 그린다. pre-wrap 을 걸면 태그 사이
+   개행이 빈 줄로 드러나므로 .body 를 쓰지 않고 따로 둔다. */
+.ctmd{font-size:15.5px;line-height:1.85;word-break:break-word}
+.ctmd>:first-child{margin-top:0}
+.ctmd p{margin:0 0 12px}
+.ctmd .cth{font-size:16.5px;font-weight:800;margin:20px 0 8px;letter-spacing:-.2px}
+.ctmd ul,.ctmd ol{margin:4px 0 12px;padding-left:24px}
+.ctmd li{margin:3px 0}
+.ctmd li>ul,.ctmd li>ol{margin:3px 0}
+.ctmd code{background:var(--soft);border:1px solid var(--bd2);border-radius:4px;padding:1px 5px;font-size:13px}
+.ctmd pre{background:var(--soft);border:1px solid var(--bd);border-radius:6px;padding:12px 14px;
+ margin:10px 0 14px;overflow-x:auto;font-size:13px;line-height:1.6;white-space:pre}
+.ctmd pre code{background:none;border:0;padding:0;font-size:inherit}
+/* 코드트리는 그림을 가운데 정렬로 싣는다(<p align="center">) — 원문 폭(width)이 작으면 가운데에 선다 */
+.ctmd img{max-width:100%;height:auto;display:block;margin:14px auto;border:1px solid var(--bd);
+ border-radius:6px;background:#fff;cursor:zoom-in}
+.ctmd img:hover{border-color:var(--ac)}
+/* 원문 <p align=…> 틀 — 그림은 기본이 가운데라 왼쪽·오른쪽일 때만 여백을 바꾼다 */
+.ctmd .al-center{text-align:center}.ctmd .al-left{text-align:left}.ctmd .al-right{text-align:right}
+.ctmd .al-left img{margin-left:0}.ctmd .al-right img{margin-right:0}
+.ctmd blockquote{margin:8px 0 12px;padding:6px 14px;border-left:3px solid var(--bd);color:var(--sub)}
+.ctmd blockquote>:last-child,.ctmd li>p:last-child{margin-bottom:0}
+.ctmd hr{border:0;border-top:1px solid var(--bd);margin:16px 0}
+.ctmd .cttw{overflow-x:auto;margin:10px 0 14px}
+.ctmd table{width:auto;border-collapse:collapse;font-size:14px}
+.ctmd th,.ctmd td{border:1px solid var(--bd);padding:6px 12px;text-align:left;vertical-align:top}
+.ctmd thead th{background:var(--hdr);color:var(--fg);font-size:13.5px;white-space:nowrap}
+.ctmd tbody tr:hover{background:transparent}
+/* 수식 — KaTeX 가 오기 전(또는 CDN 이 막혀 못 받았을 때)에는 기호만 바꾼 원문을 보여준다 */
+.ctm{font-family:"Cambria Math","STIX Two Math","Latin Modern Math","Times New Roman",serif;
+ font-size:1.06em;white-space:nowrap}
+.ctm.dsp{display:block;text-align:center;margin:12px 0;overflow-x:auto;overflow-y:hidden;white-space:normal}
+.ctm.ktx{font-family:inherit;font-size:inherit}
+/* 예제 아래 해설 */
+.ctsn{margin:8px 0 4px;padding:6px 14px;border-left:3px solid var(--bd);font-size:14.5px}
+.ctsn p:last-child{margin-bottom:0}
+/* 코드트리 제한표는 열이 8개라 폰(390px)에서 494px 까지 벌어졌다 — 표만 가로로 밀리게 */
+.limw{overflow-x:auto;margin-bottom:26px}
+.limw .lim{margin-bottom:0}
+.lim td.ctpath{white-space:normal;line-height:1.5;min-width:9em}
+@media(max-width:700px){.limw .lim th,.limw .lim td{padding:6px 7px}}
 /* 언어 지원 배지 */
 .lang{display:inline-flex;gap:5px;align-items:center;flex-wrap:wrap}
 .lang .lg{border:1px solid var(--bd);border-radius:4px;padding:1px 7px;font-size:12px;
@@ -543,7 +600,8 @@ button.danger:hover{opacity:.88;color:#fff;border-color:var(--no)}
   <code>swexpertacademy.com/…contestProbId=AW…</code><br>
   <code>cosal.aviss.kr/problems/detail/2618</code> · <code>2618</code><br>
   <code>school.programmers.co.kr/learn/courses/30/lessons/…</code><br>
-  <code>codetree.ai/…</code>
+  <code>codetree.ai/…/curated-cards/&lt;카드&gt;/…</code> (트레일)<br>
+  <code>codetree.ai/…/frequent-problems/&lt;출처&gt;/problems/&lt;별칭&gt;/…</code> (기출)
  </div>
  <div class="row"><button class="p" onclick="doAdd()" id="adgo">가져오기</button>
   <button onclick="closeAdd()">닫기</button></div>
@@ -568,6 +626,34 @@ var D=__DATA__;
 var PIDX=(D.probs&&D.probs.items)||{};      /* "BOJ/2618" -> {title,label,limits,...} */
 var CAT=D.catalog||[];                      /* 코딩살구 전체 문제 카탈로그 */
 var CATIDX={}; CAT.forEach(function(c,i){ c.ord=i; CATIDX["BOJ/"+c.no]=c; });
+/* 코드트리 카탈로그(_meta/codetree_list.json). 1,400문제짜리라 코딩살구 카탈로그처럼
+   index.html 에 박으면 첫 화면이 그만큼 무거워진다 — 트리·CT 문제 페이지에서만 받는다.
+   프라미스를 들고 있어 한 세션에 한 번만 받는다. 못 받으면 fail 을 세운 빈 카탈로그. */
+var CTCAT=null, CTIDX={}, CTP=null;
+function ctCatalog(){
+ if(CTP) return CTP;
+ /* 빌드가 바뀌면 새로 받게 stamp 를 붙인다(그림과 같은 방식) */
+ CTP=fetch("./_meta/codetree_list.json?v="+encodeURIComponent(D.stamp||""))
+  .then(function(r){ if(!r.ok) throw new Error("HTTP "+r.status); return r.json(); })
+  .then(ctIndex)
+  .catch(function(e){
+    CTCAT={groups:[],items:[],G:{},CH:{},LS:{},fail:String((e&&e.message)||e)};
+    return CTCAT; });
+ return CTP;
+}
+function ctIndex(j){
+ var c={groups:(j&&j.groups)||[], items:(j&&j.items)||[], built:(j&&j.built)||"", G:{}, CH:{}, LS:{}};
+ c.groups.forEach(function(g){ c.G[g.key]=g; });
+ c.items.forEach(function(it,i){
+  it.no=String(it.no); it.ord=i; CTIDX["CT/"+it.no]=it;
+  /* also(같은 문제가 다른 레슨에도 실린 자리)는 챕터·레슨 '이름'만 준다.
+     그 자리의 번호를 되찾으려고 이름 → 번호 표를 만들어 둔다. */
+  if(it.chapter!=null&&it.chapter_no!=null) c.CH[it.group+"|"+it.chapter]=it.chapter_no;
+  if(it.lesson!=null&&it.lesson_no!=null) c.LS[it.group+"|"+it.chapter+"|"+it.lesson]=it.lesson_no;
+ });
+ CTCAT=c;
+ return c;
+}
 var SC={"품":"ok","맞음":"ok","못품":"no","틀림":"wr","시간초과":"tl"};
 var SITENM={BOJ:"백준",SWEA:"SW Expert Academy",PGS:"프로그래머스",CT:"코드트리"};
 function rc(s){return "r-"+(SC[s]||"un");}
@@ -645,6 +731,7 @@ Object.keys(BYPROB).forEach(function(k){ BYPROB[k].sort(newerFirst); });
 function bestTitle(k){
  var m=PIDX[k]; if(m&&m.title) return m.title;
  var c=CATIDX[k]; if(c&&c.title) return c.title;
+ var t=CTIDX[k]; if(t&&t.title) return t.title;       /* 코드트리 카탈로그(받은 뒤에만 채워진다) */
  var rs=BYPROB[k]||[]; for(var i=0;i<rs.length;i++) if(rs[i].title) return rs[i].title;
  return "";
 }
@@ -707,7 +794,12 @@ function setupHub(){
               localStorage.getItem("cloudUrl")||"");
  if(u!==null){u=u.trim(); if(u)localStorage.setItem("cloudUrl",u);else localStorage.removeItem("cloudUrl");}
  HUBREADY=connectHub();
- HUBREADY.then(function(){ if(location.hash.indexOf("#p/")===0) loadBigTC(CUR.site,CUR.no); });
+ HUBREADY.then(function(){
+  if(location.hash.indexOf("#p/")!==0) return;
+  loadBigTC(CUR.site,CUR.no);
+  /* 코드트리 — 토큰이 없어 못 받았던 지문을 토큰을 넣자마자 다시 받는다 */
+  if(CUR.site==="CT") ctStatement(CUR.no);
+ });
 }
 
 /* ════════ 라우팅 ════════ */
@@ -897,15 +989,23 @@ function tbl(rows){
   }).join("")+'</tbody></table>';
 }
 
-/* ════════ 문제 (폴더 트리) ════════ */
+/* ════════ 문제 (폴더 트리) ════════
+   폴더 안의 잎은 **펼칠 때** 그린다. 코드트리 1,400문제가 더해지면 전부를 미리 DOM 으로
+   만드는 것만으로 검색창 한 글자마다 수십 ms 가 걸려 입력이 끊긴다. 요약 줄(폴더 이름·
+   개수)만 먼저 그리고, 내용은 노드 표(TLZ)에 들고 있다가 toggle 이 오면 채운다.
+   검색 중이거나 '펼치기'를 누른 경우처럼 처음부터 열린 폴더는 바로 그린다. */
 var treeDone=false;
+var TLZ={}, TLZN=0;          /* 아직 안 그린 폴더 내용: data-lz 번호 → 노드 */
+var TX={force:null};         /* 펼치기/접기 버튼 상태. 검색어·보기를 바꾸면 풀린다 */
+var TQT=0;                   /* 검색 입력 디바운스 */
 function viewProblems(){
  if(treeDone){return;} treeDone=true;
  $("v-problems").innerHTML=
   '<h2 class="t">문제</h2>'+
   '<div class="bar"><button class="p" onclick="openAdd()">+ 새 문제</button>'+
   '<input class="gr" id="tq" placeholder="번호 · 제목으로 찾기">'+
-  '<select id="tg"><option value="cosal">코딩살구 커리큘럼</option>'+
+  /* value 는 cosal 그대로 둔다 — 코딩살구·코드트리 모두 '사이트 커리큘럼 순서' 보기다 */
+  '<select id="tg"><option value="cosal">커리큘럼</option>'+
   '<option value="status">결과별</option><option value="hundred">번호대별</option>'+
   '<option value="recent">최근 푼 순</option></select>'+
   '<select id="tf"><option value="">전체 문제</option><option value="mine">내가 푼 것만</option>'+
@@ -914,110 +1014,324 @@ function viewProblems(){
   '<button class="sm" onclick="expandAll(0)">접기</button></div>'+
   '<div class="panel"><div class="hd">폴더<span class="r" id="tcnt"></span></div>'+
   '<div class="bd tree" id="tree"></div></div>';
- $("tq").oninput=drawTree; $("tg").onchange=drawTree; $("tf").onchange=drawTree;
+ /* 한 글자마다 다시 그리지 않고 입력이 잠깐 멎으면 그린다 */
+ $("tq").oninput=function(){ TX.force=null; clearTimeout(TQT); TQT=setTimeout(drawTree,120); };
+ $("tg").onchange=$("tf").onchange=function(){ TX.force=null; drawTree(); };
+ /* toggle 은 거품이 안 올라오는 이벤트라 캡처 단계에서 받는다 */
+ $("tree").addEventListener("toggle",treeToggle,true);
  drawTree();
+ /* 코드트리 카탈로그는 따로 받는다(index.html 에 없다). 오면 한 번 더 그린다. */
+ if(!CTCAT) ctCatalog().then(function(){ if($("tree")) drawTree(); });
 }
-function expandAll(on){
- Array.prototype.forEach.call(document.querySelectorAll("#tree details"),function(d){d.open=!!on;});
-}
+/* 예전엔 열린 <details> 를 전부 여닫았는데, 이제 안 그린 폴더는 DOM 에 없다.
+   '다 펼친 상태'로 새로 그린다(1,400개를 한 번에 그리는 건 이 버튼을 눌렀을 때뿐). */
+function expandAll(on){ TX.force=on?"open":"closed"; drawTree(); }
 function lastOf(k){var rs=BYPROB[k]; return rs&&rs.length?rs[0]:null;}
+function isDone(s){ return s==="품"||s==="맞음"; }
+/* 번호 비교 — 코드트리 기출은 트레일과 번호가 겹쳐 "f386" 처럼 글자가 붙는다(+no 는 NaN).
+   둘 다 숫자면 예전처럼 숫자로, 아니면 자연 정렬(f12 < f100)로 비교한다. */
+function noCmp(a,b){
+ var x=+a, y=+b;
+ if(!isNaN(x)&&!isNaN(y)) return x-y;
+ return String(a==null?"":a).localeCompare(String(b==null?"":b),"ko",{numeric:true});
+}
+
+var LEAFHEAD='<div class="leafhead"><span>번호</span><span>제목</span><span>자료</span>'+
+  '<span class="r">시도</span><span class="r">마지막</span><span class="r">결과</span></div>';
+
+/* 트리 노드 하나. n = {lab:요약 HTML, cnt:개수, open:처음부터 열지,
+   kids:[하위 노드] | rows:[잎 · {sub:레슨 소제목}] | html:그대로 넣을 내용} */
+function tnHTML(n){
+ var id="";
+ if(!n.open){ id=String(++TLZN); TLZ[id]=n; }
+ return '<details class="tnode"'+(n.open?" open":"")+'><summary><span class="ar">▶</span>'+n.lab+
+  '<span class="cnt">'+n.cnt+'</span></summary>'+
+  '<div class="tkids"'+(id?' data-lz="'+id+'"':'')+'>'+(n.open?tnKids(n):'')+'</div></details>';
+}
+function tnKids(n){
+ if(n.html!=null) return n.html;
+ if(n.kids) return n.kids.map(tnHTML).join("");
+ return LEAFHEAD+n.rows.map(function(r){
+  if(r.sub!=null) return '<div class="lsub">'+esc(r.sub)+'</div>';
+  return r.it ? leafHTML(r.it,r.pl,r.tail) : leafHTML(r);
+ }).join("");
+}
+/* 폴더를 처음 펼칠 때 내용을 채운다. 한 번 채우면 data-lz 를 떼서 다시 안 그린다. */
+function treeToggle(e){
+ var d=e.target;
+ if(!d||d.tagName!=="DETAILS"||!d.open) return;
+ var k=d.lastElementChild;
+ if(!k||!k.hasAttribute("data-lz")) return;
+ var n=TLZ[k.getAttribute("data-lz")];
+ k.removeAttribute("data-lz");
+ if(n) k.innerHTML=tnKids(n);
+}
+
+/* 잎 한 줄. 코드트리만 제목 옆에 카드 종류·회차·난이도 배지가 붙는다.
+   pl = 이 잎이 놓인 자리(카탈로그 항목 또는 also 자리), tail = 기출 회차 꼬리("오후 1번") */
+function leafHTML(it,pl,tail){
+ var nm='<a class="nm" href="#p/'+encodeURIComponent(it.site)+'/'+encodeURIComponent(it.no)+'">'+
+        esc(it.title||"(제목 없음)")+'</a>';
+ if(it.site==="CT") nm='<span class="nmw">'+nm+ctBadges(pl||it.ct,it.ct,tail)+'</span>';
+ /* 🔒 비공개 문제(색인 priv)의 공개 자료는 메타데이터뿐이다(지문·예제는 허브 보관소).
+    같은 📄 를 달면 '열면 지문이 있다' 로 읽혀서 자물쇠로 구분한다. */
+ var doc=!it.has ? ''
+   : it.priv ? '<span title="공개 자료는 메타데이터뿐 — 지문·예제는 허브에만 보관">&#128274;</span>'
+   : '<span title="지문·예제 있음">&#128196;</span>';
+ return '<div class="leaf"><span class="id">'+esc(it.no)+'</span>'+nm+
+  '<span class="doc">'+doc+
+   (it.note?'<span title="복기 메모 있음">&#128221;</span>':'')+'</span>'+
+  '<span class="tries">'+(it.tries?it.tries+"회":"")+'</span>'+
+  '<span class="dt">'+esc(it.last||"")+'</span>'+
+  '<span class="rs '+rc(it.status)+'">'+esc(it.status||"")+'</span></div>';
+}
+
 function drawTree(){
+ if(!$("tree")) return;
  var q=($("tq").value||"").trim().toLowerCase(), mode=$("tg").value, filt=$("tf").value;
- /* 후보 = 코딩살구 전체 카탈로그 ∪ 내가 푼 문제 ∪ 크롤링된 자료 */
+ /* 후보 = 코딩살구 전체 카탈로그 ∪ 코드트리 카탈로그 ∪ 내가 푼 문제 ∪ 크롤링된 자료 */
  var keys=[], seen={};
  function add(k){ if(!seen[k]){seen[k]=1;keys.push(k);} }
  CAT.forEach(function(c){ add("BOJ/"+c.no); });
+ if(CTCAT) CTCAT.items.forEach(function(c){ add("CT/"+c.no); });
  Object.keys(BYPROB).forEach(add);
  Object.keys(PIDX).forEach(add);
 
+ /* 카탈로그를 받는 동안엔 코드트리를 잠깐 비워 둔다. 먼저 그리면 전부 '카탈로그 외' 로
+    갔다가 도착하는 순간 자리를 옮겨 화면이 출렁인다. */
+ var ctWait=!CTCAT, ctHeld=0;
  var items=keys.map(function(k){
    var s=k.split("/"), last=lastOf(k), c=CATIDX[k]||{};
+   var ct=(s[0]==="CT")?(CTIDX[k]||null):null;
    return {k:k, site:s[0], no:s.slice(1).join("/"), title:bestTitle(k),
-           sec:c.section||"", ord:(c.ord===undefined?1e9:c.ord),
+           sec:c.section||"", ord:ct?ct.ord:(c.ord===undefined?1e9:c.ord), ct:ct,
            last:(last?last.date:""),
-           has:!!PIDX[k], note:!!((PIDX[k]||{}).note),
+           has:!!PIDX[k], note:!!((PIDX[k]||{}).note), priv:!!((PIDX[k]||{}).priv),
            status:last?last.status:"", tries:(BYPROB[k]||[]).length};
   }).filter(function(it){
-   if(q && (it.no+" "+it.title).toLowerCase().indexOf(q)<0) return false;
-   var solved=(it.status==="품"||it.status==="맞음");
+   if(it.site==="CT"&&ctWait){ ctHeld++; return false; }
+   /* 기출은 출처("2025 하반기 …")로도 찾게 한다. 유형(태그)은 애초에 데이터에 없다. */
+   var hay=it.no+" "+it.title+(it.ct&&it.ct.origin?" "+it.ct.origin:"");
+   if(q && hay.toLowerCase().indexOf(q)<0) return false;
+   var solved=isDone(it.status);
    if(filt==="mine" && !it.tries) return false;
    if(filt==="todo" && solved) return false;
    if(filt==="doc"  && !it.has) return false;
    return true; });
 
- var tree={};
- items.forEach(function(it){
+ var bySite={};
+ items.forEach(function(it){ (bySite[it.site]=bySite[it.site]||[]).push(it); });
+ /* 사이트는 기본으로 열고 폴더는 닫는다(검색 중이면 폴더도 연다) — 예전과 같다 */
+ var sOpen=TX.force?TX.force==="open":true, fOpen=TX.force?TX.force==="open":!!q;
+ TLZ={}; TLZN=0;
+ var html=["BOJ","SWEA","PGS","CT"].map(function(site){
+  var list=bySite[site];
+  if(site==="CT"&&ctWait)
+   return ctHeld ? tnHTML({lab:siteLab("CT"),cnt:"…",open:sOpen,
+                           html:'<div class="tload">코드트리 목록 불러오는 중…</div>'}) : "";
+  if(!list) return "";
+  var nest=(site==="CT"&&mode==="cosal"&&CTCAT&&!CTCAT.fail);
+  return tnHTML({lab:siteLab(site)+(site==="CT"&&CTCAT&&CTCAT.fail
+                   ?' <span class="gsub" title="'+esc(CTCAT.fail)+'">(카탈로그 없음)</span>':''),
+                 cnt:list.length, open:sOpen,
+                 kids:nest?ctKids(list,fOpen):flatKids(site,list,mode,fOpen)});
+ }).join("");
+ $("tree").innerHTML = html || '<div class="empty">해당하는 문제가 없습니다.</div>';
+ $("tcnt").textContent = items.length+"문제"+(ctWait&&ctHeld?" · 코드트리 불러오는 중":"");
+}
+function siteLab(site){
+ return '<span class="b b-'+site+'">'+site+'</span> '+esc(SITENM[site]||site);
+}
+
+/* 한 겹짜리 폴더 — 백준·SWEA 는 예전 그대로, 코드트리는 커리큘럼 외 보기에서 쓴다. */
+function flatKids(site,list,mode,fOpen){
+ var tree={}, fo={};
+ list.forEach(function(it){
   var f;
-  if(mode==="cosal")       f = it.sec || (it.tries?"커리큘럼 외 (내가 푼 문제)":"미분류");
-  else if(mode==="status") f = (it.status==="품"||it.status==="맞음") ? "푼 문제"
+  if(mode==="cosal")       f = site==="CT" ? (it.tries?"카탈로그 외 (내가 푼 문제)":"카탈로그 외")
+                             : (it.sec || (it.tries?"커리큘럼 외 (내가 푼 문제)":"미분류"));
+  else if(mode==="status") f = isDone(it.status) ? "푼 문제"
                              : it.status ? "못 푼 문제" : "기록 없음";
   else if(mode==="recent") f = it.last
       ? (it.last.slice(0,4)+"년 "+(+it.last.slice(5,7))+"월") : "아직 안 푼 문제";
-  else                     f = it.no.match(/^\d+$/) ? (Math.floor(+it.no/1000)+"000번대") : "기타";
-  (tree[it.site]=tree[it.site]||{});
-  (tree[it.site][f]=tree[it.site][f]||[]).push(it);
- });
-
- var order=["BOJ","SWEA","PGS","CT"];
- var html=order.filter(function(s){return tree[s];}).map(function(site){
-  /* 폴더 순서도 사이트와 같게. 개념별 트랙 이름은 숫자가 없어 가나다순으로 밀리므로,
-     각 폴더에서 가장 앞선 항목의 노출 순서(ord)를 폴더의 정렬 키로 쓴다. */
-  function fkey(f){
-    var m=1e9;
-    tree[site][f].forEach(function(x){ if(x.ord<m) m=x.ord; });
-    return m;
+  else if(site==="CT"){
+   /* 코드트리 번호(problem_id)는 커리큘럼·난이도와 무관하게 매겨져 번호대로 자르면 뒤섞인다.
+      번호대 대신 코스·출처로 묶는다. */
+   var g=it.ct&&CTCAT&&CTCAT.G[it.ct.group];
+   f = g ? ctGName(g) : "카탈로그 외";
+   fo[f] = g ? (g.order==null?1e6:+g.order) : 1e9;
   }
-  var folders=Object.keys(tree[site]).sort(function(a,b){
-    var pa=a.indexOf("주차별/")===0?0:a.indexOf("개념별/")===0?1:2;
-    var pb=b.indexOf("주차별/")===0?0:b.indexOf("개념별/")===0?1:2;
-    if(mode!=="recent"&&pa!==pb)return pa-pb;
-    if(mode==="cosal"){
-      var ka=fkey(a), kb=fkey(b);
-      if(ka!==kb) return ka-kb;
-    }
-    if(mode==="recent"){
-      /* 최신 월부터. "아직 안 푼 문제"는 항상 맨 아래로. */
-      var ea=(a==="아직 안 푼 문제"), eb=(b==="아직 안 푼 문제");
-      if(ea!==eb) return ea?1:-1;
-      return b.localeCompare(a,"ko",{numeric:true});
-    }
-    var na=parseInt(a.replace(/\D*/,"")),nb=parseInt(b.replace(/\D*/,""));
-    if(!isNaN(na)&&!isNaN(nb)&&na!==nb)return na-nb;
-    return a.localeCompare(b,"ko");});
-  var tot=folders.reduce(function(a,f){return a+tree[site][f].length;},0);
-  return '<details class="tnode" open><summary><span class="ar">▶</span>'+
-   '<span class="b b-'+site+'">'+site+'</span> '+esc(SITENM[site]||site)+
-   '<span class="cnt">'+tot+'</span></summary><div class="tkids">'+
-   folders.map(function(f){
-    /* 코딩살구 커리큘럼은 난이도·주제 흐름대로 배열돼 있어 번호순으로 섞으면 의미가 깨진다.
-       커리큘럼 보기에서는 사이트 노출 순서(ord)를 그대로 쓴다. */
-    var list=tree[site][f].sort(
-      mode==="cosal"  ? function(a,b){ return (a.ord-b.ord) || ((+a.no||0)-(+b.no||0)); }
-    : mode==="recent" ? function(a,b){ return (b.last||"").localeCompare(a.last||""); }
-    :                   function(a,b){ return (+a.no||0)-(+b.no||0); });
-    var done=list.filter(function(x){return x.status==="품"||x.status==="맞음";}).length;
-    var nm=f.indexOf("/")>0?f.split("/")[1]:f;
-    var grp=f.indexOf("/")>0?f.split("/")[0]:"";
-    return '<details class="tnode"'+(q?" open":"")+'><summary><span class="ar">▶</span>'+
-     '📁 '+(grp?'<span style="color:var(--mute);font-weight:600">'+esc(grp)+' /</span> ':'')+esc(nm)+
-     '<span class="cnt">'+done+' / '+list.length+'</span></summary><div class="tkids">'+
-     '<div class="leafhead"><span>번호</span><span>제목</span><span>자료</span>'+
-     '<span class="r">시도</span><span class="r">마지막</span><span class="r">결과</span></div>'+
-     list.map(function(it){
-      return '<div class="leaf"><span class="id">'+esc(it.no)+'</span>'+
-       '<a class="nm" href="#p/'+encodeURIComponent(it.site)+'/'+encodeURIComponent(it.no)+'">'+
-        esc(it.title||"(제목 없음)")+'</a>'+
-       '<span class="doc">'+
-        (it.has?'<span title="지문·예제 있음">&#128196;</span>':'')+
-        (it.note?'<span title="복기 메모 있음">&#128221;</span>':'')+'</span>'+
-       '<span class="tries">'+(it.tries?it.tries+"회":"")+'</span>'+
-       '<span class="dt">'+esc(it.last||"")+'</span>'+
-       '<span class="rs '+rc(it.status)+'">'+esc(it.status||"")+'</span></div>';
-     }).join("")+'</div></details>';
-   }).join("")+'</div></details>';
- }).join("");
- $("tree").innerHTML = html || '<div class="empty">해당하는 문제가 없습니다.</div>';
- $("tcnt").textContent = items.length+"문제";
+  else                     f = it.no.match(/^\d+$/) ? (Math.floor(+it.no/1000)+"000번대") : "기타";
+  (tree[f]=tree[f]||[]).push(it);
+ });
+ /* 폴더 순서도 사이트와 같게. 개념별 트랙 이름은 숫자가 없어 가나다순으로 밀리므로,
+    각 폴더에서 가장 앞선 항목의 노출 순서(ord)를 폴더의 정렬 키로 쓴다. */
+ function fkey(f){
+   var m=1e9;
+   tree[f].forEach(function(x){ if(x.ord<m) m=x.ord; });
+   return m;
+ }
+ var folders=Object.keys(tree).sort(function(a,b){
+   if(site==="CT"&&mode==="hundred"&&fo[a]!==fo[b]) return fo[a]-fo[b];
+   var pa=a.indexOf("주차별/")===0?0:a.indexOf("개념별/")===0?1:2;
+   var pb=b.indexOf("주차별/")===0?0:b.indexOf("개념별/")===0?1:2;
+   if(mode!=="recent"&&pa!==pb)return pa-pb;
+   if(mode==="cosal"){
+     var ka=fkey(a), kb=fkey(b);
+     if(ka!==kb) return ka-kb;
+   }
+   if(mode==="recent"){
+     /* 최신 월부터. "아직 안 푼 문제"는 항상 맨 아래로. */
+     var ea=(a==="아직 안 푼 문제"), eb=(b==="아직 안 푼 문제");
+     if(ea!==eb) return ea?1:-1;
+     return b.localeCompare(a,"ko",{numeric:true});
+   }
+   var na=parseInt(a.replace(/\D*/,"")),nb=parseInt(b.replace(/\D*/,""));
+   if(!isNaN(na)&&!isNaN(nb)&&na!==nb)return na-nb;
+   return a.localeCompare(b,"ko");});
+ return folders.map(function(f){
+   /* 코딩살구 커리큘럼은 난이도·주제 흐름대로 배열돼 있어 번호순으로 섞으면 의미가 깨진다.
+      커리큘럼 보기에서는 사이트 노출 순서(ord)를 그대로 쓴다. */
+   /* 코드트리는 번호가 커리큘럼과 무관하고 "f386" 같은 글자 번호도 있어 카탈로그 순서(ord)로 둔다 */
+   var rows=tree[f].sort(
+     mode==="recent" ? function(a,b){ return (b.last||"").localeCompare(a.last||""); }
+   : site==="CT"     ? function(a,b){ return (a.ord-b.ord) || noCmp(a.no,b.no); }
+   : mode==="cosal"  ? function(a,b){ return (a.ord-b.ord) || ((+a.no||0)-(+b.no||0)); }
+   :                   function(a,b){ return (+a.no||0)-(+b.no||0); });
+   var done=rows.filter(function(x){return isDone(x.status);}).length;
+   var nm=f.indexOf("/")>0?f.split("/")[1]:f;
+   var grp=f.indexOf("/")>0?f.split("/")[0]:"";
+   return {lab:'📁 '+(grp?'<span style="color:var(--mute);font-weight:600">'+esc(grp)+' /</span> ':'')+esc(nm),
+           cnt:done+' / '+rows.length, open:fOpen, rows:rows};
+ });
+}
+
+/* ════════ 코드트리 트리 (커리큘럼 보기) ════════
+   코드트리 → 코스(트레일 6개·기출 3곳) → 챕터(트레일) / 회차(기출) → 잎.
+   트레일은 챕터 폴더 안에서 레슨마다 소제목 줄을 끼운다. 순서는 사이트 그대로
+   (챕터 → 레슨 → 카드). 기출은 시험 회차(origin 앞부분)로 묶고 최신 회차가 위로 온다. */
+function ctGName(g){ return (g.name||g.key)+(g.sub?" · "+g.sub:""); }
+function ctLevel(v){
+ if(v==null||v==="") return "";
+ v=String(v);
+ return /^\d+$/.test(v)?"L"+v:v;          /* 기출 난이도는 숫자로 올 수도 있다 */
+}
+/* "2025 하반기 오후 1번 문제" → 회차 "2025 하반기" · 꼬리 "오후 1번".
+   실제 origin 은 세 가지 꼴이다: 삼성 "2016 하반기 2번 문제", HSAT "11차 1번 문제",
+   ACPC "2026 ACPC J" / 번호 없는 "2025 ACPC". 꼬리를 못 찾으면 origin 전체를 회차로 쓴다. */
+function ctPeriod(o){
+ o=String(o||"").trim();
+ var per="", tail="";
+ var m=o.match(/^(.*?\S)\s+((?:오전|오후)\s*)?(\d+|[A-Z])\s*번?(?:\s*문제)?$/);
+ if(m){ per=m[1]; tail=(m[2]?m[2].trim()+" ":"")+m[3]+(/^\d+$/.test(m[3])?"번":""); }
+ else{
+  var y=o.match(/^(\d{4}\s*년?\s*(?:상반기|하반기))\s*(.*)$/);
+  if(y){ per=y[1]; tail=y[2].replace(/\s*문제$/,""); }
+  else per=o;
+ }
+ if(!per) per="기타";
+ var ym=per.match(/^(\d{4})/);
+ return {period:per, tail:tail, y:ym?+ym[1]:0};
+}
+var CTKIND={Introduction:["워밍업","k-in"],Problem:["챌린지","k-pr"],Test:["테스트","k-te"]};
+/* 제목 옆 작은 배지들. c = 이 자리(카드), base = 문제 대표 항목(난이도·잠김은 여기서) */
+function ctBadges(c,base,tail){
+ c=c||{}; base=base||c;
+ var h="", k;
+ if(c.card_type){ k=CTKIND[c.card_type];
+   h+='<span class="ctb '+(k?k[1]:"")+'">'+esc(k?k[0]:c.card_type)+'</span>'; }
+ else if(tail==null && c.origin) tail=ctPeriod(c.origin).tail;
+ if(tail) h+='<span class="ctb">'+esc(tail)+'</span>';
+ /* 코드 제출형이 아닌 카드(객관식·순서 맞추기 등, 실데이터 283개) — 아카이브에선 채점 없음 */
+ if(base.ptype) h+='<span class="ctb k-x" title="'+esc(base.ptype+" — 코드 채점 없음, 코드트리에서 풀기")+
+   '">퀴즈</span>';
+ if(base.locked) h+='<span class="ctb k-x" title="코드트리에서 열람 권한이 없어 못 가져온 문제">잠김</span>';
+ var lv=ctLevel(c.level||base.level);
+ if(lv) h+='<span class="ctl">'+esc(lv)+'</span>';
+ return h;
+}
+function ctKids(list,fOpen){
+ var G=CTCAT.G, gs={}, gl=[], extra=[], loose=[];
+ function grp(gk){
+  if(!gs[gk]){ gs[gk]={g:G[gk]||{key:gk,name:gk||"기타",order:1e6},f:{},fl:[],keys:{}}; gl.push(gs[gk]); }
+  return gs[gk];
+ }
+ /* 한 문제를 한 자리에 놓는다. dup = also 자리(같은 문제가 다른 레슨에도 실림) —
+    카드 순서를 모르므로 그 레슨의 맨 뒤로 보낸다. */
+ function put(it,pl,dup){
+  var gk=pl.group||it.ct.group, g=grp(gk);
+  var freq=((g.g.kind||it.ct.kind)==="frequent");
+  var row={it:it,pl:pl,ord:dup?1e9:it.ord}, fk, f;
+  if(freq){
+   var pp=ctPeriod(pl.origin||(dup?"":it.ct.origin));
+   fk="p|"+pp.period; row.tail=pp.tail; row.org=pl.origin||"";
+   f=g.f[fk];
+   if(!f){ f=g.f[fk]={name:pp.period,rows:[],keys:{},min:1e9,y:pp.y}; g.fl.push(f); }
+  }else{
+   var chn=pl.chapter_no!=null?pl.chapter_no:CTCAT.CH[gk+"|"+pl.chapter];
+   var lsn=pl.lesson_no!=null?pl.lesson_no:CTCAT.LS[gk+"|"+pl.chapter+"|"+pl.lesson];
+   fk="c|"+(pl.chapter||"");
+   row.lsn=(lsn==null?1e6:+lsn); row.lesson=pl.lesson||"";
+   row.lsnm=pl.lesson?((lsn!=null?lsn+". ":"")+pl.lesson):"";
+   row.card=(pl.card_no==null?1e6:+pl.card_no);
+   f=g.f[fk];
+   if(!f){ f=g.f[fk]={name:(chn!=null?chn+". ":"")+(pl.chapter||"기타"),rows:[],keys:{},min:1e9,
+                      chn:(chn==null?1e6:+chn)}; g.fl.push(f); }
+  }
+  f.rows.push(row); f.keys[it.k]=it; g.keys[it.k]=it;
+  if(row.ord<f.min) f.min=row.ord;
+ }
+ list.forEach(function(it){
+  if(!it.ct){ (it.tries?extra:loose).push(it); return; }
+  put(it,it.ct,false);
+  (it.ct.also||[]).forEach(function(a){ if(a&&(a.group||a.chapter||a.origin)) put(it,a,true); });
+ });
+ function cnt(keys){ var n=0,d=0; for(var k in keys){ n++; if(isDone(keys[k].status)) d++; } return d+" / "+n; }
+ gl.sort(function(a,b){
+  var oa=(a.g.order==null?1e6:+a.g.order), ob=(b.g.order==null?1e6:+b.g.order);
+  return (oa-ob) || String(a.g.key).localeCompare(String(b.g.key));
+ });
+ var out=gl.map(function(g){
+  var freq=(g.g.kind==="frequent")||(!g.g.kind&&g.fl.length&&g.fl[0].y!==undefined);
+  g.fl.sort(freq
+   ? function(a,b){ var xa=(a.name==="기타"), xb=(b.name==="기타");
+                    if(xa!==xb) return xa?1:-1;
+                    return (b.y-a.y) || (a.min-b.min); }      /* 최신 회차부터(목록이 -date 순) */
+   : function(a,b){ return (a.chn-b.chn) || (a.min-b.min); });
+  return {lab:esc(g.g.name||g.g.key)+(g.g.sub?' <span class="gsub">· '+esc(g.g.sub)+'</span>':''),
+          cnt:cnt(g.keys), open:fOpen,
+          kids:g.fl.map(function(f){
+            var rows;
+            if(freq){
+             /* 같은 회차 안은 origin 순(오전 1번 → 오후 2번). origin 이 같으면(ACPC 2025 처럼
+                번호 없는 회차) 번호순 — problem_id 가 문제 순서대로 매겨져 있다. */
+             rows=f.rows.sort(function(a,b){
+               return a.org.localeCompare(b.org,"ko",{numeric:true}) || noCmp(a.it.no,b.it.no); });
+            }else{
+             rows=[];
+             var prev=null;
+             f.rows.sort(function(a,b){ return (a.lsn-b.lsn) || (a.card-b.card) || (a.ord-b.ord); })
+              .forEach(function(r){
+               if(r.lesson!==prev){ if(r.lsnm) rows.push({sub:r.lsnm}); prev=r.lesson; }
+               rows.push(r);
+              });
+            }
+            return {lab:'📁 '+esc(f.name), cnt:cnt(f.keys), open:fOpen, rows:rows};
+          })};
+ });
+ /* 카탈로그에 없는 코드트리 문제(카탈로그 이전에 푼 것 등) — 번호순(f 번호는 자연 정렬) */
+ function byNo(a,b){ return noCmp(a.no,b.no); }
+ if(extra.length){
+  extra.sort(byNo);
+  out.push({lab:'📁 카탈로그 외 (내가 푼 문제)', cnt:cnt(extra.reduce(function(o,x){o[x.k]=x;return o;},{})),
+            open:fOpen, rows:extra});
+ }
+ if(loose.length){
+  loose.sort(byNo);
+  out.push({lab:'📁 카탈로그 외', cnt:cnt(loose.reduce(function(o,x){o[x.k]=x;return o;},{})),
+            open:fOpen, rows:loose});
+ }
+ return out;
 }
 
 /* ════════ 제출 현황 ════════ */
@@ -1045,7 +1359,7 @@ function drawStatus(){
  rs.sort(function(a,b){
   /* 제출일로 정렬할 땐 시각까지 본다(같은 날 여러 번 제출한 순서). */
   if(sortK==="date")return ord(a).localeCompare(ord(b))*(asc?1:-1);
-  if(sortK==="no")return((+a.no||0)-(+b.no||0))*(asc?1:-1);
+  if(sortK==="no")return noCmp(a.no,b.no)*(asc?1:-1);     /* 코드트리 "f386" 도 섞인다 */
   if(sortK==="elapsed")return(((+a.elapsed)||0)-((+b.elapsed)||0))*(asc?1:-1);
   if(sortK==="title")return (bestTitle(key(a))||"").localeCompare(bestTitle(key(b))||"","ko")*(asc?1:-1);
   return((a[sortK]||"")+"").localeCompare((b[sortK]||"")+"")*(asc?1:-1);});
@@ -1125,7 +1439,7 @@ async function showBigTC(i){
  var j=await fetchBigTC(i,false);
  if(!j||!j.ok){ row.innerHTML=old+'<span class="hint" style="color:var(--no)">실패</span>'; return; }
  var box=document.createElement("div");
- box.innerHTML=tcPanel("프라이빗", i+1, {"in":j["in"], out:j.out})+
+ box.innerHTML=tcPanel(((CUR.prob||{}).tc_generated?"생성":"프라이빗"), i+1, {"in":j["in"], out:j.out})+
    (j.truncated?'<div class="hint">표시는 앞부분만 잘랐습니다 (원본 입력 '+
      fmtSize(j.inFull)+'). 전체는 <b>파일로 저장</b>을 쓰세요.</div>':'');
  row.innerHTML=old;
@@ -1643,7 +1957,7 @@ async function saveNote(whole){
  nsay("저장 중…");
  try{
   var r=await fetch(h.url+"/note",{method:"POST",headers:H(),body:JSON.stringify({
-    site:CUR.site,no:CUR.no,title:bestTitle(CUR.site+"/"+CUR.no),
+    site:CUR.site,no:CUR.no,title:bestTitle(CUR.site+"/"+CUR.no)||((CUR.prob||{}).title||""),
     date:whole?"":($("ndate")?$("ndate").value:today()),
     status:whole?"":($("nst")?$("nst").value:""),
     body:body, mode:whole?"replace":"append"})});
@@ -1654,7 +1968,7 @@ async function saveNote(whole){
   if(PIDX[CUR.site+"/"+CUR.no]) PIDX[CUR.site+"/"+CUR.no].note=j.file;
   treeDone=false;
   drawNote();
-  nsay("✅ 저장됨 <code>"+esc(j.file)+"</code> · commit "+(j.committed?"완료":"변경 없음")+
+  nsay("✅ 저장됨 <code>"+esc(j.file)+"</code> · commit "+cmsg(j)+
        " · push "+(j.pushed?"완료":"실패"), j.pushed?"ok":"ng");
  }catch(e){ nsay("오류: "+esc(e.message),"ng"); }
 }
@@ -1695,14 +2009,16 @@ function askDelSub(site,no,date,ev,at){
 
 /* 문제 자료 삭제 */
 function askDelProb(site,no){
- var k=site+"/"+no, m=PIDX[k]||{}, inCat=!!CATIDX[k];
+ var k=site+"/"+no, m=PIDX[k]||{}, inCat=!!CATIDX[k]||!!CTIDX[k];
  DEL={kind:"problem",site:site,no:no};
  $("dct").textContent="문제 자료를 삭제할까요?";
  $("dcw").innerHTML=
    "<b>"+esc(site+" "+no+" "+bestTitle(k))+"</b><br>"+
-   "지문·예제"+(m.tc?"·테스트케이스":"")+"·이미지가 지워집니다."+
+   (m.priv
+     ? "공개 메타데이터 파일(<code>"+esc(m.path||("problems/codetree/"+no+".json"))+"</code>)이 지워집니다."
+     : "지문·예제"+(m.tc?"·테스트케이스":"")+"·이미지가 지워집니다.")+
    "<br><span style='color:var(--sub)'>풀이 기록과 코드는 그대로 남습니다.</span>"+
-   (inCat?"<br>코딩살구 커리큘럼 문제라 <b>목록에는 남고</b> '자료 없음' 상태가 됩니다."
+   (inCat?"<br>"+(site==="CT"?"코드트리":"코딩살구")+" 커리큘럼 문제라 <b>목록에는 남고</b> '자료 없음' 상태가 됩니다."
          :"<br>커리큘럼 밖 문제라 <b>목록에서도 사라집니다.</b>");
  $("dcv").style.display="none"; $("dcgo").disabled=false;
  $("dc").style.display="block";
@@ -1743,7 +2059,7 @@ async function doDelete(){
   }
   stDone=false; treeDone=false; homeDone=false;
   dsay("✅ 삭제됨<div class='d'>"+esc((j.removed||[]).join("\n"))+
-       "\n\ncommit "+(j.committed?"완료":"변경 없음")+"  ·  push "+(j.pushed?"완료":"실패")+"</div>","ok");
+       "\n\ncommit "+cmsg(j)+"  ·  push "+(j.pushed?"완료":"실패")+"</div>","ok");
   var kind=DEL.kind;
   setTimeout(function(){
     closeDel();
@@ -1756,6 +2072,14 @@ async function doDelete(){
 /* ════════ 새 문제 추가 ════════
    코딩살구 카탈로그에 없는 문제(SWEA·프로그래머스·코드트리 등)를 링크만으로 등록한다.
    로컬 허브가 크롤링 → problems/*.json 저장 → 색인 재생성 → 커밋/푸시. */
+/* 코드트리 /fetch 는 받은 지문을 클라우드 허브 보관소로도 보낸다(synced / syncError).
+   실패하면 다른 PC·클라우드에서 지문이 안 보이므로 결과를 한 줄로 알린다.
+   필드가 없는 응답(다른 사이트·옛 허브)은 빈 문자열. */
+function syncLine(j){
+ if(!j||j.synced==null) return "";
+ return j.synced ? "클라우드 허브 동기화: 완료"
+                 : "클라우드 허브 동기화: 실패"+(j.syncError?" ("+j.syncError+")":"");
+}
 function openAdd(){ $("ad").style.display="block"; $("adv").style.display="none";
                     $("adu").value=""; setTimeout(function(){$("adu").focus();},50); }
 function closeAdd(){ $("ad").style.display="none"; }
@@ -1783,17 +2107,24 @@ async function doAdd(){
     return asay("내용이 비어 있습니다. 해당 사이트에 <b>로그인</b>되어 있는지 확인하세요.","ng");
 
   /* 색인에 즉시 반영 — 배포를 기다리지 않고 트리·문제페이지에서 바로 보이게 */
-  var k=p.site+"/"+p.no;
+  var k=p.site+"/"+p.no, priv=!!p.private_content;
   PIDX[k]={site:p.site,no:p.no,title:p.title||"",label:p.label||"",
            limits:p.limits||{},tc:p.private_tc_count||0,
            smp:(p.samples||[]).length,len:(p.statement||"").length,
            path:"problems/"+({BOJ:"boj",SWEA:"swea",PGS:"programmers",CT:"codetree"}[p.site]||"boj")
                 +"/"+p.no+".json"};
+  /* 🔒 비공개 모드 — 응답에는 지문이 통째로 오지만 repo 에는 메타데이터만 커밋됐다(허브가 걸렀다).
+     색인은 build_probindex 와 같게 priv 를 단다. 코드트리는 받은 본문을 이 탭 캐시에도 둔다 —
+     Pages 재빌드 전이라 공개 JSON 이 아직 옛것이어도 바로 열리는 문제 페이지에 지문이 보이게. */
+  if(priv) PIDX[k].priv=1;
+  if(p.site==="CT") CTPROB[p.no]={problem:p,samples:p.samples||[]};
   treeDone=false; homeDone=false;
   asay("✅ <b>"+esc(p.site+" "+p.no+" "+(p.title||""))+"</b> 추가됨"+
        "<div class='d'>지문 "+(p.statement||"").length+"자 · 예제 "+((p.samples||[]).length)+"개"+
        (p.private_tc_count?" · 비공개TC "+p.private_tc_count+"개":"")+
-       "\ncommit "+(j.committed?"완료":"변경 없음")+"  ·  push "+(j.pushed?"완료":"실패")+"</div>","ok");
+       (priv?"\n🔒 지문·예제는 허브 보관소에만 저장 — 공개 repo 에는 메타데이터만 커밋":"")+
+       (syncLine(j)?"\n"+esc(syncLine(j)):"")+
+       "\ncommit "+cmsg(j)+"  ·  push "+(j.pushed?"완료":"실패")+"</div>","ok");
   setTimeout(function(){ closeAdd(); location.hash="#p/"+encodeURIComponent(p.site)+"/"+encodeURIComponent(p.no); },900);
  }catch(e){ btn.disabled=false; asay("오류: "+esc(e.message),"ng"); }
 }
@@ -1978,9 +2309,12 @@ async function viewProblem(site,no){
  CUR={site:site,no:no,prob:null,verdict:null};
  var title=bestTitle(k);
 
+ /* 코드트리는 카탈로그(제목·코스 경로)를 따로 받는다 — 코드 파일·공개 JSON 과 같이 받게 먼저 건다 */
+ if(site==="CT") ctCatalog();
+
  $("v-p").innerHTML=
-  '<div class="crumb"><a href="#problems">문제</a> › '+esc(SITENM[site]||site)+'</div>'+
-  '<div class="ptitle"><span class="b b-'+site+'">'+esc(site)+'</span>'+esc(no)+
+  '<div class="crumb" id="pcrumb"><a href="#problems">문제</a> › '+esc(SITENM[site]||site)+'</div>'+
+  '<div class="ptitle" id="ptitle"><span class="b b-'+site+'">'+esc(site)+'</span>'+esc(no)+
    (title?'&nbsp; '+esc(title):'')+'</div>'+
   '<div class="sec-h">제출 이력</div><div class="panel" id="phist">'+
    (subs.length? tbl(subs) : '<div class="empty">제출 기록이 없습니다.</div>')+'</div>'+
@@ -2002,7 +2336,7 @@ async function viewProblem(site,no){
      'title="문제에 적힌 Python 제한에 곱할 여유. 그 사이트 채점기보다 이 VM 이 느려서 필요하다.">여유 x'+
      '<input id="tmar" type="number" min="0.5" max="5" step="0.1" value="1.5" '+
      'style="width:64px;flex:0 0 64px;padding:4px 6px"></label>'+
-   '<button class="p" onclick="doJudge()" title="Ctrl+Enter">채점</button>'+
+   '<button class="p" id="jbtn" onclick="doJudge()" title="Ctrl+Enter">채점</button>'+
    '<button onclick="doSave()" title="Ctrl+S">저장 &amp; 커밋</button>'+
    '<button onclick="resetCode()" title="에디터를 원본(빈 골격)으로 되돌립니다">소스코드 초기화</button>'+
    '<span class="hint kbd">Ctrl+Enter 채점 · Ctrl+S 저장 · Tab / Shift+Tab 들여쓰기</span>'+
@@ -2028,16 +2362,26 @@ async function viewProblem(site,no){
 
  /* 문제 자료 자동 로드 (미리 크롤링해 둔 것) */
  var p=null;
- if(meta){ try{ var r=await fetch("./"+meta.path+"?"+Date.now()); if(r.ok)p=await r.json(); }catch(e){} }
+ /* 코드트리 색인 항목은 index.html 용량 때문에 path 를 빼고 박는다(render_dashboard) — 그때는 아래 추측 경로로 */
+ if(meta&&meta.path){ try{ var r=await fetch("./"+meta.path+"?"+Date.now()); if(r.ok)p=await r.json(); }catch(e){} }
  if(!p){ // 색인에 없으면 경로 추측
   var sub={BOJ:"boj",SWEA:"swea",PGS:"programmers",CT:"codetree"}[site]||"boj";
   try{ var r2=await fetch("./problems/"+sub+"/"+encodeURIComponent(no)+".json?"+Date.now());
        if(r2.ok)p=await r2.json(); }catch(e){}
  }
  if(location.hash.indexOf("#p/")!==0) return;   // 그새 다른 화면으로 이동
+ /* 코드트리 — 공개 JSON 은 메타데이터뿐이다(지문은 허브 보관소). 카탈로그로 빈칸을 채워
+    먼저 그리고, 지문·예제는 허브 /prob 에서 받아 다시 그린다(ctStatement). */
+ if(site==="CT"){
+  await ctCatalog();
+  if(CUR.site!==site||CUR.no!==no||location.hash.indexOf("#p/")!==0) return;
+  p=ctMeta(p,no);
+  ctHead(p);
+ }
  renderProblem(p, site, no);
  loadNote(site, no);
  loadBigTC(site, no);
+ if(site==="CT") ctStatement(no);
 }
 
 /* 지문의 [[IMG:n]] 자리표시를 실제 그림으로 바꾼다. 파일이 없으면 표시만 지운다. */
@@ -2203,6 +2547,8 @@ function renderProblem(p,site,no){
  var subs=BYPROB[site+"/"+no]||[];
  if($("phist")) $("phist").innerHTML =
    subs.length? tbl(subs) : '<div class="empty">제출 기록이 없습니다.</div>';
+ /* 코드트리는 제한표·지문(마크다운)·힌트 구성이 달라 따로 그린다 */
+ if(site==="CT"){ ctRender(p||{site:"CT",no:no},subs); probTail(p); return; }
  var lim=(p&&p.limits)||{};
  $("pinfo").innerHTML='<table class="lim"><thead><tr>'+
   '<th>시간 제한</th><th>메모리 제한</th><th>제출</th><th>최근 결과</th>'+
@@ -2248,31 +2594,47 @@ function renderProblem(p,site,no){
  (p.samples||[]).forEach(function(s,i){
   h+='<div class="sec-h">예제 '+(i+1)+'</div>'+tcPanel("예제", i+1, s);
  });
+ h+=htcHTML(p);
+ if(p.constraints&&p.constraints.length)
+  h+='<div class="sec-h">제한</div><div class="body">'+esc(p.constraints.join("\n"))+'</div>';
+ $("pbody").innerHTML=h||'<div class="note">본문이 비어 있습니다.</div>';
+ probTail(p);
+}
+
+/* 히든 TC 패널 — 백준(코딩살구에서 수집)과 코드트리 기출(생성 TC)이 같이 쓴다.
+   답이 먼저 보이면 스포가 되므로 기본 접힘. 펼치면 코딩살구처럼 패널로 보여준다.
+   tc_generated(코드트리 기출에 우리가 만들어 붙인 케이스)면 제목·안내에 '공식 아님'을 분명히 적고
+   tc_note 를 보여준다 — 여기서 통과해도 코드트리 공식 채점 통과가 아니라는 걸 헷갈리지 않게. */
+function htcHTML(p){
  var htc=p.private_testcases||[];
- if(htc.length){
-  /* 답이 먼저 보이면 스포가 되므로 기본 접힘. 펼치면 코딩살구처럼 패널로 보여준다. */
-  h+='<div class="sec-h">히든 테스트케이스</div>'+
+ if(!htc.length) return "";
+ var gen=!!p.tc_generated;
+ return '<div class="sec-h">'+(gen?'생성 히든 TC (공식 아님)':'히든 테스트케이스')+'</div>'+
      '<details class="nfold"><summary><span class="ar">▶</span>'+
-     '히든 테스트케이스 '+htc.length+'개 <span class="sp">클릭해서 펼치기</span></summary>'+
+     (gen?'생성 히든 TC '+htc.length+'개 · <span style="color:var(--wr)">공식 아님</span>'
+         :'히든 테스트케이스 '+htc.length+'개')+
+     ' <span class="sp">클릭해서 펼치기</span></summary>'+
      '<div style="padding:14px 16px">'+
-     '<div class="hint" style="margin:0 0 10px">실제 채점에 쓰이는 케이스입니다. '+
-      '풀기 전에 보면 스포가 될 수 있어요.'+
+     '<div class="hint" style="margin:0 0 10px">'+
+      (gen?'<b>코드트리 공식 채점 데이터가 아니라</b> 이 아카이브에서 만든 케이스입니다. '+
+           '여기서 통과해도 코드트리 공식 채점 통과와 같지 않습니다. 풀기 전에 보면 스포가 될 수 있어요.'
+          :'실제 채점에 쓰이는 케이스입니다. 풀기 전에 보면 스포가 될 수 있어요.')+
       (p.private_tc_omitted
         ? '<br>용량이 큰 '+p.private_tc_omitted+'개는 여기 싣지 않았습니다'+
-          '(BOJ 2493 은 한 케이스가 4MB). <b>채점에는 서버 보관본으로 전부 사용</b>됩니다.'
+          (gen?'. ':'(BOJ 2493 은 한 케이스가 4MB). ')+'<b>채점에는 서버 보관본으로 전부 사용</b>됩니다.'
         : '')+'</div>'+
-     htc.map(function(s,i){ return tcPanel("프라이빗", i+1, s); }).join("")+
+     (gen&&p.tc_note?'<div class="note" style="margin:0 0 12px;white-space:pre-wrap">'+esc(p.tc_note)+'</div>':'')+
+     htc.map(function(s,i){ return tcPanel(gen?"생성":"프라이빗", i+1, s); }).join("")+
      (p.private_tc_omitted
        ? '<div class="sec-h" style="font-size:15px;margin:22px 0 8px">'+
          '용량이 커서 서버에 있는 케이스</div>'+
          '<div id="bigtc"><div class="hint">허브에 연결되면 목록이 뜹니다.</div></div>'
        : '')+
      '</div></details>';
- }
- if(p.constraints&&p.constraints.length)
-  h+='<div class="sec-h">제한</div><div class="body">'+esc(p.constraints.join("\n"))+'</div>';
- $("pbody").innerHTML=h||'<div class="note">본문이 비어 있습니다.</div>';
+}
 
+/* 문제 페이지 공통 마무리 — 여유 배수 칸과 B형 Main 칸. 코드트리 화면(ctRender)도 같이 쓴다. */
+function probTail(p){
  /* ── B형(Pro): Main + User Code 두 칸 ──
     Main 은 수정 불가 코드다. 접어서 보여만 주고, 채점할 때 [User + Main] 으로
     이어 붙여 한 파일로 만든다. */
@@ -2287,6 +2649,14 @@ function renderProblem(p,site,no){
     엇갈림이 생긴다. */
  var tw=$("tmarw");
  if(tw) tw.style.display=(((p||{}).limits||{}).time_sec ? "flex" : "none");
+ /* 코드트리 — 히든 TC 는 생성 TC 가 붙은 기출에만 있다. 없는 문제에선 효과 없는 칸이라 숨기고,
+    퀴즈 카드(ptype)는 코드 채점 자체가 없어 채점 버튼도 숨긴다. */
+ var ct=(CUR.site==="CT"), q=p||{};
+ var uh=$("useh");
+ if(uh&&uh.parentNode) uh.parentNode.style.display=
+   (ct&&!(q.private_tc_count||(q.private_testcases||[]).length))?"none":"flex";
+ var jb=$("jbtn");
+ if(jb) jb.style.display=(ct&&q.ptype)?"none":"";
 
  var mb=$("mainbox");
  if(mb && p && p.api_style){
@@ -2309,6 +2679,443 @@ function renderProblem(p,site,no){
     '<b>Python 을 지원하지 않아</b> 기본 코드가 없습니다. C++/Java 로만 제출할 수 있습니다.</div>';
   }
  }else if(mb){ mb.innerHTML=""; }
+}
+
+/* ════════ 코드트리 문제 페이지 ════════
+   공개/비공개는 **데이터로** 가른다(스위치는 _meta/judge_config.json 의 privateSites 한 곳).
+   - 공개(기본, 2026-09-23 소유자 결정): problems/codetree/<no>.json 에 지문·예제·제약·힌트가
+     그대로 있다 → 백준·SWEA 처럼 바로 그린다. 허브는 부르지 않는다.
+   - 🔒 비공개(파일에 "private_content": true): 공개 JSON 은 메타데이터뿐이고 본문은 허브 TC
+     보관소에만 있다 → 토큰이 있을 때 POST /prob 로 받아 그린다. 받은 본문은 이 탭의
+     메모리(CTPROB)에만 둔다 — localStorage 에도 남기지 않는다. 저장 때는 ctPublic() 이 거른다.
+   constraints 는 어느 쪽이든 목록이 아니라 **마크다운 문자열**이다. */
+var CTPROB={};
+/* 비공개 모드에서 저장 요청에 실리면 안 되는 본문 필드. description/input_format/... 은
+   코드트리 API 원본 이름 — 원본 dict 가 섞여 와도 걸러지게 같이 둔다. */
+var CT_PRIV=["statement","samples","input_spec","output_spec","constraints","hint","sample_notes",
+             "problem","private_testcases","testcases","examples_text","samples_raw","description",
+             "input_format","output_format","code_block","html"];
+/* 공개 여부와 상관없이 절대 저장하지 않는 것 — 유형 태그·선수 레슨은 유형 스포(사용자 규칙),
+   진행상태는 내 코드트리 계정 정보다. 대시보드 모델엔 원래 없지만 한 번 더 막는다. */
+var CT_NEVER=["tags","prerequisite_lessons","progress_status"];
+function ctHas(p){
+ return !!(p&&(p.statement||p.input_spec||p.output_spec||(p.samples||[]).length));
+}
+
+/* 공개 JSON 이 없는(아직 크롤링 전) 카탈로그 문제도 페이지는 연다 — 카탈로그 항목으로
+   빈칸(제목·주소·코스 경로)을 채워 화면·저장(problem 메타)에 같이 쓴다. */
+function ctMeta(p,no){
+ var c=CTIDX["CT/"+no];
+ p=p?p:{site:"CT",platform:"코드트리",no:no};
+ if(c) ["title","url","alias","group","kind","origin","level","chapter","chapter_no","lesson",
+        "lesson_no","card","card_no","card_type","ptype","locked"].forEach(function(f){
+   if(p[f]==null&&c[f]!=null) p[f]=c[f]; });
+ if(!p.title) p.title=bestTitle("CT/"+no);
+ p.site="CT"; p.no=String(p.no||no);
+ if(CTPROB[no]) ctFill(p,CTPROB[no]);             /* 이번 세션에 이미 받은 본문(비공개·다시 가져오기) */
+ else if(p.private_content&&!ctHas(p)) p._st="loading";
+ return p;
+}
+/* /prob 응답({problem:{...}, samples:[...]})을 페이지 모델에 합친다 */
+function ctFill(p,j){
+ var pr=(j&&j.problem)||{};
+ ["statement","input_spec","output_spec","constraints","hint","sample_notes"].forEach(function(f){
+  if(pr[f]!=null) p[f]=pr[f]; });
+ if(!p.title&&pr.title) p.title=pr.title;
+ if(j&&j.samples) p.samples=j.samples;
+ p._st="ok";
+}
+/* 코스 경로 — 트레일은 "Novice Low › 1. 출력 › 1. 기본 출력", 기출은 "삼성 SW 역량테스트 › 2025 하반기 오후 1번 문제" */
+function ctPath(p){
+ var g=CTCAT&&CTCAT.G[p.group], a=[];
+ if(g) a.push(g.name||g.key);
+ if(p.origin) a.push(p.origin);
+ else{
+  if(p.chapter) a.push((p.chapter_no!=null?p.chapter_no+". ":"")+p.chapter);
+  if(p.lesson) a.push((p.lesson_no!=null?p.lesson_no+". ":"")+p.lesson);
+ }
+ return a.join(" › ");
+}
+/* 빵부스러기·제목 — 카탈로그가 온 뒤에야 코스·제목을 알 수 있어 따로 다시 그린다 */
+function ctHead(p){
+ var g=CTCAT&&CTCAT.G[p.group], a=['<a href="#problems">문제</a>','코드트리'];
+ if(g) a.push(esc(ctGName(g)));
+ if(p.origin) a.push(esc(ctPeriod(p.origin).period));
+ else if(p.chapter) a.push(esc((p.chapter_no!=null?p.chapter_no+". ":"")+p.chapter));
+ if($("pcrumb")) $("pcrumb").innerHTML=a.join(" › ");
+ var t=p.title||bestTitle("CT/"+p.no);
+ if($("ptitle")) $("ptitle").innerHTML='<span class="b b-CT">CT</span>'+esc(p.no)+(t?'&nbsp; '+esc(t):'');
+}
+function ctRender(p,subs){
+ var lim=p.limits||{}, st=p.stats||{}, last=subs[0];
+ var freq=(p.kind==="frequent")||!!p.origin;
+ var acc=st.accept_rate!=null&&st.accept_rate!==""?String(st.accept_rate).replace(/%$/,"")+"%":"";
+ /* 히든 TC 칸 — 코드트리 공식 데이터가 아니라 우리가 만든 것(tc_generated)이면 그렇다고 적는다 */
+ var tcc=p.private_tc_count?(esc(p.private_tc_count)+'개'+(p.tc_generated
+   ?' <span style="color:var(--wr);font-weight:700">생성 · 공식 아님</span>'
+   :((p.private_testcases||[]).length?' <span style="color:var(--ok)">(수집됨)</span>':''))):"";
+ $("pinfo").innerHTML='<div class="limw"><table class="lim"><thead><tr>'+
+  '<th>시간 제한</th><th>메모리 제한</th><th>난이도</th>'+(acc?'<th>정답률</th>':'')+
+  '<th>제출</th><th>최근 결과</th>'+(tcc?'<th>테스트케이스</th>':'')+
+  '<th>'+(freq?'출처':'트레일')+'</th><th>원문</th></tr></thead><tbody><tr>'+
+  '<td>'+esc(lim.time||"—")+'</td><td>'+esc(lim.memory||"—")+'</td>'+
+  '<td>'+esc(ctLevel(p.level)||"—")+'</td>'+(acc?'<td>'+esc(acc)+'</td>':'')+
+  '<td>'+subs.length+'회</td>'+
+  '<td class="'+rc(last&&last.status)+'">'+esc((last&&last.status)||"—")+'</td>'+
+  (tcc?'<td>'+tcc+'</td>':'')+
+  '<td class="ctpath">'+esc(ctPath(p)||"—")+'</td>'+
+  '<td>'+(p.url?'<a href="'+esc(p.url)+'" target="_blank" rel="noopener">열기 ↗</a>':'—')+'</td>'+
+  '</tr></tbody></table></div>';
+ $("pbody").innerHTML=ctBody(p);
+ ctMath($("pbody"));
+}
+function ctBody(p){
+ var h="", smp=p.samples||[], notes=p.sample_notes||[];
+ if(p.locked) h+='<div class="note">코드트리에서 열람 권한이 없어 수집하지 못한 문제입니다(잠김).</div>';
+ /* 퀴즈 카드(객관식·순서 맞추기) — 예제·제한이 없고 보기는 지문 끝 목록에 붙어 있다.
+    채점 버튼은 probTail 이 숨기고, 여기서는 코드트리에서 풀라고 안내만 한다. */
+ if(p.ptype) h+='<div class="note">&#10067; 퀴즈 문제입니다(<b>'+esc(p.ptype)+'</b>) — 코드 채점이 없어 '+
+   '아카이브에서는 채점하지 않습니다. '+
+   (p.url?'<a href="'+esc(p.url)+'" target="_blank" rel="noopener"><b>코드트리에서 풀기 ↗</b></a>':'코드트리에서 풀어 주세요.')+
+   '<br><span class="hint">푼 결과는 아래 <b>저장 &amp; 커밋</b>(결과만 고르고 메모를 코드 칸에)이나 복기 메모로 남길 수 있습니다.</span></div>';
+ if(!ctHas(p)) h+=p.private_content ? ctPrivNote(p)
+   : '<div class="note">아직 이 문제의 자료가 없습니다. 내 PC의 로컬 허브가 켜져 있으면 '+
+     '<b>문제 다시 가져오기</b>로 받아올 수 있습니다.<br>또는 한 번에: <code>python _meta/crawl_codetree.py</code>'+
+     (p.url?'<br><a href="'+esc(p.url)+'" target="_blank" rel="noopener">원문 열기 ↗</a>':'')+'</div>';
+ if(p.statement)   h+='<div class="sec-h">문제</div><div class="ctmd">'+ctmd(p.statement)+'</div>';
+ if(p.input_spec)  h+='<div class="sec-h">입력</div><div class="ctmd">'+ctmd(p.input_spec)+'</div>';
+ if(p.output_spec) h+='<div class="sec-h">출력</div><div class="ctmd">'+ctmd(p.output_spec)+'</div>';
+ smp.forEach(function(s,i){
+  var nt=notes[i]==null?"":String(notes[i]);
+  h+='<div class="sec-h">예제 '+(i+1)+'</div>'+tcPanel("예제",i+1,s)+
+     (nt.trim()?'<div class="ctmd ctsn">'+ctmd(nt)+'</div>':'');
+ });
+ h+=htcHTML(p);                           /* 기출의 생성 히든 TC(공식 아님) — 백준과 같은 패널 */
+ /* 다른 사이트는 제약이 줄 배열이지만 코드트리는 마크다운 한 덩어리다 — 둘 다 받는다 */
+ var cons=p.constraints; if(cons&&cons.join) cons=cons.join("\n");
+ if(cons&&String(cons).trim()) h+='<div class="sec-h">제한</div><div class="ctmd">'+ctmd(cons)+'</div>';
+ /* 힌트는 풀이 방향을 알려주는 스포일러라 기본 접힘 */
+ if(p.hint&&String(p.hint).trim())
+  h+='<div class="sec-h">힌트</div><details class="nfold"><summary><span class="ar">▶</span>힌트 '+
+     '<span class="sp">스포일러 · 클릭해서 펼치기</span></summary>'+
+     '<div class="ctmd" style="padding:12px 18px 4px">'+ctmd(p.hint)+'</div></details>';
+ return h;
+}
+function ctPrivNote(p){
+ if(!p._st||p._st==="loading")
+  return '<div class="note">허브에서 지문을 불러오는 중…</div>';
+ var why={notoken:"토큰이 설정돼 있지 않아 지문을 불러오지 않았습니다.",
+   nohub:"허브에 연결되지 않았습니다"+(p._err?" ("+esc(p._err)+")":"")+".",
+   auth:"허브 인증에 실패했습니다(401) — 토큰이 맞는지 확인하세요.",
+   notstored:"허브 보관소에 이 문제의 지문이 아직 없습니다. 내 PC 로컬 허브를 켜고 "+
+     "<b>문제 다시 가져오기</b>를 누르면 받아 둡니다.",
+   old:"허브가 지문 보관(<code>/prob</code>)을 아직 모릅니다 — 허브 서버를 최신으로 올려야 합니다.",
+   err:"허브 오류: "+esc(p._err||"원인 불명"),
+   net:"허브 호출 실패: "+esc(p._err||"원인 불명")}[p._st]||"";
+ return '<div class="note">&#128274; 코드트리 지문은 공개 저장소에 올리지 않고 허브에만 보관합니다 — '+
+  '우측 상단 <b>허브 버튼</b>에서 토큰 확인'+
+  (why?'<br><span style="color:var(--fg)">'+why+'</span>':'')+
+  (p.url?'<br><a href="'+esc(p.url)+'" target="_blank" rel="noopener">원문 열기 ↗</a>':'')+
+  '<br><span class="hint">지문이 없어도 코드 저장·커밋·메모는 그대로 됩니다.</span></div>';
+}
+/* 🔒 비공개 모드 문제의 지문·예제를 허브에서 받아 다시 그린다.
+   공개 모드(본문이 JSON 에 있음)이거나 이미 받았으면(세션 캐시·다시 가져오기) 건너뛴다. */
+async function ctStatement(no){
+ var p=CUR.prob;
+ if(!p||CUR.site!=="CT"||CUR.no!==no) return;
+ if(!p.private_content||ctHas(p)) return;
+ if(p._st!=="loading"){ p._st="loading"; renderProblem(p,"CT",no); }
+ var r=await ctProb(no);
+ if(CUR.site!=="CT"||CUR.no!==no||CUR.prob!==p) return;     /* 그새 다른 문제로 */
+ if(r.ok){ CTPROB[no]=r.j; ctFill(p,r.j); }
+ else { p._st=r.why; p._err=r.error||""; }
+ renderProblem(p,"CT",no);
+}
+/* POST /prob — 클라우드 먼저, 없으면 로컬(아직 sync_tc 로 안 올린 보관본이 내 PC 에만 있을 수 있다).
+   실패 사유가 여럿이면 가장 쓸모 있는 것을 고른다: 보관 안 됨 > 오류 > 옛 허브 > 인증 > 통신. */
+async function ctProb(no){
+ await hubReady();
+ if(!TOK) return {why:"notoken"};
+ var hs=[CLOUD,LOCAL].filter(function(h){ return h&&h.ok; });
+ if(!hs.length) return {why:"nohub",error:LASTERR};
+ var rank={notstored:5,err:4,old:3,auth:2,net:1}, best={why:"net",error:""}, i, r, j;
+ function note(x){ if((rank[x.why]||0)>(rank[best.why]||0)) best=x; }
+ for(i=0;i<hs.length;i++){
+  try{
+   r=await fetch(hs[i].url+"/prob",{method:"POST",headers:H(),body:JSON.stringify({site:"CT",no:no})});
+   if(r.status===401){ note({why:"auth"}); continue; }
+   if(r.status===404){ note({why:"old"}); continue; }         /* /prob 가 없는 옛 허브 */
+   j=await r.json();
+   if(j&&j.ok&&j.stored) return {ok:true,j:j};
+   if(j&&j.ok) note({why:"notstored"});
+   else note({why:"err",error:(j&&j.error)||("HTTP "+r.status)});
+  }catch(e){ note({why:"net",error:(e&&e.message)||String(e)}); }
+ }
+ return best;
+}
+/* 저장용 사본. 화면용 내부 값(_로 시작)과 CT_NEVER 는 늘 뺀다. 공개 모드면 나머지는 백준·SWEA
+   처럼 그대로(허브가 풀이 헤더에 지문·예제를 넣는다). 🔒 비공개 모드면 본문 필드까지 빼고
+   개수·길이만 남긴다(계약 4-2). */
+function ctPublic(p,priv){
+ if(!p) return p;
+ var o={};
+ Object.keys(p).forEach(function(k){
+  if(k.charAt(0)==="_"||CT_NEVER.indexOf(k)>=0) return;
+  if(priv&&CT_PRIV.indexOf(k)>=0) return;
+  o[k]=p[k];
+ });
+ o.site="CT";
+ if(priv){
+  o.private_content=true;
+  if((p.samples||[]).length) o.sample_count=p.samples.length;
+  if(p.statement) o.statement_len=String(p.statement).length;
+ }
+ return o;
+}
+/* 채점 결과에서 케이스별 상세(예제 기대 출력이 그대로 들어 있다)를 뺀 사본.
+   허브는 요약만 기록하지만, 비공개 문제는 애초에 안 보낸다. */
+function ctVerdict(v){
+ if(!v) return v;
+ var o={}; Object.keys(v).forEach(function(k){ if(k!=="detail") o[k]=v[k]; });
+ return o;
+}
+
+/* ════════ 코드트리 지문 — 마크다운 + 수식 ════════
+   원문은 마크다운이다(문단·목록·표·코드·그림, $N \times N$ 같은 TeX 수식).
+   안전이 먼저다: 원문을 **전부 esc() 한 뒤** 아는 표식만 태그로 바꾼다. 원문 속 HTML 은
+   실제로 쓰인 네 가지(<p align>·<img>·<br>·<hr>)만 허용 목록으로 되살리고(⑥), 마크다운
+   링크·그림 주소는 http(s) 만 받는다(javascript: 차단).
+   코드·수식은 안의 * _ $ | < 가 서식·태그로 먹히지 않게 맨 먼저 떼어 두고 마지막에 되돌린다.
+   md()(복기 메모용)는 한 줄 = 한 문단이고 표·그림·수식이 없어 따로 둔다. */
+function ctmd(src){
+ var S=[];                                   /* 떼어 둔 조각 {h:HTML, t:글자, b:블록} */
+ function keep(h,t,b){ S.push({h:h,t:t,b:!!b}); return "\uE000"+(S.length-1)+"\uE001"; }
+ function plain(x){ return x.replace(/\uE000(\d+)\uE001/g,function(_,n){ return esc(S[+n].t); }); }
+ var s=String(src==null?"":src).replace(/\r\n?/g,"\n").replace(/[\uE000-\uE003]/g,"");
+
+ /* ① 코드펜스 — 줄 단위로 찾는다. 닫는 줄이 없으면 끝까지 코드로 본다 */
+ var L=s.split("\n"), o=[], i=0;
+ while(i<L.length){
+  var f=L[i].match(/^\s*(`{3,}|~{3,})\s*([\w+#.-]*)/);
+  if(!f){ o.push(L[i++]); continue; }
+  var close=new RegExp("^\\s*\\"+f[1].charAt(0)+"{"+f[1].length+",}\\s*$"), buf=[];
+  i++;
+  while(i<L.length&&!close.test(L[i])) buf.push(L[i++]);
+  i++;
+  var raw=buf.join("\n");
+  o.push(keep('<pre><code>'+(/^(py|python|python3)$/i.test(f[2])?hlOnly(raw):esc(raw))+'</code></pre>',raw,true));
+ }
+ s=o.join("\n");
+ /* ② 인라인 코드 */
+ s=s.replace(/``([^\n]+?)``|`([^`\n]+)`/g,function(_,a,b){ var c=a!=null?a:b;
+      return keep('<code>'+esc(c)+'</code>',c); });
+ /* ③ 블록 수식 $$…$$ ④ \$ (그냥 달러) ⑤ 인라인 수식 $…$ */
+ s=s.replace(/\$\$([\s\S]+?)\$\$/g,function(_,t){ return keep(ctMathHTML(t,true),t,true); })
+    .replace(/\\\$/g,function(){ return keep("$","$"); })
+    .replace(/\$((?:\\[\s\S]|[^\\$])+?)\$/g,function(m,t){
+      if(!t.trim()||/\n\s*\n/.test(t)) return m;            /* 빈 수식·문단을 넘는 것은 수식이 아니다 */
+      return keep(ctMathHTML(t,false),t); });
+ /* ⑥ 원문 HTML — 실제 지문 1,451개 중 88개가 그림을 마크다운 대신 HTML 로 넣었다.
+    쓰인 태그는 <p align='center'>…</p>(1,088회) · <img src=… width=… height=… style=…>(575회) ·
+    <br>(158회) · <hr/>(1회) 뿐이라 이것만 허용 목록으로 되살린다. 코드·수식은 이미 떼어 냈으므로
+    그 안의 것은 여기 안 걸린다. 나머지 <…>(예: 본문의 "<Figure 3>", "a < b")는 ⑦에서 글자가 된다.
+    - img: 주소가 https://contents.codetree.ai/ 로 시작할 때만. 폭·높이는 숫자만, style·on* 은 버리고
+      우리 <img> 로 다시 만든다(클릭 확대). 조건이 안 맞으면 태그를 글자 그대로 둔다.
+    - p: align(center/left/right)만 살린 블록 틀. </p> 가 없으면 그 문단 끝(빈 줄)에서 닫는다. */
+ s=s.replace(/<img\b([^>]*)>/gi,function(m,a){
+      /* 닫는 따옴표가 빠진 값도 받는다 — 실제 지문(f5)에 src="…png> 처럼 끝 따옴표 없는 그림이 있다 */
+      var at={}, re=/([a-zA-Z-]+)\s*=\s*(?:"([^"]*)"?|'([^']*)'?|([^\s"'>]+))/g, x;
+      while((x=re.exec(a))) at[x[1].toLowerCase()]=x[2]!=null?x[2]:x[3]!=null?x[3]:x[4];
+      var src=unesc(String(at.src||"").trim());
+      if(!/^https:\/\/contents\.codetree\.ai\/[^\s"'<>]*$/.test(src)) return m;
+      var w=/^\d{1,4}$/.test(at.width||"")?at.width:"", hh=/^\d{1,4}$/.test(at.height||"")?at.height:"";
+      var alt=unesc(String(at.alt||"그림"));
+      return keep('<img src="'+esc(src)+'" alt="'+esc(alt)+'"'+(w?' width="'+w+'"':'')+(hh?' height="'+hh+'"':'')+
+                  ' loading="lazy" referrerpolicy="no-referrer" onclick="openImg(this.src)">',alt); });
+ for(var pg=0;pg<3&&/<p\b/i.test(s);pg++)        /* 겹친 <p> 는 한 번 더 돈다 */
+  s=s.replace(/<p\b([^>]*)>([\s\S]*?)(?:<\/p\s*>|(?=\n[ \t]*\n)|$)/gi,function(m,a,inner){
+      var al=(a.match(/\balign\s*=\s*["']?(center|left|right)\b/i)||[])[1];
+      return "\n"+keep('<div class="al'+(al?" al-"+al.toLowerCase():"")+'">',"",true)+"\n"+inner+
+             "\n"+keep("</div>","",true)+"\n"; });
+ s=s.replace(/<\/p\s*>/gi,"");                   /* 짝 없는 </p> */
+ /* ⑦ 나머지는 전부 이스케이프 — 여기서부터 원문 속 < > " 는 글자일 뿐이다 */
+ s=esc(s);
+
+ /* 그림·링크는 만든 태그를 바로 조각으로 떼어 둔다 — 주소의 _ * ~ 가 뒤의 강조 규칙에 먹히지 않게 */
+ function inl(t){
+  return fmt(t
+   .replace(/!\[([^\]]*)\]\((https?:\/\/[^\s)]+)(?:\s+&quot;[\s\S]*?&quot;)?\)/g,function(_,a,u){
+     return keep('<img src="'+plain(u)+'" alt="'+plain(a)+'" loading="lazy" referrerpolicy="no-referrer" '+
+                 'onclick="openImg(this.src)">',unesc(plain(a))); })
+   .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)(?:\s+&quot;[\s\S]*?&quot;)?\)/g,function(_,a,u){
+     return keep('<a href="'+plain(u)+'" target="_blank" rel="noopener noreferrer">'+fmt(a)+'</a>',
+                 unesc(plain(a))); }));
+ }
+ function fmt(t){
+  return t
+   .replace(/\*\*(?=\S)([\s\S]*?\S)\*\*/g,"<b>$1</b>")
+   .replace(/(^|[^\w])__(?=\S)([\s\S]*?\S)__(?!\w)/g,"$1<b>$2</b>")
+   .replace(/(^|[^\w*])\*([^\s*](?:[^*\n]*?[^\s*])?)\*(?![\w*])/g,"$1<i>$2</i>")
+   .replace(/~~(?=\S)([\s\S]*?\S)~~/g,"<s>$1</s>")
+   /* 원문 HTML 중 속성 없는 줄바꿈·가로줄만 되살린다(⑥의 허용 목록 — 속성이 없으니 스크립트가 못 붙는다).
+      실제 지문에 </br> 로 잘못 쓴 줄바꿈이 있다(브라우저도 <br> 로 다룬다) — 그것도 받는다. */
+   .replace(/&lt;\/?br\s*\/?&gt;/gi,"<br>").replace(/&lt;hr\s*\/?&gt;/gi,"<hr>")
+   .replace(/&amp;(nbsp|lt|gt|amp|quot|#\d{1,6}|#x[0-9a-fA-F]{1,6});/g,"&$1;");
+ }
+ function cells(x){
+  x=x.trim().replace(/\\\|/g,function(){ return keep("|","|"); });
+  if(x.charAt(0)==="|") x=x.slice(1);
+  if(x.charAt(x.length-1)==="|") x=x.slice(0,-1);
+  return x.split("|").map(function(c){ return c.trim(); });
+ }
+ function isSep(x){
+  return x.indexOf("|")>=0&&/^\s*\|?(\s*:?-+:?\s*\|)*\s*:?-+:?\s*\|?\s*$/.test(x);
+ }
+ function cell(tag,c,a){
+  return "<"+tag+(a?' style="text-align:'+a+'"':"")+">"+inl(c||"")+"</"+tag+">";
+ }
+ var LI=/^(\s*)([-*+]|\d{1,9}[.)])\s+(.*)$/;
+ /* 목록 — 들여쓰기로 중첩을 따라간다. 항목 사이 빈 줄(느슨한 목록)은 같은 목록으로 잇는다.
+    실제 코드트리 지문은 "1. 단계" 다음에 빈 줄을 두고 "- 설명" 을 적는 꼴이 많다. */
+ function list(L,i){
+  var h="", st=[], lastb=false;          /* lastb: 바로 앞에 붙인 것이 블록 조각이었나 */
+  while(i<L.length){
+   var ln=L[i], m=ln.match(LI);
+   if(!m){
+    if(!ln.trim()){
+     var j=i+1; while(j<L.length&&!L[j].trim()) j++;
+     if(j<L.length&&(LI.test(L[j])||/^\s{2,}\S/.test(L[j]))){ i=j; continue; }
+     break;
+    }
+    /* 이어지는 줄(들여썼거나, 빈 줄 없이 바로 붙은 줄)은 지금 항목에 붙인다.
+       블록 조각(가운데 정렬 틀·코드블록·블록 수식) 앞뒤에는 <br> 을 넣지 않는다 — 빈 줄처럼 벌어진다. */
+    if(/^\s{0,3}(#{1,6}\s|&gt;)/.test(ln)||(ln.indexOf("|")>=0&&i+1<L.length&&isSep(L[i+1]))) break;
+    var tl=ln.trim(), bk=/^\uE000(\d+)\uE001$/.exec(tl);
+    bk=!!(bk&&S[+bk[1]].b);
+    h+=((bk||lastb)?"":"<br>")+inl(tl); lastb=bk; i++; continue;
+   }
+   var ind=m[1].replace(/\t/g,"    ").length, typ=/^\d/.test(m[2])?"ol":"ul";
+   while(st.length&&ind<st[st.length-1].ind) h+="</li></"+st.pop().typ+">";
+   var top=st[st.length-1];
+   if(top&&ind===top.ind&&top.typ!==typ){ h+="</li></"+st.pop().typ+">"; top=st[st.length-1]; }
+   if(top&&ind===top.ind) h+="</li>";
+   else{
+    var n0=parseInt(m[2],10);
+    h+=(typ==="ol"&&n0!==1?'<ol start="'+n0+'">':"<"+typ+">");
+    st.push({ind:ind,typ:typ});
+   }
+   h+="<li>"+inl(m[3]); lastb=false; i++;
+  }
+  while(st.length) h+="</li></"+st.pop().typ+">";
+  return {h:h,i:i};
+ }
+ function blocks(L){
+  var o=[], para=[], i=0, m;
+  function flush(){ if(para.length){ o.push("<p>"+para.map(inl).join("<br>")+"</p>"); para=[]; } }
+  while(i<L.length){
+   var ln=L[i];
+   if(!ln.trim()){ flush(); i++; continue; }
+   m=ln.match(/^\s*\uE000(\d+)\uE001\s*$/);
+   if(m&&S[+m[1]].b){ flush(); o.push(ln.trim()); i++; continue; }      /* 코드블록·블록 수식 */
+   m=ln.match(/^\s{0,3}(#{1,6})\s+(.*?)\s*#*\s*$/);
+   if(m){ flush(); var lv=Math.min(m[1].length+2,6);
+          o.push('<h'+lv+' class="cth">'+inl(m[2])+'</h'+lv+'>'); i++; continue; }
+   if(/^\s{0,3}([-*_])(\s*\1){2,}\s*$/.test(ln)){ flush(); o.push("<hr>"); i++; continue; }
+   if(/^\s{0,3}&gt;/.test(ln)){
+    flush(); var q=[];
+    while(i<L.length&&/^\s{0,3}&gt;/.test(L[i])) q.push(L[i++].replace(/^\s{0,3}&gt;\s?/,""));
+    o.push("<blockquote>"+blocks(q)+"</blockquote>"); continue;
+   }
+   if(ln.indexOf("|")>=0&&i+1<L.length&&isSep(L[i+1])){
+    flush();
+    var hd=cells(ln), al=cells(L[i+1]).map(function(c){
+      var a=/^:/.test(c), b=/:$/.test(c); return a&&b?"center":b?"right":a?"left":""; });
+    var rows=[]; i+=2;
+    while(i<L.length&&L[i].trim()&&L[i].indexOf("|")>=0) rows.push(cells(L[i++]));
+    o.push('<div class="cttw"><table><thead><tr>'+hd.map(function(c,k){ return cell("th",c,al[k]); }).join("")+
+      '</tr></thead><tbody>'+rows.map(function(r){
+        var t=[]; for(var k=0;k<hd.length;k++) t.push(cell("td",r[k],al[k]));
+        return "<tr>"+t.join("")+"</tr>"; }).join("")+'</tbody></table></div>');
+    continue;
+   }
+   if(LI.test(ln)){ flush(); var r=list(L,i); o.push(r.h); i=r.i; continue; }
+   para.push(ln); i++;
+  }
+  flush();
+  return o.join("");
+ }
+ /* ⑦ 떼어 둔 조각을 되돌린다. 링크 글자 안에 코드·수식이 있으면 조각 안에 조각이 있어 몇 번 돈다 */
+ var out=blocks(s.split("\n")), guard=0;
+ while(/\uE000\d+\uE001/.test(out)&&guard++<4)
+  out=out.replace(/\uE000(\d+)\uE001/g,function(_,n){ var k=S[+n]; return k?k.h:""; });
+ return out;
+}
+
+/* 수식 한 조각. KaTeX 를 받기 전(또는 못 받았을 때)에는 기호만 바꾼 원문(texLite)이 보이고,
+   원문 TeX 는 data-tex 에 남겨 두었다가 KaTeX 가 오면 그 자리를 다시 그린다. */
+function ctMathHTML(t,disp){
+ return '<span class="ctm'+(disp?" dsp":"")+'" data-tex="'+esc(t)+'" title="'+esc(String(t).trim())+'">'+
+        texLite(t)+'</span>';
+}
+var TEXSYM={times:"×",le:"≤",leq:"≤",ge:"≥",geq:"≥",ne:"≠",neq:"≠",lt:"&lt;",gt:"&gt;",cdot:"·",
+ cdots:"⋯",ldots:"…",dots:"…",vdots:"⋮",infty:"∞",pm:"±",to:"→",rightarrow:"→",leftarrow:"←",
+ Rightarrow:"⇒",leftrightarrow:"↔",sum:"∑",prod:"∏",lfloor:"⌊",rfloor:"⌋",lceil:"⌈",rceil:"⌉",
+ alpha:"α",beta:"β",gamma:"γ",delta:"δ",Delta:"Δ",epsilon:"ε",theta:"θ",lambda:"λ",mu:"μ",pi:"π",
+ sigma:"σ",phi:"φ",omega:"ω","in":"∈",notin:"∉",cup:"∪",cap:"∩",subset:"⊂",subseteq:"⊆",
+ forall:"∀",exists:"∃",mid:"∣",vert:"|",lvert:"|",rvert:"|",approx:"≈",equiv:"≡",sim:"∼",
+ circ:"∘",mod:"mod",bmod:"mod",pmod:"mod",log:"log",max:"max",min:"min",gcd:"gcd",
+ quad:" ",qquad:"  ",left:"",right:"",displaystyle:"",lbrace:"{",rbrace:"}"};
+function texLite(t){
+ var s=esc(String(t==null?"":t).trim()).replace(/\\\{/g,"\uE002").replace(/\\\}/g,"\uE003");
+ s=s.replace(/\\(?:text|mathrm|textrm|textbf|mathbf|mathit|operatorname)\s*\{([^{}]*)\}/g,"$1")
+    .replace(/\\[dt]?frac\s*\{([^{}]*)\}\s*\{([^{}]*)\}/g,"($1)/($2)")
+    .replace(/\\sqrt\s*\{([^{}]*)\}/g,"√($1)")
+    .replace(/\\([A-Za-z]+)/g,function(m,w){ return TEXSYM.hasOwnProperty(w)?TEXSYM[w]:m; })
+    .replace(/\\\\/g," ").replace(/\\[,;:! ]/g," ").replace(/\\([$%&#_])/g,"$1")
+    .replace(/\^\{([^{}]*)\}/g,"<sup>$1</sup>").replace(/\^([A-Za-z0-9])/g,"<sup>$1</sup>")
+    .replace(/_\{([^{}]*)\}/g,"<sub>$1</sub>").replace(/_([A-Za-z0-9])/g,"<sub>$1</sub>")
+    .replace(/[{}]/g,"");
+ return s.replace(/\uE002/g,"{").replace(/\uE003/g,"}");
+}
+/* KaTeX — 코드트리 페이지에 수식이 있을 때만 받는다(다른 화면 무게는 그대로).
+   사내망에서 CDN 이 막히면 texLite 로 바꿔 둔 원문이 그대로 남는다(읽을 수는 있다).
+   실패하면 프라미스를 비워 다음 페이지에서 다시 시도한다. */
+/* 🔑 integrity(SRI) 를 꼭 건다. 이 페이지 localStorage 에는 허브 토큰(= VM 에서 코드를
+   돌리는 권한)이 있어서, CDN 파일이 바뀌어 들어오면 그대로 토큰이 샌다. 해시는 0.16.11
+   배포본 그대로라(버전을 고정했으니 안 바뀐다) 어긋나면 브라우저가 실행을 거부하고
+   texLite 원문이 남는다. 버전을 올리면 두 해시도 같이 바꿀 것. */
+var KTX="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/", KTXP=null, KTXCSS=false;
+var KTXSRI={js:"sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg",
+            css:"sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+"};
+function katexLoad(){
+ if(window.katex) return Promise.resolve(window.katex);
+ if(KTXP) return KTXP;
+ KTXP=new Promise(function(ok,no){
+  if(!KTXCSS){ KTXCSS=true;
+   var l=document.createElement("link");
+   l.rel="stylesheet"; l.href=KTX+"katex.min.css"; l.crossOrigin="anonymous"; l.integrity=KTXSRI.css;
+   document.head.appendChild(l); }
+  var sc=document.createElement("script");
+  sc.src=KTX+"katex.min.js"; sc.crossOrigin="anonymous"; sc.integrity=KTXSRI.js; sc.async=true;
+  var t=setTimeout(function(){ no(new Error("시간 초과")); },10000);
+  sc.onload=function(){ clearTimeout(t); if(window.katex) ok(window.katex); else no(new Error("katex 없음")); };
+  sc.onerror=function(){ clearTimeout(t); no(new Error("불러오기 실패")); };
+  document.head.appendChild(sc);
+ });
+ KTXP.catch(function(){ KTXP=null; });
+ return KTXP;
+}
+function ctMath(root){
+ if(!root||!root.querySelector(".ctm:not(.ktx)")) return;
+ katexLoad().then(function(k){
+  Array.prototype.forEach.call(root.querySelectorAll(".ctm:not(.ktx)"),function(el){
+   try{
+    k.render(el.getAttribute("data-tex")||"",el,
+             {displayMode:el.classList.contains("dsp"),throwOnError:false});
+    el.classList.add("ktx"); el.removeAttribute("title");
+   }catch(e){}
+  });
+ },function(){});
 }
 
 /* 소스코드 초기화 — 에디터를 '원본'으로 되돌린다.
@@ -2339,6 +3146,10 @@ function mergeB(p, user){
 }
 
 /* ════════ 허브 액션 ════════ */
+/* 커밋 결과 한 줄. 훅(공개 금지 검사)이 막으면 허브가 commitError 에 이유를 싣는다 —
+   예전엔 "변경 없음"으로만 보여서 커밋이 막힌 걸 몰랐다. */
+function cmsg(j){ return j.committed ? "완료"
+ : (j.commitError ? "실패 — "+esc(String(j.commitError).slice(-300)) : "변경 없음"); }
 function say(html,cls){var v=$("pv");v.className="vd "+(cls||"info");v.style.display="block";v.innerHTML=html;}
 function needHub(w){
  var h=hubFor(w); if(h)return h;
@@ -2364,9 +3175,23 @@ async function doFetch(){
     (j.needsLocal?"<div class='d'>내 PC에서:\npython judge/server.py</div>":""),"ng");
   if(!j.problem.statement && !(j.problem.samples||[]).length)
    return say("가져왔지만 내용이 비어 있습니다. 사이트·번호가 맞는지 확인하세요.","ng");
-  renderProblem(j.problem,CUR.site,CUR.no);
+  var np=j.problem, ct=(CUR.site==="CT"), priv=false;
+  if(ct){
+   /* 허브 /fetch 는 지문까지 통째로 돌려준다(보관소에도 넣는다). 화면에는 그대로 그리고
+      이 탭의 캐시만 갈아 끼운다. 🔒 보던 문제가 비공개였으면 그 표시를 이어받는다 —
+      응답에 플래그가 빠져 있어도 저장 경로(ctPublic)가 본문을 거르게. */
+   priv=!!(np.private_content||(CUR.prob&&CUR.prob.private_content));
+   CTPROB[CUR.no]={problem:np,samples:np.samples||[]};
+   np=ctMeta(np,CUR.no);
+   if(priv) np.private_content=true;
+   ctHead(np);
+  }
+  renderProblem(np,CUR.site,CUR.no);
+  var sl=syncLine(j);
   say("✅ 불러왔습니다 — 지문 "+(j.problem.statement||"").length+"자 · 예제 "+
-      ((j.problem.samples||[]).length)+"개","ok");
+      ((j.problem.samples||[]).length)+"개"+
+      (priv?" <span class='hint'>· 🔒 지문·예제는 허브 보관소에만 둡니다(공개 repo 에는 메타데이터만)</span>":"")+
+      (sl?"<br><span style='color:"+(j.synced?"var(--sub)":"var(--no)")+"'>"+esc(sl)+"</span>":""),"ok");
  }catch(e){say("오류: "+esc(e.message),"ng");}
 }
 /* 문제의 시간 제한(초). 허브가 Python 보정으로 ×3+2 를 더 준다. */
@@ -2375,6 +3200,9 @@ async function doFetch(){
 function probTL(){
  var L=((CUR.prob||{}).limits)||{};
  if(L.time_sec>0) return L.time_sec;
+ /* 코드트리 표기는 "Python3 1초 · C++ 0.5초" — 첫 숫자를 잡으면 'Python3' 의 3 이 걸린다 */
+ var mc=CUR.site==="CT"&&String(L.time||"").match(/Python3?\s*([\d.]+)\s*초/);
+ if(mc) return parseFloat(mc[1]);
  var m=String(L.time||"").match(/([\d.]+)/);
  var v=m?parseFloat(m[1]):0;
  return (v>0&&v<=20)?v:2;
@@ -2745,6 +3573,9 @@ async function doExec(){
 }
 
 async function doJudge(){
+ /* 코드트리 퀴즈 카드(ptype)는 코드 채점이 없다 — 버튼은 숨겼지만 Ctrl+Enter 로도 들어온다 */
+ if(CUR.site==="CT"&&(CUR.prob||{}).ptype)
+  return say("퀴즈 문제는 채점하지 않습니다 — 코드트리에서 풀어 주세요.","info");
  await hubReady();
  var h=needHub("judge"); if(!h)return;
  var code=$("ed").value;
@@ -2761,10 +3592,18 @@ async function doJudge(){
     보기용만 두고, 채점은 서버가 보관한 전체본으로 한다. 브라우저는 아무것도 안 올린다. */
  /* SWEA B형(Pro)은 예제 자체가 25케이스 묶음이라 8MB 를 넘는다. repo 에는 앞부분만
     두고 tc_stored 를 세워 두었으므로, 이 경우도 서버 보관본으로 채점한다. */
- var useStored = !!P.tc_stored ||
+ /* 코드트리 — 화면 모델에 예제가 있으면(공개 모드 JSON, 비공개 모드면 /prob 로 받은 것)
+    백준처럼 케이스를 직접 보낸다. 없을 때만(🔒 비공개인데 본문을 못 받은 경우 등)
+    서버 보관본(useStoredTC)으로 채점한다. */
+ var isCT=(CUR.site==="CT");
+ var useStored = (isCT && !pub.length) || !!P.tc_stored ||
    (useH && !!(P.private_tc_omitted || (P.private_tc_count||0) > hid.length));
  if(!cases.length && !useStored)
    return say("예제가 없어 채점할 수 없습니다. 먼저 문제 자료를 가져오세요.","ng");
+ /* 코드트리 기출의 생성 히든 TC — 코드트리 공식 채점 데이터가 아니다. 진행 문구·결과에 그걸 적는다.
+    (genUsed: 이번 채점에 생성 TC 가 실제로 들어갔는가 — 체크를 끄면 예제만이라 안 붙인다) */
+ var gen=!!P.tc_generated;
+ var genUsed=gen && (hid.length>0 || (useStored && useH && (P.private_tc_count||0)>0));
  var sf=(h.info&&h.info.speedFactor)||1;
  var pm=(h.info&&h.info.pyMult)||2, pa=(h.info&&h.info.pyAdd)||0;
  var nm=parseFloat(($("tmar")||{}).value);
@@ -2773,8 +3612,10 @@ async function doJudge(){
  /* 언어별 제한이 명시된 문제라도 그 값은 그 사이트 채점기 기준이라, 이 VM 에서는
     여유(nativeMargin)를 곱한다 — 서버의 allowed_time 과 같은 식이다. */
  var allow=(la?probTL()*nm:(probTL()*pm+pa))*sf;
- say("채점 중… "+(useStored?("서버 보관 전체 TC ("+(P.private_tc_count||"?")+"개)")
-       :(cases.length+"케이스"+(hid.length?" (예제 "+pub.length+" + 히든 "+hid.length+")":"")))+
+ say("채점 중… "+((isCT&&useStored&&!(useH&&P.private_tc_count))?("서버 보관 예제 "+(P.sample_count||"?")+"개")
+       :useStored?("서버 보관 전체 TC ("+(P.private_tc_count||"?")+"개"+(gen?" · 생성 TC, 공식 아님":"")+")")
+       :(cases.length+"케이스"+(hid.length?" (예제 "+pub.length+" + "+(gen?"생성 히든 ":"히든 ")+hid.length+
+                                  (gen?" · 공식 아님":"")+")":"")))+
      " · 제한 "+probTL()+"초 → 허용 "+allow.toFixed(1)+"초"+
      (la?" (Python 기준 명시 x"+nm+" 여유 · 기기보정 x"+sf.toFixed(2)+")"
         :" (x"+pm+"+"+pa+" · 기기보정 x"+sf.toFixed(2)+")"));
@@ -2785,10 +3626,25 @@ async function doJudge(){
     publicTestCaseCount:pub.length,timeLimit:probTL(),
     langAdjusted:probLangAdjusted(),timeMargin:nm})});
   if(r.status===401)return say("인증 실패 — 허브 버튼에서 토큰을 확인하세요.","ng");
-  var j=await r.json(); CUR.verdict=j;
+  var j=await r.json()||{};
+  /* 허브가 채점 자체를 못 한 경우(케이스 0개 = no_testcases, 서버 오류 등). 판정이 아니므로
+     메모 상태(nst)를 '틀림'으로 돌리지 않고, 저장에 실릴 CUR.verdict 도 비운다.
+     예전 허브는 보관본이 없으면 '맞았습니다 0/0' 을 돌려줬다 — 코드트리는 그것도 같은 뜻으로 본다
+     (그대로 두면 채점 안 된 코드가 품으로 저장될 수 있다). */
+  var nocase=(isCT && j.summary && !j.summary.total && j.verdict!=="compile_error");
+  if(j.ok===false || nocase){
+   CUR.verdict=null;
+   var why=j.ok===false ? esc(j.error||j.verdict||"원인 불명")
+                        : "허브에 이 문제의 예제가 없습니다.";
+   return say("⚠️ 채점하지 못했습니다 — "+why+
+     ((isCT&&(nocase||j.verdict==="no_testcases"))
+       ?"<div class='d'>이 코드트리 문제의 예제를 아직 못 받았습니다. 내 PC 로컬 허브를 켜고 "+
+        "'문제 다시 가져오기'로 받아 두세요.</div>":""),"ng");
+  }
+  CUR.verdict=j;
   var s=j.summary||{}, ok=j.verdict==="accepted";
   var d=(j.detail||[]).filter(function(x){return x.status!=="passed";}).slice(0,3).map(function(x){
-   return "#"+(x.index+1)+(x.kind==="private"?"(히든)":"")+"  "+x.status+
+   return "#"+(x.index+1)+(x.kind==="private"?(gen?"(생성 히든)":"(히든)"):"")+"  "+x.status+
     (x.expected!=null?"\n  기대 ▸ "+x.expected+"\n  실제 ▸ "+x.got:"")+
     (x.stderr?"\n  "+x.stderr.split("\n").slice(-3).join("\n  "):"");}).join("\n\n");
   /* 백준과 같은 표기 — 시간 제한은 '케이스마다' 걸리므로 합계가 아니라
@@ -2821,6 +3677,8 @@ async function doJudge(){
   }else{ tstr=j.elapsedSec+"초"; }
   say((ok?"✅ <b>맞았습니다</b>":"❌ <b>"+esc(j.verdict)+"</b>")+
       " &nbsp; "+s.passed+"/"+s.total+" &nbsp;·&nbsp; "+tstr+
+      (genUsed?"<div class='hint' style='margin-top:6px'>※ <b>생성 히든 TC(공식 아님)</b> 를 넣어 채점한 결과입니다 — "+
+               "여기서 통과해도 코드트리 공식 채점 통과와 같지 않습니다.</div>":"")+
       (d?"<div class='d'>"+esc(d)+"</div>":""), ok?"ok":"ng");
   if(ok){ $("pst").value="품"; }
   else{                          /* 틀렸으면 메모 상태를 맞춰주고 입력창으로 보낸다 */
@@ -2840,11 +3698,18 @@ async function doSave(){
     구분선과 함께 그대로 보이고, 그 파일 하나로 다시 돌려볼 수도 있다. */
  if((CUR.prob||{}).api_style && (CUR.prob||{}).template) code=mergeB(CUR.prob, code);
  say("저장 중…");
+ /* 코드트리 — 화면용 내부 값은 늘 빼고, 🔒 비공개 모드(private_content)면 지문·예제·제약·힌트까지
+    빼고 메타데이터만 보낸다(허브가 한 번 더 거르지만 공개 repo 로 가는 길이라 여기서부터 막는다).
+    그때는 채점 상세도 예제 기대 출력을 담고 있어 뺀다. 공개 모드는 백준·SWEA 와 같다. */
+ var isCT=(CUR.site==="CT"), priv=isCT&&!!(CUR.prob||{}).private_content;
  try{
   var r=await fetch(h.url+"/save",{method:"POST",headers:H(),
-   body:JSON.stringify({site:CUR.site,no:CUR.no,title:bestTitle(CUR.site+"/"+CUR.no),
+   body:JSON.stringify({site:CUR.site,no:CUR.no,
+    /* 코드트리는 색인에 제목을 안 박는다 — 카탈로그를 못 받았으면 문제 JSON 의 제목으로 */
+    title:bestTitle(CUR.site+"/"+CUR.no)||(CUR.prob||{}).title||"",
     url:(CUR.prob||{}).url||"",code:code,status:$("pst").value,date:$("pd").value,
-    problem:CUR.prob,verdict:CUR.verdict})});
+    problem:isCT?ctPublic(CUR.prob,priv):CUR.prob,
+    verdict:priv?ctVerdict(CUR.verdict):CUR.verdict})});
   if(r.status===401)return say("인증 실패 — 허브 버튼에서 토큰을 확인하세요.","ng");
   var j=await r.json();
   if(!j.ok)return say("실패: "+esc(j.error),"ng");
@@ -2879,7 +3744,7 @@ async function doSave(){
   renderProblem(CUR.prob,CUR.site,CUR.no);        /* 제출 이력 즉시 갱신 */
 
   say((j.pushed?"✅ 저장 + 푸시 완료":"⚠️ 저장은 됐지만 푸시 실패")+" <code>"+esc(j.file)+"</code>"+
-      "<div class='d'>commit "+(j.committed?"완료":"변경 없음")+
+      "<div class='d'>commit "+cmsg(j)+
       "  ·  push "+(j.pushed?"완료":"실패")+
       (j.pushed ? "\n\nGitHub Pages 배포에 1~2분 걸립니다. 새로고침하면 반영됩니다."
                 : "\n\n"+esc(j.pushError||"원인 불명")+
@@ -2962,6 +3827,27 @@ _DARK = (
 TEMPLATE = TEMPLATE.replace("__DARKVARS__", _DARK)
 
 
+def _slim_probs(probs):
+    """index.html 에 박을 문제 색인 — 코드트리 항목은 존재·메모·비공개 표시만 남긴다.
+
+    코드트리는 1,451문제라 색인을 통째로 박으면 index.html 이 320KB 늘어난다
+    (실데이터 실측: 554KB → 932KB). 대시보드가 코드트리 항목에서 쓰는 건 '있다'(자료 아이콘·
+    필터)·note·priv 뿐이고, 제목은 카탈로그(codetree_list.json)에, 경로는
+    problems/codetree/<no>.json 으로 정해져 있다. 색인 파일(problems/index.json) 자체는 그대로다.
+    """
+    if not probs or not isinstance(probs.get("items"), dict):
+        return probs
+    items = {}
+    for k, v in probs["items"].items():
+        if k.startswith("CT/") and isinstance(v, dict):
+            items[k] = {f: v[f] for f in ("note", "priv") if v.get(f)}
+        else:
+            items[k] = v
+    out = dict(probs)
+    out["items"] = items
+    return out
+
+
 def render_dashboard(data, year, total, active, best, cells, rows,
                      probs=None, catalog=None):
     # ⚠️ KST 기준으로 찍는다. date.today() 를 쓰면 UTC 인 클라우드 VM 에서
@@ -2971,7 +3857,7 @@ def render_dashboard(data, year, total, active, best, cells, rows,
     payload = json.dumps({
         "cells": cells, "rows": rows, "year": year,
         "total": total, "active": active, "best": best,
-        "probs": probs or {"count": 0, "items": {}},
+        "probs": _slim_probs(probs) or {"count": 0, "items": {}},
         "catalog": catalog or [],
         "built": now.date().isoformat(),
         # 이 페이지가 만들어진 시점. 브라우저가 _meta/built.json 과 비교해

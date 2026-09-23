@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1298",
+ "title": "우선순위 건설",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-priority-construction/description",
+ "alias": "priority-construction",
+ "pid": 1298,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "위상정렬",
+ "lesson": "Graph DP",
+ "card": "test-priority-construction",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "74.5",
+  "submissions": "110"
+ },
+ "sample_count": 1,
+ "statement_len": 193,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$번부터 $N$번까지 $N$개의 건물을 건설하려고 합니다.\n\n어떤 건물은 이전에 반드시 완공해야 하는 건물들이 있습니다.\n즉, 이 필수 건물을 모두 짓고 난 후에 건물을 짓기 시작할 수 있습니다.\n\n위의 조건을 만족한다면, 여러 개의 건물을 동시에 지을 수 있습니다.\n\n각 건물을 완성하기까지 걸리는 최소 시간을 구하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 건물의 수 $N$이 주어집니다.\n\n그 다음 줄부터 $N$개의 줄에 걸쳐, 각 건물을 짓는데 걸리는 시간을 나타내는 정수 $t$와, 그 건물을 짓기 위해 먼저 지어야 하는 건물의 번호를 나타내는 정수가 공백으로 구분되어 주어집니다. 각 줄 마지막엔 입력의 끝을 의미하는 $-1$이 주어집니다.",
+ "output_spec": "첫 번째 줄부터 $N$ 개의 줄에 걸쳐, 각 건물을 완성하기까지 걸리는 최소 시간을 번호 순서대로 한 줄에 하나씩 출력합니다.",
+ "constraints": "- $1 \\le N \\le 500$\n- $1 \\le t \\le 100\\,000$\n- 각 건물에 대해, 그 건물을 짓기 위해 먼저 지어야 하는 건물의 번호는 서로 다릅니다.\n- 조건에 따라, 모든 건물을 짓는 것이 가능합니다.",
+ "samples": [
+  {
+   "in": "5\n5 -1\n4 3 -1\n4 1 -1\n2 2 1 -1\n6 3 -1\n",
+   "out": "5\n13\n9\n15\n15\n"
+  }
+ ]
+}

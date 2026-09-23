@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2303",
+ "title": "체크 다이아몬드",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-check-diamond/description",
+ "alias": "check-diamond",
+ "pid": 2303,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "다중 반복문",
+ "lesson": "행, 열에 대해 대칭인 별 출력",
+ "card": "test-check-diamond",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "90.0",
+  "submissions": "2965"
+ },
+ "sample_count": 2,
+ "statement_len": 186,
+ "fetched_at": "2026-09-23",
+ "statement": "가로 세로 $2N-1$ 크기에 해당하는 격자에 체크 다이아몬드 모양을 그리는 코드를 작성해보세요.\n\n규칙은 다음과 같습니다.\n\n- $N = 3$ 일 때\n\n```\n  *\n * *\n* * *\n * *\n  *\n```\n\n - $N = 4$ 일 때\n\n```\n   *\n  * *\n * * *\n* * * *\n * * *\n  * *\n   *\n```",
+ "input_spec": "첫 번째 줄에 자연수 $N$이 주어집니다.",
+ "output_spec": "공백과 `*`을 이용하여 $2N-1$ 크기의 체크 다이아몬드 모양을 출력합니다.",
+ "constraints": "- $2 \\le N \\le 10$",
+ "samples": [
+  {
+   "in": "3\n",
+   "out": "  *\n * *\n* * *\n * *\n  *\n"
+  },
+  {
+   "in": "4\n",
+   "out": "   *\n  * *\n * * *\n* * * *\n * * *\n  * *\n   *\n"
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2341",
+ "title": "합을 옆으로 밀어 출력",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-push-the-sum-sideways-to-output/description",
+ "alias": "push-the-sum-sideways-to-output",
+ "pid": 2341,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "문자열",
+ "lesson": "정수를 문자열로 변환하기",
+ "card": "test-push-the-sum-sideways-to-output",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "89.2",
+  "submissions": "2030"
+ },
+ "sample_count": 1,
+ "statement_len": 61,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 수가 주어질 때, 모든 수를 더한 값을 좌측으로 한 칸 민 결과를 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 입력되는 수의 개수 $N$이 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 수가 하나씩 주어집니다.",
+ "output_spec": "첫 번째 줄에 모든 수를 더한 값을 좌측으로 한 칸 민 결과를 출력합니다.\n\n단, 출력결과가 $0$으로 시작하여도 $0$을 출력하여야 함에 유의합니다.",
+ "constraints": "- $1\\le N\\le 100$\n- $10\\le \\texttt{주어지는 수} \\le 5,000$",
+ "samples": [
+  {
+   "in": "5\n1234\n438\n23\n34\n348\n",
+   "out": "0772\n"
+  }
+ ],
+ "sample_notes": [
+  "$1234+438+23+34+348=2077$ 이므로, 좌측으로 한 칸 민 결과는 `0772` 입니다."
+ ]
+}

@@ -1,0 +1,48 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f7",
+ "title": "외주 수익 최대화하기",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/max-of-outsourcing-profit/description",
+ "alias": "max-of-outsourcing-profit",
+ "pid": 7,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2017 상반기 오전 2번 문제",
+ "level": "L8",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "42.3",
+  "submissions": "2823"
+ },
+ "sample_count": 3,
+ "statement_len": 558,
+ "fetched_at": "2026-09-23",
+ "statement": "$n$일의 휴가 동안 외주 개발을 하여 수익을 최대화 하려고 합니다. 수행할 수 있는 외주 작업이 하루에 한 개씩 있고, 각 외주 작업은 수행 완료하는데 걸리는 기한 $t$와 이를 완료 했을 때의 수익 $p$가 주어집니다. 두 개 이상의 외주 작업은 동시에 수행할 수 없으며, 휴가 기간 이후로는 일을 할 수 없다고 할 때 외주 수익의 최대값을 출력하는 코드를 작성해보세요.\n\n예를 들어 $n = 3$ 이고 외주 작업이 다음과 같이 주어진 경우를 생각해봅시다.\n\n<p align=\"center\">\n  <img width=\"300\" height=\"300\" src=\"https://contents.codetree.ai/problems/30/images/ec85587b-ca10-49c5-8b3e-74eadf5931e5.png\">\n</p>\n\n$1, 2$번 외주를 같이 하게 된다면 일해야하는 기간이 겹치게 되어 불가능합니다.\n\n$1, 3$번 외주를 같이 하게 된다면 겹치지 않게 일을 할 수 있고, 총 $25$ 만큼의 돈을 얻게 됩니다.\n\n$2$번 외주만 하게 된다면 $26$ 만큼의 돈을 얻게 됩니다.",
+ "input_spec": "첫 번째 줄에는 정수 $n$이 주어집니다.\n\n두 번째 줄부터 $n+1$번째 줄까지는 각 일자에 수행할 수 있는 외주 작업의 기한 정수 $t$와 수익을 의미하는 정수 $p$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "가능한 외주 수익의 최대값을 출력합니다.",
+ "constraints": "- $1 \\le n \\le 15$\n- $1 \\le t \\le 5$\n- $1 \\le p \\le 1,000$",
+ "samples": [
+  {
+   "in": "2\n2 5\n1 4\n",
+   "out": "5\n"
+  },
+  {
+   "in": "3\n2 5\n2 7\n1 3\n",
+   "out": "8\n"
+  },
+  {
+   "in": "3\n2 10\n2 26\n1 15\n",
+   "out": "26\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 예제에서는 첫 번째 외주 일을 하는게 최대의 수익을 얻을 수 있는 방법이며,",
+  "두 번째 예제에서는 첫 번째 외주와 세 번째 외주를 하는게 최대의 수익을 얻을 수 있는 방법입니다.",
+  "세 번째 예제에서는 두 번째 외주를 하는게 최대의 수익을 얻을 수 있는 방법입니다."
+ ]
+}

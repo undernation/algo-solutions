@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "768",
+ "title": "언덕 깎기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-hill-cutting/description",
+ "alias": "hill-cutting",
+ "pid": 768,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 III",
+ "lesson": "기준을 새로 설정하여 완전탐색",
+ "card": "challenge-hill-cutting",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "192 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "65.2",
+  "submissions": "890"
+ },
+ "sample_count": 1,
+ "statement_len": 229,
+ "fetched_at": "2026-09-23",
+ "statement": "높이가 $0$부터 최대 $100$까지인 언덕이 총 $N$개 주어집니다. 언덕의 높이를 $x$만큼 올릴 때나 높이를 $x$만큼 깎을 때나 가격은 $x \\times x$가 듭니다. 최종적으로 $N$개의 언덕 중 가장 높은 언덕과 가장 낮은 언덕의 높이차가 $17$ 이하가 되도록 만들어야 할 때, 들어가는 최소 비용을 구하는 프로그램을 작성해보세요.\n\n**한 번 높이를 조정한 언덕은 다시 조정할 수 없습니다.**",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.\n\n두 번째 줄부터는 $N$개의 줄에 걸쳐 언덕의 높이가 한 줄에 하나씩 주어집니다.",
+ "output_spec": "첫 번째 줄에 언덕을 깎는 최소 비용을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 1\\,000$\n- $0 \\le \\texttt{언덕의 높이} \\le 100$",
+ "samples": [
+  {
+   "in": "5\n20\n4\n1\n24\n21\n",
+   "out": "18\n"
+  }
+ ],
+ "sample_notes": [
+  "언덕의 높이가 $4$, $20$, $21$ 인 것은 그대로 두고 높이가 $1$인 언덕은 $4$로 올리고 높이가 $24$인 언덕을 $21$로 낮추면, 최대 최소 높이는 각각 $21$, $4$가 되므로 최대 최소의 차가 $17$ 이내가 됩니다. 따라서 최소 비용은 $3 \\times 3 + 3 \\times 3 = 18$이 됩니다."
+ ]
+}

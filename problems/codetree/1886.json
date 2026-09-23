@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1886",
+ "title": "조립 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-assembly-2/description",
+ "alias": "assembly-2",
+ "pid": 1886,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "위상정렬",
+ "lesson": "Topological Sort",
+ "card": "challenge-assembly-2",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "140 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "49.6",
+  "submissions": "129"
+ },
+ "sample_count": 1,
+ "statement_len": 243,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$번부터 $N$번까지의 조각 $N$와 조립의 방법 $M$개가 있습니다.\n\n$K$개의 조각을 하나씩 조립하여 어떤 $i$번째 조각을 만들 수 있는 조립의 방법이 $M$개 주어지고, 현재 가지고 있는 조각의 개수와 종류가 주어질 때, 만들 수 있는 조각의 개수와 종류를 구하는 프로그램을 작성해보세요. 이때 같은 조각에 대한 조립법이 여러번 주어질 수 있으며, 이는 모든 조립법을 만족할 수 있는 경우 해당 조각이 완성됨을 유의하세요.",
+ "input_spec": "첫 번째 줄에는 모든 조각의 수 $N$과  조립의 방법 개수 $M$이 공백을 두고 주어집니다.\n\n두 번째 줄부터 $M$개의 조각 제조법이 주어집니다. 각 조각 제조법은 두 줄로 이루어져 있습니다. 첫 번째 줄에는 만들 조각의 번호 $a$, $a$를 만들기 위해 필요한 조각의 개수 $k$가 주어집니다. 두 번째 줄에는 $k$개의 필요한 조각의 번호들이 주어집니다. 이 조각은 서로 중복되지 않습니다.\n\n그 다음 줄에는 현재 가지고 있는 조각의 개수가 주어집니다.\n\n마지막 줄에는 가지고 있는 조각의 각 번호가 공백을 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에는 만들 수 있는 조각의 개수를 출력합니다.\n\n두 번째 줄에는 만들 수 있는 조각의 번호를 오름차순으로 공백을 두고 출력합니다.",
+ "constraints": "- $3 \\le N, M \\le 100\\,000$\n- $k$의 총합은 $200\\,000$을 넘지 않습니다.",
+ "samples": [
+  {
+   "in": "7 3\n1 3\n2 3 4\n6 3\n1 3 4\n7 3\n1 5 6\n4\n1 2 3 4\n",
+   "out": "5\n1 2 3 4 6\n"
+  }
+ ]
+}

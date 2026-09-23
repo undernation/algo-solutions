@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "762",
+ "title": "출력결과 80",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201835/description",
+ "alias": "reading-k201835",
+ "pid": 762,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "함수",
+ "lesson": "값을 반환하지 않는 함수",
+ "card": "challenge-reading-k201835",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "73.0",
+  "submissions": "6734"
+ },
+ "sample_count": 0,
+ "statement_len": 1746,
+ "fetched_at": "2026-09-23",
+ "statement": "그림과 같은 패턴이 있다고 하자. 이 패턴을 출력하기 위해 함수를 구현하고 `draw(5)`를 호출하였다. (A)에 들어갈 알맞은 코드는? \n\n```\n*****\n** **\n* * *\n** **\n*****\n```\n\n## Python3 코드\n\n```python\ndef draw(n):\n    for i in range(1, n+1, 1):\n        for j in range(1, n+1):\n            if i == 1 or i == n or j == 1 or j == n or (A):\n                print('*', end='')\n            else:\n                 print(' ', end='')\n        print()\n```\n\n## C 코드\n\n```c\nvoid draw(int n) {  \n    for (int i=1; i<=n; i++) {    \n        for (int j=1; j<=n; j++)      \n            if (i==1 || i==n || j==1 || (A) || j == n) \n                printf (\"*\"); \n            else \n                printf (\" \");    \n        printf (\"\\n\");  \n    }\n}\n```\n\n## C++ 코드\n\n```cpp\nvoid draw(int n) {  \n    for (int i=1; i<=n; i++) {    \n        for (int j=1; j<=n; j++)      \n            if (i==1 || i==n || j==1 || (A) || j == n) \n                cout << '*';\n            else \n                cout << ' ';\n        cout << '\\n';\n    }\n}\n```\n\n## Java 코드\n\n```java\nvoid draw(int n) {  \n    for (int i=1; i<=n; i++) {    \n        for (int j=1; j<=n; j++)      \n            if (i==1 || i==n || j==1 || (A) || j == n)\n                System.out.print(\"*\");\n            else\n                System.out.print(\" \");    \n        System.out.println();  \n    }\n}\n```\n\n## JavaScript 코드\n\n```JavaScript\nfunction draw(n) {\n    for (let i = 1; i <= n; i++) {\n        for (let j = 1; j <= n; j++) {\n            if (i === 1 || i === n || j === 1 || j === n || (A)) {\n                process.stdout.write(\"*\");\n            }\n            else {\n                process.stdout.write(\" \");\n            }\n        }\n        process.stdout.write(\"\\n\");\n    }\n}\n```\n\n**보기** — 하나 고르기\n\n1. j == n - 1\n2. j\n3. i\n4. j == i or j == n - i + 1\n5. j == i or j == n - 1"
+}

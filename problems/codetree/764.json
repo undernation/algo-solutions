@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "764",
+ "title": "출력결과 82",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201839/description",
+ "alias": "reading-k201839",
+ "pid": 764,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "재귀함수",
+ "lesson": "값을 반환하는 재귀함수",
+ "card": "challenge-reading-k201839",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "52.0",
+  "submissions": "3912"
+ },
+ "sample_count": 0,
+ "statement_len": 685,
+ "fetched_at": "2026-09-23",
+ "statement": "다음과 같이 함수 f를 구현하였을 때, f(4)의 값은?\n\n## Python3 코드\n\n```python\ndef f(n):\n    if n >= 10:\n        return n % 5\n    else:\n        return f(n + 1) + f(n + 3) + 1\n\n```\n\n## C/C++ 코드\n\n```cpp\nint f(int n) {  \n    if(n  >=  10) {    \n        return n % 5;   \n    }  \n    else {     \n        return f(n + 1) + f(n + 3) + 1;\n    }\n}\n```\n\n## Java 코드\n\n```java\nint f(int n) {  \n    if(n >= 10) {    \n        return n % 5;   \n    }  \n    else {     \n        return f(n+1) + f(n+3) + 1;\n    }\n}\n```\n\n## JavaScript 코드\n\n```JavaScript\nfunction f(n) {\n    if (n >= 10) {\n        return n % 5;\n    }\n    else {\n        return f(n + 1) + f(n + 3) + 1;\n    }\n}\n```\n\n**보기** — 하나 고르기\n\n1. 22\n2. 23\n3. 24\n4. 25\n5. 26"
+}

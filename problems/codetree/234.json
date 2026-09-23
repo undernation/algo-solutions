@@ -1,0 +1,37 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "234",
+ "title": "변수 값 복사하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-copying-variable-values/description",
+ "alias": "copying-variable-values",
+ "pid": 234,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "출력",
+ "lesson": "변수값 동시에 복사",
+ "card": "intro-copying-variable-values",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "192 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "90.1",
+  "submissions": "18419"
+ },
+ "sample_count": 1,
+ "statement_len": 107,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $a$, $b$, $c$에 각각 값 $1$, $2$, $3$을 넣고 $c$의 값을 $a$, $b$에 복사한 뒤, $a$, $b$, $c$ 의 값을 차례로 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "입력이 주어지지 않습니다.",
+ "output_spec": "결과값 $a$, $b$, $c$를 공백을 사이에 두고 출력합니다.",
+ "samples": [
+  {
+   "in": "",
+   "out": "3 3 3\n"
+  }
+ ]
+}

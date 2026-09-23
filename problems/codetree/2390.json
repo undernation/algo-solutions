@@ -1,0 +1,51 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2390",
+ "title": "그 계절, 그 날",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-that-season-that-day/description",
+ "alias": "that-season-that-day",
+ "pid": 2390,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "함수",
+ "lesson": "값을 반환하는 함수",
+ "card": "test-that-season-that-day",
+ "card_type": "Test",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "49.7",
+  "submissions": "5608"
+ },
+ "sample_count": 3,
+ "statement_len": 342,
+ "fetched_at": "2026-09-23",
+ "statement": "연도, 월, 일이 차례로 3개의 정수 $Y, M, D$로 주어졌을 때, $Y$해에 $M$월 $D$일이 존재한다면 어떤 계절인지를 출력하고, 만약 존재하지 않는다면 `-1`을 출력하는 프로그램을 작성해보세요. 단, 함수를 이용하여 문제를 해결해주세요.\n\n3\\~5월이 봄, 6\\~8월이 여름, 9\\~11월이 가을, 12\\~2월이 겨울이라 가정합니다.\n\n단, 윤년(2월이 29일까지 있는 해)의 조건은 다음과 같습니다.\n\n- 4의 배수라면 윤년입니다.\n- 4의 배수이면서 100의 배수라면 윤년이 아닙니다.\n- 4의 배수이면서 100의 배수지만 또한 400의 배수라면 윤년입니다.\n- 나머지 경우에는 윤년이 아닙니다.",
+ "input_spec": "첫 번째 줄에 연도, 월, 일에 해당하는 $Y, M, D$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "$Y$년의 날짜 중 $M$월 $D$일이 존재한다면,   \n첫 번째 줄에 어떤 계절인지를 출력합니다.   \n\n단, 봄의 경우에는 `Spring`을,  \n여름의 경우에는 `Summer`를,  \n가을의 경우에는 `Fall`을,  \n겨울의 경우에는 `Winter`를 출력합니다.\n\n<br>\n\n만약 $Y$년에 $M$월 $D$일이 존재하지 않는다면,\n`-1`을 출력합니다.",
+ "constraints": "- $1 \\le Y \\le 3\\,000$\n- $1 \\le M \\le 12$\n- $1 \\le D \\le 31$\n- 모든 입력값은 정수입니다.",
+ "samples": [
+  {
+   "in": "2020 2 29\n",
+   "out": "Winter\n"
+  },
+  {
+   "in": "238 11 11\n",
+   "out": "Fall\n"
+  },
+  {
+   "in": "2077 4 31\n",
+   "out": "-1\n"
+  }
+ ],
+ "sample_notes": [
+  "$2020$은 $4$의 배수이고 $100$의 배수가 아니므로 윤년입니다. 따라서 $2$월은 $29$일까지 있어 $2$월 $29$일이 존재하고, $2$월은 겨울이므로 `Winter`를 출력합니다.",
+  "$11$월은 $30$일까지 있으므로 $11$월 $11$일이 존재하고, $11$월은 가을이므로 `Fall`을 출력합니다.",
+  "$4$월은 $30$일까지만 있으므로 $4$월 $31$일은 존재하지 않습니다. 따라서 `-1`을 출력합니다."
+ ]
+}

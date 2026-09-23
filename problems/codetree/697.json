@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "697",
+ "title": "출력결과 15",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201536/description",
+ "alias": "reading-k201536",
+ "pid": 697,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "1차원 배열",
+ "lesson": "Min/Max",
+ "card": "challenge-reading-k201536",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "75.1",
+  "submissions": "3076"
+ },
+ "sample_count": 0,
+ "statement_len": 1481,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 프로그램의 출력 결과는 무엇인가?\n\n## Python3 코드\n```python\nA = [11, 8, 7, 13]\nB = [2, 6, 4, 10]\n\nresult = 0\n\nfor i in range(4):\n    for j in range(4):\n        if A[i] + B[j] <= 16 and A[i] + B[j] > result:\n            result = A[i] + B[j]\n\nprint(result)\n```\n\n## C 코드\n\n```cpp\nint A[4] = {11, 8, 13, 7}; \nint B[4] = {2, 6, 4, 10};\n\nint result = 0;\n\nfor (int i = 0; i < 4; i++) {\n    for (int j = 0; j < 4; j++) {\n        if(A[i] + B[j] <= 16 && A[i] + B[j] > result) {\n            result = A[i] + B[j];\n        }    \n    }\n}\nprintf(\"%d\\n\", result);\n```\n\n## C++ 코드\n\n```cpp\nint A[4] = {11, 8, 13, 7}; \nint B[4] = {2, 6, 4, 10};\n\nint result = 0;\n\nfor (int i = 0; i < 4; i++) {\n    for (int j = 0; j < 4; j++) {\n        if(A[i] + B[j] <= 16 && A[i] + B[j] > result) {\n            result = A[i] + B[j];\n        }    \n    }\n}\ncout << result << endl;\n```\n\n## Java 코드\n```java\nint[] A = new int[]{11, 8, 13, 7}; \nint[] B = new int[]{2, 6, 4, 10};\n\nint result = 0;\n\nfor (i = 0; i < 4; i++) {\n    for (j = 0; j < 4; j++) {\n        if(A[i] + B[j] <= 16 && A[i] + B[j] > result) {\n            result = A[i] + B[j];\n        }\t\n    }\n}\nSystem.out.println(result);\n```\n\n## JavaScript 코드\n```JavaScript\nlet A = [11, 8, 13, 7];\nlet B = [2, 6, 4, 10];\n\nlet result = 0;\n\nfor (let i = 0; i < 4; i++) {\n    for (let j = 0; j < 4; j++) {\n        if (A[i] + B[j] <= 16 && A[i] + B[j] > result) {\n            result = A[i] + B[j];\n        }\n    }\n}\n\nconsole.log(result);\n```\n\n**보기** — 하나 고르기\n\n1. 11\n2. 8\n3. 15\n4. 13\n5. 16"
+}

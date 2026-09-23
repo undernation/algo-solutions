@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1015",
+ "title": "트리 중위 순회",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-tree-inorder/description",
+ "alias": "tree-inorder",
+ "pid": 1015,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Tree",
+ "lesson": "이진 트리와 탐색",
+ "card": "challenge-tree-inorder",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "88.3",
+  "submissions": "265"
+ },
+ "sample_count": 2,
+ "statement_len": 150,
+ "fetched_at": "2026-09-23",
+ "statement": "노드 $2^K - 1$ 개로 이루어진, 깊이 $K$의 완전 이진 트리가 있습니다.\n\n각 노드에는 $1$번부터 $2^K - 1$번까지 번호가 붙어 있습니다.\n\n루트 노드부터 시작해서 이 트리를 중위 순회한 결과가 주어질 때, 트리의 모양을 출력하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에는 트리의 깊이 $K$가 주어집니다.\n\n두 번째 줄에는 트리를 중위 순회한 결과가 순서대로 공백을 두고 주어집니다.",
+ "output_spec": "첫 번째 줄부터 $K$ 개의 줄에 걸쳐 트리의 모양을 출력합니다.\n이 중 $i$ 번째 줄에는 깊이가 $i$인 노드의 번호를 왼쪽에서 오른쪽으로 순서대로 공백을 두고 출력합니다.",
+ "constraints": "- $1 \\le K \\le 10$\n- 트리를 중위 순회한 결과에는 $1$ 이상 $2^K - 1$ 이하의 모든 정수가 정확히 한 번씩 등장합니다.",
+ "samples": [
+  {
+   "in": "2\n2 1 3\n",
+   "out": "1\n2 3\n"
+  },
+  {
+   "in": "3\n1 7 4 5 3 2 6\n",
+   "out": "5\n7 2\n1 4 3 6\n"
+  }
+ ]
+}

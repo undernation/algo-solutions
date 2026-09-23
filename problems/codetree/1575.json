@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1575",
+ "title": "시간복잡도와 반복문 3",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-time-complexity-and-for-loop-3/description",
+ "alias": "time-complexity-and-for-loop-3",
+ "pid": 1575,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "시간, 공간복잡도",
+ "lesson": "반복문의 시간복잡도",
+ "card": "test-time-complexity-and-for-loop-3",
+ "card_type": "Test",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "70.4",
+  "submissions": "5181"
+ },
+ "sample_count": 0,
+ "statement_len": 334,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 코드의 가장 일반적인 시간복잡도를 골라주세요.\n\n ```js\nfunction solution(n, m)\n    set sum = 0\n    for i = 1 ... i <= n\n        for j = 1 ... j <= m\n            sum += i * j\n\n    for i = 1 ... i <= n\n        sum -= i * i\n```\n\n**보기** — 하나 고르기\n\n1. $\\mathcal{O}(N)$\n2. $\\mathcal{O}(N + M)$\n3. $\\mathcal{O}(NM)$\n4. $\\mathcal{O}(NM + N)$\n5. $\\mathcal{O}(M)$"
+}

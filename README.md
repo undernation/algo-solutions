@@ -21,7 +21,7 @@
 ## 📁 구조
 
 ```
-boj/  swea/        제출한 풀이 코드      <번호>_<제목>.py
+boj/ swea/ codetree/  제출한 풀이 코드   <번호>_<제목>.py  (코드트리 기출은 f+번호)
 problems/          문제 자료 (지문·예제·이미지·히든TC 일부)
 notes/             복기 메모 (마크다운)
 judge/server.py    허브 서버 — 채점·저장·크롤링·메모
@@ -47,7 +47,7 @@ _meta/             도구 · 색인 · 대시보드 템플릿
 로그인 세션이 필요해 이때만 로컬에서 돌린다.
 
 ```bash
-python _meta/debug_chrome.py      # 로그인용 크롬(9222) — 뜨면 코딩살구·SWEA 로그인
+python _meta/debug_chrome.py      # 로그인용 크롬(9222) — 뜨면 코딩살구·SWEA·코드트리 로그인
 python _meta/crawl_all.py         # 지문·예제·이미지
 python _meta/crawl_all.py --htc   # 히든 테스트케이스
 python _meta/sync_tc.py           # 전체 TC 를 채점 서버로

@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "914",
+ "title": "연속되는 수 4",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-continuous-number4/description",
+ "alias": "continuous-number4",
+ "pid": 914,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 II",
+ "lesson": "최장 연속 부분 수열",
+ "card": "challenge-continuous-number4",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "74.9",
+  "submissions": "2806"
+ },
+ "sample_count": 1,
+ "statement_len": 327,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 정수로 이루어진 수열 $A_1, A_2, \\dots, A_N$이 주어졌을 때, 증가하는 연속 부분 수열 중 최대 길이를 구하는 프로그램을 작성해보세요.\n\n연속 부분 수열이란 원래 수열에서 연속한 구간에 속하는 원소를 하나도 건너뛰지 않고 모두 순서대로 뽑아 만든 수열, 즉 어떤 $1 \\le l \\le r \\le N$에 대한 $A_l, A_{l+1}, \\dots, A_r$을 의미합니다. 증가하는 연속 부분 수열이란 인접한 두 원소가 항상 엄격하게 커지는, 즉 $l \\le i < r$인 모든 $i$에 대해 $A_i < A_{i+1}$을 만족하는 연속 부분 수열을 뜻합니다.",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 수열의 원소 $A_1, A_2, \\dots, A_N$이 순서대로 한 줄에 하나씩 주어집니다.",
+ "output_spec": "첫 번째 줄에 증가하는 연속 부분 수열의 최대 길이를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 1\\,000$\n- $1 \\le A_i \\le 1\\,000$ ($1 \\le i \\le N$)\n- 입력으로 주어지는 모든 값은 정수입니다.",
+ "samples": [
+  {
+   "in": "7\n1\n5\n2\n3\n5\n8\n8\n",
+   "out": "4\n"
+  }
+ ],
+ "sample_notes": [
+  "수열을 순서대로 나열해보면 [$1$, $5$, $2$, $3$, $5$, $8$, $8$] 이므로 [$2$, $3$, $5$, $8$] 이렇게 연속 부분 수열을 뽑게 되면 값이 계속 증가하게 되며, 이때 수열의 길이는 $4$가 됩니다. 이보다 더 좋은 답은 없습니다.\n\n마지막 두 원소는 $8$, $8$로 값이 같아 엄격하게 커지지 않으므로, [$2$, $3$, $5$, $8$, $8$]은 증가하는 연속 부분 수열이 아닙니다.\n\n[$1$, $2$, $3$, $5$, $8$]은 증가하는 부분 수열이기는 하지만, 원래 수열의 연속한 구간으로는 뽑아낼 수 없기 때문에 연속 부분 수열이 될 수 없습니다."
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2128",
+ "title": "점 빼기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-remove-point/description",
+ "alias": "remove-point",
+ "pid": 2128,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "중급 자료구조",
+ "lesson": "TreeSet",
+ "card": "challenge-remove-point",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 4초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 4.0
+ },
+ "stats": {
+  "accept_rate": "81.3",
+  "submissions": "477"
+ },
+ "sample_count": 1,
+ "statement_len": 245,
+ "fetched_at": "2026-09-23",
+ "statement": "$2$차 평면 위에 서로 다른 $N$개의 점이 주어집니다. 이후 $M$개의 질의가 주어지는데, 각 질의마다는 한 개의 수 $k$가 주어집니다. \n\n각 질의에 대해 주어진 수 $k$보다 $x$값이 같거나 큰 점 중 $x$값이 가장 작은 점을 찾아 지우려고 합니다. 만약 x값이 가장 작은 점이 여러 개라면, 그 중 $y$값이 가장 작은 점을 지우면 됩니다. \n\n각 질의에 대해 해당하는 점을 순서대로 출력하고 지우는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $N$과 $M$이 공백을 사이에 두고 주어집니다.  \n\n두 번째 줄부터는 $N$개의 줄에 걸쳐 점의 위치 $(x,\\ y)$가 한 줄에 하나씩 공백을 사이에 두고 주어집니다.  \n\n이후 $M$개의 줄에 걸쳐 질의에 해당하는 숫자 $k$가 한 줄에 하나씩 주어집니다.",
+ "output_spec": "$M$개의 질의에 대해 해당하는 점의 위치를 한 줄에 하나씩 공백을 사이에 두고 출력합니다. 만약 그러한 점이 존재하지 않는다면 $-1 -1$을 출력합니다.",
+ "constraints": "- $1 \\le N, M \\le 10^5$\n- $1 \\le x, y  \\le 10^9$\n- $1 \\le k \\le 10^9$",
+ "samples": [
+  {
+   "in": "3 3\n6 2\n2 9\n2 5\n1\n1\n7\n",
+   "out": "2 5\n2 9\n-1 -1\n"
+  }
+ ],
+ "sample_notes": [
+  "$k$가 $1$일 때, $x$값이 $k$보다 큰 점들 중 가장 작은 점은 $(2, 5)$, $(2, 9)$으로 두 개이며, 이 중 y값이 작은 $(2, 5)$가 지워지게 됩니다.\n\n이 후, 주어진 $k$값이 $1$이므로 $x$값이 $k$보다 큰 점들 중 가장 작은 점인 $(2, 9)$가 지워집니다.\n\n마지막으로 주어진 $k$값 $7$에 대해서, $k$보다 큰 $x$값을 가진 점이 존재하지 않으므로 지울 점은 없습니다.\n\n![](https://contents.codetree.ai/problems/2128/images/problems-dc276349-84fa-4785-8230-042e994679e6.png)"
+ ]
+}

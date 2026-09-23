@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "734",
+ "title": "출력결과 52",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201728/description",
+ "alias": "reading-k201728",
+ "pid": 734,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "재귀함수",
+ "lesson": "값을 반환하는 재귀함수",
+ "card": "challenge-reading-k201728",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "53.3",
+  "submissions": "4549"
+ },
+ "sample_count": 0,
+ "statement_len": 572,
+ "fetched_at": "2026-09-23",
+ "statement": "아래와 같은 함수가 있을 떄, `f(215, 5)`의 값을 구하여라.\n\n## Python3 코드\n```python\ndef f(x, y):\n    if x == 0:\n        return 0\n    return f(x // 3, y * 3) + x % 3 * y\n```\n\n## C/C++ 코드\n\n```cpp\nint f(int x,int y){\n    if(x == 0) return 0;\n    return f(x / 3, y * 3) + x % 3 * y;\n}\n```\n\n## Java 코드\n\n```java\nint f(int x,int y){\n    if(x == 0) return 0;\n    return f(x / 3, y * 3) + x % 3 * y;\n}\n```\n\n## JavaScript 코드\n\n```JavaScript\nfunction f(x, y) {\n    if (x === 0) return 0;\n    return f(parseInt(x / 3), parseInt(y * 3)) + x % 3 * y;\n}\n```\n\n**보기** — 하나 고르기\n\n1. 0\n2. 43\n3. 220\n4. 645\n5. 1075"
+}

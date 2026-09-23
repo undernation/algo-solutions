@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "32",
+ "title": "마을 구분하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-seperate-village/description",
+ "alias": "seperate-village",
+ "pid": 32,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "DFS",
+ "lesson": "DFS",
+ "card": "challenge-seperate-village",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "192 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "78.6",
+  "submissions": "3631"
+ },
+ "sample_count": 2,
+ "statement_len": 313,
+ "fetched_at": "2026-09-23",
+ "statement": "$N \\times N$크기의 이차원 영역에 사람 혹은 벽이 놓여 있습니다. 이때 상하좌우의 인접한 영역에 있는 사람들은 같은 마을에 있는 것으로 간주한다고 합니다. 예를 들어 그림과 같이 사람과 벽이 배치되어 있는 경우, 그림 안의 점선과 같이 마을을 나눌 수 있습니다. 이때 총 마을의 개수와 같은 마을에 있는 사람의 수를 오름차순으로 정렬하여 출력하는 코드를 작성합니다.\n\n![](https://contents.codetree.ai/problems/32/images/problems-9bdd3983-b029-4be7-b2cc-2ad504f27272.png)",
+ "input_spec": "첫 번째 줄에는 $N$이 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 각 행에는 $N$개의 정수가 공백을 사이에 두고 주어집니다. 각 정수는 사람이 있는 경우 $1$, 벽이 있는 경우 $0$입니다.",
+ "output_spec": "첫 번째 줄에는 총 마을의 개수를 출력합니다.\n\n그 다음 줄부터 각 줄에는 각 마을 내 사람의 수를 오름차순으로 정렬하여 한 줄에 하나씩 출력합니다.",
+ "constraints": "- $5 \\le N \\le 25$\n- 격자의 각 칸 값은 $0$ 또는 $1$입니다. $(1 \\le i,\\ j \\le N)$",
+ "samples": [
+  {
+   "in": "5\n1 0 1 1 1\n1 0 0 0 0\n0 0 0 1 1\n1 1 0 1 1\n1 1 0 1 1\n",
+   "out": "4\n2\n3\n4\n6\n"
+  },
+  {
+   "in": "5\n0 1 0 0 1\n0 1 0 1 1\n0 1 0 0 1\n0 1 1 1 1\n1 0 0 0 0\n",
+   "out": "2\n1\n11\n"
+  }
+ ]
+}

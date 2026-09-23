@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2595",
+ "title": "배낭 채우기 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-knapsack-2/description",
+ "alias": "knapsack-2",
+ "pid": 2595,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "DP I",
+ "lesson": "아이템을 적절히 고르는 문제",
+ "card": "challenge-knapsack-2",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "86.9",
+  "submissions": "647"
+ },
+ "sample_count": 2,
+ "statement_len": 636,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 보석의 정보가 주어졌을 때, 보석을 적절하게 골라 무게의 합이 $M$을 넘지 않도록 하면서 가치의 합은 최대가 되도록 하는 프로그램을 작성해보세요. 각 종류의 보석은 $0$개 이상 원하는 만큼 고를 수 있으며, 아무 보석도 고르지 않는 것 역시 가능합니다. 특히 모든 보석의 무게가 $M$보다 커서 아무 보석도 고를 수 없는 경우 총 가치는 $0$이 됩니다.\n\n예를 들어 $N = 4$, $M = 22$, 보석의 종류가 다음과 같이 주어졌다고 생각해봅시다.\n\n![](https://contents.codetree.ai/problems/2595/images/problems-9cdea872-e6d5-4b18-9a27-8ffd394b12c2.png)\n\n| 종류 | 무게 $w$ | 가치 $v$ |\n| :---: | :---: | :---: |\n| $1$ | $7$ | $20$ |\n| $2$ | $9$ | $26$ |\n| $3$ | $8$ | $15$ |\n| $4$ | $4$ | $9$ |\n\n$1$번 보석을 $3$개 고르게 되면 무게가 $M$을 넘지 않으면서 $60$만큼의 가치를 얻게 됩니다.\n\n$2$번 보석 $2$개와 $4$번 보석 $1$개를 고르게 되면 무게가 $M$을 넘지 않으면서 총 $61$만큼의 가치를 얻게 됩니다.",
+ "input_spec": "첫째 줄에는 정수 $N$과 $M$이 공백을 사이에 두고 주어집니다.\n\n이후 $N$개의 줄에 걸쳐 보석의 정보가 주어집니다. $i$번째 줄에는 $i$번째 종류 보석의 무게 $w_i$와 가치 $v_i$를 나타내는 정수 두 개가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "얻을 수 있는 최대 가치를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le M \\le 10\\,000$\n- $1 \\le w_i, v_i \\le 10\\,000$ ($1 \\le i \\le N$)",
+ "samples": [
+  {
+   "in": "3 7\n5 8\n3 6\n4 4\n",
+   "out": "12\n"
+  },
+  {
+   "in": "4 22\n7 20\n9 26\n8 15\n4 9\n",
+   "out": "61\n"
+  }
+ ]
+}

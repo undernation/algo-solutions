@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2214",
+ "title": "겹치는 숫자가 없는 최대 구간",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-max-interval-without-overlapping-numbers/description",
+ "alias": "max-interval-without-overlapping-numbers",
+ "pid": 2214,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shorten time Technique",
+ "lesson": "Two Pointer",
+ "card": "intro-max-interval-without-overlapping-numbers",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "58.3",
+  "submissions": "1275"
+ },
+ "sample_count": 1,
+ "statement_len": 76,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 숫자가 주어졌을 때, 구간 내에 중복되는 숫자가 전혀 없는 경우 중 가능한 최대 구간의 크기를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.  \n\n두 번째 줄에 $N$개의 숫자가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "중복되는 숫자가 없는 구간 중 최대 구간의 크기를 출력합니다.",
+ "constraints": "- $3 \\le N \\le 100\\,000$\n - $1 \\le \\texttt{each number} \\le 100\\,000$",
+ "samples": [
+  {
+   "in": "5\n1 3 1 2 3\n",
+   "out": "3\n"
+  }
+ ],
+ "sample_notes": [
+  "두 번째 숫자부터 네 번째 숫자까지로 이루어져 있는 구간 [$3$, $1$, $2$]를 잡으면 겹치는 숫자가 없는 구간 중 최대 구간이 됩니다."
+ ]
+}

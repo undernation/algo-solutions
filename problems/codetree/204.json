@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "204",
+ "title": "길이 단위 환산하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-convert-length-units/description",
+ "alias": "convert-length-units",
+ "pid": 204,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "입출력",
+ "lesson": "실수 입력",
+ "card": "challenge-convert-length-units",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "88.0",
+  "submissions": "10493"
+ },
+ "sample_count": 1,
+ "statement_len": 86,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$피트(ft)는 $30.48$cm입니다.\n\n실수의 피트(ft)를 입력받아 cm로 환산하여 값을 반올림하여 첫째자리까지 출력하는 프로그램을 작성해주세요.",
+ "input_spec": "첫 번째 줄에는 실수 $N$이 주어집니다.",
+ "output_spec": "입력받은 실수값을 환산하고 반올림하여 첫째자리까지 출력합니다.",
+ "constraints": "- $0 \\le N \\le 100$",
+ "samples": [
+  {
+   "in": "14.3\n",
+   "out": "435.9\n"
+  }
+ ]
+}

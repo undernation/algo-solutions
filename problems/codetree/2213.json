@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2213",
+ "title": "구간 외 최대 숫자",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-max-num-outside-of-interval/description",
+ "alias": "max-num-outside-of-interval",
+ "pid": 2213,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shorten time Technique",
+ "lesson": "LR Technique",
+ "card": "test-max-num-outside-of-interval",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "83.7",
+  "submissions": "289"
+ },
+ "sample_count": 1,
+ "statement_len": 111,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 숫자가 주어졌을 때, $Q$개의 질의에 대해 주어진 구간 밖에 있는 숫자들 중 최댓값을 출력하는 프로그램을 작성해보세요.\n\n단, 구간은 $N$개의 숫자의 번호에 해당하는 숫자로 주어집니다.",
+ "input_spec": "첫 번째 줄에 $N$과 $Q$가 공백으로 구분되어 주어집니다.  \n\n두 번째 줄에는 $N$개의 숫자가 공백으로 구분되어 주어집니다.\n\n세 번째 줄 부터는 $Q$개의 줄에 걸쳐 구간에 대한 정보 $a_i$, $b_i$값이 공백을 사이에 두고 주어집니다. 이는 주어진 $N$개의 숫자들을 $1$번부터 $N$번까지 순서대로 번호를 붙였을 때 번호가 [$a_i$, $b_i$] 구간에 있지 않은 숫자들 중 최댓값을 구해야 함을 의미합니다.",
+ "output_spec": "$Q$개의 질의에 대해 각 구간 밖에 있는 숫자들 중 최댓값을 한 줄에 하나씩 출력합니다.",
+ "constraints": "- $1 \\le N, Q \\le 100\\,000$\n - $1 \\le \\texttt{주어진 숫자 범위} \\le 10^9$\n - $1 \\lt a_i \\le b_i \\lt N$",
+ "samples": [
+  {
+   "in": "5 3\n1 3 9 5 4\n3 3\n3 4\n2 4\n",
+   "out": "5\n4\n4\n"
+  }
+ ],
+ "sample_notes": [
+  "구간 $(3, 3)$ 에서 $3$번째로 주어진 정수 를 제외한 나머지 정수 중 최댓값은 $5$가 됩니다.\n\n구간 $(3, 4)$ 에서 $3, 4$번째로 주어진 정수 를 제외한 나머지 정수 중 최댓값은 $4$가 됩니다.\n\n구간 $(2, 4)$ 에서 $2, 3, 4$번째로 주어진 정수 를 제외한 나머지 정수 중 최댓값은 $4$가 됩니다.\n\n밑의 그림에서, 각 구간을 순서대로 나타내었습니다.\n\n<br>\n\n![](https://contents.codetree.ai/problems/2213/images/problems-2ed38050-85b2-4d86-8433-59c4497f5df3.png)\n\n<br>"
+ ]
+}

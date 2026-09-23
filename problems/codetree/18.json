@@ -1,0 +1,50 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "18",
+ "title": "2차원 폭발 게임",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-The-2D-bomb-game/description",
+ "alias": "The-2D-bomb-game",
+ "pid": 18,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Simulation",
+ "lesson": "격자 안에서 터지고 떨어지는 경우",
+ "card": "challenge-The-2D-bomb-game",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 3초 · C++17 1초",
+  "memory": "128 MB",
+  "time_sec": 3.0
+ },
+ "stats": {
+  "accept_rate": "29.9",
+  "submissions": "3022"
+ },
+ "sample_count": 4,
+ "statement_len": 1633,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$이상 $100$이하의 숫자가 적혀있는 폭탄이 $N \\times N$ 크기의 상자에 들어있습니다.\n\n![](https://contents.codetree.ai/problems/18/images/problems-e6539b9e-a937-4203-99ad-642cd6b24890.png)\n\n이때 각각의 열에 대하여 행 기준으로 봤을 때 연속으로 $M$개 이상의 같은 숫자가 적혀있는 폭탄들은 터지게 되고, 중력에 의해 위에 있던 폭탄들은 밑으로 떨어지게 됩니다. $M$개 이상 연속한 폭탄은 부분만 터져서는 안되고 전부 다 터져야 하며, $M$개 이상인 폭탄들의 쌍이 여러 개라면 동시에 터지게 됩니다. 만약 터진 이후에도 같은 열에 행 기준으로 봤을 때 연속으로 $M$개 이상의 같은 숫자가 있는 경우가 존재한다면, 터져야 할 폭탄이 없을 때까지 조건에 맞는 폭탄들을 터뜨리는 것을 반복합니다.\n\n$M = 2$인 경우 위의 예에서 폭탄들은 다음과 같이 터지게 됩니다.\n\n![](https://contents.codetree.ai/problems/18/images/problems-d741f670-2d6c-44f4-aa38-ce094492c8b3.png)\n\n폭탄이 터진 후, 다음과 같이 떨어지게 됩니다.\n\n![](https://contents.codetree.ai/problems/18/images/problems-18fb7a18-e17e-441c-b6fe-f777af670d21.png)\n\n터지는 과정을 한번 반복한 이후에는 상자를 시계방향으로 $90^{\\circ}$ 회전시킵니다. 회전할 때 폭탄들이 옆으로 빠져나가는 경우는 없고, 회전 이후 중력에 의해 밑에 여유 공간이 있을 경우 밑으로 떨어지게 됩니다.\n\n![](https://contents.codetree.ai/problems/18/images/problems-117a7715-3265-40e3-a98d-6402d22ef407.png)\n\n폭탄들이 움직이지 않게 되면 다시 각각의 열마다 행을 기준으로 연속으로 $M$개 이상의 같은 숫자가 적혀있는 폭탄들은 터지게 되고 다시 중력에 의해 밑으로 떨어지게 됩니다.\n\n위의 예에서 $M=2$인 경우 과정을 더 진행하면 다음과 같이 상태가 변하게 됩니다.\n\n![](https://contents.codetree.ai/problems/18/images/problems-cc5453fe-bc68-48a2-b3f1-832dfae46a81.png)\n\n![](https://contents.codetree.ai/problems/18/images/problems-7d66469c-dfbd-4d28-865a-36af078dc57e.png)\n\n그리고 또 다시 시계방향으로 $90^{\\circ}$ 회전하게 됩니다.\n\n![](https://contents.codetree.ai/problems/18/images/problems-760de65f-a55e-421a-b2de-4b0e23ec6af2.png)\n\n이와 같이 터지고 회전하는 과정을 총 $K$번 반복한다고 했을 때, 최종적으로 상자에 남아있는 폭탄의 수를 출력하는 프로그램을 작성해주세요. 만약 $K$번째 회전을 진행한 이후에도 터질 폭탄이 상자에 남아있다면, 조건에 맞는 폭탄들을 전부 터뜨리는 것을 반복한 이후에 최종적으로 상자에 남아 있는 폭탄의 수를 구해야 합니다.",
+ "input_spec": "첫째 줄에는 $N$과 $M$ 그리고 $K$가 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 위에서부터 아래 방향으로 각 행에 해당하는 $N$개의 정수가 공백을 사이에 두고 주어집니다. 정수는 왼쪽에 있는 폭탄에 적혀있는 정수부터 우측 방향으로 순서대로 주어집니다.",
+ "output_spec": "최종적으로 남게 된 폭탄의 개수를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le M \\le 100$\n- $1 \\le K \\le 1\\,000$\n- $1 \\le \\texttt{폭탄에 적힌 정수} \\le 100$",
+ "samples": [
+  {
+   "in": "3 2 2\n1 3 1\n2 1 2\n3 1 1\n",
+   "out": "1\n"
+  },
+  {
+   "in": "6 2 5\n3 3 2 2 3 3\n3 3 3 3 4 4\n3 2 2 2 4 1\n1 3 3 3 4 1\n3 4 3 3 4 1\n2 4 3 3 1 2\n",
+   "out": "5\n"
+  },
+  {
+   "in": "4 2 7\n4 4 4 1\n4 4 4 1\n2 1 4 1\n1 4 3 1\n",
+   "out": "5\n"
+  },
+  {
+   "in": "4 2 8\n4 4 4 1\n4 4 4 1\n2 1 4 1\n1 4 3 1\n",
+   "out": "3\n"
+  }
+ ]
+}

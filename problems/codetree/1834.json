@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1834",
+ "title": "각 정점까지의 최단 경로",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-shortest-path-to-each-vertex/description",
+ "alias": "shortest-path-to-each-vertex",
+ "pid": 1834,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shortest Path",
+ "lesson": "Dijkstra",
+ "card": "intro-shortest-path-to-each-vertex",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "200 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "62.2",
+  "submissions": "1308"
+ },
+ "sample_count": 1,
+ "statement_len": 124,
+ "fetched_at": "2026-09-23",
+ "statement": "정점 $N$ 개와 간선 $M$ 개로 구성된 무방향 그래프가 주어집니다. 편의상, 각 정점에 $1$번부터 $N$번까지 번호를 부여합니다.\n\n$K$번 정점에서 다른 모든 정점으로 가는 최단 경로를 구하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 정수 $N$과 $M$이 공백으로 구분되어 주어집니다.\n\n두 번째 줄에 정점의 번호를 나타내는 정수 $K$가 주어집니다.\n\n세 번째 줄부터 $M$ 개의 줄에 걸쳐, 각 간선의 양 끝 정점의 번호와 가중치를 나타내는 정수들이 공백으로 구분되어 주어집니다.",
+ "output_spec": "첫 번째 줄부터 $N$ 개의 줄에 걸쳐, $K$번 정점에서 시작하여 $1$번 정점, $2$번 정점, $\\cdots$, $N$번 정점에 도달하기 위한 최단 경로의 길이를 한 줄에 하나씩 출력합니다. 만약 도달하는 것이 불가능하다면 $-1$을 출력합니다.",
+ "constraints": "- $2 \\le N \\le 20\\,000$\n- $1 \\le M \\le 300\\,000$\n- $1 \\le K \\le N$\n- $1 \\le \\texttt{간선의 가중치} \\le 10$\n- 양 끝 정점이 같은 간선은 주어지지 않습니다. \n- 동일한 정점쌍을 잇는 간선이 여러 번 주어지지 않습니다.",
+ "samples": [
+  {
+   "in": "5 6\n1\n5 1 1\n1 2 2\n1 3 3\n2 3 4\n2 4 5\n3 4 6\n",
+   "out": "0\n2\n3\n7\n1\n"
+  }
+ ],
+ "sample_notes": [
+  "주어진 그래프는 다음과 같습니다.\n\n![](https://contents.codetree.ai/problems/1834/images/problems-703c6c5a-0bea-498f-8636-566aaa7b2338.png)\n\n$K$가 $1$이므로 $K$번 정점에서 $1$번 정점으로 이동할 때 필요한 간선은 없습니다. 따라서 최단 경로의 길이는 $0$ 입니다.\n\n![](https://contents.codetree.ai/problems/1834/images/problems-3272a279-ada3-454e-9250-ffe05b3ec53e.png)\n\n$1$번 정점에서 시작하여 $2$번 정점에 도달하는 최단 경로의 길이는 $2$ 입니다.\n\n![](https://contents.codetree.ai/problems/1834/images/problems-d294d3dc-3a80-456c-bdf8-93457324e7fa.png)\n\n$1$번 정점에서 시작하여 $3$번 정점에 도달하는 최단 경로의 길이는 $3$ 입니다.\n\n![](https://contents.codetree.ai/problems/1834/images/problems-927aa41c-2ba7-4547-9c67-cc0270a518d3.png)\n\n$1$번 정점에서 시작하여 $4$번 정점에 도달하는 최단 경로의 길이는 $2 + 5 = 7$ 입니다.\n\n![](https://contents.codetree.ai/problems/1834/images/problems-ae9dc3a6-09b1-4474-8035-a6b6635e4bfa.png)\n\n마지막으로, $1$번 정점에서 시작하여 $5$번 정점에 도달하는 최단 경로의 길이는 $1$ 입니다.\n\n![](https://contents.codetree.ai/problems/1834/images/problems-adad1e0b-8f7b-4517-be2f-4baa67c17fdb.png)"
+ ]
+}

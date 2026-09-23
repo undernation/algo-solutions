@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "456",
+ "title": "head로부터의 삭제 메서드",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-doubly-linked-list-remove-2/description",
+ "alias": "doubly-linked-list-remove-2",
+ "pid": 456,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "배열, 연결 리스트",
+ "lesson": "Doubly-LinkedList",
+ "card": "challenge-doubly-linked-list-remove-2",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "60.1",
+  "submissions": "3187"
+ },
+ "sample_count": 0,
+ "statement_len": 518,
+ "fetched_at": "2026-09-23",
+ "statement": "이중 연결 리스트의 $head$에서 시작하여 원하는 값을 찾아 삭제하는 코드를 작성해보려고 합니다.\n\n이중 연결 리스트와 삭제하고 싶은 값이 매개변수로 주어질 때, 해당 값을 갖고 있는 노드를 삭제하는 함수를 작성했습니다. 이 코드가 잘 작동할 수 있도록 빈칸을 채워보세요.\n\n(단, 해당 값을 갖고 있는 노드는 반드시 존재하며, 노드의 위치는 처음과 끝이 아니라고 가정합니다.  또한 매개변수로 주어지는 $node$ 는 특정 이중 연결 리스트의  $head$값이라 가정해도 좋습니다.)\n\n```jsx\nfunction solution(node, data)\n  while node.(1) != null\n    if node.data == data\n      break\n    node = node.(2)\n  \n  node.next.(3) = node.prev\n  node.prev.(4) = node.next\n```\n\n**보기** — 순서대로 4개 고르기\n\n1. `prev`\n2. `next`\n3. `head`\n4. `tail`"
+}

@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2223",
+ "title": "우리 지금 만나 당장 만나",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-meet-now-right-now/description",
+ "alias": "meet-now-right-now",
+ "pid": 2223,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Parametric Search",
+ "lesson": "Parametric Search",
+ "card": "challenge-meet-now-right-now",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "35.7",
+  "submissions": "403"
+ },
+ "sample_count": 1,
+ "statement_len": 204,
+ "fetched_at": "2026-09-23",
+ "statement": "수직선 상에서 $N$명의 사람이 살고 있는 위치 $x_i$와 $N$명의 이동 속도 $v_i$가 주어졌을 때, 모두가 도착하는 데 걸리는 시간이 최소인 위치에 가기 위해 걸리는 시간을 구하는 프로그램을 작성해보세요. 이때 이동 속도가 $v_i$라 함은 1초에 거리 $v_i$ 만큼 이동할 수 있음을 의미합니다. 단, 이동은 음수인 방향, 양수인 방향 모두 가능합니다.",
+ "input_spec": "첫 번째 줄에는 $N$이 주어집니다.\n\n두 번째 줄에는 $N$명의 사람들이 사는 위치 $x_i$가 각각 공백을 사이에 두고 주어집니다.\n\n세 번째 줄에는 $N$명의 사람들의 이동 속도 $v_i$가 각각 공백을 사이에 두고 주어집니다.",
+ "output_spec": "모두가 도착하는 데 걸리는 시간이 최소인 위치에 가기 위해 걸리는 시간을 소수점 $4$째 자리까지 반올림 하여 출력합니다.",
+ "constraints": "- $1\\le N\\le 100\\,000$\n- $1\\le x_i, v_i\\le 10^9$",
+ "samples": [
+  {
+   "in": "3\n1 3 6\n3 2 2\n",
+   "out": "1.0000\n"
+  }
+ ],
+ "sample_notes": [
+  "모이는 위치를 $4$라 하면\n\n첫 번째 사람이 $4$까지 이동하는 데 걸리는 시간은 $1$초  \n두 번째 사람이 $4$까지 이동하는 데 걸리는 시간은 $0.5$초  \n세 번째 사람이 $4$까지 이동하는 데 걸리는 시간은 $1$초\n\n따라서 모두가 약속 위치에 도착하는 데 걸리는 시간은 $1$초가 됩니다.\n\n다른 약속위치를 잡더라도 모두가 도착하는 데 걸리는 시간을 $1$초 보다 더 줄일 수는 없습니다.\n\n<br>\n\n![](https://contents.codetree.ai/problems/2223/images/problems-e804e8eb-e288-4f83-b950-4a5e64b7b472.png)\n\n<br>"
+ ]
+}

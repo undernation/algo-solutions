@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "205",
+ "title": "세 수의 합과 평균 구하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-sum-and-mean-of-three-numbers/description",
+ "alias": "sum-and-mean-of-three-numbers",
+ "pid": 205,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "연산자",
+ "lesson": "합과 평균",
+ "card": "challenge-sum-and-mean-of-three-numbers",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "70.1",
+  "submissions": "9465"
+ },
+ "sample_count": 1,
+ "statement_len": 64,
+ "fetched_at": "2026-09-23",
+ "statement": "세 개의 정수를 입력받아서 합계와 평균을 출력하는 프로그램을 작성해주세요.\n\n(단, 평균은 소수 이하를 버립니다.)",
+ "input_spec": "첫 번째 줄에 정수 $A, B, C$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에는 합을 출력합니다. 두 번째 줄에는 평균을 출력합니다.",
+ "constraints": "- $1 \\le A, B, C \\le 100$",
+ "samples": [
+  {
+   "in": "10 20 7\n",
+   "out": "37\n12\n"
+  }
+ ]
+}

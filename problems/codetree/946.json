@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "946",
+ "title": "가장 가까운 두 점 사이의 거리",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-closest-pair-of-points/description",
+ "alias": "closest-pair-of-points",
+ "pid": 946,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 II",
+ "lesson": "물체 단위로 완전탐색",
+ "card": "intro-closest-pair-of-points",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "81.4",
+  "submissions": "1658"
+ },
+ "sample_count": 1,
+ "statement_len": 186,
+ "fetched_at": "2026-09-23",
+ "statement": "$2$차원 평면 위에 점 $N$개가 주어집니다. $i$번째 점의 위치를 $(x_i, y_i)$라고 할 때, 서로 다른 두 점 $i$와 $j$ 사이의 거리의 제곱은 $(x_i - x_j)^2 + (y_i - y_j)^2$으로 정의됩니다.\n\n가장 가까운 두 점 사이의 거리의 제곱, 즉 위 값의 최솟값을 구하는 프로그램을 작성해 보세요.",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.\n\n이후 $N$개의 줄에 걸쳐 한 줄에 한 점씩, $i$번째 점의 위치 $x_i$와 $y_i$가 공백을 사이에 두고 주어집니다. ($1 \\le i \\le N$)",
+ "output_spec": "첫 번째 줄에 가장 가까운 두 점 사이의 거리의 제곱을 출력합니다.",
+ "constraints": "- $2 \\le N \\le 100$\n- $0 \\le x_i, y_i \\le 1\\,000$ ($1 \\le i \\le N$)\n- $N$, $x_i$, $y_i$는 모두 정수입니다.\n- 모든 점의 위치는 서로 다릅니다.",
+ "samples": [
+  {
+   "in": "3\n0 0\n3 3\n1 1\n",
+   "out": "2\n"
+  }
+ ],
+ "sample_notes": [
+  "주어진 점들 중 첫 번째 점 $(0, 0)$과 세 번째 점 $(1, 1)$이 가장 가까이 놓여 있습니다. 두 점 사이의 거리의 제곱은 $(0 - 1)^2 + (0 - 1)^2 = 2$이므로 답은 $2$입니다."
+ ]
+}

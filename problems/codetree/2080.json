@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2080",
+ "title": "이동 가능한 점들의 쌍",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-pair-of-points-that-can-be-moved/description",
+ "alias": "pair-of-points-that-can-be-moved",
+ "pid": 2080,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shortest Path",
+ "lesson": "Floyd Warshall",
+ "card": "challenge-pair-of-points-that-can-be-moved",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "32.1",
+  "submissions": "546"
+ },
+ "sample_count": 1,
+ "statement_len": 437,
+ "fetched_at": "2026-09-23",
+ "statement": "1부터 $N$까지 번호가 붙은 $N$개의 서로 다른 점이 있습니다. $N$개의 점 중 $1$번부터 $P$번까지의 점은 빨간색으로 칠해져 있습니다.\n\n이 점들 중 임의의 두 점을 잇는 $M$개의 길이 있습니다. 모든 길은 한 방향으로만 이동할 수 있으며, 각 길에는 이동하기 위한 비용이 듭니다.\n\n코디는 $M$개의 길들을 이용해 주어진 점 $A$으로부터 점 $B$까지 이동하려고 합니다. 이때, 출발점과 도착점을 포함해 이동 경로 내에 적어도 하나 이상의 빨간색으로 칠해진 점이 포함되어 있는 경우에만 이동이 가능합니다. 코디는 이동이 가능한 경로 중 최소 비용으로  이동하고자 합니다.\n\n주어진 출발점과 도착점들 쌍 $Q$개 중 빨간색 점을 최소 하나 이상 지나 갈 수 있는 경우가 몇 개인지를 구하고, 가능한 경우에 대해 각 최소 비용의 총 합을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$, $M$, $P$, $Q$가 공백을 사이에 두고 차례대로 주어집니다.\n\n두 번째 줄부터 $M$개의 줄에 걸쳐 각 줄에 길의 출발점 번호, 길의 도착점 번호, 길을 가는데 필요한 비용이 공백을 사이에 두고 차례대로 주어집니다.\n\n$M+2$번째 줄부터 $Q$개의 줄에 걸쳐 각 줄에 출발점과 도착점의 번호가 공백을 사이에 두고 차례대로 주어집니다.",
+ "output_spec": "첫 번째 줄에 이동 가능한 출발점과 도착점 쌍의 개수를 출력합니다. \n\n두 번째 줄에 이동 가능한 루트를 모두 이동했을 경우 드는 총 최소 비용의 합을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 200$\n- $1 \\le M \\le 10\\,000$\n- $1 \\le P \\le 100$, $P \\le N$\n- $1 \\le Q \\le 10\\,000$\n- $1 \\le \\texttt{비용} \\le 1\\,000\\,000$",
+ "samples": [
+  {
+   "in": "3 3 1 3\n3 1 10\n1 3 10\n1 2 7\n3 2\n2 3\n1 2\n",
+   "out": "2\n24\n"
+  }
+ ],
+ "sample_notes": [
+  "예제 $1$번에서의 그래프는 다음과 같습니다.\n\n![](https://contents.codetree.ai/problems/2080/images/problems-613dbf47-01f0-42dc-a7df-ba4619880ad3.png)\n\n- $3 \\to 2$ 로 가는 최단 경로는 $3 \\to 1 \\to 2$ 이고 이때 비용은 $10 + 7 = 17$ 입니다.\n- $2 \\to 3$ 으로 이동할 수 있는 방법은 없습니다.\n- $1 \\to 2$ 로 갈 수 있는 최단 경로는 $1 \\to 2$ 이고 이때 비용은 $7$ 입니다.\n\n따라서 주어진 $3$가지 경우 중 $2$ 가지 경우만 이동이 가능하고, 이때 드는 총 비용은 $10 + 7 = 24$ 입니다."
+ ]
+}

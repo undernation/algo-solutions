@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "856",
+ "title": "두 정수 값 교환하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-to-exchange-two-integer-values/description",
+ "alias": "to-exchange-two-integer-values",
+ "pid": 856,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "함수",
+ "lesson": "Call by value / Call by reference",
+ "card": "intro-to-exchange-two-integer-values",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "94.1",
+  "submissions": "3212"
+ },
+ "sample_count": 1,
+ "statement_len": 313,
+ "fetched_at": "2026-09-23",
+ "statement": "두 정수 $n$과 $m$이 주어지면, 두 변수에 담긴 값을 서로 교환하여 출력하는 프로그램을 작성해보세요.\n\n단, 값을 교환하는 일은 반드시 함수로 처리해야 합니다. 주어진 두 정수를 인자로 받는 함수를 만들고, 함수 호출이 끝난 시점에 두 변수가 서로 교환된 값을 담고 있도록 합니다. 출력은 함수 호출 이후에 진행합니다.\n\n교환한 값을 호출한 곳까지 전달하는 방식은 언어에 따라 다릅니다. 인자를 참조나 포인터로 넘길 수 있는 언어라면 그 방식으로 원본 변수를 직접 바꾸고, 그럴 수 없는 언어라면 교환한 두 값을 반환받아 원래 변수에 다시 담아도 됩니다.",
+ "input_spec": "첫 번째 줄에 정수 $n$과 $m$이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 교환한 두 값을 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $1 \\le n, m \\le 100$",
+ "samples": [
+  {
+   "in": "13 8\n",
+   "out": "8 13\n"
+  }
+ ]
+}

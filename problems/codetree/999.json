@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "999",
+ "title": "문제 추천 시스템 1",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-problem-recommendation-system-1/description",
+ "alias": "problem-recommendation-system-1",
+ "pid": 999,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "중급 자료구조",
+ "lesson": "TreeSet",
+ "card": "challenge-problem-recommendation-system-1",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 3초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 3.0
+ },
+ "stats": {
+  "accept_rate": "80.5",
+  "submissions": "573"
+ },
+ "sample_count": 1,
+ "statement_len": 549,
+ "fetched_at": "2026-09-23",
+ "statement": "문제를 추천해주는 프로그램은 아래와 같이 동작하는 명령어를 처리합니다.\n\n1. rc $x$  \n- $x$가 $1$인 경우: 추천 문제 리스트에서 난이도가 가장 높은 문제 번호를 출력합니다. 난이도가 같은 문제가 여러 개라면 문제 번호가 더 큰 것을 선택합니다.  \n- $x$가 $-1$인 경우: 추천 문제 리스트에서 난이도가 가장 낮은 문제 번호를 출력합니다. 난이도가 같은 문제가 여러 개라면 문제 번호가 더 작은 것을 선택합니다.  \n- rc 명령은 추천 문제 리스트에 문제가 하나 이상 있을 때만 주어지며, $x$는 반드시 $1$ 또는 $-1$입니다.\n\n2. ad $P$ $L$  \n- 문제 번호 $P$번에 난이도 $L$인 문제를 추천 문제 리스트에 추가합니다.  \n- 동일한 문제 번호가 다른 난이도로 다시 추가될 수 있습니다.\n\n3. sv $P$ $L$  \n- 문제 번호 $P$번에 난이도 $L$인 문제를 추천 문제 리스트에서 제거합니다.\n- sv 명령은 추천 문제 리스트에 해당 문제가 존재할 때만 주어집니다.\n\n위 명령어들을 수행하는 문제 추천 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 추천 문제 리스트에 있는 문제의 개수 $N$이 주어집니다.\n\n두 번째 줄부터 $N+1$ 줄까지 문제 번호 $P$와 난이도 $L$이 공백을 두고 주어집니다.\n\n$N+2$ 번째 줄은 입력될 명령문의 개수 $M$이 주어집니다.\n\n$N+M+3$ 번째 줄부터 $M$개의 위에서 설명한 명령문이 입력됩니다.",
+ "output_spec": "rc 명령이 주어질 때마다 문제 번호를 한 줄씩 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100\\,000$\n- $1 \\le P \\le 100\\,000$\n- $1 \\le L \\le 100$\n- $1 \\le M \\le 10\\,000$\n- 최소 한번의 rc 명령어가 들어옵니다.",
+ "samples": [
+  {
+   "in": "4\n1000 1\n1001 2\n19998 78\n2042 55\n4\nad 1402 59\nsv 19998 78\nrc 1\nrc -1\n",
+   "out": "1402\n1000\n"
+  }
+ ]
+}

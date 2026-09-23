@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "880",
+ "title": "국영수 순이지",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-korean-english-math-order/description",
+ "alias": "korean-english-math-order",
+ "pid": 880,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "정렬",
+ "lesson": "객체 정렬",
+ "card": "intro-korean-english-math-order",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "85.9",
+  "submissions": "3768"
+ },
+ "sample_count": 1,
+ "statement_len": 110,
+ "fetched_at": "2026-09-23",
+ "statement": "$n$이 주어지고, $n$명인 학생수의 이름과 국어, 영어, 수학 세 과목의 점수가 주어지면 국어, 영어, 수학 순서대로 우선순위로 하여 과목 점수가 높은 학생부터 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 정수 $n$이 주어집니다.\n\n두 번째 줄부터 각 줄마다 학생의 이름과 국어, 영어, 수학 세 과목의 점수가 순서대로 공백을 사이에 두고 주어집니다. 서로 다른 두 사람의 국어, 영어, 수학 점수가 모두 동일한 경우는 주어지지 않는다고 가정해도 좋습니다. 또, 동일한 이름이 주어지는 경우 역시 없음을 가정해도 좋습니다.",
+ "output_spec": "첫 번째 줄부터 $n$개의 줄에 걸쳐 우선순위가 높은 학생부터 정보를 출력합니다. 정보는 학생의 이름, 국어 점수, 영어 점수, 수학 점수 순이며, 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $1 \\le n \\le 10$\n- $1 \\le$ 이름의 길이 $\\le 10$\n- $1 \\le$ 점수 $\\le 100$",
+ "samples": [
+  {
+   "in": "4\nlee 80 70 50\nkim 70 60 70\njune 70 80 50\npark 80 70 60\n",
+   "out": "park 80 70 60\nlee 80 70 50 \njune 70 80 50\nkim 70 60 70\n"
+  }
+ ]
+}

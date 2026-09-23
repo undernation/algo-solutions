@@ -1,0 +1,48 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f378",
+ "title": "보안 담당자",
+ "url": "https://www.codetree.ai/ko/frequent-problems/hsat/problems/security-manager/description",
+ "alias": "security-manager",
+ "pid": 378,
+ "group": "hsat",
+ "kind": "frequent",
+ "origin": "9차 1번 문제",
+ "level": "L11",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "32.9",
+  "submissions": "717"
+ },
+ "sample_count": 3,
+ "statement_len": 622,
+ "fetched_at": "2026-09-23",
+ "statement": "당신은 회사의 보안 담당자로서, 사무실 출입 기록 시스템을 관리하고 있습니다. 이 시스템은 사무실 출입문에 설치된 CCTV를 통해 직원들의 출입을 기록합니다. 각 기록은 다음 세 가지 문자 중 하나로 표시됩니다.\n\n1. `(`: 직원이 사무실에 들어온 경우\n2. `)`: 직원이 사무실에서 나간 경우\n3. `?`: 시스템 오류 또는 인식 불가로 인해 출입 여부가 불분명한 경우\n\n당신의 목표는 CCTV 기록을 분석하여, 기록이 정상적으로 출입 상황을 반영하고 있는지를 판단하는 것입니다. 기록이 정상적이라고 판단하기 위한 조건은 다음과 같습니다.\n\n1. CCTV의 어떤 시점에서도 사무실에 들어온 직원 수가 나간 직원 수보다 많거나 같아야 합니다.\n2. CCTV의 기록의 마지막까지 확인을 하였을 때, 사무실에 들어온 직원 수와 나간 직원 수는 동일해야 합니다.\n\n`?`를 `(` 또는 `)`로 적절하게 해석했을 때 CCTV의 기록이 정상적일 수 있는지를 확인할 수 있는 프로그램을 작성하세요.\n\n\n\n- subtask1 (25점) :  `?`가 주어지지 않습니다.\n- subtask2 (25점) :  `?`는 최대 $2$개 주어집니다.\n- subtask3 (50점) :  문제 조건 외에 별도의 제한이 없습니다.",
+ "input_spec": "첫 번째 줄에는 정수 $N$이 주어집니다.  \n두 번째 줄에는 길이가 $N$인 문자열이 주어집니다. 가장 첫 번째 기록부터 마지막 기록까지 차례대로 주어지며, 이 문자열은 `(`, `)`, `?` 중 하나로 이루어져 있습니다.",
+ "output_spec": "첫번째 줄에 `?`를 `(` 또는 `)`로 적절하게 해석했을 때 CCTV의 기록이 정상적이라면 `Yes`, `?`를 어떻게 해석하더라도 CCTV의 기록이 비정상적이라면 `No`를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 5000$  \n- 문자열은 `(`, `)`, `?`로만 이루어져 있습니다.",
+ "samples": [
+  {
+   "in": "6\n(?(??)\n",
+   "out": "Yes\n"
+  },
+  {
+   "in": "6\n(((())\n",
+   "out": "No\n"
+  },
+  {
+   "in": "5\n?????\n",
+   "out": "No\n"
+  }
+ ],
+ "sample_notes": [
+  "예제 1번에서, `?`를 다음과 같이 바꾼다면 정상적인 CCTV 기록이 됩니다. \n\n <p align=center> <img width=\"200\" src=\"https://contents.codetree.ai/problems/4126/images/11a437eb-4cba-4ef4-8455-0d94b564979e.png\">\n\n<hr/>\n\n <p align=center> <img width=\"200\" src=\"https://contents.codetree.ai/problems/4126/images/d71f0b7a-d6dc-42e6-927c-222df7986d83.png\">",
+  "",
+  ""
+ ]
+}

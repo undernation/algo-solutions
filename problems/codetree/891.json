@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "891",
+ "title": "두 직사각형",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-two-rectangles/description",
+ "alias": "two-rectangles",
+ "pid": 891,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "케이스별로 나누기",
+ "lesson": "겹치는 경우",
+ "card": "intro-two-rectangles",
+ "card_type": "Introduction",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "67.9",
+  "submissions": "1126"
+ },
+ "sample_count": 1,
+ "statement_len": 132,
+ "fetched_at": "2026-09-23",
+ "statement": "2차원 평면 상에 두 직사각형이 주어졌을 때, 두 직사각형이 서로 겹쳐져 있는지를 판단하는 프로그램을 작성해보세요. 두 직사각형은 각 변이 좌표축에 평행합니다.\n\n단, 변을 공유하거나 꼭짓점을 공유하는 경우에도 겹치는 것으로 생각합니다.",
+ "input_spec": "첫 번째 줄에 정수 $x_1$, $y_1$, $x_2$, $y_2$가 공백을 사이에 두고 주어집니다. $(x_1,\\ y_1)$과 $(x_2,\\ y_2)$를 마주 보는 두 꼭짓점으로 하고 각 변이 좌표축에 평행한 직사각형을 의미합니다. 즉 $x$좌표가 $x_1$ 이상 $x_2$ 이하이고 $y$좌표가 $y_1$ 이상 $y_2$ 이하인 영역입니다.\n\n두 번째 줄에 정수 $a_1$, $b_1$, $a_2$, $b_2$가 공백을 사이에 두고 주어집니다. $(a_1,\\ b_1)$과 $(a_2,\\ b_2)$를 마주 보는 두 꼭짓점으로 하고 각 변이 좌표축에 평행한 직사각형을 의미합니다. 즉 $x$좌표가 $a_1$ 이상 $a_2$ 이하이고 $y$좌표가 $b_1$ 이상 $b_2$ 이하인 영역입니다.",
+ "output_spec": "두 직사각형이 서로 겹쳐져 있는지에 대한 여부를 출력합니다. 두 직사각형이 겹치면 \"overlapping\", 겹치지 않는다면 \"nonoverlapping\"을 출력합니다.",
+ "constraints": "- $1 \\le x_1 \\lt x_2 \\le 100$\n- $1 \\le y_1 \\lt y_2 \\le 100$\n- $1 \\le a_1 \\lt a_2 \\le 100$\n- $1 \\le b_1 \\lt b_2 \\le 100$",
+ "samples": [
+  {
+   "in": "1 2 4 5\n2 1 5 4\n",
+   "out": "overlapping\n"
+  }
+ ],
+ "sample_notes": [
+  "아래 그림과 같이 위의 좌표를 찍고 사각형을 만들면 서로 겹치는 것을 알 수 있습니다.\n\n![](https://contents.codetree.ai/problems/891/images/problems-c487c1fa-7063-438d-8332-984c340a363b.svg)"
+ ]
+}

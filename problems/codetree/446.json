@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "446",
+ "title": "노드 만들어보기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-node-definition/description",
+ "alias": "node-definition",
+ "pid": 446,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "배열, 연결 리스트",
+ "lesson": "단일 연결 리스트",
+ "card": "intro-node-definition",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "66.5",
+  "submissions": "5047"
+ },
+ "sample_count": 0,
+ "statement_len": 237,
+ "fetched_at": "2026-09-23",
+ "statement": "연결 리스트를 만들기 위해선 우선 노드가 정의되어야 합니다.\n\n그렇다면 노드란 무엇일까요? 다음 빈칸을 채워봅시다.\n```\n연결 리스트에서 노드란 정보를 담는 하나의 창구로, 연결 리스트는 노드 간의 연속적인 (    )로\n구성되어 있습니다. 정의하는 방법에 따라 (     ) 이동할 수 있습니다.\n```\n\n**보기** — 순서대로 2개 고르기\n\n1. 연결\n2. 대칭\n3. 앞/뒤로\n4. 원하는 곳으로\n5. 상/하/좌/우로"
+}

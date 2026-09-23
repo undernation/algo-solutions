@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1021",
+ "title": "트리 간선의 길이",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-length-of-tree-trunk/description",
+ "alias": "length-of-tree-trunk",
+ "pid": 1021,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Tree",
+ "lesson": "트리",
+ "card": "challenge-length-of-tree-trunk",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "580 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "74.6",
+  "submissions": "347"
+ },
+ "sample_count": 1,
+ "statement_len": 117,
+ "fetched_at": "2026-09-23",
+ "statement": "간선에 가중치가 부여된 트리에서, 두 점 사이의 거리 중 가장 긴 값을 구하는 프로그램을 작성하세요.\n\n트리에서 두 점 사이의 거리란, 두 점을 잇는 단순 경로에 포함된 모든 간선의 가중치의 총합을 의미합니다.",
+ "input_spec": "첫 번째 줄에 트리 노드의 개수 $N$이 주어집니다. \n\n두 번째 줄부터 $N-1$개의 줄에 걸쳐 각 줄에 간선으로 연결된 두 노드 번호와 간선의 가중치가 공백을 가지고 차례대로 출력됩니다.",
+ "output_spec": "첫 번째 줄에 트리에서 두 점 사이 중 가장 긴 값을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 10\\,000$\n- $1 \\le \\texttt{간선의 가중치} \\le 100$, 가중치는 정수.\n- $1 \\le \\texttt{주어지는 노드 번호} \\le 10\\,000$\n- 주어지는 그래프는 트리입니다.",
+ "samples": [
+  {
+   "in": "12\n1 2 3\n1 3 2\n2 4 5\n3 5 11\n3 6 9\n4 7 1\n4 8 7\n5 9 15\n5 10 4\n6 11 6\n6 12 10\n",
+   "out": "45\n"
+  }
+ ]
+}

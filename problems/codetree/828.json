@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "828",
+ "title": "초기 수열 복원하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-restore-initial-sequence/description",
+ "alias": "restore-initial-sequence",
+ "pid": 828,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 III",
+ "lesson": "기준을 새로 설정하여 완전탐색",
+ "card": "challenge-restore-initial-sequence",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "48.6",
+  "submissions": "1361"
+ },
+ "sample_count": 1,
+ "statement_len": 187,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$ 이상 $N$ 이하의 정수가 각각 한 번씩만 등장하는 길이 $N$의 수열 $A$가 있습니다. 이 수열에서 인접한 두 원소의 합을 순서대로 구한 $N-1$개의 값 $S_1, S_2, \\ldots, S_{N-1}$이 주어질 때, 즉 $S_i = A_i + A_{i+1}$일 때, 원래 수열 $A$를 복원하는 프로그램을 작성해 주세요.",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.\n\n$N \\ge 2$인 경우, 두 번째 줄에 인접한 두 원소의 합 $S_1, S_2, \\ldots, S_{N-1}$이 공백을 사이에 두고 주어집니다. $N = 1$인 경우 두 번째 줄은 주어지지 않습니다.",
+ "output_spec": "$S_i$가 순서대로 인접한 두 원소의 합이 되도록 하는 원래 수열 $A$의 원소들을 한 줄에 공백을 사이에 두고 모두 출력합니다. 가능한 답이 여러 개라면 그중 사전순으로 가장 앞선 수열을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 1\\,000$\n- $3 \\le S_i \\le 2N - 1$ ($1 \\le i \\le N - 1$)\n- 주어진 $S_i$로 복원할 수 있는 수열 $A$가 항상 존재함이 보장됩니다",
+ "samples": [
+  {
+   "in": "5\n4 6 7 6\n",
+   "out": "3 1 5 2 4\n"
+  }
+ ],
+ "sample_notes": [
+  "$3\\, 1\\, 5\\, 2\\, 4$ 에 대해 인접한 두 수의 합을 적어 보면 $4\\, 6\\, 7\\, 6$이 되므로 가능한 수열입니다."
+ ]
+}

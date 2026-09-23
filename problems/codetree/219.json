@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "219",
+ "title": "입력받아 연산하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-take-input-and-operate/description",
+ "alias": "take-input-and-operate",
+ "pid": 219,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "연산자",
+ "lesson": "사칙연산",
+ "card": "challenge-take-input-and-operate",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "83.7",
+  "submissions": "14193"
+ },
+ "sample_count": 1,
+ "statement_len": 96,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $2$개를 입력받아서 첫 번째 수에는 $87$을 증가시켜 저장하고 두 번째 수는 $10$으로 나눈 나머지를 저장한 후 두 수를 차례로 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "한 줄에 하나씩  두 정수 $a$, $b$가 주어집니다.",
+ "output_spec": "첫 번째 줄에는 정수 $a$를 $87$증가시킨 값을,\n\n두 번째 줄에는 정수 $b$를 $10$으로 나눈 나머지의 값을 출력합니다.",
+ "constraints": "- $1 \\le a, b \\le 500$",
+ "samples": [
+  {
+   "in": "13\n87\n",
+   "out": "100\n7\n"
+  }
+ ]
+}

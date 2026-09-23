@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "602",
+ "title": "중앙교통통제소",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-ga-floyd-practice/description",
+ "alias": "ga-floyd-practice",
+ "pid": 602,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 알고리즘",
+ "lesson": "Floyd Warshall",
+ "card": "test-ga-floyd-practice",
+ "card_type": "Test",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "38.6",
+  "submissions": "2744"
+ },
+ "sample_count": 0,
+ "statement_len": 718,
+ "fetched_at": "2026-09-23",
+ "statement": "중앙교통통제소는 모든 교통을 관리하기 위해 플로이드-워셜 알고리즘을 도입하게 되었습니다.\n\n![](https://contents.codetree.ai/problems/602/images/problems-ad659011-996c-4a6b-8f69-7a5c78786bc0.png)\n\n다음과 같은 그래프에, 플로이드 워셜 알고리즘을 적용하였습니다.\n\n다음 표는 플로이드 워셜 알고리즘을 수행한 결과입니다. 빈칸을 채워봅시다.\n\n|| $1$ | $2$ | $3$ | $4$ | $5$ | $6$ |\n| :---: | :---: | :---: | :---: | :---: | :---: | :---: |\n|$1$| $0$ | $? $ | $(1)$ | $? $ | $? $ | $? $ |\n|$2$| $? $ | $0$ | $(2)$ | $? $ | $? $ | $? $ |\n|$3$| $(3)$ | $? $ | $0$ | $? $ | $? $ | $? $ |\n|$4$| $? $ | $? $ | $? $ | $0$ | $? $ | $(4)$ |\n|$5$| $? $ | $? $ | $? $ | $? $ | $0$ | $? $ |\n|$6$| $? $ | $? $ | $(5)$ | $? $ | $? $ | $0$ |\n\n선택지의 $INF$는 무한대를 의미합니다.\n\n**보기** — 순서대로 5개 고르기\n\n1. `1`\n2. `2`\n3. `3`\n4. `4`\n5. `5`\n6. `6`\n7. `INF`"
+}

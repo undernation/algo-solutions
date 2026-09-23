@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1016",
+ "title": "트리 순회법 변경",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-change-tree-traversal/description",
+ "alias": "change-tree-traversal",
+ "pid": 1016,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Tree",
+ "lesson": "이진 트리와 탐색",
+ "card": "test-change-tree-traversal",
+ "card_type": "Test",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "65.4",
+  "submissions": "260"
+ },
+ "sample_count": 1,
+ "statement_len": 193,
+ "fetched_at": "2026-09-23",
+ "statement": "이진 검색 트리는 모든 노드에 대해서, 다음과 같은 두 가지 조건을 만족하는 이진 트리입니다.\n\n+ 왼쪽 서브트리에 있는 모든 노드의 값은 현재 노드의 값보다 작다.\n\n+ 오른쪽 서브트리에 있는 모든 노드의 값은 노드의 값보다 크다.\n\n이진 검색 트리를 전위 순회한 결과가 주어졌을때, 이 트리를 후위 순회한 결과를 구하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 노드의 개수 $N$이 주어집니다.\n\n두 번째 줄부터 트리를 전위순회한 결괏값이 매 줄에 걸쳐 차례대로 주어집니다.",
+ "output_spec": "입력으로 주어진 이진 트리를 후위 순회한 결과를 한 줄에 하나씩 출력합니다.",
+ "constraints": "- $1 \\le N \\le 10\\,000$\n- $1 \\le \\texttt{노드 값} \\le 1\\,000\\,000$\n- 노드 값에는 중복이 없습니다.",
+ "samples": [
+  {
+   "in": "9\n6\n4\n2\n1\n3\n5\n9\n7\n8\n",
+   "out": "1\n3\n2\n5\n4\n8\n7\n9\n6\n"
+  }
+ ]
+}

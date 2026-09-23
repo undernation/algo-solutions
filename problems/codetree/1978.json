@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1978",
+ "title": "쪼개어 배낭 채우기 구현",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-implement-fractional-knapsack/description",
+ "alias": "implement-fractional-knapsack",
+ "pid": 1978,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Greedy",
+ "lesson": "Greedy Algorithm",
+ "card": "intro-implement-fractional-knapsack",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 5초 · C++17 1초",
+  "memory": "288 MB",
+  "time_sec": 5.0
+ },
+ "stats": {
+  "accept_rate": "63.2",
+  "submissions": "1185"
+ },
+ "sample_count": 2,
+ "statement_len": 592,
+ "fetched_at": "2026-09-23",
+ "statement": "도둑이 보석방을 털러 갔습니다. 보석방에는 $N$개의 보석이 있고, 도둑 가방의 크기는 $M$이기 때문에 이보다 더 많은 양의 무게에 해당하는 보석들을 담아 나올 수는 없습니다. 또한, 보석은 종류별로 단 하나씩만 있으며 각 보석을 원하는 만큼 쪼개어 담는 것이 가능합니다.\n\n예를 들어 도둑방에 보석이 다음과 같이 $5$개가 있는 경우를 살펴봅시다. 이때 도둑 가방의 크기는 $8$이라 가정합니다.\n\n| 보석 번호 | 무게 | 가격 |\n|:---------:|:----:|:----:|\n| $1$    | $2$  | $3$  |\n| $2$    | $6$  | $5$  |\n| $3$    | $2$  | $4$  |\n| $4$    | $3$  | $2$  |\n| $5$    | $4$  | $3$  |\n\n이 예시에서는 $1$번 보석과 $3$번 보석을 담고, $2$번 보석의 $\\frac{2}{3}$ 만큼 담으면 무게는 정확히 $8$이 되며 이때 가치는 $10.333$이 됩니다. 이 예시에서 이보다 더 크게 가치를 만들 수는 없습니다.\n\n도둑 가방 크기의 정보와 보석의 정보가 주어졌을 때, 얻을 수 있는 최대 가치를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫째 줄에는 $N$과 $M$이 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터는 $N$개의 줄에 걸쳐 보석의 정보 $(w,\\;v)$가 공백을 사이에 두고 주어집니다. $w$는 해당 보석의 무게를 의미하며, $v$는 해당 보석의 가치를 의미합니다.",
+ "output_spec": "얻을 수 있는 최대 가치를 소숫점 셋째자리까지 반올림하여 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100\\,000$\n- $1 \\le M \\le 10^9$\n- $1 \\le w, v \\le 1\\,000$",
+ "samples": [
+  {
+   "in": "3 7\n5 8\n3 6\n4 4\n",
+   "out": "12.400\n"
+  },
+  {
+   "in": "5 8\n2 3\n6 5\n2 4\n3 2\n4 3\n",
+   "out": "10.333\n"
+  }
+ ],
+ "sample_notes": [
+  "예제 $1$번에서, $2$번째 보석을 담고, $1$번째 보석을 $\\frac{4}{5}$ 만큼만 담는다면, 가치는 $6 + 6.4 = 12.4$가 됩니다.",
+  ""
+ ]
+}

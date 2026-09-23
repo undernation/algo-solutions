@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "55",
+ "title": "빙하",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-glacier/description",
+ "alias": "glacier",
+ "pid": 55,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "BFS",
+ "lesson": "BFS 탐색",
+ "card": "challenge-glacier",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 3초 · C++17 1초",
+  "memory": "128 MB",
+  "time_sec": 3.0
+ },
+ "stats": {
+  "accept_rate": "52.9",
+  "submissions": "2442"
+ },
+ "sample_count": 2,
+ "statement_len": 1034,
+ "fetched_at": "2026-09-23",
+ "statement": "$N \\times M$ 크기의 격자 안에 빙하의 정보가 주어집니다. 격자의 가장 바깥 부분은 항상 빙하가 아니고, 빙하를 제외한 나머지 위치에는 전부 물이 채워져 있습니다. 정수 $1$은 빙하를, 정수 $0$은 물을 나타냅니다.\n\n![](https://contents.codetree.ai/problems/55/images/problems-3c4f6ce1-0faa-481a-96cd-1c62e47c37b8.png)\n\n여기서 어떤 물 칸이 격자의 가장자리에 있는 물 칸에서 물끼리 상하좌우로만 이동해 도달할 수 있으면 이를 바깥물이라 부르고, 그렇지 않으면 (즉 사방이 빙하로 막혀 도달할 수 없으면) 빙하로 둘러싸인 물이라 부릅니다. 빙하로 둘러싸인 물은 빙하를 녹이지 못하며, 오직 바깥물에 상하좌우로 인접한 빙하 칸만이 녹습니다.\n\n빙하는 다음과 같은 규칙으로 매초 녹습니다.\n\n+ 매초 시작 시점의 격자 상태를 기준으로, 바깥물에 상하좌우로 인접한 모든 빙하 칸을 동시에 녹입니다.\n+ 이번 초에 녹은 빙하 칸들은 다음 초부터 물로 취급됩니다. 즉 같은 초 안에서는 연쇄적으로 추가로 녹지 않습니다.\n\n다음의 경우 역시 안쪽에 있는 $0$들은 빙하로 둘러싸인 물이므로 빙하가 녹는데 영향을 주지 못합니다.\n\n![](https://contents.codetree.ai/problems/55/images/problems-3822d834-9438-43d9-b862-f0688c571a7a.png)\n\n맨 위에서 주어진 예시의 경우 안쪽에 있는 $0$은 빙하로 둘러싸여 있으므로 바깥쪽에 있는 $0$만이 빙하가 녹는데 영향을 미칩니다.\n\n![](https://contents.codetree.ai/problems/55/images/problems-6ba22421-4676-4639-b340-868fc9a7478c.png)\n\n빙하가 전부 녹는데 걸리는 시간과, 마지막 초에 녹아 사라지는 빙하 칸의 수($1$의 개수)를 구하는 프로그램을 작성합니다.\n\n위의 예에서는 빙하가 녹는데 $2$초의 시간이 소요되며, 마지막 초에 녹는 빙하 칸이 $4$개입니다.",
+ "input_spec": "첫 번째 줄에는 $N$과 $M$이 공백을 사이에 두고 주어지고,\n두 번째 줄부터는 $N$개의 줄에 걸쳐 각 행에 위치한 $M$개의 정수가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "빙하가 전부 녹는데 걸리는 시간과, 마지막 초에 녹아 사라지는 빙하 칸의 수를 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $3 \\le N \\le 200$\n- $3 \\le M \\le 200$\n- 격자의 각 원소는 $0$ 또는 $1$입니다.\n- 격자의 가장 바깥 부분(첫 번째·마지막 행, 첫 번째·마지막 열)은 항상 물($0$)입니다.\n- 입력으로 주어지는 초기 빙하의 크기는 $1$ 이상입니다.",
+ "samples": [
+  {
+   "in": "3 3\n0 0 0\n0 1 0\n0 0 0\n",
+   "out": "1 1\n"
+  },
+  {
+   "in": "6 7\n0 0 0 0 0 0 0\n0 1 1 1 1 0 0\n0 1 1 0 1 1 0\n0 1 0 1 1 1 0\n0 1 1 1 1 1 0\n0 0 0 0 0 0 0\n",
+   "out": "2 4\n"
+  }
+ ]
+}

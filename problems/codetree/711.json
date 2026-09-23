@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "711",
+ "title": "출력결과 29",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201631/description",
+ "alias": "reading-k201631",
+ "pid": 711,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "재귀함수",
+ "lesson": "값을 반환하는 재귀함수",
+ "card": "challenge-reading-k201631",
+ "card_type": "Problem",
+ "level": "Hard",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "60.4",
+  "submissions": "3360"
+ },
+ "sample_count": 0,
+ "statement_len": 610,
+ "fetched_at": "2026-09-23",
+ "statement": "아래와 같은 함수 f가 있을 때, `f(4, 3)`의 값은 무엇인가?\n\n## Python3 코드\n```python\ndef f(a, b):\n    if a < b or b == 0:\n        return 1\n    return f(a - 2, b - 1) + f(a - 1, b) * b\n```\n\n## C/C++ 코드\n```cpp\nint f(int a, int b) {\n    if (a < b || b == 0) return 1;\n    return f(a - 2, b - 1) + f(a - 1, b) * b;\n}\n```\n\n## Java 코드\n```java\nint f(int a, int b) {\n    if (a < b || b == 0) return 1;\n    return f(a - 2, b - 1) + f(a - 1, b) * b;\n}\n```\n\n## JavaScript 코드\n```JavaScript\nfunction f(a, b) {\n    if (a < b || b == 0) return 1;\n    return f(a - 2, b - 1) + f(a - 1, b) * b;\n}\n```\n\n**보기** — 하나 고르기\n\n1. 14\n2. 15\n3. 16\n4. 17\n5. 18"
+}

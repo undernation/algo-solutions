@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1030",
+ "title": "트리 파악",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-identifying-the-tree/description",
+ "alias": "identifying-the-tree",
+ "pid": 1030,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Tree",
+ "lesson": "트리",
+ "card": "challenge-identifying-the-tree",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "420 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "49.7",
+  "submissions": "445"
+ },
+ "sample_count": 2,
+ "statement_len": 378,
+ "fetched_at": "2026-09-23",
+ "statement": "트리의 모든 리프 노드에는 말이 정확히 하나씩 놓여있습니다. 이제 $A$와 $B$가 서로 번갈아가며 한 번에 말을 하나씩 옮기는 게임을 하려고 합니다. 게임의 방식은 다음과 같습니다.\n\n- 차례가 되면 존재하는 말 중 아무거나 하나를 골라 그 말이 놓여있던 노드의 부모 노드로 말을 옮깁니다.\n- 한 노드에는 여러개의 말이 존재할 수 있습니다.\n- 루트 노드에 말이 도착한다면 즉시 그 말을 제거합니다. 여기서 루트 노드는 $1$번 입니다.\n- 더 이상 옮길 말이 없는 상태에서 차례가 돌아온 사람의 패배입니다.\n\n$A$가 먼저 시작하며 $A$, $B$ 모두 최선을 다해 게임을 진행한다고 했을 때, 주어진 트리에서 $A$가 승리할 수 있는지 판단하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 트리 노드의 개수 $N$이 주어집니다.\n\n두 번째 줄부터 $N - 1$개의 줄에 각각 걸쳐 간선으로 연결된 두 개의 노드 번호가 공백을 두고 차례대로 출력됩니다.",
+ "output_spec": "주어진 트리에서 $A$가 승리할 수 있다면 $1$을, 승리할 수 없다면 $0$을 출력하세요.",
+ "constraints": "- $2 \\le N \\le 100\\,000$\n- $1 \\le \\texttt{트리의 노드 번호} \\le N$",
+ "samples": [
+  {
+   "in": "2\n1 2\n",
+   "out": "1\n"
+  },
+  {
+   "in": "5\n1 2\n1 3\n3 4\n4 5\n",
+   "out": "0\n"
+  }
+ ]
+}

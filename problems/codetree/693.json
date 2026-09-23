@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "693",
+ "title": "출력결과 11",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201531/description",
+ "alias": "reading-k201531",
+ "pid": 693,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "2차원 배열",
+ "lesson": "2차원 배열 입력",
+ "card": "challenge-reading-k201531",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "54.6",
+  "submissions": "5756"
+ },
+ "sample_count": 0,
+ "statement_len": 1480,
+ "fetched_at": "2026-09-23",
+ "statement": "다음은 2차원 배열을 회전하여 출력하는 프로그램이다. 프로그램의 출력 결과가 아래와 같다고 할 떄, \"ANSWER\"에 들어갈 올바른 것을 고르시오.\n\n## Python3 코드\n```python\narr = [[1, 2, 3],\n       [4, 5, 6],\n       [7, 8, 9]]\n\nfor i in range(3):\n    for j in range(3):\n        print(\"ANSWER\", end = ' ')\n    print()\n\n\n출력결과\n7 4 1\n8 5 2\n9 6 3\n```\n\n## C 코드\n\n```cpp\nint arr[3][3] = { {1, 2, 3},\n                  {4, 5, 6},\n                  {7, 8, 9} };\n\nfor (int i = 0; i < 3; i++) {\n    for(int j = 0; j < 3; j++) {\n        printf(\"%d \",\"ANSWER\");\n    }\n    printf(\"\\n\");\n}\n\n출력결과\n7 4 1\n8 5 2\n9 6 3\n```\n\n## C++ 코드\n\n```cpp\nint arr[3][3] = { {1, 2, 3},\n                  {4, 5, 6},\n                  {7, 8, 9} };\n\nfor (int i = 0; i < 3; i++) {\n    for(int j = 0; j < 3; j++) {\n        cout << \"ANSWER\" << \" \";\n    }\n    cout << \"\\n\";\n}\n\n출력결과\n7 4 1\n8 5 2\n9 6 3\n```\n\n## Java 코드\n\n```java\nint[][] arr = new int[][]{ {1, 2, 3},\n                           {4, 5, 6},\n                           {7, 8, 9} };\n\nfor (int i = 0; i < 3; i++) {\n    for(int j = 0; j < 3; j++) {\n        System.out.print(\"ANSWER\" + \" \");\n    }\n    System.out.println();\n}\n\n출력결과\n7 4 1\n8 5 2\n9 6 3\n```\n\n## JavaScript 코드\n\n```JavaScript\nlet arr =  [[1, 2, 3],\n            [4, 5, 6],\n            [7, 8, 9]]\n\nfor (let i = 0; i < 3; i++) {\n    let str = \"\";\n    for(let j = 0; j < 3; j++) {\n        str += ANSWER + \" \";\n    }\n    console.log(str);\n}\n\n출력결과\n7 4 1\n8 5 2\n9 6 3\n```\n\n**보기** — 하나 고르기\n\n1. `arr[i][2 - j]`\n2. `arr[2 - i][j]`\n3. `arr[j][i]`\n4. `arr[2 - j][i]`\n5. `arr[j][2 - i]`"
+}

@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "429",
+ "title": "펜트하우스",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-penthouse/description",
+ "alias": "penthouse",
+ "pid": 429,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "시간, 공간복잡도",
+ "lesson": "점근 표기법",
+ "card": "challenge-penthouse",
+ "card_type": "Problem",
+ "level": "Hard",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "60.3",
+  "submissions": "5030"
+ },
+ "sample_count": 0,
+ "statement_len": 524,
+ "fetched_at": "2026-09-23",
+ "statement": "펜트하우스에 코드들이 입주를 합니다. 모두가 높은 층에 입주하고 싶겠지만, 자리는 한정되어 있기 때문에 다음과 같은 규칙으로 배정하기로 했습니다.\n\n두 코드의 시간복잡도를 각각 $f(N)$, $g(N)$이라고 할 때,\n\n- $f(N) = \\Theta(g(N))$이 성립하면, 두 코드는 같은 층에 배정됩니다.\n- 만약 $f(N) = \\mathcal{O}(g(N))$이지만 $g(N) \\ne \\mathcal{O}(f(N))$이라면, $f(N)$은 $g(N)$보다 낮은 층에 배정됩니다.\n-----\n\n- $N^3$\n- $10N^3$\n- $N\\log{N}$\n- $\\log{N}$\n- $N^2\\log{N}$\n- $2^{N + 2021}$\n- $\\frac{1}{2}N^5$\n- $2^N$\n\n------\n위와 같은 $8$개의 코드의 시간복잡도가 있다고 합시다. 이 경우 최상층으로 가는 코드의 수와 그 아래층으로 가는 코드의 수를 합치면 어떻게 될까요?\n\n**보기** — 하나 고르기\n\n1. `2`\n2. `3`\n3. `4`\n4. `5`\n5. `6`"
+}

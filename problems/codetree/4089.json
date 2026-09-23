@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "4089",
+ "title": "도전! 369게임",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-369-game-challenge/description",
+ "alias": "369-game-challenge",
+ "pid": 4089,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "DP II",
+ "lesson": "원하는 State를 정의하여 한 칸씩 나아가는 DP",
+ "card": "challenge-369-game-challenge",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "42.2",
+  "submissions": "346"
+ },
+ "sample_count": 2,
+ "statement_len": 293,
+ "fetched_at": "2026-09-23",
+ "statement": "남우는 친구들이랑 변형 $369$게임을 하고 있습니다. 변형 $369$게임 속에서는 사람들이 $1$부터 순서대로 정수를 불러 나가는데, 정수에 $3$, $6$, $9$가 포함되어 있거나 $3$의 배수라면 박수를 쳐야 합니다.\n\n예를 들어, $1$부터 진행한다고 했을 때 $1$, $2$, 짝, $4$, $5$, 짝, $7$, $8$, 짝, $10$, $11$, 짝, 짝, $\\cdots$, 순서로 진행됩니다.\n\n이 $369$게임을 $N$까지 이어 나갔을 때 최종적으로 박수를 몇 번 치게 되는지 구하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 $N$이 입력으로 주어집니다.",
+ "output_spec": "첫 번째 줄에 $369$게임을 $N$까지 이어 나갔을 때 박수를 몇 번 치게 되는지를 $10^9 + 7$로 나눈 나머지를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 10^{100\\,000}$",
+ "samples": [
+  {
+   "in": "13\n",
+   "out": "5\n"
+  },
+  {
+   "in": "11111\n",
+   "out": "9253\n"
+  }
+ ]
+}

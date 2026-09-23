@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2261",
+ "title": "전화번호 바꾸기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-change-phone-number/description",
+ "alias": "change-phone-number",
+ "pid": 2261,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "입출력",
+ "lesson": "특정 문자를 사이에 두고 입력",
+ "card": "test-change-phone-number",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "83.7",
+  "submissions": "10903"
+ },
+ "sample_count": 2,
+ "statement_len": 71,
+ "fetched_at": "2026-09-23",
+ "statement": "`010-xxxx-yyyy` 형태의 전화번호를 입력받아 앞 $4$자리와 뒤 $4$자리를 바꾸어 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 전화번호가 `010-xxxx-yyyy`의 형태로 주어집니다. `xxxx`와 `yyyy`는 $0$으로 시작되지 않음을 가정해도 좋습니다.",
+ "output_spec": "입력받은 전화번호를 `010-yyyy-xxxx`의 형태로 출력합니다.",
+ "constraints": "- $1 \\le x, y \\le 9$",
+ "samples": [
+  {
+   "in": "010-1234-5678\n",
+   "out": "010-5678-1234\n"
+  },
+  {
+   "in": "010-8765-4321\n",
+   "out": "010-4321-8765\n"
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "778",
+ "title": "마라톤 중간에 택시타기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-taking-a-taxi-in-the-middle-of-the-marathon/description",
+ "alias": "taking-a-taxi-in-the-middle-of-the-marathon",
+ "pid": 778,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shorten time Technique",
+ "lesson": "LR Technique",
+ "card": "intro-taking-a-taxi-in-the-middle-of-the-marathon",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "72.6",
+  "submissions": "913"
+ },
+ "sample_count": 1,
+ "statement_len": 542,
+ "fetched_at": "2026-09-23",
+ "statement": "마라톤 코스는 $N$개의 체크포인트로 구성되어 있으며, $1$번 체크포인트에서 시작해서 모든 체크 포인트를 순서대로 방문한 후 $N$번 체크포인트에서 마라톤이 끝납니다. 게으른 개발자 $A$는 막상 대회에 참가하려 하니 귀찮아져서 중간에 있는 체크포인트 한 개를 몰래 건너뛰려 합니다. 단, $1$번 체크포인트와 $N$번 체크포인트를 건너뛰면 티가 많이 나기 때문에 이 두 체크포인트는 건너뛰지 않으려고 합니다. 개발자 $A$가 체크포인트 한 개를 건너 뛰어서 마라톤을 완주하려고 할 때, 최소 거리를 구하는 프로그램을 작성해보세요. 단, 거리 계산은 택시 거리(Manhattan Distance)를 이용합니다. 택시거리란 $(x_1,\\ y_1)$과 $(x_2,\\ y_2)$ 지점 간의 거리를 $|x_1-x_2| + |y_1-y_2|$ 로 계산하는 것을 의미합니다. 또한, 체크 포인트의 좌표는 겹쳐져 주어질 수도 있으며, 이 경우 개발자 $A$가 체크포인트를 건너뛸 때 그 번호의 체크포인트만 건너뛰게 되며 그 점에 있는 모든 체크포인트를 건너뛰지 않음에 유의합니다.",
+ "input_spec": "첫 번째 줄에 체크포인트 $N$이 주어집니다.\n\n이후 $N$개의 줄에 걸쳐 한 줄에 하나씩 각 번호에 해당하는 지점의 위치 $(x,\\ y)$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 마라톤을 완주하는 최소 거리를 출력합니다.",
+ "constraints": "- $3 \\le N \\le 100\\,000$\n - $-1\\,000 \\le x, y \\le 1\\,000$",
+ "samples": [
+  {
+   "in": "4\n0 0\n8 3\n11 -1\n10 0\n",
+   "out": "14\n"
+  }
+ ],
+ "sample_notes": [
+  "개발자 $A$는 $2$번째 혹은 $3$번째 체크포인트를 건너뛸 수 있는데, 여기서 두 번째 체크포인트를 건너뛸 경우 경로는 $(0,\\ 0)$ $\\to$ $(11,\\ -1)$ $\\to$ $(10,\\ 0)$ 이 되며 거리는 $14$가 되며 이 경우가 최단거리가 됩니다.\n\n<br>\n\n![](https://contents.codetree.ai/problems/778/images/problems-a553599f-a3a9-4cdd-94f5-bb1ae820e0c9.png)\n\n<br>"
+ ]
+}

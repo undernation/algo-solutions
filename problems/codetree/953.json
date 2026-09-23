@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "953",
+ "title": "데이터센터의 온도 조정 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-adjusting-the-temperature-of-the-data-center-2/description",
+ "alias": "adjusting-the-temperature-of-the-data-center-2",
+ "pid": 953,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 II",
+ "lesson": "값을 기준으로 완전탐색",
+ "card": "intro-adjusting-the-temperature-of-the-data-center-2",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "72.0",
+  "submissions": "1655"
+ },
+ "sample_count": 1,
+ "statement_len": 448,
+ "fetched_at": "2026-09-23",
+ "statement": "데이터센터 안에 있는 장비들의 작업량은 데이터센터의 온도에 따라 달라집니다. 장비마다 선호하는 온도의 범위가 전부 다르며, 어떤 장비가 선호하는 온도 범위의 하한을 $T_a$, 상한을 $T_b$라고 할 때 그 장비의 작업량은 다음과 같이 정의됩니다.\n\n1. 데이터센터의 온도가 $T_a$보다 낮다면 그 장비의 작업량은 $C$입니다.\n2. 데이터센터의 온도가 $T_a$ 이상 $T_b$ 이하라면 그 장비의 작업량은 $G$입니다.\n3. 데이터센터의 온도가 $T_b$보다 높다면 그 장비의 작업량은 $H$입니다.\n\n데이터센터의 총 작업량은 $N$개 장비의 작업량을 모두 더한 값입니다.\n\n장비의 개수 $N$, 온도에 따른 작업량 $C$, $G$, $H$, 그리고 $N$개 장비가 선호하는 온도의 범위가 주어지면, 온도를 적절히 정했을 때 얻을 수 있는 총 작업량의 최댓값을 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 차례로 $N$, $C$, $G$, $H$가 공백을 사이에 두고 주어집니다.\n\n이후 $N$개의 줄에 걸쳐 각 줄마다 한 장비가 선호하는 온도 범위의 하한 $T_a$와 상한 $T_b$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 얻을 수 있는 총 작업량의 최댓값을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 1\\,000$\n- $0 \\le C,\\ G,\\ H \\le 1\\,000$\n- $0 \\le T_a \\le T_b \\le 1\\,000$\n- 주어지는 모든 값은 정수입니다.",
+ "hint": "데이터센터의 온도가 $0$ 미만 혹은 $1\\,000$을 초과할 수 있음에 유의하세요.",
+ "samples": [
+  {
+   "in": "4 7 9 6\n5 8\n3 4\n13 20\n7 10\n",
+   "out": "31\n"
+  }
+ ],
+ "sample_notes": [
+  "온도가 $7$ 또는 $8$인 경우, 첫 번째 장비의 작업량은 $G = 9$, 두 번째 장비의 작업량은 $H = 6$, 세 번째 장비의 작업량은 $C = 7$, 네 번째 장비의 작업량은 $G = 9$입니다. 총 작업량은 $9 + 6 + 7 + 9 = 31$이며, 이것이 얻을 수 있는 총 작업량의 최댓값입니다."
+ ]
+}

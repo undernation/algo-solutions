@@ -1,0 +1,43 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f384",
+ "title": "택배 하차",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/delivery-service/description",
+ "alias": "delivery-service",
+ "pid": 384,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2025 하반기 오전 1번 문제",
+ "level": "L12",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "96 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "57.6",
+  "submissions": "2572"
+ },
+ "sample_count": 2,
+ "statement_len": 2054,
+ "fetched_at": "2026-09-23",
+ "statement": "코드트리는 회사 확장을 위해 택배 사업을 시작합니다. 알고리즘 회사의 이점을 이용해서 완벽한 택배 하차 알고리즘을 만들었습니다.\n\n택배는 $N\\times N$ 크기의 정사각형 형태의 격자에서 진행됩니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/3ca8ad9e-5b29-40f9-acbc-f7e8aaca539e.webp)\n\n택배 하차는 다음과 같은 방법으로 진행됩니다.\n\n1. 택배 투입\n- 택배는 직사각형 모양으로, 직사각형 왼쪽 열의 위치 $c$, 가로 크기($w$)와 세로 크기($h$)으로 주어집니다. 각각의 택배는 택배 번호($k$)를 가집니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/0e6c5e8d-9012-4d8d-b492-8b553c5f3228.webp)\n\n- 투입된 택배들은 중력에 의해 하단으로 떨어집니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/7464b483-7aa6-40ab-9eeb-f53898927e80.webp)\n\n- 그대로 떨어져서 바닥으로 닿거나 내려가던 중 다른 짐을 만나면 거기서 멈춥니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/0ed8401b-00b1-4d4e-aa26-23d8816aa291.webp)\n\n![Image](https://contents.codetree.ai/problem_factory/images/45d2f8bf-4d7e-48a8-8535-f79c85beb039.webp)\n\n![Image](https://contents.codetree.ai/problem_factory/images/2c988723-af56-4a62-a1bb-e79d9d194feb.webp)\n\n![Image](https://contents.codetree.ai/problem_factory/images/d7d44242-4a66-47ba-96b0-e9da4e956fb1.webp)\n\n- 택배 투입이 완료되었을 때, 어떠한 택배들도 공간을 벗어나지 않음이 보장됩니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/92b7a3a7-f6fe-4013-846b-1527653c63b3.webp)\n\n2. 택배 하차 (좌측)\n- 쌓인 택배 중에 잡고 왼쪽으로 이동했을 때 다른 택배와 부딪히지 않고 뺄 수 있는 택배를 먼저 하차합니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/93307d6d-8326-4e41-b326-0c169e5e742a.webp)\n\n- 그러한 택배가 여러개일 경우, 택배 번호($k$)가 작은 택배를 먼저 하차합니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/779d69fd-b47e-439b-9325-b384899b808e.webp)\n\n- 해당 택배를 하차한 이후, 공간에 남아있는 택배들 중 떨어질 수 있는 것들은 떨어집니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/4ee9c019-70c3-4e23-9537-b8403e4dc931.webp)\n\n\n3. 택배 하차 (우측)\n- 2의 과정을 우측에서도 진행합니다.\n\n\n![Image](https://contents.codetree.ai/problem_factory/images/8cf22cfd-e17e-4565-90eb-ce88ae127083.webp)\n\n![Image](https://contents.codetree.ai/problem_factory/images/a254b139-24b8-4405-a4c2-d2edfe0d87fc.webp)\n\n공간에 있는 택배를 모두 하차할 때까지 2, 3의 과정을 반복합니다.\n\n다음과 같은 방법으로 택배를 하차할 때, 하차되는 택배의 번호를 순서대로 출력하는 프로그램을 작성하세요.",
+ "input_spec": "첫 줄에 정수 $N$, $M$가 공백으로 구분되어 주어집니다.\n\n그 다음 줄부터 $M$줄에 걸쳐 추가되는 택배의 위치 정보가 주어집니다. 이 중 $i$번째 줄에는 $i$번째로 추가 되는 택배의 택배 번호 $k$, 세로 크기 $h$, 가로 크기 $w$, 좌측 좌표 $c$가 공백으로 구분되어 주어집니다.",
+ "output_spec": "뽑은 택배들의 주인 번호($k$)를 한 줄에 하나씩 순서대로 출력합니다.",
+ "constraints": "- $2 \\le N \\le 50$\n- $1 \\le M \\le 100$\n- $1 \\le k \\le 100$\n- $1 \\le w \\le N$\n- $1 \\le h \\le N $\n- $1 \\le c \\le N $\n- 택배 번호 $k$는 서로 겹치지 않습니다.",
+ "samples": [
+  {
+   "in": "6 8\n1 2 1 3\n2 1 1 2\n6 2 2 1\n5 1 3 4\n4 2 2 5\n3 1 2 3\n8 2 4 1\n9 1 3 4\n",
+   "out": "2\n4\n3\n5\n6\n1\n8\n9\n"
+  },
+  {
+   "in": "10 10\n5 8 2 7\n12 9 1 10\n13 1 2 4\n14 10 1 6\n19 1 1 9\n3 7 5 1\n6 1 1 4\n8 2 2 2\n9 1 1 8\n1 1 1 8\n",
+   "out": "3\n1\n8\n12\n6\n9\n13\n19\n14\n5\n"
+  }
+ ],
+ "sample_notes": [
+  "택배를 모두 쌓은 이후의 모습\n\n![Image](https://contents.codetree.ai/problem_factory/images/c26e61b7-5b4f-4994-a892-95c92f7cb907.webp)\n\n왼쪽 하차 (2번)\n\n![Image](https://contents.codetree.ai/problem_factory/images/44fe572c-0a2e-4078-a385-af5a7e782c33.webp)\n\n오른쪽 하차 (4번)\n\n![Image](https://contents.codetree.ai/problem_factory/images/22c11e2a-774a-4a59-9739-04c56a55f9a8.webp)\n\n\n왼쪽 하차 (3번)\n\n![Image](https://contents.codetree.ai/problem_factory/images/19c9da3b-0485-4426-a81d-a3f9e4b459b3.webp)\n\n오른쪽 하차 (5번)\n\n![Image](https://contents.codetree.ai/problem_factory/images/c5d2e61d-624b-4e7a-9d85-9be3bdfaa4cc.webp)\n\n왼쪽 하차 (6번)\n\n![Image](https://contents.codetree.ai/problem_factory/images/b401a091-d94a-4395-a316-13acbe67066a.webp)\n\n오른쪽 하차 (1번)\n\n![Image](https://contents.codetree.ai/problem_factory/images/406932a6-007e-483b-acbf-97189669648d.webp)\n\n왼쪽 하차 (8번)\n\n![Image](https://contents.codetree.ai/problem_factory/images/8b4e715f-77ae-46c6-ad25-642b6822a96d.webp)\n\n오른쪽 하차 (9번)\n\n\n\n![Image](https://contents.codetree.ai/problem_factory/images/962fc648-3c70-44c3-b1cf-8aa7dfefa348.webp)",
+  ""
+ ]
+}

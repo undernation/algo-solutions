@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "314",
+ "title": "모양대로 수 출력하기 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-print-out-numbers-in-specific-shape-2/description",
+ "alias": "print-out-numbers-in-specific-shape-2",
+ "pid": 314,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "다중 반복문",
+ "lesson": "cnt를 이용하여 숫자 출력",
+ "card": "challenge-print-out-numbers-in-specific-shape-2",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "92.1",
+  "submissions": "2365"
+ },
+ "sample_count": 1,
+ "statement_len": 186,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $N$의 값을 입력받아 다음과 같이 $N \\times N$ 크기의 수를 출력하는 프로그램을 아래 예를 참고하여 작성해보세요. 모든 수는 $10$ 미만의 짝수로 이루어져 있습니다.\n\n예)\n\n$N$에 $2$를 입력받는 경우\n```\n2 4\n6 8\n```\n$N$에 $3$을 입력받는 경우\n```\n2 4 6 \n8 2 4\n6 8 2\n```",
+ "input_spec": "첫 번째 줄에 $N$의 값이 주어집니다.",
+ "output_spec": "주어지는 $N$의 값에 따른 수를 입출력 예제와 같이 출력합니다. 수와 수 사이엔 공백을 둡니다.",
+ "constraints": "- $1 \\le N \\le 15$",
+ "samples": [
+  {
+   "in": "5\n",
+   "out": "2 4 6 8 2\n4 6 8 2 4\n6 8 2 4 6\n8 2 4 6 8\n2 4 6 8 2\n"
+  }
+ ]
+}

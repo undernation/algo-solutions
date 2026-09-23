@@ -1,0 +1,39 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f1",
+ "title": "2개의 사탕",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/two-candies/description",
+ "alias": "two-candies",
+ "pid": 1,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2015 하반기 2번 문제",
+ "level": "L15",
+ "limits": {
+  "time": "Python3 10초 · C++17 1초",
+  "memory": "120 MB",
+  "time_sec": 10.0
+ },
+ "stats": {
+  "accept_rate": "45.7",
+  "submissions": "2384"
+ },
+ "sample_count": 2,
+ "statement_len": 1149,
+ "fetched_at": "2026-09-23",
+ "statement": "$N \\times M$ 크기의 상자 안에 빨간색 사탕과 파란색 사탕이 각각 하나씩 들어있습니다. 이 상자 안에는 사탕이 지나가지 못하도록 하는 장애물이 여러 개 있고, 사탕이 밖으로 빠져 나올 수 있는 구멍이 딱 하나 있습니다.\n\n<p align=\"center\">\n  <img width=\"250\" height=\"250\" src=\"https://contents.codetree.ai/problems/27/images/88e7615f-8360-4408-a3ad-6228c9c91bf9.png\">\n</p>\n\n이러한 상황에서 빨간색 사탕을 밖으로 빼내려고 합니다. 사탕을 밖으로 빼기 위해서는 상자를 위, 아래, 왼쪽, 오른쪽 방향으로 기울일 수 있는데, 기울어진 방향으로 사탕은 장애물 혹은 다른 사탕에 부딪히기 전 까지 미끌어지게 되며, 미끄러지는 도중에 상자를 다른 방향으로 기울일 수는 없습니다. \n\n예를 들어 위의 예에서 상자를 아래로 기울이게 되면 다음과 같은 모양이 됩니다.\n\n\n<p align=\"center\">\n  <img width=\"250\" height=\"250\" src=\"https://contents.codetree.ai/problems/27/images/3fab8095-b1f0-4279-89d0-25940b5ff91e.png\">\n</p>\n\n빨간색 사탕을 밖으로 빼야 하지만, 파란색 사탕이 밖으로 나와서는 안됩니다. 즉, 빨간색 사탕이 나오기 전에 파란색 사탕이 먼저 나오면 안되며,  빨간색 사탕이 나올 때 파란색 사탕이 동시에 나오는 것도 안됩니다.\n\n예를 들어 바로 위의 상황에서 왼쪽으로 상자를 기울이게 되면 빨간색 사탕이 밖으로 나오게 되지만, 그 이후에 파란색 사탕 역시 밖으로 나오게 되므로 잘못된 경우입니다.\n\n가장 처음 주어진 그림에서 빨간색 사탕만 밖으로 빼내기 위해서는 순서대로 오른쪽, 아래 그리고 왼쪽 방향으로 기울이면 됩니다.\n\n<p align=\"center\">\n  <img width=\"800\" height=\"150\" src=\"https://contents.codetree.ai/problems/27/images/8580445b-a3b7-43dc-8bb4-119c986efb68.png\">\n</p>\n\n이런 상황에서 빨간색 사탕을 밖으로 빼내기 위해 기울여야 하는 최소 횟수를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 정수 $N$과 $M$이 공백을 사이에 두고 주어집니다.\n\n두 번째 줄 부터는 $N$개의 줄에 걸쳐 각 행의 상태에 해당하는 $M$개의 문자가 공백 없이 주어집니다. \n\n각 문자는 '.', ‘#', ‘B’, ‘R’, 'O’ 중에 하나이며 각 위치에 빈 칸, 장애물, 파란색 사탕, 빨간색 사탕, 출구가 있음을 의미합니다. 상자의 바깥 부분은 전부 장애물로 막혀있게 주어진다 가정해도 좋습니다.",
+ "output_spec": "빨간색 사탕을 밖으로 빼내기 위해 기울여야 하는 최소 횟수를 출력합니다. 만약 $10$번 이내에 빨간색 사탕을 밖으로 빼내는 것이 불가능하다면, $-1$을 출력합니다.",
+ "constraints": "- $3 \\le N \\le 10$\n- $3 \\le M \\le 10$",
+ "samples": [
+  {
+   "in": "6 6\n######\n#.##B#\n##R..#\n#..#.#\n#O...#\n######\n",
+   "out": "3\n"
+  },
+  {
+   "in": "6 6\n######\n#.##B#\n###.R#\n#..#.#\n#...O#\n######\n",
+   "out": "-1\n"
+  }
+ ]
+}

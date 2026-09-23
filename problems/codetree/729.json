@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "729",
+ "title": "출력결과 47",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201723/description",
+ "alias": "reading-k201723",
+ "pid": 729,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "문자열",
+ "lesson": "문자열 순회하기",
+ "card": "challenge-reading-k201723",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "63.1",
+  "submissions": "3010"
+ },
+ "sample_count": 0,
+ "statement_len": 1388,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 프로그램의 출력 결과는 무엇인가?\n\n## Python3 코드\n```python\ns = \"congratulation\"\nfor i in range(len(s)):\n    if s[i] == 'a' or s[i] == 'e':\n        continue\n    if s[i] == 'i' or s[i] == 'o':\n        continue\n    if s[i] == 'u':\n        continue\n    print(s[i], end=\"\")\nprint()\n```\n\n## C 코드\n\n```cpp\nchar s[15] = \"congratulation\"; \nfor (int i = 0; i < 14; i++){\n    if (s[i] == 'a' || s[i] == 'e') continue;\n    if (s[i] == 'i' || s[i] == 'o') continue;\n    if (s[i] == 'u') continue;\n    printf(\"%c\",s[i]);\n}\nprintf (\"\\n\");\n```\n\n## C++ 코드\n```cpp\nstring s = \"congratulation\"; \nfor (int i = 0; i < 14; i++){\n    if (s[i] == 'a' || s[i] == 'e') continue;\n    if (s[i] == 'i' || s[i] == 'o') continue;\n    if (s[i] == 'u') continue;\n    cout<< s[i];\n}\ncout<< endl;\n```\n\n## Java 코드\n\n```java\nchar[] s = \"congratulation\".toCharArray();\nfor (int i = 0; i < 14; i++){\n    if (s[i] == 'a' || s[i] == 'e') continue;\n    if (s[i] == 'i' || s[i] == 'o') continue;\n    if (s[i] == 'u') continue;\n    System.out.print(s[i]);\n}\nSystem.out.println();\n```\n\n## JavaScript 코드\n```JavaScript\nlet s = \"congratulation\";\nlet str = \"\";\nfor (let i = 0; i < s.length; i++) {\n    if (s[i] == 'a' || s[i] == 'e') continue;\n    if (s[i] == 'i' || s[i] == 'o') continue;\n    if (s[i] == 'u') continue;\n    str += s[i];\n}\nconsole.log(str);\n```\n\n**보기** — 하나 고르기\n\n1. cngrtltn\n2. cngntrltn\n3. cngratlatn\n4. congritltion\n5. congratulation"
+}

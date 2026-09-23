@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3473",
+ "title": "인접한 칸 선택 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-pick-adjacent-cells-2/description",
+ "alias": "pick-adjacent-cells-2",
+ "pid": 3473,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Advanced DP",
+ "lesson": "Bitmask DP",
+ "card": "challenge-pick-adjacent-cells-2",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 5초 · C++17 1초",
+  "memory": "288 MB",
+  "time_sec": 5.0
+ },
+ "stats": {
+  "accept_rate": "75.0",
+  "submissions": "36"
+ },
+ "sample_count": 2,
+ "statement_len": 130,
+ "fetched_at": "2026-09-23",
+ "statement": "$n \\times m$ 크기의 격자 정보가 주어집니다. 각 칸에는 하나의 정수 값이 적혀있습니다. 선택된 칸에 적혀있는 수들의 합이 최대가 되도록 선택하되 상하좌우로 인접한 칸이 동시에 선택되지는 않도록 하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $n$과 $m$이 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터는 $n$개의 줄에 걸쳐 한 줄에 $m$개씩 각 행에 해당하는 정수 값이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "상하좌우로 인접한 칸이 동시에 선택되지는 않도록 하면서 얻을 수 있는 선택된 칸에 적혀있는 수들의 합 중 최댓값을 출력합니다.",
+ "constraints": "- $1 \\le n \\le 10$\n - $1 \\le m \\le 100$\n - $1 \\le$ 주어진 정수 값 $\\le 1,000$",
+ "samples": [
+  {
+   "in": "3 3\n1 5 1\n5 9 5\n1 5 1\n",
+   "out": "20\n"
+  },
+  {
+   "in": "3 3\n9 1 1\n1 1 9\n9 1 1\n",
+   "out": "27\n"
+  }
+ ]
+}

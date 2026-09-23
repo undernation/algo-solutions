@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "4101",
+ "title": "최장 공통 부분 수열 3",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-longest-common-sequence-3/description",
+ "alias": "longest-common-sequence-3",
+ "pid": 4101,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "DP II",
+ "lesson": "String Matching",
+ "card": "challenge-longest-common-sequence-3",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "192 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "49.6",
+  "submissions": "282"
+ },
+ "sample_count": 2,
+ "statement_len": 462,
+ "fetched_at": "2026-09-23",
+ "statement": "두 개의 수열 $A$, $B$가 주어졌을 때 사전순으로 가장 앞선 최장 공통 부분 수열을 찾는 프로그램을 작성해보세요.\n\n부분 수열이란 수열의 원소들 중 임의로 몇 개를 골라 순서대로 나열한 수열을 의미하고, 이때 해당 부분 수열이 주어진 두 수열에 있어 모두 부분 수열이라면, 이 수열을 공통 부분 수열이라고 합니다.\n\n예를 들어 수열 $A$가 [$10$, $5$, $15$, $20$], 수열 $B$가 [$20$, $5$, $10$, $15$]라고 했을 때\n\n수열 [$10$, $20$]은 수열 $A$의 부분 수열이지만, 수열 $B$의 부분 수열은 아니므로 공통 부분 수열이 아닙니다.\n\n수열 [$20$]은 수열 $A$, $B$의 공통 부분 수열입니다.\n\n수열 [$5$, $15$], [$10$, $15$]는 수열 $A$, $B$의 최장 공통 부분 수열입니다. 이 중 사전순으로 더 앞선 수열은 [$5$, $15$]입니다.",
+ "input_spec": "첫 번째 줄에 수열 $A$의 원소의 개수 $N$, 수열 $B$의 원소의 개수 $M$이 공백을 사이에 두고 주어집니다.\n\n두 번째 줄에 수열 $A$의 원소 $N$개가 순서대로 공백을 사이에 두고 주어집니다.\n\n세 번째 줄에 수열 $B$의 원소 $M$개가 순서대로 공백을 사이에 두고 주어집니다.",
+ "output_spec": "최장 공통 부분 수열 중 사전순으로 가장 앞선 수열을 한 줄에 출력합니다. 원소 사이는 공백으로 구분합니다.",
+ "constraints": "- $1 \\le N,\\ M \\le 1\\,000$\n- $1 \\le \\texttt{수열 }A,\\ B\\texttt{의 원소의 값} \\le 1\\,000$\n- 수열 $A$, $B$ 각각의 원소는 값이 서로 다릅니다.\n- 수열 $A$와 $B$는 최소 $1$개 이상의 공통 원소를 가짐이 보장됩니다.",
+ "samples": [
+  {
+   "in": "4 4\n10 5 15 20\n20 5 10 15\n",
+   "out": "5 15\n"
+  },
+  {
+   "in": "3 4\n3 2 1\n1 2 4 3\n",
+   "out": "1\n"
+  }
+ ]
+}

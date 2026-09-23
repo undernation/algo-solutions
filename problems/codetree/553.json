@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "553",
+ "title": "인접 행렬 해독기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-decode-adjust-array/description",
+ "alias": "decode-adjust-array",
+ "pid": 553,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 탐색",
+ "lesson": "Graph 구현",
+ "card": "challenge-decode-adjust-array",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "89.2",
+  "submissions": "2042"
+ },
+ "sample_count": 0,
+ "statement_len": 946,
+ "fetched_at": "2026-09-23",
+ "statement": "다음과 같은 인접 행렬이 있습니다. 이 인접행렬에서는 행이 출발 노드, 열이 도착 노드를 나타냅니다.\n\n즉, 인접 행렬의 $a_{ij}$ 값이 $1$이라면 노드 $i$에서 노드 $j$로 향하는 간선이 존재하고, $0$이라면 노드 $i$에서 노드 $j$로 향하는 간선이 존재하지 않습니다.\n\n이 인접 행렬이 표현하는 그래프의 모양으로 옳은 것을 고르세요.\n\n|   | $1$ | $2$ | $3$ | $4$ |\n|:---:|:---:|:---:|:---:|:---:|\n| $1$ | $0$ | $1$ | $0$ | $1$ |\n| $2$ | $0$ | $0$ | $1$ | $0$ |\n| $3$ | $0$ | $0$ | $0$ | $1$ |\n| $4$ | $1$ | $0$ | $0$ | $0$ |\n\n**보기** — 하나 고르기\n\n1. <p align='center'>\n   <img src='https://contents.codetree.ai/problems/553/images/4666965b-5fc6-461f-811d-7734630a2559.svg'>\n   </p>\n2. <p align='center'>\n   <img src='https://contents.codetree.ai/problems/553/images/fba540a9-c1f1-4d8b-9a28-87dd518fcc10.svg'>\n   </p>\n3. <p align='center'>\n   <img src='https://contents.codetree.ai/problems/553/images/3da1cade-70d0-4b87-a018-9d94b3273a8a.svg'>\n   </p>\n4. <p align='center'>\n   <img src='https://contents.codetree.ai/problems/553/images/4b7aafd4-14fc-42a0-8178-d35de7e070d6.svg'>\n   </p>"
+}

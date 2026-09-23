@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "436",
+ "title": "조금 복잡한 시간복잡도",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-time-complexity-3/description",
+ "alias": "time-complexity-3",
+ "pid": 436,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "시간, 공간복잡도",
+ "lesson": "반복문의 시간복잡도",
+ "card": "challenge-time-complexity-3",
+ "card_type": "Problem",
+ "level": "Hard",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "19.3",
+  "submissions": "14912"
+ },
+ "sample_count": 0,
+ "statement_len": 533,
+ "fetched_at": "2026-09-23",
+ "statement": "`for`문은 실행하는 범위가 \b어느 정도인지에 따라 시간복잡도가 결정되며, `while`문은 조건 및 내부 구문에 의해 시간복잡도가 결정됩니다.\n\n시간복잡도를 결정하는 조건들을 잘 살펴보면서 $solution1$과 $solution2$의 시간복잡도를 순서대로 골라봅시다.\n\n ```js\nfunction solution1(N)\n  for i = 0 ... i < N * N\n    for k = 0 ... k <= i\n      print(\"Hi\")\n    for j = N ... j >= 0\n      print(\"Bye\")\n```\n\n```js\nfunction solution2(N)\n  for i = 0 ... i < N\n    set j = 1\n    while j < i\n      j *= 2\n```\n\n**보기** — 순서대로 2개 고르기\n\n1. $\\mathcal{O}(N\\log{N})$\n2. $\\mathcal{O}(N)$\n3. $\\mathcal{O}(N^2)$\n4. $\\mathcal{O}(N^3)$\n5. $\\mathcal{O}(N^4)$"
+}

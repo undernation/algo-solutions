@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "324",
+ "title": "숫자들의 배수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-multiple-of-numbers/description",
+ "alias": "multiple-of-numbers",
+ "pid": 324,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "1차원 배열",
+ "lesson": "배열 만들기",
+ "card": "challenge-multiple-of-numbers",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "85.0",
+  "submissions": "9077"
+ },
+ "sample_count": 3,
+ "statement_len": 101,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$이상 $10$이하의 정수 중 한 개를 입력받아 배수들을 차례로 출력하다가 $5$의 배수가 $2$번 출력되면 종료되는 프로그램을 작성해보세요. 단, 배열을 이용하여 해결해보세요.",
+ "input_spec": "첫 번째 줄에 정수가 주어집니다.",
+ "output_spec": "첫 번째 줄에 종료될때 까지 입력받은 정수들의 배수를 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $1 \\le \\texttt{입력받는 정수} \\le 10$",
+ "samples": [
+  {
+   "in": "4\n",
+   "out": "4 8 12 16 20 24 28 32 36 40\n"
+  },
+  {
+   "in": "6\n",
+   "out": "6 12 18 24 30 36 42 48 54 60\n"
+  },
+  {
+   "in": "5\n",
+   "out": "5 10\n"
+  }
+ ]
+}

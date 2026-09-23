@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "474",
+ "title": "기수 정렬",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-radix-sort/description",
+ "alias": "radix-sort",
+ "pid": 474,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "정렬",
+ "lesson": "기수 정렬",
+ "card": "intro-radix-sort",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "68.4",
+  "submissions": "2122"
+ },
+ "sample_count": 0,
+ "statement_len": 594,
+ "fetched_at": "2026-09-23",
+ "statement": "위에서 학습했던 정렬 알고리즘들과는 다르게, 기수 정렬은 값을 비교하지 않고 정렬하는 알고리즘입니다. 시간복잡도는 $\\mathcal{O}(kN)$으로 다른 알고리즘들과 구분되는 특성이 있습니다.\n\n기수 정렬 코드를 완성하여봅시다.\n\n```jsx\nfunction radix_sort(arr, k)\n  for pos = k - 1 ... pos >= 0:\n    set arr_new = [10][]\n    for i = 0 ... i < arr.size\n      set digit = posth digit of arr[i]\n      arr_new[(1)].append(arr[i])\n\n    set store_arr = []\n    for i = 0 ... i < (2)\n      for j = 0 ... j < arr_new[i].size\n        store_arr.append(arr_new[i][j])\n  \n    arr = store_arr\n\n  return (3)\n```\n\n**보기** — 순서대로 3개 고르기\n\n1. `10`\n2. `k`\n3. `pos`\n4. `digit + 1`\n5. `digit`\n6. `arr`\n7. `store_arr`"
+}

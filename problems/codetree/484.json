@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "484",
+ "title": "퀵 정렬 연습",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-quick-sort-practice/description",
+ "alias": "quick-sort-practice",
+ "pid": 484,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "정렬",
+ "lesson": "퀵 정렬",
+ "card": "test-quick-sort-practice",
+ "card_type": "Test",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "55.0",
+  "submissions": "2151"
+ },
+ "sample_count": 0,
+ "statement_len": 854,
+ "fetched_at": "2026-09-23",
+ "statement": "퀵 정렬의 코드는 다음과 같습니다.\n\n```jsx\nfunction partition(arr[], low, high)\n  set pivot = select_pivot(arr, low, high)\n  set i = low - 1\n  \n  for j = low ... j <= high - 1\n    if arr[j] < pivot\n      i += 1\n      swap (arr[i], arr[j])\n      \n  swap (arr[i + 1], arr[high])\n  return i + 1\n\nfunction quick_sort(arr[], low, high)\n  if low < high\n    pos = partition(arr, low, high)\n    \n    quick_sort(arr, low, pos - 1)\n    quick_sort(arr, pos + 1, high)\n```\n\n다음과 같은 배열이 주어졌다 합시다.\n```jsx\narr = [17, 21, 15, 29, 81, 19, 10, 35, 20]\n```\npivot은 정해진 구간의 마지막 데이터라고 가정할 때, 첫 번째로 호출된 `quick_sort(arr, low, pos - 1)`가 종료된 시점의 배열의 상태로 올바른 것을 골라봅시다.\n\n**보기** — 하나 고르기\n\n1. `[10, 15, 17, 19, 20, 29, 35, 81, 21]`\n2. `[10, 15, 17, 19, 21, 20, 29, 35, 81]`\n3. `[10, 15, 17, 19, 20, 81, 21, 29, 35]`\n4. `[10, 15, 17, 19, 20, 21, 29, 35, 81]`\n5. `[10, 15, 17, 19, 20, 21, 81, 29, 35]`"
+}

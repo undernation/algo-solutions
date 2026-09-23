@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "607",
+ "title": "찾고, 합치고.",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-ga-uf-practice/description",
+ "alias": "ga-uf-practice",
+ "pid": 607,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 알고리즘",
+ "lesson": "Kruskal",
+ "card": "challenge-ga-uf-practice",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "42.7",
+  "submissions": "2044"
+ },
+ "sample_count": 0,
+ "statement_len": 498,
+ "fetched_at": "2026-09-23",
+ "statement": "다음과 같이 Union-Find를 활용한 연산을 수행했습니다.\n\n```jsx\nfunction init(size)\n  set uf = [0] with size\n  for i = 1 ... size\n    uf[i] = i\n  return uf\n\nfunction find(x)\n  if uf[x] == x\n    return x\n  return find(uf[x])\n  \nfunction union(x, y)\n  set X = find(x), Y = find(y)\n  uf[X] = Y\n\nuf = init(6)\n\nunion(2, 3)\nunion(1, 4)\nunion(1, 5)\nunion(4, 2)\nunion(3, 1)\n\nprint(find(1))\nprint(find(2))\nprint(find(3))\nprint(find(4))\nprint(find(5))\n```\n\n출력 결과를 추측해봅시다.\n\n**보기** — 순서대로 5개 고르기\n\n1. `1`\n2. `2`\n3. `3`\n4. `4`\n5. `5`"
+}

@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "308",
+ "title": "코로나 메뉴얼2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-covid-manual2/description",
+ "alias": "covid-manual2",
+ "pid": 308,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "1차원 배열",
+ "lesson": "Count 배열",
+ "card": "challenge-covid-manual2",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "84.7",
+  "submissions": "3327"
+ },
+ "sample_count": 2,
+ "statement_len": 245,
+ "fetched_at": "2026-09-23",
+ "statement": "환자에게 감기 증상이 있으면 그 환자의 상태를 `Y`로, 감기 증상이 없으면 `N`으로 나타내기로 하고, 체온을 쟀을 때 수치에 따라 진료소를 다르게 구분하려고 합니다.\n- 증상도 있고 $37℃$ 이상일 때 `A`\n- 증상은 없지만 $37℃$ 이상일 때 `B`\n- 증상은 있지만 체온은 정상일 때 `C`\n- 둘 다 괜찮은 경우엔 `D`\n\n$3$명의 사람을 검사해서 `A`로 가는 사람이 $2$명 이상 나올때는 위급상황 `E`로 분류합니다.",
+ "input_spec": "첫 번째 줄부터 $3$개의 줄에 걸쳐, $1$줄에 $1$명씩 총 $3$명의 감기 증상과 체온이 공백을 사이에 두고 주어집니다. 감기 증상은 항상 `Y` 또는 `N`으로 주어진다 가정해도 좋습니다.",
+ "output_spec": "`A`, `B`, `C`, `D` 진료소에 보내지는 인원을 순서대로 출력하고, 위급상황일 경우에만 마지막에 `E`를 출력해줍니다. 모든 출력값 사이엔 공백을 둡니다.",
+ "constraints": "- $30 \\le \\texttt{주어지는 체온} \\le 40$\n- 감기 증상은 항상 `Y` 또는 `N`으로 주어진다 가정해도 좋습니다.",
+ "samples": [
+  {
+   "in": "Y 38\nN 36\nY 40\n",
+   "out": "2 0 0 1 E\n"
+  },
+  {
+   "in": "Y 36\nY 37\nN 37\n",
+   "out": "1 1 1 0\n"
+  }
+ ]
+}

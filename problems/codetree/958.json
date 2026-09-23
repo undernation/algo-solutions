@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "958",
+ "title": "좌표평면 위의 균형 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-balance-on-coordinate-plane-2/description",
+ "alias": "balance-on-coordinate-plane-2",
+ "pid": 958,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 III",
+ "lesson": "상황을 일일이 가정해보고 진행하는 완전탐색",
+ "card": "challenge-balance-on-coordinate-plane-2",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "71.6",
+  "submissions": "1117"
+ },
+ "sample_count": 1,
+ "statement_len": 312,
+ "fetched_at": "2026-09-23",
+ "statement": "좌표평면 위에 $N$개의 점이 있습니다. $x$축에 평행한 직선과 $y$축에 평행한 직선을 정확히 $1$개씩 그어 좌표평면을 $4$군데로 분할하여 균형 있게 나누려고 합니다.\n\n균형 있게 나눈다는 것은 $4$군데 중 가장 많은 점의 수가 최소가 되도록 하는 것을 의미합니다. 가장 많은 점이 있는 구역의 점의 개수를 $M$이라고 할 때, 가능한 $M$의 최솟값을 구하는 프로그램을 작성해 보세요.\n\n단, 두 직선은 항상 짝수 좌표에 그어집니다. 즉 $x$축에 평행한 직선은 $y$가 짝수인 위치에, $y$축에 평행한 직선은 $x$가 짝수인 위치에 그어집니다.",
+ "input_spec": "첫 번째 줄에는 정수 $N$이 주어집니다.\n\n두 번째 줄부터는 $N$개의 줄에 걸쳐 각 점의 위치 $(x,\\ y)$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 $M$의 최솟값을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le x,\\ y \\le 100$\n- $x$, $y$는 모두 홀수입니다.\n- 위치가 같은 점이 두 개 이상 주어지는 경우는 없습니다.",
+ "samples": [
+  {
+   "in": "7\n7 3\n5 5\n9 7\n3 1\n7 7\n5 3\n9 1\n",
+   "out": "2\n"
+  }
+ ],
+ "sample_notes": [
+  "이 예제에서 아래 그림과 같이 $x = 6$, $y = 4$인 지점에 직선을 그어 좌표평면을 $4$군데로 분할하면 점의 개수가 $1$, $2$, $2$, $2$개로 균등하게 나뉩니다. 가장 많은 수의 점이 있는 구역의 점의 개수는 $2$개 입니다. \n\n![](https://contents.codetree.ai/problems/958/images/problems-db4162f5-8fe6-498b-a338-8fcd5bfa98a7.svg)"
+ ]
+}

@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2475",
+ "title": "날짜 변경하여 출력 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-print-date-with-different-format-2/description",
+ "alias": "print-date-with-different-format-2",
+ "pid": 2475,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "입출력",
+ "lesson": "특정 문자를 사이에 두고 입력",
+ "card": "intro-print-date-with-different-format-2",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "88.1",
+  "submissions": "14051"
+ },
+ "sample_count": 2,
+ "statement_len": 65,
+ "fetched_at": "2026-09-23",
+ "statement": "`mm-dd-yyyy` 모양의 날짜 정보를 입력받아 `yyyy.mm.dd` 형식으로 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 날짜 정보가 `mm-dd-yyyy` 형태로 주어집니다. yyyy는 연도를, mm은 월을, dd는 일을 의미합니다.",
+ "output_spec": "입력받은 날짜를 `yyyy.mm.dd` 형식으로 바꾸어 출력합니다.",
+ "constraints": "- $1 \\le yyyy \\le 2021$\n - $1 \\le mm \\le 12$\n - $1 \\le dd \\le 28$",
+ "samples": [
+  {
+   "in": "5-26-1994\n",
+   "out": "1994.5.26\n"
+  },
+  {
+   "in": "2-28-1\n",
+   "out": "1.2.28\n"
+  }
+ ]
+}

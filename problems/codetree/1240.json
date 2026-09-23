@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1240",
+ "title": "선행 작업",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-predecessor/description",
+ "alias": "predecessor",
+ "pid": 1240,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "위상정렬",
+ "lesson": "Graph DP",
+ "card": "intro-predecessor",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "120 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "63.0",
+  "submissions": "265"
+ },
+ "sample_count": 1,
+ "statement_len": 139,
+ "fetched_at": "2026-09-23",
+ "statement": "수행해야 할 $N$ 개의 작업에 대해 해당 작업을 끝내는 데 걸리는 시간이 주어집니다.\n\n몇몇 작업들은 시작 전에 미리 다른 작업을 먼저 진행해야만 하는 경우도 있습니다.\n\n모든 작업을 완료하기 위해 필요한 최소시간을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $N$ 이 주어집니다.\n\n두 번째 줄부터 $N$ 개의 줄에 걸쳐 $1$ 번 작업부터 $N$ 번 작업의 정보가 주어집니다.\n\n각 줄에는 해당작업을 끝내는데 걸리는 시간, 그 작업 이전에 미리 진행되어야 하는 작업의 개수, 선행관계에 있는 작업들의 번호가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "모든 작업을 완료하기 위한 최소 시간을 출력합니다. 불가능한 경우는 없다고 가정해도 좋습니다.",
+ "constraints": "- $3 \\le N \\le 10\\,000$\n- $1 \\le \\texttt{작업에 걸리는 시간} \\le 100$\n- $0 \\le \\texttt{선행작업의 개수} \\le 100$",
+ "samples": [
+  {
+   "in": "7\n5 0\n1 1 1\n3 1 2\n6 1 1\n1 2 2 4\n8 2 2 4\n4 3 3 5 6\n",
+   "out": "23\n"
+  }
+ ]
+}

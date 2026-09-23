@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "467",
+ "title": "정렬된 배열",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-already-sorted-bubble/description",
+ "alias": "already-sorted-bubble",
+ "pid": 467,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "정렬",
+ "lesson": "거품 정렬",
+ "card": "challenge-already-sorted-bubble",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "60.1",
+  "submissions": "3814"
+ },
+ "sample_count": 0,
+ "statement_len": 215,
+ "fetched_at": "2026-09-23",
+ "statement": "다음과 같이 이미 정렬된 배열이 있습니다.\n```\n[1 2 3 ... N] \n```\n해당 배열에 버블 정렬을 적용하면, 시간복잡도는 어떻게 될까요?\n\n**보기** — 하나 고르기\n\n1. $\\mathcal{O}(1)$\n2. $\\mathcal{O}(\\log{N})$\n3. $\\mathcal{O}(N)$\n4. $\\mathcal{O}(N\\log{N})$\n5. $\\mathcal{O}(N^2)$"
+}

@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "94",
+ "title": "핀볼게임",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-pinball-game/description",
+ "alias": "pinball-game",
+ "pid": 94,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Simulation",
+ "lesson": "격자 안에서 단일 객체를 이동",
+ "card": "test-pinball-game",
+ "card_type": "Test",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "43.4",
+  "submissions": "2191"
+ },
+ "sample_count": 2,
+ "statement_len": 940,
+ "fetched_at": "2026-09-23",
+ "statement": "$0, 1, 2$ 수들로만 이루어진 $N \\times N$ 크기의 격자판에서 핀볼 게임을 진행해보려고 합니다. $0$은 빈 공간을, $1$은 / 모양을, $2$는 \\ 모양을 의미합니다. 값이 $1$이나 $2$일 경우 구슬이 해당 위치로 진입했을 때, 바에 부딪혀 진행방향이 바뀌게 되며, 진행하던 구슬이 격자 밖으로 나가게 되면 게임이 끝나게 됩니다. 구슬이 한 칸 움직이는 데는 $1$초의 시간이 소요되며, 격자 안으로 들어가는 시간과 격자 밖으로 나오는 시간까지 포함하여 계산합니다.\n\n![](https://contents.codetree.ai/problems/94/images/problems-2503aeed-ab8f-4f58-b16e-a7be7e5cebcc.png)\n\n구슬은 단 하나만 이용하며, 다음과 같이 $4 \\times N$개의 지점 중 한 곳에서 정해진 방향으로만 시작이 가능합니다.\n\n![](https://contents.codetree.ai/problems/94/images/problems-7e5a2987-92dd-4cd6-9fa8-89af41b7a626.png)\n\n만약 구슬을 다음 위치에 두고 게임을 시작하게 된다면, $8$초 후 격자 밖으로 나오게 됩니다.\n\n![](https://contents.codetree.ai/problems/94/images/problems-6eeb1500-554f-4e5e-b0ce-d53221ea6043.png)\n\n하지만 다음 위치에서 시작을 하면, $10$초 후 격자 밖으로 나오게 됩니다.\n\n![](https://contents.codetree.ai/problems/94/images/problems-3aff787b-6911-4640-9a33-7152b235fee7.png)\n\n격자판의 상태가 주어졌을 때, 시작점을 적절하게 선택하여 격자 밖으로 나오는 데까지 걸리는 시간이 최대가 되도록 하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 격자의 크기를 나타내는 $N$이 주어집니다.\n\n두 번째 줄부터는 $N$개의 줄에 걸쳐 각 행에 해당하는 $N$개의 수가 공백을 사이에 두고 주어집니다. 수는 $0, 1, 2$ 중 하나이며, $0$은 빈 칸을, $1$은 / 모양을, $2$는 \\ 모양을 의미합니다.",
+ "output_spec": "격자 밖으로 나오는 데까지 걸리는 시간 중 가장 오래 걸리는 시간을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $\\texttt{격자 값} \\in \\{0, 1, 2\\}$",
+ "samples": [
+  {
+   "in": "5\n0 0 0 0 0\n0 0 0 0 0\n1 0 1 0 2\n0 0 0 0 0\n0 0 1 0 2\n",
+   "out": "10\n"
+  },
+  {
+   "in": "5\n1 1 1 1 1\n1 1 1 1 1\n1 1 1 1 1\n1 1 1 1 1\n1 1 1 1 1\n",
+   "out": "10\n"
+  }
+ ]
+}

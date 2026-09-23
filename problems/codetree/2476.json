@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2476",
+ "title": "홀수만 출력하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-print-only-odd-numbers/description",
+ "alias": "print-only-odd-numbers",
+ "pid": 2476,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "반복문 안의 if",
+ "card": "test-print-only-odd-numbers",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "69.4",
+  "submissions": "6361"
+ },
+ "sample_count": 1,
+ "statement_len": 68,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 정수가 주어졌을 때, 주어진 수 중 홀수이면서 $3$의 배수인 수들만 순서대로 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 정수 $N$이 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 한 줄에 정수가 하나씩 주어집니다.",
+ "output_spec": "주어진 수 중 홀수이면서 $3$의 배수인 수들을 주어진 순서대로 한 줄에 하나씩 출력합니다.",
+ "constraints": "- $1 \\le N \\le 10$\n - $1 \\le $ 주어지는 정수 $ \\le 100$",
+ "samples": [
+  {
+   "in": "5\n2\n7\n3\n9\n4\n",
+   "out": "3\n9\n"
+  }
+ ]
+}

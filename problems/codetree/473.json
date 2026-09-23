@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "473",
+ "title": "이동 횟수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-insertion-sort-count/description",
+ "alias": "insertion-sort-count",
+ "pid": 473,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "정렬",
+ "lesson": "삽입 정렬",
+ "card": "challenge-insertion-sort-count",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "69.5",
+  "submissions": "2385"
+ },
+ "sample_count": 0,
+ "statement_len": 455,
+ "fetched_at": "2026-09-23",
+ "statement": "삽입 정렬의 코드를 다음과 같이 작성하였습니다.\n```jsx\nfunction insertion_sort(arr[])\n  set result = 0\n  set size = arr.size\n  for i = 1 ... i < size\n    set j = i - 1 \n    set key = arr[i]\n    while j >= 0 && arr[j] > key\n      arr[j + 1] = arr[j]\n      j--\n      result += 1\n    arr[j + 1] = key\n    \n  return result\n```\n\n다음과 같은 배열이 있다고 가정하면, 해당 배열을 담아 위 코드를 실행하면 반환되는 값은 무엇일까요?\n```jsx\narr = [2, 6, 4, 3, 5, 7, 1]\n```\n\n**보기** — 하나 고르기\n\n1. `8`\n2. `10`\n3. `12`\n4. `14`\n5. `16`"
+}

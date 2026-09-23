@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2215",
+ "title": "구간 크기의 합",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-sum-of-interval-sizes/description",
+ "alias": "sum-of-interval-sizes",
+ "pid": 2215,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shorten time Technique",
+ "lesson": "+1-1 technique",
+ "card": "challenge-sum-of-interval-sizes",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "79.7",
+  "submissions": "483"
+ },
+ "sample_count": 1,
+ "statement_len": 68,
+ "fetched_at": "2026-09-23",
+ "statement": "수직선 상에 $N$개의 구간이 주어졌을 때, 모든 구간을 합친 이후의 총 구간 크기의 합을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $N$이 주어집니다. \n\n두 번째 줄 부터는 $N$개의 줄에 걸쳐 각 구간을 나타내는 정보 $a_i, b_i$ 값이 공백을 사이에 두고 주어집니다. 주어지는 모든 좌표 값은 서로 다름을 가정해도 좋습니다.",
+ "output_spec": "주어진 모든 구간이 합쳐진 이후 각 구간 크기의 합을 출력합니다.",
+ "constraints": "- $3 \\le N \\le 100,000$\n - $1 \\le a_i \\lt b_i \\le 10^9$",
+ "samples": [
+  {
+   "in": "5\n4 8\n2 3\n1 6\n9 15\n12 14\n",
+   "out": "13\n"
+  }
+ ],
+ "sample_notes": [
+  "<br>\n\n![](https://contents.codetree.ai/problems/2215/images/problems-74c326ad-0be9-42c3-b103-fd34657d5bf6.png)"
+ ]
+}

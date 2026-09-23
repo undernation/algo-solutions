@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "463",
+ "title": "순환선",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-circulation/description",
+ "alias": "circulation",
+ "pid": 463,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "배열, 연결 리스트",
+ "lesson": "원형 연결 리스트",
+ "card": "test-circulation",
+ "card_type": "Test",
+ "level": "Medium",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "57.4",
+  "submissions": "2810"
+ },
+ "sample_count": 0,
+ "statement_len": 813,
+ "fetched_at": "2026-09-23",
+ "statement": "서울 지하철 2호선은 다음과 같이 순환선 구조로 되어있습니다. 그래서 한 역에서 다른 역으로 가기 위해선 두 방향 어디로 가든 도착할 수 있지만, 시간의 효율을 위해 우리는 가까운 방향을 선택합니다.\n\n![](https://contents.codetree.ai/problems/463/images/problems-14ab18b6-8353-4f0d-8807-ee52e176a278.svg)\n\n그러나 두 방향의 거리 차이가 얼마 나지 않는다면, 대충 눈으로 보기에는 판단하기 어렵습니다. 따라서 우리는 두 방향 중 더 가까운 방향을 다음과 같은 코드를 이용해 찾고자 합니다. 빈 칸을 채워 코드를 완성해보세요.\n\n아래 코드에서 $prev$를 따라가는 것은 반시계 방향으로 이동하는 것을 의미하고, $next$를 따라가는 것은 시계 방향으로 이동하는 것을 의미합니다.\n\n```jsx\nfunction solution(CLL, dest)\n  set cnode = CLL.(1)\n  set left = 0\n  while cnode.data != (2)\n    left += 1\n    cnode = cnode.(3)\n    \n  set cnode = CLL.(4)\n  set right = 0\n  while cnode.data != (5)\n    right += 1\n    cnode = cnode.next\n    \n  if left < right\n    print(\"move left\")\n  else\n    print(\"move right\")\n```\n\n**보기** — 순서대로 5개 고르기\n\n1. `head`\n2. `next`\n3. `prev`\n4. `dest`"
+}

@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "224",
+ "title": "시력 검사",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-eye-test/description",
+ "alias": "eye-test",
+ "pid": 224,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "조건문",
+ "lesson": "and 연산자",
+ "card": "challenge-eye-test",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "77.4",
+  "submissions": "6430"
+ },
+ "sample_count": 2,
+ "statement_len": 107,
+ "fetched_at": "2026-09-23",
+ "statement": "양쪽눈의 시력을 실수(real number)로 입력받아 모두 $1.0$ 이상이면 $High$, 모두 $0.5$ 이상이면 $Middle$, 아니면 $Low$라고 출력하는 프로그램을 작성해주세요.",
+ "input_spec": "한 줄에 하나씩 두 실수 $a$, $b$가 주어집니다.",
+ "output_spec": "출력값에 해당하는 문자열을 출력합니다.",
+ "constraints": "- $0 \\le a, b \\le 5$",
+ "samples": [
+  {
+   "in": "1.3\n1.0\n",
+   "out": "High\n"
+  },
+  {
+   "in": "0.8\n0.4\n",
+   "out": "Low\n"
+  }
+ ]
+}

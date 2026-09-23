@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "371",
+ "title": "점수대 파악하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-find-out-the-score-range/description",
+ "alias": "find-out-the-score-range",
+ "pid": 371,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "1차원 배열",
+ "lesson": "Count 배열",
+ "card": "challenge-find-out-the-score-range",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "74.0",
+  "submissions": "3733"
+ },
+ "sample_count": 1,
+ "statement_len": 93,
+ "fetched_at": "2026-09-23",
+ "statement": "$100$명 이하인 학생들의 점수가 주어지다가 $0$이 주어지면 그때까지 주어진 점수를 $10$점 단위로 구분하여 점수대별 학생 수를 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "공백으로 구분된 학생들의 점수가 주어지며, 입력 중간에 0이 한 번 이상 등장합니다. 0 이후의 값은 무시하며, 전체 입력값은 100개 이하입니다.",
+ "output_spec": "각 줄에 \"점수대별 - 학생 수\"형식으로 출력합니다. 단, $10$점 미만으로 맞은 학생 수는 세지 않습니다.",
+ "constraints": "- $1 \\le \\texttt{점수} \\le 100$",
+ "samples": [
+  {
+   "in": "55 67 89 40 99 100 87 63 100 0\n",
+   "out": "100 - 2\n90 - 1\n80 - 2\n70 - 0\n60 - 2\n50 - 1\n40 - 1\n30 - 0\n20 - 0\n10 - 0\n"
+  }
+ ]
+}

@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1054",
+ "title": "트리 수정",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-modify-tree/description",
+ "alias": "modify-tree",
+ "pid": 1054,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Tree",
+ "lesson": "트리",
+ "card": "challenge-modify-tree",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 8초 · C++17 2초",
+  "memory": "288 MB",
+  "time_sec": 8.0
+ },
+ "stats": {
+  "accept_rate": "56.9",
+  "submissions": "267"
+ },
+ "sample_count": 2,
+ "statement_len": 226,
+ "fetched_at": "2026-09-23",
+ "statement": "$0$번부터 $N-1$번까지 $N$ 개의 정점으로 이루어진 트리가 주어집니다.\n각 간선에는 양의 정수의 가중치가 주어져 있습니다.\n\n여러분은 이 트리에서 간선 하나를 제거하고, 다시 간선을 하나 추가하고자 합니다.\n이때, 제거한 간선과 추가한 간선의 가중치는 동일해야 하며, 이 과정에서 사이클이 생기면 안 됩니다.\n\n이렇게 만들 수 있는 트리 중에서 지름의 길이의 최댓값을 구하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 정점의 수 $N$이 주어집니다.\n\n그다음 줄부터 $N-1$ 개의 줄에 걸쳐, 한 줄에 간선 하나씩, 각 간선이 연결하는 두 정점의 번호와 간선의 가중치가 공백으로 구분되어 주어집니다.",
+ "output_spec": "첫 번째 줄에 만들 수 있는 트리 중에서 지름의 길이의 최댓값을 출력합니다.",
+ "constraints": "- $2 \\le N \\le 2\\,000$\n- $0 \\le \\texttt{간선이 연결하는 정점 번호} \\le N-1$\n- $1 \\le \\texttt{각 간선의 가중치 값} \\le 1\\,000\\,000$, 가중치는 정수.\n- 주어지는 그래프는 트리입니다.",
+ "samples": [
+  {
+   "in": "4\n0 1 2\n0 2 4\n0 3 8\n",
+   "out": "14\n"
+  },
+  {
+   "in": "4\n0 1 3\n1 2 5\n0 3 9\n",
+   "out": "17\n"
+  }
+ ]
+}

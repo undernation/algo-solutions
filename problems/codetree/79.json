@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "79",
+ "title": "겹쳐지지 않는 두 직사각형",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-non-overlapping-two-rectangles/description",
+ "alias": "non-overlapping-two-rectangles",
+ "pid": 79,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Simulation",
+ "lesson": "격자 안에서 완전탐색",
+ "card": "challenge-non-overlapping-two-rectangles",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 2.5초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 2.5
+ },
+ "stats": {
+  "accept_rate": "67.7",
+  "submissions": "1786"
+ },
+ "sample_count": 2,
+ "statement_len": 367,
+ "fetched_at": "2026-09-23",
+ "statement": "$N \\times M$크기의 이차원 영역의 각 위치에 정수 값이 하나씩 적혀있습니다. 이 영역 안에서 서로 겹치지 않는 두 직사각형을 적절하게 잡아, 두 직사각형 안에 적힌 정수 값들의 총 합을 최대로 하는 프로그램을 작성해보세요. 이때, 각 직사각형의 변들은 격자 판에 평행해야 하고 꼭 $2$개의 직사각형을 골라야만 하며, 두 직사각형의 경계는 서로 닿아도 됩니다.\n\n예를 들어 다음 그림의 경우에는, 두 직사각형을 적절히 잡아 합을 $63$ 만큼 만들 수 있습니다.\n\n![](https://contents.codetree.ai/problems/79/images/problems-6533adf8-e359-4037-ab51-4fe2127717a6.png)",
+ "input_spec": "첫 번째 줄에는 $N$과 $M$이 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 각 행에 위치한 $M$개의 정수가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "겹치지 않게 두 직사각형을 잡았을 때, 얻을 수 있는 최대 합을 출력합니다.",
+ "constraints": "- $2 \\le N, M \\le 5$\n- $-1\\,000 \\le A_{i,j} \\le 1\\,000$ $(1 \\le i \\le N,\\ 1 \\le j \\le M)$",
+ "samples": [
+  {
+   "in": "2 2\n-1 -2\n-3 -4\n",
+   "out": "-3\n"
+  },
+  {
+   "in": "4 5\n6 5 4 -3 1\n3 -4 -4 14 1\n6 1 -3 15 -5\n3 -5 1 16 3\n",
+   "out": "63\n"
+  }
+ ]
+}

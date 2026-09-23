@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "916",
+ "title": "문자에 따른 명령 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-text-based-commands2/description",
+ "alias": "text-based-commands2",
+ "pid": 916,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 II",
+ "lesson": "dx dy technique",
+ "card": "intro-text-based-commands2",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "66.3",
+  "submissions": "7864"
+ },
+ "sample_count": 1,
+ "statement_len": 277,
+ "fetched_at": "2026-09-23",
+ "statement": "좌표평면 위 $(0,\\ 0)$에서 북쪽을 향한 상태로 시작합니다. 명령 문자열 $S$가 주어지면 그 안의 명령을 앞에서부터 순서대로 모두 수행합니다.\n\n명령 $L$이 주어지면 제자리에서 왼쪽으로 $90$도 방향 전환을, 명령 $R$이 주어지면 제자리에서 오른쪽으로 $90$도 방향 전환을 합니다. 명령 $F$가 주어지면 바라보고 있는 방향으로 한 칸 이동합니다. 즉 $L$과 $R$은 방향만 바꾸고 위치는 바뀌지 않습니다.\n\n모든 명령을 수행한 뒤의 최종 위치를 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 문자 $L$, $R$, $F$로만 이루어진 명령 문자열 $S$가 주어집니다.",
+ "output_spec": "최종 위치 $(x,\\ y)$를 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $1 \\le |S| \\le 100\\,000$",
+ "samples": [
+  {
+   "in": "LF\n",
+   "out": "-1 0\n"
+  }
+ ],
+ "sample_notes": [
+  "처음 $(0,\\ 0)$에서 북쪽을 향하고 있는 상황에서 $L$ 명령을 받게 되면 서쪽을 바라 보게 되고, 다음 $F$ 명령을 받게 되면 서쪽으로 한 칸 이동하게 되므로 최종 위치는 $(-1,\\ 0)$이 됩니다."
+ ]
+}

@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2590",
+ "title": "부분 수열의 합이 M",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-the-sum-of-the-subsequences-is-m/description",
+ "alias": "the-sum-of-the-subsequences-is-m",
+ "pid": 2590,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "DP I",
+ "lesson": "아이템을 적절히 고르는 문제",
+ "card": "intro-the-sum-of-the-subsequences-is-m",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "68.1",
+  "submissions": "1829"
+ },
+ "sample_count": 2,
+ "statement_len": 500,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 원소로 이루어진 수열 $A$가 주어졌을 때, 수열 $A$의 부분 수열 내 원소의 합이 $M$이 되는 경우 중 가능한 최소 수열의 길이를 구하는 프로그램을 작성해보세요. 수열의 길이란, 수열 내 원소의 개수를 의미합니다.\n\n부분 수열이란 수열에서 순서대로 원소를 골랐을 때 나올 수 있는 수열을 뜻합니다. 예를 들어 $A = [5, 1, 20, 3, 4]$일 때, $[1, 5, 3]$은 $1$, $5$, $3$이 수열 $A$에 차례대로 존재하지 않으므로 부분 수열이 아니지만, $[5, 1, 4]$는 $5$, $1$, $4$가 차례대로 수열 $A$에 존재하므로 부분 수열입니다.\n\n$A = [5, 2, 4, 1, 6]$, $N = 5$, $M = 12$인 경우에 대해 생각해보겠습니다.\n\n부분 수열 $[5, 2, 4, 1]$은 원소들의 합이 $12$이면서 길이가 $4$이지만,  \n부분 수열 $[2, 4, 6]$은 원소들의 합이 $12$이면서 길이가 $3$이기에 최소 길이가 됩니다.",
+ "input_spec": "첫 번째 줄에는 수열 $A$의 원소의 개수 $N$과 만들고자 하는 합 $M$이 공백을 사이에 두고 주어집니다.\n\n두 번째 줄에는 수열 $A$의 원소 $N$개가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "합이 $M$이 되는 수열 $A$의 부분 수열 중 최소 길이를 출력합니다. 만약 그러한 부분 수열이 없다면 $-1$을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le M \\le 10\\,000$\n- $1 \\le \\texttt{원소 값} \\le 10\\,000$\n- 주어진 모든 원소는 다름을 가정해도 좋습니다.",
+ "samples": [
+  {
+   "in": "5 12\n5 2 4 1 6\n",
+   "out": "3\n"
+  },
+  {
+   "in": "5 21\n8 3 5 4 7\n",
+   "out": "-1\n"
+  }
+ ]
+}

@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "71",
+ "title": "K번째 수 구하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-kth-number/description",
+ "alias": "kth-number",
+ "pid": 71,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "정렬",
+ "lesson": "일반 정렬",
+ "card": "challenge-kth-number",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "82.4",
+  "submissions": "4439"
+ },
+ "sample_count": 2,
+ "statement_len": 58,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 수가 주어졌을 때, 오름차순으로 정렬했을 때 $K$번째 수를 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 원소의 수를 나타내는 $N$과 구하고자 하는 번째 수를 의미하는 $K$가 공백을 사이에 두고 주어집니다.\n\n두 번째 줄에는 $N$개의 수가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "오름차순으로 정렬했을 때 $K$번째 수를 출력합니다.",
+ "constraints": "- $1 \\le K \\le N \\le 1\\,000$\n- $1 \\le \\texttt{원소} \\le 1\\,000$",
+ "samples": [
+  {
+   "in": "3 2\n1 2 1\n",
+   "out": "1\n"
+  },
+  {
+   "in": "4 3\n1 5 4 2\n",
+   "out": "4\n"
+  }
+ ]
+}

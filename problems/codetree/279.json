@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "279",
+ "title": "정수 사이의 배수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-multiplication-between-numbers/description",
+ "alias": "multiplication-between-numbers",
+ "pid": 279,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "sum 계산하기",
+ "card": "challenge-multiplication-between-numbers",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "81.6",
+  "submissions": "4381"
+ },
+ "sample_count": 1,
+ "statement_len": 82,
+ "fetched_at": "2026-09-23",
+ "statement": "두 개의 정수 $A$, $B$를 입력받아 $A$부터 $B$까지의 수 중 $5$ 또는 $7$의 배수들의 합과 평균을 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 정수 $A$, $B$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "$5$와 $7$의 배수들의 합과 평균을 공백을 두고 출력합니다.\n\n평균은 반올림하여 소수 첫째 자리까지 출력합니다.",
+ "constraints": "- $1 \\le A$\n- $A+5 \\le B \\le 100$",
+ "samples": [
+  {
+   "in": "4 21\n",
+   "out": "92 13.1\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 예제에서는 $4$에서 $21$까지 중 $5$ 또는 $7$의 배수들의 합과 평균을 구해야 합니다. $5$와 $7$의 배수들의 합은 $5+7+10+14+15+20+21=92$이고, 평균은 $92/7 \\approx 13.1$입니다."
+ ]
+}

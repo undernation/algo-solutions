@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "853",
+ "title": "함수를 이용한 온전수 판별",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-determining-the-whole-number-using-a-function/description",
+ "alias": "determining-the-whole-number-using-a-function",
+ "pid": 853,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "함수",
+ "lesson": "값을 반환하는 함수",
+ "card": "challenge-determining-the-whole-number-using-a-function",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "88.5",
+  "submissions": "2889"
+ },
+ "sample_count": 1,
+ "statement_len": 406,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $A$와 $B$가 주어지면, $A$ 이상 $B$ 이하 온전수의 개수를 세는 프로그램을 작성해보세요. 단, 온전수인지 판단하는 함수를 이용하여 문제를 해결해주세요.\n\n온전수란 다음 세 가지 중 어느 하나에도 해당하지 않는 정수를 뜻합니다.\n- $2$로 나누어 떨어지는 경우\n- 일의 자리가 $5$인 경우\n- $3$으로는 나누어 떨어지지만 $9$로는 나누어 떨어지지 않는 경우\n\n즉, 위 세 가지 중 하나라도 해당하면 온전수가 아닙니다.\n\n예를 들어 $27$은 온전수입니다. $3$으로 나누어 떨어지지만 $9$로도 나누어 떨어지므로 세 번째에 해당하지 않고, 나머지 두 가지에도 해당하지 않기 때문입니다.\n반면 $21$은 $3$으로는 나누어 떨어지지만 $9$로는 나누어 떨어지지 않아 세 번째에 해당하므로 온전수가 아닙니다.",
+ "input_spec": "첫 번째 줄에 정수 $A$와 $B$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 $A$ 이상 $B$ 이하에 있는 온전수의 개수를 출력합니다.",
+ "constraints": "- $1 \\le A \\le B \\le 100$",
+ "samples": [
+  {
+   "in": "20 30\n",
+   "out": "3\n"
+  }
+ ],
+ "sample_notes": [
+  "$20$ 이상 $30$ 이하 정수 중 온전수는 $23$, $27$, $29$로 총 $3$개입니다."
+ ]
+}

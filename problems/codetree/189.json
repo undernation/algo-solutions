@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "189",
+ "title": "문자열 놀이",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-play-with-string/description",
+ "alias": "play-with-string",
+ "pid": 189,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "문자열",
+ "lesson": "문자 수정",
+ "card": "challenge-play-with-string",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "79.4",
+  "submissions": "6426"
+ },
+ "sample_count": 2,
+ "statement_len": 208,
+ "fetched_at": "2026-09-23",
+ "statement": "문자열 $S$와 $Q$개의 질의가 주어졌을 때 각 질의를 수행하는 프로그램을 작성해보세요. 단, 질의를 순서대로 수행해야 하며, 문자열은 질의에 따라 계속 변합니다. 질의의 종류는 다음과 같습니다.\n\n- $1\\ a\\ b$\n\n  $a$번째 문자와 $b$번째 문자를 교환한 뒤 출력합니다. \n\n- $2\\ x\\ y$\n\n  문자 $x$를 전부 문자 $y$로 변경한 뒤 출력합니다.",
+ "input_spec": "첫 번째 줄에 문자열 $S$와 질의의 수를 나타내는 $Q$값이 공백을 사이에 두고 주어집니다. \n\n두 번째 줄 부터는 $Q$개의 줄에 걸쳐 질의가 주어집니다. 각 질의는 다음 $2$개 중 하나의 타입으로 주어집니다.\n\n(1) $1\\ a\\ b$\n\n(2) $2\\ x\\ y$",
+ "output_spec": "$Q$개의 질의에 대한 결과를 한 줄에 하나씩 출력합니다.",
+ "constraints": "- $1 \\le \\texttt{문자열 } S \\texttt{의 길이} \\le 100$\n- $1 \\le Q \\le 100$\n- $1 \\le a, b \\le \\texttt{문자열 } S \\texttt{의 길이}$ \n- $a \\neq b$\n- 문자열 $S$와 모든 $x$, $y$는 소문자 알파벳입니다.",
+ "samples": [
+  {
+   "in": "aba 2\n1 1 2\n2 a c\n",
+   "out": "baa\nbcc\n"
+  },
+  {
+   "in": "accd 3\n2 e f\n2 c a\n1 2 4\n",
+   "out": "accd\naaad\nadaa\n"
+  }
+ ]
+}

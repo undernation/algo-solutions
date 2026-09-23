@@ -1,0 +1,47 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "173",
+ "title": "A/B 출력",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-a-divide-b/description",
+ "alias": "a-divide-b",
+ "pid": 173,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "n번 반복하기",
+ "card": "challenge-a-divide-b",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "59.5",
+  "submissions": "6939"
+ },
+ "sample_count": 3,
+ "statement_len": 75,
+ "fetched_at": "2026-09-23",
+ "statement": "두 정수 $A$와 $B$가 주어집니다.\n\n실수 $A/B$의 값을 소수점 $21$번째 자리에서 내림하여 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 줄에 두 정수 $A$와 $B$가 공백으로 구분되어 주어집니다.",
+ "output_spec": "첫 줄에 $A / B$의 값을 소수점 $21$번째 자리에서 내림하여 출력합니다.",
+ "constraints": "- $1 \\le A, B \\le 100$",
+ "hint": "$20$번째 자리까지 format을 이용하여 한 번에 출력하는 것은 쉽지 않습니다.",
+ "samples": [
+  {
+   "in": "14 3\n",
+   "out": "4.66666666666666666666\n"
+  },
+  {
+   "in": "3 5\n",
+   "out": "0.60000000000000000000\n"
+  },
+  {
+   "in": "3 7\n",
+   "out": "0.42857142857142857142\n"
+  }
+ ]
+}

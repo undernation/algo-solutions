@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2110",
+ "title": "폭탄 떨구기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-drop-the-bomb/description",
+ "alias": "drop-the-bomb",
+ "pid": 2110,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Parametric Search",
+ "lesson": "Parametric Search",
+ "card": "challenge-drop-the-bomb",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "83.4",
+  "submissions": "296"
+ },
+ "sample_count": 1,
+ "statement_len": 233,
+ "fetched_at": "2026-09-23",
+ "statement": "수평선 위 서로 다른 위치에 $N$개의 점이 있습니다. 각 점의 위치는 $x_1$, $x_2$, …, $x_N$으로 표현됩니다. 폭탄을 수평선 위에 $K$번 떨어뜨려 점들을 모두 제거하려 합니다. 폭탄을 수평선 위의 점 $x$에 떨어뜨리면 이 폭탄은 $x - R$부터 $x+R$까지의 모든 점을 제거할 수 있습니다. $K$개의 폭탄으로 모든 점을 제거하기 위해 필요한 $R$의 최솟값을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 두 정수 $N$, $K$가 공백을 사이에 두고 차례대로 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 각 점의 위치를 나타내는 정수 $x_1$, $x_2$, $\\dots$, $x_N$이 한 줄에 하나씩 주어집니다.",
+ "output_spec": "첫 번째 줄에 $K$개의 폭탄으로 모든 점을 제거하기 위해 필요한 정수 $R$의 최솟값을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 50\\,000$\n- $1 \\le K \\le 10$\n- $0 \\le x_1, x_2, \\cdots, x_N \\le 10^9$",
+ "samples": [
+  {
+   "in": "7 2\n20\n25\n18\n8\n10\n3\n1\n",
+   "out": "5\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 폭탄은 $6$에, 두 번째 폭탄은 $20$에 떨어뜨리면 모든 점을 제거할 수 있습니다. 이보다 작은 $R$로 모든 점을 제거할 수 있는 경우는 없습니다.\n\n![](https://contents.codetree.ai/problems/2110/images/problems-bd0e02c9-8eba-43f7-814b-b5a1d3c739de.png)"
+ ]
+}

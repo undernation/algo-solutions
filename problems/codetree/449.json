@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "449",
+ "title": "단일 연결 리스트의 동작",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-singly-linked-list-work/description",
+ "alias": "singly-linked-list-work",
+ "pid": 449,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "배열, 연결 리스트",
+ "lesson": "단일 연결 리스트",
+ "card": "test-singly-linked-list-work",
+ "card_type": "Test",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "85.4",
+  "submissions": "3058"
+ },
+ "sample_count": 0,
+ "statement_len": 534,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 코드의 출력 값을 순서대로 나열하면 어떻게 될까요?   \n단, `insert_front` 함수는 단일 연결 리스트 $sll$의 가장 앞 노드인 $head$의 앞에 노드를 추가하는 함수이고, `insert_end`는 $sll$의 가장 뒷 노드인 $tail$ 뒤에 노드를 추가하는 함수입니다.\n\n```js\nfunction solution()\n  set sll = empty SLL\n  sll.insert_front(15)\n  sll.insert_front(25)\n  sll.insert_end(20)\n  sll.insert_front(45)\n  sll.insert_end(30)\n  \n  set node = sll.head\n  while node != null\n    print(node.data)\n    node = node.next\n```\n\n**보기** — 하나 고르기\n\n1. `45 25 15 20 30`\n2. `45 15 20 25 30`\n3. `45 25 20 15 30`\n4. `45 15 25 20 30`\n5. `45 20 15 25 30`"
+}

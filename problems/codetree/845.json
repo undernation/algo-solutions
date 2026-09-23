@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "845",
+ "title": "출력결과 87",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-87/description",
+ "alias": "reading-87",
+ "pid": 845,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "함수",
+ "lesson": "변수의 영역",
+ "card": "challenge-reading-87",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "63.5",
+  "submissions": "3414"
+ },
+ "sample_count": 0,
+ "statement_len": 1340,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 코드의 출력 결과는?\n\n## Python3 코드\n\n```python\nnum = 5\n\ndef g():\n    global num\n    print(num, end=\" \")\n    num += 9\n\ndef f():\n    num = 7\n    print(num, end=\" \")\n    num += 2\n\ng()\nf()\ng()\n```\n\n## C 코드\n\n```c\n#include <stdio.h>\n\nint num = 5;\n\nvoid g() {\n    printf(\"%d \", num);\n    num += 9;\n}\nvoid f() {  \n    int num = 7;\n    printf(\"%d \", num);\n    num += 2;\n}\n\nint main()\n{\n    g();\n    f();\n    g();\n\n    return 0;\n}\n```\n\n## C++ 코드\n\n```cpp\n#include <iostream>\n\nint num = 5;\n\nvoid g() {\n    std::cout << num << \" \" ;\n    num += 9;\n}\nvoid f() {  \n    int num = 7;\n    std::cout << num << \" \";\n    num += 2;\n}\n\nint main()\n{\n    g();\n    f();\n    g();\n\n    return 0;\n}\n```\n\n\n## Java 코드\n\n```java\npublic class Main {\n    public static int num = 5;\n\n    public static void g() {\n        System.out.print(num + \" \");\n        num += 9;\n    }\n\n    public static void f() {\n        int num = 7;\n        System.out.print(num + \" \");\n        num += 2;\n    }\n\n    public static void main(String[] args) {\n        g();\n        f();\n        g();\n    }\n}\n\n```\n\n## JavaScript 코드\n\n```JavaScript\nlet num = 5;\n\nfunction g() {\n    process.stdout.write(num + \" \");\n    num += 9;\n}\n\nfunction f() {\n    let num = 7;\n    process.stdout.write(num + \" \");\n    num += 2;\n}\n\ng();\nf();\ng();\n```\n\n**보기** — 하나 고르기\n\n1. `5 7 9`\n2. `5 7 14`\n3. `5 7 5`\n4. `5 14 16`\n5. 에러가 발생합니다."
+}

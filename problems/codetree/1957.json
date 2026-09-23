@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1957",
+ "title": "동적 배열의 이해",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-dynamic-array-concept/description",
+ "alias": "dynamic-array-concept",
+ "pid": 1957,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "배열, 연결 리스트",
+ "lesson": "Dynamic Array",
+ "card": "intro-dynamic-array-concept",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Multiple choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "67.3",
+  "submissions": "5616"
+ },
+ "sample_count": 0,
+ "statement_len": 193,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 중 옳은 것을 모두 고르세요.\n\n**보기** — 모두 고르기\n\n1. 정적 배열과는 달리 동적 배열은 길이를 동적으로 바꿀 수 있다.\n2. 동적 배열은 선언 시 크기를 명시해야 하지만, 정적 배열은 크기를 나중에 설정할 수 있다.\n3. 정적 배열과 동적 배열은 모두 $i$번째 원소를 조회하는 것이  $\\mathcal{O}(1)$에 가능하다."
+}

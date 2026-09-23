@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1898",
+ "title": "홍팀과 백팀",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-red-team-and-white-team/description",
+ "alias": "red-team-and-white-team",
+ "pid": 1898,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "MST",
+ "lesson": "Disjoint Set (Union Find)",
+ "card": "challenge-red-team-and-white-team",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "58.7",
+  "submissions": "242"
+ },
+ "sample_count": 2,
+ "statement_len": 449,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$번부터 $N$번까지 총 $N$명의 사람이 있습니다. 이 사람들이 모여 운동회를 합니다. $N$명의 사람들은 모두 홍팀과 백팀 두 팀중 한 팀에 속해 있습니다.\n\n남우는 각 사람들이 어느 팀인지 궁금해 조사를 시작했습니다. 각 팀에서 한 명씩 나와서 대결을 벌일 때 누구와 누가 대결을 벌였는지 기록을 전달받았습니다.\n\n예를 들어서, $1$번과 $2$번 사람이 대결했다면 이 둘은 확실하게 다른 팀이 됩니다. 그런데 $2$번과 $3$번 역시 대결했다면 이 둘 역시 다른팀이 되기 때문에 $1$번과 $3$번은 같은 팀이였음을 알 수 있습니다.\n\n이렇게 벌어진 여러 대결 중에서 $M$개의 대결 정보만 전달받았습니다. 그런데 주최측에서 실수를 해 같은 팀이 둘이서 경기를 한 경우도 있었다고 합니다. $M$개의 정보를 바탕으로 남우가 분석한 정보에 모순이 있는지 없는지 판단하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 사람 수 $N$, 두 사람이 주어지는 횟수 $M$이 공백을 두고 주어집니다.\n\n두 번째 줄부터 $M$개의 줄에 걸쳐 대결을 벌인 두 사람의 번호가 공백을 두고 주어집니다.",
+ "output_spec": "얻은 정보에 모순이 없다면 $1$을, 모순이 있다면 $0$을 출력합니다.",
+ "constraints": "- $2 \\le N \\le 100\\,000$\n- $1 \\le M \\le 100\\,000$",
+ "samples": [
+  {
+   "in": "3 2\n1 2\n2 3\n",
+   "out": "1\n"
+  },
+  {
+   "in": "3 3\n1 2\n2 3\n3 1\n",
+   "out": "0\n"
+  }
+ ]
+}

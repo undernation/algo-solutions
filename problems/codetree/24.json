@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "24",
+ "title": "K개 중에 1개를 N번 뽑기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-n-permutations-of-k-with-repetition/description",
+ "alias": "n-permutations-of-k-with-repetition",
+ "pid": 24,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Backtracking",
+ "lesson": "K개 중 하나를 N번 선택하기(Simple)",
+ "card": "intro-n-permutations-of-k-with-repetition",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "80.2",
+  "submissions": "6434"
+ },
+ "sample_count": 2,
+ "statement_len": 221,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$이상 $K$이하의 정수를 하나 고르는 행위를 $N$번 반복하여 나올 수 있는 모든 서로 다른 수열을 구해주는 프로그램을 작성해보세요.\n\n예를 들어 $K$가 $3$, $N$이 $2$인 경우 다음과 같이 $9$개의 수열이 가능합니다.\n\n- $1\\ 1$\n\n- $1\\ 2$\n\n- $1\\ 3$\n\n- $2\\ 1$\n\n- $2\\ 2$\n\n- $2\\ 3$\n\n- $3\\ 1$\n\n- $3\\ 2$\n\n- $3\\ 3$",
+ "input_spec": "첫째 줄에 $K$와 $N$이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "서로 다른 수열의 개수 만큼의 줄에 걸쳐 한 줄에 하나씩 수열의 상태를 공백을 사이에 두고 출력합니다. 이때 앞에서부터 봤을 때 사전순으로 앞선 수열부터 출력합니다.",
+ "constraints": "- $1 \\le K \\le 4$\n- $1 \\le N \\le 8$",
+ "samples": [
+  {
+   "in": "2 2\n",
+   "out": "1 1\n1 2\n2 1\n2 2\n"
+  },
+  {
+   "in": "3 2\n",
+   "out": "1 1\n1 2\n1 3\n2 1\n2 2\n2 3\n3 1\n3 2\n3 3\n"
+  }
+ ]
+}

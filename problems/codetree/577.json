@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "577",
+ "title": "피보나치 수 빠르게 구하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-dp-fibbo-td/description",
+ "alias": "dp-fibbo-td",
+ "pid": 577,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "DP",
+ "lesson": "Memoization",
+ "card": "test-dp-fibbo-td",
+ "card_type": "Test",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "64.2",
+  "submissions": "2809"
+ },
+ "sample_count": 0,
+ "statement_len": 351,
+ "fetched_at": "2026-09-23",
+ "statement": "메모이제이션을 활용하면 중복되는 구간의 연산을 최대한 줄여 속도를 높일 수 있습니다.\n\n다음 빈칸을 채워 넣어 $n$번째 피보나치 수를 빠르게 구하는 코드를 완성해 봅시다.\n\n```jsx\nmemo = [-1, -1, -1, ... ]\n\nfunction fibbo(n)\n    if (1) != -1\n        return (2)\n    if n <= 2\n        (3) = 1\n    else\n        (4) = fibbo(n - 1) + fibbo(n - 2)\n\n    return (5)\n```\n\n**보기** — 순서대로 5개 고르기\n\n1. `1`\n2. `0`\n3. `-1`\n4. `n`\n5. `memo[n]`"
+}

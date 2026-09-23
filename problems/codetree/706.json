@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "706",
+ "title": "출력결과 24",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201622/description",
+ "alias": "reading-k201622",
+ "pid": 706,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "연산자",
+ "lesson": "사칙연산",
+ "card": "challenge-reading-k201622",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "65.7",
+  "submissions": "11028"
+ },
+ "sample_count": 0,
+ "statement_len": 528,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 프로그램의 출력 결과는 무엇인가?\n\n## Python3 코드\n```python\nb = 3; c = 2\na = b // c\nprint(f\"{a:.1f}\")\n```\n\n## C 코드\n```cpp\nfloat a;\nint b = 3, c = 2;\na = b / c;\nprintf(\"%.1f\", a);\n```\n\n## C++ 코드\n```cpp\nfloat a;\nint b = 3, c = 2;\na = b / c;\ncout << fixed;\ncout.precision(1);\ncout << a;\n```\n\n## Java 코드\n```java\nfloat a;\nint b = 3, c = 2;\na = b / c;\nSystem.out.printf(\"%.1f\", a);\n```\n\n## JavaScript 코드\n```JavaScript\nlet a;\nlet b = 3, c = 2;\na = parseInt(b / c);\nconsole.log(a.toFixed(1));\n```\n\n**보기** — 하나 고르기\n\n1. 1.0\n2. 1.5\n3. 2.0\n4. 2.3\n5. 3.2"
+}

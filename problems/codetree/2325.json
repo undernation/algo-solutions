@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2325",
+ "title": "격자로 사각형 만들기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-print-grid-in-rectangle/description",
+ "alias": "print-grid-in-rectangle",
+ "pid": 2325,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "2차원 배열",
+ "lesson": "순서대로 채우기",
+ "card": "test-print-grid-in-rectangle",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "92.7",
+  "submissions": "2267"
+ },
+ "sample_count": 1,
+ "statement_len": 153,
+ "fetched_at": "2026-09-23",
+ "statement": "아래 조건을 만족하도록 격자를 만들어 출력하는 프로그램을 작성해보세요.\n\n+ 첫 번째 행과 첫 번째 열에는 모두 $1$이 들어갑니다.\n\n+ 나머지 칸들은 바로 위의 값과 바로 왼쪽 값, 그리고 왼쪽 위의 값의 합이 되어야 합니다.\n\n+ 크기는 $N \\times N$ 입니다.",
+ "input_spec": "첫 번째 줄에 정수 $N$이 주어집니다.",
+ "output_spec": "첫 번째 줄부터 $N$개의 줄에 걸쳐, 각 행에 해당하는 $N$개의 수를 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $2 \\le N \\le 10$",
+ "samples": [
+  {
+   "in": "5\n",
+   "out": "1 1 1 1 1\n1 3 5 7 9\n1 5 13 25 41\n1 7 25 63 129\n1 9 41 129 321\n"
+  }
+ ]
+}

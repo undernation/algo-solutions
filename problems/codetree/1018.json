@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1018",
+ "title": "트리 판별",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-tree-identification/description",
+ "alias": "tree-identification",
+ "pid": 1018,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Tree",
+ "lesson": "트리",
+ "card": "challenge-tree-identification",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "45.4",
+  "submissions": "628"
+ },
+ "sample_count": 2,
+ "statement_len": 229,
+ "fetched_at": "2026-09-23",
+ "statement": "1. 들어오는 간선이 하나도 없는 루트 노드가 정확히 한 개 존재합니다.\n\n2. 루트 노드를 제외한 모든 노드는 반드시 단 하나의 들어오는 간선이 존재합니다.\n\n3. 루트 노드에서 간선을 사용해서, 자신을 제외한 모든 노드에 도달할 수 있으며, 이러한 경로는 유일합니다.\n\n이러한 조건을 만족시키는 그래프를 트리라고 부릅니다.\n\n간선의 정보를 입력받아서 해당 구조가 트리인지 판별하는 프로그램을 작성하여봅시다.",
+ "input_spec": "첫 번째 줄에는 간선의 개수 $M$이 주어집니다.\n\n두 번째 줄부터 $M$개의 줄에 걸쳐 간선이 주어집니다. `a b` 는 노드 `a`에서 노드 `b`로 가는 간선이 존재한다는 의미입니다.",
+ "output_spec": "해당 구조가 트리일 경우에는 $1$, 트리가 아닐 경우에는 $0$을 출력합니다.",
+ "constraints": "- $1 \\le M \\le 1\\,000$\n- $1 \\le \\texttt{노드의 번호} \\le 10\\,000$",
+ "samples": [
+  {
+   "in": "8\n8 1\n7 3\n6 2\n8 9\n7 5\n7 4\n7 8\n7 6\n",
+   "out": "1\n"
+  },
+  {
+   "in": "6\n3 8\n6 8\n6 4\n5 3\n5 6\n5 2\n",
+   "out": "0\n"
+  }
+ ]
+}

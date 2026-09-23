@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "938",
+ "title": "바구니 안의 사탕 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-candy-in-the-basket-2/description",
+ "alias": "candy-in-the-basket-2",
+ "pid": 938,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 I",
+ "lesson": "구간 단위로 완전탐색",
+ "card": "challenge-candy-in-the-basket-2",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "40.3",
+  "submissions": "3867"
+ },
+ "sample_count": 1,
+ "statement_len": 193,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$차원 수직선 위에 바구니 $N$개가 놓여 있고, 각 바구니에는 사탕이 담겨 있습니다.\n\n정수 $c$를 하나 골라 구간 $[c - K,\\ c + K]$를 정하면, 이 구간 안에 위치한 모든 바구니의 사탕을 얻을 수 있습니다.\n\n$c$를 잘 골라 얻을 수 있는 사탕의 개수가 최대가 되도록 할 때, 그 최댓값을 구하는 프로그램을 작성해 보세요.",
+ "input_spec": "첫 번째 줄에 $N$과 $K$가 공백을 사이에 두고 주어집니다.\n\n이후 $N$개의 줄에 걸쳐 한 줄에 한 바구니씩, $i$번째 바구니에 담긴 사탕의 개수 $a_i$와 그 바구니의 위치 $x_i$가 공백을 사이에 두고 주어집니다. ($1 \\le i \\le N$)",
+ "output_spec": "첫 번째 줄에 얻을 수 있는 사탕의 개수의 최댓값을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le K \\le 200$\n- $0 \\le a_i \\le 100$ ($1 \\le i \\le N$)\n- $0 \\le x_i \\le 100$ ($1 \\le i \\le N$)\n- $N$, $K$, $a_i$, $x_i$는 모두 정수입니다.\n- 같은 위치에 여러 바구니가 놓여 있을 수 있습니다.",
+ "samples": [
+  {
+   "in": "4 3\n4 7\n10 15\n2 2\n5 1\n",
+   "out": "11\n"
+  }
+ ],
+ "sample_notes": [
+  "$c$를 $4$로 잡으면 구간은 $[1,\\ 7]$이 되고, 이 구간에 위치한 바구니는 위치 $1$, $2$, $7$에 있는 세 바구니이므로 사탕을 $5 + 2 + 4 = 11$개 얻을 수 있습니다. 이보다 더 많이 얻는 방법은 없으므로 답은 $11$입니다."
+ ]
+}

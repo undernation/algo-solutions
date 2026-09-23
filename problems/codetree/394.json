@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "394",
+ "title": "소문자와 숫자",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-letter-and-number/description",
+ "alias": "letter-and-number",
+ "pid": 394,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "문자열",
+ "lesson": "대소문자 변환",
+ "card": "challenge-letter-and-number",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "86.1",
+  "submissions": "1804"
+ },
+ "sample_count": 1,
+ "statement_len": 56,
+ "fetched_at": "2026-09-23",
+ "statement": "문자열이 주어지면 영문자와 숫자만 출력하되, 영문자는 모두 소문자로 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 길이가 $100$ 이하인 문자열이 주어집니다.",
+ "output_spec": "소문자인 영문자와 숫자로만 이루어진 문자열을 첫 번째 줄에 출력합니다.",
+ "constraints": "- $\\texttt{문자열의 길이} \\le 100$",
+ "samples": [
+  {
+   "in": "LeeBros123@Naver.Com\n",
+   "out": "leebros123navercom\n"
+  }
+ ]
+}

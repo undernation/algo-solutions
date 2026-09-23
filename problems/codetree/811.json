@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "811",
+ "title": "순간이동",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-teleportation/description",
+ "alias": "teleportation",
+ "pid": 811,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "케이스별로 나누기",
+ "lesson": "좋은 전략을 추려내기",
+ "card": "intro-teleportation",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "75.6",
+  "submissions": "950"
+ },
+ "sample_count": 1,
+ "statement_len": 285,
+ "fetched_at": "2026-09-23",
+ "statement": "수직선 위에서 위치 $A$에서 출발하여 위치 $B$까지 걸어가려고 합니다. 수직선 위의 두 위치 사이를 걸어서 이동할 때 드는 거리는 두 위치의 좌표 차이의 절댓값입니다.\n\n또한 순간이동 장치를 최대 한 번 사용할 수 있습니다. 이 장치는 위치 $x$에서 위치 $y$로, 또는 위치 $y$에서 위치 $x$로 걸어간 거리 소모 없이 이동시켜 줍니다. 순간이동은 사용하지 않아도 되며, 사용한다면 한 번만 쓸 수 있습니다.\n\n$A$에서 $B$까지 이동할 때 걸어간 거리의 최솟값을 구하는 프로그램을 작성해 주세요.",
+ "input_spec": "첫 번째 줄에 네 정수 $A$, $B$, $x$, $y$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 최소 이동거리를 출력합니다.",
+ "constraints": "- $0 \\le A,B,x,y \\le 100$",
+ "samples": [
+  {
+   "in": "3 10 8 2\n",
+   "out": "3\n"
+  }
+ ],
+ "sample_notes": [
+  "$3$에서 $2$로 걸어간 후, $2$에서 $8$까지 텔레포트를 사용하고, 그다음 $8$에서 $10$까지 걸어가면 총 걷는 이동거리는 $1 + 2 = 3$으로 최소가 됩니다."
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2048",
+ "title": "최소가 되는 좌표 범위의 차",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-the-minimum-difference-in-coordinate-range/description",
+ "alias": "the-minimum-difference-in-coordinate-range",
+ "pid": 2048,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shorten time Technique",
+ "lesson": "Two Pointer",
+ "card": "challenge-the-minimum-difference-in-coordinate-range",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 4초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 4.0
+ },
+ "stats": {
+  "accept_rate": "33.0",
+  "submissions": "625"
+ },
+ "sample_count": 1,
+ "statement_len": 203,
+ "fetched_at": "2026-09-23",
+ "statement": "좌표평면 위에 주어진 $N$개의 점이 있습니다. $x$좌표가 특정 범위 안에 있는 점들 중 $y$좌표의 값이 가장 작은 점과 $y$좌표의 값이 가장 큰 두 점의 $y$좌표 차가 $D$이상이 되도록 만들려고 합니다. 이것이 가능하도록 하는 $x$좌표 범위가 $A \\le x \\le B$ 라고 했을 때, 그 중 $B-A$가 최소가 되게 만드는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $N$과 $D$가 공백을 사이에 두고 차례대로 주어집니다. \n\n두 번째 줄 부터 $N$개 줄에 걸쳐 각 줄에 각 점의 $x$, $y$ 좌표가 공백을 사이에 두고 차례대로 주어집니다.",
+ "output_spec": "첫 번째 줄에 $A \\le x \\le B$ 범위 내 점들의 $y$좌표의 최대 최소간의 차가 $D$이상이 되게하는 가능한 $A, B$ 쌍 중 $B-A$의 최솟값을 출력하세요. 단, $y$좌표의 차이가 $D$이상이 되게 하는 쌍이 없다면 $-1$을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100\\,000$\n- $1 \\le D \\le 1\\,000\\,000$\n- $0 \\le \\texttt{주어진 모든 점의 x,y 좌표} \\le 1\\,000\\,000$",
+ "samples": [
+  {
+   "in": "4 5\n6 3\n2 4\n4 10\n12 15\n",
+   "out": "2\n"
+  }
+ ],
+ "sample_notes": [
+  "$4 \\le x \\le 6$의 범위에 있는 첫번째 점 $(6,\\ 3)$과 세번째 점 $(4,\\ 10)$의 $y$좌표 차이가 $7$로 $5$ 이상입니다. 이 때 $B-A$가 $6-4=2$로 가장 작습니다.\n\n<br>\n\n![](https://contents.codetree.ai/problems/2048/images/problems-7ab9d557-e0c9-45ec-abba-c18682e619c9.png)\n\n<br>"
+ ]
+}

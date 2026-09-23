@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1098",
+ "title": "동전 더하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-add-coins/description",
+ "alias": "add-coins",
+ "pid": 1098,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Greedy",
+ "lesson": "Greedy Algorithm",
+ "card": "intro-add-coins",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "85.3",
+  "submissions": "1496"
+ },
+ "sample_count": 1,
+ "statement_len": 123,
+ "fetched_at": "2026-09-23",
+ "statement": "서로 다른 동전 $N$ 종류로 금액 $K$ 를 완성시키기 위해 필요한 동전 개수의 최솟값을 구하는 프로그램을 작성하세요.\n\n단, 2번째부터 주어지는 동전의 가치값은 항상 바로 전 동전의 가치의 배수로 주어짐에 유의합니다.",
+ "input_spec": "첫 번째 줄에 정수 $N$ 과 $K$ 가 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터는 $N$ 개의 줄에 걸쳐 각 동전의 가치가 작은 동전부터 큰 동전까지 순서대로 주어집니다.",
+ "output_spec": "첫 번째 줄에 금액 $K$ 를 만드는데 필요한 동전의 개수의 최솟값을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 10$\n- $1 \\le K \\le 10^8$\n- $1 \\le \\texttt{동전의 가치} \\le 10^8$\n- 동전의 가치는 오름차순으로 주어지며, 두 번째 동전부터는 각 동전의 가치가 바로 이전 동전 가치의 배수입니다.\n- 주어지는 모든 동전의 가치는 전부 다릅니다.\n- 주어진 동전들로 금액 $K$ 를 만들 수 있는 입력만 주어집니다.",
+ "samples": [
+  {
+   "in": "5 3800\n1\n5\n100\n500\n1000\n",
+   "out": "7\n"
+  }
+ ],
+ "sample_notes": [
+  "필요한 동전의 종류와 개수는 다음과 같습니다.\n\n```\n1000 x 3\n500 x 1\n100 x 3\n```"
+ ]
+}

@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1249",
+ "title": "수 2배 후 하나 제거하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-multiply-two-and-remove-one-number/description",
+ "alias": "multiply-two-and-remove-one-number",
+ "pid": 1249,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 III",
+ "lesson": "상황을 일일이 가정해보고 진행하는 완전탐색",
+ "card": "intro-multiply-two-and-remove-one-number",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "78.9",
+  "submissions": "1349"
+ },
+ "sample_count": 2,
+ "statement_len": 271,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $N$개로 이루어진 수열 $A_1$, $A_2$, $\\dots$, $A_N$이 주어집니다.\n\n먼저 원소 하나를 골라 그 값을 $2$배로 만들고, 그다음 원소 하나를 골라 제거합니다. 이때 제거할 원소는 앞에서 $2$배로 만든 원소와 같아도 됩니다.\n\n남은 $N - 1$개의 원소는 원래 순서를 그대로 유지합니다. 점수는 인접한 두 원소마다 차의 절댓값을 구해 모두 더한 값입니다.\n\n점수가 가장 작아지도록 두 원소를 고를 때, 그 점수의 최솟값을 구하는 프로그램을 작성해 보세요.",
+ "input_spec": "첫 번째 줄에 정수 $N$이 주어집니다.\n\n두 번째 줄에 정수 $N$개 $A_1$, $A_2$, $\\dots$, $A_N$이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 가능한 점수의 최솟값을 출력합니다.",
+ "constraints": "- $3 \\le N \\le 100$\n- $1 \\le A_i \\le 100$ ($1 \\le i \\le N$)\n- 모든 입력값은 정수입니다.",
+ "samples": [
+  {
+   "in": "5\n1 9 8 2 7\n",
+   "out": "8\n"
+  },
+  {
+   "in": "5\n2 2 3 9 6\n",
+   "out": "4\n"
+  }
+ ],
+ "sample_notes": [
+  "네 번째 원소인 $2$를 골라 $2$배로 만들면 $[1,\\ 9,\\ 8,\\ 4,\\ 7]$이 됩니다.\n\n그다음 첫 번째 원소를 제거하면 남은 원소는 원래 순서대로 $[9,\\ 8,\\ 4,\\ 7]$이고, 점수는 $|9 - 8| + |8 - 4| + |4 - 7| = 1 + 4 + 3 = 8$입니다. 이보다 더 작게 만들 수는 없으므로 답은 $8$입니다.",
+  "세 번째 원소인 $3$을 $2$배로 만들면 $[2,\\ 2,\\ 6,\\ 9,\\ 6]$이 되고, 네 번째 원소인 $9$를 제거하면 남은 원소는 $[2,\\ 2,\\ 6,\\ 6]$입니다. 점수는 $|2 - 2| + |2 - 6| + |6 - 6| = 0 + 4 + 0 = 4$이고, 이보다 더 작게 만들 수는 없으므로 답은 $4$입니다.\n\n이 예제처럼 제거하는 원소가 첫 번째 원소일 필요도, 값이 작은 원소일 필요도 없습니다. 어떤 위치의 원소든 제거할 수 있습니다."
+ ]
+}

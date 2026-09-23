@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1989",
+ "title": "최단거리 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-graph-shortest-path-2/description",
+ "alias": "graph-shortest-path-2",
+ "pid": 1989,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 탐색",
+ "lesson": "가중치가 동일한 그래프에서의 BFS",
+ "card": "test-graph-shortest-path-2",
+ "card_type": "Test",
+ "level": "Medium",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "42.0",
+  "submissions": "4181"
+ },
+ "sample_count": 0,
+ "statement_len": 480,
+ "fetched_at": "2026-09-23",
+ "statement": "다음과 같은 그래프가 있습니다.\n\n![](https://contents.codetree.ai/problems/1989/images/problems-1ff0ddca-9533-4796-81fb-99c27abbec22.svg)\n\n위 그래프의 1번 정점에서 다른 모든 정점으로 가는 최단거리를 구한 표가 다음과 같습니다. 빈칸을 알맞게 채워주세요.\n\n\n|$DIST$|$1$|$2$|$3$|$4$|$5$|$6$|$7$|$8$|$9$|$10$|$11$|$12$|$13$|\n|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|\n||$(1)$|$2$|$1$|$1$|$(2)$|$3$|$2$|$(3)$|$4$|$5$|$(4)$|$6$|$(5)$|\n\n**보기** — 순서대로 5개 고르기\n\n1. `0`\n2. `1`\n3. `2`\n4. `3`\n5. `4`\n6. `5`\n7. `6`\n8. `7`\n9. `8`"
+}

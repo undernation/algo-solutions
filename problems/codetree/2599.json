@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2599",
+ "title": "동일하게 분할",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-equal-partition/description",
+ "alias": "equal-partition",
+ "pid": 2599,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "DP I",
+ "lesson": "아이템을 적절히 고르는 문제",
+ "card": "test-equal-partition",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "192 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "55.4",
+  "submissions": "1030"
+ },
+ "sample_count": 2,
+ "statement_len": 193,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 정수가 주어졌을 때 이를 정확히 $2$개의 그룹 $A$, $B$로 나누어 $A$에 들어있는 수들의 합과 $B$에 들어있는 수들의 합이 일치하도록 하는 프로그램을 작성해보세요. 단, 주어진 $N$개의 수는 각각 $A$ 또는 $B$ 중 정확히 한 곳에만 속해야 하며, 각 그룹은 최소 $1$개 이상의 수를 포함하고 있어야 함에 유의합니다.",
+ "input_spec": "첫 번째 줄에는 $N$이 주어집니다.\n\n두 번째 줄에는 $N$개의 정수가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "가능하다면 $Yes$, 불가능하다면 $No$를 출력합니다.",
+ "constraints": "- $2 \\le N \\le 100$\n- $1 \\le \\texttt{주어지는 정수} \\le 1\\,000$",
+ "samples": [
+  {
+   "in": "4\n2 2 1 5\n",
+   "out": "Yes\n"
+  },
+  {
+   "in": "5\n4 7 8 9 5\n",
+   "out": "No\n"
+  }
+ ],
+ "sample_notes": [
+  "이 예제에서 {$2$, $2$, $1$}, {$5$} 이렇게 $2$개의 그룹으로 나뉘면 그룹 내 합이 각각 $5$, $5$가 되므로 두 그룹의 합을 같게 만들 수 있습니다.",
+  "이 예제에서는 어떻게 나눠도 두 그룹의 합을 같게 만들 수 없습니다."
+ ]
+}

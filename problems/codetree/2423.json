@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2423",
+ "title": "특정 수와 근접한 합",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-sum-close-to-particular-number/description",
+ "alias": "sum-close-to-particular-number",
+ "pid": 2423,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 I",
+ "lesson": "자리 수 단위로 완전탐색",
+ "card": "test-sum-close-to-particular-number",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "68.4",
+  "submissions": "2476"
+ },
+ "sample_count": 1,
+ "statement_len": 100,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $S$와 $N$개의 수가 주어지면, $N$개의 수들 중 정확히 $2$개를 제외하여 남은 $N-2$개의 숫자들의 합이 $S$와 최대한 가까워지도록 하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$과 $S$가 공백을 사이에 두고 주어집니다.  \n두 번째 줄에 $N$개의 수가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "$N$개의 수 중 정확히 $2$개를 제외한 나머지의 합을 $T$라 할 때, $|T - S|$의 최솟값을 출력합니다.",
+ "constraints": "- $3\\le N\\le100$\n- $1\\le S\\le10\\,000$\n- $1\\le \\texttt{주어지는 수} \\le100$",
+ "samples": [
+  {
+   "in": "6 20\n5 7 9 1 13 8\n",
+   "out": "1\n"
+  }
+ ],
+ "sample_notes": [
+  "$6$개의 정수 중 $13$과 $9$를 제외한 모든 수의 합은 $21$로, $S$인 20과 가장 가깝습니다. 따라서 그 차이는 $1$이 됩니다."
+ ]
+}

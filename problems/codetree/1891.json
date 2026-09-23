@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1891",
+ "title": "가장 많은 정점과 연결",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-connect-with-the-most-vertices/description",
+ "alias": "connect-with-the-most-vertices",
+ "pid": 1891,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "MST",
+ "lesson": "Disjoint Set (Union Find)",
+ "card": "challenge-connect-with-the-most-vertices",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "45.1",
+  "submissions": "213"
+ },
+ "sample_count": 2,
+ "statement_len": 258,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$번부터 $N$번까지 총 $N$개의 정점과 $M$개의 간선으로 이루어진 그래프가 있습니다.\n\n각 정점에는 정수가 하나씩 주어져 있는데, $a$번 정점과 $b$번 정점 사이를 잇는 간선을 추가로 만들기 위해서는 $a$번 정점과 $b$번 정점에 적혀있는 정수의 합만큼의 비용이 필요합니다.\n여러분은 $K$이하의 비용으로 모든 정점이 서로 연결되도록 간선을 만들어 주려 합니다.\n\n모든 정점이 서로 연결되기 위해 필요한 최소한의 비용을 찾는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 정수 $N$, $M$, $K$가 공백으로 구분되어 주어집니다.\n\n두 번째 줄에 $1$번 정점부터 $N$번 정점까지 각 정점에 주어진 정수가 번호 순서대로 공백으로 구분되어 주어집니다.\n\n그다음 줄부터 $M$개의 줄에 걸쳐, 한 줄에 간선 하나씩, 각 간선이 잇는 두 정점의 번호를 나타내는 정수들이 공백으로 구분되어 주어집니다.",
+ "output_spec": "첫 번째 줄에 모든 정점이 서로 연결되기 위해 필요한 최소 비용을 출력합니다.\n\n만약 이 비용이 $K$보다 크다면, \"NO\"를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100\\,000$\n- $1 \\le M \\le 100\\,000$\n- $1 \\le K \\le 10^8$\n- $1 \\le \\texttt{각 정점에 주어진 정수의 값} \\le 10\\,000$",
+ "samples": [
+  {
+   "in": "5 3 50\n10 10 20 20 30\n1 3\n2 4\n5 4\n",
+   "out": "20\n"
+  },
+  {
+   "in": "5 3 19\n10 10 20 20 30\n1 3\n2 4\n5 4\n",
+   "out": "NO\n"
+  }
+ ]
+}

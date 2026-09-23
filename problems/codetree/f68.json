@@ -1,0 +1,43 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f68",
+ "title": "미로 타워 디펜스",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/maze-tower-defense/description",
+ "alias": "maze-tower-defense",
+ "pid": 68,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2021 상반기 오후 2번 문제",
+ "level": "L15",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "45.8",
+  "submissions": "2381"
+ },
+ "sample_count": 3,
+ "statement_len": 2043,
+ "fetched_at": "2026-09-23",
+ "statement": "$n \\times n$으로 이뤄진 나선형 미로 속에 $1$번, $2$번, $3$번 몬스터들이 침략하고 있습니다.\n\n플레이어는 격자 속 가운데 탑에서 몬스터를 제거하려고 합니다. 몬스터는 다음 방법에 따라 제거됩니다.\n\n<p align=\"center\">\n<img width=\"300\" height=\"300\" src=\"https://contents.codetree.ai/problems/411/images/d70e6568-6d86-4a5d-b7e8-b82dc8af1742.png\">\n</p>\n\n1. 플레이어는 상하좌우 방향 중 주어진 공격 칸 수만큼 몬스터를 공격하여 없앨 수 있습니다.\n<p align=\"center\">\n<img width=\"600\" height=\"250\" src=\"https://contents.codetree.ai/problems/411/images/81f4c288-7eb4-4c1b-b480-9a04d30d77c2.png\">\n</p>\n\n2. 비어있는 공간만큼 몬스터는 앞으로 이동하여 빈 공간을 채웁니다.\n\n<p align=\"center\">\n<img width=\"600\" height=\"250\" src=\"https://contents.codetree.ai/problems/411/images/1afc7ab7-2dac-4181-b4ea-dcbed6a41e0a.png\">\n</p>\n\n3. 이때 몬스터의 종류가 $4$번 이상 반복하여 나오면 해당 몬스터 또한 삭제됩니다. 해당 몬스터들은 동시에 사라집니다.\n\n<p align=\"center\">\n<img width=\"600\" height=\"250\" src=\"https://contents.codetree.ai/problems/411/images/63636b94-d323-4220-9458-402e235a4e9d.png\">\n</p>\n\n 삭제된 이후에는 몬스터들을 앞으로 당겨주고, $4$번 이상 나오는 몬스터가 있을 경우 또 삭제를 해줍니다. $4$번 이상 나오는 몬스터가 없을 때까지 반복해줍니다.\n\n<p align=\"center\">\n<img width=\"600\" height=\"250\" src=\"https://contents.codetree.ai/problems/411/images/93b6fbbe-a678-49eb-b102-65a4e7b80aac.png\">\n</p>\n\n<p align=\"center\">\n<img width=\"600\" height=\"250\" src=\"https://contents.codetree.ai/problems/411/images/3c5738eb-0c6c-4a4c-a9f2-fae98cd03dc4.png\">\n</p>\n\n4. 삭제가 끝난 다음에는 몬스터를 차례대로 나열했을 때 같은 숫자끼리 짝을 지어줍니다. 이후 각각의 짝을 (총 개수, 숫자의 크기)로 바꾸어서 다시 미로 속에 집어넣습니다.\n\n<p align=\"center\">\n<img width=\"600\" height=\"200\" src=\"https://contents.codetree.ai/problems/411/images/b2c37623-ef94-44a4-9b10-6f579c02c9c4.png\">\n</p>\n\n<p align=\"center\">\n<img width=\"300\" height=\"300\" src=\"https://contents.codetree.ai/problems/411/images/5d7d64c1-34ee-4efb-a1f4-1b0781349728.png\">\n</p>\n\n\n만약 새로 생긴 배열이 원래 격자의 범위를 넘는다면 나머지 배열은 무시합니다.\n\n해당 과정이 끝나면 한 라운드가 끝납니다. $1$과 $3$ 과정에서 삭제되는 몬스터의 번호는 점수에 합쳐집니다. 예를 들어 위의 $1$번 과정에서는 총 $(2 \\times 2) = 4$점만큼 점수가 추가되고, $3$번 과정에서는 $(1 \\times 5) + (3 \\times 4) + (2 \\times 4) = 25$점만큼 점수가 추가됩니다. 해당 라운드에서 합쳐진 점수는 총 $29$점입니다.\n\n각 라운드별로 공격 방향과 공격하는 칸 수가 주어질 때 모든 라운드가 끝난 후 플레이어가 얻게되는 점수는 몇 점인지 구하는 프로그램을 작성하세요.",
+ "input_spec": "첫번째 줄에는 격자의 크기 $n$, 총 라운드 수 $m$이 주어집니다.\n\n이후 두번째 줄부터 $n+1$번째 줄까지 몬스터의 종류가 주어집니다. $0$은 비어있는 칸을 의미합니다.\n\n이후 $m$개의 줄에는 각 라운드마다의 플레이어의 공격 방향 $d$과 공격 칸 수 $p$가 주어집니다.\n\n$d$는 $0$번부터 $3$번까지 각각 → ↓ ← ↑으로 주어집니다.",
+ "output_spec": "모든 라운드가 끝난 후 플레이어가 얻은 점수를 출력하세요.",
+ "constraints": "- $7 \\le n \\le 25$\n- $n$은 홀수\n- $1 \\le m \\le 100$\n- $0 \\le d \\le 3$\n- $0 \\le \\texttt{주어지는 몬스터의 종류} \\le e$\n- $1 \\le p \\le \\lfloor n/2 \\rfloor$\n- 입력되는 몬스터의 줄 사이에는 공백이 존재하지 않습니다.\n- 정가운데 칸은 몬스터가 주어지지 않는다고 가정해도 좋습니다.\n- 모든 입력은 정수입니다.",
+ "samples": [
+  {
+   "in": "7 1\n0 0 0 0 0 0 0\n0 0 0 1 3 2 0\n0 3 2 3 3 2 0\n0 1 1 0 2 2 0\n0 2 2 3 3 2 0\n0 1 1 1 1 1 0\n0 0 0 0 0 0 0\n0 2\n",
+   "out": "29\n"
+  },
+  {
+   "in": "7 5\n0 0 0 0 0 0 0\n0 0 0 1 3 2 0\n0 3 2 3 3 2 0\n0 1 1 0 2 2 0\n0 2 2 3 3 2 0\n0 1 1 1 1 1 0\n0 0 0 0 0 0 0\n0 2\n1 3\n2 1\n3 2\n1 2\n",
+   "out": "39\n"
+  },
+  {
+   "in": "7 1\n1 3 2 1 3 2 3\n1 3 1 2 1 2 3\n3 2 1 2 1 2 3\n1 2 3 0 3 2 3\n1 1 2 3 2 3 1\n2 1 2 3 2 3 1\n1 3 2 3 1 3 2\n0 2\n",
+   "out": "17\n"
+  }
+ ]
+}

@@ -1,0 +1,39 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f65",
+ "title": "놀이기구 탑승",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/go-on-the-rides/description",
+ "alias": "go-on-the-rides",
+ "pid": 65,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2021 상반기 오전 1번 문제",
+ "level": "L11",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "66.7",
+  "submissions": "2164"
+ },
+ "sample_count": 2,
+ "statement_len": 2694,
+ "fetched_at": "2026-09-23",
+ "statement": "$n \\times n$ 명의 학생을 다음과 같이 $n \\times n$ 크기의 격자 모양으로 생긴 놀이기구에 순서대로 탑승시키려고 합니다. 처음에는 놀이기구의 모든 칸이 비어져있습니다. $(r,\\ c)$는 $r$행 $c$열을 의미합니다.\n\n<p align=\"center\">\n<img width=\"600\" height=\"500\" src=\"https://contents.codetree.ai/problems/408/images/8d3516fb-fb1d-493e-bee9-8f3bdb3ee66f.png\">\n</p>\n\n이때 각 학생별로 좋아하는 학생이 정확히 $4$명씩 정해져 있습니다. 자기 자신을 좋아하는 학생은 없고, 동일한 학생에 대해 좋아하는 학생의 번호가 중복하여 주어지는 경우도 없습니다.\n\n<p align=\"center\">\n<img width=\"280\" height=\"500\" src=\"https://contents.codetree.ai/problems/408/images/829d0e6e-262b-4000-90bd-27fbb890b691.png\">\n</p>\n\n\n이때 학생들은, 입력으로 주어진 순서대로 다음 조건에 따라 가장 우선순위가 높은 칸으로 탑승하려고 합니다. 단, 항상 비어있는 칸으로만 이동합니다.\n\n1. 격자를 벗어나지 않는 $4$방향으로 인접한 칸 중 앉아있는 좋아하는 친구의 수가 가장 많은 위치로 갑니다.\n\n2. 만약 $1$번 조건을 만족하는 칸의 위치가 여러 곳이라면, 그 중 인접한 칸 중 비어있는 칸의 수가 가장 많은 위치로 갑니다. 단 이때 격자를 벗어나는 칸은 비어있는 칸으로 간주하지 않습니다.\n\n3. 만약 $2$번 조건까지 동일한 위치가 여러 곳이라면, 그 중 행 번호가 가장 작은 위치로 갑니다.\n\n4. 만약 $3$번 조건까지 동일한 위치가 여러 곳이라면, 그 중 열 번호가 가장 작은 위치로 갑니다.\n\n위의 조건 하에 실제 시뮬레이션을 진행해보면 다음과 같습니다.\n먼저 $3$번 학생은, 비어 있는 칸의 수가 $4$개인 $(2,\\ 2)$ 위치로 들어가게 됩니다.\n\n<p align=\"center\">\n<img width=\"450\" height=\"400\" src=\"https://contents.codetree.ai/problems/408/images/665b8949-e9c0-4463-9202-f79fcf476ac2.png\">\n</p>\n\n다음 $6$번 학생은, 인접한 곳에 좋아하는 학생의 수가 $1$명인 $(1,\\ 2)$, $(2,\\ 1)$, $(2,\\ 3)$, $(3,\\ 2)$ 칸들을 살펴봅니다. 이 칸들은 전부 인접한 곳에 비어있는 칸의 수가 $2$개로 동일하기 때문에, 그 중 행 번호가 가장 작은 $(1,\\ 2)$ 위치로 들어가게 됩니다.\n\n<p align=\"center\">\n<img width=\"450\" height=\"400\" src=\"https://contents.codetree.ai/problems/408/images/e3372684-a428-43c2-a715-2aca6af60f8b.png\">\n</p>\n\n다음 $1$번 학생은, 인접한 곳에 좋아하는 학생의 수가 $1$명인 $(1,\\ 1)$, $(1,\\ 3)$ 칸들을 살펴봅니다. 이 칸들은 전부 인접한 곳에 비어있는 칸의 수가 $1$개로 동일하며 행 번호 역시 $1$로 동일하기 때문에, 그 중 열 번호가 가장 작은 위치인 $(1,\\ 1)$로 이동합니다.\n\n<p align=\"center\">\n<img width=\"450\" height=\"400\" src=\"https://contents.codetree.ai/problems/408/images/88ca8b62-ddee-485c-9b90-e2fc85c717d4.png\">\n</p>\n\n다음 $8$번 학생은, 인접한 곳에 좋아하는 학생 수가 $2$명인 유일한 칸인 $(2,\\ 1)$로 이동하게 됩니다.\n\n<p align=\"center\">\n<img width=\"450\" height=\"400\" src=\"https://contents.codetree.ai/problems/408/images/ddcdebd3-ae98-4972-a067-7644cfa31cb6.png\">\n</p>\n\n학생들이 전부 탑승한 이후의 상태는 다음과 같습니다. \n\n<p align=\"center\">\n<img width=\"300\" height=\"300\" src=\"https://contents.codetree.ai/problems/408/images/302148f8-0f1f-4e59-b433-42dbb615a014.png\">\n</p>\n\n이때 최종 점수는 모든 학생들이 탑승한 이후, 각 학생마다의 점수를 합한 점수가 됩니다. 각 학생의 점수는 해당 학생의 인접한 곳에 앉아 있는 좋아하는 친구의 수로 결정됩니다.\n\n<p align=\"center\">\n<img width=\"450\" height=\"150\" src=\"https://contents.codetree.ai/problems/408/images/fbd8f390-c5cb-4ece-a42c-448cff28c5fb.png\">\n</p>\n\n예를 들어 위의 경우에서 1번 학생의 경우 인접한 곳에 좋아하는 친구가 $6$번, $8$번 이렇게 $2$명 있으므로, $10$점을 얻게 됩니다. 최종 점수는 탑승하는 순서대로 $10 + 100 + 10 + 10 + 10 + 10 + 10 + 10 + 0 = 170$이 됩니다.\n\n들어오는 학생의 순서와 각 학생마다 좋아하는 $4$명의 학생 번호가 주어졌을 때, 최종 점수를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 격자의 크기를 나타내는 $n$이 주어집니다.\n\n두 번째 줄부터는 $n \\times n$개의 줄에 걸쳐 각 학생의 정보 $n0$, $n1$, $n2$, $n3$, $n4$가 각각 공백을 사이에 주어집니다. $n0$는 지금 턴에 탑승하는 학생의 번호, $n1$, $n2$, $n3$, $n4$는 $n0$ 학생이 좋아하는 학생의 번호를 나타냅니다. $n0$, $n1$, $n2$, $n3$, $n4$는 전부 다른 정수이며, $1$이상 $n \\times n$이하의 정수임을 가정해도 좋습니다. 또한, $n \\times n$개의 줄에 걸쳐 주어지는 $n0$는 서로 겹치지 않음을 가정해도 좋습니다.",
+ "output_spec": "모든 학생들이 놀이기구에 탑승한 이후의 최종 점수를 출력합니다.",
+ "constraints": "- $3 \\le n \\le 20$\n- $n0$, $n1$, $n2$, $n3$, $n4$는 서로 다른 정수\n- $1 \\le n0, n1, n2, n3, n4 \\le n^2$\n- 각 $n0$는 서로 다릅니다.",
+ "samples": [
+  {
+   "in": "3\n3 5 8 9 2\n6 1 2 3 4\n1 5 8 7 6\n8 2 5 3 1\n9 4 8 2 1\n4 6 5 7 8\n7 3 4 2 9\n2 1 6 3 5\n5 4 3 8 6\n",
+   "out": "170\n"
+  },
+  {
+   "in": "3\n3 5 8 9 2\n6 1 2 3 4\n1 5 8 7 6\n8 2 5 3 1\n9 4 8 2 1\n4 6 5 7 8\n7 3 4 2 9\n2 1 9 3 5\n5 4 3 2 7\n",
+   "out": "270\n"
+  }
+ ]
+}

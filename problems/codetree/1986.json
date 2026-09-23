@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1986",
+ "title": "가장 빠른 위상정렬",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-first-topological-sort/description",
+ "alias": "first-topological-sort",
+ "pid": 1986,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 알고리즘",
+ "lesson": "Topological Sort",
+ "card": "challenge-first-topological-sort",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "44.0",
+  "submissions": "1598"
+ },
+ "sample_count": 0,
+ "statement_len": 307,
+ "fetched_at": "2026-09-23",
+ "statement": "다음과 같은 그래프에서 위상정렬을 수행했을 때 결과로 가능한 순서 중에서, 사전순으로 가장 작은 것을 찾으세요.\n\n\"사전순으로 가장 작은\"이라는 표현은 배열에서 더 작은 숫자가 앞쪽에 위치하는 순서를 우선한다는 의미입니다.\n\n![](https://contents.codetree.ai/problems/1986/images/8c46f41b-f477-41e5-a77c-b5f41a9ae2d2.png)\n\n**보기** — 순서대로 9개 고르기\n\n1. `1`\n2. `2`\n3. `3`\n4. `4`\n5. `5`\n6. `6`\n7. `7`\n8. `8`\n9. `9`"
+}

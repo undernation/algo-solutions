@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1085",
+ "title": "빙빙 돌며 정수로 사각형 채우기 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-snail-number-square-2/description",
+ "alias": "snail-number-square-2",
+ "pid": 1085,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 II",
+ "lesson": "dx dy technique",
+ "card": "challenge-snail-number-square-2",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "192 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "81.0",
+  "submissions": "2345"
+ },
+ "sample_count": 2,
+ "statement_len": 297,
+ "fetched_at": "2026-09-23",
+ "statement": "$N \\times M$크기의 직사각형에 수 $1$부터 순서대로 증가시키며 달팽이 모양으로 채우는 프로그램을 작성해보세요. \n\n- 달팽이 모양이란 왼쪽 위 모서리에서 시작해서, 아래, 오른쪽, 위쪽, 왼쪽 순서로 더 이상 채울 곳이 없을 때까지 회전하는 모양을 의미합니다.\n- $N$ : 행(row), $M$ : 열(column)을 의미합니다.\n\n![](https://contents.codetree.ai/problems/1085/images/problems-a35b7781-d9b8-4eff-a569-7e8ff9b3c947.svg)",
+ "input_spec": "$N$과 $M$이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "완성된 $N \\times M$ 크기의 사각형을 출력합니다.\n\n각 행을 한 줄에 출력하여 총 $N$개의 줄을 출력하며, 같은 줄에 있는 수들은 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $1 \\le N, M \\le 100$",
+ "samples": [
+  {
+   "in": "4 4\n",
+   "out": "1 12 11 10\n2 13 16 9 \n3 14 15 8 \n4 5 6 7\n"
+  },
+  {
+   "in": "4 2\n",
+   "out": "1 8 \n2 7 \n3 6 \n4 5\n"
+  }
+ ]
+}

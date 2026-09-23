@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "366",
+ "title": "시험 통과 여부 확인하기 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-verify-test-passed-2/description",
+ "alias": "verify-test-passed-2",
+ "pid": 366,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "1차원 배열",
+ "lesson": "한 줄에 여러 개 입력",
+ "card": "challenge-verify-test-passed-2",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "192 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "81.1",
+  "submissions": "4443"
+ },
+ "sample_count": 1,
+ "statement_len": 218,
+ "fetched_at": "2026-09-23",
+ "statement": "교실에는 $N$명의 학생들이 있습니다. 각각의 학생은 총 $4$가지의 시험을 보며 각 시험마다 점수를 받습니다. 한 학생의 $4$가지 시험 평균 점수가 $60$점 이상이라면 해당 학생은 통과입니다.\n\n학생 $1$번부터 $N$번까지 순서대로, 해당 학생이 통과했다면 $pass$를, 통과하지 못했다면 $fail$을 출력하고, 마지막 줄에 통과한 학생의 수를 출력하는 프로그램을 작성해 주세요.",
+ "input_spec": "첫 번째 줄에 학생 수 $N$이 주어집니다.\n\n다음 $N$개의 줄에 걸쳐, $i$번째 줄에는 $i$번 학생의 $4$과목 점수 $s_{i,1}, s_{i,2}, s_{i,3}, s_{i,4}$가 공백을 두고 주어집니다.",
+ "output_spec": "$N$개의 줄에 걸쳐, $i$번째 줄에 $i$번 학생의 통과 여부($pass$ 또는 $fail$)를 출력합니다.\n\n마지막 줄에는 통과한 학생 수를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 10$\n- $0 \\le s_{i,j} \\le 100$",
+ "samples": [
+  {
+   "in": "3\n85 68 89 75\n89 88 56 100\n55 68 68 35\n",
+   "out": "pass\npass\nfail\n2\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 예제에서 첫 번째 학생의 평균 점수는 $(85+68+89+75)/4=79.25$이므로 pass, 두 번째 학생의 평균 점수는 $(89+88+56+100)/4=83.25$이므로 pass, 세 번째 학생의 평균 점수는 $(55+68+68+35)/4=56.5$이므로 fail입니다. 따라서 통과한 학생수는 $2$명 입니다."
+ ]
+}

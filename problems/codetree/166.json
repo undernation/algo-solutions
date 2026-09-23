@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "166",
+ "title": "굉장한 수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-amazing-number/description",
+ "alias": "amazing-number",
+ "pid": 166,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "조건문",
+ "lesson": "and, or 혼합",
+ "card": "intro-amazing-number",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "84.3",
+  "submissions": "12882"
+ },
+ "sample_count": 2,
+ "statement_len": 122,
+ "fetched_at": "2026-09-23",
+ "statement": "자연수 $N$을 입력받아 $N$이 굉장한 수인지 판단하는 프로그램을 작성해보세요.\n\n굉장한 수이기 위해서는 다음 두 조건 중 하나를 만족해야 합니다.\n\n- 홀수이면서 $3$의 배수인 수\n- 짝수이면서 $5$의 배수인 수",
+ "input_spec": "첫 번째 줄에는 $N$이 주어집니다.",
+ "output_spec": "입력받은 수가 굉장한 수라면 `true`를 아니라면 `false`를 출력합니다.",
+ "constraints": "- $1 \\leq N \\leq 100$",
+ "samples": [
+  {
+   "in": "9\n",
+   "out": "true\n"
+  },
+  {
+   "in": "18\n",
+   "out": "false\n"
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "439",
+ "title": "조금 복잡한 시간복잡도 (2)",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-time-complexity-5/description",
+ "alias": "time-complexity-5",
+ "pid": 439,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "시간, 공간복잡도",
+ "lesson": "재귀함수의 시간복잡도",
+ "card": "challenge-time-complexity-5",
+ "card_type": "Problem",
+ "level": "Hard",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "40.3",
+  "submissions": "6560"
+ },
+ "sample_count": 0,
+ "statement_len": 498,
+ "fetched_at": "2026-09-23",
+ "statement": "지금까지는 재귀함수 내부에 하나의 함수 호출만 발생하는 경우를 다루어보았습니다.\n\n그렇다면 이런 경우는 어떤가요?\n\n```js\nfunction solution1(N)\n  if N < 0\n    return 0\n  if N <= 5\n    return solution1(N - 2)\n  return solution1(N - 1)\n```\n\n```js\nfunction solution2(N)\n  if N <= 2\n    return 0\n  if N >= 120\n    return solution2(N - 1)\n  return solution2(N / 2)\n```\n\n`solution1`과 `solution2`의 시간복잡도를 순서대로 골라봅시다.\n\n**보기** — 순서대로 2개 고르기\n\n1. $\\mathcal{O}(\\log{N})$\n2. $\\mathcal{O}(N)$\n3. $\\mathcal{O}(N\\log{N})$\n4. $\\mathcal{O}(N^2)$\n5. $\\mathcal{O}(N^3)$"
+}

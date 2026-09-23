@@ -1,0 +1,39 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1910",
+ "title": "숫자 빠르게 찾기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-find-number-fast/description",
+ "alias": "find-number-fast",
+ "pid": 1910,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Parametric Search",
+ "lesson": "이진탐색",
+ "card": "intro-find-number-fast",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "79.3",
+  "submissions": "1653"
+ },
+ "sample_count": 1,
+ "statement_len": 117,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 숫자가 오름차순으로 정렬된 상태로 주어집니다. 이후 $M$개의 숫자가 추가적으로 주어졌을 때, 각각의 숫자가 처음 주어진 $N$개의 숫자 중 몇 번째로 나온 숫자인지를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $N, M$이 공백을 두고 주어집니다.\n\n두 번째 줄에는 $N$개의 숫자가 공백을 사이에 두고 주어집니다. 단, $N$개의 숫자는 오름차순으로 정렬되어 주어지며, 주어지는 모든 숫자는 서로 다름을 가정해도 좋습니다.\n\n세 번째 줄부터는 $M$개의 줄에 걸쳐 숫자가 한 줄에 하나씩 주어집니다.",
+ "output_spec": "$M$개의 줄에 걸쳐 주어진 각 숫자가 처음 주어진 $N$개의 숫자들 중 몇 번째 숫자로 나왔는지를 출력합니다. 만약 $N$개의 숫자 그 어디에도 나와있지 않는다면, $-1$을 출력합니다.",
+ "constraints": "- $1 \\le N, M \\le 100\\,000$  \n- $1 \\le \\texttt{주어지는 값} \\le 10^9$\n- 주어진 $N$개의 숫자는 오름차순으로 정렬되어 주어지며, 주어지는 모든 숫자는 서로 다름을 가정해도 좋습니다.",
+ "hint": "이진탐색을 이용해 해결합니다. 이진탐색을 이용하지 않는다면 $\\mathcal{O}(MN)$의 시간복잡도를 갖게 되기 때문에 시간초과가 발생할 수 있습니다. 이진탐색을 이용하면 $\\mathcal{O}(M\\log{N})$ 시간에 해결이 가능합니다.",
+ "samples": [
+  {
+   "in": "5 7\n1 5 7 9 10\n1\n2\n5\n6\n7\n9\n10\n",
+   "out": "1\n-1\n2\n-1\n3\n4\n5\n"
+  }
+ ]
+}

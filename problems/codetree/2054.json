@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2054",
+ "title": "다른 괄호로 이동하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-move-to-another-parenthesis/description",
+ "alias": "move-to-another-parenthesis",
+ "pid": 2054,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shortest Path",
+ "lesson": "Dijkstra",
+ "card": "challenge-move-to-another-parenthesis",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 5초 · C++17 1초",
+  "memory": "288 MB",
+  "time_sec": 5.0
+ },
+ "stats": {
+  "accept_rate": "55.4",
+  "submissions": "451"
+ },
+ "sample_count": 1,
+ "statement_len": 220,
+ "fetched_at": "2026-09-23",
+ "statement": "$N \\times N$ 개의 칸 안에 `(` 또는 `)` 가 적혀있습니다. 인접한 칸 사이의 이동이 가능하며, 대각선 방향으로의 이동은 불가능합니다. 이동하려는 칸의 기호가 현재 칸의 기호와 같을 경우 $A$시간이, 다를 경우 $B$시간이 걸립니다.\n\n모든 칸에 대해 임의로 출발칸과 도착칸을 정하여 두 칸 사이의 이동시간의 최솟값을 구했을 때, 이 중 최댓값을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $N$, $A$, $B$가 공백을 사이에 두고 차례대로 주어집니다.\n\n두 번째 줄부터는 $N$개의 줄에 걸쳐 각 행에 해당하는 길이가 $N$인 문자열이 한 줄에 하나씩 주어집니다.",
+ "output_spec": "첫 번째 줄에 출발칸에서부터 도착칸까지의 이동시간이 최대가 되는 경우의 이동 시간을 출력하세요.",
+ "constraints": "- $1 \\le N \\le 30$\n- $0 \\le A, B \\le 1\\,000\\,000$",
+ "samples": [
+  {
+   "in": "3 1 2\n(((\n()(\n(()\n",
+   "out": "5\n"
+  }
+ ],
+ "sample_notes": [
+  "제일 왼쪽 상단 칸에서 제일 우측 하단 칸까지 이동하면 5시간이 걸립니다. 이것보다 더 이동 시간이 긴 경우는 없습니다.\n\n<br>\n\n![](https://contents.codetree.ai/problems/2054/images/problems-512d37ed-694c-46e9-9816-71419341053c.png)\n\n<br>"
+ ]
+}

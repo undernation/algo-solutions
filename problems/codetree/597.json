@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "597",
+ "title": "다익스트라",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-ga-dijkstra/description",
+ "alias": "ga-dijkstra",
+ "pid": 597,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 알고리즘",
+ "lesson": "Dijkstra",
+ "card": "intro-ga-dijkstra",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "81.8",
+  "submissions": "1858"
+ },
+ "sample_count": 0,
+ "statement_len": 588,
+ "fetched_at": "2026-09-23",
+ "statement": "그래프에서 최단 경로를 찾는 알고리즘 중 가장 널리 사용되는 다익스트라 알고리즘에 대해 알아보겠습니다.\n\n다익스트라 알고리즘의 동작 원리를 바탕으로, 아래에 제공된 코드를 완성해보세요.\n\n```jsx\nfunction dijkstra(graph, source)\n    set Q = Queue()\n\n    for each vertex in graph\n        set dist[v] = (1)\n        Q.push(v)\n\n    set dist[source] = (2)\n\n    while Q is not empty\n        set u = vertex in Q with min dist\n        Q.remove((3))\n\n        for each neighbor v of u\n            set alt = dist[u] + length(u, v)\n            if alt (4) dist[v]\n                set dist[v] = (5)\n```\n\n**보기** — 순서대로 5개 고르기\n\n1. `0`\n2. `INF`\n3. `u`\n4. `v`\n5. `<`\n6. `==`\n7. `>`\n8. `alt`"
+}

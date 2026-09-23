@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2335",
+ "title": "첫 번째와 두 번째 교환",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-exchange-1st-and-2nd/description",
+ "alias": "exchange-1st-and-2nd",
+ "pid": 2335,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "문자열",
+ "lesson": "문자 수정",
+ "card": "challenge-exchange-1st-and-2nd",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "89.6",
+  "submissions": "1860"
+ },
+ "sample_count": 1,
+ "statement_len": 101,
+ "fetched_at": "2026-09-23",
+ "statement": "소문자 알파벳으로만 이루어진 문자열이 한 개 주어졌을 때, 첫 번째 문자와 같은 문자는 모두 두 번째 문자로 바꾸고, 두 번째 문자와 같은 문자는 모두 첫 번째 문자로 바꾸어줍니다.",
+ "input_spec": "첫 번째 줄에 문자열이 한 개 주어집니다.",
+ "output_spec": "첫 번째 줄에, 문제의 조건에 맞게 변형한 문자열을 공백 없이 출력합니다.",
+ "constraints": "- $2\\le \\texttt{문자열의 길이} \\le20$\n- 문자열은 소문자 알파벳만으로 이루어져 있습니다.\n- 주어지는 문자열의 첫 번째 문자와 두 번째 문자는 항상 다르게 주어짐을 가정해도 좋습니다.",
+ "samples": [
+  {
+   "in": "codctrcc\n",
+   "out": "ocdotroo\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 문자인 `c` 를 모두 두 번째 문자인 `o` 로 바꾸고, 두 번째 문자인 `o` 를 모두 첫 번째 문자인 `c` 로 바꾸어줍니다."
+ ]
+}

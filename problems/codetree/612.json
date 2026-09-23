@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "612",
+ "title": "MST 찾기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-ga-kruskal-practice/description",
+ "alias": "ga-kruskal-practice",
+ "pid": 612,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 알고리즘",
+ "lesson": "Kruskal",
+ "card": "challenge-ga-kruskal-practice",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "67.6",
+  "submissions": "1351"
+ },
+ "sample_count": 0,
+ "statement_len": 218,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 그래프의 MST를 찾는다고 할 때, MST를 구성하는 간선의 가중치의 합을 구해보세요.\n\n![](https://contents.codetree.ai/problems/612/images/problems-6f1c2c33-afe3-400f-ad95-b8372eb284f7.png)\n\n**보기** — 하나 고르기\n\n1. `75`\n2. `114`\n3. `127`\n4. `164`\n5. `192`"
+}

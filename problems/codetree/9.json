@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "9",
+ "title": "순서를 바꾸었을 때 같은 단어인지 판별하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-determine-same-word/description",
+ "alias": "determine-same-word",
+ "pid": 9,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "정렬",
+ "lesson": "일반 정렬",
+ "card": "challenge-determine-same-word",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "192 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "73.2",
+  "submissions": "4488"
+ },
+ "sample_count": 3,
+ "statement_len": 80,
+ "fetched_at": "2026-09-23",
+ "statement": "두 개의 단어가 입력으로 주어질 때 두 단어에 속하는 문자들의 순서를 바꾸어 동일한 단어로 만들 수 있는지 여부를 출력하는 코드를 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 첫 번째 단어가 주어지고,\n두 번째 줄에는 두 번째 단어가 주어집니다.",
+ "output_spec": "두 단어에 속하는 문자들의 순서를 바꾸어 동일한 단어로 만들 수 있으면 “Yes”를 출력하고, 만들 수 없으면 “No”를 출력합니다.",
+ "constraints": "- $1 \\le \\texttt{각 단어의 길이} \\le 100\\,000$\n- 각 단어는 대소문자 알파벳과 숫자로만 이루어져 있습니다.",
+ "samples": [
+  {
+   "in": "aba\naab\n",
+   "out": "Yes\n"
+  },
+  {
+   "in": "abab\nabba\n",
+   "out": "Yes\n"
+  },
+  {
+   "in": "aaa\naa\n",
+   "out": "No\n"
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "274",
+ "title": "배수의 개수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-number-of-multipliers/description",
+ "alias": "number-of-multipliers",
+ "pid": 274,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "cnt 활용하기",
+ "card": "challenge-number-of-multipliers",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "89.8",
+  "submissions": "12413"
+ },
+ "sample_count": 1,
+ "statement_len": 60,
+ "fetched_at": "2026-09-23",
+ "statement": "$10$개의 수가 주어졌을 때, $3$의 배수의 개수와 5의 배수의 개수를 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "입력으로 $10$개의 수가 한 줄에 하나씩 주어집니다.",
+ "output_spec": "첫 번째 줄에 $3$과 $5$의 배수의 개수를 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $1 \\leq \\texttt{주어지는 수} \\leq 100$",
+ "samples": [
+  {
+   "in": "7\n42\n10\n54\n34\n55\n57\n60\n30\n50\n",
+   "out": "5 5\n"
+  }
+ ]
+}

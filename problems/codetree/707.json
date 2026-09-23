@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "707",
+ "title": "출력결과 25",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201626/description",
+ "alias": "reading-k201626",
+ "pid": 707,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "연산자",
+ "lesson": "사칙연산",
+ "card": "challenge-reading-k201626",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "56.5",
+  "submissions": "12278"
+ },
+ "sample_count": 0,
+ "statement_len": 451,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 보기 중 프로그램을 실행할 때 오류가 발생하는 $a$, $b$의 값은 무엇인가?\n\n## Python3 코드\n```python\nprint(a % b, a % (a % b))\n```\n\n## C 코드\n```cpp\nprintf(\"%d %d\", a % b, a % (a % b));\n```\n\n## C++ 코드\n```cpp\ncout << a % b << \" \" << a % (a % b);\n```\n\n## Java 코드\n```java\nSystem.out.println((a % b) + \" \" + (a % (a % b)));\n```\n\n## JavaScript 코드\n```JavaScript\nconsole.log(a % b, a % (a % b))\n```\n\n**보기** — 하나 고르기\n\n1. `a=1, b=2`\n2. `a=4, b=3`\n3. `a=7, b=4`\n4. `a=10, b=5`\n5. `a=13, b=6`"
+}

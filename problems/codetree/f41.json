@@ -1,0 +1,39 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f41",
+ "title": "디버깅",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/debugging/description",
+ "alias": "debugging",
+ "pid": 41,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2018 상반기 오전 2번 문제",
+ "level": "L13",
+ "limits": {
+  "time": "Python3 2초 · C++17 2초",
+  "memory": "80 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "54.1",
+  "submissions": "1259"
+ },
+ "sample_count": 2,
+ "statement_len": 1145,
+ "fetched_at": "2026-09-23",
+ "statement": "백엔드 기술자 승용이는 고객들에게 알맞은 데이터가 전달되고 있는지 유지보수하는 일을 맡고 있습니다. 그림으로 나타내면 사다리 타기 게임과 비슷한데, 사다리 게임과의 차이는 $i$번 줄의 결과는 무조건 $i$번으로 가야한다는 것입니다. 데이터가 제대로 옮겨지지 않는 경우를 버그라고 합니다. 사다리 게임의 가로선에 해당하는 것은 메모리 유실선이 있을 수 있는 위치로, 이를 취약 지점이라 하며 이웃한 선과만 이어질 수 있습니다.\n\n고객의 수 $n$이 $4$로 주어지고, 취약 지점의 개수가 $5$개로 주어질 때의 그림입니다.\n<p align=\"center\">\n<img width=\"500\" height=\"400\" src=\"https://contents.codetree.ai/problems/128/images/9cb62994-f91c-40f5-95c4-cdb7b332bbfa.png\">\n</p>\n\n해커들은 프로그램을 어지럽히기 위해 여러가지 메모리 유실선을 설치해놓았습니다. 승용이는 적절하게 메모리 유실선을 추가하여 버그를 고치고자 합니다. 예를 들어 아래와 같이 상황이 주어질 때,\n<p align=\"center\">\n<img width=\"500\" height=\"400\" src=\"https://contents.codetree.ai/problems/128/images/cc58359b-21b5-4f39-ace9-00002e4b77b5.png\">\n</p>\n\n아래와 같이 메모리 유실선을 추가하여 데이터가 올바른 위치에 가도록 할 수 있습니다.\n<p align=\"center\">\n<img width=\"500\" height=\"400\" src=\"https://contents.codetree.ai/problems/128/images/05f56bf8-5454-437e-8e12-302a4298a18d.png\">\n</p>\n\n하지만 메모리 유실선을 추가할 때 아래와 같이 선이 겹쳐지도록 추가하는 것은 불가능합니다.\n<p align=\"center\">\n<img width=\"400\" height=\"110\" src=\"https://contents.codetree.ai/problems/128/images/d1a80b66-8d99-47e6-ba4c-d8629cfed9b3.png\">\n</p>\n\n최소한의 메모리 유실선을 추가해서 버그를 없애는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에는 고객의 수 $n$, 메모리 유실 선의 개수 $m$, 취약 지점의 개수 $h$가 공백을 사이에 두고 주어집니다.\n\n두 번째 줄에서부터 $m+1$번째 줄까지 메모리 유실 선의 정보가 주어집니다. 취약 지점과 메모리 유실이 일어난 지점이 정수로 공백을 사이에 두고 주어집니다. 취약 지점이 $a$, 메모리 유실이 일어난 지점을 $b$라고 한다면, $a$번째 취약 지점에서 $b$번째 고객에서 $(b+1)$번째 고객에게로 메모리 유실이 일어났다고 생각할 수 있습니다.\n\n고객의 번호는 $1$번부터 시작하며 오른쪽으로 갈수록 $1$씩 증가합니다. 또한 취약지점의 번호도 $1$번부터 시작하며 아래쪽으로 갈수록 $1$씩 증가합니다.\n\n- 메모리 유실선이 서로 겹쳐지는 입력은 주어지지 않는다고 가정해도 좋습니다.",
+ "output_spec": "버그를 고치기 위해 필요한 메모리 유실 선의 개수의 최솟값을 출력합니다. 만약 필요한 선의 개수가 $3$보다 큰 값이거나 버그를 고치는 것이 불가능하다면 $-1$을 출력합니다.",
+ "constraints": "- $2 \\le n \\le 10$\n- $1 \\le h \\le 30$\n- $0 \\le m \\le (n-1) \\cdot h$\n- $1 \\le a \\le h$\n- $1 \\le b \\le n - 1$\n- $n, m, h$는 정수입니다.",
+ "samples": [
+  {
+   "in": "4 3 5\n1 1\n3 2\n5 1\n",
+   "out": "1\n"
+  },
+  {
+   "in": "4 4 5\n1 1\n1 3\n3 2\n5 1 \n",
+   "out": "2\n"
+  }
+ ]
+}

@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2283",
+ "title": "홀수만 출력 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-output-only-odd-2/description",
+ "alias": "output-only-odd-2",
+ "pid": 2283,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "for문 b → a 1씩 감소",
+ "card": "test-output-only-odd-2",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "82.6",
+  "submissions": "6137"
+ },
+ "sample_count": 2,
+ "statement_len": 70,
+ "fetched_at": "2026-09-23",
+ "statement": "두 정수 $B$와 $A$가 주어집니다.\n\n$B$ 이하 $A$ 이상의 모든 홀수를 내림차순으로 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 줄에 두 정수 $B$와 $A$가 공백으로 구분되어 주어집니다.",
+ "output_spec": "첫 줄에 $B$ 이하 $A$ 이상의 모든 홀수를 내림차순으로 공백으로 구분하여 출력합니다.",
+ "constraints": "- $1 \\le A \\le B \\le 99$\n- $A$와 $B$는 모두 홀수입니다.",
+ "samples": [
+  {
+   "in": "9 1\n",
+   "out": "9 7 5 3 1\n"
+  },
+  {
+   "in": "7 7\n",
+   "out": "7\n"
+  }
+ ]
+}

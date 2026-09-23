@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "576",
+ "title": "파도반 수열",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-dp-padovan/description",
+ "alias": "dp-padovan",
+ "pid": 576,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "DP",
+ "lesson": "Memoization",
+ "card": "challenge-dp-padovan",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "56.1",
+  "submissions": "3074"
+ },
+ "sample_count": 0,
+ "statement_len": 977,
+ "fetched_at": "2026-09-23",
+ "statement": "삼각형들이 나선 모양으로 배치되어 있다고 상상해 보세요. 첫 번째 삼각형의 한 변의 길이를 1로 정하고, 그 뒤로는 나선의 현재 최대 길이에 맞춰 새로운 삼각형을 만들어 붙입니다.\n\n![](https://contents.codetree.ai/problems/576/images/problems-276a0740-896a-45b4-9833-fb2eaaff9cd8.png)\n\n이렇게 배치하면, 자연스럽게 삼각형의 변의 길이가 증가하는데, 우리는 이 변의 길이를 파도반 수열이라고 정의합시다. 또한 $N$번째 파도반 수열의 값을 $P(N)$이라고 할 때, 파도반 수열의 값은 다음과 같이 정의됩니다.\n\n$P(N) = P(N-2) + P(N-3)$\n\n첫번째 파도반 수열부터 10번째 파도반 수열의 값은 다음과 같습니다.\n\n```\n1 1 1 2 2 3 4 5 7 9\n```\n\n파도반 수열도 피보나치 수열과 유사하게 정의되기 때문에, 동일하게 재귀로 풀어주게 된다면 오랜 시간이 소요될 것입니다.  따라서 메모이제이션을 이용하여 파도반 수열 문제를 다음과 같이 해결할 수 있습니다.\n\n```jsx\nmemo = [-1, -1, -1, ...]\n\nfunction padovan(n)\n    if memo[n] != -1\n        return memo[n]\n    if n <= 3\n        memo[n] = 1\n    else\n        memo[n] = padovan(n - 2) + padovan(n - 3)\n    return memo[n]\n```\n\n다음 코드에서 `padovan(10)`을 수행하면 `padovan(3)`과 `padovan(2)` 는 몇 번이나 실행 되는지 알아 봅시다. 단, `padovan(n - 2)`가 `padovan(n - 3)`보다 항상 먼저 수행된다고 가정해도 좋습니다.\n\n**보기** — 순서대로 2개 고르기\n\n1. `1`\n2. `2`\n3. `3`\n4. `4`\n5. `5`\n6. `6`\n7. `7`\n8. `8`"
+}

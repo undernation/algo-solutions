@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "574",
+ "title": "해시 충돌과 효율성",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-hash-effectivity/description",
+ "alias": "hash-effectivity",
+ "pid": 574,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "해싱",
+ "lesson": "해싱",
+ "card": "challenge-hash-effectivity",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "50.5",
+  "submissions": "3589"
+ },
+ "sample_count": 0,
+ "statement_len": 370,
+ "fetched_at": "2026-09-23",
+ "statement": "해시 함수가 충돌하면 성능이 떨어진다고 배웠습니다.\n\n그렇다면 얼마나 성능에 악영향을 미칠까요? 이때 충돌하는 값들을 연결 리스트로 저장하며, 탐색도 연결 리스트의 탐색처럼 진행한다고 가정합시다.\n\n총 $N$개의 데이터를 해시 테이블을 통해 저장하려고 합니다.\n\n충돌이 아주 많이 일어나는 최악의 경우에 삽입, 삭제, 탐색의 시간 복잡도는 어떻게 될까요? 단, 중복되는 값이 주어질 수 있는 상황이라고 가정합니다.\n\n**보기** — 순서대로 3개 고르기\n\n1. $\\mathcal{O}(1)$\n2. $\\mathcal{O}(\\log{N})$\n3. $\\mathcal{O}(N)$\n4. $\\mathcal{O}(N \\log{N})$\n5. $\\mathcal{O}(N^2)$"
+}

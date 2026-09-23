@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "954",
+ "title": "정보에 따른 수 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-number-based-on-information-2/description",
+ "alias": "number-based-on-information-2",
+ "pid": 954,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 II",
+ "lesson": "값을 기준으로 완전탐색",
+ "card": "challenge-number-based-on-information-2",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "68.9",
+  "submissions": "1374"
+ },
+ "sample_count": 1,
+ "statement_len": 297,
+ "fetched_at": "2026-09-23",
+ "statement": "수직선 위에 글자 $T$개가 놓여 있습니다. $i$번째 글자 $c_i$는 `S` 또는 `N` 중 하나이며, 위치 $x_i$에 놓여 있습니다.\n\n정수 위치 $k$에 대해, $k$에서 가장 가까운 `S` 글자까지의 거리를 $d_1$, 가장 가까운 `N` 글자까지의 거리를 $d_2$라고 합시다. $d_1 \\le d_2$이면 위치 $k$를 특별한 위치라고 부릅니다.\n\n$a \\le k \\le b$를 만족하는 정수 위치 $k$ 중 특별한 위치가 몇 개인지 세는 프로그램을 작성해 보세요. 양 끝인 $a$와 $b$도 세는 범위에 포함됩니다.",
+ "input_spec": "첫 번째 줄에 $T$, $a$, $b$가 공백을 사이에 두고 주어집니다.\n\n이후 $T$개의 줄에 걸쳐 한 줄에 하나씩, $i$번째 글자 $c_i$와 그 글자가 놓인 위치 $x_i$가 공백을 사이에 두고 주어집니다. ($1 \\le i \\le T$)",
+ "output_spec": "첫 번째 줄에 특별한 위치의 개수를 출력합니다.",
+ "constraints": "- $2 \\le T \\le 100$\n- $1 \\le a \\le b \\le 1\\,000$\n- $1 \\le x_i \\le 1\\,000$ ($1 \\le i \\le T$)\n- $c_i$는 `S` 또는 `N`입니다. ($1 \\le i \\le T$)\n- $T$, $a$, $b$, $x_i$는 모두 정수입니다.\n- $x_i$는 서로 모두 다릅니다.\n- `S`와 `N`은 각각 최소 $1$개씩 주어집니다.",
+ "samples": [
+  {
+   "in": "3 1 10\nS 10\nN 4\nS 1\n",
+   "out": "6\n"
+  }
+ ],
+ "sample_notes": [
+  "`S`는 위치 $1$과 $10$에, `N`은 위치 $4$에 놓여 있습니다. $1$ 이상 $10$ 이하의 정수 위치 중 $k = 1$, $2$, $7$, $8$, $9$, $10$만이 특별한 위치입니다. 예를 들어 $k = 7$은 가장 가까운 `S`까지의 거리와 가장 가까운 `N`까지의 거리가 모두 $3$으로 같으므로 특별한 위치입니다. 따라서 답은 $6$입니다."
+ ]
+}

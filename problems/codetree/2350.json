@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2350",
+ "title": "두 번째를 첫 번째로",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-second-to-first/description",
+ "alias": "second-to-first",
+ "pid": 2350,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "문자열",
+ "lesson": "문자 수정",
+ "card": "test-second-to-first",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "93.9",
+  "submissions": "2032"
+ },
+ "sample_count": 1,
+ "statement_len": 70,
+ "fetched_at": "2026-09-23",
+ "statement": "문자열이 주어지면, 문자열 내에서 두 번째 문자와 같은 문자들을 모두 첫 번째 문자로 바꾸어 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 알파벳 소문자로 이루어진 문자열이 하나 주어집니다.\n\n단, 첫 번째 문자와 두 번째 문자는 항상 다름을 가정하여도 좋습니다.",
+ "output_spec": "첫 번째 줄에 문제의 조건에 맞게 변경한 문자열을 하나 출력합니다.",
+ "constraints": "- $2 \\le \\texttt{문자열의 길이} \\le 100$",
+ "samples": [
+  {
+   "in": "banana\n",
+   "out": "bbnbnb\n"
+  }
+ ]
+}

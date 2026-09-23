@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3453",
+ "title": "겹치는 bit가 없는 세 수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-three-numbers-with-no-overlapping-bits/description",
+ "alias": "three-numbers-with-no-overlapping-bits",
+ "pid": 3453,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Advanced DP",
+ "lesson": "Bitmask",
+ "card": "challenge-three-numbers-with-no-overlapping-bits",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 5초 · C++17 1초",
+  "memory": "288 MB",
+  "time_sec": 5.0
+ },
+ "stats": {
+  "accept_rate": "65.1",
+  "submissions": "195"
+ },
+ "sample_count": 2,
+ "statement_len": 157,
+ "fetched_at": "2026-09-23",
+ "statement": "$n$개의 수가 주어졌을 때, 서로 다른 3개의 수를 골랐을 때 bit가 서로 전혀 겹치지 않는 경우에 한하여 가능한 세 수의 합 중 최댓값을 구하는 프로그램을 작성해보세요. 여기서 겹친다는 것은 2진수로 나타내었을 때 단 하나라도 같은 자리에 동시에 1이 있는 경우를 의미합니다.",
+ "input_spec": "첫 번째 줄에 $n$이 주어집니다.\n\n두 번째 줄에는 $n$개의 수가 공백을 사이에 두고 주어집니다. 주어지는 모든 수는 다르게 주어짐을 가정해도 좋습니다.",
+ "output_spec": "조건을 만족하는 경우 중 얻을 수 있는 최대 합을 출력합니다. 그러한 경우가 없다면 $0$을 출력합니다.",
+ "constraints": "- $1 \\le n \\le 500$\n - $1 \\le$ 주어지는 수 $\\le 1,000,000,000$",
+ "samples": [
+  {
+   "in": "4\n1 3 2 4\n",
+   "out": "7\n"
+  },
+  {
+   "in": "4\n10 16 12 1\n",
+   "out": "29\n"
+  }
+ ]
+}

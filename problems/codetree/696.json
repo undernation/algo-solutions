@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "696",
+ "title": "함수 f의 반환값",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201534/description",
+ "alias": "reading-k201534",
+ "pid": 696,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "함수",
+ "lesson": "값을 반환하는 함수",
+ "card": "challenge-reading-k201534",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "53.4",
+  "submissions": "7195"
+ },
+ "sample_count": 0,
+ "statement_len": 370,
+ "fetched_at": "2026-09-23",
+ "statement": "`f(12)`의 반환값은 무엇인가?\n\n## Python3 코드\n```python\ndef f(x):\n    return int((x / 2.5) * 3)\n```\n\n## C/C++ 코드\n\n```cpp\nint f(int x) {\n    return (x / 2.5) * 3;\n}\n```\n\n## Java 코드\n\n```java\nint f(int x) {\n    return (int)((x / 2.5) * 3);\n}\n```\n\n## JavaScript 코드\n\n```JavaScript\nfunction f(x) {\n    return parseInt((x / 2.5) * 3);\n}\n```\n\n**보기** — 하나 고르기\n\n1. 12\n2. 13\n3. 14\n4. 15\n5. 18"
+}

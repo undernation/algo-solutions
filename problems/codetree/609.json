@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "609",
+ "title": "Before/After",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-ga-uf-compare/description",
+ "alias": "ga-uf-compare",
+ "pid": 609,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 알고리즘",
+ "lesson": "Kruskal",
+ "card": "challenge-ga-uf-compare",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "60.5",
+  "submissions": "1529"
+ },
+ "sample_count": 0,
+ "statement_len": 1109,
+ "fetched_at": "2026-09-23",
+ "statement": "개선된 Union-Find(경로압축을 적용한 경우)를 사용하여 다음과 같은 연산을 진행하였습니다.\n\n```js\nfunction init(size)\n  set uf = [0] with size\n  for i = 1 ... size\n    uf[i] = i\n  return uf\n\nfunction find(x)\n  if uf[x] == x\n    return x\n  return uf[x] = find(uf[x])\n  \nfunction union(x, y)\n  set X = find(x), Y = find(y)\n  uf[X] = Y\n\nuf = init(5)\nunion(1, 2)\nunion(2, 4)\nunion(3, 4)\nunion(5, 1)\n\nfind(2)\nfind(4)\n```\n\n모든 연산을 수행했을 때, $uf$의 상태는 어떻게 표현될까요?\n\n**보기** — 하나 고르기\n\n1. <p align='center'>\n   <img src='https://contents.codetree.ai/problems/609/images/b3857d0e-7e0e-4010-ae36-43e396d52235.svg'>\n   </p>\n2. <p align='center'>\n   <img src='https://contents.codetree.ai/problems/609/images/dbe4149c-baba-4956-a376-fe39ea0dcbd6.svg'>\n   </p>\n3. <p align='center'>\n   <img src='https://contents.codetree.ai/problems/609/images/0eadebd5-cc9c-41c5-a3f0-95822b5c7406.svg'>\n   </p>\n4. <p align='center'>\n   <img src='https://contents.codetree.ai/problems/609/images/8b77066a-833d-4ef2-93e6-6cf9cd5e8f51.svg'>\n   </p>\n5. <p align='center'>\n   <img src='https://contents.codetree.ai/problems/609/images/3e8d6e87-b2bc-47ab-9733-ec95a4be5408.svg'>\n   </p>"
+}

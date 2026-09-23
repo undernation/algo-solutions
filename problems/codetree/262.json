@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "262",
+ "title": "최댓값 구하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-maximum-value/description",
+ "alias": "maximum-value",
+ "pid": 262,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "조건문",
+ "lesson": "중첩 조건문",
+ "card": "challenge-maximum-value",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "69.0",
+  "submissions": "14719"
+ },
+ "sample_count": 2,
+ "statement_len": 56,
+ "fetched_at": "2026-09-23",
+ "statement": "$3$개의 정수 $a$, $b$, $c$를 입력받았을 때, 최댓값을 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 정수 $a$, $b$, $c$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "$a$, $b$, $c$ 의 값들 중 가장 큰 값 하나를 출력합니다.",
+ "constraints": "- $-100 \\le a \\le 100$\n- $-100 \\le b \\le 100$\n- $-100 \\le c \\le 100$",
+ "samples": [
+  {
+   "in": "1 3 5\n",
+   "out": "5\n"
+  },
+  {
+   "in": "34 34 97\n",
+   "out": "97\n"
+  }
+ ]
+}

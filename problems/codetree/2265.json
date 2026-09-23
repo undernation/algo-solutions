@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2265",
+ "title": "정사각형의 넓이",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-area-of-a-rectangle/description",
+ "alias": "area-of-a-rectangle",
+ "pid": 2265,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "조건문",
+ "lesson": "if 조건문",
+ "card": "test-area-of-a-rectangle",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "59.5",
+  "submissions": "13162"
+ },
+ "sample_count": 2,
+ "statement_len": 76,
+ "fetched_at": "2026-09-23",
+ "statement": "한 변의 길이가 $N$인 정사각형의 넓이를 구하는 프로그램을 작성해보세요.\n\n단, $N$이 $5$보다 작다면 `tiny` 를 출력합니다.",
+ "input_spec": "첫 번째 줄에 자연수 $N$이 주어집니다.",
+ "output_spec": "첫 번째 줄에, 정사각형의 넓이를 출력합니다.\n\n$N$이 $5$보다 작다면 두 번째 줄에  `tiny` 를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$",
+ "samples": [
+  {
+   "in": "5\n",
+   "out": "25\n"
+  },
+  {
+   "in": "4\n",
+   "out": "16\ntiny\n"
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "521",
+ "title": "요세푸스",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-queue-josephus/description",
+ "alias": "queue-josephus",
+ "pid": 521,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "스택, 큐, 덱",
+ "lesson": "Queue",
+ "card": "intro-queue-josephus",
+ "card_type": "Introduction",
+ "level": "Medium",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "32.5",
+  "submissions": "4806"
+ },
+ "sample_count": 0,
+ "statement_len": 3004,
+ "fetched_at": "2026-09-23",
+ "statement": "유대인 역사가 플라비우스 요세푸스는 전쟁에 참전했다가 자신을 포함해 총 $41$명의 병사들과 함께 포위 당한 상황에 놓여있었습니다. \n\n그들은 항복할 바에 죽음을 선택하겠다고 말했고, 서로 원형으로 모여서 다음과 같은 방식으로 자살을 하기로 선택했습니다.\n\n- 처음으로부터 시계방향으로 $3$번째 위치에 앉은 사람이 죽습니다.\n- 살아있는 사람들만 볼 때, 이전에 죽은 사람이 앉아있던 위치부터 시계방향으로 $3$번째 위치에 앉은 사람이 죽습니다. 이 과정을 반복합니다.\n\n그러나 요세푸스는 살고 싶었고, 머리를 열심히 굴려 마지막까지 살아남은 뒤, 결국 항복했습니다.\n\n요세푸스가 되어서, $N$명이 포위당한 상황에 계속해서 $K$번째 사람이 죽는다면, 여러분들은 몇 번 자리로 가야 살아남을 수 있는지 구하는 문제를 풀어야 합니다.\n\n여기서는 queue를 이용해 문제를 풀어보려고 합니다.\n\n예를 들어 $N$이 $5$, $K$가 $3$인 경우를 살펴보겠습니다.  \n처음에는 $1$번에서 시작하여 시계방향으로 계속 회전하게 됩니다.\n\n![](https://contents.codetree.ai/problems/521/images/problems-ae3eb4f5-0ed5-421f-acbf-76a4be210107.png)\n\n$K$가 $3$이므로 $3$번째마다 사람을 선택해야 하므로 $3$번째 사람까지 이동해줍니다.\n\n![](https://contents.codetree.ai/problems/521/images/problems-aa51f225-dfc9-407d-9dcb-cfc93d30db01.png)\n![](https://contents.codetree.ai/problems/521/images/problems-9a649fbf-d3ed-4f18-ba57-d7419b0c72e4.png)\n![](https://contents.codetree.ai/problems/521/images/problems-b51bbf20-5b51-4202-98a0-76e98066b364.png)\n\n이제는 $3$번이 제거가 되어야 합니다. \n\n![](https://contents.codetree.ai/problems/521/images/problems-dae685f6-5d1d-4558-b02c-08040bea6dcd.png)\n![](https://contents.codetree.ai/problems/521/images/problems-b5d28431-00d1-4c49-9310-8b6d3ff37287.png)\n\n이러한 과정을 계속 거치다보면 최종적으로 숫자가 하나만 남게 됩니다. 그때의 큐에 남아있는 원소가 저희가 구하고자 하는 답이 됩니다.\n\n![](https://contents.codetree.ai/problems/521/images/problems-6109eda2-1542-4ea4-9602-e0f116c73ed5.png)\n![](https://contents.codetree.ai/problems/521/images/problems-dcfedc82-72d2-4a77-8a17-47b29e30c6c0.png)\n![](https://contents.codetree.ai/problems/521/images/problems-4cf00b54-dbce-497e-9e93-0e62ae12b1b0.png)\n![](https://contents.codetree.ai/problems/521/images/problems-fcd8ee49-824d-465f-ba49-9156e049002f.png)\n![](https://contents.codetree.ai/problems/521/images/problems-1f38768f-e3a9-4391-bbbd-0053ae561c47.png)\n![](https://contents.codetree.ai/problems/521/images/problems-9cf989ed-017e-4da1-b7a9-d467014aeff0.png)\n![](https://contents.codetree.ai/problems/521/images/problems-339b83a2-c65c-430b-887c-62c8bb112f73.png)\n![](https://contents.codetree.ai/problems/521/images/problems-d91051a6-4a07-45f0-bfbd-007613842e99.png)\n![](https://contents.codetree.ai/problems/521/images/problems-a11f3598-dbc5-4be6-8ff7-fab93fd8092b.png)\n![](https://contents.codetree.ai/problems/521/images/problems-c1bac67d-f016-4365-9a4d-ccfd2f53ce70.png)\n![](https://contents.codetree.ai/problems/521/images/problems-8e1e7ebb-647c-49f0-ad9e-8b4a303a9d19.png)\n![](https://contents.codetree.ai/problems/521/images/problems-bd4b1bb9-1f3a-44f5-a135-6d84ce883923.png)\n![](https://contents.codetree.ai/problems/521/images/problems-7e924bb1-685f-4f77-b45f-33a605bc591e.png)\n\n이러한 과정을 코드로 구현했을 때, 각 빈칸에 들어가야 할 것을 골라주세요.\n\n```jsx\nfunction solution(N, K)\n    set q = empty queue\n    for i = 1 ... N\n        q.push(i)\n    while q.size() != 1\n        for i = 1 ... K - 1\n            (1)\n            (2)\n        (3)\n    return q.front()\n```\n\n**보기** — 순서대로 3개 고르기\n\n1. `q.push(i)`\n2. `q.push(q.front())`\n3. `q.pop()`\n4. `q.front()`"
+}

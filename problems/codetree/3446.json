@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3446",
+ "title": "xor 중 최대",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-max-out-of-xor/description",
+ "alias": "max-out-of-xor",
+ "pid": 3446,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "String",
+ "lesson": "Trie",
+ "card": "challenge-max-out-of-xor",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 3초 · C++17 3초",
+  "memory": "300 MB",
+  "time_sec": 3.0
+ },
+ "stats": {
+  "accept_rate": "56.8",
+  "submissions": "74"
+ },
+ "sample_count": 2,
+ "statement_len": 72,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 음이 아닌 정수가 주어졌을 때, $2$개의 수를 골라 xor한 결과 중 가능한 최댓값을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $N$이 주어집니다.  \n두 번째 줄에는 $N$개의 정수가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "$2$개의 수를 골라 나올 수 있는 xor 값 중 최댓값을 출력합니다.",
+ "constraints": "- $2 \\le N \\le 150\\,000$\n- $0 \\le \\texttt{주어지는 정수} \\le 2^{31} - 1$",
+ "samples": [
+  {
+   "in": "5\n1 5 2 4 6\n",
+   "out": "7\n"
+  },
+  {
+   "in": "6\n1 10 11 15 8 4\n",
+   "out": "15\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 예제에서는 $2$ xor $5 = 7$로 최대가 됩니다.",
+  "두 번째 예제에서는 $11$ xor $4 = 15$로 최대가 됩니다."
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1001",
+ "title": "중앙값",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-median/description",
+ "alias": "median",
+ "pid": 1001,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "중급 자료구조",
+ "lesson": "Priority Queue",
+ "card": "challenge-median",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "100 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "63.3",
+  "submissions": "990"
+ },
+ "sample_count": 1,
+ "statement_len": 112,
+ "fetched_at": "2026-09-23",
+ "statement": "수열을 입력받아, 홀수 번째 원소를 읽을 때마다 지금까지 입력된 수들 중 중앙값을 출력하는 프로그램을 작성하세요.\n\n중앙값은 주어진 수들을 오름차순으로 정렬했을 때 가장 중앙에 위치한 값을 의미합니다.",
+ "input_spec": "첫 번째 줄에 테스트 케이스의 개수 $T$가 주어집니다.\n\n두 번째 줄 부터는 각 테스트 케이스가 주어집니다.\n1. 테스트 케이스의 첫 번째 줄에는 수열의 크기 $M$이 주어집니다.\n2. 테스트 케이스의 두 번째 줄 부터는 수열의 원소가 한 줄에 $M$개씩 공백을 사이에 두고 주어집니다.",
+ "output_spec": "각 테스트 케이스에 대해 홀수 번째 수를 읽을 때 마다 구한 중앙값을 차례대로 공백을 사이에 두고 출력합니다",
+ "constraints": "- $1 \\le T \\le 5$\n- $1 \\le M \\le 100\\,000$\n- $M$은 홀수\n- $0 \\le \\texttt{수열의 원소} \\le 100\\,000$",
+ "samples": [
+  {
+   "in": "2\n5\n1 2 3 4 5\n7\n7 6 5 4 3 2 1\n",
+   "out": "1 2 3\n7 6 5 4\n"
+  }
+ ]
+}

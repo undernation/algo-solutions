@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "161",
+ "title": "간단한 사칙연산",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-simple-arithmetic-operation/description",
+ "alias": "simple-arithmetic-operation",
+ "pid": 161,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "연산자",
+ "lesson": "사칙연산",
+ "card": "intro-simple-arithmetic-operation",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "75.1",
+  "submissions": "10356"
+ },
+ "sample_count": 2,
+ "statement_len": 138,
+ "fetched_at": "2026-09-23",
+ "statement": "두 정수 $A, B$를 입력받아 다음 값들을 전부 계산해서 출력하는 프로그램을 작성해보세요.\n\n- 두 정수를 더했을 때의 결과\n- $A$에서 $B$를 뺐을 때의 결과\n- $A$를 $B$로 나누었을 때의 몫\n- $A$를 $B$로 나누었을 때의 나머지",
+ "input_spec": "첫 번째 줄에 정수 $A$, $B$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에는 두 정수를 더했을 때의 결과,\n\n두 번째 줄에는 $A$에서 $B$를 뺐을 때의 결과,\n\n세 번째 줄에는 $A$를 $B$로 나누었을 때의 몫,\n\n네 번째 줄에는 $A$를 $B$로 나누었을 때의 나머지를 출력합니다.",
+ "constraints": "$1 \\le A,\\ B \\le 100$",
+ "samples": [
+  {
+   "in": "2 5\n",
+   "out": "7\n-3\n0\n2\n"
+  },
+  {
+   "in": "7 3\n",
+   "out": "10\n4\n2\n1\n"
+  }
+ ]
+}

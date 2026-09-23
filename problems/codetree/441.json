@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "441",
+ "title": "공간복잡도",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-space-complexity/description",
+ "alias": "space-complexity",
+ "pid": 441,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "시간, 공간복잡도",
+ "lesson": "공간복잡도",
+ "card": "intro-space-complexity",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "74.5",
+  "submissions": "4093"
+ },
+ "sample_count": 0,
+ "statement_len": 417,
+ "fetched_at": "2026-09-23",
+ "statement": "프로그램이 빠르게 실행되는 것도 중요하지만, 프로그램이 너무 무겁지 않는 것도 중요하겠죠?\n\n공간복잡도는 프로그램이 실행되는 과정에서 사용되는 메모리를 표현하는 방법 중 하나입니다.\n\n다음 코드를 잘 보고, 공간복잡도를 예측해봅시다.\n\n```js\nfunction solution(N)\n  set list = [N][N][N]\n  for i= 0 ... i < N\n    set tmp = [N]\n    for j = 0 ... j < N\n      tmp[j] = list[0][i][j]\n```\n\n**보기** — 하나 고르기\n\n1. $\\mathcal{O}(N\\log{N})$\n2. $\\mathcal{O}(N^2)$\n3. $\\mathcal{O}(N^2\\log{N})$\n4. $\\mathcal{O}(N^3)$\n5. $\\mathcal{O}(N^4)$"
+}

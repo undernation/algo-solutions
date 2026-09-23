@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3409",
+ "title": "가장 긴 좌우 대칭인 문자열 찾기 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-longest-palindrome-2/description",
+ "alias": "longest-palindrome-2",
+ "pid": 3409,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "String",
+ "lesson": "Manacher's algorithm",
+ "card": "intro-longest-palindrome-2",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 3초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 3.0
+ },
+ "stats": {
+  "accept_rate": "60.0",
+  "submissions": "145"
+ },
+ "sample_count": 2,
+ "statement_len": 80,
+ "fetched_at": "2026-09-23",
+ "statement": "문자열 한 개가 입력으로 주어졌을 때 해당 문자열에 포함된 연속한 문자열 중 가장 긴 좌우대칭인 문자열의 길이를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 문자열이 주어집니다.",
+ "output_spec": "문자열에 포함된 연속한 문자열 중 가장 긴 좌우대칭인 문자열의 길이를 출력합니다.",
+ "constraints": "- $1 \\le \\texttt{문자열의 길이} \\le 100\\,000$\n- 문자열은 소문자 알파벳으로만 이루어져 있습니다.",
+ "samples": [
+  {
+   "in": "baabcd\n",
+   "out": "4\n"
+  },
+  {
+   "in": "zbcdcbpq\n",
+   "out": "5\n"
+  }
+ ],
+ "sample_notes": [
+  "좌우대칭인 문자열 중 가장 길이가 긴 문자열은 \"baab\"입니다.",
+  "좌우대칭인 문자열 중 가장 길이가 긴 문자열은 \"bcdcb\"입니다."
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2230",
+ "title": "수 합치기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-merge-numbers/description",
+ "alias": "merge-numbers",
+ "pid": 2230,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Greedy",
+ "lesson": "Greedy Algorithm",
+ "card": "intro-merge-numbers",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "59.9",
+  "submissions": "1052"
+ },
+ "sample_count": 1,
+ "statement_len": 178,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 수가 주어졌을 때, 2개의 수를 골라 하나의 수로 합치는 과정을 단 하나의 수가 남을 때까지 반복하려고 합니다. 이때 2개의 수가 $a$, $b$였다면, 이 두 수를 합치는 데 드는 비용은 $a+b$ 입니다. $N$개의 수를 잘 합쳐 하나의 수가 되기까지의 가능한 최소 비용을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $N$이 주어집니다.\n\n두 번째 줄에는 $N$개의 수가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "$N$개의 수를 합쳐 하나의 수로 만드는 데 필요한 최소 비용을 출력합니다.",
+ "constraints": "- $1\\le N\\le 100\\,000$\n- $1\\le \\texttt{주어지는 수} \\le10\\,000$",
+ "samples": [
+  {
+   "in": "4\n1 2 3 2\n",
+   "out": "16\n"
+  }
+ ],
+ "sample_notes": [
+  "처음에 $1$, $2$를 합쳐 $3$을 만들고, 남은 $3$, $2$를 합쳐 $5$를 만듭니다. 이때 비용은 $(1+2)$와 $(3+2)$를 더하여 $8$이 듭니다.\n\n그 다음 $3$, $5$를 합쳐 완료합니다. 이때 비용은 $8(=3+5)$가 듭니다. 이렇게 했을 때 드는 비용은 총 $16$이 됩니다.\n\n그 어떤 방법으로 병합하더라도 비용을 $16$보다 더 적게 만들 수는 없습니다."
+ ]
+}

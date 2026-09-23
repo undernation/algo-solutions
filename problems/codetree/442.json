@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "442",
+ "title": "공간복잡도의 이해",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-space-complexity-concept/description",
+ "alias": "space-complexity-concept",
+ "pid": 442,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "시간, 공간복잡도",
+ "lesson": "공간복잡도",
+ "card": "test-space-complexity-concept",
+ "card_type": "Test",
+ "level": "Easy",
+ "ptype": "Multiple choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "34.3",
+  "submissions": "7710"
+ },
+ "sample_count": 0,
+ "statement_len": 301,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 공간복잡도에 대한 설명을 잘 읽고, 옳은 것을 모두 고르세요.\n\n**보기** — 모두 고르기\n\n1. 공간복잡도도 시간복잡도 처럼 점근적 표기법을 사용한다.\n2. $N$개의 정보가 담긴 배열은 대략 $\\mathcal{O}(N)$의 공간복잡도를 차지한다고 볼 수 있다.\n3. 정수가 담긴 $10\\,000 \\times 10\\,000$ 크기의 배열을 만들면 메모리는 $1\\,\\text{GB}$ 이하로 사용하게 된다.\n4. 공간복잡도가 $\\mathcal{O}(N)$인 코드는 $\\mathcal{O}(N^2)$ 인 코드보다 더 빠르게 동작한다."
+}

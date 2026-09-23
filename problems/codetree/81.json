@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "81",
+ "title": "컨베이어 벨트",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-conveyor-belt/description",
+ "alias": "conveyor-belt",
+ "pid": 81,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Simulation",
+ "lesson": "격자 안에서 밀고 당기기",
+ "card": "intro-conveyor-belt",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "75.5",
+  "submissions": "4974"
+ },
+ "sample_count": 2,
+ "statement_len": 411,
+ "fetched_at": "2026-09-23",
+ "statement": "시계 방향으로 한 칸씩 회전하는 컨베이어 벨트가 있습니다. 컨베이어 벨트 위아래로 $N$개씩 총 $2 \\times N$ 개의 정수가 두 줄로 적혀 있고, $1$초에 한 칸씩 움직입니다.\n\n![](https://contents.codetree.ai/problems/81/images/problems-986cf4a0-f378-461d-adc0-864c76b062ae.png)\n\n위의 그림에서 $1$초가 흐른 뒤에는 다음과 같이 그림이 바뀌게 됩니다.\n\n![](https://contents.codetree.ai/problems/81/images/problems-35c6083f-59d7-49c8-8387-917ca7324154.png)\n\n$T$초의 시간이 흐른 뒤 컨베이어 벨트에 놓여있는 정수들의 상태를 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $N$과 $T$가 공백을 사이에 두고 주어집니다.\n\n두 번째 줄에는 위 변에 있는 초기 $N$개의 정수가 공백을 사이에 두고 주어집니다.\n\n세 번째 줄에는 아래 변에 있는 초기 $N$개의 정수가 공백을 사이에 두고 주어집니다.\n\n각 변의 정수는 해당 변의 정수가 올바르게 보이는 방향에서 바라봤을 때 왼쪽에서 오른쪽 순으로 주어집니다.",
+ "output_spec": "$T$초 후 컨베이어 벨트에 놓여있는 정수들의 상태를 출력합니다.\n\n첫 번째 줄에는 위 변에 있는 $N$개의 정수를 공백을 사이에 두고 출력합니다.\n\n두 번째 줄에는 아래 변에 있는 $N$개의 정수를 공백을 사이에 두고 출력합니다.\n\n각 변의 정수는 입력에서 주어진 것과 같은 관점(정수가 올바르게 보이는 방향)에서 바라본 왼쪽에서 오른쪽 순으로 출력합니다.",
+ "constraints": "- $1 \\le N \\le 200$\n- $1 \\le T \\le 1\\,000$\n- 주어지는 정수는 $1$ 이상 $9$ 이하입니다.",
+ "samples": [
+  {
+   "in": "3 1\n1 2 3\n6 5 1\n",
+   "out": "1 1 2\n3 6 5\n"
+  },
+  {
+   "in": "3 3\n1 2 3\n6 5 1\n",
+   "out": "6 5 1\n1 2 3\n"
+  }
+ ]
+}

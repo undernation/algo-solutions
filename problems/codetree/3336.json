@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3336",
+ "title": "이진 트리 최대 경로 합",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-binary-tree-maximum-path-sum/description",
+ "alias": "binary-tree-maximum-path-sum",
+ "pid": 3336,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Tree",
+ "lesson": "Tree DP",
+ "card": "challenge-binary-tree-maximum-path-sum",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "57.6",
+  "submissions": "125"
+ },
+ "sample_count": 2,
+ "statement_len": 405,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 정점으로 이루어진 이진 트리가 주어집니다. 각 노드는 $1$번부터 $N$번까지 번호를 가지며 번호와 별개로 값 또한 가집니다. 이때 트리의 루트는 $1$번입니다.\n\n다음과 같은 예시를 보겠습니다.\n\n![](https://contents.codetree.ai/problems/3336/images/problems-f0e01eb2-1b24-483e-9868-36109d778dbf.png)\n\n이때 주어진 이진 트리에서 최대 경로 합을 출력하는 프로그램을 작성해보세요.\n\n경로 합이란, 특정 노드와 특정 노드 사이 경로상에 존재하는 모든 노드의 합을 의미합니다. 위의 예시에서는 $15$와 $7$을 잇는 경로 [$15, 20, 7$]의 합인 $42$가 최대 경로 합이 된다. 경로는 최소 1개 이상의 노드를 포함합니다.",
+ "input_spec": "첫 번째 줄에는 이진 트리의 정점 수 $N$이 주어집니다.\n\n두 번째 줄부터 $N$ 번째 줄까지 총 $N-1$개의 줄에 걸쳐 간선으로 연결된 두 개의 노드가 공백을 두고 차례대로 주어집니다.\n\n$N+1$ 번째 줄부터 $2\\times N$줄까지 총 $N$개의 줄에 걸쳐 각 노드들이 가지는 값이 주어집니다.",
+ "output_spec": "첫 번째 줄에 이진 트리의 최대 경로 합을 출력합니다.",
+ "constraints": "- $1 \\le N \\lt 30\\,000$\n - $-1\\,000 \\le$ 각 노드의 값 $\\le 1\\,000$",
+ "samples": [
+  {
+   "in": "3\n1 2\n1 3\n1\n2\n3\n",
+   "out": "6\n"
+  },
+  {
+   "in": "5\n1 2\n1 3\n3 4\n3 5\n-10\n9\n20\n15\n7\n",
+   "out": "42\n"
+  }
+ ]
+}

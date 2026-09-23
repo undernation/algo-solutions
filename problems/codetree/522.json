@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "522",
+ "title": "역지사지",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-queue-reverse/description",
+ "alias": "queue-reverse",
+ "pid": 522,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "스택, 큐, 덱",
+ "lesson": "Queue",
+ "card": "challenge-queue-reverse",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "32.1",
+  "submissions": "3833"
+ },
+ "sample_count": 0,
+ "statement_len": 2523,
+ "fetched_at": "2026-09-23",
+ "statement": "큐는 데이터를 처리하기 위해 양쪽을 모두 사용하는 자기 자신에 비해 한쪽만 사용하는 스택을 이해할 수 없었습니다. '왜 그럴까?' 생각하다가 스택의 입장을 이해해보기 위해 스택의 연산을 직접 수행해보려고 합니다.\n\n그러나 FIFO 구조인 큐는 LIFO 구조인 스택을 따라할 수 없었습니다. 한참을 고민한 끝에, `pop` 과정에서 추가적으로 큐를 하나 더 사용하여 스택 기능을 구현할 수 있었습니다.\n\n스택 기능을 재구현했다는 것은, 새로 적힌 함수를 이용하여 다음 테스트를 올바르게 통과하였다는 것을 의미합니다.\n\n```jsx\nfunction test()\n  set s = empty stack\n  s.push(15)\n  s.push(35)\n  s.push(20)\n  print(s.pop()) // 20이 출력되어야 함\n  print(s.pop()) // 35이 출력되어야 함\n  print(s.pop()) // 15이 출력되어야 함\n```\n\nstack 기능을 큐로 구현하기 위해서는 다음과 같이 생각해보면 됩니다. \n\n- stack에서의 `push` 기능은 queue에 `push`하는 것으로 구현합니다.\n- stack에서의 `pop`의 경우에는 기존 queue에 있던 데이터를 마지막 하나를 제외하고 전부 새로운 큐에 옮겨준 뒤, 기존 큐를 새로운 큐로 대체해두고 마지막 원소를 반환하는 방식으로 구현합니다.\n\n위의 코드를 구현하여 진행했을 때의 과정을 살펴보면 다음과 같습니다.\n\n![](https://contents.codetree.ai/problems/522/images/problems-2cc72d19-3640-4987-9eda-44b3cc303981.png)\n![](https://contents.codetree.ai/problems/522/images/problems-6267f0e1-7c79-4806-8019-a53d1a671d40.png)\n![](https://contents.codetree.ai/problems/522/images/problems-5da1950b-fe92-40d6-9056-aa6ccfd92f4a.png)\n![](https://contents.codetree.ai/problems/522/images/problems-50cbe229-b0b0-4db3-b85b-87fe9bdd566a.png)\n![](https://contents.codetree.ai/problems/522/images/problems-75061edb-7327-4af2-a927-76eea87aa290.png)\n![](https://contents.codetree.ai/problems/522/images/problems-70f5a595-218e-44e1-9099-0fbdba820464.png)\n![](https://contents.codetree.ai/problems/522/images/problems-5a1506d6-c817-4489-8e76-cf300c4beb5e.png)\n![](https://contents.codetree.ai/problems/522/images/problems-411f06ea-6193-4a2b-a366-0f4e99341d18.png)\n![](https://contents.codetree.ai/problems/522/images/problems-cd7391b3-1713-4936-9abf-ab7575b526c5.png)\n![](https://contents.codetree.ai/problems/522/images/problems-de4acaeb-9ada-45d2-b97a-d6803169d27e.png)\n![](https://contents.codetree.ai/problems/522/images/problems-9e218f58-04ff-4afd-8dd5-77f795d3f2a2.png)\n![](https://contents.codetree.ai/problems/522/images/problems-a6b41350-6daf-4aaf-acdd-d160ab04df1c.png)\n![](https://contents.codetree.ai/problems/522/images/problems-dc0d8c9f-1069-499b-9bb1-5d287df54cdc.png)\n![](https://contents.codetree.ai/problems/522/images/problems-ed910764-14ad-4426-b02c-dc6cc8a27b93.png)\n\n이 과정(stack의 `push`, `pop` 함수)을 이제 코드로 나타내보려고 합니다. \b각 빈칸에 들어갈 말로 올바른 것을 골라주세요. \n\n```jsx\nfunction Stack.push(q, val)\n  q.push(val)\n\nfunction Stack.pop(q)\n  set new_q = empty queue\n  while q.size() != (1)\n    new_q.push((2))\n  set top = q.pop()\n  q = new_q\n  return (3)\n```\n\n**보기** — 순서대로 3개 고르기\n\n1. `0`\n2. `1`\n3. `q.front()`\n4. `q.pop()`\n5. `top`"
+}

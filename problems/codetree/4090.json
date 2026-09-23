@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "4090",
+ "title": "축구와 야구",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-soccer-and-baseball/description",
+ "alias": "soccer-and-baseball",
+ "pid": 4090,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "DP II",
+ "lesson": "원하는 State를 정의하여 한 칸씩 나아가는 DP",
+ "card": "test-soccer-and-baseball",
+ "card_type": "Test",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "53.4",
+  "submissions": "459"
+ },
+ "sample_count": 1,
+ "statement_len": 210,
+ "fetched_at": "2026-09-23",
+ "statement": "코드트리 고등학교에서 축구 대회와 야구 대회 팀을 뽑기로 했습니다. 축구팀은 $11$명, 야구팀은 $9$명으로 구성됩니다. 이 때 두 팀의 능력의 합이 최대가 되도록 $N$명의 학생들을 축구팀, 야구팀으로 선발하고자 합니다.\n\n$N$명의 각 학생들의 축구 능력, 야구 능력 정보가 주어졌을 때, 두 팀의 능력의 합이 최대가 되도록 선발했을 때의 능력의 합의 최대를 출력하세요.",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 학생의 정보 $s$, $b$가 공백을 사이에 두고 주어집니다. $s$는 축구 능력, $b$는 야구 능력입니다.",
+ "output_spec": "첫 번째 줄에 각 학생들의 능력의 합이 최대가 되도록 선발했을 때의 능력의 합의 최대를 출력합니다.",
+ "constraints": "- $20 \\le N \\le 1\\,000$\n- $1 \\le s,\\ b \\le 100\\,000$",
+ "samples": [
+  {
+   "in": "20\n520 480\n500 450\n500 450\n500 450\n500 450\n500 450\n500 450\n500 450\n500 450\n500 450\n500 450\n500 450\n450 500\n450 500\n450 500\n450 500\n450 500\n450 500\n450 500\n450 500\n",
+   "out": "9980\n"
+  }
+ ]
+}

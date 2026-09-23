@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "385",
+ "title": "문자열의 총 길이 구하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-find-the-length-of-the-string/description",
+ "alias": "find-the-length-of-the-string",
+ "pid": 385,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "문자열",
+ "lesson": "문자열 리스트 관리",
+ "card": "intro-find-the-length-of-the-string",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "92.5",
+  "submissions": "2398"
+ },
+ "sample_count": 1,
+ "statement_len": 57,
+ "fetched_at": "2026-09-23",
+ "statement": "$10$개의 문자열이 주어지면, 모든 문자열의 총 길이의 합을 구하여 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $10$개의 문자열이 공백을 사이에 두고 입력으로 주어집니다.",
+ "output_spec": "첫 번째 줄에 모든 문자열의 총 길이의 합을 출력합니다.",
+ "constraints": "- 주어지는 문자열의 총 길이의 합 $\\le 200$\n- 주어지는 문자열은 영어 알파벳만으로 이루어져 있습니다.",
+ "samples": [
+  {
+   "in": "Hello CodeTree My Name Is Will Nice To Meet You\n",
+   "out": "38\n"
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2151",
+ "title": "최대 숫자 구하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-find-maximum-number/description",
+ "alias": "find-maximum-number",
+ "pid": 2151,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "중급 자료구조",
+ "lesson": "TreeSet",
+ "card": "intro-find-maximum-number",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "94.6",
+  "submissions": "705"
+ },
+ "sample_count": 1,
+ "statement_len": 180,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$부터 $M$까지의 숫자들이 적혀있는 공이 정확히 하나씩 놓여 있습니다. 이후 $N$개의 숫자들이 주어졌을 때, 순서대로 하나씩 해당 숫자가 적혀있는 공을 제거한 이후 남아 있는 공들 중 최대 공의 번호를 출력하는 프로그램을 작성해보세요. 더 이상 남아 있지 않은 공의 번호가 주어지는 경우는 없다고 생각해도 좋습니다.",
+ "input_spec": "첫 번째 줄에는 $N$과 $M$이 공백을 사이에 두고 주어집니다.  \n두 번째 줄에는 $N$개의 숫자가 공백을 사이에 두고 주어집니다. 모든 숫자는 다르게 주어짐을 가정해도 좋습니다.",
+ "output_spec": "$N$개의 줄에 걸쳐 한 줄에 하나씩 해당 숫자를 제거한 후 남아 있는 공들 중 가장 큰 번호를 출력합니다.",
+ "constraints": "- $1 \\le N < M \\le 100\\,000$\n- $1 \\le \\texttt{주어지는 숫자들} \\le M$",
+ "samples": [
+  {
+   "in": "3 4\n3 4 1\n",
+   "out": "4\n2\n2\n"
+  }
+ ],
+ "sample_notes": [
+  "처음에는 [$1$, $2$, $3$, $4$] 공이 놓여있습니다.  \n이후 $3$번 공을 빼게 되면, 남은 공들은 [$1$, $2$, $4$]가 되고 이 중 최댓값은 $4$입니다.  \n다음 $4$번 공을 빼게 되면, 남은 공들은 [$1$, $2$]가 되고 이 중 최댓값은 $2$입니다.  \n다음 $1$번 공을 빼게 되면, 남은 공은 [$2$]가 되고 이 중 최댓값은 $2$입니다."
+ ]
+}

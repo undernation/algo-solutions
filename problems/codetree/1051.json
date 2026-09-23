@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1051",
+ "title": "인접한 정점",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-adjacent-node/description",
+ "alias": "adjacent-node",
+ "pid": 1051,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Tree",
+ "lesson": "Tree DP",
+ "card": "challenge-adjacent-node",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "380 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "59.7",
+  "submissions": "273"
+ },
+ "sample_count": 2,
+ "statement_len": 231,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$번부터 $N$번까지 $N$ 개의 정점으로 이루어진 트리가 주어집니다.\n각 정점에는 양의 정수가 적혀 있습니다.\n\n주어진 트리에서 다음 두 가지 규칙에 따라 몇 개의 정점을 고르고자 합니다.\n\n- 선택한 정점끼리 인접해 있으면 안 됩니다.\n- 선택하지 않은 정점은 최소 하나의 선택한 정점과 인접해 있어야 합니다.\n\n선택한 정점에 적힌 수의 합을 최대화하고자 할 때, 그 최댓값을 구하는 프로그램을 작성하세요.",
+ "input_spec": "첫 번째 줄에 정점의 수 $N$이 주어집니다.\n\n두 번째 줄에 $1$번 정점부터 $N$번 정점까지 각 정점에 적힌 수가 번호 순서대로 공백으로 구분되어 주어집니다.\n\n그다음 줄부터 $N-1$ 개의 줄에 걸쳐, 트리의 각 간선이 연결하는 두 정점의 번호가 공백으로 구분되어 주어집니다.",
+ "output_spec": "첫 번째 줄에 합의 최댓값을 출력하세요.",
+ "constraints": "- $1 \\le N \\le 10\\,000$\n- $1 \\le \\texttt{각 정점에 적힌 정수} \\le 10\\,000$\n- $1 \\le \\texttt{간선이 연결하는 정점 번호} \\le N$\n- 주어지는 그래프는 트리입니다.",
+ "samples": [
+  {
+   "in": "1\n2\n",
+   "out": "2\n"
+  },
+  {
+   "in": "6\n1 3 4 1 2 6\n1 2\n2 3\n4 3\n4 5\n6 2\n",
+   "out": "13\n"
+  }
+ ]
+}

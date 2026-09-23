@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2495",
+ "title": "정수 사각형 최소 합",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-minimum-sum-path-in-square/description",
+ "alias": "minimum-sum-path-in-square",
+ "pid": 2495,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "DP I",
+ "lesson": "격자 안에서 한 칸씩 전진하는 DP",
+ "card": "challenge-minimum-sum-path-in-square",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "81.6",
+  "submissions": "1883"
+ },
+ "sample_count": 2,
+ "statement_len": 118,
+ "fetched_at": "2026-09-23",
+ "statement": "$N \\times N$ 행렬이 주어졌을 때, $(1,\\ N)$에서 시작하여 왼쪽 혹은 밑으로만 이동하여 $(N,\\ 1)$로 간다고 했을 때 거쳐간 위치에 적혀있는 정수의 합을 최소로 하는 프로그램을 작성해보세요.",
+ "input_spec": "첫째 줄에는 $N$이 주어집니다.\n\n둘째 줄부터 $N$개의 줄에 각각 각 행에 해당하는 $N$개의 정수 값이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "가능한 최소 합을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le \\texttt{행렬에 주어지는 정수} \\le 1\\,000\\,000$",
+ "samples": [
+  {
+   "in": "3\n5 2 1\n1 9 1\n1 8 9\n",
+   "out": "10\n"
+  },
+  {
+   "in": "3\n2 3 1\n5 4 3\n1 2 4\n",
+   "out": "11\n"
+  }
+ ],
+ "sample_notes": [
+  "이 예제의 경우 다음과 같이 이동하면 합이 $10$이 되며, 더 좋은 답은 존재하지 않습니다.\n\n![](https://contents.codetree.ai/problems/2495/images/problems-46f34511-ecb9-4877-9d7f-7cfe53159564.png)",
+  ""
+ ]
+}

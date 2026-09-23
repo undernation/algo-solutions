@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1907",
+ "title": "힙 정렬 연습",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-heap-sort-practice/description",
+ "alias": "heap-sort-practice",
+ "pid": 1907,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "정렬",
+ "lesson": "힙 정렬",
+ "card": "test-heap-sort-practice",
+ "card_type": "Test",
+ "level": "Medium",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "61.4",
+  "submissions": "1749"
+ },
+ "sample_count": 0,
+ "statement_len": 655,
+ "fetched_at": "2026-09-23",
+ "statement": "힙 정렬은 완전 이진 트리 형태의 heap이라는 자료구조를 이용한 방법으로, $N$개의 원소를 정렬할 때 항상 $\\mathcal{O}(N \\log{N})$의 시간복잡도를 갖는다는 특징이 있습니다.\n\n다음 힙 정렬 코드를 완성해봅시다.\n\n```jsx\nfunction heapify(arr[], n, i)\n  set largest = i\n  set l = (1)\n  set r = (2)\n\n  if l <= n && arr[l] > arr[largest]\n    largest = l\n\n  if r <= n && arr[r] > arr[largest]\n    largest = r\n\n  if largest != i\n    swap(arr[i], (3))\n    heapify(arr, n, largest)\n\nfunction heap_sort(arr[], n)\n  for i = (4) ... i >= 1\n    heapify(arr, n, i)\n\n  for i = n ... i > 1\n    swap(arr[1], (5))\n    heapify(arr, i - 1, 1)\n```\n\n**보기** — 순서대로 5개 고르기\n\n1. `i * 2`\n2. `i * 2 + 1`\n3. `arr[i]`\n4. `arr[1]`\n5. `arr[largest]`\n6. `n`\n7. `n / 2`"
+}

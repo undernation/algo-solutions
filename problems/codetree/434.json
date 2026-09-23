@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "434",
+ "title": "반복문에서의 시간복잡도",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-time-complexity-2/description",
+ "alias": "time-complexity-2",
+ "pid": 434,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "시간, 공간복잡도",
+ "lesson": "반복문의 시간복잡도",
+ "card": "challenge-time-complexity-2",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "71.8",
+  "submissions": "4141"
+ },
+ "sample_count": 0,
+ "statement_len": 531,
+ "fetched_at": "2026-09-23",
+ "statement": "반복문이 중첩되면 바깥 반복문과 내부 반복문을 모두 고려해야 하기 때문에 시간복잡도를 판단하기 조금 어렵습니다. 다음과 같은 코드를 보고 $solution1$과 $solution2$의 시간복잡도를 순서대로 골라봅시다.\n\n```js\nfunction solution1(N)\n  for i = 1 ... i <= N\n    for j = 1 ... j <= 5\n      for k = 1 ... k <= N\n        print(\"Hello\")\n```\n\n```js\nfunction solution2(arr)\n  set N = arr.size\n  set list = [N][N]\n  for i = 0 ... i < N\n    for j = 0 ... j < N\n      list[i][j] = arr[i]\n```\n\n**보기** — 순서대로 2개 고르기\n\n1. $\\mathcal{O}(1)$\n2. $\\mathcal{O}(\\log{N})$\n3. $\\mathcal{O}(N)$\n4. $\\mathcal{O}(N^2)$\n5. $\\mathcal{O}(N^3)$"
+}

@@ -1,0 +1,43 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f67",
+ "title": "나무 타이쿤",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/tree-tycoon/description",
+ "alias": "tree-tycoon",
+ "pid": 67,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2021 상반기 오후 1번 문제",
+ "level": "L11",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "76.2",
+  "submissions": "2189"
+ },
+ "sample_count": 3,
+ "statement_len": 2331,
+ "fetched_at": "2026-09-23",
+ "statement": "신비한 나무 리브로수를 $n \\times n$ 격자 칸에다가 키우고자 합니다.\n\n$n \\times n$ 격자에 서로 다른 높이를 가진 리브로수가 주어집니다.\n\n리브로수를 키우기 위해서는 특수 영양제를 필요로 합니다. 특수 영양제는 $1 \\times 1$ 땅에 있는 리브로수의 높이를 $1$ 증가시키며, 만약 해당 땅에 씨앗만 있는 경우에는 높이 $1$의 리브로수를 만들어냅니다.\n\n초기 특수 영양제는 $n \\times n$ 격자의 좌하단의 $4$개의 칸에 주어집니다.\n\n<br>\n<p align=\"center\">\n<img width=\"300\" height=\"300\" src=\"https://contents.codetree.ai/problems/410/images/a7533193-84ba-4fed-be1b-cf0ebf3e2425.png\">\n</p>\n</ br>\n\n<br asdasd>\n\n각각의 특수 영양제는 이동 규칙에 따라 움직이는데, 이동 규칙은 이동 방향과 이동 칸 수로 주어집니다. 이동 방향의 경우 $1$번부터 $8$번까지 → ↗ ↑ ↖ ← ↙ ↓ ↘으로 주어지며 이동 칸 수만큼 특수 영양제가 이동하게 됩니다. 격자의 모든 행,열은 각각 끝과 끝이 연결되어 있습니다. 즉 격자 바깥으로 나가면 마치 지구가 둥근것처럼 반대편으로 돌아옵니다. 만약 $n$번 열에서 오른쪽에서 이동하는 경우에는 $1$번 열으로 이동하게 됩니다.\n\n</br>\n\n<p align=\"center\">\n<img width=\"600\" height=\"350\" src=\"https://contents.codetree.ai/problems/410/images/6474f050-2372-4543-83c0-8c65acd2747c.png\">\n</p>\n\n$1$년동안 다음 단계를 거쳐 리브로수는 성장하게 됩니다.\n\n1. 특수 영양제를 이동 규칙에 따라 이동시킵니다.\n\n2. 특수 영양제를 이동 시킨 후 해당 땅에 특수 영양제를 투입합니다. 투입 후 투입된 특수 영양제는 사라지게 됩니다.\n\n3. 특수 영양제를 투입한 리브로수의 대각선으로 인접한 방향에 높이가 $1$ 이상인 리브로수가 있는 만큼 높이가 더 성장합니다. 대각선으로 인접한 방향이 격자를 벗어나는 경우에는 세지 않습니다.\n\n4. 특수 영양제를 투입한 리브로수를 제외하고 높이가 $2$ 이상인 리브로수는 높이 $2$를 베어서 잘라낸 리브로수로 특수 영양제를 사고,  해당 위치에 특수 영양제를 올려둡니다.\n\n아래 예시를 통해서 $1$년 동안 리브로수의 성장이 어떻게 이뤄지는지 살펴보겠습니다.\n\n<p align=\"center\">\n<img width=\"300\" height=\"300\" src=\"https://contents.codetree.ai/problems/410/images/cf7c8610-82a6-48e6-bd99-c817f4857337.png\">\n</p>\n\n다음과 같이 각기 높이가 다른 리브로수가 주어질 때(높이가 $0$인 리브로수는 씨앗만 존재하는 땅을 의미합니다.), 초기의 특수 영양제의 위치는 아래 음영이 있는 칸이 됩니다. 이때 주어진 이동 규칙에 따라 이동하면 아래의 그림처럼 변합니다.\n\n<p align=\"center\">\n<img width=\"600\" height=\"250\" src=\"https://contents.codetree.ai/problems/410/images/d3971df2-01db-4249-8168-3db39123df62.png\">\n</p>\n\n\n이때 특수 영양제가 있는 땅의 리브로수는 높이가 $1$만큼 증가하고 대각선으로 인접한 높이 $1$이상의 리브로수의 개수 만큼 높이가 증가합니다.\n\n<p align=\"center\">\n<img width=\"600\" height=\"250\" src=\"https://contents.codetree.ai/problems/410/images/efa353b2-f4f7-4904-8f30-85eddf419b42.png\">\n</p>\n\n이후 해당 년도에 특수 영양제를 맞은 땅을 제외하고 높이가 $2$이상인 리브로수를 높이 2만큼 잘라내고 해당 땅 위에 특수 영양제를 올려줍니다.\n\n<br>\n<p align=\"center\">\n<img width=\"600\" height=\"250\" src=\"https://contents.codetree.ai/problems/410/images/cdb552e5-1070-43e9-b3db-1621bbddc987.png\">\n</p>\n</br>\n<br>\n<br/>\n</br>\n\n\n다음 년도로 넘어가면 위의 $4$단계를 다시 반복합니다.\n</br>\n$n \\times n$ 격자의 칸에 리브로수의 각자 다른 높이와 각 년도의 이동 규칙이 주어질 때, 해당 년수가 모두 지나고 난 뒤 남아있는 리브로수 높이들의 총 합을 구하는 프로그램을 작성하세요.",
+ "input_spec": "첫번째 줄에는 격자의 크기 $n$, 리브로수를 키우는 총 년 수 $m$이 주어집니다.\n\n이후 두번째 줄부터 $n+1$번째 줄까지 서로 다른 리브로수의 높이가 주어집니다.\n\n이후 $m$개의 줄에는 각 년도의 이동 규칙이 주어집니다.\n\n이동 규칙은 이동 방향 $d$, 이동 칸 수 $p$로 주어지고, $d$는 $1$번부터 $8$번까지 각각 → ↗ ↑ ↖ ← ↙ ↓ ↘으로 주어집니다.",
+ "output_spec": "$m$년 이후 남아있는 리브로수의 총 높이의 합을 출력하세요.",
+ "constraints": "- $3 \\le n \\le 15$\n- $1 \\le m \\le 100$\n- $0 \\le \\texttt{초기에 주어지는 리브로수의 높이} \\le 100$\n- $1 \\le d \\le 8$\n- $1 \\le p \\le min(n, 10)$\n- 주어지는 입력은 모두 정수입니다.",
+ "samples": [
+  {
+   "in": "5 1\n1 0 0 4 2\n2 1 3 2 1\n0 0 0 2 5\n1 0 0 0 3\n1 2 1 3 3\n1 3\n",
+   "out": "32\n"
+  },
+  {
+   "in": "5 5\n1 0 0 4 2\n2 1 3 2 1\n0 0 0 2 5\n1 0 0 0 3\n1 2 1 3 3\n1 3\n2 4\n7 1\n5 2\n4 1\n",
+   "out": "65\n"
+  },
+  {
+   "in": "10 5\n1 0 0 4 2 2 1 3 2 1\n2 1 3 2 1 0 2 1 2 1\n0 0 0 2 5 1 2 1 3 3\n1 0 0 0 3 1 1 1 2 1\n1 2 1 3 3 1 3 2 1 3\n1 3 2 1 2 3 1 13 2 1\n1 3 1 2 1 2 3 1 3 1\n1 31 1 2 3 1 2 1 3 1\n1 2 1 3 1 2 1 3 1 2\n10 13 1 20 1 2 3 1 3 1\n1 3\n2 4\n7 1\n5 2\n4 1\n",
+   "out": "377\n"
+  }
+ ]
+}

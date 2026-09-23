@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "915",
+ "title": "벌금은 누구에게",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-who-will-pay/description",
+ "alias": "who-will-pay",
+ "pid": 915,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 II",
+ "lesson": "배열 기록",
+ "card": "intro-who-will-pay",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "56.5",
+  "submissions": "4139"
+ },
+ "sample_count": 1,
+ "statement_len": 165,
+ "fetched_at": "2026-09-23",
+ "statement": "학생이 $N$명 있습니다. 각 학생은 $1$번부터 $N$번까지 번호가 붙여져 있으며, 만약 한 학생이 $K$번 이상 벌칙을 받게 되면 벌금을 내야 합니다. $M$번에 걸쳐 벌칙에 걸린 학생의 번호가 순서대로 주어질 때, 최초로 벌금을 내게 되는 학생이 누구인지를 알아내는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$, $M$, 그리고 $K$가 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터 $M$개의 줄에 걸쳐 벌칙을 받은 학생의 번호 $a_i$가 한 줄에 하나씩 순서대로 주어집니다. ($1 \\le i \\le M$)",
+ "output_spec": "첫 번째 줄에 최초로 벌금을 내게 되는 학생의 번호를 출력합니다. 만약 $M$번의 벌칙이 모두 끝날 때까지 벌금을 내게 되는 학생이 없다면, $-1$을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le M, K \\le 10\\,000$\n- $1 \\le a_i \\le N$ ($1 \\le i \\le M$)",
+ "samples": [
+  {
+   "in": "5 7 3\n2\n5\n2\n3\n5\n2\n4\n",
+   "out": "2\n"
+  }
+ ],
+ "sample_notes": [
+  "번호를 순서대로 나열해보면 [$2$, $5$, $2$, $3$, $5$, $2$, $4$]이므로, $6$번째 벌칙에서 $2$번 학생이 $3$번째 벌칙을 받게 됩니다. 따라서 최초로 벌금을 내게 되는 학생의 번호는 $2$가 됩니다."
+ ]
+}

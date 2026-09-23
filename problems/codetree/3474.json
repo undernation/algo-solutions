@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3474",
+ "title": "k개의 그룹으로 분할",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-split-into-k-groups/description",
+ "alias": "split-into-k-groups",
+ "pid": 3474,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Advanced DP",
+ "lesson": "Bitmask DP",
+ "card": "challenge-split-into-k-groups",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 5초 · C++17 1초",
+  "memory": "288 MB",
+  "time_sec": 5.0
+ },
+ "stats": {
+  "accept_rate": "83.8",
+  "submissions": "37"
+ },
+ "sample_count": 2,
+ "statement_len": 138,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 수가 주어졌을 때 이 수들을 정확히 $K$개의 그룹으로 재분배하려고 합니다. 각 그룹에는 최소 하나 이상의 수가 들어 있어야 하며, 각 그룹에 있는 수들의 합이 모두 동일해지도록 분할하는 것이 가능한지를 판단하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$과 $K$가 공백을 사이에 두고 주어집니다.\n\n두 번째 줄에는 $N$개의 수가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "조건을 만족하도록 $K$개의 그룹으로 분할하는 것이 가능하다면 \"Yes\", 그렇지 않다면 \"No\"를 출력합니다.",
+ "constraints": "- $1\\le K\\le N\\le 16$\n- $1\\le \\texttt{주어지는 수} \\le1\\,000$",
+ "samples": [
+  {
+   "in": "5 3\n1 2 4 5 6\n",
+   "out": "Yes\n"
+  },
+  {
+   "in": "6 2\n5 2 7 6 5 1\n",
+   "out": "Yes\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 예제에서는 $\\{1,\\ 5\\}$, $\\{2,\\ 4\\}$, $\\{6\\}$ 이렇게 $3$개의 그룹으로 분할하면 됩니다.",
+  "두 번째 예제에서는 $\\{5,\\ 2,\\ 6\\}$, $\\{7,\\ 5,\\ 1\\}$ 이렇게 $2$개의 그룹으로 분할하면 됩니다."
+ ]
+}

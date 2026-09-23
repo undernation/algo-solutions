@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1578",
+ "title": "시간복잡도의 쓰임",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-usage-of-time-complexity/description",
+ "alias": "usage-of-time-complexity",
+ "pid": 1578,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "시간, 공간복잡도",
+ "lesson": "시간복잡도의 정의",
+ "card": "test-usage-of-time-complexity",
+ "card_type": "Test",
+ "level": "Medium",
+ "ptype": "Multiple choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "34.2",
+  "submissions": "10695"
+ },
+ "sample_count": 0,
+ "statement_len": 431,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 중 옳은 것을 모두 고르세요.\n\n**보기** — 모두 고르기\n\n1. $N \\le 10$, 시간제한이 1초인 문제가 주어졌을 때 $\\mathcal{O}(N!)$ 솔루션을 작성하면 일반적으로 제한시간 안에 올바른 답을 얻을 수 있다.\n2. $N \\le 20$, 시간제한이 1초인 문제가 주어졌을 때 $\\mathcal{O}(2^N)$ 솔루션을 작성하면 일반적으로 제한시간 안에 올바른 답을 얻을 수 있다.\n3. $N \\le 1\\,000$, 시간제한이 1초인 문제가 주어졌을 때 $\\mathcal{O}(N^2 logN)$ 솔루션을 작성하면 일반적으로 제한시간 안에 올바른 답을 얻을 수 있다.\n4. $N \\le 100\\,000$, 시간제한이 1초인 문제가 주어졌을 때 $\\mathcal{O}(N^2)$ 솔루션을 작성하면 일반적으로 제한시간 안에 올바른 답을 얻을 수 있다."
+}

@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "614",
+ "title": "프림",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-ga-prim/description",
+ "alias": "ga-prim",
+ "pid": 614,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 알고리즘",
+ "lesson": "Prim",
+ "card": "intro-ga-prim",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "71.0",
+  "submissions": "1236"
+ },
+ "sample_count": 0,
+ "statement_len": 582,
+ "fetched_at": "2026-09-23",
+ "statement": "프림 알고리즘을 이용해 MST를 쉽게 구할 수 있습니다.\n\n다음 코드를 완성하세요.\n\n```jsx\nfunction prim(graph)\n    set Q = Queue()\n\n    for each vertex in graph\n        set dist[v] = (1)\n        Q.push(v)\n\n    set source = |V|\n    set dist[source] = (2)\n\n    while Q is not empty\n        set u = vertex in Q with min dist\n        Q.remove((3))\n\n        for each neighbor v of u\n            set alt = (4)\n            if alt (5) dist[v]\n                set dist[v] = alt\n```\n\n**보기** — 순서대로 5개 고르기\n\n1. `0`\n2. `INF`\n3. `u`\n4. `v`\n5. `<`\n6. `==`\n7. `>`\n8. `alt`\n9. `dist[u] + length(u, v)`\n10. `length(u, v)`\n11. `dist[u]`"
+}

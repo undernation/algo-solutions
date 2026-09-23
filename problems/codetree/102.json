@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "102",
+ "title": "N개의 점 중 M개 고르기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-choose-m-out-of-n-points/description",
+ "alias": "choose-m-out-of-n-points",
+ "pid": 102,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Backtracking",
+ "lesson": "N개 중에 M개 고르기(Simple)",
+ "card": "test-choose-m-out-of-n-points",
+ "card_type": "Test",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "49.0",
+  "submissions": "2101"
+ },
+ "sample_count": 2,
+ "statement_len": 243,
+ "fetched_at": "2026-09-23",
+ "statement": "좌표 평면 위에 점 $N$개의 좌표가 주어졌을 때, 점 $M$개를 적절히 선택하여 선택한 점들 중 거리가 가장 먼 두 점 사이의 거리값이 최소가 되도록 하는 프로그램을 작성해주세요.  \n단 여기서의 거리란 유클리디안 거리를 뜻합니다. 두 점 $(x_1,\\ y_1), (x_2,\\ y_2)$ 사이의 유클리디안 거리 $dist$는 다음과 같이 정의됩니다.  \n\n$dist = \\sqrt{(x_1-x_2)^2 + (y_1 - y_2)^2}$",
+ "input_spec": "첫 번째 줄에는 정수 $N$과 $M$이 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터는 $N$개의 줄에 걸쳐 점의 좌표 $x_i$, $y_i$가 공백으로 구분되어 주어집니다. 이는 $i$번째 점의 좌표가 $(x_i,\\ y_i)$임을 의미합니다.",
+ "output_spec": "점 $M$개를 적절히 선택하여 가장 먼 두 점 사이의 거리가 최소가 되었을 때, 그때의 최소 거리에 제곱한 값을 출력합니다.",
+ "constraints": "- $2 \\le M \\le N \\le 20$\n- $1 \\le x_i,\\ y_i \\le 100$ $(1 \\le i \\le N)$\n- 주어지는 모든 점의 위치는 서로 다릅니다.",
+ "samples": [
+  {
+   "in": "2 2\n1 1\n1 3\n",
+   "out": "4\n"
+  },
+  {
+   "in": "3 2\n1 1\n4 4\n3 5\n",
+   "out": "2\n"
+  }
+ ],
+ "sample_notes": [
+  "",
+  "$2$, $3$번 점을 선택했을 때 거리가 최소가 됩니다."
+ ]
+}

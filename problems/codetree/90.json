@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "90",
+ "title": "정수가 더 큰 인접한 곳으로 이동",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-move-to-larger-adjacent-cell/description",
+ "alias": "move-to-larger-adjacent-cell",
+ "pid": 90,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Simulation",
+ "lesson": "격자 안에서 단일 객체를 이동",
+ "card": "intro-move-to-larger-adjacent-cell",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "60.6",
+  "submissions": "4557"
+ },
+ "sample_count": 2,
+ "statement_len": 834,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$이상 $100$이하의 정수로 이루어진 $N \\times N$ 크기의 격자판 정보가 주어집니다. 이때 특정 위치에서 시작하여, 상하좌우로 인접한 곳에 있는 정수들 중 현재 위치에 있는 정수보다 더 큰 위치로 끊임없이 이동합니다. 만약 그러한 위치가 여러 개 있는 경우, 상하좌우 방향 순서대로 우선순위를 매겨 가능한 곳 중 우선순위가 더 높은 곳으로 이동합니다. 격자를 벗어나서는 안 되며, 더 이상 움직일 수 없을 때까지 반복합니다.\n\n위의 규칙에 따라 방문하게 되는 위치에 적힌 정수를 순서대로 출력하는 프로그램을 작성해보세요.\n\n예를 들어, 다음 그림의 경우를 살펴봅시다.\n\n![](https://contents.codetree.ai/problems/90/images/problems-30369111-eb5a-459f-a447-05a9e9c8245b.png)\n\n상하좌우 인접한 정수들 중 $5$보다 큰 정수는 $8$과 $10$ $2$개가 있지만, 아래 방향이 우선순위가 더 높으므로 정수 $8$이 있는 위치로 이동하게 됩니다.\n\n![](https://contents.codetree.ai/problems/90/images/problems-a1d68086-8be4-4e55-93fb-8dd96cb67cfe.png)\n\n$8$ 위치에서는 오른쪽 방향으로만 이동이 가능하므로 정수 $11$이 적혀 있는 위치로 이동하게 됩니다.\n\n![](https://contents.codetree.ai/problems/90/images/problems-5fcc1ed9-ec4b-4a47-aaa3-4971c381bc8f.png)\n\n이때는 $11$보다 큰 정수가 인접한 곳에 없으므로 이동을 멈추게 됩니다.",
+ "input_spec": "첫 번째 줄에는 격자의 크기를 나타내는 $N$과 시작 위치를 나타내는 $r, c$ 값이 각각 공백을 사이에 두고 주어집니다. $r, c$는 $r$행 $c$열에서 시작함을 의미합니다.\n\n두 번째 줄부터는 $N$개의 줄에 걸쳐 각 행에 해당하는 $N$개의 정수가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 시작 위치로부터 움직임이 종료될 때까지 방문한 격자에 적혀 있는 정수들을 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le r, c \\le N$\n- $1 \\le \\texttt{grid}_{i, j} \\le 100$ ($1 \\le i, j \\le N$)",
+ "samples": [
+  {
+   "in": "4 2 2\n1 2 2 3\n3 5 10 15\n3 8 11 2\n4 5 4 4\n",
+   "out": "5 8 11\n"
+  },
+  {
+   "in": "4 1 1\n1 2 2 3\n3 5 10 15\n3 8 11 2\n4 5 4 4\n",
+   "out": "1 3 5 8 11\n"
+  }
+ ]
+}

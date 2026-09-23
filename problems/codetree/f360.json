@@ -1,0 +1,54 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f360",
+ "title": "종이접기",
+ "url": "https://www.codetree.ai/ko/frequent-problems/acpc/problems/paper-folding/description",
+ "alias": "paper-folding",
+ "pid": 360,
+ "group": "acpc",
+ "kind": "frequent",
+ "origin": "2025 ACPC",
+ "level": "L25",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "128 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "21.1",
+  "submissions": "19"
+ },
+ "sample_count": 4,
+ "statement_len": 1207,
+ "fetched_at": "2026-09-23",
+ "statement": "이차원 좌표평면 위에 $N$각형 볼록 다각형 모양의 종이 $P$가 있습니다. 이 종이의 꼭짓점은 $(A_1, B_1), (A_2, B_2), \\ldots, (A_N, B_N)$으로 주어집니다.\n\n이 종이 $P$의 내부에서 $M$각형 볼록 다각형 모양의 영역 $Q$를 오려냅니다. 오려낼 영역 $Q$의 꼭짓점은 $(C_1, D_1), (C_2, D_2), \\ldots, (C_M, D_M)$으로 주어지며, $Q$와 그 경계는 $P$의 내부에 완전히 포함되어 있습니다.\n\n이렇게 영역 $Q$를 오려내고 남은, 구멍이 뚫린 종이 영역을 $S$라고 합시다. (정확히 영역 $S$는 다각형 $P$의 내부 또는 경계이면서 다각형 $Q$의 내부가 아닌 부분입니다.)\n\n코디는 이 종이 영역 $S$를 $y$축에 평행한 직선 $l: x=t$를 따라 한 번 접으려고 합니다. 접는 과정과 최종 모양은 다음과 같이 정의됩니다:\n\n> 영역 $S$에 대해, 직선 $l$을 기준으로 왼쪽에 있는 부분(즉, $x \\le t$를 만족하는 영역)을 $S_{\\texttt{left}}$라고 하고, 오른쪽에 있는 부분(즉, $x \\ge t$를 만족하는 영역)을 $S_{\\texttt{right}}$라고 합니다.\n>\n> 이제 $S_{\\texttt{left}}$ 부분을 직선 $l$을 따라 접습니다. 이 과정은 $S_{\\texttt{left}}$ 영역을 직선 $l$에 대해 선대칭시켜 새로운 영역 $S'_{\\texttt{left}}$를 만드는 것과 같습니다. (마치 $S_{\\texttt{left}}$를 $l$을 기준으로 접어서 $S_{\\texttt{right}}$가 놓인 면 위로 포갠 것으로 생각할 수 있습니다.)\n>\n> 이렇게 종이를 접었을 때, 최종적으로 종이가 차지하는 전체 영역을 $T$라고 합니다. 영역 $T$는, 이렇게 대칭 이동된 $S'_{\\texttt{left}}$와 원래의 $S_{\\texttt{right}}$의 합집합으로 정의됩니다. ($T = S'_{\\texttt{left}} \\cup S_{\\texttt{right}}$)\n\n코디는 이 종이를 접어서 최종적으로 얻는 영역 $T$의 넓이를 가능한 작게 만들고자 합니다. 이를 위해 $t$ 값을 적절히 선택해야 하지만, 어떤 값이 넓이를 최소로 만드는지 판단하기 어려워 고민에 빠졌습니다.\n\n여러분이 코디를 도와 영역 $T$의 넓이가 최소가 되도록 하는 $t$ 값을 찾아, 그때의 최소 넓이를 계산하는 프로그램을 작성하세요.",
+ "input_spec": "첫 줄에 두 정수 $N$과 $M$이 공백으로 구분되어 차례대로 주어집니다.\n\n그다음 줄에 $N$ 개의 정수 $A_1, A_2, \\cdots, A_N$이 공백으로 구분되어 차례대로 주어집니다.\n\n그다음 줄에 $N$ 개의 정수 $B_1, B_2, \\cdots, B_N$이 공백으로 구분되어 차례대로 주어집니다.\n\n그다음 줄에 $M$ 개의 정수 $C_1, C_2, \\cdots, C_M$이 공백으로 구분되어 차례대로 주어집니다.\n\n그다음 줄에 $M$ 개의 정수 $D_1, D_2, \\cdots, D_M$이 공백으로 구분되어 차례대로 주어집니다.",
+ "output_spec": "영역 $T$의 넓이로 가능한 값 중 최솟값을 $\\text{Ans}$라고 정의합시다.\n$\\text{Ans}$는 잘 정의되며 양의 유리수임을 증명할 수 있습니다.\n\n이제, $\\text{Ans}$를 기약 분수꼴로 적은 식을 $\\displaystyle \\text{Ans} = \\frac{r}{s}$라고 합시다. 여기서, $r$과 $s$는 양의 정수이며 서로소입니다.\n\n첫 줄에 분자 $r$을 출력합니다.\n\n그다음 줄에 분모 $s$를 출력합니다.",
+ "constraints": "+ $3 \\le N \\le 100$\n+ $3 \\le M \\le 100$\n+ $0 \\le A_i \\le 100$\n+ $0 \\le B_i \\le 100$\n+ $0 \\le C_i \\le 100$\n+ $0 \\le D_i \\le 100$\n+ 다각형 $P$와 $Q$는 넓이가 양수인 단순 볼록 다각형입니다.\n+ 볼록 다각형 $P$의 꼭짓점 $( A_1, B_1 ), ( A_2, B_2 ), \\cdots, ( A_N, B_N )$은 반시계 방향으로 $P$의 둘레를 따라 차례대로 주어집니다.\n+ 볼록 다각형 $Q$의 꼭짓점 $( C_1, D_1 ), ( C_2, D_2 ), \\cdots, ( C_M, D_M )$은 반시계 방향으로 $Q$의 둘레를 따라 차례대로 주어집니다.\n+ $Q$의 내부와 경계는 $P$의 내부에 완전하게 포함됩니다.",
+ "hint": "답을 계산하는 과정에서 $2^{63}$ 보다 큰 값의 정수를 다룰 수 있음에 유의하세요.",
+ "samples": [
+  {
+   "in": "4 4\n0 3 3 0\n0 0 3 3\n1 2 2 1\n1 1 2 2\n",
+   "out": "4\n1\n"
+  },
+  {
+   "in": "3 4\n0 5 0\n0 0 5\n1 2 2 1\n1 1 2 2\n",
+   "out": "63\n8\n"
+  },
+  {
+   "in": "5 4\n0 2 4 4 2\n2 0 0 4 4\n2 3 3 2\n1 1 3 2\n",
+   "out": "51\n8\n"
+  },
+  {
+   "in": "3 3\n1 5 6\n3 1 5\n5 3 4\n4 3 2\n",
+   "out": "498123\n90920\n"
+  }
+ ],
+ "sample_notes": [
+  "![](https://contents.codetree.ai/problem_factory/images/2bbca2f8-fca1-494a-be57-ecaa28131555.webp)\n\n![](https://contents.codetree.ai/problem_factory/images/248ea9ba-d34e-4bd6-93bc-8fc6870f5366.webp)",
+  "![](https://contents.codetree.ai/problem_factory/images/49d771ca-a71c-4a11-b4d3-2ad49f2be4af.webp)\n\n![](https://contents.codetree.ai/problem_factory/images/8314331f-8c05-4bde-9e62-c5bc92275591.webp)",
+  "![](https://contents.codetree.ai/problem_factory/images/3c0c517c-8fde-4052-8847-7cffb7a222a6.webp)\n\n![](https://contents.codetree.ai/problem_factory/images/8c032bb3-6cc1-486b-b7dc-90b545bcdb36.webp)",
+  "![](https://contents.codetree.ai/problem_factory/images/b6644a97-8004-48b3-a203-dab8b584aa6c.webp)\n\n![](https://contents.codetree.ai/problem_factory/images/6bee6aac-dd26-41dd-b525-dcd713c0a7ab.webp)"
+ ]
+}

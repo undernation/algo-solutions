@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "380",
+ "title": "개수 세기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-count-numbers/description",
+ "alias": "count-numbers",
+ "pid": 380,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "1차원 배열",
+ "lesson": "탐색",
+ "card": "intro-count-numbers",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "90.3",
+  "submissions": "8208"
+ },
+ "sample_count": 1,
+ "statement_len": 70,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $N$이 주어지면 그 횟수만큼 수가 주어집니다. 그 중 $M$이 몇 번 등장하는지 구해 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 정수 $N$과 $M$이 공백을 사이에 두고 주어집니다.\n\n두 번째 줄에 $N$개만큼 정수가 주어집니다.",
+ "output_spec": "첫 번째 줄에 $M$이 등장하는 횟수를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le M \\le 99$\n- $1 \\le \\texttt{주어지는 정수} \\le 99$",
+ "samples": [
+  {
+   "in": "10 3\n1 2 3 4 5 3 7 8 3 10\n",
+   "out": "3\n"
+  }
+ ],
+ "sample_notes": [
+  "예제1에서 $N$이 10이므로 입력으로 두 번째 줄에 10개의 수가 주어지고, $M$이 3이므로 3이 등장하는 횟수는 3입니다."
+ ]
+}

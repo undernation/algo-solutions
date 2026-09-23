@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "259",
+ "title": "청소당번 정하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-cleaning-numbering/description",
+ "alias": "cleaning-numbering",
+ "pid": 259,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "cnt 활용하기",
+ "card": "challenge-cleaning-numbering",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "75.6",
+  "submissions": "5317"
+ },
+ "sample_count": 2,
+ "statement_len": 174,
+ "fetched_at": "2026-09-23",
+ "statement": "$0$일을 기점으로 $2$일마다 교실 청소를, $3$일마다 복도 청소를, $12$일마다 화장실 청소를 합니다. 날짜가 겹치는 날에는 주기가 더 긴 것을 하기로 했습니다. $n$일간 진행했을 때 각 장소의 청소 횟수를 차례로 출력하는 프로그램을 작성해주세요. 단, 시작 날인 $0$일에는 청소를 진행하지 않습니다.",
+ "input_spec": "첫 번째 줄에 정수 $n$이 주어집니다.",
+ "output_spec": "교실 청소 횟수, 복도 청소 횟수, 화장실 청소의 횟수를 차례로 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $1 \\le n \\le 1,000$",
+ "samples": [
+  {
+   "in": "11\n",
+   "out": "4 3 0\n"
+  },
+  {
+   "in": "24\n",
+   "out": "8 6 2\n"
+  }
+ ]
+}

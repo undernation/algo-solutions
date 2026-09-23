@@ -1,0 +1,48 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f43",
+ "title": "병원 거리 최소화하기",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/min-of-hospital-distance/description",
+ "alias": "min-of-hospital-distance",
+ "pid": 43,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2018 상반기 오후 2번 문제",
+ "level": "L11",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "52.6",
+  "submissions": "1733"
+ },
+ "sample_count": 3,
+ "statement_len": 888,
+ "fetched_at": "2026-09-23",
+ "statement": "사람, 병원 혹은 빈 칸으로 이루어져 있는 $n \\times n$ 크기의 도시가 주어집니다. 이 때, 각 사람의 병원 거리는 가장 가까운 병원까지의 거리를 의미하며, 두 격자 $(x_1, y_1)$, $(x_2, y_2)$ 사이의 거리는 $|x_2 - x_1| + |y_2 - y_1|$으로 정의됩니다. 운영상의 이유로 $m$개의 병원만을 남겨두고 나머지를 폐업해야 할 때 남은 $m$개의 병원에 대한 각 사람들의 병원 거리의 총 합이 최소가 되도록 하려고 합니다. \n\n예를 들어 아래의 그림과 같은 상황에서 하나의 병원만 남겨두려고 할 때 \n\n<p align=\"center\">\n  <img width=\"300\" height=\"300\" src=\"https://contents.codetree.ai/problems/23/images/ae0195bd-d979-4f5b-bfec-5a843386e678.png\">\n</p>\n\n아래의 그림과 같이 병원을 고를 경우 병원 거리의 총 합이 $2$ 이지만\n\n<p align=\"center\">\n  <img width=\"300\" height=\"300\" src=\"https://contents.codetree.ai/problems/23/images/61ae7305-40b8-470b-9982-7882c020d6f9.png\">\n</p>\n\n다른 병원을 고를 경우 병원 거리의 총 합은 $4$가 됩니다. \n\n<p align=\"center\">\n  <img width=\"300\" height=\"300\" src=\"https://contents.codetree.ai/problems/23/images/65652e7c-91ff-4930-8b2d-19794354777f.png\">\n</p>\n\n$m$개의 병원을 잘 골라 병원거리의 총 합을 최소화하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 정수 $n$과 $m$이 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터 $(n+1)$번째 줄까지는 각 행에 대해 빈 칸인 경우 $0$, 사람인 경우 $1$, 병원인 경우 $2$로 입력이 공백을 사이에 두고 주어집니다. $m$ 개의 병원을 고르는게 불가능한 입력은 주어지지 않는다고 가정해도 좋습니다.",
+ "output_spec": "병원 $m$개를 남겼을 때 가능한 각 사람들의 병원 거리 총 합 중 최솟값을 출력하세요",
+ "constraints": "- $2 \\le n \\le 50$\n- $1 \\le m \\le 13$\n- $m \\le $ 병원의 수 $\\le 13$\n- 사람의 수 $ \\le 2n$\n- 격자 안의 수는 $0, 1, 2$ 로만 이루어져 있습니다.",
+ "samples": [
+  {
+   "in": "3 1\n0 1 0\n0 2 2\n0 1 0\n",
+   "out": "2\n"
+  },
+  {
+   "in": "3 2\n0 1 2\n0 0 2\n2 1 0\n",
+   "out": "2\n"
+  },
+  {
+   "in": "4 2\n2 1 0 0\n0 0 0 1\n1 2 0 1\n2 0 1 2\n",
+   "out": "7\n"
+  }
+ ],
+ "sample_notes": [
+  "예제 $1$에서는 $(2, 2)$ 위치의 병원을 남겨야 병원 거리의 총 합이 $1 + 1 = 2$가 되어 최소가 됩니다. \n\n만약 $(2, 3)$ 위치의 병원을 남기게 된다면 병원 거리의 총 합이 $2 + 2 = 4$가 되어 최소가 아니게 됩니다.",
+  "",
+  ""
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "489",
+ "title": "음주 코딩",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-is-stable/description",
+ "alias": "is-stable",
+ "pid": 489,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "정렬",
+ "lesson": "Stable Sort",
+ "card": "challenge-is-stable",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "37.7",
+  "submissions": "3114"
+ },
+ "sample_count": 0,
+ "statement_len": 990,
+ "fetched_at": "2026-09-23",
+ "statement": "어느 날 Will은 코딩을 하다가 시원한 맥주에 치킨이 계속 생각나서 코딩을 하다 말고 밖에 뛰쳐나와 치맥을 무한으로 즐겼습니다.\n\n술을 마시면 집중이 잘 된다는 속설이 진짜였을까, Will은 막히던 부분이 술술 해결되는걸 볼 수 있었고, 즐겁게 코딩을 마칠 수 있었습니다.\n\n다음날, 눈을 뜨고 어제 작성한 코드를 훑어보니, 앗! 일부분이 잘못 작성되어 있었습니다. \n\n다행히 코드는 정상적으로 동작하였으나 Will은 조금 의심스러웠습니다.\n\n```jsx\nfunction solution(arr)\n    set sorted = true\n    do\n        sorted = true\n        for i = 0 ... i < arr.size() - 1\n            if a[i] > a[i + 1]\n                set tmp = a[i];\n                a[i] = a[i + 1]\n                a[i + 1] = tmp\n                sorted = false\n                break\n    while sorted == false\n```\n버블 정렬을 의도한 코드 같지만, 내부 구성이 달라서 정상적으로 동작하는지 판단하기 다소 어려웠습니다.\n\n과연 이 코드의 시간복잡도는 어떻게 될까요? 또한, 이 코드는 Stable한 코드일까요?\n\n다음 보기중 올바른 것을 모두 고르세요.\n\n**보기** — 하나 고르기\n\n1. 시간복잡도는 $\\mathcal{O}(N \\log N)$으로 변화하며, Stable하지 않다.\n2. 시간복잡도는 $\\mathcal{O}(N^2)$에서 변화하지 않으며, Stable하지 않다.\n3. 시간복잡도는 $\\mathcal{O}(N^3)$으로 변화하며, Stable하지 않다.\n4. 시간복잡도는 $\\mathcal{O}(N^2)$ 에서 변화하지 않으며, Stable 하다.\n5. 시간복잡도는 $\\mathcal{O}(N^3)$으로 변화하며, Stable 하다."
+}

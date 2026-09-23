@@ -1,0 +1,27 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "582",
+ "title": "수 암호 만들기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-dp-number-pass/description",
+ "alias": "dp-number-pass",
+ "pid": 582,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "DP",
+ "lesson": "아이템을 적절히 고르는 문제",
+ "card": "test-dp-number-pass",
+ "card_type": "Test",
+ "level": "Hard",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "47.8",
+  "submissions": "2362"
+ },
+ "sample_count": 0,
+ "statement_len": 422,
+ "fetched_at": "2026-09-23",
+ "statement": "수를 쪼개서 암호처럼 사용하려고 합니다.\n\n암호를 만드는 과정은 다음과 같습니다.\n\n```\n1. 수를 1, 2, 3, 4의 합으로 바꿉니다.\n2. 수의 합에서 사용된 수들을 일렬로 나열합니다.\n```\n\n예를 들어, $4$를 활용하면\n\n$1 + 1 + 1 + 1 \\to 1111$\n\n$1 + 1 + 2 \\to 112$\n\n$1 + 2 + 1 \\to 121$\n\n$2 + 1 + 1 \\to 211$\n\n$1 + 3 \\to 13$\n\n$2 + 2 \\to 22$\n\n$3 + 1 \\to 31$\n\n$4 \\to 4$\n\n와 같이 $8$개의 암호를 만들 수 있습니다.\n\n이런 방식으로 암호를 만든다고 가정하면, $8$로는 몇 개의 암호를 만들 수 있을까요?\n\n**보기** — 하나 고르기\n\n1. `56`\n2. `68`\n3. `76`\n4. `84`\n5. `108`\n6. `128`",
+ "hint": "동전 거슬러주는 문제에서의 풀이와 비슷한 방식으로 접근하면 됩니다."
+}

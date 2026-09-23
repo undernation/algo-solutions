@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2399",
+ "title": "흰검 칠하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-painting-white-black/description",
+ "alias": "painting-white-black",
+ "pid": 2399,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 I",
+ "lesson": "구간 칠하기",
+ "card": "challenge-painting-white-black",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "45.0",
+  "submissions": "5173"
+ },
+ "sample_count": 2,
+ "statement_len": 420,
+ "fetched_at": "2026-09-23",
+ "statement": "일직선으로 무한히 나열된 타일이 있습니다. 아무 타일에서 시작하여 $N$번의 명령에 걸쳐 움직입니다. \n\n명령은 $x$ $L$, $x$ $R$ 형태로만 주어지며, $x$ $L$의 경우 왼쪽으로 이동하면서 현재 위치 타일 포함 총 $x$칸의 타일을 흰색으로 연속하게 칠하고, $x$ $R$의 경우 오른쪽으로 이동하면서 현재 위치 타일 포함 총 $x$칸의 타일을 검은색으로 연속하게 칠함을 뜻합니다. \n\n각 명령 이후에는 마지막으로 칠한 타일 위치에 서 있는다고 가정합니다. 타일의 색은 덧칠해지면 마지막으로 칠해진 색으로 바뀌는데, 만약 타일 하나가 순서 상관없이 흰색과 검은색으로 각각 두 번 이상 칠해지면 회색으로 바뀌고 더 이상 바뀌지 않습니다. \n\n모든 명령을 실행한 뒤의 흰색, 검은색, 회색의 타일 수를 각각 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $N$이 주어집니다.\n\n두 번째 줄부터는 $N$개의 줄에 걸쳐 명령이 주어집니다. 형태는 $x$ $L$ 혹은 $x$ $R$ 입니다.",
+ "output_spec": "첫 번째 줄에 모든 명령을 실행하고 난 뒤의 흰색, 검은색, 회색 타일 수를 각각 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $1 \\le N \\le 1\\,000$\n- $1 \\le x \\le 100$\n- 각 명령어에서 $x$값 뒤에 오는 문자는 'L' 또는 'R'입니다.",
+ "samples": [
+  {
+   "in": "4\n4 R\n5 L\n7 R\n4 L\n",
+   "out": "2 3 2\n"
+  },
+  {
+   "in": "5\n1 L\n1 L\n1 R\n2 R\n1 L\n",
+   "out": "1 0 1\n"
+  }
+ ],
+ "sample_notes": [
+  "예제 $1$번은 다음과 같은 과정으로 진행됩니다.\n\n\n![Image](https://contents.codetree.ai/problem_factory/images/784731cc-ba0a-4b69-a18b-eee5bec51dec.webp)\n\n\n\n![Image](https://contents.codetree.ai/problem_factory/images/20c7ed64-db66-4bb5-9d71-97af75eff5f0.webp)\n\n\n\n![Image](https://contents.codetree.ai/problem_factory/images/4f0e9ae9-85f0-4c2e-8293-9a6fe9b8bfdc.webp)\n\n\n\n![Image](https://contents.codetree.ai/problem_factory/images/52455706-d114-4e85-90f9-69f7cf54fbdf.webp)\n\n\n\n![Image](https://contents.codetree.ai/problem_factory/images/ffe02ff7-f1e7-477a-bd56-649697a0fd87.webp)",
+  ""
+ ]
+}

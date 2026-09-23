@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "226",
+ "title": "알파벳에 따른 평가",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-evaluation-by-alphabet/description",
+ "alias": "evaluation-by-alphabet",
+ "pid": 226,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "조건문",
+ "lesson": "if elif elif else 조건문",
+ "card": "challenge-evaluation-by-alphabet",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "74.2",
+  "submissions": "7263"
+ },
+ "sample_count": 2,
+ "statement_len": 148,
+ "fetched_at": "2026-09-23",
+ "statement": "영문 대문자를 입력받아 \n\n$S$이면 `Superior`, \n\n$A$이면 `Excellent`, \n\n$B$이면 `Good`, \n\n$C$이면 `Usually`, \n\n$D$이면 `Effort`,\n\n그 외 문자이면 `Failure` 라고 출력하는 프로그램을 작성해주세요.",
+ "input_spec": "문자 하나가 주어집니다.",
+ "output_spec": "입력받은 문자에 따른 평가를 문자열로 출력하세요.",
+ "samples": [
+  {
+   "in": "C\n",
+   "out": "Usually\n"
+  },
+  {
+   "in": "Z\n",
+   "out": "Failure\n"
+  }
+ ]
+}

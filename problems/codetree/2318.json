@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2318",
+ "title": "나눗셈의 나머지",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-remainder-of-division/description",
+ "alias": "remainder-of-division",
+ "pid": 2318,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "1차원 배열",
+ "lesson": "Count 배열",
+ "card": "test-remainder-of-division",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "46.8",
+  "submissions": "6750"
+ },
+ "sample_count": 1,
+ "statement_len": 481,
+ "fetched_at": "2026-09-23",
+ "statement": "두 정수 $A, B$가 주어지면, $A$를 $B$로 나눈 몫을 $A$에 계속해서 저장하는 것을 반복하려고 합니다.\n\n$A$가 $1$이하가 되기 전 까지 나눗셈을 반복한다고 할 때, 각 나눗셈 연산마다 나온 나머지들이 등장한 횟수를 제곱하여 그 합을 출력하는 프로그램을 작성해보세요.\n\n예를 들어, $A = 1000, B = 4$인 경우 나눗셈은 다음과 같이 진행됩니다.\n\n - $1000 \\div 4 = 250$ ... **$0$**\n\n - $250 \\div 4 = 62$ ... **$2$**\n\n - $62 \\div 4 = 15$ ... **$2$**\n\n - $15 \\div 4 = 3$ ... **$3$**\n\n - $3 \\div 4 = 0$ ... **$3$**\n\n\n $5$번의 나눗셈 동안 나머지는 $0$이 $1$번, $2$가 $2$번, $3$이 $2$번 등장했으므로, 각 나머지가 나온 횟수의 제곱의 합은 $1^2 + 2^2 + 2^2 = 9$ 입니다.",
+ "input_spec": "첫 번째 줄에 두 정수 $A, B$가 공백을 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에, 각 나눗셈 연산마다 나온 나머지들이 등장한 횟수를 제곱하여 그 합을 출력합니다.",
+ "constraints": "- $10 \\le A \\le 1\\,000$\n- $2 \\le B \\le 10$",
+ "samples": [
+  {
+   "in": "1000 4\n",
+   "out": "9\n"
+  }
+ ]
+}

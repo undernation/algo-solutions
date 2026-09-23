@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "616",
+ "title": "크루스컬과 프림",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-ga-kruskal-prim/description",
+ "alias": "ga-kruskal-prim",
+ "pid": 616,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 알고리즘",
+ "lesson": "Prim",
+ "card": "challenge-ga-kruskal-prim",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Multiple choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "19.8",
+  "submissions": "4228"
+ },
+ "sample_count": 0,
+ "statement_len": 321,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 중 옳은 것을 모두 고르세요.\n\n**보기** — 모두 고르기\n\n1. 크루스컬과 프림 모두 똑같은 모양의 MST를 반환한다.\n2. 일반적으로 크루스컬은 배열을 이용해 구현하지만, 프림은 우선순위 큐를 이용한다.\n3. 크루스컬 알고리즘으로부터 나온 MST의 가중치 합과 프림 알고리즘으로부터 나온 MST의 가중치 합은 항상 동일하다.\n4. 프림은 아무 시작점에서나 시작해도 되지만, 크루스컬은 가중치가 가장 작은 간선에서부터 시작해야만 한다.\n5. 프림은 굳이 사이클이 만들어질 걱정을 하지 않아도 되지만, 크루스컬은 구현시 사이클이 만들어지지 않도록 처리를 해야만 한다."
+}

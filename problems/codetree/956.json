@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "956",
+ "title": "빙산의 일각 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-the-tip-of-the-iceberg-2/description",
+ "alias": "the-tip-of-the-iceberg-2",
+ "pid": 956,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 II",
+ "lesson": "값을 기준으로 완전탐색",
+ "card": "challenge-the-tip-of-the-iceberg-2",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "72.6",
+  "submissions": "1283"
+ },
+ "sample_count": 1,
+ "statement_len": 471,
+ "fetched_at": "2026-09-23",
+ "statement": "해수면의 높이에 따라 물에 잠기는 빙산들이 있습니다. 빙산들은 일렬로 놓여 있으며, 나열된 순서대로 $1$번부터 $N$번까지 번호가 매겨집니다. $i$번째 빙산의 높이는 $H(i)$입니다.\n\n해수면의 높이를 $s$라고 하면, $H(i) \\le s$인 빙산은 물에 잠기고 $H(i) > s$인 빙산만 물 위로 드러납니다. 해수면의 높이 $s$는 $0$ 이상의 정수 중 어떤 값으로든 설정할 수 있습니다.\n\n물 위로 드러난 빙산들 중 번호가 연속한 것들끼리는 서로 붙어 있는 것으로 보며, 이렇게 붙어 있는 빙산들을 하나의 덩어리로 셉니다. 예를 들어 $N = 3$이고 높이가 각각 $10$, $1$, $10$일 때 해수면의 높이가 $1$이면 $1$번과 $3$번 빙산만 드러나는데, 이 둘은 번호가 연속하지 않으므로 덩어리는 $2$개입니다.\n\n해수면의 높이를 적절하게 설정했을 때 가능한 빙산 덩어리의 최대 개수를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 빙산들의 개수 $N$이 주어집니다.\n\n이후 $N$개의 줄 중 $i$번째 줄에는 $i$번째 빙산의 높이 $H(i)$가 주어집니다.",
+ "output_spec": "첫 번째 줄에 가능한 빙산 덩어리의 최대 개수를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le H(i) \\le 1\\,000$ ($1 \\le i \\le N$)\n- 주어지는 모든 값은 정수입니다.",
+ "samples": [
+  {
+   "in": "9\n3\n5\n2\n3\n2\n1\n4\n2\n3\n",
+   "out": "4\n"
+  }
+ ],
+ "sample_notes": [
+  "$N$이 $9$이고 빙산들의 높이가 $3$, $5$, $2$, $3$, $2$, $1$, $4$, $2$, $3$일때 해수면의 높이가 $3$이라고 가정한다면 높이가 $3$인 빙산까지는 아래와 같이 물에 잠기게 됩니다.\n\n![](https://contents.codetree.ai/problems/956/images/problems-84e58606-f046-416e-98d3-c1e5ca2434d6.svg)\n\n그러면 수면위로 나온 빙산은 $2$번 빙산과 $7$번 빙산밖에 없으므로 빙산 덩어리는 $2$개입니다.\n\n만약 해수면의 높이가 $1$이라고 가정하면 높이가 $1$인 빙산까지만 잠기게 되므로 아래와 같습니다.\n\n![](https://contents.codetree.ai/problems/956/images/problems-8a9dafa1-3a4f-4af1-99e0-17202ae03d4c.svg)\n\n$1$번부터 $5$번까지, $7$번부터 $9$번까지 수면위로 나와있고 붙어있으므로 한 덩어리로 보면 총 두 덩어리 입니다. \n\n만약 해수면의 높이가 $2$라고 가정하면 높이가 $2$인 빙산까지만 잠기게 되므로 아래와 같습니다.\n\n![](https://contents.codetree.ai/problems/956/images/problems-2ebdad1a-3998-43b9-9091-17654aff01ae.svg)\n\n\n$1$번 빙산과 $2$번 빙산이 붙어있고 물에 잠기지 않았으므로 한 덩어리로 봅니다. 그로 인해 가능한 빙산 덩어리의 최대 개수는 $4$입니다."
+ ]
+}

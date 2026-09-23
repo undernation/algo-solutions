@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1314",
+ "title": "원소의 합이 0",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-the-sum-of-the-elements-is-0/description",
+ "alias": "the-sum-of-the-elements-is-0",
+ "pid": 1314,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "중급 자료구조",
+ "lesson": "HashMap",
+ "card": "challenge-the-sum-of-the-elements-is-0",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "120 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "63.3",
+  "submissions": "1270"
+ },
+ "sample_count": 1,
+ "statement_len": 84,
+ "fetched_at": "2026-09-23",
+ "statement": "네 개의 수열 $A$, $B$, $C$, $D$에서 각각 원소를 하나씩 골라 더하였을 때 합이 $0$이되는 경우의 수를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 수열의 크기 $N$이 주어집니다.\n\n두 번째 줄 부터 $4$개의 줄에 거쳐 네 개의 수열 $A$, $B$, $C$, $D$이 한 줄씩 차례대로 각각의 원소가 공백을 두고 출력됩니다.",
+ "output_spec": "합이 $0$이 되는 경우의 수를 출력합니다.",
+ "constraints": "- $1 \\leq N \\leq 5\\,000$\n- $-1\\,000\\,000\\,000 \\leq \\texttt{원소의 크기} \\leq  1\\,000\\,000\\,000$",
+ "samples": [
+  {
+   "in": "6\n-45 -41 -36 -36 26 -32\n22 -27 53 30 -38 -54\n42 56 -37 -75 -10 -6\n-16 30 77 -46 62 45\n",
+   "out": "5\n"
+  }
+ ],
+ "sample_notes": [
+  "다음과 같이 5가지의 경우가 가능합니다.\n\n```\n  A   B   C   D\n\n-45 -27  42  30\n 26  30 -10 -46\n-32  22  56 -46\n-32  30 -75  77\n-32 -54  56  30\n```"
+ ]
+}

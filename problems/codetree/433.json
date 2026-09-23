@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "433",
+ "title": "for와 while",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-for-and-while/description",
+ "alias": "for-and-while",
+ "pid": 433,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "시간, 공간복잡도",
+ "lesson": "반복문의 시간복잡도",
+ "card": "intro-for-and-while",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "61.9",
+  "submissions": "6563"
+ },
+ "sample_count": 0,
+ "statement_len": 325,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 코드의 시간복잡도를 판단해봅시다. (단, $N$은 $5$ 이상의 정수만 주어진다 가정합시다)\n\n```js\nfunction solution(N)\n  set A = 5\n  set B = N\n  while A != B\n    for C = 0 ... C <= N\n      print('hello')\n    A += 1\n  print('bye')\n```\n\n**보기** — 하나 고르기\n\n1. $\\mathcal{O}(1)$\n2. $\\mathcal{O}(\\log{N})$\n3. $\\mathcal{O}(N)$\n4. $\\mathcal{O}(N^2)$\n5. $\\mathcal{O}(N^3)$"
+}

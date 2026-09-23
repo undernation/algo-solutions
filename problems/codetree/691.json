@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "691",
+ "title": "출력결과 9",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-reading-k201529/description",
+ "alias": "reading-k201529",
+ "pid": 691,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "재귀함수",
+ "lesson": "값을 반환하는 재귀함수",
+ "card": "intro-reading-k201529",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "67.1",
+  "submissions": "3889"
+ },
+ "sample_count": 0,
+ "statement_len": 643,
+ "fetched_at": "2026-09-23",
+ "statement": "`trif(8, 4)`의 결과는 무엇인가?\n\n## Python3 코드\n```python\ndef trif(n, k):\n    if n <= k:\n        return n\n    return trif(n - 1, k) + trif(n - 2, k) + trif(n - 3, k)\n```\n\n## C/C++ 코드\n\n```cpp\nint trif(int n, int k) {\n    if (n <= k) return n;\n    return trif(n - 1, k) + trif(n - 2, k) + trif(n - 3, k);\n}\n```\n\n## Java 코드\n\n```java\nint trif(int n, int k) {\n    if (n <= k) return n;\n    return trif(n - 1, k) + trif(n - 2, k) + trif(n - 3, k);\n}\n```\n\n## JavaScript 코드\n\n```JavaScript\nfunction trif(n, k) {\n    if (n <= k) return n;\n    return trif(n - 1, k) + trif(n - 2, k) + trif(n - 3, k);\n}\n```\n\n**보기** — 하나 고르기\n\n1. `85`\n2. `57`\n3. `54`\n4. `68`\n5. `0`"
+}

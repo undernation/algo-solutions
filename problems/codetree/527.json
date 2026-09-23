@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "527",
+ "title": "트리 상식",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-tree-conception/description",
+ "alias": "tree-conception",
+ "pid": 527,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "트리",
+ "lesson": "트리",
+ "card": "test-tree-conception",
+ "card_type": "Test",
+ "level": "Easy",
+ "ptype": "Multiple choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "20.6",
+  "submissions": "11636"
+ },
+ "sample_count": 0,
+ "statement_len": 246,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 중 트리에 대한 설명으로 옳은 것을 모두 고르세요.\n\n**보기** — 모두 고르기\n\n1. 트리의 루트는 `2`개 이상이 될 수 없다.\n2. 트리의 루트는 특별히 정해진 것이 아니며, 상황에 따라 다른 노드를 루트로 지정할 수 있다.\n3. 한 노드가 가질 수 있는 자식의 수는 제한이 없으나, 부모 노드는 최대 `1`개만 존재한다.\n4. 리프 노드는 자식이 절대로 있을 수 없다.\n5. 노드가 하나만 있다면 그건 트리라고 부를 수 없다."
+}

@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1984",
+ "title": "DFS 위상정렬",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-topological-sort-with-dfs/description",
+ "alias": "topological-sort-with-dfs",
+ "pid": 1984,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 알고리즘",
+ "lesson": "Topological Sort",
+ "card": "challenge-topological-sort-with-dfs",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "44.1",
+  "submissions": "1727"
+ },
+ "sample_count": 0,
+ "statement_len": 384,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 그래프에서 DFS 방법을 통해 위상정렬을 진행했을 때의 순서를 골라보세요. \n\n단, $1$번부터 차례대로 $N$번까지 진행하며, 갈 수 있는 곳이 여러 곳이라면 번호가 작은 곳 부터 방문한다고 가정합니다. \n\n또, 진행시 모든 숫자를 다 stack에 넣고 난 뒤, 마지막에 한번에 stack에 있는 값을 빼는 식으로 위상정렬을 진행한다고 가정합시다.\n\n![](https://contents.codetree.ai/problem_factory/images/8acead17-8d2c-4cff-b6c0-4d59ccb06e7b.webp)\n\n**보기** — 순서대로 9개 고르기\n\n1. `1`\n2. `2`\n3. `3`\n4. `4`\n5. `5`\n6. `6`\n7. `7`\n8. `8`\n9. `9`"
+}

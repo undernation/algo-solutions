@@ -1,0 +1,43 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f49",
+ "title": "격자 숫자 놀이",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/matrix-number-play/description",
+ "alias": "matrix-number-play",
+ "pid": 49,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2019 상반기 오후 1번 문제",
+ "level": "L12",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "61.6",
+  "submissions": "1099"
+ },
+ "sample_count": 3,
+ "statement_len": 1570,
+ "fetched_at": "2026-09-23",
+ "statement": "크기가 $3 \\times 3$인 격자판이 있습니다. 해당 격자판을 위한 특별한 놀이를 생각했습니다. 놀이에 필요한 연산은 다음과 같습니다.\n\n1. 행의 개수가 열의 개수보다 크거나 같은 경우\n\n   a. 모든 행에 대하여 정렬을 수행합니다. 정렬 기준은 출현 빈도 수가 적은 순서대로 정렬을 합니다. \n\n   b. 출현하는 횟수가 같은 숫자가 있는 경우에는 해당 숫자가 작은 순서대로 정렬을 수행합니다. \n\n   c. 정렬을 수행할 때 숫자와 해당하는 숫자의 출현 빈도 수를 함께 출력해줍니다.\n\n2. 행의 개수가 열의 개수보다 작은 경우\n\n   a. 모든 열에 대해 위의 과정을 수행해줍니다.\n\n3. 행이나 열의 길이가 $100$을 넘어가는 경우에는 처음 $100$개의 격자를 제외하고는 모두 버립니다.\n\n예를 들면 아래와 같은 격자판이 있을 때, 행의 길이와 열의 길이가 같기 때문에 모든 행을 기준으로 놀이를 수행합니다.\n\n<p align=\"center\">\n<img width=\"300\" height=\"300\" src=\"https://contents.codetree.ai/problems/135/images/18d757c6-9fbb-4dc7-8876-cb0a24398abe.png\">\n</p>\n\n$1$행의 경우 $3, 1, 2$가 각각 한 번씩 등장하므로 출현횟수가 모두 같습니다. 따라서 숫자를 기준으로 작은 순서대로 정렬하고, 각 숫자의 출현횟수인 $1$을 각각의 숫자 옆에 함께 추가합니다.\n\n연산을 수행하고나면 격자의 크기는 아래와 같이 변합니다. 행에 따라 길이가 달라지는 것을 알 수 있습니다.\n\n<p align=\"center\">\n<img width=\"550\" height=\"300\" src=\"https://contents.codetree.ai/problems/135/images/30148e14-b629-45bc-afcc-8992f6003ff4.png\">\n</p>\n\n이때 변화된 격자의 크기는 가장 큰 길이를 기준으로 맞추고 나머지는 $0$을 채워줍니다. 여기까지가 한 번의 연산에 해당하고 총 $1$초가 소요됩니다.\n\n<p align=\"center\">\n<img width=\"550\" height=\"300\" src=\"https://contents.codetree.ai/problems/135/images/038fe101-1540-41ba-a2e9-4881df5c30c0.png\">\n</p>\n\n이후 연산을 수행할 때는 $0$을 무시하고 수행해줍니다. 예를 들어 위의 격자에서 $4$열의 경우 계산 결과는 [$1$, $2$]에게 연산을 수행했을 때의 값과 같아야 합니다. 위의 격자에 연산을 수행해주고 나면 아래와 같이 변화하게 됩니다.\n\n<p align=\"center\">\n<img width=\"550\" height=\"550\" src=\"https://contents.codetree.ai/problems/135/images/3ed07645-00a6-4ef0-a847-7168014700c4.png\">\n</p>\n\n해당 격자판의 $r$번째 행의 $c$번째 열의 수를 $A[r][c]$라고 할 때, 특정 $A[r][c]$의 값이 원하는 값이 되는데까지 걸리는 시간을 구하는 프로그램을 설계하세요.",
+ "input_spec": "첫번째 줄에는 목표 위치 $r, c$와 목표 숫자 $k$가 공백을 사이에 두고 주어집니다. $r$은 몇번째 행인지, $c$는 몇번째 열인지를 의미합니다.\n\n두번째 줄부터 $4$번째 줄까지 배열 $A$에 있는 정수가 주어집니다.",
+ "output_spec": "$A[r][c]$의 값이 $k$가 되기 위한 최소 시간을 출력합니다. 목표 숫자에 도달하는 것이 불가능하거나 답이 $100$초를 초과한다면 $-1$을 출력합니다.",
+ "constraints": "- $1 \\le r,\\ c,\\ k \\le 100$\n- $1 \\le$ 배열 안의 정수 $\\le 100$\n- $r, c, k$ 는 정수입니다.",
+ "samples": [
+  {
+   "in": "4 4 1\n3 1 2\n1 1 2\n5 5 5\n",
+   "out": "2\n"
+  },
+  {
+   "in": "1 1 100\n1 2 3\n1 5 7\n1 9 11\n",
+   "out": "-1\n"
+  },
+  {
+   "in": "5 10 6\n1 3 5\n6 2 3\n1 2 3\n",
+   "out": "45\n"
+  }
+ ]
+}

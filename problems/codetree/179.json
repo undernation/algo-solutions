@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "179",
+ "title": "소수 구하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-get-prime/description",
+ "alias": "get-prime",
+ "pid": 179,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "다중 반복문",
+ "lesson": "n번 반복",
+ "card": "challenge-get-prime",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "80.6",
+  "submissions": "2567"
+ },
+ "sample_count": 2,
+ "statement_len": 42,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$이상 $N$이하의 소수를 오름차순으로 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.",
+ "output_spec": "첫 번째 줄에 $1$이상 $N$이하의 소수를 오름차순으로 각각 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$",
+ "samples": [
+  {
+   "in": "3\n",
+   "out": "2 3\n"
+  },
+  {
+   "in": "8\n",
+   "out": "2 3 5 7\n"
+  }
+ ]
+}

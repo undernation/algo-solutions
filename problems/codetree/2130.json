@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2130",
+ "title": "연속한 K개의 숫자",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-k-numbers-in-a-row/description",
+ "alias": "k-numbers-in-a-row",
+ "pid": 2130,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shorten time Technique",
+ "lesson": "Prefix Sum",
+ "card": "challenge-k-numbers-in-a-row",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "64.5",
+  "submissions": "1075"
+ },
+ "sample_count": 1,
+ "statement_len": 134,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$부터 $N$까지의 숫자들 중 $B$개 숫자들이 빠져 있습니다. 여기에 연속한 $K$개의 숫자들이 최소 한 세트는 존재하게 하려 할 때, 현재 없는 $B$개의 숫자들 중 추가해야 하는 숫자 개수의 최솟값을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N,\\ K,\\ B$가 공백으로 구분되어 주어집니다. \n\n두 번째 줄부터 $B$개의 줄에 걸쳐 없는 숫자들이 각 줄에 하나씩 주어집니다.",
+ "output_spec": "첫 번째 줄에 현재 없는 $B$개의 숫자들 중 추가해야 하는 숫자 개수의 최솟값을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100\\,000$\n- $1 \\le B, K \\le N$",
+ "samples": [
+  {
+   "in": "10 6 5\n2\n10\n1\n5\n9\n",
+   "out": "1\n"
+  }
+ ],
+ "sample_notes": [
+  "$5$를 추가하면 $3$ ~ $8$까지의 $6$개 숫자들이 연속합니다. 이것보다 숫자를 적게 추가해서 조건을 만족하는 경우는 없습니다.\n\n~~1~~ ~~2~~ $3$ $4$ ~~5~~ $6$ $7$ $8$ ~~9~~ ~~10~~"
+ ]
+}

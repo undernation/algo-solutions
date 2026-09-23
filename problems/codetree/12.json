@@ -1,0 +1,50 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "12",
+ "title": "벽 짚고 미로 탈출하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-escape-maze-with-wall-following/description",
+ "alias": "escape-maze-with-wall-following",
+ "pid": 12,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Simulation",
+ "lesson": "격자 안에서 단일 객체를 이동",
+ "card": "challenge-escape-maze-with-wall-following",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "30.7",
+  "submissions": "3699"
+ },
+ "sample_count": 4,
+ "statement_len": 2053,
+ "fetched_at": "2026-09-23",
+ "statement": "$N \\times N$ 크기의 격자 안에서 주어진 위치에서 우측 방향을 바라보고 시작하여 오른쪽 벽을 짚고 쭉 따라가는 방식으로 미로를 탈출하는 프로그램을 작성해보세요. 규칙에 맞게 이동하다 격자 밖을 벗어났을 때 미로를 탈출 한 것으로 봅니다.\n\n벽을 짚고 탈출하는 방식은 다음과 같습니다.\n\n- Step 1 : 바라보고 있는 방향으로 이동하는 것이 가능하지 않은 경우\n\n  - 반 시계 방향으로 $90^{\\circ}$ 만큼 방향을 바꿉니다.\n\n![](https://contents.codetree.ai/problems/12/images/problems-54ccc6f5-373f-4dce-838b-ddf577d1e480.png)\n\n- Step 2 : 바라보고 있는 방향으로 이동하는 것이 가능한 경우\n\n  - Case 1 : 바로 앞이 격자 밖이라면 이동하여 탈출합니다.\n\n![](https://contents.codetree.ai/problems/12/images/problems-425727dd-469b-4b65-bf76-4319077633f5.png)\n\n  - Case 2 :  만약 그 방향으로 이동했다 가정했을 때 해당 방향을 기준으로 오른쪽에 짚을 벽이 있다면 그 방향으로 한 칸 이동합니다.\n\n![](https://contents.codetree.ai/problems/12/images/problems-db7c3d60-bb29-427f-aee7-cc8640fc35bd.png)\n\n  - Case 3 : 만약 그 방향으로 이동했다 가정했을 때 해당 방향을 기준으로 오른쪽에 벽이 존재하지 않는다면, 현재 방향으로 한 칸 이동 후 방향을 시계 방향으로 $90^{\\circ}$ 만큼 방향을 틀어 한 칸 더 전진하여 오른쪽에 벽이 있게끔 합니다.\n\n![](https://contents.codetree.ai/problems/12/images/problems-4e35f504-8dd5-419e-af85-2e23eb8a14a1.png)\n\n이러한 과정을 반복하게 됩니다.\n\n다음은 탈출을 하게 되는 예시 중 하나 입니다.\n![](https://contents.codetree.ai/problems/12/images/problems-865a09e2-a25c-4aff-9932-ca1105ac983d.png)\n![](https://contents.codetree.ai/problems/12/images/problems-86e5f933-998f-4ce2-86a1-68db0c7cb67b.png)\n![](https://contents.codetree.ai/problems/12/images/problems-e1bc5aff-0907-4273-a223-955ea72b687c.png)\n![](https://contents.codetree.ai/problems/12/images/problems-cae6bce8-aa24-4f3b-9a01-afe7cb209fff.png)\n![](https://contents.codetree.ai/problems/12/images/problems-c1c3ce59-77c9-40bc-90f1-a45615170d3d.png)\n![](https://contents.codetree.ai/problems/12/images/problems-2c72a2c9-0655-4e3e-b1f4-4b1fd9a69c76.png)\n![](https://contents.codetree.ai/problems/12/images/problems-8a992b34-7805-4ae7-a2ac-b335979a7a26.png)\n![](https://contents.codetree.ai/problems/12/images/problems-2b9fd1c8-5682-47a3-9b3c-3b5606487478.png)\n![](https://contents.codetree.ai/problems/12/images/problems-3e9ce97f-24d5-4010-8aa4-d173dfd0fb0a.png)\n![](https://contents.codetree.ai/problems/12/images/problems-880aa737-a77f-450a-bf37-dcd63de7a2e5.png)\n\n.",
+ "input_spec": "첫째 줄에는 격자의 크기를 나타내는 양의 정수 $N$이 주어집니다.\n\n둘째 줄에는 시작 위치 $(x,\\ y)$가 주어집니다. $x$번째 행, $y$번째 열에서 시작함을 의미합니다.\n($1 \\le x \\lt N$, $1 \\le y \\le N$)\n\n다음 $N$개의 줄에 걸쳐 각 행마다 미로의 모습을 나타내는 문자 $N$개가 공백없이 주어집니다. 해당 위치에 벽이 있는 경우에는 `#` 문자가, 벽이 없다면 `.` 문자가 주어집니다.\n\n시작 위치 $(x,\\ y)$에는 벽이 절대 주어지지 않고, $(x+1,\\ y)$ 위치에는 항상 벽이 주어진다고 가정해도 좋습니다.",
+ "output_spec": "방향을 트는 데에는 시간이 걸리지 않고 한 번 이동하는 데에는 $1$초의 시간이 걸린다고 했을 때, 미로를 탈출하는 데 걸리는 시간을 출력합니다. 오른쪽 벽을 짚고 따라가는 방식만으로 미로를 탈출하는 것이 불가능하다면 $-1$을 출력합니다.",
+ "constraints": "- $1 \\le x < N$\n- $1 \\le y \\le N$\n- $2 \\le N \\le 100$",
+ "samples": [
+  {
+   "in": "3\n1 1\n.#.\n#..\n...\n",
+   "out": "1\n"
+  },
+  {
+   "in": "3\n1 1\n...\n##.\n...\n",
+   "out": "7\n"
+  },
+  {
+   "in": "3\n1 1\n...\n#..\n...\n",
+   "out": "5\n"
+  },
+  {
+   "in": "3\n1 2\n...\n.#.\n...\n",
+   "out": "-1\n"
+  }
+ ]
+}

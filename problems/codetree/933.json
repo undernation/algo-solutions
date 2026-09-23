@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "933",
+ "title": "괄호 쌍 만들어주기 3",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-pair-parentheses-3/description",
+ "alias": "pair-parentheses-3",
+ "pid": 933,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 I",
+ "lesson": "자리 수 단위로 완전탐색",
+ "card": "intro-pair-parentheses-3",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "94.4",
+  "submissions": "3688"
+ },
+ "sample_count": 1,
+ "statement_len": 335,
+ "fetched_at": "2026-09-23",
+ "statement": "문자 $'('$, $')'$로만 이루어진 문자열 $A$가 주어지면, 여는 괄호와 닫는 괄호로 쌍을 이룰 수 있는 서로 다른 가짓수를 구하는 프로그램을 작성해보세요. 단, 여는 괄호가 닫는 괄호보다 먼저 나와야 합니다.\n\n문자열 $A$의 길이를 $|A|$, $i$번째 문자를 $A_i$라고 하겠습니다. 즉, $1 \\le i < j \\le |A|$를 만족하는 두 위치 $i$, $j$를 골라 $A_i$가 $'('$이고 $A_j$가 $')'$인 쌍 $(i, j)$의 개수를 세야 합니다.\n\n각 쌍은 서로 독립적으로 셉니다. 따라서 같은 위치에 있는 괄호가 서로 다른 여러 쌍에 중복해서 쓰일 수 있습니다.",
+ "input_spec": "첫 번째 줄에 문자 $'('$, $')'$로만 이루어진 문자열 $A$가 주어집니다.",
+ "output_spec": "첫 번째 줄에 조건을 만족하는 괄호 쌍의 가짓수를 출력합니다.",
+ "constraints": "- $1 \\le |A| \\le 100$\n- 문자열 $A$의 모든 문자 $A_i$는 $'('$ 또는 $')'$입니다. ($1 \\le i \\le |A|$)",
+ "samples": [
+  {
+   "in": ")(()())\n",
+   "out": "8\n"
+  }
+ ],
+ "sample_notes": [
+  "주어진 문자열에서 조건을 만족하는 위치 쌍 $(i, j)$는 다음과 같이 $8$가지입니다.\n\n- $(2, 4)$\n- $(2, 6)$\n- $(2, 7)$\n- $(3, 4)$\n- $(3, 6)$\n- $(3, 7)$\n- $(5, 6)$\n- $(5, 7)$"
+ ]
+}

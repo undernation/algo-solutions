@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "543",
+ "title": "힙 메소드",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-heap-methods/description",
+ "alias": "heap-methods",
+ "pid": 543,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "트리",
+ "lesson": "Heap",
+ "card": "intro-heap-methods",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "60.6",
+  "submissions": "2116"
+ },
+ "sample_count": 0,
+ "statement_len": 879,
+ "fetched_at": "2026-09-23",
+ "statement": "최대 힙의 동작 과정을 기반으로, 삽입, 삭제 메소드를 완성해봅시다.\n\n- `insert(arr, n, x)`: 힙에 새 원소 $x$를 추가합니다.\n- `heapify(arr, n, i)`: 인덱스 $i$를 루트로 하는 서브트리가 루트를 제외하면 올바른 힙일 때,  해당 서브트리가 올바른 힙 구조를 이루도록 만드는 함수입니다.\n- `remove(arr, n)`: 마지막 원소값을 루트에 덮어씌우고, 마지막 원소가 있던 노드를 지운 후  `heapify`를 호출하여 전체 힙 구조를 재정렬하는 함수입니다.\n\n```jsx\nfunction insert(arr[], n, x)\n  arr.append(x)\n\n  set i = (1)\n  while i > 1 and arr[(2)] < arr[i] \n    swap(arr[i], arr[i / 2])\n    i = (3)\n\nfunction heapify(arr[], n, i)\n  set largest = i\n  set l = i * 2\n  set r = i * 2 + 1\n\n  if l < n && arr[l] > arr[largest]\n    largest = l\n\n  if r < n && arr[r] > arr[largest]\n    largest = r\n\n  if largest != i\n    swap(arr[i], arr[largest])\n    heapify(arr, n, largest)\n\nfunction remove(arr[], n)\n  arr[1] = (4)\n  delete (5)\n  heapify(arr, n - 1, (6))\n```\n\n**보기** — 순서대로 6개 고르기\n\n1. `1`\n2. `n`\n3. `i`\n4. `i/2`\n5. `arr[1]`\n6. `arr[n]`\n7. `x`\n8. `n + 1`"
+}

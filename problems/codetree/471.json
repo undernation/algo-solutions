@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "471",
+ "title": "삽입 정렬",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-insertion-sort/description",
+ "alias": "insertion-sort",
+ "pid": 471,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "정렬",
+ "lesson": "삽입 정렬",
+ "card": "intro-insertion-sort",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "37.9",
+  "submissions": "4864"
+ },
+ "sample_count": 0,
+ "statement_len": 605,
+ "fetched_at": "2026-09-23",
+ "statement": "삽입 정렬은 마치 카드게임에서 카드를 정렬하는 방식과 비슷하게 작동하는 정렬 알고리즘입니다. 배열의 두 번째 요소부터 시작하여 그 값을 이전의 모든 요소들과 비교하면서, 자신의 위치를 찾아 삽입하는 과정을 반복합니다.\n\n정렬되지 않은 부분에서 하나의 요소를 골라 이미 정렬된 부분의 적절한 위치에 삽입하는 방식으로, 마치 새로운 카드를 받았을 때 손에 들고 있는 카드 사이의 알맞은 자리를 찾아 끼워 넣는 것과 같습니다. 이미 거의 정렬된 데이터에 대해서는 매우 빠르게 작동하는 특징이 있습니다.\n\n삽입 정렬의 코드를 완성해봅시다.\n```jsx\nfunction insertion_sort(arr[])\n  set size = arr.size\n  for i = 1 ... i < size\n    set j = (1)\n    set key = arr[i]\n    while j >= 0 && arr[(2)] > key\n      arr[(3)] = arr[j]\n      j--\n    arr[(4)] = key\n  return arr\n```\n\n**보기** — 순서대로 4개 고르기\n\n1. `i - 1`\n2. `i`\n3. `i + 1`\n4. `j - 1`\n5. `j`\n6. `j + 1`"
+}

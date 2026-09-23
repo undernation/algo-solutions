@@ -1,0 +1,39 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f328",
+ "title": "나무박멸",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/tree-kill-all/description",
+ "alias": "tree-kill-all",
+ "pid": 328,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2022 상반기 오후 2번 문제",
+ "level": "L12",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "29.1",
+  "submissions": "11480"
+ },
+ "sample_count": 2,
+ "statement_len": 2589,
+ "fetched_at": "2026-09-23",
+ "statement": "n * n 격자에 나무의 그루 수와 벽의 정보가 주어집니다.\n\n나무의 성장과 번식력이 좋아서 제초제를 뿌려 나무의 성장을 억제하고자 합니다.\n제초제의 경우 k의 범위만큼 대각선으로 퍼지며, 벽이 있는 경우 가로막혀서 전파되지 않습니다.\n다음과 같이 초기 조건이 주어진다고 가정할 때, 1년동안 나무의 성장과 억제는 다음과 같이 이뤄집니다.\n\n<p align=\"center\">\n<img width=\"300\" src=\"https://contents.codetree.ai/problems/2415/images/6b47f725-f7b9-4b81-9b26-cb4d5fb348cf.png\">\n</p>\n\n1. 인접한 네 개의 칸 중 나무가 있는 칸의 수만큼 나무가 성장합니다. 성장은 모든 나무에게 동시에 일어납니다.\n\n<p align=\"center\">\n<img width=\"300\" src=\"https://contents.codetree.ai/problems/2415/images/00714d98-f614-486a-9659-4def9103e6da.png\">\n</p>\n\n2. 기존에 있었던 나무들은 인접한 4개의 칸 중 벽, 다른 나무, 제초제 모두 없는 칸에 번식을 진행합니다. \n 이때 각 칸의 나무 그루 수에서 총 번식이 가능한 칸의 개수만큼 나누어진 그루 수만큼 번식이 되며, 나눌 때 생기는 나머지는 버립니다. 번식의 과정은 모든 나무에서 동시에 일어나게 됩니다.\n\n<p align=\"center\">\n<img width=\"300\" src=\"https://contents.codetree.ai/problems/2415/images/455b84b9-bb03-442d-aef1-ca9febcf6fe9.png\">\n</p>\n\n3. 각 칸 중 제초제를 뿌렸을 때 나무가 가장 많이 박멸되는 칸에 제초제를 뿌립니다. 나무가 없는 칸에 제초제를 뿌리면 박멸되는 나무가 전혀 없는 상태로 끝이 나지만, 나무가 있는 칸에 제초제를 뿌리게 되면 4개의 대각선 방향으로 k칸만큼 전파되게 됩니다. 단 전파되는 도중 벽이 있거나 나무가 아예 없는 칸이 있는 경우, 그 칸 까지는 제초제가 뿌려지며 그 이후의 칸으로는 제초제가 전파되지 않습니다. 제초제가 뿌려진 칸에는 c년만큼 제초제가 남아있다가 c+1년째가 될 때 사라지게 됩니다. 제초제가 뿌려진 곳에 다시 제초제가 뿌려지는 경우에는 새로 뿌려진 해로부터 다시 c년동안 제초제가 유지됩니다.\n\n k가 2일 때, 각각의 칸에 제초제가 뿌려진 경우 박멸되는 나무의 총 그루 수는 다음과 같습니다.\n<p align=\"center\">\n<img width=\"300\" src=\"https://contents.codetree.ai/problems/2415/images/2679ea4f-ec6a-475b-ba65-1b48a6c50fbf.png\">\n</p>\n\n 3행 4열이 가장 많은 나무를 박멸시키는 것을 알 수 있으며, 해당 칸에 제초제를 뿌리게 됩니다. 만약 박멸시키는 나무의 수가 동일한 칸이 있는 경우에는 행이 작은 순서대로, 만약 행이 같은 경우에는 열이 작은 칸에 제초제를 뿌리게 됩니다.\n\n 3행 4열에 제초제를 뿌린 이후에는 다음과 같이 변하게 됩니다.\n\n<p align=\"center\">\n<img width=\"300\" src=\"https://contents.codetree.ai/problems/2415/images/468fa6cb-e13c-4aa7-84cc-9dc03b5a1ec0.png\">\n</p>\n\n각 3개의 과정이 1년에 걸쳐 진행된다고 했을 때, m년 동안 총 박멸한 나무의 그루 수를 구하는 프로그램을 작성해보세요.\n\n위의 경우에서 제초제가 1년간 유지된다고 가정했을 때, 그 다음 1년동안의 과정을 그려보면 다음과 같습니다.\n\n- 시작\n\n<p align=\"center\">\n<img width=\"300\" src=\"https://contents.codetree.ai/problems/2415/images/ea7adf64-b75b-4b30-8d3e-8d20e22447af.png\">\n</p>\n\n- 나무의 성장\n\n<p align=\"center\">\n<img width=\"300\" src=\"https://contents.codetree.ai/problems/2415/images/9352da58-b421-44b1-ac6a-a51b4aece925.png\">\n</p>\n\n- 나무의 번식\n\n<p align=\"center\">\n<img width=\"300\" src=\"https://contents.codetree.ai/problems/2415/images/84827b55-2db4-43d1-8629-fa89443f276e.png\">\n</p>\n\n- 제초제를 뿌릴 위치 선정\n\n<p align=\"center\">\n<img width=\"300\" src=\"https://contents.codetree.ai/problems/2415/images/c15ae6ff-ae33-48a4-a87c-337097e4506a.png\">\n</p>\n\n- 제초제를 뿌리는 작업 진행\n\n<p align=\"center\">\n<img width=\"300\" src=\"https://contents.codetree.ai/problems/2415/images/bde8698c-82cf-47bf-ae4b-dd8dd53adc05.png\">\n</p>",
+ "input_spec": "첫 번째 줄에 격자의 크기 $n$, 박멸이 진행되는 년 수 $m$, 제초제의 확산 범위 $k$, 제초제가 남아있는 년 수 $c$가 공백을 사이에 두고 주어지며, 모두 정수입니다.\n\n그 다음 $n$개의 줄에 걸쳐서, $n$개의 정수가 공백으로 구분되어 격자의 정보가 주어집니다. 값은 $-1$, $0$, 또는 양의 정수이며, $-1$은 벽, $0$은 빈 칸, 양수는 나무의 그루 수를 의미합니다.",
+ "output_spec": "m년 동안 총 박멸한 나무의 그루 수를 구하세요.",
+ "constraints": "- $5 \\le n \\le 20$  \n- $1 \\le m \\le 1\\,000$  \n- $1 \\le k \\le 20$  \n- $1 \\le c \\le 10$  \n- 격자의 각 칸 값은 $-1$, $0$, 또는 $1 \\le \\texttt{값} \\le 100$입니다.",
+ "samples": [
+  {
+   "in": "5 1 2 1\n0 0 0 0 0\n0 30 23 0 0\n0 0 -1 0 0\n0 0 17 46 77\n0 0 0 12 0\n",
+   "out": "179\n"
+  },
+  {
+   "in": "5 2 2 1\n0 0 0 0 0\n0 30 23 0 0\n0 0 -1 0 0\n0 0 17 46 77\n0 0 0 12 0\n",
+   "out": "330\n"
+  }
+ ]
+}

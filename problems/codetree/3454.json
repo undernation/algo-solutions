@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3454",
+ "title": "외판원 순회 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-traveling-salesman-problem-2/description",
+ "alias": "traveling-salesman-problem-2",
+ "pid": 3454,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Advanced DP",
+ "lesson": "Bitmask DP",
+ "card": "intro-traveling-salesman-problem-2",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 2초 · C++17 0.5초",
+  "memory": "192 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "60.2",
+  "submissions": "93"
+ },
+ "sample_count": 1,
+ "statement_len": 259,
+ "fetched_at": "2026-09-23",
+ "statement": "코드트리 마을에는 총 $N$개의 지점이 존재합니다. 각 지점은 $1$번부터 $N$번까지의 번호가 부여되어 있습니다. 외판원으로 일하고 있는 Sam은 $1$번 지점에서 출발하여 모든 지점을 정확히 딱 한 번씩만 방문하고 다시 $1$번 지점으로 돌아오려고 합니다.\n\n$i$번 지점에서 $j$번 지점으로 이동하는 데 드는 비용 정보 $A_{ij}$가 주어졌을 때, 모든 지점을 겹치지 않게 방문하고 되돌아오는 데 필요한 최소 비용의 합을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.\n\n둘째 줄부터 $N$개의 줄에 걸쳐 지점간 이동에 대한 정보가 주어집니다. $i$번째 줄에는 $A_{ij}$에 해당하는 $N$개의 정수가 공백을 두고 주어집니다. $0$은 이동할 수 없음을 뜻하며, $A_{ii}=0$임을 가정해도 좋습니다.",
+ "output_spec": "모든 지점을 방문하고 다시 처음으로 되돌아오기 위해 필요한 최소 비용을 출력합니다. 불가능한 입력은 주어지지 않는다고 가정해도 좋습니다.",
+ "constraints": "- $2 \\le N \\le 16$\n- $0 \\le A_{ij} \\le 10\\,000$ ($1 \\le i, j \\le N$)\n- $A_{ii} = 0$",
+ "samples": [
+  {
+   "in": "4\n0 2 5 9\n3 0 8 11\n7 3 0 10\n9 5 7 0\n",
+   "out": "22\n"
+  }
+ ],
+ "sample_notes": [
+  "$1\\to2\\to3\\to4\\to1$ 순서로 이동하면 비용이 총 $29$ ($2+8+10+9$)가 듭니다.  \n하지만, $1\\to4\\to3\\to2\\to1$ 순서로 이동하면 비용이 총 $22$ ($9+7+3+3$)로 최소가 됩니다."
+ ]
+}

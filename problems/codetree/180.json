@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "180",
+ "title": "원소 10개의 합",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-sum-of-10-elements/description",
+ "alias": "sum-of-10-elements",
+ "pid": 180,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "1차원 배열",
+ "lesson": "한 줄에 여러 개 입력",
+ "card": "intro-sum-of-10-elements",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "89.3",
+  "submissions": "6921"
+ },
+ "sample_count": 2,
+ "statement_len": 55,
+ "fetched_at": "2026-09-23",
+ "statement": "$10$개의 원소가 주어졌을 때, 주어진 $10$개의 원소의 합을 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $10$개의 원소가 각각 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 $10$개의 원소의 합을 출력합니다.",
+ "constraints": "- $1 \\leq \\texttt{주어지는 숫자} \\leq 100$",
+ "samples": [
+  {
+   "in": "1 1 1 1 1 1 1 1 1 1\n",
+   "out": "10\n"
+  },
+  {
+   "in": "1 5 4 6 1 2 1 5 2 7\n",
+   "out": "34\n"
+  }
+ ]
+}

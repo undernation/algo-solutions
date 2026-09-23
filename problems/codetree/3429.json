@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3429",
+ "title": "부분 문자열 등장 횟수 3",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-substring-occurrence-count-3/description",
+ "alias": "substring-occurrence-count-3",
+ "pid": 3429,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "String",
+ "lesson": "KMP",
+ "card": "test-substring-occurrence-count-3",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "85.4",
+  "submissions": "41"
+ },
+ "sample_count": 2,
+ "statement_len": 150,
+ "fetched_at": "2026-09-23",
+ "statement": "소문자 알파벳으로만 이루어진 문자열 $T$와 문자열 $P$가 주어졌을 때, 문자열 $P$를 문자열 $T$에서 부분 문자열로서 겹치지 않게 최대 몇 번 고를 수 있는지를 판단하는 프로그램을 작성해보세요. 여기서 부분 문자열이란 연속하여 나올 수 있는 문자열을 의미합니다.",
+ "input_spec": "첫 번째 줄에 문자열 $T$가 주어집니다.\n\n두 번째 줄에 문자열 $P$가 주어집니다.\n\n문자열 $T$와 문자열 $P$는 소문자 알파벳으로만 이루어져 있습니다.",
+ "output_spec": "문자열 $T$에서 문자열 $P$를 부분 문자열로서 겹치지 않게 최대로 고를 수 있는 횟수를 출력합니다.",
+ "constraints": "- $1\\le \\texttt{문자열}\\ T \\texttt{의 길이}, \\texttt{문자열}\\ P \\texttt{의 길이} \\le100\\,000$\n- 문자열 $T$와 문자열 $P$는 소문자 알파벳으로만 이루어져 있습니다.",
+ "samples": [
+  {
+   "in": "ababa\naba\n",
+   "out": "1\n"
+  },
+  {
+   "in": "ababa\na\n",
+   "out": "3\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 예제에서 $aba$는 $ababa$의 부분 문자열로서 겹치지 않게 선택할 수 있는 최대 횟수는 $1$번입니다.",
+  "두 번째 예제에서 $a$는 $ababa$의 부분 문자열로서 겹치지 않게 최대 $3$번 선택할 수 있습니다."
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "872",
+ "title": "Next Level",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-next-level/description",
+ "alias": "next-level",
+ "pid": 872,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "정렬",
+ "lesson": "객체",
+ "card": "intro-next-level",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "89.6",
+  "submissions": "4238"
+ },
+ "sample_count": 1,
+ "statement_len": 262,
+ "fetched_at": "2026-09-23",
+ "statement": "\"아이디\"와 \"레벨\"을 함께 저장할 수 있는 자료형을 사용해 $2$개의 객체를 만들어 보세요.\n\n첫 번째 객체는 \"아이디\"를 `codetree`, \"레벨\"을 $10$으로 초기화하고, 두 번째 객체는 입력받은 값으로 초기화합니다. 그 다음 아래 출력 형식에 맞게 두 객체의 정보를 출력하는 프로그램을 작성해보세요.\n\n단, C 언어에서는 구조체를 사용하고, 그 외 언어에서는 class 또는 pair·tuple처럼 여러 값을 하나로 묶을 수 있는 자료형을 사용해야 합니다.",
+ "input_spec": "첫 번째 줄에 \"아이디\"와 \"레벨\"이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "총 두 줄을 출력합니다.\n\n- 첫 번째 줄에는 초기화한 객체의 정보를 출력합니다.\n- 두 번째 줄에는 입력받은 값으로 만든 객체의 정보를 출력합니다.\n\n각 줄은 `user 아이디 lv 레벨` 형식으로, 단어 사이에 공백을 하나씩 두고 출력합니다.",
+ "constraints": "- \"아이디\"의 길이를 $L$이라고 할 때, $1 \\le L \\le 10$입니다.\n- \"아이디\"는 소문자 알파벳으로만 이루어져 있습니다.\n- \"레벨\"을 $V$라고 할 때, $V$는 $1 \\le V \\le 30$인 정수입니다.",
+ "samples": [
+  {
+   "in": "hello 28\n",
+   "out": "user codetree lv 10\nuser hello lv 28\n"
+  }
+ ],
+ "sample_notes": [
+  "예제에서 `user codetree lv 10` 은 초기화한 것이고, `user hello lv 28`은 입력받은 것 입니다."
+ ]
+}

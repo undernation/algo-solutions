@@ -1,0 +1,39 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "321",
+ "title": "별표 출력하기 4",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-print-star-4/description",
+ "alias": "print-star-4",
+ "pid": 321,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "다중 반복문",
+ "lesson": "행에 대해 대칭인 별 출력",
+ "card": "challenge-print-star-4",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "91.1",
+  "submissions": "3315"
+ },
+ "sample_count": 1,
+ "statement_len": 141,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $N$의 값을 입력받아 별표를 출력하는 프로그램을 아래 예를 참고하여 작성해보세요.\n\n예)\n\n$N$에 $2$를 입력받는 경우\n```\n* *\n*  \n* *\n```\n\n$N$에 $3$을 입력받는 경우\n```\n* * *\n* *\n*\n* *\n* * *\n```",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.",
+ "output_spec": "주어지는 $N$의 값에 따른 별표를 입출력 예제와 같이 출력합니다.",
+ "constraints": "- $1 \\le N \\le 10$",
+ "hint": "예) $N$이 $3$인 경우\n```\ni                  별의 개수\n\n0    * * *            3\n1    * *              2\n2    *                1        별의 개수: N-i\n--------------------------------------------------\n0    * *              2        별의 개수: N-1+i\n1    * * *            3\n```",
+ "samples": [
+  {
+   "in": "5\n",
+   "out": "* * * * *\n* * * *\n* * *\n* *\n*\n* *\n* * *\n* * * *\n* * * * *\n"
+  }
+ ]
+}

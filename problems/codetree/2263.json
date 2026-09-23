@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2263",
+ "title": "합과 평균의 차",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-sub-of-average-and-sum/description",
+ "alias": "sub-of-average-and-sum",
+ "pid": 2263,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "연산자",
+ "lesson": "합과 평균",
+ "card": "test-sub-of-average-and-sum",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "86.3",
+  "submissions": "21294"
+ },
+ "sample_count": 1,
+ "statement_len": 65,
+ "fetched_at": "2026-09-23",
+ "statement": "세 개의 정수가 주어졌을 때, 세 정수의 합과 평균을 구하고, 합에서 평균을 뺀 값을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 세 정수 $a$, $b$, $c$가 공백을 두고 주어집니다.\n\n단, $a$, $b$, $c$의 합은 $3$의 배수임을 가정하여도 좋습니다.",
+ "output_spec": "첫 번째 줄에는 합을 출력합니다.\n\n두 번째 줄에는 평균을 출력합니다.\n\n세 번째 줄에는 합에서 평균을 뺀 값을 출력합니다.",
+ "constraints": "- $1 \\le a, b, c \\le 100$",
+ "samples": [
+  {
+   "in": "10 3 5\n",
+   "out": "18\n6\n12\n"
+  }
+ ]
+}

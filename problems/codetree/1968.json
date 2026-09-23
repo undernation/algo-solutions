@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1968",
+ "title": "동적계획법 적용",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-apply-dynamic-programming/description",
+ "alias": "apply-dynamic-programming",
+ "pid": 1968,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "DP",
+ "lesson": "동적계획법",
+ "card": "test-apply-dynamic-programming",
+ "card_type": "Test",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "34.3",
+  "submissions": "7539"
+ },
+ "sample_count": 0,
+ "statement_len": 411,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$부터 $N$까지의 정수의 곱을 구하는 코드를 작성하고자 다음과 같은 점화식을 적어보았습니다.\n\n```\n- F(N) = F(N - 1) * N            (N > 1)           - 점화식\n- F(1) = 1                                         - 초기조건\n```\n\n이를 코드로 구현하고자 다음과 같은 코드를 작성해보았습니다. $F$ 배열은 처음에 전부 $0$으로 초기화 되어있다고 했을 때, $N = 4$일 때의 출력 결과는 어떻게 될까요?\n\n```jsx\nF[1] = 1\nfor i = N ... i >= 2\n    F[i] = F[i - 1] * i\n\nprint(F[N])\n```\n\n**보기** — 하나 고르기\n\n1. `0`\n2. `1`\n3. `2`\n4. `6`\n5. `24`"
+}

@@ -1,0 +1,37 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "236",
+ "title": "변수 출력하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-outputing-variables/description",
+ "alias": "outputing-variables",
+ "pid": 236,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "출력",
+ "lesson": "출력 형식",
+ "card": "challenge-outputing-variables",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "89.6",
+  "submissions": "15926"
+ },
+ "sample_count": 1,
+ "statement_len": 60,
+ "fetched_at": "2026-09-23",
+ "statement": "변수 $a$, $b$에 각각 $3$, `C`을 넣어주고, 출력 형식에 알맞게 출력하는 프로그램을 작성하세요.",
+ "input_spec": "입력이 주어지지 않습니다.",
+ "output_spec": "$a$, $b$의 값을 순서대로 출력하되 사이에 `...`를 포함합니다.",
+ "samples": [
+  {
+   "in": "",
+   "out": "3...C\n"
+  }
+ ]
+}

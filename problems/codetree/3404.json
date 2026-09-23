@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3404",
+ "title": "트리 복원하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-restore-tree/description",
+ "alias": "restore-tree",
+ "pid": 3404,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "MST",
+ "lesson": "Prim",
+ "card": "challenge-restore-tree",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "140 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "80.0",
+  "submissions": "65"
+ },
+ "sample_count": 2,
+ "statement_len": 251,
+ "fetched_at": "2026-09-23",
+ "statement": "$n$개의 노드와 $n - 1$개의 간선으로 이루어진 트리가 있습니다. 트리의 특징 중 하나는 특정 노드 $a$에서 특정 노드 $b$로 가는 경로가 유일하다는 점입니다. 트리의 각 간선에는 가중치가 적혀있지만 이 정보가 주어지지는 않고, 우리에게는 모든 노드 쌍 $(a, b)$에 대해 노드 $a$에서 노드 $b$로 가는 경로상에 있는 간선의 가중치의 합 정보만이 주어집니다. 이 정보를 바탕으로 기존 트리 정보를 복원해내는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 노드의 개수 $n$이 주어집니다.\n\n두 번째 줄부터는 $n$개의 줄에 걸쳐 모든 노드 쌍 $(a, b)$에 대해 노드 $a$에서 노드 $b$로 가는 경로상에 있는 간선의 가중치의 합 정보가 주어집니다.",
+ "output_spec": "처음 트리 정보에 대해 복원된 결과를 출력합니다. $n - 1$개의 줄에 걸쳐 $(a, b, w)$ 형태로 공백을 사이에 두고 출력합니다. 이는 노드 $a$에서 노드 $b$가 가중치가 $w$인 간선을 사이에 두고 직접 연결되어 있음을 의미합니다. 단, $(a, b, w)$가 사전순으로 앞선 쌍이 더 먼저 나오도록 하며, 항상 $a < b$를 만족하도록 출력합니다.",
+ "constraints": "- $1 \\leq n \\leq 500$\n - $1 \\leq$ 가중치의 합 $\\leq 100,000$",
+ "samples": [
+  {
+   "in": "3\n0 1 1\n1 0 2\n1 2 0\n",
+   "out": "1 2 1\n1 3 1\n"
+  },
+  {
+   "in": "4\n0 3 2 3\n3 0 5 6\n2 5 0 1\n3 6 1 0\n",
+   "out": "1 2 3\n1 3 2\n3 4 1\n"
+  }
+ ]
+}

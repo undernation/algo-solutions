@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "533",
+ "title": "2 + 1",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-traversal-inference/description",
+ "alias": "traversal-inference",
+ "pid": 533,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "트리",
+ "lesson": "이진 트리와 탐색",
+ "card": "challenge-traversal-inference",
+ "card_type": "Problem",
+ "level": "Hard",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "59.4",
+  "submissions": "3028"
+ },
+ "sample_count": 0,
+ "statement_len": 414,
+ "fetched_at": "2026-09-23",
+ "statement": "거짓말 같을 수 있지만, 이진 트리의 순회 중 중위 순회 결과를 알고 있으면서 전위 순회 혹은 후위 순회 중 하나의 결과를 알고 있다면 다른 하나의 결과도 유추할 수 있으며, 심지어 전체 트리를 구성할 수도 있습니다!\n\n어떠한 트리 구조인지 알 수 없는 상태에서, 중위 순회와 후위 순회의 결과를 알고 있다고 가정합시다. 중위 순회와 후위 순회의 결과는 다음과 같습니다.\n\n```\n중위 순회: 1-8-7-5-4-2-3-6\n후위 순회: 1-7-8-5-2-6-3-4\n```\n\n이 결과를 기반으로, 전위 순회의 결과를 구해봅시다.\n\n(힌트: 순회 알고리즘의 동작 원리를 정확하게 이해하고 있어야 합니다.)\n\n**보기** — 순서대로 8개 고르기\n\n1. `1`\n2. `2`\n3. `3`\n4. `4`\n5. `5`\n6. `6`\n7. `7`\n8. `8`"
+}

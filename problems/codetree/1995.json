@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1995",
+ "title": "treeset 기본",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-treeset-basic/description",
+ "alias": "treeset-basic",
+ "pid": 1995,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "중급 자료구조",
+ "lesson": "TreeSet",
+ "card": "intro-treeset-basic",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "80.0",
+  "submissions": "956"
+ },
+ "sample_count": 1,
+ "statement_len": 549,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 명령이 주어졌을 때, 각 명령을 수행하는 프로그램을 작성해보세요. 명령의 종류는 크게 7가지 입니다.\n\n- `add x` : 숫자 $x$를 treeset에 추가합니다. 중복되는 경우 무시합니다.\n- `remove x` : 숫자 $x$를 treeset에서 제거합니다. 잘못된 입력은 주어지지 않습니다.\n- `find x` : 숫자 $x$가 treeset에 있는지를 판단합니다. 있다면 `true`, 없다면 `false`를 출력합니다.\n- `lower_bound x` : treeset에서 $x$보다 같거나 큰 최초의 숫자를 출력합니다. 만약 없다면 `None`을 출력합니다.\n- `upper_bound x` : treeset에서 $x$보다 큰 최초의 숫자를 출력합니다. 만약 없다면 `None`을 출력합니다.\n- `largest` : treeset에서 가장 큰 숫자를 출력합니다. 만약 treeset이 비어있다면 `None`을 출력합니다.\n- `smallest` : treeset에서 가장 작은 숫자를 출력합니다. 만약 treeset이 비어있다면 `None`을 출력합니다.",
+ "input_spec": "첫 번째 줄에는 $N$이 주어집니다.   \n\n두 번째 줄 부터는 $N$개의 줄에 걸쳐 각 명령이 한 줄에 하나씩 주어집니다. 이는 순서대로 수행되어야 합니다.",
+ "output_spec": "결과를 한 줄에 하나씩 출력합니다.",
+ "constraints": "- $ 1 \\le N \\le 100\\,000$\n- $ 1 \\le \\texttt{주어지는 수} \\le 10^9$",
+ "samples": [
+  {
+   "in": "19\nadd 5\nlargest\nadd 3\nsmallest\nadd 3\nadd 7\nlargest\nsmallest\nfind 5\nlower_bound 3\nupper_bound 3\nremove 3\nlower_bound 3\nsmallest\nlargest\nlower_bound 8\nremove 5\nremove 7\nlargest\n",
+   "out": "5\n3\n7\n3\ntrue\n3\n5\n5\n5\n7\nNone\nNone\n"
+  }
+ ],
+ "sample_notes": [
+  "출력이 주어지는 명령은, $2$, $4$, $7$, $8$, $9$, $10$, $11$, $13$, $14$, $15$, $16$, $19$ 번째 입니다.\n\n-  $2$번째 명령에서, treeset 에서 가장 큰 수는 $5$ 입니다.\n\n- $4$번째 명령에서, treeset 에서 가장 작은 수는 $3$ 입니다.\n\n- $7$번째 명령에서, treeset 에서 가장 큰 수는 $7$ 입니다.\n\n- $8$번째 명령에서, treeset 에서 가장 작은 수는 $3$ 입니다.\n\n- $9$번째 명령에서, treeset 에서 수 $5$가 존재합니다.\n\n- $10$번째 명령에서, treeset 에서 최초로 3보다 크거나 같은 수는 $3$ 입니다.\n\n- $11$번째 명령에서, treeset 에서 최초로 $3$보다 큰 수는 $5$ 입니다.\n\n- $13$번째 명령에서, treeset 에서 최초로 $3$보다 크거나 같은 수는 $5$ 입니다.\n\n- $14$번째 명령에서, treeset 에서 가장 작은 수는 $5$ 입니다.\n\n- $15$번째 명령에서, treeset 에서 가장 큰 수는 $7$ 입니다.\n\n- $16$번째 명령에서, treeset 에서 최초로 $8$보다 크거나 같은 수는 없습니다.\n- $19$번째 명령에서, treeset 에 수가 존재하지 않으므로, 가장 큰 수또한 존재하지 않습니다."
+ ]
+}

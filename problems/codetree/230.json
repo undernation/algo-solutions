@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "230",
+ "title": "출석 부르기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-calling-attendance/description",
+ "alias": "calling-attendance",
+ "pid": 230,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "조건문",
+ "lesson": "if elif elif else 조건문",
+ "card": "intro-calling-attendance",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "75.6",
+  "submissions": "7577"
+ },
+ "sample_count": 2,
+ "statement_len": 139,
+ "fetched_at": "2026-09-23",
+ "statement": "$A$반의 출석번호 $1$번은 `John`, $2$번은 `Tom`, $3$번은 `Paul`입니다. 번호를 입력하면 해당하는 학생의 이름을 출력하는 프로그램을 작성하세요. 만약 해당 출석번호에 해당하는 학생이 없다면 `Vacancy` 라고 출력합니다.",
+ "input_spec": "첫 번째 줄에 출석번호가 주어집니다.",
+ "output_spec": "입력받은 출석번호의 해당하는 학생의 이름을 출력하고, 만약 해당 출석번호에 해당하는 학생이 없다면 `Vacancy` 라고 출력합니다.",
+ "constraints": "- $1 \\le \\texttt{출석번호} \\le 100$",
+ "samples": [
+  {
+   "in": "1\n",
+   "out": "John\n"
+  },
+  {
+   "in": "5\n",
+   "out": "Vacancy\n"
+  }
+ ]
+}

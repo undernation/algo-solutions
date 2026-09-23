@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "961",
+ "title": "훌륭한 점프",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-great-jump/description",
+ "alias": "great-jump",
+ "pid": 961,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 III",
+ "lesson": "기준을 새로 설정하여 완전탐색",
+ "card": "intro-great-jump",
+ "card_type": "Introduction",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "44.9",
+  "submissions": "1678"
+ },
+ "sample_count": 1,
+ "statement_len": 330,
+ "fetched_at": "2026-09-23",
+ "statement": "돌 $N$개가 $1$번부터 $N$번까지 순서대로 놓여 있고, $i$번 돌에는 정수 $A_i$가 하나 적혀 있습니다.\n\n$1$번 돌에서 출발해 $N$번 돌까지 가려고 합니다. 현재 $i$번 돌에 있다면 $i \\lt j \\le i + K$를 만족하는 $j$번 돌로 한 번에 점프할 수 있습니다. 즉, 항상 앞쪽으로만 이동하며 한 번에 최대 $K$칸까지 갈 수 있습니다.\n\n$N$번 돌에 도달하는 방법 중에서 거쳐 간 돌들에 적힌 수의 최댓값이 가장 작아지도록 하고 싶습니다. 그 최솟값을 구하는 프로그램을 작성해 보세요. 출발점인 $1$번 돌과 도착점인 $N$번 돌도 거쳐 간 돌에 포함됩니다.",
+ "input_spec": "첫 번째 줄에 정수 $N$과 $K$가 공백을 사이에 두고 주어집니다.\n\n두 번째 줄에 정수 $N$개 $A_1$, $A_2$, $\\dots$, $A_N$이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 거쳐 간 돌들에 적힌 수의 최댓값이 될 수 있는 값 중 최솟값을 출력합니다.",
+ "constraints": "- $1 \\le K \\lt N \\le 100$\n- $1 \\le A_i \\le 100$ ($1 \\le i \\le N$)\n- $N$, $K$, $A_i$는 모두 정수입니다.",
+ "samples": [
+  {
+   "in": "5 2\n2 3 5 4 1\n",
+   "out": "4\n"
+  }
+ ],
+ "sample_notes": [
+  "아래 그림과 같이 $1$번, $2$번, $4$번, $5$번 돌을 순서대로 밟으면 점프 거리가 모두 $K$($= 2$) 이내이고, 거쳐 간 돌에 적힌 수는 $2$, $3$, $4$, $1$이므로 최댓값은 $4$입니다.\n\n최댓값을 $3$ 이하로 만들 수는 없습니다. 적힌 수가 $3$ 이하인 돌은 $1$번($2$), $2$번($3$), $5$번($1$)뿐인데, $2$번 돌에서 $5$번 돌로 가려면 $3$칸을 뛰어야 하므로 $K$를 넘습니다. 따라서 답은 $4$입니다.\n\n![](https://contents.codetree.ai/problems/961/images/problems-aae4dda0-34a9-49bb-9fa2-95d048e40688.svg)"
+ ]
+}

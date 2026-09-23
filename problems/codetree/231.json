@@ -1,0 +1,37 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "231",
+ "title": "변수 값 교체하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-replacing-variable-values/description",
+ "alias": "replacing-variable-values",
+ "pid": 231,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "출력",
+ "lesson": "변수 값 변경",
+ "card": "intro-replacing-variable-values",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "93.4",
+  "submissions": "11836"
+ },
+ "sample_count": 1,
+ "statement_len": 81,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $a$에 값 $3$을 넣어줍니다.\n\n그 후 다시 $a$에 값 $6$을 넣어 줍니다. \n\n마지막으로 $a$를 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "입력이 주어지지 않습니다.",
+ "output_spec": "첫 번째 줄에는 정수 $a$를 출력합니다.",
+ "samples": [
+  {
+   "in": "",
+   "out": "6\n"
+  }
+ ]
+}

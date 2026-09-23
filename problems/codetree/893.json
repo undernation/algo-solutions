@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "893",
+ "title": "연속된 정수 만들기 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-create-consecutive-numbers-2/description",
+ "alias": "create-consecutive-numbers-2",
+ "pid": 893,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "케이스별로 나누기",
+ "lesson": "좋은 전략을 추려내기",
+ "card": "intro-create-consecutive-numbers-2",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "41.7",
+  "submissions": "1618"
+ },
+ "sample_count": 1,
+ "statement_len": 296,
+ "fetched_at": "2026-09-23",
+ "statement": "$3$명의 사람이 일직선 위에 서 있습니다. 각 사람이 서 있는 위치는 정수입니다.\n\n한 번의 이동에서는 양 끝쪽에 있는 사람 중 한 사람을 선택해, 남은 두 사람 사이의 정수 위치로 옮깁니다. 이런 이동을 반복해 세 사람이 서 있는 위치가 연속된 세 정수가 되도록 만들려고 합니다.\n\n연속된 세 정수가 되기 위한 최소 이동 횟수를 구해 출력하는 프로그램을 작성해보세요.\n\n단, 세 사람이 서 있는 순서는 상관없음에 유의해 주세요. 즉, 위치가 `6`, `7`, `8` 이든, `7`, `6`, `8` 이든 값만 연속되면 됩니다.",
+ "input_spec": "첫 번째 줄에 세 사람의 초기 위치를 나타내는 세 정수 $P_1,\\ P_2,\\ P_3$이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 세 사람이 연달아 서있기 위한 최소 이동 횟수를 출력합니다.",
+ "constraints": "- $1 \\le P_i \\le 10^9$ ($1 \\le i \\le 3$)\n- 세 사람의 초기 위치는 서로 다릅니다.",
+ "samples": [
+  {
+   "in": "2 6 9\n",
+   "out": "2\n"
+  }
+ ],
+ "sample_notes": [
+  "처음 세 사람은 $2$ $6$ $9$ 위에 있습니다. 먼저 $2$ $6$ $9$에서 위치 $2$에 있는 사람이 위치 $8$로 이동하면 $6$ $8$ $9$가 되고, 위치 $9$번에 있는 사람이 $7$번으로 이동하면 $6$ $7$ $8$로 연속된 위치가 완성됩니다. 따라서 최소 이동 횟수는 $2$가 됩니다."
+ ]
+}

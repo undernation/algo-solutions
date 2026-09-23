@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "864",
+ "title": "재귀함수를 이용한 최댓값",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-maximum-value-with-recursive-function/description",
+ "alias": "maximum-value-with-recursive-function",
+ "pid": 864,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "재귀함수",
+ "lesson": "값을 반환하는 재귀함수",
+ "card": "challenge-maximum-value-with-recursive-function",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "74.9",
+  "submissions": "3876"
+ },
+ "sample_count": 1,
+ "statement_len": 83,
+ "fetched_at": "2026-09-23",
+ "statement": "$n$개의 원소 $A_1, A_2, \\ldots, A_n$ 중 최댓값을 구하는 프로그램을 작성해보세요. 단, 재귀함수를 이용하여 문제를 해결해주세요.",
+ "input_spec": "첫 번째 줄에 정수 $n$이 주어집니다.\n\n두 번째 줄에 $n$개의 정수 $A_1, A_2, \\ldots, A_n$이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 주어진 원소 중 최댓값을 출력합니다.",
+ "constraints": "- $1 \\le n \\le 100$\n- $1 \\le A_i \\le 100$ ($1 \\le i \\le n$)",
+ "samples": [
+  {
+   "in": "6\n1 5 7 9 2 6\n",
+   "out": "9\n"
+  }
+ ],
+ "sample_notes": [
+  "주어진 원소는 $1$, $5$, $7$, $9$, $2$, $6$이고 이 중 가장 큰 값은 $9$이므로 $9$를 출력합니다."
+ ]
+}

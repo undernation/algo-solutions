@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2108",
+ "title": "더 큰 값의 카드가 이기는 게임",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-a-high-number-of-cards-wins/description",
+ "alias": "a-high-number-of-cards-wins",
+ "pid": 2108,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Greedy",
+ "lesson": "Greedy Algorithm",
+ "card": "challenge-a-high-number-of-cards-wins",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "49.4",
+  "submissions": "737"
+ },
+ "sample_count": 1,
+ "statement_len": 282,
+ "fetched_at": "2026-09-23",
+ "statement": "$A$와 $B$가 카드게임을 하고 있습니다. $1$부터 $2N$까지 번호가 쓰인 카드가 한 장씩 총 $2N$장 있으며, $A$와 $B$가 카드를 $N$개씩 나눠 가집니다. $A$와 $B$는 한 번에 카드 한 장씩을 내고, 더 큰 값의 카드를 가진 사람이 점수를 $1$점 얻습니다. 카드는 한 턴에 한 번만 낼 수 있고, $A$와 $B$는 모든 카드를 다 낼 때까지 이를 $N$번 반복합니다. $B$가 카드를 내는 순서가 주어졌을 때, $A$가 얻을 수 있는 점수의 최댓값을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 한 줄에 하나씩 $B$가 내는 카드들이 순서대로 주어집니다.",
+ "output_spec": "첫 번째 줄에 $A$가 얻을 수 있는 점수의 최댓값을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 50\\,000$\n- $1 \\le B_i \\le 2N$ $(1 \\le i \\le N)$\n- $B$의 모든 카드는 서로 다르다",
+ "samples": [
+  {
+   "in": "3\n1\n6\n4\n",
+   "out": "2\n"
+  }
+ ],
+ "sample_notes": [
+  "$A$는 $2$, $3$, $5$번 카드를 가지고 있습니다. $2$, $3$, $5$ 차례대로 카드를 내면 두 번째 판 외에 첫 번째와 세 번째 판은 $A$가 이기기 때문에 총 $2$점을 얻을 수 있습니다. $A$가 이보다 큰 점수를 얻는 경우는 없습니다."
+ ]
+}

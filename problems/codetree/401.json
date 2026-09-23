@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "401",
+ "title": "문자 교체하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-changing-char/description",
+ "alias": "changing-char",
+ "pid": 401,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "문자열",
+ "lesson": "문자 수정",
+ "card": "challenge-changing-char",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "94.3",
+  "submissions": "1939"
+ },
+ "sample_count": 1,
+ "statement_len": 140,
+ "fetched_at": "2026-09-23",
+ "statement": "알파벳으로 이루어진 문자열이 두 개 주어지면 첫 번째 문자열의 앞부분 두 글자를 복사해 두 번째 문자열의 앞부분 두 글자로 교체한 후 두 번째 문자열만 출력하는 프로그램을 작성해보세요. 단, 주어지는 문자열은 최소 두 글자 이상으로 이루어져 있습니다.",
+ "input_spec": "첫 번째 줄에 길이가 $20$ 이하인 문자열 두 개가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 해당하는 문자열을 출력합니다.",
+ "constraints": "- $\\texttt{문자열의 길이} \\le 20$",
+ "samples": [
+  {
+   "in": "LeeBros Coding\n",
+   "out": "Leding\n"
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "493",
+ "title": "헛발질",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-binary-miss/description",
+ "alias": "binary-miss",
+ "pid": 493,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "이진탐색",
+ "lesson": "이진탐색",
+ "card": "challenge-binary-miss",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "33.1",
+  "submissions": "4847"
+ },
+ "sample_count": 0,
+ "statement_len": 667,
+ "fetched_at": "2026-09-23",
+ "statement": "이진탐색 코드를 변형하여 다음과 같이 $count$ 변수를 만들었습니다.\n\n```jsx\nfunction solution(arr, target)\n  set left = 0\n  set right = arr.size - 1\n  set count = 0\n  while left <= right\n    count += 1\n    set mid = (left + right) / 2\n    if arr[mid] == target\n      return count\n\n    if arr[mid] > target\n      right = mid - 1\n    else\n      left = mid + 1\n\n  return count\n```\n\n찾는 값이 배열에 없는 경우에는 어떤 값이 반환되는지를 알고자 합니다.\n\n대표적으로 두 개의 경우를 생각해봅시다.\n\n```jsx\nCase 1.\narr = [1, 3, 9, 12, 17, 21, 24, 28, 32], target = 20\n\nCase 2. \narr = [-45, -38, -32, -30, -29, -27, -20], target = -26\n```\n\n두 인자를 넘겨 이분탐색을 실행하게 된다면, 각각 어떤 결과 값을 반환하게 될까요?\n\n**보기** — 순서대로 2개 고르기\n\n1. `0`\n2. `1`\n3. `2`\n4. `3`\n5. `4`\n6. `5`"
+}

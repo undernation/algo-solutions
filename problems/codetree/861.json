@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "861",
+ "title": "재귀함수를 이용한 별 출력",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-star-output-with-recursive-function/description",
+ "alias": "star-output-with-recursive-function",
+ "pid": 861,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "재귀함수",
+ "lesson": "값을 반환하지 않는 재귀함수",
+ "card": "challenge-star-output-with-recursive-function",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "95.3",
+  "submissions": "3266"
+ },
+ "sample_count": 1,
+ "statement_len": 89,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$번째 줄부터 $N$번째 줄까지, $i$번째 줄에 별 문자 `*`를 정확히 $i$개씩 출력하는 프로그램을 작성해보세요. 단, 재귀함수를 이용해 출력해주세요.",
+ "input_spec": "첫 번째 줄에 정수 $N$이 주어집니다.",
+ "output_spec": "총 $N$개의 줄을 출력합니다. $i$번째 줄에는 별 문자 `*`가 정확히 $i$개 있어야 합니다.",
+ "constraints": "- $1 \\le N \\le 100$",
+ "samples": [
+  {
+   "in": "5\n",
+   "out": "*\n**\n***\n****\n*****\n"
+  }
+ ]
+}

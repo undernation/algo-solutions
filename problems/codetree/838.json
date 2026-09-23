@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "838",
+ "title": "홀수 짝수의 묶음",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-odd-even-bundle/description",
+ "alias": "odd-even-bundle",
+ "pid": 838,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "Ad-Hoc",
+ "lesson": "지극히 최선인 전략이 확실히 정해지는 경우",
+ "card": "challenge-odd-even-bundle",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "54.7",
+  "submissions": "951"
+ },
+ "sample_count": 2,
+ "statement_len": 350,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 정수 $A_1, A_2, \\ldots, A_N$이 주어집니다. 주어진 수들을 전부 사용하여 비어 있지 않은 하나 이상의 묶음으로 나눈 뒤 각 묶음의 합을 구했을 때, 첫 번째 묶음부터 순서대로 그 합이 짝수, 홀수, 짝수, 홀수, $\\ldots$ 가 되도록, 즉 짝수에서 시작하여 짝홀이 계속 번갈아 나오도록 만들려고 합니다.\n\n각 수는 정확히 하나의 묶음에 속해야 하고 어떤 묶음도 비어 있을 수 없으며, 묶음이 $1$개인 경우도 가능합니다.\n\n수가 주어진 순서는 제약이 아니므로, 각 수를 어느 묶음에 넣을지는 자유롭게 정할 수 있습니다.\n\n이때 만들 수 있는 묶음의 최대 개수를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 정수 $N$이 주어집니다.\n\n두 번째 줄에는 $N$개의 정수 $A_1, A_2, \\ldots, A_N$이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 만들 수 있는 묶음의 최대 개수를 출력합니다.",
+ "constraints": "- $2 \\le N \\le 1\\,000$\n- $1 \\le A_i \\le 100$ ($1 \\le i \\le N$)",
+ "samples": [
+  {
+   "in": "7\n1 3 9 7 5 11 3\n",
+   "out": "3\n"
+  },
+  {
+   "in": "7\n11 2 17 13 1 15 3\n",
+   "out": "5\n"
+  }
+ ],
+ "sample_notes": [
+  "$1, 3, 9, 7, 5, 11, 3$이 주어졌습니다. $1, 3 / 9, 7, 5 / 11, 3$ 이렇게 묶음을 만들면 짝수, 홀수, 짝수가 되므로 조건을 만족하는 $3$개의 묶음을 만들 수 있게 됩니다. $1, 3 / 9 / 7, 5 / 11$ 이렇게 $4$개를 만들 수도 있지만 원소 $3$이 하나 쓰이지 않고 남게 되기 때문에 이 방법은 사용할 수 없습니다.",
+  ""
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "905",
+ "title": "최대로 겹치는 지점",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-maximum-overlapped-points/description",
+ "alias": "maximum-overlapped-points",
+ "pid": 905,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 I",
+ "lesson": "구간 칠하기",
+ "card": "challenge-maximum-overlapped-points",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "192 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "75.2",
+  "submissions": "4355"
+ },
+ "sample_count": 1,
+ "statement_len": 165,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$차원 직선 상에 $N$개의 닫힌 선분이 놓여 있습니다. 선분 $\\left[x_1, x_2\\right]$는 $x_1 \\le p \\le x_2$인 모든 점 $p$를 덮으며, 끝점에서 닿는 경우에도 덮는 것으로 봅니다. 한 점을 동시에 포함하는 선분 수의 최댓값을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 정수 $N$이 주어집니다.\n\n이어지는 $N$개의 줄에는 각 줄마다 선분의 두 끝점 $x_1$과 $x_2$가 공백을 사이에 두고 정수 두 개로 주어집니다. 괄호나 쉼표는 입력에 포함되지 않습니다.",
+ "output_spec": "첫 번째 줄에 한 점을 동시에 포함하는 선분 수의 최댓값을 출력합니다.",
+ "constraints": "- $2 \\le N \\le 100$\n- $1 \\le x_1 \\le x_2 \\le 100$인 정수입니다.",
+ "samples": [
+  {
+   "in": "3\n1 5\n4 6\n2 4\n",
+   "out": "3\n"
+  }
+ ],
+ "sample_notes": [
+  "아래 그림과 같이 $x$ = $4$에서는 $3$개의 선분이 전부 겹치게 되므로 최대는 $3$입니다. \n\n![Image](https://contents.codetree.ai/problem_factory/images/f6eeda6a-7d35-44ed-81f6-74ab2c53960b.webp)"
+ ]
+}

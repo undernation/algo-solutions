@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3412",
+ "title": "가장 긴 좌우 대칭인 문자열 찾기 3",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-longest-palindrome-3/description",
+ "alias": "longest-palindrome-3",
+ "pid": 3412,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "String",
+ "lesson": "Manacher's algorithm",
+ "card": "test-longest-palindrome-3",
+ "card_type": "Test",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 5초 · C++17 1초",
+  "memory": "288 MB",
+  "time_sec": 5.0
+ },
+ "stats": {
+  "accept_rate": "54.8",
+  "submissions": "93"
+ },
+ "sample_count": 2,
+ "statement_len": 157,
+ "fetched_at": "2026-09-23",
+ "statement": "길이가 $n$인 문자열 $S$와 소문자 알파벳 $c$가 주어졌을 때 해당 문자열에 포함된 연속한 문자열 중 가장 긴 좌우대칭인 문자열을 구하는 프로그램을 작성해보세요. 단, 소문자 알파벳 $c$를 포함하지 않는 부분 문자열 중 가장 긴 좌우대칭인 문자열을 구해야만 함에 유의합니다.",
+ "input_spec": "첫 번째 줄에는 문자열 $S$의 길이를 나타내는 $n$과 포함해서는 안되는 소문자 알파벳 $c$가 공백을 사이에 두고 주어집니다.  \n두 번째 줄에는 문자열 $S$가 주어집니다. 문자열 $S$는 소문자 알파벳으로만 이루어져 있습니다.",
+ "output_spec": "소문자 알파벳 $c$를 포함하지 않는 부분문자열 중 가장 긴 좌우대칭인 문자열의 길이를 출력합니다. 그러한 문자열이 없다면 $0$을 출력합니다.",
+ "constraints": "- $1 \\le n \\le 300,000$",
+ "samples": [
+  {
+   "in": "6 c\nbaabcb\n",
+   "out": "4\n"
+  },
+  {
+   "in": "6 a\nbaabcb\n",
+   "out": "3\n"
+  }
+ ]
+}

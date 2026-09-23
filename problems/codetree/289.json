@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "289",
+ "title": "정수 입력받아 배수 출력",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-print-multiple-of-input/description",
+ "alias": "print-multiple-of-input",
+ "pid": 289,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "for문 a → b 2씩 증가",
+ "card": "challenge-print-multiple-of-input",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "89.0",
+  "submissions": "16181"
+ },
+ "sample_count": 2,
+ "statement_len": 70,
+ "fetched_at": "2026-09-23",
+ "statement": "자연수 $N$을 입력받아 $N$보다 크거나 같은 $N$의 배수 중 작은 수 $5$개를 차례로 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 자연수 $N$을 입력받습니다.",
+ "output_spec": "첫 번째 줄에 자연수 $N$의 배수 $5$개를 작은 수부터 차례로 입출력 예제와 같이 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$",
+ "samples": [
+  {
+   "in": "7\n",
+   "out": "7 14 21 28 35\n"
+  },
+  {
+   "in": "4\n",
+   "out": "4 8 12 16 20\n"
+  }
+ ]
+}

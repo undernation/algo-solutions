@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "43",
+ "title": "적절하게 정수를 변경하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-change-number-properly/description",
+ "alias": "change-number-properly",
+ "pid": 43,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "DP II",
+ "lesson": "연속적이지만 직전 상황에 영향을 받는 DP",
+ "card": "challenge-change-number-properly",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 3초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 3.0
+ },
+ "stats": {
+  "accept_rate": "59.8",
+  "submissions": "463"
+ },
+ "sample_count": 2,
+ "statement_len": 720,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$이상 $4$이하의 정수로만 이루어진 길이가 $N$인 수열이 하나 있습니다.\n\n이 수열과 같은 길이를 가지며, 마찬가지로 $1$이상 $4$이하의 정수로만 이루어진 비슷한 수열을 만들고 싶습니다.\n- 비슷한 수열의 조건 : 수열을 순서대로 읽었을 때, 인접한 두 원소가 다른 횟수가 $M$번 이하입니다.\n\n예를 들어, $1$, $2$, $1$, $3$, $3$은 인접한 두 원소가 다른 횟수가 $3$회 입니다.\n\n또한, 두 수열의 유사도는 같은 위치에 같은 원소가 있는 횟수로 정의됩니다.\n\n예를 들어, $1$, $2$, $1$, $3$, $3$과 $1$, $1$, $1$, $3$, $3$의 유사도는 $4$ 입니다.\n\n만들 수 있는 비슷한 수열 중, 주어진 수열과의 유사도가 가장 큰 값을 출력하는 프로그램을 작성해보세요.\n\n예를 들어, $N = 5$, $M = 1$ 이고 입력으로 주어진 수열이 $1$, $2$, $1$, $3$, $3$ 이라면 새로 만든 수열 $1$, $1$, $1$, $3$, $3$ 은\n- 인접한 두 원소가 다른 횟수가 $1$회($M$이하)이므로 비슷한 수열이고,\n- 유사도가 $4$이므로 (두 번째 원소를 제외하고 모두 같음)\n\n유사도가 가장 큰 비슷한 수열의 예시입니다.\n\n![](https://contents.codetree.ai/problems/43/images/problems-649efb7a-6310-4477-8c36-fe86062865d3.png)",
+ "input_spec": "첫째 줄에는 $N$과 $M$이 공백을 사이에 두고 주어집니다.\n\n두 번째 줄에는 $N$개의 $1$ 이상 $4$ 이하의 정수가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "최대 유사도를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 500$\n- $0 \\le M \\le 100$\n- $1 \\le A_i \\le 4$ $(1 \\le i \\le N)$",
+ "samples": [
+  {
+   "in": "5 1\n1 2 1 3 3\n",
+   "out": "4\n"
+  },
+  {
+   "in": "5 3\n1 2 1 3 3\n",
+   "out": "5\n"
+  }
+ ]
+}

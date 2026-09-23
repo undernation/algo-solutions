@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "491",
+ "title": "빠르게 값 찾기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-binary-search-practice/description",
+ "alias": "binary-search-practice",
+ "pid": 491,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "이진탐색",
+ "lesson": "이진탐색",
+ "card": "test-binary-search-practice",
+ "card_type": "Test",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "48.6",
+  "submissions": "3187"
+ },
+ "sample_count": 0,
+ "statement_len": 706,
+ "fetched_at": "2026-09-23",
+ "statement": "이분탐색을 이용해 정렬된 배열에서 값을 빠르게 찾을 수 있습니다.\n\n```js\nfunction solution(arr, target)\n  set left = 0\n  set right = arr.size - 1\n  while left <= right\n    set mid = (left + right) / 2\n    if arr[mid] == target\n      return mid\n\n    if arr[mid] > target\n      right = mid - 1\n    else\n      left = mid + 1\n    \n    print(mid, left, right)\n\n  return -1\n```\n\n$arr$, $target$ 값이 다음과 같이 주어졌다고 가정해봅시다.\n\n```python\narr = [2, 10, 12, 16, 19, 21, 23, 24, 28, 31]\ntarget = 28\n```\n\n2번째 loop이 돌고 있을 때 , `print` 함수를 통해 나오게 되는 $mid$, $left$, $right$의 값은 무엇일까요?\n\n**보기** — 하나 고르기\n\n1. `mid: 7, left: 8, right: 9`\n2. `mid: 8, left: 7, right: 9`\n3. `mid: 8, left: 8, right: 9`\n4. `mid: 8, left: 8, right: 8`\n5. `mid: 7, left: 7, right: 8`"
+}

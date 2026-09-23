@@ -1,0 +1,51 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2202",
+ "title": "중복되지 않는 가장 긴 문자열",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-longest-not-duplicated-substring/description",
+ "alias": "longest-not-duplicated-substring",
+ "pid": 2202,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shorten time Technique",
+ "lesson": "Two Pointer",
+ "card": "challenge-longest-not-duplicated-substring",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "78.5",
+  "submissions": "433"
+ },
+ "sample_count": 3,
+ "statement_len": 95,
+ "fetched_at": "2026-09-23",
+ "statement": "길이가 $N$인 문자열 한 개가 입력으로 주어졌을 때 해당 문자열에 포함된 연속한 부분 문자열 중 중복되는 문자가 없는 가장 긴 부분 문자열을 구하는 코드를 작성해보세요.",
+ "input_spec": "첫 번째 줄에 문자열 한 개가 입력으로 주어집니다.",
+ "output_spec": "연속 부분 문자열 중 중복되는 문자가 없는 가장 긴 부분 문자열의 길이를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100\\,000$\n- 문자열은 소문자 알파벳으로만 이루어져 있다고 가정해도 좋습니다.",
+ "samples": [
+  {
+   "in": "ababab\n",
+   "out": "2\n"
+  },
+  {
+   "in": "abcbcde\n",
+   "out": "4\n"
+  },
+  {
+   "in": "zzzzzzz\n",
+   "out": "1\n"
+  }
+ ],
+ "sample_notes": [
+  "중복되지 않는 가장 긴 부분 문자열은  $ab$ 입니다.",
+  "중복되지 않는 가장 긴 부분 문자열은 $bcde$ 입니다.",
+  "중복되지 않는 가장 긴 부분 문자열은 $z$ 입니다."
+ ]
+}

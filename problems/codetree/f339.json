@@ -1,0 +1,43 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f339",
+ "title": "코드트리 메신저",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/codetree-messenger/description",
+ "alias": "codetree-messenger",
+ "pid": 339,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2023 하반기 오전 2번 문제",
+ "level": "L17",
+ "limits": {
+  "time": "Python3 4초 · C++17 2초",
+  "memory": "160 MB",
+  "time_sec": 4.0
+ },
+ "stats": {
+  "accept_rate": "13.8",
+  "submissions": "3547"
+ },
+ "sample_count": 2,
+ "statement_len": 2408,
+ "fetched_at": "2026-09-23",
+ "statement": "코드트리 회사에서는 사내 메신저를 사용하고 있습니다. 사내 메신저의 구조는 이진 트리로 되어 있습니다. 이진 트리란 모든 노드의 자식이 2개 이하인 트리를 의미합니다.\n최상단 노드는 회사의 메인 채팅방이며 그 밑의 자식 노드들은 부서별 채팅방입니다.\n\n사내 메신저에는 다음과 같은 기능들이 있습니다.\n\n(1) **사내 메신저 준비**\n \n$0$번부터 $N$번까지 총 $N + 1$개의 채팅방이 있고, 회사의 메인 채팅방을 제외한 각 채팅방은 부모 채팅방이 있습니다. 메인 채팅방의 번호는 항상 $0$번이며, 각 채팅방의 부모 채팅방 번호들은 $parents$라는 이름으로 주어집니다. 메인 채팅방은 부모가 없기 때문에 parent 값이 주어지지 않으며, $parents$ 값은 $1$번부터 $N$번까지 순서대로 주어집니다.\n\n아래 그림은 $N = 8$, $parents = [0, 0, 1, 1, 2, 2, 4, 4]$ 인 경우의 예입니다. \n\n<p align=\"center\">\n  <img width=\"350\" src=\"https://contents.codetree.ai/problems/4035/images/4b23d2c9-97e6-4edd-bf69-e8d288b5a087.png\" >\n</p>\n\n각 채팅방은 권한 $authority$를 갖고 있습니다. 해당 그림의 파란색 글자가 각 채팅방의 권한을 의미하게 됩니다. $c$번 채팅방에서 메세지를 보내면 그 채팅방의 상위 채팅방들에게 알림이 가게 되는데, $authority_c$ 만큼만 위로 올라가며 알림을 보내게 됩니다. $authority$ 값은 $1$번부터 $N$번까지 순서대로 주어지며, 위의 그림에서는 $authority=[1, 1, 2, 1, 2, 2, 1, 1]$ 형태로 주어지게 됩니다.\n\n위의 그림에서 예를 들어 $4$번 채팅방에 메세지가 올라올 경우 권한 세기가 $1$이기 때문에 부모에 해당하는 $1$번 채팅방만 그 알림을 받게 됩니다.\n\n**$0$번 채팅방은 메인 채팅방이기에 $parent$, $authority$, 알림 그리고 알림망 설정 등과 전혀 관련이 없음에 유의합니다.**\n\n(2) **알림망 설정 ON / OFF**\n\n처음 모든 채팅방의 알림망 설정은 켜져있습니다.\n\n이 기능이 작동되면 $c$번 채팅방의 알림망 설정이 ON 상태라면 OFF로 바꿔주고, OFF 상태라면 ON으로 바꿔줍니다. 알림망 설정이 OFF 상태가 되면 자기 자신을 포함하여 아래에서 올라온 모든 알림을 더 이상 위로 올려보내지 않습니다. \n\n예를 들어 아래 그림에서 $4$번 채팅방의 알림망 설정이 OFF인 상황이라면 $7$번 채팅방에서 메세지를 보내더라도 $4$번 채팅방에서부터 이 알림이 차단되어 더 위로는 알림이 가지 않게 됩니다. 즉, 이 경우라면 1번 채팅방은 $7$번 채팅방에서 나온 메세지 알림을 받을 수 없게 됩니다.\n\n<p align=\"center\">\n  <img width=\"150\" src=\"https://contents.codetree.ai/problems/4035/images/4036475c-1e07-4cdf-926e-ccb22bb291d3.png\" >\n</p>\n\n(3) **권한 세기 변경**\n\n$c$번 채팅방의 권한 세기를 $power$로 변경합니다.\n\n(4) **부모 채팅방 교환**\n\n$c_1$번 채팅방과 $c_2$번 채팅방의 부모를 서로 바꿉니다. 이때 $c_1$번 채팅방과 $c_2$번 채팅방은 트리 내에서 같은 depth상에 있음을 가정해도 좋습니다.\n\n예를 들어 보겠습니다.\n\n<p align=\"center\">\n  <img width=\"450\" src=\"https://contents.codetree.ai/problems/4035/images/1550623f-e035-4ce0-8c85-2a625bd6570d.png\" >\n</p>\n\n위의 그림에서 $4$번과 $5$번 채팅방의 부모를 서로 바꾼다면 아래와 같이 바뀌게 됩니다.\n\n<p align=\"center\">\n  <img width=\"450\" src=\"https://contents.codetree.ai/problems/4035/images/514d7f03-9e92-4982-a5d3-97e538d51e6b.png\" >\n\n(5) **알림을 받을 수 있는 채팅방 수 조회**\n\n메세지를 보냈을 때 $c$번 채팅방까지 알림이 도달할 수 있는 서로 다른 채팅방의 수를 출력합니다.\n\n예로 아래 그림에서 $1$번 채팅방까지 알림이 도달할 수 있는 채팅방은 $3, 4, 8$번 채팅방으로 총 $3$개 입니다.\n\n<p align=\"center\">\n  <img width=\"450\" src=\"https://contents.codetree.ai/problems/4035/images/48eab4fd-dbc5-486c-b6b4-af94846c2346.png\" >\n</p>\n\n\n$Q$ 번에 걸쳐 명령을 순서대로 진행하며 알맞은 답을 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 채팅방의 수 $N$과 명령의 수 $Q$가 공백을 사이에 두고 주어집니다. \n\n두 번째 줄부터는 $Q$ 개의 줄에 걸쳐 명령의 정보가 주어집니다. 각 명령에 따른 형태는 다음과 같습니다.\n\n- 사내 메신저 준비\n   \n  `100 p1 p2 ... pN a1 a2 .... aN` 형태로 공백을 사이에 두고 주어집니다. 1번부터 $N$번까지 각 채팅방의 부모 채팅방 번호가 순서대로 $p_1$부터 $p_N$까지고, 초기 권한 세기가 각각 $a_1$부터 $a_n$까지임을 뜻합니다. **이 명령은 항상 첫 번째 명령으로만 주어지며, 항상 주어집니다.** 0번 채팅방의 $p$값과 $a$값은 주어지지 않음에 유의합니다.\n\n- 알림망 설정 ON / OFF\n   \n  `200 c` 형태로 공백을 사이에 두고 주어집니다. 이는 $c$번 채팅방의 알림망 설정이 ON 상태라면 OFF로 바꿔주고, OFF 상태라면 ON 상태로 바꿔줘야 함을 의미합니다.\n\n- 권한 세기 변경\n\n  `300 c power` 형태로 공백을 사이에 두고 주어집니다. 이는 $c$번 채팅방의 권한 세기를 $power$로 변경해야 함을 의미합니다.\n\n- 부모 채팅방 교환\n   \n  `400 c1 c2` 형태로 공백을 사이에 두고 주어집니다. 이는 $c_1$번 채팅방과 $c_2$번 채팅방의 부모를 변경해야 함을 의미합니다. 이때 $c_1$번 채팅방과 $c_2$번 채팅방은 트리 내에서 같은 depth상에 있음을 가정해도 좋습니다.\n\n- 알림을 받을 수 있는 채팅방 수 조회\n   \n  `500 c` 형태로 공백을 사이에 두고 주어집니다. 이 경우 메세지를 보냈을 때 $c$번 채팅방까지 알림이 도달할 수 있는 서로 다른 채팅방의 수를 출력합니다. **단, 이때 $c$번 채팅방을 제외한 채팅방의 수를 세어야 함에 유의합니다.**\n\n모든 입력은 정수 범위내에서 주어집니다.",
+ "output_spec": "500 명령어에 대해 $c$번 채팅방까지 알림이 도달할 수 있는 서로 다른 채팅방의 수를 한 줄에 하나씩 출력합니다.",
+ "constraints": "- $1 \\le Q \\le 100\\,000$\n- $1 \\le N \\le 100\\,000$\n- $1 \\le$ 주어지는 이진트리의 최대 깊이($D$) $\\le 20$\n- $0 \\le p_i \\le N$\n- $1 \\le a_i, c, power, c_1, c_2 \\le N$\n- $c_1 \\ne c_2$",
+ "samples": [
+  {
+   "in": "8 10\n100 0 0 1 1 2 2 4 4 1 1 2 1 2 2 1 1\n500 1\n300 8 3\n500 1\n200 4\n500 1\n400 4 5\n500 2\n200 4\n500 2\n",
+   "out": "2\n3\n1\n1\n3\n"
+  },
+  {
+   "in": "9 10\n100 0 1 1 2 2 3 3 5 6 1 1 1 2 1 2 2 1 1\n500 3\n300 9 3\n500 3\n400 8 9\n500 1\n200 5\n500 1\n200 6\n500 1\n",
+   "out": "2\n3\n6\n5\n4\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 예제에 대해 자세히 알아보겠습니다.\n\n먼저 `100 0 0 1 1 2 2 4 4 1 1 2 1 2 2 1 1` 명령을 통해 다음과 같이 사내 메신저가 있게 됩니다.\n\n<p align=\"center\">\n  <img width=\"450\" src=\"https://contents.codetree.ai/problems/4035/images/de1c853f-f884-4865-9294-a2457abfb568.png\" >\n</p>\n\n다음으로, `500 1` 명령으로 인해 1번 채팅방이 알림을 받을 수 있는 채팅방 수를 조회합니다. 다음과 같이 총 2개가 조회됩니다.\n\n<p align=\"center\">\n  <img width=\"450\" src=\"https://contents.codetree.ai/problems/4035/images/6244226a-8439-4647-8af4-ba3473db56b8.png\" >\n</p>\n\n다음으로, `300 8 3` 명령을 통해 8번 채팅방의 권한 세기가 변경됩니다.\n\n<p align=\"center\">\n  <img width=\"450\" src=\"https://contents.codetree.ai/problems/4035/images/f8b05342-a128-4c8a-a910-71c64f9e1c44.png\" >\n</p>\n\n다음으로, `500 1` 명령으로 인해 1번 채팅방이 알림을 받을 수 있는 채팅방 수를 조회합니다. 다음과 같이 총 3개가 조회됩니다.\n\n<p align=\"center\">\n  <img width=\"450\" src=\"https://contents.codetree.ai/problems/4035/images/fdbebe6b-43e3-4625-aadf-1fa14ea079b0.png\" >\n</p>\n\n다음으로, `200 4` 명령을 통해 4번 채팅방의 알림망 설정을 바꿔줍니다.\n\n<p align=\"center\">\n  <img width=\"450\" src=\"https://contents.codetree.ai/problems/4035/images/08931df4-4231-48cd-9a4b-61bf33deb973.png\" >\n</p>\n\n다음으로, `500 1` 명령으로 인해 1번 채팅방이 알림을 받을 수 있는 채팅방 수를 조회합니다. 다음과 같이 총 1개가 조회됩니다.\n\n<p align=\"center\">\n  <img width=\"450\" src=\"https://contents.codetree.ai/problems/4035/images/4317bf2d-de11-4f90-95b8-af8aa7985b59.png\" >\n</p>\n\n다음으로, `400 4 5` 명령을 통해 4번과 5번 채팅방의 부모를 변경합니다.\n\n<p align=\"center\">\n  <img width=\"450\" src=\"https://contents.codetree.ai/problems/4035/images/274f5467-848a-4c82-a310-023ab803bc3a.png\" >\n</p>\n\n다음으로, `500 2` 명령으로 인해 2번 채팅방이 알림을 받을 수 있는 채팅방 수를 조회합니다. 다음과 같이 총 1개가 조회됩니다.\n\n<p align=\"center\">\n  <img width=\"450\" src=\"https://contents.codetree.ai/problems/4035/images/9e8afd94-d1a8-436c-88dd-f9527bc39acf.png\" >\n</p>\n\n다음으로, `200 4` 명령을 통해 4번 채팅방의 알림망 설정을 바꿔줍니다.\n<p align=\"center\">\n  <img width=\"450\" src=\"https://contents.codetree.ai/problems/4035/images/065ec038-4404-43e1-b5c4-7c777c5cb957.png\" >\n</p>\n\n마지막으로, `500 2` 명령으로 인해 2번 채팅방이 알림을 받을 수 있는 채팅방 수를 조회합니다. 다음과 같이 총 3개가 조회됩니다.\n\n<p align=\"center\">\n  <img width=\"450\" src=\"https://contents.codetree.ai/problems/4035/images/f337fbde-88b5-446c-830b-117be0f0604a.png\" >\n</p>",
+  ""
+ ]
+}

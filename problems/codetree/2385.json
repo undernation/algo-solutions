@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2385",
+ "title": "황금비율 토스트",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-golden-toast/description",
+ "alias": "golden-toast",
+ "pid": 2385,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "배열, 연결 리스트",
+ "lesson": "Iterator",
+ "card": "intro-golden-toast",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "120 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "43.0",
+  "submissions": "3542"
+ },
+ "sample_count": 2,
+ "statement_len": 2145,
+ "fetched_at": "2026-09-23",
+ "statement": "소문자 알파벳이 적혀있는 식빵들이 일렬로 나열되어 있습니다. 황금비율 토스트를 만들기 위해서는 레시피에 적혀있는 대로 움직이고 기존에 주어진 식빵들 사이에 새로운 식빵을 추가하거나 빼야 합니다. 아무나 따라 할 수 없도록 만들어진 레시피는 특정 룰과 암호 명령어로 이루어져 있습니다.\n\n+ 이 레시피에는 `가리키는 위치 ⬆️` 라는 개념이 존재합니다. `가리키는 위치 ⬆️`는 빵들의 맨 앞이거나, 맨 뒤이거나, 빵과 빵 사이뿐입니다. 즉, 빵의 개수가 총 T개라면, 레시피가 가리킬 수 있는 위치는 총 T+1 곳입니다. 단, `가리키는 위치 ⬆️`는 처음에 모든 빵의 맨 마지막에 위치하고 있습니다.\n+ 'L'이 적혀있다면 `가리키는 위치 ⬆️`를 바로 앞에 있는 빵을 건너뛴 위치로 변경합니다. 만약, 이미 빵들의 맨 앞이라면 무시합니다.\n+ 'R'이 적혀있다면 `가리키는 위치 ⬆️`를 바로 뒤에 있는 빵을 건너뛴 위치로 변경합니다. 만약, 이미 빵들의 맨 뒤라면 무시합니다.\n+ 'D'가 적혀있다면 `가리키는 위치 ⬆️`의 바로 뒤에 있는 빵을 제거합니다. 만약, 이미 빵들의 맨 뒤라면 무시합니다. \n+ 'P &'가 적혀있다면 `가리키는 위치 ⬆️`에 &라는 문자가 적혀있는 식빵을 추가합니다. 이후 `가리키는 위치 ⬆️`는 추가된 문자 & 바로 뒤가 됩니다. \n\n\n<br>\n\n처음 식빵들의 상태가 `codet` 같이 주어지고, 5개의 명령어가 다음과 같이 주어진 경우를 생각해보겠습니다.\n\n```\nL\nP s\nL\nR\nD\n```\n\n이는 다음 과정을 거치게 됩니다.\n\n![](https://contents.codetree.ai/problems/2385/images/problems-731b4aab-f300-4df4-8226-54b2faace3f5.png)\n![](https://contents.codetree.ai/problems/2385/images/problems-d0699bf6-d2d9-4e97-b21c-6eeb71221ddd.png)\n![](https://contents.codetree.ai/problems/2385/images/problems-62d6e5f6-98f5-4a1a-ae14-3a3dfd8e7901.png)\n![](https://contents.codetree.ai/problems/2385/images/problems-32f05eaa-a3a1-486a-b266-b1315938964a.png)\n![Image](https://contents.codetree.ai/problem_factory/images/6d8b8e02-adaa-4b2a-8171-66deca89ea9f.webp)\n![Image](https://contents.codetree.ai/problem_factory/images/9612420b-aba1-45b1-a502-e4c8911d7725.webp)\n![](https://contents.codetree.ai/problems/2385/images/problems-c66c3f01-665d-4f16-a245-3479dcb2212d.png)\n![](https://contents.codetree.ai/problems/2385/images/problems-cfb8675c-c178-4b52-baea-bbaf02d047b8.png)\n![](https://contents.codetree.ai/problems/2385/images/problems-6a616be6-143a-4af5-8645-20cbc600da5f.png)\n![](https://contents.codetree.ai/problems/2385/images/problems-7ac52811-7d2e-44a4-9051-f30114336f56.png)\n![](https://contents.codetree.ai/problems/2385/images/problems-4fabb253-5095-43be-b7ce-d475b1ff041c.png)\n![](https://contents.codetree.ai/problems/2385/images/problems-d2608f91-1fab-41dc-8194-bab97a2b4dae.png)\n\n따라서 위의 예시에서는 5개의 암호문 레시피대로 이행한 이후 결과가 `codes` 가 됩니다.\n\n\n<br>\n\n처음 식빵들의 상태와 레시피 암호 명령어가 주어졌을 때, 최종 결과를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 처음 식빵의 개수 $n$과 레시피 암호문의 개수 $m$이 공백을 사이에 두고 주어집니다.  \n\n두 번째 줄에는 소문자 알파벳이 적혀있는 식빵들의 상태를 나타내는 문자열이 공백없이 순서대로 주어집니다.\n\n세 번째 줄부터는 $m$개의 줄에 걸쳐 레시피의 암호 명령어가 한 줄에 하나씩 순서대로 주어집니다.",
+ "output_spec": "첫 번째 줄에는 레시피 이행하고 난 뒤의 식빵들의 상태를 공백없이 순서대로 출력합니다.",
+ "constraints": "- $1 \\le n \\le 100,000$\n - $1 \\le m \\le 100,000$",
+ "samples": [
+  {
+   "in": "5 5\ncodet\nL\nP s\nL\nR\nD\n",
+   "out": "codes\n"
+  },
+  {
+   "in": "5 6\nabcde\nL\nL\nL\nL\nL\nD\n",
+   "out": "bcde\n"
+  }
+ ]
+}

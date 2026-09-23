@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1031",
+ "title": "트리의 서브트리",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-subtree-of-tree/description",
+ "alias": "subtree-of-tree",
+ "pid": 1031,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "Tree",
+ "lesson": "Tree DP",
+ "card": "challenge-subtree-of-tree",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "120 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "87.2",
+  "submissions": "234"
+ },
+ "sample_count": 1,
+ "statement_len": 125,
+ "fetched_at": "2026-09-23",
+ "statement": "간선에 가중치와 방향성이 없으며 $R$을 루트로 하는 트리가 주어졌을 때 정점 $u$를 루트 노드로 하는 서브트리에 속한 정점의 수를 구하는 프로그램을 작성하세요.\n\n입력으로 주어지는 트리는 항상 올바른 트리임이 보장됩니다.",
+ "input_spec": "첫 번째 줄에 트리의 정점의 수 $N$과 루트의 번호 $R$, 조사할 정점의 수 $Q$가 주어집니다. \n\n두 번째 줄부터 $N - 1$개의 줄에 각각 걸쳐 간선으로 연결된 두 개의 노드 공백을 두고 출력됩니다.\n\n$N + 1$ 번째 줄 부터는 $Q$개의 줄에 걸쳐, 조사할 $u$가 하나씩 주어집니다.",
+ "output_spec": "$Q$개의 줄에 걸쳐 각 질의에 걸쳐 $u$를 루트 노드로 하는 서브트리에 속한 정점의 수를 출력합니다.",
+ "constraints": "- $2 \\le N \\le 100\\,000$\n- $1 \\le R \\le N$\n- $1 \\le \\texttt{간선이 연결하는 정점 번호} \\le N$\n- $1 \\le Q \\le 100\\,000$\n- $1 \\le u \\le N$\n- 주어지는 그래프는 트리입니다.",
+ "samples": [
+  {
+   "in": "9 5 3\n1 3\n4 3\n5 4\n5 6\n6 7\n2 3\n9 6\n6 8\n5\n4\n8\n",
+   "out": "9\n4\n1\n"
+  }
+ ]
+}

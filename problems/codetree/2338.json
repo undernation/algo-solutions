@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2338",
+ "title": "정수만 더하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-add-only-integers/description",
+ "alias": "add-only-integers",
+ "pid": 2338,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "문자열",
+ "lesson": "대소문자 변환",
+ "card": "challenge-add-only-integers",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "94.1",
+  "submissions": "1649"
+ },
+ "sample_count": 1,
+ "statement_len": 67,
+ "fetched_at": "2026-09-23",
+ "statement": "숫자와 알파벳으로 이루어진 문자열 $A$가 주어졌을 때, 그 중 숫자들만 골라 그 합을 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 숫자와 알파벳으로 이루어진 문자열 $A$가 주어집니다. 최소 하나 이상의 숫자가 주어짐을 가정해도 좋습니다.",
+ "output_spec": "첫 번째 줄에 문자열 $A$에서 숫자들만 골라 그 합을 출력합니다.",
+ "constraints": "- $1 \\le \\texttt{문자열의 길이} \\le 20$",
+ "samples": [
+  {
+   "in": "codetreesince2021\n",
+   "out": "5\n"
+  }
+ ]
+}

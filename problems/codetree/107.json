@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "107",
+ "title": "1차원 윷놀이",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-yutnori-1d/description",
+ "alias": "yutnori-1d",
+ "pid": 107,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Backtracking",
+ "lesson": "K개 중 하나를 N번 선택하기(Conditional)",
+ "card": "challenge-yutnori-1d",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 8초 · C++17 1초",
+  "memory": "128 MB",
+  "time_sec": 8.0
+ },
+ "stats": {
+  "accept_rate": "58.5",
+  "submissions": "3606"
+ },
+ "sample_count": 2,
+ "statement_len": 1028,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$번부터 $M$번까지 번호 순서대로 총 $M$개의 지점이 연결되어 있는 $1$차원 윷놀이 판에서 게임을 진행해보려고 합니다. $M$이 $6$인 경우 윷놀이 판의 모습은 다음과 같습니다.\n\n![](https://contents.codetree.ai/problems/107/images/problems-e7a45079-e3ff-4a34-a98f-02155811c13a.png)\n\n처음에는 $K$개의 말이 $1$번 지점에 놓여있으며, $N$번의 턴에 걸쳐 수가 주어지고 각 턴마다 하나의 말을 선택하여 해당 수만큼 앞으로 나아갈 수 있습니다.\n\n말은 앞으로 나아갈 때 한 칸 단위로 움직이며, 이때 앞으로 나아가던 말이 $M$번에 도달하게 되면 $1$점을 얻게 됩니다.\n\n$M$번에 도달한 말을 또 선택할 수는 있지만 이 경우에는 아무런 변화가 나타나지 않습니다.\n\n위의 그림에서 $K = 3$인 경우를 예로 들어봅시다.\n\n![](https://contents.codetree.ai/problems/107/images/problems-f0556b90-575e-4247-a8ae-1bf2f93106ab.png)\n\n이때, $N = 4$이고 주어진 수들이 순서대로 $2$, $4$, $2$, $4$ 인 경우를 생각해봅시다.\n\n만약 $4$회에 걸쳐 순서대로 $1$번, $2$번, $1$번, $2$번 말을 고른다면 $2$번 말만 점수를 얻게 됩니다.\n\n![](https://contents.codetree.ai/problems/107/images/problems-339062c3-923b-4895-a497-307ef326b88a.png)\n\n하지만 만약 $1$번, $1$번, $2$번, $2$번 순서대로 말을 고르게 되면, 점수를 $2$점 얻게 됩니다.\n\n![](https://contents.codetree.ai/problems/107/images/problems-676b39b3-fcf1-4240-8803-e7e3ea8a9902.png)\n\n$N$번의 턴에 대해 말들을 적당히 움직여 얻을 수 있는 점수 중 최댓값을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 턴의 수를 나타내는 $N$과 윷놀이 판의 마지막 지점 번호를 나타내는 $M$, 그리고 말의 수를 나타내는 $K$가 각각 공백을 사이에 두고 주어집니다.\n\n두 번째 줄에는 $N$개의 수가 공백을 사이에 두고 주어집니다. 이 수들은 각 턴마다 나아갈 수 있는 거리를 의미합니다.",
+ "output_spec": "$N$번의 턴을 거친 이후에 최대로 얻을 수 있는 점수를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 12$\n- $2 \\le M \\le 100$\n- $1 \\le K \\le 4$\n- $1 \\le \\texttt{주어지는 수} \\le 100$",
+ "samples": [
+  {
+   "in": "4 6 3\n2 4 2 4\n",
+   "out": "2\n"
+  },
+  {
+   "in": "6 10 3\n5 3 2 2 3 3\n",
+   "out": "2\n"
+  }
+ ]
+}

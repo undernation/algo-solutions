@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2308",
+ "title": "숫자 피라미드 3",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-number-pyramid-3/description",
+ "alias": "number-pyramid-3",
+ "pid": 2308,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "다중 반복문",
+ "lesson": "모양대로 숫자 출력",
+ "card": "challenge-number-pyramid-3",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "96.6",
+  "submissions": "1920"
+ },
+ "sample_count": 2,
+ "statement_len": 146,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $N$이 주어지면, $1$부터 $N$까지의 수에 대해, $i$ ($1 \\le i \\le N$) 번째 줄에 다음 조건에 맞게 $i$ 개의 수를 출력하는 프로그램을 작성해보세요.\n\n- $i$ 번째 줄의 $j$ 번째 칸에는 $i \\times j$ 를 출력합니다.",
+ "input_spec": "첫 번째 줄에 정수 $N$이 주어집니다.",
+ "output_spec": "$1$부터 $N$까지의 수에 대해, $i$번째 줄에 문제의 조건에 맞게 $i$개의 수를 공백을 두고 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$",
+ "samples": [
+  {
+   "in": "4\n",
+   "out": "1\n2 4\n3 6 9\n4 8 12 16\n"
+  },
+  {
+   "in": "7\n",
+   "out": "1\n2 4\n3 6 9\n4 8 12 16\n5 10 15 20 25 \n6 12 18 24 30 36 \n7 14 21 28 35 42 49 \n"
+  }
+ ]
+}

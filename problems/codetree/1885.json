@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1885",
+ "title": "조립",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-assembly/description",
+ "alias": "assembly",
+ "pid": 1885,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "위상정렬",
+ "lesson": "Graph DP",
+ "card": "challenge-assembly",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "64.0",
+  "submissions": "161"
+ },
+ "sample_count": 1,
+ "statement_len": 324,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$번부터 $N$번까지의 조각 $N$개가 있습니다.\n\n각 조각은 가장 작은 조각이거나, 가장 작은 조각을 조합하여 만든 중간 조각이거나, 완성된 조각입니다.\n\n가장 작은 조각은 해당 조각만으로 이루어져 있습니다.\n\n중간 조각은 가장 작은 조각들과 다른 중간 조각을 조립해서 만들 수 있습니다.\n\n완성된 조각은 n번째 조각만을 의미합니다. 이 조각 역시 가장 작은 조각들과 다른 중간 조각을 조립해서 만들 수 있습니다.\n\n각 조각마다 조합하는데 필요한 조각의 번호와 개수가 주어질 때, $N$번째 조각을 만드는데 필요한 각 가장 작은 조각의 개수를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 모든 조각의 수 $N$과 조합을 설명해주는 횟수 $M$이 공백을 두고 주어집니다.\n\n두 번째 줄부터 $M$개의 줄에 걸쳐 각 줄에 $3$개의 정수 가 주어지는데, 중간 조각의 번호와, 해당조각을 만드는데 필요한 작은 조각의 번호와 개수가 공백을 두고 주어집니다.\n\n모든 조각에 대해 해당 조각을 만들기 위한 작은 조각의 개수가 int 범위를 초과하지 않는 입력만 주어집니다.",
+ "output_spec": "n번째 완성된 조각을 완성하는데 필요한 각 가장 작은 조각의 번호와 개수를 공백을 두고 한 줄에 하나씩 출력합니다. 가장 작은 조각의 번호가 작은 것부터 순서대로 출력합니다.",
+ "constraints": "- $3 \\le N, M \\le 100$",
+ "samples": [
+  {
+   "in": "5 5\n3 1 1\n3 2 2\n4 2 1\n5 3 2\n5 4 1\n",
+   "out": "1 2\n2 5\n"
+  }
+ ]
+}

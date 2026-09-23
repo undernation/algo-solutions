@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "481",
+ "title": "병합 정렬 동작 과정",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-merge-sort-progress/description",
+ "alias": "merge-sort-progress",
+ "pid": 481,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "정렬",
+ "lesson": "병합 정렬",
+ "card": "test-merge-sort-progress",
+ "card_type": "Test",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "45.3",
+  "submissions": "3005"
+ },
+ "sample_count": 0,
+ "statement_len": 962,
+ "fetched_at": "2026-09-23",
+ "statement": "병합 정렬 알고리즘의 코드는 다음과 같습니다.\n\n```jsx\nfunction merge_sort(arr[], low, high)\n  if low < high\n    set mid = (low + high) / 2\n    merge_sort(arr, low, mid)\n    merge_sort(arr, mid+1, high)\n    merge(arr, low, mid, high)\n\n\nset merged_arr = []\n\nfunction merge(arr[], low, mid, high)\n  set i = low, j = mid + 1\n\n  set k = low\n  while i <= mid && j <= high\n    if arr[i] <= arr[j]\n      merged_arr[k] = arr[i]\n      k += 1; i += 1\n    else\n      merged_arr[k] = arr[j]\n      k += 1; j += 1\n  \n  while i <= mid\n    merged_arr[k] = arr[i]\n    k += 1; i += 1\n\n  while j <= high\n    merged_arr[k] = arr[j]\n    k += 1; j += 1\n  \n  for k = low ... k <= high\n    arr[k] = merged_arr[k]\n  \n  return arr \n ```\n\n다음과 같은 배열이 주어졌다 합시다.\n```jsx\narr = [17, 21, 15, 16, 30, 20, 35]\n```\nmerge_sort  함수가 7번 종료된 시점의 배열 상태로 올바른 것을 고르세요.\n\n**보기** — 하나 고르기\n\n1. `[17 21 15 16 30 20 35]`\n2. `[15 16 21 17 30 20 35]`\n3. `[15 16 17 21 30 20 35]`\n4. `[15 16 17 21 20 30 35]`\n5. `[15 16 17 20 21 30 35]`"
+}

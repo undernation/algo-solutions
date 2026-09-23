@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "418",
+ "title": "문자열 밀기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-push-char/description",
+ "alias": "push-char",
+ "pid": 418,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "문자열",
+ "lesson": "문자열 밀기",
+ "card": "intro-push-char",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "94.4",
+  "submissions": "1890"
+ },
+ "sample_count": 2,
+ "statement_len": 63,
+ "fetched_at": "2026-09-23",
+ "statement": "문자열이 하나 주어지면, 왼쪽으로 한 칸 shift 한 이후의 결과를 저장한 뒤 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 길이가 20이하인 문자열이 주어집니다.",
+ "output_spec": "첫 번째 줄에 해당하는 문자열을 출력합니다.",
+ "constraints": "- 문자열의 길이 $\\le 20$",
+ "samples": [
+  {
+   "in": "leebroscode\n",
+   "out": "eebroscodel\n"
+  },
+  {
+   "in": "aaaaaaaaaaaaaaa\n",
+   "out": "aaaaaaaaaaaaaaa\n"
+  }
+ ]
+}

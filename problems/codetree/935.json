@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "935",
+ "title": "Carry 피하기 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-escaping-carry-2/description",
+ "alias": "escaping-carry-2",
+ "pid": 935,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 I",
+ "lesson": "자리 수 단위로 완전탐색",
+ "card": "challenge-escaping-carry-2",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "56.9",
+  "submissions": "2982"
+ },
+ "sample_count": 1,
+ "statement_len": 392,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 수가 주어지고, 그중 정확히 서로 다른 $3$개의 수를 골랐을 때 carry가 전혀 발생하지 않으면서 나올 수 있는 수의 합의 최댓값을 계산하는 프로그램을 작성해보세요. \n\n여기서 carry란, 수와 수를 더했을 때, $10$의 자리를 넘기는 것을 말합니다. 예를 들어 $3$과 $6$을 더하면 $9$가 되고 자릿수가 넘어가지 않아 carry가 발생하지 않지만, $5$와 $7$은 더하면 $12$가 되므로 carry가 발생합니다. 또, $81$과 $72$를 더하면 일의 자리를 더할 때는 carry가 발생하지 않더라도 십의 자리를 더할 때는 carry가 발생하게 되므로 불가능한 조합입니다. 즉, 각 자릿수를 모두 각각 더해봤을 때 $10$ 이상이 되는 경우가 전혀 없어야 한다는 뜻입니다.",
+ "input_spec": "첫 번째 줄에 수의 개수 $N$이 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 한 줄에 하나씩 수 $a_i$가 주어집니다.",
+ "output_spec": "carry가 발생하지 않도록 고른 $3$개의 수의 합의 최댓값을 출력합니다. carry가 발생하지 않게 $3$개의 수를 고르는 방법이 하나도 없다면 $-1$을 출력합니다.",
+ "constraints": "- $3 \\le N \\le 20$\n- $1 \\le a_i \\le 10\\,000$ ($1 \\le i \\le N$)\n- 입력으로 주어지는 $N$개의 수는 모두 서로 다릅니다.",
+ "samples": [
+  {
+   "in": "6\n522\n6\n84\n7311\n19\n9999\n",
+   "out": "7839\n"
+  }
+ ],
+ "sample_notes": [
+  "$522$, $6$, $7311$을 뽑으면 모두 더했을 때 carry가 전혀 발생하지 않습니다.\n```\n     522\n+      6\n+   7311\n===========\n    7839\n```\n\ncarry가 발생하지 않으면서 합이 $7839$가 더 큰 경우를 만들 수 없습니다."
+ ]
+}

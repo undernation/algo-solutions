@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "944",
+ "title": "개발자의 능력 3",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-ability-of-developer-3/description",
+ "alias": "ability-of-developer-3",
+ "pid": 944,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 I",
+ "lesson": "자리 마다 숫자를 정하는 완전탐색",
+ "card": "intro-ability-of-developer-3",
+ "card_type": "Introduction",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "73.4",
+  "submissions": "2128"
+ },
+ "sample_count": 1,
+ "statement_len": 121,
+ "fetched_at": "2026-09-23",
+ "statement": "개발자 $6$명의 알고리즘 능력이 각각 정수로 주어집니다. 이 $6$명을 $3$명씩 두 팀으로 나누려고 합니다.\n\n두 팀의 능력 총합의 차이가 최소가 되도록 나누었을 때, 그 차이를 출력하는 프로그램을 작성해 보세요.",
+ "input_spec": "첫 번째 줄에 개발자 $6$명의 능력 $A_1$, $A_2$, $\\dots$, $A_6$이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 두 팀의 능력 총합의 차이 중 최솟값을 출력합니다.",
+ "constraints": "- $1 \\le A_i \\le 1\\,000\\,000$ ($1 \\le i \\le 6$)\n- $A_i$는 모두 정수입니다.",
+ "samples": [
+  {
+   "in": "1 2 3 4 5 6\n",
+   "out": "1\n"
+  }
+ ],
+ "sample_notes": [
+  "($1$, $3$, $6$), ($2$, $4$, $5$)로 팀을 짜면 합이 $10$, $11$이 되므로 차이가 $1$이 됩니다. 이보다 더 좋게 만들 수는 없습니다."
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1328",
+ "title": "차이가 가장 작은 수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-the-number-with-the-smallest-difference/description",
+ "alias": "the-number-with-the-smallest-difference",
+ "pid": 1328,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "중급 자료구조",
+ "lesson": "TreeSet",
+ "card": "challenge-the-number-with-the-smallest-difference",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 5초 · C++17 1초",
+  "memory": "288 MB",
+  "time_sec": 5.0
+ },
+ "stats": {
+  "accept_rate": "38.0",
+  "submissions": "1242"
+ },
+ "sample_count": 1,
+ "statement_len": 81,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 정수로 이루어진 수열에서 두 수를 골랐을 때, 그 차이가 $M$ 이상이면서 제일 작은 경우의 그 차이를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 정수 $N$과 $M$이 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 $N$개의 정수가 차례대로 한 줄에 하나씩 주어집니다.",
+ "output_spec": "차이가 $M$이상이면서 제일 작은 경우의 그 차이를 출력합니다. 만약 그러한 경우가 없다면 $-1$을 출력합니다.",
+ "constraints": "- $2 \\le N \\le 100\\,000$\n- $1 \\le M \\le 10^9$\n- $-10^9 \\le \\texttt{정수의 크기} \\le 10^9$",
+ "samples": [
+  {
+   "in": "3 3\n1\n5\n3\n",
+   "out": "4\n"
+  }
+ ],
+ "sample_notes": [
+  "$1$과 $5$를 고르면, 차이가 $3$ 이상이면서 최소입니다."
+ ]
+}

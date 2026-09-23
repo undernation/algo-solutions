@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "611",
+ "title": "크루스컬",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-ga-kruskal/description",
+ "alias": "ga-kruskal",
+ "pid": 611,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 알고리즘",
+ "lesson": "Kruskal",
+ "card": "intro-ga-kruskal",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "75.5",
+  "submissions": "1320"
+ },
+ "sample_count": 0,
+ "statement_len": 404,
+ "fetched_at": "2026-09-23",
+ "statement": "크루스컬 알고리즘은 Union-Find를 사용하여 MST를 구하는 방법입니다.\n\n그래프 내의 노드 수를 $V$, 간선 수를 $E$라 했을 때, 다음 코드를 완성해봅시다.\n\n```jsx\nfunction kruskal()\n    mst = []\n    sort edge[] by length\n    uf = uf_init(V)\n\n    for E in edge[]\n        u, v = E\n        if find(u) (1) find(v)\n            mst.push(E)\n            (2)\n    \n    return mst\n```\n\n**보기** — 순서대로 2개 고르기\n\n1. `E`\n2. `!=`\n3. `union(u, v)`\n4. `==`\n5. `uf[u] = find(v)`\n6. `V`"
+}

@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "923",
+ "title": "격자 위의 편안한 상태",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-comfortable-state-on-the-grid/description",
+ "alias": "comfortable-state-on-the-grid",
+ "pid": 923,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 II",
+ "lesson": "dx dy technique",
+ "card": "challenge-comfortable-state-on-the-grid",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "69.4",
+  "submissions": "4531"
+ },
+ "sample_count": 1,
+ "statement_len": 343,
+ "fetched_at": "2026-09-23",
+ "statement": "$N \\times N$ 크기의 격자가 주어집니다. 처음에는 격자의 모든 칸이 색칠되어 있지 않으며, 이 격자 위에 총 $M$번에 걸쳐 색칠을 진행합니다. 한 번에 한 칸만 색칠하며, 색칠을 한 직후 해당 칸이 ‘편안한 상태’에 놓여 있는지를 확인하려 합니다.\n\n‘편안한 상태’란 어떤 칸에 인접한 칸 중 색칠되어 있는 칸이 정확히 $3$개인 경우를 뜻합니다. 이때 어떤 칸에 인접한 칸이란 그 칸의 위쪽, 아래쪽, 왼쪽, 오른쪽에 바로 붙어 있는 칸 중 격자를 벗어나지 않는 칸을 의미합니다.\n\n색칠할 칸이 주어질 때마다 해당 칸을 칠한 직후 막 칠한 칸이 편안한 상태에 있는지를 알아내는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 정수 $N$과 $M$이 주어집니다.\n\n이어지는 $M$개의 줄 중 $i$번째 줄에는 색칠할 칸의 위치 $(r_i,\\ c_i)$가 공백을 사이에 두고 주어집니다. 이는 $r_i$행 $c_i$열에 색칠해야 함을 의미합니다.",
+ "output_spec": "$M$개의 줄에 걸쳐 답을 출력합니다. 각 줄에 대해 해당 칸이 주어져 격자에 칠한 즉시, 해당 칸이 편안한 상태에 있다면 $1$, 아니라면 $0$을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100$\n- $1 \\le M \\le N \\times N$\n- $1 \\le r_i, c_i \\le N$ ($1 \\le i \\le M$)\n- 같은 칸이 $2$번 이상 주어지는 경우는 없습니다. 즉 $(r_1,\\ c_1), (r_2,\\ c_2), \\dots, (r_M,\\ c_M)$은 모두 서로 다릅니다.\n- 입력으로 주어지는 모든 값은 정수입니다.",
+ "hint": "$N \\times N$ 크기의 비어있는 격자(전부 $0$으로 초기화 되어있는)를 미리 만들어놓은 뒤, 색칠해야 할 칸이 주어질 때 마다 각 칸에 숫자 $1$을 적어 색칠되었음을 표기하는 방법으로 진행하면 문제를 쉽게 해결할 수 있습니다.",
+ "samples": [
+  {
+   "in": "4 8\n1 2\n2 1\n2 3\n2 2\n3 3\n4 2\n3 2\n4 3\n",
+   "out": "0\n0\n0\n1\n0\n0\n1\n0\n"
+  }
+ ],
+ "sample_notes": [
+  "$4$번째로 주어진 칸에 색칠했을 때, $2$행 $2$열은 ‘편안한 상태’가 됩니다.\n\n![](https://contents.codetree.ai/problems/923/images/problems-d6733151-cead-49d0-bfab-5dd332de62e0.svg)\n\n또, $7$번째로 주어진 칸을 칠했을 때, $3$행 $2$열은 ‘편안한 상태’가 됩니다.\n\n![](https://contents.codetree.ai/problems/923/images/problems-ed3a92a1-ba85-4c91-9775-de34d3bea3f9.svg)"
+ ]
+}

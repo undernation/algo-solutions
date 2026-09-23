@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "912",
+ "title": "연속되는 수 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-continuous-number2/description",
+ "alias": "continuous-number2",
+ "pid": 912,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 II",
+ "lesson": "최장 연속 부분 수열",
+ "card": "intro-continuous-number2",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "38.8",
+  "submissions": "7176"
+ },
+ "sample_count": 1,
+ "statement_len": 61,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 정수가 주어졌을 때, 같은 정수가 연속하여 나오는 횟수 중 최댓값을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 정수 $A_i$가 한 줄에 하나씩 주어집니다. ($1 \\le i \\le N$)",
+ "output_spec": "첫 번째 줄에 같은 정수가 연속하여 나오는 횟수 중 최댓값을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 1\\,000$\n- $0 \\le A_i \\le 1\\,000$ ($1 \\le i \\le N$)",
+ "samples": [
+  {
+   "in": "7\n2\n7\n7\n7\n7\n5\n7\n",
+   "out": "4\n"
+  }
+ ],
+ "sample_notes": [
+  "정수를 순서대로 나열해보면 $2$, $7$, $7$, $7$, $7$, $5$, $7$ 이므로 정수 $7$이 $4$번 연속으로 나오게 됩니다."
+ ]
+}

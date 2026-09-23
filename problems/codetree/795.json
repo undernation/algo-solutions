@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "795",
+ "title": "두 점으로 만드는 정사각형",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-square-made-of-two-points/description",
+ "alias": "square-made-of-two-points",
+ "pid": 795,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "Ad-Hoc",
+ "lesson": "고려해야 할 대상이 뚜렷이 정해지는 경우",
+ "card": "challenge-square-made-of-two-points",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "86.2",
+  "submissions": "471"
+ },
+ "sample_count": 1,
+ "statement_len": 197,
+ "fetched_at": "2026-09-23",
+ "statement": "좌표평면 위에 두 개의 점의 좌표가 두 번 주어집니다. 그 두 점으로 직사각형을 만드는데, 처음에 주어지는 점은 직사각형의 왼쪽 하단, 그 다음 주어지는 점의 좌표는 오른쪽 상단입니다. 같은 방법으로 두 직사각형을 모두 그렸을 때, 그 두 직사각형을 모두 포함할 수 있는, 각 변이 좌표축에 평행한 정사각형의 최소 넓이를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 첫 직사각형의 양쪽 두 점의 좌표 $(x_1,\\ y_1,\\ x_2,\\ y_2)$가 공백을 사이에 두고 주어집니다.\n\n두 번째 줄에 두 번째 직사각형의 양쪽 두 점의 좌표 $(x_1,\\ y_1,\\ x_2,\\ y_2)$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 그린 두 직사각형을 포함하는, 각 변이 좌표축에 평행한 정사각형의 최소 넓이를 출력합니다.",
+ "constraints": "- $0\\le x_1<x_2\\le 10$\n- $0\\le y_1<y_2\\le 10$",
+ "samples": [
+  {
+   "in": "6 6 8 8\n1 8 4 9\n",
+   "out": "49\n"
+  }
+ ],
+ "sample_notes": [
+  "![](https://contents.codetree.ai/problems/795/images/problems-7aeb2911-1105-4e52-8416-d2115d1a4ee4.png)\n\n$(6,\\ 6)$, $(8,\\ 8)$을 모서리로 하는 직사각형과 $(1,\\ 8)$, $(4,\\ 9)$를 모서리로 하는 직사각형은 다음과 같이 $(1,\\ 6)$, $(8,\\ 13)$을 모서리로 하는 정사각형을 그려 다 포함시킬 수 있으므로 가능한 최소 정사각형의 넓이는 $49$가 됩니다."
+ ]
+}

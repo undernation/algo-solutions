@@ -1,0 +1,27 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "510",
+ "title": "괄호 문자열",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-stack-apply-string/description",
+ "alias": "stack-apply-string",
+ "pid": 510,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "스택, 큐, 덱",
+ "lesson": "Stack",
+ "card": "intro-stack-apply-string",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "73.4",
+  "submissions": "2595"
+ },
+ "sample_count": 0,
+ "statement_len": 442,
+ "fetched_at": "2026-09-23",
+ "statement": "괄호 문자열은 오직 '('와 ')'로 구성된 문자열을 의미합니다.\n\n아래 코드는 주어진 괄호 문자열이 올바른 괄호 문자열인지 판별하는 기능을 수행합니다. 빈 칸에 알맞은 코드를 채워보세요.\n\n```js\nfunction solution(str)\n  set s = empty stack\n  for i = 0 ... i < str.size\n    if str[i] == '('\n      (1)\n    else\n      if s.empty() == true\n        return false\n      (2)\n\n  if s.empty() == false\n    return (3)\n  return (4)\n```\n\n**보기** — 순서대로 4개 고르기\n\n1. `s.push('(')`\n2. `s.size()`\n3. `false`\n4. `true`\n5. `s.top()`\n6. `s.pop()`",
+ "hint": "다음 규칙을 지키는 문자열을 올바른 괄호 문자열이라고 합니다.\n- 빈 문자열은 올바른 괄호 문자열입니다.\n- A가 올바른 괄호 문자열이라면, (A)도 올바른 괄호 문자열입니다.\n- A와 B가 올바른 괄호 문자열이라면, AB도 올바른 괄호 문자열입니다.\n\n```\n올바른 괄호 문자열의 예시      : (), (()), ()(), (()())((()))\n올바르지 않은 괄호 문자열의 예시 : ), ()), (())(), (()((())())\n```"
+}

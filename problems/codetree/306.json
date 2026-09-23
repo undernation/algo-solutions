@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "306",
+ "title": "특정 조건의 온전수 구하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-print-onjeonsu/description",
+ "alias": "print-onjeonsu",
+ "pid": 306,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "continue문",
+ "card": "challenge-print-onjeonsu",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "84.8",
+  "submissions": "4336"
+ },
+ "sample_count": 1,
+ "statement_len": 156,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$이상 $N$이하의 정수 중 온전수를 모두 출력하는 프로그램을 작성해보세요.\n\n온전수란 다음 조건 중 어떠한 것도 만족하지 않는 수를 뜻합니다.\n- $2$로 나누어 떨어진다.\n- 일의 자리 숫자가 $5$이다.\n- $3$으로 나누어 떨어지면서 $9$로는 나누어 떨어지지 않는다.",
+ "input_spec": "첫 번째 줄에 $N$의 값이 주어집니다.",
+ "output_spec": "첫 번째 줄에 조건을 만족하는 온전수를 작은 수부터 순서대로 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $1 \\le N \\le 200$",
+ "samples": [
+  {
+   "in": "9\n",
+   "out": "1 7 9\n"
+  }
+ ]
+}

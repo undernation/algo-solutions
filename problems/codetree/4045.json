@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "4045",
+ "title": "기사 출정식",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-knights-commencement/description",
+ "alias": "knights-commencement",
+ "pid": 4045,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "중급 자료구조",
+ "lesson": "Doubly-LinkedList",
+ "card": "challenge-knights-commencement",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "120 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "62.4",
+  "submissions": "189"
+ },
+ "sample_count": 2,
+ "statement_len": 237,
+ "fetched_at": "2026-09-23",
+ "statement": "현재 원탁에 앉아 있는 $N$ 명의 기사들이 있습니다. 왕은 기사들에게 기사 번호를 하나씩 부여했습니다.\n\n출정식은 왕이 기사의 번호를 부르게 된다면, 기사가 자리에서 일어나서 떠납니다. 그러면서 자신의 왼쪽과 오른쪽에 앉아 있는 기사들의 번호를 외치는 방식으로 진행됩니다. 왕은 기사의 번호를 $M$ 번 부릅니다.\n \n왕이 기사의 번호를 부를 때마다 해당 기사가 외치는 양 옆의 기사 번호들을 구하는 프로그램을 작성하세요.",
+ "input_spec": "첫번째 줄에 기사의 수 $N$ 과 왕의 부르는 기사의 번호의 수 $M$ 이 공백을 사이에 두고 주어집니다.\n\n두번째 줄에 기사들의 번호 $N$ 개가 시계 방향으로 순서대로 공백을 사이에 두고 주어집니다. 같은 번호를 가지는 기사는 없다고 가정해도 좋습니다.\n\n세번째 줄부터 $M$ 개의 줄에 걸쳐 왕이 부르는 기사의 번호가 주어집니다. 이미 자리에서 일어난 기사의 번호는 주어지지 않는다고 가정해도 좋습니다.",
+ "output_spec": "왕이 기사의 번호를 부를 때마다 해당 기사의 왼쪽과 오른쪽에 있는 기사들의 번호를 공백을 사이에 두고 출력하세요.",
+ "constraints": "- $3 \\le N \\le 100\\,000$\n- $1 \\le M \\le N - 2$\n- $1 \\le \\texttt{기사들의 번호} \\le 10^9$",
+ "samples": [
+  {
+   "in": "5 2\n1 2 3 4 5\n3\n5\n",
+   "out": "4 2\n1 4\n"
+  },
+  {
+   "in": "7 3\n1 10 8 6 4 3 9\n4\n3\n6\n",
+   "out": "3 6\n9 6\n9 8\n"
+  }
+ ]
+}

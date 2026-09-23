@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "405",
+ "title": "문자열 거꾸로 출력하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-print-string-backward/description",
+ "alias": "print-string-backward",
+ "pid": 405,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "문자열",
+ "lesson": "문자열 비교",
+ "card": "challenge-print-string-backward",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "93.6",
+  "submissions": "1715"
+ },
+ "sample_count": 1,
+ "statement_len": 154,
+ "fetched_at": "2026-09-23",
+ "statement": "알파벳으로 이루어진 문자열이 입력되면 해당 문자열을 거꾸로 뒤집어 출력하는 프로그램을 작성해보세요. 단, 입력된 문자열이 'END'인 경우 해당 문자열을 거꾸로 뒤집어 출력하지 않고 즉시 프로그램을 종료합니다. 'END'는 최대 $10$번 이내에 입력된다고 가정해도 좋습니다.",
+ "input_spec": "첫 번째 줄부터 길이가 $100$ 이하인 문자열이 각 줄마다 주어집니다. 마지막 줄에는 'END'가 주어집니다.",
+ "output_spec": "첫 번째 줄부터 각 줄마다 주어진 문자열을 거꾸로 뒤집어 출력합니다.",
+ "constraints": "- $1 \\le \\texttt{문자열의 길이} \\le 100$",
+ "samples": [
+  {
+   "in": "Lee\nBros\nCode\nEND\n",
+   "out": "eeL\nsorB\nedoC\n"
+  }
+ ]
+}

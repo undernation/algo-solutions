@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "372",
+ "title": "일의 자리 배열",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-array-with-units/description",
+ "alias": "array-with-units",
+ "pid": 372,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "1차원 배열",
+ "lesson": "배열 만들기",
+ "card": "intro-array-with-units",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "89.2",
+  "submissions": "11991"
+ },
+ "sample_count": 1,
+ "statement_len": 121,
+ "fetched_at": "2026-09-23",
+ "statement": "$10$ 미만의 정수 두 개가 주어지면 순서대로 첫 번째, 두 번째 항으로 설정한 후 세 번째 항부터는 전전항과 전항의 합을 구하여 그 합의 $1$의 자리로 채워서 차례로 $10$개를 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 첫째항, 둘째항이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 숫자들을 공백을 사이에 두고  출력합니다.",
+ "constraints": "- $0\\le \\texttt{주어지는 정수} \\le9$",
+ "samples": [
+  {
+   "in": "2 5\n",
+   "out": "2 5 7 2 9 1 0 1 1 2\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 예제에서 첫째항, 둘째항이 $2$와 $5$로 주어지므로 그 둘을 더하면 셋째 항에 $7$이, 그리고 넷째 항은 전전항인 $5$와 전항인 $7$이 더해져서 $12$지만 $1$의 자리로 설정하는 것이기 때문에 $2$가 들어가게 됩니다."
+ ]
+}

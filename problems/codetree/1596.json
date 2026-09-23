@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1596",
+ "title": "선분 위의 점",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-point-on-the-line-segment/description",
+ "alias": "point-on-the-line-segment",
+ "pid": 1596,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Parametric Search",
+ "lesson": "이진탐색",
+ "card": "challenge-point-on-the-line-segment",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 3초 · C++17 2초",
+  "memory": "128 MB",
+  "time_sec": 3.0
+ },
+ "stats": {
+  "accept_rate": "50.1",
+  "submissions": "1321"
+ },
+ "sample_count": 2,
+ "statement_len": 63,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 점과 $M$개의 선분이 주어질 때, 각 선분 위에 몇 개의 점이 있는지 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$과 $M$이 공백을 두고 주어집니다.\n\n두 번째 줄에는 점의 좌표가 공백을 사이에 두고 주어집니다.\n\n세 번째 줄부터 $M$개의 줄에 걸쳐 선분의 시작점 $L_i$와 끝점 $R_i$가 공백을 두고 한 줄에 하나씩 주어집니다.",
+ "output_spec": "첫 번째 줄부터 $M$개의 줄에 걸쳐 각 선분 위에 몇 개의 점이 존재하는지 출력합니다.",
+ "constraints": "+ $1 \\le N, M \\le 100\\,000$\n+ $1 \\le \\texttt{주어지는 수} \\le 10^9$\n+ $1 \\le i \\le M$\n+ 각 선분에 대해 $L_i \\le R_i$",
+ "samples": [
+  {
+   "in": "3 4\n10 30 50\n1 5\n5 21\n22 59\n210 293\n",
+   "out": "0\n1\n2\n0\n"
+  },
+  {
+   "in": "5 5\n1 3 10 20 30\n1 10\n20 60\n3 30\n2 15\n4 8\n",
+   "out": "3\n2\n4\n2\n0\n"
+  }
+ ],
+ "sample_notes": [
+  "각 선분마다 점이 $0$개, $1$개, $2$개, $0$개 존재합니다.\n\n<br>\n\n![](https://contents.codetree.ai/problems/1596/images/problems-f880db9a-e1e1-4412-81d4-b285d49d566a.png)\n\n<br>",
+  "각 선분마다 점이 $3$개, $2$개, $4$개, $2$개, $0$개 존재합니다.\n\n<br>\n\n![](https://contents.codetree.ai/problems/1596/images/problems-6771060b-aa6a-41dc-a9f3-5e57177cd298.png)\n\n<br>"
+ ]
+}

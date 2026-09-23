@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "3394",
+ "title": "칸 합치기 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-can/description",
+ "alias": "can",
+ "pid": 3394,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "MST",
+ "lesson": "Disjoint Set (Union Find)",
+ "card": "challenge-can",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 5초 · C++17 1초",
+  "memory": "288 MB",
+  "time_sec": 5.0
+ },
+ "stats": {
+  "accept_rate": "27.2",
+  "submissions": "272"
+ },
+ "sample_count": 2,
+ "statement_len": 272,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$번부터 $n$번까지 $n$개의 칸이 있고, 사이사이에 경계가 있어 처음에는 총 $n - 1$개의 경계로 이루어져 있습니다. 이때 $m$번에 걸쳐 다음과 같은 연산을 실행하려 합니다.\n\n+ $a$번 부터 $b$번 까지의 칸 사이에 존재하는 모든 경계를 지웁니다.\n\n+ 경계가 없는 칸들은 하나의 칸으로 취급한다 했을 때, 현재 남아 있는 서로 다른 칸의 수를 출력합니다.\n\n연산이 순서대로 진행됨에 따라 각 연산 직후에 남아있는 서로 다른 칸의 개수를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 칸의 개수 $n$과 연산 시행 횟수 $m$이 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터는 $m$개의 줄에 걸쳐, 각 연산의 $a, b$값이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "각 연산이 실행된 직후에 남아있는 서로 다른 칸의 개수를 한 줄에 하나씩 출력합니다.",
+ "constraints": "- $2 \\leq n \\leq 100,000$\n - $1 \\leq m \\leq 100,000$\n - $1 \\leq a \\lt b \\leq n$",
+ "samples": [
+  {
+   "in": "5 2\n1 2\n2 4\n",
+   "out": "4\n2\n"
+  },
+  {
+   "in": "10 3\n1 3\n2 4\n5 8\n",
+   "out": "8\n7\n4\n"
+  }
+ ]
+}

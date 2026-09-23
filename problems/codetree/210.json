@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "210",
+ "title": "등급 매기기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-ranking/description",
+ "alias": "ranking",
+ "pid": 210,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "조건문",
+ "lesson": "if elif elif else 조건문",
+ "card": "challenge-ranking",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "88.0",
+  "submissions": "16638"
+ },
+ "sample_count": 2,
+ "statement_len": 126,
+ "fetched_at": "2026-09-23",
+ "statement": "시험점수에 따라 등급을\n\n$90$점 이상을 A,\n\n$80$점 이상을 B, \n\n$70$점 이상을 C, \n\n$60$점 이상을 D, \n\n$60$점 미만을 F 라고 합니다.\n\n\n점수를 입력받아 등급을 출력하는 프로그램을 작성해주세요.",
+ "input_spec": "첫 번째 줄에는 정수 $N$이 주어집니다.",
+ "output_spec": "점수에 해당하는 등급을 출력합니다.",
+ "constraints": "- $0 \\leq N \\leq 100$",
+ "samples": [
+  {
+   "in": "91\n",
+   "out": "A\n"
+  },
+  {
+   "in": "76\n",
+   "out": "C\n"
+  }
+ ]
+}

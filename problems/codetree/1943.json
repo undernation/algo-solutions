@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1943",
+ "title": "중복되는 수열",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-duplicate-sequence/description",
+ "alias": "duplicate-sequence",
+ "pid": 1943,
+ "group": "intermediate-high",
+ "kind": "trail",
+ "chapter": "String",
+ "lesson": "Trie",
+ "card": "intro-duplicate-sequence",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "75.8",
+  "submissions": "165"
+ },
+ "sample_count": 2,
+ "statement_len": 124,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 수열이 주어집니다.\n\n임의의 수열 $A$가 다른 어떠한 수열 $B$의 접두사가 되는지 판단하는 프로그램을 작성해보세요. 단, 이 문제에서는 정확히 일치하는 두 수열에 대해서는 접두사라 판단하지 않음에 유의합니다.",
+ "input_spec": "첫 번째 줄에는 수열의 수 $N$이 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 각 줄에 하나의 수열이 주어집니다. 수열은 전부 숫자로만 이루어져 있습니다.",
+ "output_spec": "임의의 수열 $A$가 다른 어떠한 수열 $B$의 접두사가 된다면 $0$을, 그러한 것이 없다면 $1$ 을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 10\\,000$\n- $1 \\le \\texttt{수열의 길이} \\le 10$",
+ "samples": [
+  {
+   "in": "3\n010\n01033333\n34562314\n",
+   "out": "0\n"
+  },
+  {
+   "in": "5\n113\n12340\n123440\n12345\n98346\n",
+   "out": "1\n"
+  }
+ ]
+}

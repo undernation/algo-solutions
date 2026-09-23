@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "759",
+ "title": "출력결과 77",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reading-k201832/description",
+ "alias": "reading-k201832",
+ "pid": 759,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "언제 끝날지 모르는 상황에서의 loop",
+ "card": "challenge-reading-k201832",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "54.2",
+  "submissions": "5695"
+ },
+ "sample_count": 0,
+ "statement_len": 955,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 프로그램의 출력 결과는 무엇인가?\n\n## Python3 코드\n```python\ni = 1; tmp = 0\nwhile i < 10:\n    if i % 2 == 0:\n        i += 1\n    if tmp > 5:\n        break\n    tmp += i\n\nprint(tmp)\n```\n\n## C 코드\n\n```c\nint tmp = 0, i = 1;\nwhile(i < 10) {  \n    if(i % 2 == 0)     \n        i++;         \n    if(tmp > 5)    \n        break;   \n    tmp += i; \n}\nprintf(\"%d\\n\",tmp);\n```\n\n## C++ 코드\n\n```cpp\nint tmp = 0, i = 1;\nwhile(i < 10) {  \n    if(i % 2 == 0)     \n        i++;         \n    if(tmp > 5)    \n        break;   \n    tmp += i; \n}\ncout << tmp << endl;\n```\n\n## Java 코드\n\n```java\nint tmp = 0, i = 1;\nwhile(i < 10) {  \n    if(i % 2 == 0)     \n        i++;         \n    if(tmp > 5)    \n        break;   \n    tmp += i; \n}\nSystem.out.println(tmp);\n```\n\n## JavaScript 코드\n\n```JavaScript\nlet tmp = 0, i = 1;\nwhile(i < 10) {  \n    if(i % 2 == 0)     \n        i++;         \n    if(tmp > 5)    \n        break;   \n    tmp += i; \n}\nconsole.log(tmp);\n```\n\n**보기** — 하나 고르기\n\n1. 2\n2. 3\n3. 4\n4. 5\n5. 6"
+}

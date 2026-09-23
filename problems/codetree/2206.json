@@ -1,0 +1,46 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2206",
+ "title": "정수 N개의 합 3",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-sum-of-n-integers-3/description",
+ "alias": "sum-of-n-integers-3",
+ "pid": 2206,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shorten time Technique",
+ "lesson": "Prefix Sum",
+ "card": "intro-sum-of-n-integers-3",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "77.3",
+  "submissions": "1145"
+ },
+ "sample_count": 2,
+ "statement_len": 143,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$이상 $100$이하의 숫자로만 이루어진 $N \\times N$ 크기의 $2$차원 격자 상태가 주어졌을 때, $K \\times K$ 크기의 정사각형이 격자를 벗어나지 않게 잡았을 때 정사각형 내 숫자들의 합이 최대가 되도록 하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $N$과 $K$가 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터 $N + 1$번째 줄까지 $N$개의 줄에 걸쳐 각 행의 정보가 주어집니다.\n\n$N$개의 줄 각각은 $N$개의 공백으로 구분된 원소로 구성되어 있으며, $i$번째 줄의 $j$번째 값은 $a_{ij}$ 값을 의미합니다.",
+ "output_spec": "격자를 벗어나지 않는 $K \\times K$ 크기의 정사각형  중 사각형 내 숫자들의 합이 최대가 되는 경우의 합을 출력합니다.",
+ "constraints": "- $1 \\le K \\le N \\le 500$\n- $1 \\le \\texttt{원소의 크기} \\le 100$",
+ "samples": [
+  {
+   "in": "3 1\n1 2 3\n9 8 8\n6 8 8\n",
+   "out": "9\n"
+  },
+  {
+   "in": "3 2\n1 2 3\n9 8 8\n6 8 8\n",
+   "out": "32\n"
+  }
+ ],
+ "sample_notes": [
+  "다음과 같이 격자를 선택하면 합이 최대가 됩니다.\n\n1 2 3\n\n**9** 8 8\n\n6 8 8\n\n<br>",
+  "다음과 같이 격자를 선택하면 합이 최대가 됩니다.\n\n1 2 3\n\n9 **8 8**\n\n6 **8 8**"
+ ]
+}

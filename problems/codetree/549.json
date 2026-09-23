@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "549",
+ "title": "그래프",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-graph-concept/description",
+ "alias": "graph-concept",
+ "pid": 549,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "그래프 탐색",
+ "lesson": "Graph 정의",
+ "card": "intro-graph-concept",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "71.3",
+  "submissions": "3125"
+ },
+ "sample_count": 0,
+ "statement_len": 313,
+ "fetched_at": "2026-09-23",
+ "statement": "다음 글은 그래프에 대한 설명입니다. 다음 글을 완성하세요.\n\n```\n그래프는 (1)과 노드의 집합으로 구성된 자료구조입니다.\n그래프는 특성에 따라 여러가지로 분류할 수 있는데, 대표적으로 간선의 (2) 존재 여부로 방향 그래프/무방향 그래프로 나눌 수 있습니다.\n그래프의 간선이 특정 값을 가지는 경우도 있는데, 이때 우리는 이 값을 간선의 (3)라고 부릅니다.\n또한, 연결 관계에서 특정 노드와 연결된 이웃 노드의 수를 (4)라고 부릅니다.\n\n```\n\n**보기** — 순서대로 4개 고르기\n\n1. 차수\n2. 경로\n3. 가중치\n4. 간선\n5. 방향\n6. 인접"
+}

@@ -1,0 +1,43 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f345",
+ "title": "색깔 트리",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/color-tree/description",
+ "alias": "color-tree",
+ "pid": 345,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2024 상반기 오후 2번 문제",
+ "level": "L17",
+ "limits": {
+  "time": "Python3 10초 · C++17 2.5초",
+  "memory": "200 MB",
+  "time_sec": 10.0
+ },
+ "stats": {
+  "accept_rate": "40.1",
+  "submissions": "2155"
+ },
+ "sample_count": 2,
+ "statement_len": 2393,
+ "fetched_at": "2026-09-23",
+ "statement": "색깔 트리는 다양한 색의 노드들로 구성되어 있으며, 각 노드는 특정 색깔 $color$ 와 최대 깊이 $max_{depth}$ 속성을 가지고 있습니다. 이 트리는 동적으로 노드를 추가하고, 색깔을 변경할 수 있는 명령들을 처리할 수 있는 시스템입니다.\n\n처음에는 아무 노드도 존재하지 않습니다. 트리 구조는 명령을 통해 점차 구성됩니다. 다음과 같은 $4$가지 명령을 처리할 수 있어야 합니다.\n\n(1) **노드 추가**\n\n- 노드를 트리에 추가합니다. 각 노드는 고유한 번호 $m_{id}$, 부모 노드 번호 $p_{id}$, 색깔 $color$ 그리고 최대 깊이 $max_{depth}$ 를 가집니다.\n- $color$ 는 $1$ 에서 $5$ 사이의 값으로, 빨간색은 $1$, 주황색은 $2$, 노랑색은 $3$, 초록색은 $4$, 파란색은 $5$로 표현됩니다.\n- 만약 $p_{id}$ 가 $-1$ 이면, 해당 노드는 새로운 트리의 루트 노드가 됩니다. \n- $max_{depth}$는 해당 노드를 루트로 하는 서브트리의 최대 깊이를 의미합니다. 자기 자신에 해당하는 노드의 깊이는 $1$로 정의합니다.\n- 만약 기존 노드들의 $max_{depth}$ 값으로 인해 새로운 노드가 추가됨으로써 모순이 발생한다면, **현재 노드는 추가하지 않음에 유의합니다.**\n\n예를 들어, 다음과 같이 노드가 존재한다고 가정해봅시다. 위에서부터 각각 해당 노드의 고유한 번호, 최대 깊이, 색깔을 의미합니다.\n\n<p align=\"center\">\n  <img width=\"100\" src=\"https://contents.codetree.ai/problems/4131/images/acb9fe91-c631-4123-bafe-097bd9f11687.png\" >\n</p>\n\n위와 같은 트리에 $m_{id} = 2$, $p_{id} = 1$, $color = 2$ (주황색), $max_{depth} = 1$인 노드를 추가하면 트리는 다음과 같이 바뀌게 됩니다.\n\n<p align=\"center\">\n  <img width=\"200\" src=\"https://contents.codetree.ai/problems/4131/images/809310c2-d926-40eb-8065-2d00aa519dea.png\" >\n</p>\n\n만약, 여기에 $m_{id} = 3$, $p_{id} = 2$, $color = 3$ (노란색), $max_{depth} = 2$인 노드를 추가하려고 하면 $2$ 번 노드의 최대 깊이를 넘어서기 때문에 해당 노드는 트리에 추가되지 않습니다.\n\n<p align=\"center\">\n  <img width=\"300\" src=\"https://contents.codetree.ai/problems/4131/images/79cf5802-9937-4b83-85dd-324297c78d43.png\" >\n</p>\n\n(2) **색깔 변경**\n\n- 특정 노드 $m_{id}$ 를 루트로 하는 서브트리의 모든 노드의 색깔을 지정된 색 $color$ 로 변경합니다.\n\n<p align=\"center\">\n  <img width=\"300\" src=\"https://contents.codetree.ai/problems/4131/images/77526608-3f3b-4a11-a07b-d2ef764c794e.png\" >\n</p>\n\n만약, 위와 같은 트리에 $m_{id} = 4$, $color = 4$ (초록색)에 해당하는 색깔 변경 연산을 적용한다면 트리는 아래와 같이 바뀌게 됩니다.\n\n<p align=\"center\">\n  <img width=\"300\" src=\"https://contents.codetree.ai/problems/4131/images/e69629ea-63fb-4078-a1f9-5a14b1f340c2.png\" >\n</p>\n\n(3) **색깔 조회**\n\n- 특정 노드 $m_{id}$ 의 현재 색깔을 조회합니다.\n\n(4) **점수 조회**\n\n- 모든 노드의 가치를 계산하여, 가치 제곱의 합을 출력합니다. \n- 각 노드의 가치는 해당 노드를 루트로 하는 서브트리 내 서로 다른 색깔의 수로 정의됩니다.\n\n예를 들어, 아래 그림은 트리의 각 노드의 가치를 계산한 결과입니다.\n\n<p align=\"center\">\n  <img width=\"400\" src=\"https://contents.codetree.ai/problems/4131/images/284665dc-df86-48c3-83aa-869af26a507e.png\" >\n</p>\n\n예로 $1$ 번 노드의 경우, 서브트리 내 서로 다른 색깔의 수가 $4$ 개이기 때문에 가치가 $4$ 가 됩니다. 따라서 점수는 $4 \\times 4 + 1 \\times 1 + 2 \\times 2 + 1 \\times 1  + 1 \\times 1 = 23$ 이 됩니다.\n\n$Q$ 번에 걸쳐 명령을 순서대로 진행하며 알맞은 답을 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 명령의 수 $Q$ 가 주어집니다.\n\n두 번째 줄부터는 $Q$ 개의 줄에 걸쳐 명령의 정보가 주어집니다. 각 명령에 따른 형태는 다음과 같습니다.\n\n- 노드 추가\n   \n  `100 m_id p_id color max_depth` 형태로 공백을 사이에 두고 주어집니다. 이는 고유한 번호 $m_{id}$, 부모 노드 번호 $p_{id}$, 색깔 $color$ 그리고 최대 깊이 $max_{depth}$ 를 가지는 노드를 추가하는 연산이 주어졌음을 의미합니다. \n\n  $m_{id}$ 는 새로 추가되는 노드 번호로 항상 새로운 값이 주어지며, $p_{id}$ 는 ${-1}$ 이 아닌 이상 항상 이미 주어진 노드 번호가 주어짐을 가정해도 좋습니다. \n\n  **해당 명령은 최대 20,000번 주어집니다.**\n\n- 색깔 변경\n   \n  `200 m_id color` 형태로 공백을 사이에 두고 주어집니다. 이는 $m_{id}$ 노드를 루트로 하는 서브 트리 내 모든 노드의 색깔을 $color$ 로 변경해야 함을 의미합니다. 이때 $m_{id}$ 는 이미 주어진 노드 번호만 주어짐을 가정해도 좋습니다. \n\n  **해당 명령은 최대 50,000번 주어집니다.**\n\n- 색깔 조회\n\n  `300 m_id` 형태로 공백을 사이에 두고 주어집니다. 이 경우 현재 $m_{id}$ 노드는 어떤 색인지를 출력합니다. 이때 $m_{id}$ 는 이미 주어진 노드 번호만 주어짐을 가정해도 좋습니다. \n\n  **해당 명령은 최대 20,000번 주어집니다.**\n\n- 점수 조회\n\n  `400` 형태로 주어집니다. 이 경우 모든 노드의 가치를 계산하여, 가치 제곱의 합을 출력합니다. \n\n  **단, 이 연산은 노드가 1개 이상인 경우에만 호출되며 해당 명령은 최대 100번 주어집니다.**",
+ "output_spec": "각 `300`과 `400` 명령에 대해 결과를 한 줄에 하나씩 순서대로 출력합니다.",
+ "constraints": "- $1 ≤ Q ≤ 100,000$\n- $1 ≤ m_{id},\\ p_{id} ≤ 100,000$ (단, $p_{id}$ 는 $-1$ 일 수 있음)\n- $1 ≤ color ≤ 5$\n- $1 ≤ max_{depth} ≤ 100$",
+ "samples": [
+  {
+   "in": "15\n100 1 -1 1 3\n100 2 1 2 1\n100 3 2 3 2\n400\n100 4 1 1 3\n100 5 4 3 2\n400\n200 4 4\n100 6 4 5 2\n300 1\n300 5\n300 6\n400\n200 2 4\n400\n",
+   "out": "5\n15\n1\n4\n5\n23\n16\n"
+  },
+  {
+   "in": "18\n100 52137 -1 1 5\n100 12384 52137 2 5\n100 46812 -1 2 3\n100 47513 46812 2 3\n100 11111 12384 3 5\n100 12121 11111 4 5\n100 21212 12121 5 5\n400\n200 12121 4\n400\n200 21212 5\n400\n200 11111 5\n400\n200 46812 2\n400\n200 52137 5\n400\n",
+   "out": "57\n33\n57\n18\n18\n7\n"
+  }
+ ],
+ "sample_notes": [
+  "첫 번째 예제에 대해 자세히 알아보겠습니다.\n\n제일 먼저 $m_{id} = 1$, $p_{id} = -1$, $color = 1$ (빨간색), $max_{depth} = 3$ 인 노드가 트리에 추가됩니다. 트리는 다음과 같이 바뀌게 됩니다.\n\n<p align=\"center\">\n  <img width=\"100\" src=\"https://contents.codetree.ai/problems/4131/images/aa1ab946-81e3-460f-819b-986404e52ff4.png\" >\n</p>\n\n그 다음으로 $m_{id} = 2$, $p_{id} = 1$, $color = 2$ (주황색), $max_{depth} = 1$ 인 노드가 트리에 추가 됩니다. 트리는 다음과 같이 바뀌게 됩니다.\n\n<p align=\"center\">\n  <img width=\"200\" src=\"https://contents.codetree.ai/problems/4131/images/b1cc8e8c-befc-40fe-ac1c-3f8cccaf7675.png\" >\n</p>\n\n그 다음으로 $m_{id} = 3$, $p_{id} = 2$, $color = 3$ (노란색), $max_{depth} = 2$ 인 노드를 트리에 추가하려고 합니다. 하지만, 해당 노드는 $2$번 노드의 최대 깊이 조건에 위배되어 트리에 추가되지 않습니다.\n\n<p align=\"center\">\n  <img width=\"200\" src=\"https://contents.codetree.ai/problems/4131/images/bcf4c1bd-68c4-4a08-8d54-3252ed29c24e.png\" >\n</p>\n\n따라서 트리는 그대로 상태를 유지하게 됩니다.\n\n<p align=\"center\">\n  <img width=\"300\" src=\"https://contents.codetree.ai/problems/4131/images/b1cc8e8c-befc-40fe-ac1c-3f8cccaf7675.png\" >\n</p>\n\n그 다음으로 `400` 명령어가 들어오게 되어 가치의 총합을 계산합니다. 가치의 총합은 $2 \\times 2 + 1 \\times 1 = 5$ 입니다.\n\n그 다음으로 $m_{id} = 4$, $p_{id} = 1$, $color = 1$ (빨간색), $max_{depth} = 3$ 인 노드가 트리에 추가 됩니다. 트리는 다음과 같이 바뀌게 됩니다.\n\n<p align=\"center\">\n  <img width=\"400\" src=\"https://contents.codetree.ai/problems/4131/images/4423bfd6-f626-4744-ac06-3e9d5d7e6fe6.png\" >\n</p>\n\n그 다음으로 $m_{id} = 5$, $p_{id} = 4$, $color = 3$ (노란색), $max_{depth} = 2$인 노드가 트리에 추가 됩니다. 트리는 다음과 같이 바뀌게 됩니다.\n\n<p align=\"center\">\n  <img width=\"400\" src=\"https://contents.codetree.ai/problems/4131/images/dac0ecc1-7b60-4fe6-8eb7-ad2186ec6c29.png\" >\n</p>\n\n그 다음으로 `400` 명령어가 들어오게 되어 가치의 총합을 계산합니다. 가치의 총합은 $3 \\times 3 + 1 \\times 1 + 2 \\times 2 + 1 \\times 1 = 15$ 입니다.\n\n그 다음으로 `200 4 4` 명령어가 들어오게 되어 $4$번 노드를 루트로 하는 서브트리의 모든 노드의 색깔이 $4$ 번 색깔인 초록색으로 바뀝니다.\n\n<p align=\"center\">\n  <img width=\"400\" src=\"https://contents.codetree.ai/problems/4131/images/5f821d4a-0eae-4ff9-b69a-42842036aa37.png\" >\n</p>\n\n그 다음으로 $m_{id} = 6$, $p_{id} = 4$, $color = 5$ (파란색), $max_{depth} = 2$인 노드가 트리에 추가 됩니다. 트리는 다음과 같이 바뀌게 됩니다.\n\n<p align=\"center\">\n  <img width=\"400\" src=\"https://contents.codetree.ai/problems/4131/images/62dcdd4f-a734-4e77-87b1-46051d27942a.png\" >\n</p>\n\n그 다음으로 `300 1` / `300 5` / `300 6` 명령어가 들어오게 되어 각 노드의 색을 출력합니다. $1$번 노드는 빨간색, $5$번 노드는 초록색, $6$번 노드는 파란색으로 각각 $1$ / $4$ / $5$를 출력합니다.\n\n그 다음으로 `400` 명령어가 들어오게 되어 가치의 총합을 계산합니다. 가치의 총합은 $4 \\times 4 + 1 \\times 1 + 2 \\times 2 + 1 \\times 1 + 1 \\times 1 = 23$ 입니다.\n\n그 다음으로 `200 2 4` 명령어가 들어오게 되어 $2$번 노드를 루트로 하는 서브트리의 모든 노드의 색깔이 $4$ 번 색깔인 초록색으로 바뀝니다.\n\n<p align=\"center\">\n  <img width=\"400\" src=\"https://contents.codetree.ai/problems/4131/images/21589e1b-0245-436b-9968-d434bd7b258a.png\" >\n</p>\n\n마지막으로 `400` 명령어가 들어오게 되어 가치의 총합을 계산합니다. 가치의 총합은 $3 \\times 3 + 1 \\times 1 + 2 \\times 2 + 1 \\times 1  + 1 \\times 1 = 16$ 입니다.",
+  ""
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "331",
+ "title": "배열의 특정 위치 찾기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-find-specific-location-fo-array/description",
+ "alias": "find-specific-location-fo-array",
+ "pid": 331,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "1차원 배열",
+ "lesson": "인덱스 참조",
+ "card": "intro-find-specific-location-fo-array",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "60.3",
+  "submissions": "5558"
+ },
+ "sample_count": 1,
+ "statement_len": 108,
+ "fetched_at": "2026-09-23",
+ "statement": "크기가 $10$인 정수로 이루어진 수열이 주어졌을 때, 다음 $2$개의 값을 출력하는 프로그램을 작성해보세요.\n\n1. 짝수 번째로 입력된 값의 합  \n2. $3$의 배수 번째로 입력된 값의 평균",
+ "input_spec": "$10$개의 정수가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "합과 평균을 공백을 사이에 두고 출력합니다. 평균은 반올림하여 소수 첫째 자리까지 출력합니다.",
+ "constraints": "- $1\\leq \\texttt{주어지는 정수} \\leq 100$",
+ "samples": [
+  {
+   "in": "1 2 3 4 5 6 7 8 9 10\n",
+   "out": "30 6.0\n"
+  }
+ ],
+ "sample_notes": [
+  "짝수 번째 원소의 합은 $2+4+6+8+10=30$ 입니다.  \n$3$의 배수 번째 원소의 평균은 $(3+6+9)/3=6$ 입니다."
+ ]
+}

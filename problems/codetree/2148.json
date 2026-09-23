@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2148",
+ "title": "버스를 기다리며",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-waiting-for-the-bus/description",
+ "alias": "waiting-for-the-bus",
+ "pid": 2148,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Parametric Search",
+ "lesson": "Parametric Search",
+ "card": "challenge-waiting-for-the-bus",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "60.3",
+  "submissions": "287"
+ },
+ "sample_count": 1,
+ "statement_len": 237,
+ "fetched_at": "2026-09-23",
+ "statement": "$1$부터 $N$까지의 번호표를 든 $N$명의 사람과 이 사람들을 태울 $M$개의 버스가 있습니다. 각 버스는 최대 $C$명까지 태울 수 있습니다. $i$번 사람은 $t_i$초에 버스 정류장에 도착하기 때문에 이때부터 버스에 탈 수 있으며, 꼭 $C$명을 다 채우지 않았더라도 버스가 출발하는 것 역시 가능합니다. 버스가 출발할 때까지 가장 오래 기다려야 하는 사람이 기다리는 시간의 최솟값을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$, $M$, $C$가 공백을 사이에 두고 차례대로 주어집니다.\n\n두 번째 줄에 $t_1, t_2, \\cdots, t_N$이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 버스가 출발할 때 까지 가장 오래 기다려야하는 사람이 기다리는 시간의 최솟값을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 100\\,000$\n- $1 \\le M \\le 10\\,000$\n- $1 \\le C \\le 1\\,000$\n- $M \\times C \\ge N$\n- $0 \\le t_i \\le 10^9$",
+ "samples": [
+  {
+   "in": "6 3 2\n1 1 10 14 4 3\n",
+   "out": "4\n"
+  }
+ ],
+ "sample_notes": [
+  "$1$, $2$번 사람을 한 버스에 태우면 $1$ 단위시간 후에 이 버스가 바로 출발하기 때문에 둘 다 버스 출발까지 기다리지 않아도 됩니다. $5$, $6$번 사람을 한 버스에 태우면 $6$번 사람이 $1$ 단위시간 기다려서 $4$ 단위시간에 버스가 출발합니다. $3$, $4$번 사람을 한 버스에 태우면 $3$번 사람이 $4$ 단위시간 기다려서 $14$ 단위시간에 버스가 출발합니다.\n\n<br>\n\n![](https://contents.codetree.ai/problems/2148/images/problems-151dddb2-0912-4347-94c1-87f76c722039.png)"
+ ]
+}

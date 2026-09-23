@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2132",
+ "title": "자연수 M/2개의 쌍",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-m2-pairs-of-natural-numbers/description",
+ "alias": "m2-pairs-of-natural-numbers",
+ "pid": 2132,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Greedy",
+ "lesson": "Greedy Algorithm",
+ "card": "challenge-m2-pairs-of-natural-numbers",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 2초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 2.0
+ },
+ "stats": {
+  "accept_rate": "42.2",
+  "submissions": "619"
+ },
+ "sample_count": 1,
+ "statement_len": 153,
+ "fetched_at": "2026-09-23",
+ "statement": "$M$개의 자연수가 있습니다. 이 자연수들을 두 개씩 짝지어 $\\frac{M}{2}$개의 쌍을 만들려고 합니다. $\\frac{M}{2}$개의 쌍들 중 두 자연수의 합이 가장 큰 쌍의 두 자연수 합을 $C$라고 할 때, 가능한 $C$의 최솟값을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다. $N$은 $M$개의 자연수들 중 서로 다른 값의 개수입니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 각 값이 몇 개씩 있는지에 대한 정보가 주어집니다.  \n$x$, $y$가 공백을 사이에 두고 차례대로 주어지며 이는 $M$개의 자연수 안에 $y$가 $x$개 있다는 것을 의미합니다.  \n두 번째 줄부터 $N+1$번째 줄까지의 $x$값들의 합은 $M$이 됩니다.",
+ "output_spec": "첫 번째 줄에 가능한 $C$의 최솟값을 출력합니다.",
+ "constraints": "- $2 \\le M \\le 10^9$, $M$은 짝수입니다.\n- $1 \\le N \\le 100\\,000$\n- $1 \\le x, y \\le 10^9$\n- $x$값들의 합은 $M$이 됩니다.",
+ "samples": [
+  {
+   "in": "3\n1 8\n2 5\n1 2\n",
+   "out": "10\n"
+  }
+ ],
+ "sample_notes": [
+  "$(5,\\ 5)$ $(2,\\ 8)$로 쌍을 만들면 $C$가 $10$이 됩니다. 이보다 $C$가 작은 경우는 존재하지 않습니다."
+ ]
+}

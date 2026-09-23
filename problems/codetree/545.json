@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "545",
+ "title": "힙에서의 삭제",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-heap-deletion/description",
+ "alias": "heap-deletion",
+ "pid": 545,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "트리",
+ "lesson": "Heap",
+ "card": "challenge-heap-deletion",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "67.2",
+  "submissions": "2054"
+ },
+ "sample_count": 0,
+ "statement_len": 718,
+ "fetched_at": "2026-09-23",
+ "statement": "다음과 같은 최소 힙이 있습니다.\n\n![](https://contents.codetree.ai/problems/545/images/problems-6fde5707-c3a3-4194-8c63-e9aad0ce9bd8.svg)\n\n\n여기서 값을 세 번 삭제 한다면, 힙의 모양은 어떻게 될까요?\n\n**보기** — 하나 고르기\n\n1. <p width='center'>\n   <img src='https://contents.codetree.ai/problems/545/images/3d0d345f-f352-4269-af82-b34c38e6835a.svg'>\n   </p>\n2. <p width='center'>\n   <img src='https://contents.codetree.ai/problems/545/images/ad71b63e-1ae9-4035-8632-91ec842d010a.svg'>\n   </p>\n3. <p width='center'>\n   <img src='https://contents.codetree.ai/problems/545/images/177dffee-a39b-45a5-b7e8-bf27a51c08b0.svg'>\n   </p>\n4. <p width='center'>\n   <img src='https://contents.codetree.ai/problems/545/images/6c6e9903-1d8a-4a80-8918-ee3d40fd8a3b.svg'>\n   </p>"
+}

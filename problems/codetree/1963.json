@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1963",
+ "title": "힙 만들기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-max-heap/description",
+ "alias": "max-heap",
+ "pid": 1963,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "트리",
+ "lesson": "Heap",
+ "card": "intro-max-heap",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "82.6",
+  "submissions": "1710"
+ },
+ "sample_count": 0,
+ "statement_len": 550,
+ "fetched_at": "2026-09-23",
+ "statement": "max-heap은 `heapify` 함수를 이용하여 만들 수 있습니다. 이때 이 과정은 $\\mathcal{O}(N)$의 시간복잡도를 갖습니다.\n\n다음 코드를 완성해봅시다.\n\n```jsx\nfunction heapify(arr[], n, i)\n  set largest = i\n  set l = (1)\n  set r = (2)\n\n  if l <= n && arr[l] > arr[largest]\n    largest = l\n\n  if r <= n && arr[r] > arr[largest]\n    largest = r\n\n  if largest != i\n    swap(arr[i], (3))\n    heapify(arr, n, largest)\n\nfunction build_heap(arr[], n)\n  for i = (4) ... i >= 1\n    heapify(arr, n, i)\n\n```\n\n**보기** — 순서대로 4개 고르기\n\n1. `i * 2`\n2. `i * 2 + 1`\n3. `arr[i]`\n4. `arr[1]`\n5. `arr[largest]`\n6. `n`\n7. `n / 2`"
+}

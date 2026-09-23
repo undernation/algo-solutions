@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "513",
+ "title": "배열과 스택",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-array-and-stack/description",
+ "alias": "array-and-stack",
+ "pid": 513,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "스택, 큐, 덱",
+ "lesson": "Stack",
+ "card": "intro-array-and-stack",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "57.2",
+  "submissions": "3017"
+ },
+ "sample_count": 0,
+ "statement_len": 717,
+ "fetched_at": "2026-09-23",
+ "statement": "배열을 스택처럼 사용하면 중간 데이터를 자유롭게 확인할 수 있는 장점이 있지만, 배열의 크기보다 더 많은 값을 다루면 문제가 발생할 수 있습니다.\n\n배열을 기반으로 하는 스택에서 `push(arr, E)`와 `pop(arr)` 함수를 구현해 보세요. 여기서 `push(arr, E)` 함수는 스택 $arr$에 값 $E$를 넣는 함수이고, `pop(arr)` 함수는 스택 $arr$의 마지막 원소를 지운 뒤 지운 값을 리턴하는 함수입니다.\n\n스택에 삽입할 공간이 부족하거나 `pop(arr)` 시 데이터가 없으면 `throw exception()`을 호출해야 하며, 배열의 인덱스는 $0$부터 $\\texttt{maxsize} - 1$까지 사용 가능합니다.\n\n\n```jsx\nfunction push(arr, E)\n  if arr.size == (1)\n    throw exception()\n  arr.append(E) \n\nfunction pop(arr) \n  if arr.size == (2)\n    throw exception() \n  set last = arr[arr.size - 1] \n  delete arr[arr.size - 1]\n  return (3)  \n```\n\n**보기** — 순서대로 3개 고르기\n\n1. `maxsize - 1`\n2. `maxsize`\n3. `maxsize + 1`\n4. `arr`\n5. `0`\n6. `arr[arr.size - 1]`\n7. `last`"
+}

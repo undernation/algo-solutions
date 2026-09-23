@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "500",
+ "title": "Lower bound, Upper bound",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-lower-upper/description",
+ "alias": "lower-upper",
+ "pid": 500,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "이진탐색",
+ "lesson": "Lower/Upper Bound",
+ "card": "intro-lower-upper",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "ptype": "Multiple choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "28.7",
+  "submissions": "4832"
+ },
+ "sample_count": 0,
+ "statement_len": 467,
+ "fetched_at": "2026-09-23",
+ "statement": "`lower bound`와 `upper bound`를 활용하면, 특정 값이 존재하는 구간을 알 수 있습니다.\n\n다음 중 옳은 것을 모두 골라봅시다.\n\n**보기** — 모두 고르기\n\n1. 만약 upper bound와 lower bound의 차이가 `0`이라면, 수가 없다고 볼 수 있다.\n2. lower bound는 특정 값 이상이 나오는 첫 번째 위치를 구해주고, upper bound는 특정 값이 마지막으로 나오는 지점을 구해준다.\n3. 정렬된 배열에서 특정 수의 개수를 구하기 위해서는 upper bound와 lower bound의 차를 통해 계산하면 된다.\n4. upper bound 값은 항상 lower bound 값보다 크다.\n5. upper bound, lower bound 모두 시간복잡도는 $\\mathcal{O}(\\log{N})$ 이다.\n6. lower bound는 정렬되지 않은 배열에 대해서도 올바른 결과를 구해준다."
+}

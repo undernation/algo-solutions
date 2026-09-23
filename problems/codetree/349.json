@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "349",
+ "title": "1-9 정사각형",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-1-9-square/description",
+ "alias": "1-9-square",
+ "pid": 349,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "다중 반복문",
+ "lesson": "cnt를 이용하여 숫자 출력",
+ "card": "challenge-1-9-square",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "90.0",
+  "submissions": "2524"
+ },
+ "sample_count": 2,
+ "statement_len": 91,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $N$의 값이 주어지면 일의 자리 숫자로 이루어진 $N \\times N$모양 사각형을 출력하는 프로그램을 작성해보세요. $9$다음에는 $1$이 나와야 합니다.",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.",
+ "output_spec": "$N$의 값에 따른 숫자로 이루어진 사각형을 입출력 예제와 같이 출력합니다.",
+ "constraints": "- $1 \\le N \\le 9$",
+ "samples": [
+  {
+   "in": "4\n",
+   "out": "1234\n5678\n9123\n4567\n"
+  },
+  {
+   "in": "5\n",
+   "out": "12345\n67891\n23456\n78912\n34567\n"
+  }
+ ]
+}

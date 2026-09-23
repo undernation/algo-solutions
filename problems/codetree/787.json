@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "787",
+ "title": "상해버린 치즈",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-rotten-cheese/description",
+ "alias": "rotten-cheese",
+ "pid": 787,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "완전탐색 II",
+ "lesson": "물체 단위로 완전탐색",
+ "card": "challenge-rotten-cheese",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "36.4",
+  "submissions": "2367"
+ },
+ "sample_count": 1,
+ "statement_len": 337,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$명의 사람이 $M$개의 치즈를 먹었는데 정확히 하나의 치즈가 상했다는 것을 뒤늦게 알았습니다. 특정 사람이 어떤 치즈를 언제 먹었는지에 대한 기록이 총 $D$번 주어지고, 특정 사람이 언제 확실히 아팠는지에 대한 기록이 $S$번 주어지게 됩니다. 완벽하게 기록된 것이 아니기 때문에, 아프다고 기록되어 있는 사람 외의 다른 사람도 아플 수 있습니다. 상한 치즈를 먹은 사람에게 약을 복용시켜야 할 때, 약이 최대 몇 개나 필요할지를 구하는 프로그램을 작성해보세요. 단, 상한 치즈를 먹게 되면 $1$초가 지나야 아프기 시작하며, 상한 치즈를 먹지 않는 한 배가 아플 일은 없다고 가정해도 좋습니다.",
+ "input_spec": "첫 번째 줄에 사람의 수 $N$, 치즈의 수 $M$, 치즈를 먹은 기록의 수 $D$, 그리고 아픈 기록의 수 $S$가 각각 공백을 사이에 두고 주어집니다.\n\n두 번째 줄부터 $D$개의 줄에 걸쳐 한 줄에 하나씩 몇 번째 사람($p$)이 몇 번째 치즈($m$)를 언제 먹었는지($t_{eat}$초)에 대한 정보 $(p,\\ m,\\ t_{eat})$가 공백을 사이에 두고 주어집니다.\n그 다음에는 $S$개의 줄에 걸쳐 한 줄에 하나씩 몇 번째 사람($p$)이 언제 확실히 아팠는지($t_{sick}$초)에 대한 기록 $(p,\\ t_{sick})$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 약이 최대 몇 개나 필요한지를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 50$\n- $1 \\le M \\le 50$\n- $1 \\le D \\le 1\\,000$\n- $1 \\le S \\le N$\n- $1 \\le p \\le N$\n- $1 \\le m \\le M$\n- $1 \\le t_{eat} \\le 100$\n- $2 \\le t_{sick} \\le 101$\n- 동일한 사람이 아프다는 정보가 여러 번 주어지지 않습니다.\n- 모순된 입력이 주어지지 않습니다.",
+ "samples": [
+  {
+   "in": "3 4 7 2\n1 1 1\n1 4 1\n1 3 4\n1 2 2\n3 1 3\n2 1 5\n2 2 7\n1 3\n2 8\n",
+   "out": "3"
+  }
+ ]
+}

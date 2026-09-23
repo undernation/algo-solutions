@@ -1,0 +1,37 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "217",
+ "title": "세 정수형 변수 선언",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-declaration-of-three-natural-numbers/description",
+ "alias": "declaration-of-three-natural-numbers",
+ "pid": 217,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "출력",
+ "lesson": "출력 형식",
+ "card": "intro-declaration-of-three-natural-numbers",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "88.2",
+  "submissions": "33602"
+ },
+ "sample_count": 1,
+ "statement_len": 81,
+ "fetched_at": "2026-09-23",
+ "statement": "세 개의 정수형 변수를 선언하고 각 변수에 $7$, $23$, $30$을 대입한 후 그 변수를 이용하여 덧셈식을 완성하는 프로그램을 작성해보세요.",
+ "input_spec": "입력이 주어지지 않습니다.",
+ "output_spec": "세 정수형 변수를 선언하고 차례로 $7$, $23$, $30$을 넣어 덧셈식을 출력합니다.",
+ "samples": [
+  {
+   "in": "",
+   "out": "7 + 23 = 30\n"
+  }
+ ]
+}

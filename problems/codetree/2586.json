@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2586",
+ "title": "최대 점프 횟수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-maximum-number-of-jumps/description",
+ "alias": "maximum-number-of-jumps",
+ "pid": 2586,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "DP I",
+ "lesson": "조건에 맞게 선택적으로 전진하는 DP",
+ "card": "challenge-maximum-number-of-jumps",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "63.7",
+  "submissions": "1591"
+ },
+ "sample_count": 2,
+ "statement_len": 543,
+ "fetched_at": "2026-09-23",
+ "statement": "각 위치로부터의 최대 점프 가능 거리를 의미하는 $N$개의 수가 주어졌을 때, 첫 번째 위치로부터 최대 몇 번 점프를 할 수 있는지를 구하는 프로그램을 작성해보세요. 단, 동일한 위치로 점프하는 것은 불가능하고 앞으로 점프하는 것만 가능합니다. 즉, $i$번 위치에서 점프하여 도착하는 위치를 $j$라 하면 $i < j \\le N$이며 $j - i \\le A_i$를 만족해야 합니다.\n\n예를 들어 $N = 5$이고 주어진 $5$개의 수가 $2$, $3$, $0$, $1$, $4$인 경우에 대해 살펴보겠습니다.\n\n![](https://contents.codetree.ai/problems/2586/images/problems-ccb71713-59a3-4190-87fd-f783da0bd754.png)\n\n이 경우 다음과 같이 이동하면 총 $3$번 점프가 가능하며, 이때가 최대입니다.\n\n![](https://contents.codetree.ai/problems/2586/images/problems-9b5e3f78-4551-4e05-98ee-146ea92b3871.png)",
+ "input_spec": "첫째 줄에는 $N$이 주어집니다.\n\n두 번째 줄에는 $1$번 위치에서 $N$번 위치까지 순서대로 각 위치에서의 최대 점프 가능 거리에 해당하는 $N$개의 정수 $A_1, A_2, \\ldots, A_N$이 공백을 사이에 두고 주어집니다.",
+ "output_spec": "시작 위치로부터 최대 몇 번 점프가 가능한지를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 1\\,000$\n- $0 \\le A_i \\le 1\\,000$ ($1 \\le i \\le N$)",
+ "samples": [
+  {
+   "in": "5\n2 3 0 1 4\n",
+   "out": "3\n"
+  },
+  {
+   "in": "7\n2 0 0 0 1 2 3\n",
+   "out": "1\n"
+  }
+ ]
+}

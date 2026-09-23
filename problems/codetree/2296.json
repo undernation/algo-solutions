@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2296",
+ "title": "20대의 평균 나이",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-average-age-of-20/description",
+ "alias": "average-age-of-20",
+ "pid": 2296,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "Infinite Loop",
+ "card": "test-average-age-of-20",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "57.0",
+  "submissions": "6491"
+ },
+ "sample_count": 1,
+ "statement_len": 89,
+ "fetched_at": "2026-09-23",
+ "statement": "몇 명의 사람들의 나이가 차례대로 주어질 때, 처음으로 20대가 아닌 다른 나이대의 사람이 나오기 전까지 입력된 나이들의 평균을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "각 줄마다 차례대로 나이에 해당하는 정수가 하나씩 주어집니다.",
+ "output_spec": "첫 번째 줄에 $20$대가 아닌 다른 나이대의 사람이 나오기 전까지 입력된 나이들의 평균을 소수점 둘째자리까지 반올림하여 출력합니다.",
+ "constraints": "- $1 \\le \\texttt{주어지는 정수} \\le 100$\n- 첫 번째 사람은 반드시 $20$대라고 가정해도 좋습니다.",
+ "samples": [
+  {
+   "in": "29\n28\n26\n22\n22\n30\n",
+   "out": "25.40\n"
+  }
+ ]
+}

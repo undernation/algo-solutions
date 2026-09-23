@@ -4,7 +4,7 @@
 데이터 우선순위(병합):
   1) _meta/history.json           (누적 — PC가 바뀌어도 유지)
   2) 옵시디언 실수노트             (있을 때만. 전체 이력의 진실 소스)
-  3) repo 풀이 파일의 '풀이일'      (boj/*.py, swea/*.py)
+  3) repo 풀이 파일의 '풀이일'      (boj/*.py, swea/*.py, codetree/*.py)
 
 history.json 형식:
   {"2026-08-11": {"count": 2, "items": ["SWEA 2382 미생물 격리 (품)", ...]}}
@@ -22,6 +22,8 @@ HIST = os.path.join(ROOT, "_meta", "history.json")
 # 삭제 표식. 사용자가 지운 기록은 코드 파일이 남아 있어도 되살아나면 안 된다.
 # 형식: ["2026-08-12|BOJ|1159", ...]
 TOMB = os.path.join(ROOT, "_meta", "deleted.json")
+# 코드트리 전체 문제 카탈로그(크롤러 산출물). 번호 없는 옛 기록을 문제에 연결할 때만 읽는다.
+CT_LIST = os.path.join(ROOT, "_meta", "codetree_list.json")
 ASSETS = os.path.join(ROOT, "assets")
 SVG = os.path.join(ASSETS, "heatmap.svg")
 HTML = os.path.join(ASSETS, "heatmap.html")
@@ -196,19 +198,35 @@ def from_vault() -> dict:
     return out
 
 
+# 풀이 파일 폴더. 헤더 첫 줄은 "<SITE> <번호>  <제목>" 이다(server.build_header).
+# 코드트리(2026-09-23~)는 codetree/<no>_<제목>.py — 헤더가 "CT f386  AI 로봇청소기".
+# 코드트리 번호는 숫자로 못박지 않는다: 기출 problem_id 가 트레일 problem_id 와 106개 겹쳐
+# (342 = 트레일 '직사각형 별표 출력하기' = 기출 '고대 문명 유적 탐사') 기출은 "f"+id 를 쓴다.
+# 서버가 받는 번호 형식은 [A-Za-z0-9_-]{1,12}. BOJ/SWEA 정규식은 예전 그대로 둔다
+# (codetree/ 폴더 파일에만 CT 정규식을 쓴다).
+SOL_DIRS = ("boj", "swea", "codetree")
+_SOL_HEAD = re.compile(r"^\s*(BOJ|SWEA)\s+(\d+)\s+(.*)$", re.M)
+_CT_HEAD = re.compile(r"^\s*(CT)\s+([A-Za-z0-9_-]{1,12})\s+(.*)$", re.M)
+
+
 def from_repo() -> dict:
     out = {}
-    for f in glob.glob(os.path.join(ROOT, "boj", "*.py")) + \
-             glob.glob(os.path.join(ROOT, "swea", "*.py")):
+    for f in [x for s in SOL_DIRS for x in glob.glob(os.path.join(ROOT, s, "*.py"))]:
         src = io.open(f, encoding="utf-8").read()
         m = re.search(r"풀이일\s*:\s*(\d{4}-\d{2}-\d{2})", src)
         if not m:
             continue
         d = m.group(1)
-        t = re.search(r"^\s*(BOJ|SWEA)\s+(\d+)\s+(.*)$", src, re.M)
+        ct_dir = os.path.basename(os.path.dirname(f)) == "codetree"
+        t = (_CT_HEAD if ct_dir else _SOL_HEAD).search(src)
         st = re.search(r"결과\s*:\s*(\S+)", src)
-        item = {"site": t.group(1) if t else "BOJ", "no": t.group(2) if t else "",
-                "title": t.group(3).strip() if t else os.path.basename(f),
+        base = os.path.basename(f)
+        # 헤더를 못 읽으면 예전처럼 BOJ 로 둔다. 코드트리 폴더만은 폴더가 곧 사이트이고
+        # 파일명 앞부분이 번호라서 그걸 쓴다 — BOJ 로 두면 엉뚱한 백준 문제가 된다.
+        fm = re.match(r"([A-Za-z0-9-]{1,12})_", base) if (ct_dir and not t) else None
+        item = {"site": t.group(1) if t else ("CT" if ct_dir else "BOJ"),
+                "no": t.group(2) if t else (fm.group(1) if fm else ""),
+                "title": t.group(3).strip() if t else base,
                 "status": st.group(1) if st else "?",
                 "file": os.path.relpath(f, ROOT).replace(os.sep, "/")}
         rec = out.setdefault(d, {"count": 0, "items": []})
@@ -218,10 +236,21 @@ def from_repo() -> dict:
 
 
 def _ikey(it):
-    """item 동일성 판정 키. 문자열 item(구버전)은 원문 그대로."""
+    """item 동일성 판정 키. 문자열 item(구버전)은 원문 그대로.
+
+    번호 없는 기록(실수노트 '## 여왕개미', '## 프로그래머스 타겟 넘버' …)은 제목으로 가른다 —
+    대시보드 key() 와 같은 모양 "BOJ/~제목". 예전엔 전부 "BOJ/" 라, 같은 날 두 개 이상이면
+    merge 가 하나로 뭉갰다: 제목은 앞 기록, 상태는 뒤 기록이 남고 나머지는 목록에서 사라졌다
+    (count 만 실수노트 값으로 맞아 보였다). 2026-05 프로그래머스 연습 22일치가 그랬고,
+    06-19 '자물쇠와 열쇠' 는 옆 기록의 (품)을 달고 있었다(실수노트엔 (틀림)). 2026-09-23 수정.
+    번호 있는 항목은 예전 키 그대로다(삭제 표식·허브 저장분과 맞물려 있다).
+    """
     if isinstance(it, str):
         return it.strip()
-    return "%s/%s" % (it.get("site", ""), it.get("no", ""))
+    no = it.get("no", "")
+    if no is None or not str(no).strip():
+        return "%s/~%s" % (it.get("site", ""), (it.get("title") or "").strip() or "이름없음")
+    return "%s/%s" % (it.get("site", ""), no)
 
 
 def load_tombstones():
@@ -325,6 +354,146 @@ def merge(base: dict, add: dict, status_first: bool = False) -> dict:
     return base
 
 
+# ── 번호 없는 옛 기록 → 코드트리 문제 연결 (2026-09-23) ──────────────
+# 실수노트(SSOT)의 코드트리 기록은 "## 코드트리 나무박멸 (틀림)", "## 여왕개미" 처럼
+# 번호가 없다. from_vault() 는 번호가 없으면 site="BOJ", no="" 인 '제목만 있는 항목'을
+# 만들어서, 대시보드에선 백준 칸에 번호 없이 떠 있고 문제 페이지로도 못 간다(61건).
+# 코드트리 카탈로그의 제목과 맞춰 CT 번호를 붙인다.
+#
+# 보수적으로만 붙인다. 같은 '제목만 있는 항목' 에 프로그래머스(타겟 넘버·피로도·조이스틱…)와
+# SWEA 기록이 섞여 있어서, 헐겁게 맞추면 남의 문제가 코드트리로 둔갑한다.
+#   · site 가 BOJ 이고 no 가 빈 항목만. 제목에 프로그래머스/SW Expert 가 있으면 손대지 않는다.
+#   · 제목에 '코드트리' 가 있으면 카탈로그 전체(트레일+기출)에서, 없으면 기출에서만 찾는다.
+#     실수노트에 번호 없이 적은 건 기출(삼성·HSAT)이었고, 트레일은 입문 연습문제가 천 개가
+#     넘어 흔한 제목이 우연히 겹칠 수 있다.
+#   · 정규화한 제목이 '정확히 한 문제' 와 맞을 때만. 원래 제목은 title_raw 로 남긴다.
+# history.json 과 실수노트 양쪽에 merge '전에' 같은 규칙을 적용해야 한다 — 한쪽만 바꾸면
+# (site, no) 키가 달라 같은 날 CT 항목과 BOJ 제목 항목이 둘 다 남는다(잔디 count +1).
+# 카탈로그가 없으면(크롤링 전) 아무것도 안 한다 = 예전 동작 그대로.
+# (이 작업 중에 번호 없는 항목끼리 키가 "BOJ/" 로 같아 뭉개지던 것도 드러나 _ikey 에서 고쳤다.)
+_CT_WORD = re.compile(r"코드\s*트리")
+_CT_NOISE = re.compile(r"\(\s*코드\s*트리\s*\)|코드\s*트리")
+# 번호도 괄호도 없이 "## 해적선장 코디 못품." 처럼 상태를 제목 끝에 붙여 쓴 기록이 있다.
+# 띄어쓴 경우만 뗀다 — 붙여 쓴 "…작품" 같은 제목 끝 글자를 상태어로 오인하지 않게.
+_CT_TAIL = re.compile(r"\s+(?:못품|품|틀림|맞음|시간\s*초과)$")
+_CT_PUNCT = re.compile(r"[\s.,:;·\-‐–—~'\"‘’“”!?！？：]+")
+_CT_SKIP = re.compile(r"프로그래머스|programmers|sw\s*expert|swea|백준", re.I)
+
+
+def ct_norm(title) -> str:
+    """제목 대조용 정규화. 카탈로그 쪽과 기록 쪽에 반드시 같은 함수를 쓴다."""
+    s = _CT_NOISE.sub(" ", title or "").strip().rstrip(".").strip()
+    s = _CT_TAIL.sub("", s).strip().rstrip(".")
+    return _CT_PUNCT.sub("", s).lower()
+
+
+def load_ct_titles():
+    """카탈로그 → (전체, 기출) 두 표. 표 = 정규화 제목 → {problem_id: 카탈로그 제목}.
+
+    같은 문제가 트레일과 기출에 둘 다 나오면 카탈로그는 첫 번째(트레일)만 items 에 두고
+    기출 쪽은 also 로 붙인다(ct_spec §4-1). 그래서 기출 여부는 also 까지 봐야 한다.
+    """
+    try:
+        cat = json.load(io.open(CT_LIST, encoding="utf-8"))
+    except Exception:
+        return {}, {}
+    if not isinstance(cat, dict):
+        return {}, {}
+    freq_groups = set(g.get("key") for g in (cat.get("groups") or [])
+                      if isinstance(g, dict) and g.get("kind") == "frequent")
+    every, freq = {}, {}
+    for it in cat.get("items") or []:
+        if not isinstance(it, dict):
+            continue
+        no, title = str(it.get("no") or "").strip(), (it.get("title") or "").strip()
+        k = ct_norm(title)
+        if not no or not k:
+            continue
+        every.setdefault(k, {})[no] = title
+        if any(isinstance(x, dict) and (x.get("kind") == "frequent" or x.get("group") in freq_groups)
+               for x in [it] + list(it.get("also") or [])):
+            freq.setdefault(k, {})[no] = title
+    return every, freq
+
+
+def ct_sticky(data: dict) -> dict:
+    """이전 빌드가 붙여 둔 짝: 정규화 title_raw → {problem_id: 제목}.
+
+    붙인 결과는 history.json 에 남는다. 나중에 카탈로그에 같은 제목의 새 문제가 생기거나
+    (모호해짐) 카탈로그가 잠깐 없거나 덜 받아진 상태면, 실수노트 쪽만 못 붙어 같은 날
+    CT 항목과 BOJ 제목 항목이 겹친다. 그때 이 짝을 빌려 쓴다.
+    ⚠️ 카탈로그보다 앞세우지는 않는다. 카탈로그가 '정확히 한 문제' 를 대면 그게 이기고,
+    예전에 붙인 항목도 따라 옮긴다(link_codetree). 번호 체계가 바뀌는 일이 실제로
+    있었다 — 기출 problem_id 가 트레일 problem_id 와 겹치는 게 확인돼(342 = 트레일
+    '직사각형 별표 출력하기' = 기출 '고대 문명 유적 탐사') 기출 번호를 바꿔야 했다.
+    짝을 앞세웠다면 옛 번호가 history.json 에 영영 박혔을 것이다.
+    """
+    out = {}
+    for rec in data.values():
+        for it in rec.get("items", []):
+            if isinstance(it, dict) and it.get("site") == "CT" and it.get("title_raw") \
+                    and str(it.get("no") or "").strip():
+                out.setdefault(ct_norm(it["title_raw"]), {})[str(it["no"]).strip()] = \
+                    it.get("title") or ""
+    return out
+
+
+def link_codetree(data: dict, every: dict, freq: dict, sticky: dict) -> int:
+    """번호 없는 BOJ 제목 항목 중 코드트리 문제로 확실한 것에 CT 번호를 붙인다(제자리 수정).
+
+    예전 빌드가 붙인 항목(title_raw 있음)도 다시 본다 — 카탈로그가 다른 번호를 '정확히
+    하나' 대면 따라 옮기고, 카탈로그가 못 정하면 그대로 둔다. 실수노트 쪽도 같은 제목이라
+    같은 답이 나오므로 양쪽이 어긋나지 않는다.
+    site·no·title 만 바꾸고 status·attempts·file 등은 건드리지 않는다. 바꾼 개수를 돌려준다.
+    """
+    n = 0
+    for rec in data.values():
+        hit_day = False
+        for it in rec.get("items", []):
+            if not isinstance(it, dict):
+                continue
+            if it.get("site") == "BOJ" and not str(it.get("no") or "").strip():
+                raw = it.get("title") or ""
+            elif it.get("site") == "CT" and it.get("title_raw"):
+                raw = it["title_raw"]
+            else:
+                continue
+            k = ct_norm(raw)
+            if not k or _CT_SKIP.search(raw):
+                continue
+            hit = (every if _CT_WORD.search(raw) else freq).get(k) or {}
+            if len(hit) != 1:
+                hit = sticky.get(k) or {}     # 카탈로그가 못 정하면 예전에 붙인 짝
+            if len(hit) != 1:
+                continue                      # 없거나 둘 이상 — 모르면 안 붙인다
+            no, title = next(iter(hit.items()))
+            title = title or raw
+            if it.get("site") == "CT" and str(it.get("no")) == no and it.get("title") == title:
+                continue                      # 이미 그대로
+            it["site"], it["no"], it["title"] = "CT", no, title
+            it["title_raw"] = raw
+            n += 1
+            hit_day = True
+        if hit_day:
+            # 같은 날 이미 CT 항목(허브 저장분)이 있었거나 제목 두 개가 같은 문제로 붙었으면
+            # 키가 겹친다. merge() 는 base 쪽 중복을 _fill 없이 버리고, 실수노트가 없는
+            # 날(Actions·클라우드)엔 merge 자체가 그 날을 안 지나가 중복이 그대로 남는다.
+            # 여기서 합쳐 둔다. count 는 줄이지 않는다(잔디는 '큰 값 채택' 규칙).
+            # CT 키만 본다 — 이번에 새로 겹칠 수 있는 건 방금 CT 로 붙인 항목뿐이고,
+            # 나머지 항목의 중복 처리는 예전처럼 merge() 에 맡긴다.
+            pos, items = {}, []
+            for it in rec["items"]:
+                key = _ikey(it) if isinstance(it, dict) and it.get("site") == "CT" else None
+                if key is None or key not in pos:
+                    if key is not None:
+                        pos[key] = len(items)
+                    items.append(it)
+                else:
+                    items[pos[key]] = _fill(items[pos[key]], it, False)
+            rec["items"] = items
+    return n
+
+
 def build_rows(data: dict) -> list:
     """날짜별 기록 → 대시보드용 '제출 이력' 목록(최신 날짜 먼저).
 
@@ -385,8 +554,14 @@ def _file_commits(rel: str) -> list:
             if "|" not in line:
                 continue
             sha, iso = line.split("|", 1)
+            iso = iso.strip()
+            # git 은 UTC 커밋(클라우드 허브·Actions 가 만든 것)을 "…T04:04:24Z" 로 찍는데,
+            # fromisoformat 은 3.11 부터 'Z' 를 읽는다. 클라우드 VM 은 3.8 이라 그런 커밋이
+            # 전부 ValueError 로 빠져 회차 ↔ 커밋 짝이 어긋났다(2026-09-23 PyPy 3.7 대조로 발견).
+            if iso.endswith("Z"):
+                iso = iso[:-1] + "+00:00"
             try:
-                t = datetime.datetime.fromisoformat(iso.strip())
+                t = datetime.datetime.fromisoformat(iso)
             except ValueError:
                 continue
             if t.tzinfo is not None:
@@ -577,8 +752,15 @@ def main():
         year = int(sys.argv[sys.argv.index("--year") + 1])
 
     data = load_history()
+    # 번호 없는 코드트리 기록을 문제에 연결 — history·실수노트 '양쪽 모두 merge 전에'.
+    # (한쪽만 바꾸면 같은 날 CT 항목과 BOJ 제목 항목이 겹친다. 위 주석 참고)
+    every, freq = load_ct_titles()
+    sticky = ct_sticky(data)
+    ct_h = link_codetree(data, every, freq, sticky)
+    vault = from_vault()
+    ct_v = link_codetree(vault, every, freq, sticky)
     # 실수노트가 상태의 진실 소스다(CLAUDE.md). repo 헤더는 보조.
-    merge(data, from_vault(), status_first=True)
+    merge(data, vault, status_first=True)
     merge(data, from_repo())
     # 사용자가 지운 기록은 코드 파일·실수노트에 남아 있어도 되살리지 않는다.
     apply_tombstones(data, load_tombstones())
@@ -644,6 +826,8 @@ def main():
     print("   history.json %d일  |  SVG + HTML + HEATMAP.md" % len(data))
     with_items = sum(1 for k in data if data[k]["items"])
     print("   문제명 보유: %d일 / %d일" % (with_items, len(data)))
+    if every or sticky:
+        print("   코드트리 번호 연결: history %d건 · 실수노트 %d건" % (ct_h, ct_v))
 
 
 if __name__ == "__main__":

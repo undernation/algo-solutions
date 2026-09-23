@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "417",
+ "title": "양옆 문자 제거하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-del-both-side-char/description",
+ "alias": "del-both-side-char",
+ "pid": 417,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "문자열",
+ "lesson": "문자 삭제",
+ "card": "intro-del-both-side-char",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "77.9",
+  "submissions": "2476"
+ },
+ "sample_count": 2,
+ "statement_len": 65,
+ "fetched_at": "2026-09-23",
+ "statement": "문자열이 주어지면, 앞에서 2번째 원소와 뒤에서 2번째 원소를 제거한 후의 문자열을 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 길이가 10 이상이고, 100이하인 문자열이 주어집니다.",
+ "output_spec": "첫 번째 줄에 해당하는 문자열을 출력합니다.",
+ "constraints": "- $10 \\le$ 문자열의 길이 $\\le 100$",
+ "samples": [
+  {
+   "in": "leebroscode\n",
+   "out": "lebroscoe\n"
+  },
+  {
+   "in": "aaaaaaaaaaaaaaa\n",
+   "out": "aaaaaaaaaaaaa\n"
+  }
+ ]
+}

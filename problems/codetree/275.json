@@ -1,0 +1,37 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "275",
+ "title": "문자 출력하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-print-text/description",
+ "alias": "print-text",
+ "pid": 275,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "n번 반복하기",
+ "card": "intro-print-text",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "75.8",
+  "submissions": "18863"
+ },
+ "sample_count": 1,
+ "statement_len": 33,
+ "fetched_at": "2026-09-23",
+ "statement": "문자를 입력받아서 $8$회 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 문자를 입력받습니다.",
+ "output_spec": "입력받은 문자를 사이에 공백없이 $8$회 출력합니다.",
+ "samples": [
+  {
+   "in": "G\n",
+   "out": "GGGGGGGG\n"
+  }
+ ]
+}

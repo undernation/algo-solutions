@@ -1,0 +1,39 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f35",
+ "title": "자율주행 자동차",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/autonomous-driving/description",
+ "alias": "autonomous-driving",
+ "pid": 35,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2017 상반기 오후 1번 문제",
+ "level": "L11",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "53.1",
+  "submissions": "1863"
+ },
+ "sample_count": 2,
+ "statement_len": 1173,
+ "fetched_at": "2026-09-23",
+ "statement": "$n \\times m$ 크기의 도로에 $1 \\times 1$ 크기의 자율주행 자동차가 주어집니다.\n\n자율주행 자동차는 다음 규칙에 따라서 움직입니다.\n\n1. 현재 방향을 기준으로 왼쪽 방향으로 한 번도 간 적이 없다면 좌회전해서 해당 방향으로 1 칸 전진합니다.\n<p align=\"center\">\n<img width=\"500\" height=\"220\" src=\"https://contents.codetree.ai/problems/123/images/c5c14535-31a2-41d1-8933-8ddd683e2ee8.png\">\n</p>\n\n2. 만약 왼쪽 방향이 인도거나 이미 방문한 도로인 경우 좌회전하고 다시 1번 과정을 시도합니다.\n<p align=\"center\">\n<img width=\"500\" height=\"220\" src=\"https://contents.codetree.ai/problems/123/images/a6b4c1f7-bc23-4037-8e56-7592ac6d2d27.png\">\n</p>\n\n3. 2번에 대해 4방향 모두 확인하였으나 전진하지 못한 경우에는 바라보는 방향을 유지한 채로 한 칸 후진을 하고 다시 1번 과정을 시도합니다.\n<p align=\"center\">\n<img width=\"500\" height=\"220\" src=\"https://contents.codetree.ai/problems/123/images/31666670-0ae2-44cd-9a95-74d66642710e.png\">\n</p>\n4. 3번 과정을 시도하려 했지만 뒷 공간이 인도여서 후진조차 하지 못한다면 작동을 멈춥니다.\n<p align=\"center\">\n<img width=\"300\" height=\"300\" src=\"https://contents.codetree.ai/problems/123/images/945a9a88-f31e-4183-a03f-dddcb1f85ecd.png\">\n</p>\n\n<p align=\"center\">\n<img width=\"600\" height=\"350\" src=\"https://contents.codetree.ai/problems/123/images/6326f794-036e-4513-8720-f4bb9526ce12.gif\">\n</p>\n\n자율주행 자동차가 작동을 멈췄을 때 거쳐갔던 도로의 총 면적을 구하는 프로그램을 작성하세요. 처음 위치의 도로도 총 면적에 함께 계산합니다.",
+ "input_spec": "첫 번째 줄에 도로의 세로 크기와 가로 크기를 의미하는 정수 $n$과 $m$이 주어집니다.\n\n두 번째 줄에 자율주행 자동차의 초기 위치 $(x, y)$와 바라보는 방향 $d$가 주어집니다. $d$는 $0$부터 $3$까지 정수로 주어지고, 순서대로 북쪽, 동쪽, 남쪽, 서쪽을 의미합니다. 자동차의 처음 위치 $x$는 위쪽에서부터 아래쪽까지 $0$부터 $n-1$까지 차례대로 번호를 매겨 구분하며, $y$는 왼쪽에서 오른쪽까지 차례대로 번호를 매겨 구분합니다.\n\n세 번째 줄부터 $n+2$번째 줄까지는 도로의 상태가 주어집니다. 도로는 $0$ 또는 $1$의 값을 가지며 $0$은 도로, $1$은 인도를 의미합니다.\n\n- 자율주행 자동차가 있는 칸은 도로일 것이라 가정해도 좋습니다.\n- 격자의 첫번째 행과 마지막 행, 첫번째 열과 마지막 열은 항상 인도일 것이라고 가정해도 좋습니다.",
+ "output_spec": "초기 상태의 방문 면적을 $1$으로 가정하고, 자율주행 자동차가 방문했던 도로의 총 면적을 구합니다.",
+ "constraints": "- $3 \\le n,\\ m \\le 50$\n- $x$와 $y$는 정수입니다.",
+ "samples": [
+  {
+   "in": "5 5\n1 1 0\n1 1 1 1 1\n1 0 0 0 1\n1 0 1 0 1\n1 0 0 0 1\n1 1 1 1 1\n",
+   "out": "8\n"
+  },
+  {
+   "in": "6 4\n4 1 2\n1 1 1 1\n1 0 0 1\n1 1 0 1\n1 0 1 1\n1 0 0 1\n1 1 1 1\n",
+   "out": "3\n"
+  }
+ ]
+}

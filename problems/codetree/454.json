@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "454",
+ "title": "노드의 관계",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-doubly-linked-list-move/description",
+ "alias": "doubly-linked-list-move",
+ "pid": 454,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "배열, 연결 리스트",
+ "lesson": "Doubly-LinkedList",
+ "card": "challenge-doubly-linked-list-move",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "85.5",
+  "submissions": "2394"
+ },
+ "sample_count": 0,
+ "statement_len": 320,
+ "fetched_at": "2026-09-23",
+ "statement": "다음과 같은 연결 리스트가 있습니다. 그림에 표현 된 노드 $p$와 $n$을 볼 때, 다음 선택지 중 나머지 선택지들과 다른 것을 표현한 것이 하나 있습니다. 그 선택지는 무엇일까요?\n\n![](https://contents.codetree.ai/problems/454/images/problems-ec19cdb0-53ea-4d87-a0ca-6a86ac542133.svg)\n\n**보기** — 하나 고르기\n\n1. `p.next`\n2. `n.next.next`\n3. `p.prev.next`\n4. `p.next.prev.next`\n5. `n.next.next.prev.next`"
+}

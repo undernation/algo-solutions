@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "109",
+ "title": "방향에 맞춰 최대로 움직이기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-max-movements-with-direction/description",
+ "alias": "max-movements-with-direction",
+ "pid": 109,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "Backtracking",
+ "lesson": "K개 중 하나를 N번 선택하기(Conditional)",
+ "card": "challenge-max-movements-with-direction",
+ "card_type": "Problem",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "79.1",
+  "submissions": "1285"
+ },
+ "sample_count": 2,
+ "statement_len": 761,
+ "fetched_at": "2026-09-23",
+ "statement": "각 칸이 $1$이상 $N \\times N$이하의 정수와 여덟 방향 중 한 방향으로 이루어진 $N \\times N$ 크기의 격자가 주어집니다.\n\n수는 중복없이 단 한 번씩만 주어지며, 방향은 아래 그림에서 왼쪽에 적혀있는대로 여덟 방향 중 하나입니다.\n\n![](https://contents.codetree.ai/problems/109/images/problems-4a09fb46-0386-4147-a568-037b95226a36.png)\n\n이때 특정 위치에서 시작하여 현재 위치에 적혀있는 방향에 있는 수들 중 현재 수보다 더 큰 수가 적혀있는 곳으로 이동하는 것을 최대한 많이 반복해보려고 합니다.\n\n아래 그림을 살펴봅시다. 이 경우는 $N = 3$이고, 시작 위치가 $3$행 $3$열인 예입니다.\n\n![](https://contents.codetree.ai/problems/109/images/problems-c4890366-03cb-4f04-bb30-1698aa243cf6.png)\n\n$5$에서는 $5$보다 크면서 해당 방향에 있는 수 $6, 7$에 모두 갈 수 있습니다.\n\n$6$으로 이동하게 될 경우에는 더 이상 조건을 만족하며 움직일 수 없게 됩니다.\n\n하지만 $7$로 이동하게 된 경우, 조건을 만족하며 $9$로 이동이 가능하기 때문에 $5$에서 시작하여 총 $2$번 이동이 가능하게 됩니다.\n\n$N \\times N$ 격자의 초기 상태가 주어졌을 때, 시작 위치로부터 조건을 만족하며 최대 몇 번 이동할 수 있는지를 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 격자의 크기를 나타내는 $N$이 주어집니다.\n\n그 다음 줄부터는 $N$개의 줄에 걸쳐 해당 행의 각 칸에 적혀있는 $N$개의 정수가 순서대로 공백을 사이에 두고 주어집니다.\n\n그 다음 줄부터는 $N$개의 줄에 걸쳐 해당 행의 각 칸에 적혀있는 방향을 나타내는 정수가 순서대로 공백을 사이에 두고 주어집니다. 이 정수는 $1$ 이상 $8$ 이하이며, 순서대로 ↑, ↗, →, ↘, ↓, ↙, ←, ↖ 방향을 의미합니다.\n\n마지막 줄에는 시작 위치를 나타내는 $r$, $c$ 값이 공백을 사이에 두고 주어집니다. 이는 $r$행 $c$열에서 시작함을 의미합니다.",
+ "output_spec": "조건을 만족하며 이동할 수 있는 최대 횟수를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 4$\n- $1 \\le \\texttt{격자 값} \\le N \\times N$\n- 격자 값은 서로 중복되지 않으며 $1$부터 $N \\times N$까지의 정수가 모두 정확히 한 번씩 등장합니다.\n- $1 \\le \\texttt{방향 값} \\le 8$\n- $1 \\le r,\\ c \\le N$",
+ "samples": [
+  {
+   "in": "3\n7 1 4\n2 6 3\n9 8 5\n5 3 1\n6 3 7\n2 4 8\n3 3\n",
+   "out": "2\n"
+  },
+  {
+   "in": "3\n2 8 9\n6 4 5\n3 7 1\n5 3 1\n6 3 7\n2 4 8\n3 3\n",
+   "out": "5\n"
+  }
+ ]
+}

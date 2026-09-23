@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2406",
+ "title": "신기한 타일 뒤집기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-strange-flipping-tiles/description",
+ "alias": "strange-flipping-tiles",
+ "pid": 2406,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 I",
+ "lesson": "구간 칠하기",
+ "card": "test-strange-flipping-tiles",
+ "card_type": "Test",
+ "level": "Medium",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "55.1",
+  "submissions": "3739"
+ },
+ "sample_count": 2,
+ "statement_len": 402,
+ "fetched_at": "2026-09-23",
+ "statement": "일직선으로 무한히 나열된 회색 타일이 있습니다. 이 타일은 신기한 타일이기 때문에, 현재 타일의 색이 어떤 색인지와는 상관없이 왼쪽으로 뒤집으면 흰색으로 바뀌고, 오른쪽으로 뒤집으면 검은색으로 바뀌게 됩니다.  \n\n아무 타일에서 시작하여 $N$번의 명령에 걸쳐 움직입니다. 명령은 $x$ $L$, $x$ $R$ 형태로만 주어지며, $x$ $L$의 경우 왼쪽으로 이동하며 순서대로 현재 위치 타일포함 총 $x$칸의 타일을 왼쪽으로 뒤집습니다.  $x$ $R$의 경우 오른쪽으로 이동하며 순서대로 현재 위치 타일포함 총 $x$칸의 타일을 오른쪽으로 뒤집습니다. 각 명령 이후에는 마지막으로 뒤집은 타일 위치에 서있는다고 가정합니다.\n\n모든 명령을 실행한 뒤의 흰색, 검은색 타일 수를 각각 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에는 $N$이 주어집니다.\n\n두 번째 줄부터는 $N$개의 줄에 걸쳐 명령이 주어집니다. 형태는 $x$ $L$ 혹은 $x$ $R$ 입니다.",
+ "output_spec": "첫 번째 줄에 모든 명령을 실행하고 난 뒤의 흰색, 검은색 타일 수를 각각 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $1 \\le N \\le 1000$\n- $1 \\le x \\le 100$\n- 각 명령어에서 $x$값 뒤에 오는 문자는 'L' 또는 'R'입니다.",
+ "samples": [
+  {
+   "in": "4\n4 R\n5 L\n7 R\n4 L\n",
+   "out": "4 3\n"
+  },
+  {
+   "in": "2\n10 R\n11 L\n",
+   "out": "11 0\n"
+  }
+ ]
+}

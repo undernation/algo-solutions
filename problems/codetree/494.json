@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "494",
+ "title": "중복 값",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-binary-dupil/description",
+ "alias": "binary-dupil",
+ "pid": 494,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "이진탐색",
+ "lesson": "이진탐색",
+ "card": "challenge-binary-dupil",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "30.6",
+  "submissions": "4303"
+ },
+ "sample_count": 0,
+ "statement_len": 671,
+ "fetched_at": "2026-09-23",
+ "statement": "다음은 이분탐색 코드입니다.\n\n```jsx\nfunction solution(arr, target)\n  set left = 0\n  set right = arr.size - 1\n  while left <= right\n    set mid = (left + right) / 2\n    if arr[mid] == target\n      return mid\n\n    if arr[mid] > target\n      right = mid - 1\n    else\n      left = mid + 1\n\n  return -1\n```\n\n지금까지는 이분탐색 과정에서 찾는 값이 배열에 $1$개만 존재한다고 가정하고 탐색을 진행하였습니다.  \n\n만약 값이 $2$개 이상이라면 어느 위치의 값이 반환이 될까요?\n\n다음 두 배열에서 이분탐색을 수행한다 할 때, 각각 반환될 값을 구해보세요.\n\n```jsx\nCase 1.\narr = [5, 5, 5, 8, 8, 8, 11, 12, 13, 15, 16, 19, 19, 19]\ntarget = 19\n\nCase 2.\narr = [4, 8, 9, 12, 15, 18, 23, 24, 24, 26, 27, 29, 31]\ntarget = 24\n```\n\n**보기** — 순서대로 2개 고르기\n\n1. `7`\n2. `8`\n3. `9`\n4. `10`\n5. `11`\n6. `12`\n7. `13`"
+}

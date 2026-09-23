@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "908",
+ "title": "Time to Time",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-time-to-time/description",
+ "alias": "time-to-time",
+ "pid": 908,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "시뮬레이션 I",
+ "lesson": "날짜와 시간 계산",
+ "card": "intro-time-to-time",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "91.3",
+  "submissions": "5516"
+ },
+ "sample_count": 1,
+ "statement_len": 88,
+ "fetched_at": "2026-09-23",
+ "statement": "$2011$년 $11$월 $11$일 $A$시 $B$분에서 시작하여 같은 날 $C$시 $D$분이 될 때까지 몇 분이 걸리는지를 계산하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $A$, $B$, $C$, $D$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "첫 번째 줄에 두 시각 사이에 걸리는 시간을 분 단위로 출력합니다.",
+ "constraints": "- $0 \\le A, C \\le 23$\n- $0 \\le B, D \\le 59$\n- 시작 시각이 종료 시각보다 늦지 않은 것이 보장됩니다. 즉 $A \\times 60 + B \\le C \\times 60 + D$입니다.",
+ "samples": [
+  {
+   "in": "2 5 4 1\n",
+   "out": "116\n"
+  }
+ ],
+ "sample_notes": [
+  "$2$시 $5$분부터 $116$분이 흘러야 $4$시 $1$분이 됩니다."
+ ]
+}

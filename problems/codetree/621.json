@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "621",
+ "title": "움직이는 블록",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-moving-block/description",
+ "alias": "moving-block",
+ "pid": 621,
+ "group": "novice-mid",
+ "kind": "trail",
+ "chapter": "Ad-Hoc",
+ "lesson": "지극히 최선인 전략이 확실히 정해지는 경우",
+ "card": "intro-moving-block",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "80.1",
+  "submissions": "967"
+ },
+ "sample_count": 1,
+ "statement_len": 165,
+ "fetched_at": "2026-09-23",
+ "statement": "$N$개의 각 위치별 블럭의 개수가 주어졌을 때, 특정 위치를 골라 해당 위치의 블럭을 다른 위치로 옮기는 작업을 반복하여 모든 위치에 놓인 블럭의 개수가 동일해지게 만드려고 합니다. 이때 움직여야 할 최소 블럭의 수를 구하는 프로그램을 작성해보세요. 이 과정이 항상 가능함을 가정해도 좋습니다.",
+ "input_spec": "첫 번째 줄에 위치의 개수 $N$이 주어집니다.\n\n이어지는 $N$개의 줄 중 $i$번째 줄에는 $i$번 위치에 놓인 블럭의 수 $a_i$가 주어집니다.",
+ "output_spec": "첫 번째 줄에 이동해야 할 최소 블럭의 수를 출력합니다.",
+ "constraints": "- $1 \\le N \\le 10\\,000$\n- $1 \\le a_i \\le 10\\,000$ ($1 \\le i \\le N$)\n- 모든 위치에 놓인 블럭 수의 총합은 $N$의 배수입니다.",
+ "samples": [
+  {
+   "in": "4\n2\n10\n7\n1\n",
+   "out": "7\n"
+  }
+ ],
+ "sample_notes": [
+  "```\n처음 상태           [2 10 7 1]\n2 → 1로 3개 이동 후  [5 7 7 1]\n2 → 4로 2개 이동 후  [5 5 7 3]\n3 → 4로 2개 이동 후  [5 5 5 5]\n```"
+ ]
+}

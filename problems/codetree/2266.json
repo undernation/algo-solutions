@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2266",
+ "title": "삼항연산자 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/test-ternary-operator-2/description",
+ "alias": "ternary-operator-2",
+ "pid": 2266,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "조건문",
+ "lesson": "삼항 연산자",
+ "card": "test-ternary-operator-2",
+ "card_type": "Test",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "86.2",
+  "submissions": "8430"
+ },
+ "sample_count": 2,
+ "statement_len": 85,
+ "fetched_at": "2026-09-23",
+ "statement": "정수 $a$가 주어졌을 때, $a$가 $1$이라면 `t` 를 출력하고, $1$이 아니라면 `f` 를 출력하는 프로그램 삼항연산자를 사용하여 작성해보세요.",
+ "input_spec": "첫 번째 줄에 정수 $a$가 주어집니다.",
+ "output_spec": "첫 번째 줄에 a가 1이라면 `t` 를 출력하고, 1이 아니라면 `f` 를 출력합니다.",
+ "constraints": "- $0 \\le a \\le 100$",
+ "samples": [
+  {
+   "in": "1\n",
+   "out": "t\n"
+  },
+  {
+   "in": "3\n",
+   "out": "f\n"
+  }
+ ]
+}

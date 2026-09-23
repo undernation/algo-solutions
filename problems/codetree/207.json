@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "207",
+ "title": "몫과 나머지",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-quotient-remainder/description",
+ "alias": "quotient-remainder",
+ "pid": 207,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "연산자",
+ "lesson": "사칙연산",
+ "card": "challenge-quotient-remainder",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "82.4",
+  "submissions": "14785"
+ },
+ "sample_count": 1,
+ "statement_len": 41,
+ "fetched_at": "2026-09-23",
+ "statement": "두 정수를 입력받아서 나눈 몫과 나머지를 출력하는 프로그램을 작성해주세요.",
+ "input_spec": "첫 번째 줄에 정수 $A, B$가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "두 정수의 몫과 나머지를 순서대로 출력하되 사이에 `...`를 포함합니다.",
+ "constraints": "- $1 \\le A, B \\le 100$",
+ "samples": [
+  {
+   "in": "56 10\n",
+   "out": "5...6\n"
+  }
+ ]
+}

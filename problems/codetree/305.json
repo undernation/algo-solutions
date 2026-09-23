@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "305",
+ "title": "100점 도달하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-reach-100-point/description",
+ "alias": "reach-100-point",
+ "pid": 305,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "단순 반복문",
+ "lesson": "반복문 안의 if",
+ "card": "challenge-reach-100-point",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "79.2",
+  "submissions": "9209"
+ },
+ "sample_count": 2,
+ "statement_len": 189,
+ "fetched_at": "2026-09-23",
+ "statement": "시험점수에 따라 등급을 정합니다.\n\n- $90$점 이상이면 $A$,\n- $80$점 이상이면 $B$,\n- $70$점 이상이면 $C$,\n- $60$점 이상이면 $D$,\n- $60$점 미만이면 $F$ 라고 합니다.\n\n주어지는 점수 $N$부터 $100$점까지 $1$점씩 증가하며 각 점수가 어떤 등급에 해당하는지 출력하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$의 값이 주어집니다.",
+ "output_spec": "첫 번째 줄에 주어지는 점수 $N$부터 $100$점까지 각 점수의 등급을 순서대로 공백을 사이에 두고 출력합니다.",
+ "constraints": "- $0 \\le N \\le 100$",
+ "samples": [
+  {
+   "in": "85\n",
+   "out": "B B B B B A A A A A A A A A A A\n"
+  },
+  {
+   "in": "94\n",
+   "out": "A A A A A A A\n"
+  }
+ ]
+}

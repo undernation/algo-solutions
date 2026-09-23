@@ -1,0 +1,42 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "35",
+ "title": "최소 경로로 탈출하기",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/intro-escape-with-min-distance/description",
+ "alias": "escape-with-min-distance",
+ "pid": 35,
+ "group": "intermediate-low",
+ "kind": "trail",
+ "chapter": "BFS",
+ "lesson": "가중치가 동일한 그래프에서의 BFS",
+ "card": "intro-escape-with-min-distance",
+ "card_type": "Introduction",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "256 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "55.7",
+  "submissions": "4677"
+ },
+ "sample_count": 2,
+ "statement_len": 331,
+ "fetched_at": "2026-09-23",
+ "statement": "$N \\times M$ 크기의 이차원 영역의 좌측 상단에서 출발하여 우측 하단까지 뱀에게 물리지 않고 탈출하려고 합니다. 이동을 할 때에는 반드시 상하좌우에 인접한 칸으로만 이동할 수 있으며, 뱀이 있는 칸으로는 이동을 할 수 없습니다. 예를 들어 \\[그림 1]과 같이 뱀이 배치되어 있는 경우 실선과 같은 경로로 탈출을 할 수 있습니다. 탈출 가능한 경로의 최소 이동 횟수를 출력하는 코드를 작성해보세요.\n\n![](https://contents.codetree.ai/problems/35/images/problems-2c4aafa1-b572-44fd-b25c-cc117cd55e03.png)",
+ "input_spec": "첫 번째 줄에는 $N$과 $M$이 공백을 사이에 두고 주어집니다.\n\n다음 $N$개의 줄에는 각 행에 $M$개의 정수가 공백을 사이에 두고 주어집니다. 뱀이 없는 칸은 $1$, 뱀이 있는 칸은 $0$으로 표시됩니다.",
+ "output_spec": "좌측 상단에서 출발하여 우측 하단까지 이동 가능한 경로 중 최소 이동 횟수를 출력합니다. 불가능한 경우 $-1$을 출력합니다.",
+ "constraints": "- $2 \\le N,\\ M \\le 100$\n- 격자의 각 칸의 값은 뱀이 없는 경우 $1$, 뱀이 있는 경우 $0$입니다.\n- 시작 지점과 도착 지점에는 뱀이 주어지지 않음이 보장됩니다.",
+ "samples": [
+  {
+   "in": "5 5\n1 0 1 1 1\n1 0 1 0 1\n1 0 1 1 1\n1 0 1 0 1\n1 1 1 0 1\n",
+   "out": "12\n"
+  },
+  {
+   "in": "5 5\n1 1 1 1 1\n1 0 1 0 1\n1 1 1 1 1\n1 0 1 0 1\n1 1 1 0 1\n",
+   "out": "8\n"
+  }
+ ]
+}

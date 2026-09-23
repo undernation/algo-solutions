@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1911",
+ "title": "정렬되지 않았어",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-non-sorted/description",
+ "alias": "non-sorted",
+ "pid": 1911,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "이진탐색",
+ "lesson": "이진탐색",
+ "card": "challenge-non-sorted",
+ "card_type": "Problem",
+ "level": "Easy",
+ "ptype": "Single choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "58.9",
+  "submissions": "2758"
+ },
+ "sample_count": 0,
+ "statement_len": 513,
+ "fetched_at": "2026-09-23",
+ "statement": "이진탐색은 주어진 배열이 정렬되어있는 경우에만 올바르게 작동합니다. 왜 정렬되지 않은 경우에 이진탐색을 사용하면 안되는지에 대해 알아보려고 합니다.\n\n```js\nfunction solution(arr, target)\n  set left = 0\n  set right = arr.size - 1\n  while left <= right\n    set mid = (left + right) / 2\n    if arr[mid] == target\n      return mid\n\n    if arr[mid] > target\n      right = mid - 1\n    else\n      left = mid + 1\n\n  return -1\n```\n\n다음의 경우에 함수의 반환값은 무엇이 될까요?\n\n```js\narr = [1, 17, 32, 24, 3, 12, 28, 9, 21],  target = 21\n```\n\n**보기** — 하나 고르기\n\n1. `-1`\n2. `6`\n3. `7`\n4. `8`\n5. 프로그램이 종료되지 않는다."
+}

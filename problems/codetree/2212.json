@@ -1,0 +1,41 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "2212",
+ "title": "균일하게 나누기 2",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-divide-evenly-2/description",
+ "alias": "divide-evenly-2",
+ "pid": 2212,
+ "group": "intermediate-mid",
+ "kind": "trail",
+ "chapter": "Shorten time Technique",
+ "lesson": "전처리",
+ "card": "challenge-divide-evenly-2",
+ "card_type": "Problem",
+ "level": "Hard",
+ "limits": {
+  "time": "Python3 1초 · C++17 1초",
+  "memory": "80 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "59.3",
+  "submissions": "356"
+ },
+ "sample_count": 1,
+ "statement_len": 171,
+ "fetched_at": "2026-09-23",
+ "statement": "좌표평면 위에 서로 다른 점 $N$개가 있습니다. $N$개의 점들 중 어떤 것과도 겹치지 않게 직선 $x=a$와 $y=b$를 그어 좌표평면을 $4$개의 영역으로 나누려고 합니다. 가장 많은 점을 포함한 영역에 위치한 점의 개수를 $M$이라고 할 때, 가능한 $M$의 최솟값을 구하는 프로그램을 작성해보세요.",
+ "input_spec": "첫 번째 줄에 $N$이 주어집니다.\n\n두 번째 줄부터 $N$개의 줄에 걸쳐 각 점의 $x, y$ 좌표가 주어집니다.",
+ "output_spec": "첫 번째 줄에 가능한 $M$의 최솟값을 출력합니다.",
+ "constraints": "- $1 \\le N \\le 1\\,000$ \n- $1 \\le \\texttt{점의 } x, y \\texttt{ 좌표 } \\le 1\\,000 \\texttt{이며 점의 } x, y \\texttt{ 좌표는 홀수입니다}.$\n- $a, b$는 짝수입니다.",
+ "samples": [
+  {
+   "in": "7\n7 3\n5 5\n7 13\n3 1\n11 7\n5 3\n9 1\n",
+   "out": "2\n"
+  }
+ ],
+ "sample_notes": [
+  "$x=6$, $y=4$ 직선을 그리면, 각 영역에 점들이 $1, 2, 2, 2$ 개씩 포함되게 됩니다. $M$이 $2$보다 더 작을수는 없습니다.\n\n<br>\n\n![](https://contents.codetree.ai/problems/2212/images/problems-dcc2f3cc-77ca-45e3-845f-71e9d03fcc0e.png)\n\n<br>"
+ ]
+}

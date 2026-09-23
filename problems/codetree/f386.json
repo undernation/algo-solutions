@@ -1,0 +1,39 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "f386",
+ "title": "AI 로봇청소기",
+ "url": "https://www.codetree.ai/ko/frequent-problems/samsung-sw/problems/ai-robot/description",
+ "alias": "ai-robot",
+ "pid": 386,
+ "group": "samsung-sw",
+ "kind": "frequent",
+ "origin": "2025 하반기 오후 1번 문제",
+ "level": "L13",
+ "limits": {
+  "time": "Python3 1.5초 · C++17 0.5초",
+  "memory": "64 MB",
+  "time_sec": 1.5
+ },
+ "stats": {
+  "accept_rate": "28.1",
+  "submissions": "5623"
+ },
+ "sample_count": 2,
+ "statement_len": 1920,
+ "fetched_at": "2026-09-23",
+ "statement": "혼인율이 증가하는 한국 시장을 겨냥해, 코드트리 직원들은 AI 로봇 청소기를 개발하기로 했습니다. 프로토타입이 완성되어 $N \\times N$ 공간에서 테스트를 진행합니다. 공간은 격자 공간으로 나타낼 수 있는데, 좌측 상단의 격자는 $(1, 1)$, 우측 하단의 격자는 $(N, N)$으로 표현됩니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/3a2946f0-35c9-4ce7-89df-2673ed0abbef.webp)\n\n각각의 격자는 (1) 먼지가 있거나, (2) 아무런 먼지가 없거나, (3) 물건이 위치할 수 있습니다. 먼지가 있는 공간은 1에서 100 사이의 먼지의 양($p$)을 가집니다. 각각의 로봇 청소기는 초기 위치를 가지며, 해당 위치에는 먼지가 없음이 보장됩니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/8e98f3ca-5a97-49fe-8163-ffb1f767ab35.webp)\n\n테스트는 다음과 같은 방법으로 진행됩니다.\n\n1. 청소기 이동\n\n- 각각의 로봇 청소기는 순서대로 **이동 거리가 가장 가까운 오염된 격자**로 이동합니다.\n- 물건이 위치한 격자나 청소기가 있는 격자로는 지나갈 수 없습니다.\n- 이동 거리는 상하좌우로 인접한 격자를 한 칸씩 이동하여 도달하는 데 필요한 최소 이동 횟수를 의미합니다.\n- 가장 가까운 격자가 여러 개일 경우 행 번호가 작은 격자로 이동하고, 행 번호가 같을 경우에는 열 번호가 작은 격자로 이동합니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/965f8c64-740a-4763-b0ed-5f476946a412.webp)\n\n2. 청소\n\n- 청소기는 바라보고 있는 방향을 기준으로, 본인이 위치한 격자, 자신의 왼쪽 격자, 위쪽 격자, 오른쪽 격자를 청소할 수 있습니다.\n- 청소할 수 있는 4가지 격자에서 청소할 수 있는 먼지량이 가장 큰 방향에서 청소를 시작합니다.\n- 격자마다 청소할 수 있는 최대 먼지량은 20입니다.\n- 합이 같은 방향이 여러개인 경우, 오른쪽, 아래쪽, 왼쪽, 위쪽 방향의 우선순위로 방향을 선택합니다.\n- 청소는 청소기마다 순서대로 진행됩니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/eb8b6781-004c-4fec-91bb-07f71bee12cf.webp)\n\n![Image](https://contents.codetree.ai/problem_factory/images/320070e2-0d76-46db-9804-62b6b62b3cd8.webp)\n\n3. 먼지 축적\n\n- 먼지가 있는 모든 격자에 동시에 5씩 추가됩니다.\n\n![Image](https://contents.codetree.ai/problem_factory/images/bc1eb64e-4b04-49e7-b1f0-fcbd2266d673.webp)\n\n4. 먼지 확산\n\n- 깨끗한 격자에 주변 4방향 격자의 먼지량 합을 10으로 나눈 값만큼 먼지가 확산됩니다.\n- 편의상 나눗셈 과정에 생기는 소숫점 아래 수는 버립니다.\n- 모든 깨끗한 격자에 대해 동시에 확산이 이루어집니다. \n\n![Image](https://contents.codetree.ai/problem_factory/images/22a4738c-8958-4102-908d-f10af657e8fc.webp)\n\n5. 출력\n- 전체 공간의 총 먼지량을 출력합니다.\n- 먼지가 있는 곳이 없으면 0을 출력합니다.\n- 그림의 예제에서는 $123$이 출력됩니다.\n\n위의 테스트 과정을 $L$번 반복합니다.\n\n공간 정보, 로봇 청소기의 초기 위치, 테스트 횟수가 주어질 때, 각 테스트가 끝날 때마다 총 먼지량을 출력하는 프로그램을 작성하세요.",
+ "input_spec": "첫 줄에 격자의 크기 $N$, 로봇 청소기의 개수 $K$, 테스트 횟수 $L$이 공백으로 구분되어 주어집니다.\n\n그 다음 줄부터 $N$줄에 걸쳐 각 행에 해당하는 격자의 먼지의 양($p$)이 공백을 사이에 두고 주어집니다. $-1$인 경우에는 물건이 위치한 격자를 의미합니다.\n\n$N+1$줄부터는 $K$줄에 걸쳐 로봇 청소기의 위치 정보가 주어집니다. 이 중 $i$번째 줄에는 $i$번째로 추가 되는 로봇 청소기의 좌표 $(r_i, c_i)$가 공백으로 구분되어 주어집니다.",
+ "output_spec": "각각의 테스트가 끝날 때마다 공간에 있는 총 먼지의 합을 줄마다 출력합니다.",
+ "constraints": "- $2 \\le N \\le 30$\n- $1 \\le K \\le 50$\n- $1 \\le L \\le 50$\n- $1 \\le r_i, c_i \\le N$\n- $-1 \\le p \\le 100 $ (-1인 경우 물건이 위치한 격자)\n- 로봇 청소기의 초기 위치에는 먼지가 없습니다.",
+ "samples": [
+  {
+   "in": "6 3 1\n-1 0 0 0 -1 0\n0 8 8 0 -1 0\n13 10 -1 -1 -1 12\n11 -1 0 0 0 25\n-1 0 0 10 0 0\n-1 0 0 10 23 18\n4 4\n2 1\n6 2\n",
+   "out": "123\n"
+  },
+  {
+   "in": "7 5 3\n0 0 0 0 0 38 56\n13 0 24 0 0 -1 0\n0 0 0 0 70 0 0\n32 0 0 58 -1 0 0\n23 50 0 0 0 0 0\n39 0 0 0 7 0 0\n-1 -1 0 0 0 0 0\n3 3\n1 4\n5 5\n1 3\n3 7\n",
+   "out": "401\n396\n397\n"
+  }
+ ]
+}

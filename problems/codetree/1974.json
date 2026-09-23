@@ -1,0 +1,26 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "1974",
+ "title": "BST 개수",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-number-of-bst/description",
+ "alias": "number-of-bst",
+ "pid": 1974,
+ "group": "novice-high",
+ "kind": "trail",
+ "chapter": "DP",
+ "lesson": "subproblem을 그대로 합치면 되는 DP",
+ "card": "challenge-number-of-bst",
+ "card_type": "Problem",
+ "level": "Medium",
+ "ptype": "Sequential choice",
+ "limits": {},
+ "stats": {
+  "accept_rate": "75.0",
+  "submissions": "1841"
+ },
+ "sample_count": 0,
+ "statement_len": 3542,
+ "fetched_at": "2026-09-23",
+ "statement": "BST란 다음 조건을 만족하는 이진 트리입니다. 각 노드에 대해, 왼쪽 자식을 루트로 하는 서브트리의 노드들에 있는 모든 값보다 해당 노드의 값이 커야 하고, 오른쪽 자식을 루트로 하는 서브트리의 노드들에 있는 모든 값보다 해당 노드의 값이 작아야 합니다.\n\n$1$부터 $N$까지의 정수들을 단 한 번씩만 써서 만들 수 있는 노드의 개수가 $N$인 서로 다른 이진 탐색 트리 개수를 세는 프로그램을 작성해보세요. \n\n예를 들어 $N = 4$ 일때,\n\n다음은 모든 정점이 연결되어 있지 않기 때문에 트리가 아닙니다.\n\n![](https://contents.codetree.ai/problems/1974/images/problems-182945a4-e76a-48c4-ae10-5afcb74fcf74.svg)\n\n아래 그림은 사이클이 존재하므로 트리가 아닙니다.\n\n![](https://contents.codetree.ai/problems/1974/images/problems-d1276990-4d01-4143-9d17-3685167e7e91.svg)\n\n아래의 그림은 트리이긴 하지만, 자식을 $2$개보다 많이 갖고 있는 노드가 있으므로 이진 트리가 아닙니다. \n\n![](https://contents.codetree.ai/problems/1974/images/problems-dca12540-e208-4234-aa32-02e7dd0f388b.svg)\n\n다음은 노드 $2$를 기준으로 왼쪽으로 내려갈 때 자신보다 값이 큰 노드 $4$가 있기 때문에 이진 탐색 트리가 아닙니다.\n\n![](https://contents.codetree.ai/problems/1974/images/problems-f88c09b6-a442-456b-9ae6-825e35ed71da.svg)\n\n다음은 올바른 이진 탐색 트리입니다.\n\n![](https://contents.codetree.ai/problems/1974/images/problems-fe22e504-1aef-4e01-b450-3bc1154152b5.svg)\n\n$N = 3$일 때 가능한 BST는 총 $5$개 입니다.\n\n![](https://contents.codetree.ai/problems/1974/images/problems-0b43ddc6-6f9f-470d-9838-934bea92be69.svg)\n\n${dp}[N]$를 노드 $N$개로 만들 수 있는 서로 다른 BST의 개수라고 정의해봅시다. 그렇다면 다음과 같이 DP 배열에 값이 채워져야 합니다. $N$이 $0$인 경우에는 노드가 전혀 없는 경우는 한 가지 있으므로 의미상 $1$이 됩니다.\n\n|$DP$|$0$|$1$|$2$|$3$|$4$|\n|:--:|:--:|:--:|:--:|:--:|:--:|\n||$1$|$1$|$2$|$5$|...|\n\n수가 적으면 직접 셀 수 있겠지만, $N$이 $6$인 경우만 해도 직접 계산하는 것은 어려울 겁니다.   \n\n예를 들어 $N$이 $4$인 경우를 생각해보겠습니다. $4$개의 노드로 이루어진 BST의 경우, root에 어떤 수가 오는지에 집중해야 합니다. BST의 특성상 특정 수가 root에 위치해 있을 때 왼쪽에는 해당 수보다 작은 수가, 오른쪽에는 이보다 큰 수만이 위치할 수 있습니다. 아래의 그림은 $N$이 $4$일 때 각 수가 root에 사용될 때 왼쪽과 오른쪽에 사용될 수 있는 수들의 집합을 보여줍니다.\n\n![](https://contents.codetree.ai/problems/1974/images/problems-354cb53c-c887-4101-ba31-d354d92c9304.png)\n![](https://contents.codetree.ai/problems/1974/images/problems-bb12e755-1101-49b2-a505-aa67eb1283ff.png)\n![](https://contents.codetree.ai/problems/1974/images/problems-5d7c5a67-61d1-4db2-abf4-6818c48781f6.png)\n![](https://contents.codetree.ai/problems/1974/images/problems-dcab45ed-a126-472e-a657-93d60a763376.png)\n\n위의 예시에서 root가 $1$인 경우 왼쪽에는 위치할 수 있는 수가 없고, 오른쪽에는 세 개의 수가 위치할 수 있습니다. 이 때 가능한 BST를 모두 그려보면 아래와 같이 나타낼 수 있습니다. root를 제외하고 모양을 살펴보면 문제에서 주어진 $N=3$일 때의 BST와 동일합니다.\n\n![](https://contents.codetree.ai/problems/1974/images/problems-5b3dad8a-5e88-4fab-bec4-892a14839e17.png)\n\n위의 예시에서 root가 $2$인 경우 왼쪽에는 $1$만 위치할 수 있고, 오른쪽에는 두 개의 수가 위치할 수 있습니다. 이 때 가능한 BST를 모두 그려보면 아래와 같이 나타낼 수 있습니다. root를 제외하고 살펴보면 왼쪽은 $N=1$일 때의 BST와 동일하며, 오른쪽은 $N=2$일 때의 BST와 동일합니다.\n\n![](https://contents.codetree.ai/problems/1974/images/problems-538de653-193e-4ea0-abe0-84440c435bc0.png)\n\n이러한 관계를 통해 root가 정해졌을 때 만들 수 있는 서로 다른 BST의 개수는 (왼쪽에 들어갈 수로 만들 수 있는 서로 다른 BST 의 개수) * (오른쪽에 들어갈 수로 만들 수 있는 서로 다른 BST 의 개수)로 나타낼 수 있습니다. $N$개의 수에 대하여 $N=1$부터 $1$씩 증가할 때 왼쪽과 오른쪽에 위치할 수 있는 수를 쌍으로 나타내보면 $(0, N - 1)$, $(1, N - 2)$, $(2, N - 3)$, $\\ldots$ 과 같이 나타낼 수 있습니다. 따라서 $N$개의 수로 만들 수 있는 BST의 개수를 $dp[N]$ 이라고 하였을 때 다음을 만족하게 됩니다. \n\n$$\n\\text{dp}[N] = \\sum_{i=0}^{N-1} \\left( \\text{dp}[i] \\times \\text{dp}[N - i - 1] \\right).\n$$\n\n따라서 $dp[3]$의 경우 $dp[0] \\times dp[2] + dp[1] \\times dp[1] + dp[2] \\times dp[0] = 2 + 1 + 2 = 5$ 과정을 거쳐 값이 5가 됨을 확인할 수 있습니다. \n  \n그렇다면, $N$이 $6$인 경우 서로 다른 BST는 몇 개일까요?\n\n이를 계산하기 위해 $dp[N]$를 노드 $N$개로 만들 수 있는 서로 다른 BST의 개수라고 정의하여 dp table을 완성시켜보려고 합니다.\n\n다음 빈칸에 들어갈 수를 순서대로 골라보세요.\n\n|$DP$|$0$|$1$|$2$|$3$|$4$|$5$|$6$|\n|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|\n||$(1)$|$1$|$(2)$|$5$|$(3)$|$(4)$|$(5)$|\n\n**보기** — 순서대로 5개 고르기\n\n1. `0`\n2. `1`\n3. `2`\n4. `7`\n5. `8`\n6. `14`\n7. `35`\n8. `42`\n9. `120`\n10. `132`"
+}

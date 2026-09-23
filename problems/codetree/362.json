@@ -1,0 +1,38 @@
+{
+ "site": "CT",
+ "platform": "코드트리",
+ "no": "362",
+ "title": "십의 자리 숫자",
+ "url": "https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-number-of-tens-digit/description",
+ "alias": "number-of-tens-digit",
+ "pid": 362,
+ "group": "novice-low",
+ "kind": "trail",
+ "chapter": "1차원 배열",
+ "lesson": "Count 배열",
+ "card": "challenge-number-of-tens-digit",
+ "card_type": "Problem",
+ "level": "Easy",
+ "limits": {
+  "time": "Python3 1초 · C++17 0.5초",
+  "memory": "128 MB",
+  "time_sec": 1.0
+ },
+ "stats": {
+  "accept_rate": "69.6",
+  "submissions": "4227"
+ },
+ "sample_count": 1,
+ "statement_len": 139,
+ "fetched_at": "2026-09-23",
+ "statement": "세자리 미만의 정수가 주어지다가 $0$이 주어지면 그 $0$을 제외하고 그 때까지 입력된 정수의 숫자들의 십의 자리 숫자가 각각 몇 개인지 작은 수부터 출력하는 프로그램을 작성해보세요. 단, $0$이 첫 번째 부터 주어지지않는다고 가정해도 좋습니다.",
+ "input_spec": "첫 번째 줄에 $100$개 미만의 정수가 공백을 사이에 두고 주어집니다.",
+ "output_spec": "입출력 예제와 같이 각 줄마다 십의자리 숫자가 몇개인지 출력합니다. 한자리 숫자는 포함하지 않습니다.",
+ "constraints": "- $0 \\le \\texttt{주어지는 정수} \\le 99$",
+ "samples": [
+  {
+   "in": "30 55 14 3 23 5 16 79 77 0\n",
+   "out": "1 - 2\n2 - 1\n3 - 1\n4 - 0\n5 - 1\n6 - 0\n7 - 2\n8 - 0\n9 - 0\n"
+  }
+ ]
+}
