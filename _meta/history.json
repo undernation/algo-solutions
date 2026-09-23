@@ -21,10 +21,10 @@
     "title_raw": "택배 하차"
    },
    {
-    "site": "CT",
     "no": "f385",
-    "title": "해적 선장 코디",
+    "site": "CT",
     "status": "?",
+    "title": "해적 선장 코디",
     "title_raw": "해적선장 코디 못품."
    }
   ]
@@ -46,10 +46,10 @@
     "title": ""
    },
    {
-    "site": "CT",
     "no": "f385",
-    "title": "해적 선장 코디",
+    "site": "CT",
     "status": "?",
+    "title": "해적 선장 코디",
     "title_raw": "해적선장 코디 못품."
    }
   ]
@@ -71,10 +71,10 @@
     "title_raw": "고대 문명 유적 탐사"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "공기청정기 문제",
-    "status": "?"
+    "site": "BOJ",
+    "status": "?",
+    "title": "공기청정기 문제"
    }
   ]
  },
@@ -605,10 +605,10 @@
     "title": ""
    },
    {
-    "site": "CT",
     "no": "f390",
-    "title": "아기 고래의 첫 항해",
+    "site": "CT",
     "status": "못품",
+    "title": "아기 고래의 첫 항해",
     "title_raw": "아기 고래의 첫 항해"
    }
   ]
@@ -966,31 +966,31 @@
     "title": ""
    },
    {
-    "site": "CT",
     "no": "f375",
-    "title": "순서대로 방문하기",
+    "site": "CT",
     "status": "품",
+    "title": "순서대로 방문하기",
     "title_raw": "순서대로 방문하기"
    },
    {
-    "site": "CT",
     "no": "f376",
-    "title": "자동차 전시장",
+    "site": "CT",
     "status": "못품",
+    "title": "자동차 전시장",
     "title_raw": "자동차 전시장"
    },
    {
-    "site": "CT",
     "no": "f378",
-    "title": "보안 담당자",
+    "site": "CT",
     "status": "못품",
+    "title": "보안 담당자",
     "title_raw": "보안 담당자"
    },
    {
-    "site": "CT",
     "no": "f370",
-    "title": "성적 평가",
+    "site": "CT",
     "status": "못품",
+    "title": "성적 평가",
     "title_raw": "성적 평가"
    }
   ]
@@ -1066,23 +1066,23 @@
     "title": ""
    },
    {
-    "site": "CT",
     "no": "f380",
-    "title": "도로 보수 로봇",
+    "site": "CT",
     "status": "못품",
+    "title": "도로 보수 로봇",
     "title_raw": "도로 보수 로봇"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "클러스터 업그레이드",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "클러스터 업그레이드"
    },
    {
-    "site": "CT",
     "no": "f367",
-    "title": "교차로",
+    "site": "CT",
     "status": "못품",
+    "title": "교차로",
     "title_raw": "교차로"
    }
   ]
@@ -1217,17 +1217,17 @@
     "title": ""
    },
    {
-    "site": "CT",
     "no": "f367",
-    "title": "교차로",
+    "site": "CT",
     "status": "못품",
+    "title": "교차로",
     "title_raw": "교차로"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "조직도 업무",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "조직도 업무"
    }
   ]
  },
@@ -1284,17 +1284,17 @@
     "title": ""
    },
    {
-    "site": "CT",
     "no": "f366",
-    "title": "플레이페어 암호",
+    "site": "CT",
     "status": "?",
+    "title": "플레이페어 암호",
     "title_raw": "플레이페어 암호"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "neetcode 150, no 1",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "neetcode 150, no 1"
    }
   ]
  },
@@ -1333,17 +1333,17 @@
     "title": ""
    },
    {
-    "site": "CT",
     "no": "f367",
-    "title": "교차로",
+    "site": "CT",
     "status": "못품",
+    "title": "교차로",
     "title_raw": "교차로"
    },
    {
-    "site": "CT",
     "no": "f365",
-    "title": "사물인식 최소 면적 산출 프로그램",
+    "site": "CT",
     "status": "못품",
+    "title": "사물인식 최소 면적 산출 프로그램",
     "title_raw": "사물인식 최소 면적 산출 프로그램"
    }
   ]
@@ -1359,16 +1359,16 @@
     "title_raw": "출퇴근길"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "프로그래머스 완주하지 못한 선수",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "프로그래머스 완주하지 못한 선수"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "프로그래머스 베스트앨범",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "프로그래머스 베스트앨범"
    }
   ]
  },
@@ -1388,34 +1388,34 @@
     "title": "프로그래머스 타겟 넘버"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "프로그래머스 입국심사",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "프로그래머스 입국심사"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "프로그래머스 멀리 뛰기",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "프로그래머스 멀리 뛰기"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "프로그래머스 모음사전",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "프로그래머스 모음사전"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "프로그래머스 폰켓몬",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "프로그래머스 폰켓몬"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "프로그래머스 퍼즐조각 채우기",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "프로그래머스 퍼즐조각 채우기"
    }
   ]
  },
@@ -1430,40 +1430,40 @@
     "title_raw": "여왕개미"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "프로그래머스 멀리 뛰기",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "프로그래머스 멀리 뛰기"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "프로그래머스 기능 개발",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "프로그래머스 기능 개발"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "K번째수",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "K번째수"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "구명보트",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "구명보트"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "더 맵게",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "더 맵게"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "모의고사",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "모의고사"
    }
   ]
  },
@@ -1478,76 +1478,76 @@
     "title_raw": "여왕개미"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "프로그래머스 입국심사",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "프로그래머스 입국심사"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "프로그래머스 퍼즐조각 채우기",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "프로그래머스 퍼즐조각 채우기"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "게임 맵 최단거리",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "게임 맵 최단거리"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "네트워크",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "네트워크"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "전화번호 목록",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "전화번호 목록"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "올바른 괄호",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "올바른 괄호"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "단어변환",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "단어변환"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "가장큰수",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "가장큰수"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "카펫",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "카펫"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "의상",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "의상"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "프로세스",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "프로세스"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "주식가격",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "주식가격"
    }
   ]
  },
@@ -1567,64 +1567,64 @@
     "title": ""
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "프로그래머스 멀리 뛰기",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "프로그래머스 멀리 뛰기"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "프로그래머스 모음사전",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "프로그래머스 모음사전"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "가장큰수",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "가장큰수"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "주식가격",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "주식가격"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "가장 먼 노드",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "가장 먼 노드"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "같은 숫자는 싫어",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "같은 숫자는 싫어"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "소수 찾기",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "소수 찾기"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "다리를 지나는 트럭",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "다리를 지나는 트럭"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "H-index",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "H-index"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "여행경로",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "여행경로"
    }
   ]
  },
@@ -1662,46 +1662,46 @@
     "title": "피로도"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "여행경로",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "여행경로"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "전력망을 둘로 나누기",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "전력망을 둘로 나누기"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "큰수 만들기",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "큰수 만들기"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "최소 직사각형",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "최소 직사각형"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "이중우선순위큐",
-    "status": "?"
+    "site": "BOJ",
+    "status": "?",
+    "title": "이중우선순위큐"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "체육복",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "체육복"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "조이스틱",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "조이스틱"
    }
   ]
  },
@@ -1733,46 +1733,46 @@
     "title": "큰수 만들기"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "순위",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "순위"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "N으로 표현",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "N으로 표현"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "정수 삼각형",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "정수 삼각형"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "등굣길",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "등굣길"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "아이템 줍기",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "아이템 줍기"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "섬연결하기",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "섬연결하기"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "단속카메라",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "단속카메라"
    }
   ]
  },
@@ -1786,82 +1786,82 @@
     "title": "프로그래머스 베스트앨범"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "프로그래머스 멀리 뛰기",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "프로그래머스 멀리 뛰기"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "프로그래머스 퍼즐조각 채우기",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "프로그래머스 퍼즐조각 채우기"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "가장큰수",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "가장큰수"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "주식가격",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "주식가격"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "N으로 표현",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "N으로 표현"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "정수 삼각형",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "정수 삼각형"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "아이템 줍기",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "아이템 줍기"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "섬연결하기",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "섬연결하기"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "단속카메라",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "단속카메라"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "야근지수",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "야근지수"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "최고의 집합",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "최고의 집합"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "숫자게임",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "숫자게임"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "셔틀버스",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "셔틀버스"
    }
   ]
  },
@@ -1881,64 +1881,64 @@
     "title": "게임 맵 최단거리"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "가장큰수",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "가장큰수"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "피로도",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "피로도"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "디스크 컨트롤러",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "디스크 컨트롤러"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "H-index",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "H-index"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "순위",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "순위"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "퍼즐 게임 챌린지",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "퍼즐 게임 챌린지"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "충돌 위험 찾기",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "충돌 위험 찾기"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "수식 복원하기",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "수식 복원하기"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "등대",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "등대"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "인사고과",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "인사고과"
    }
   ]
  },
@@ -1964,34 +1964,34 @@
     "title": "충돌 위험 찾기"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "수식 복원하기",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "수식 복원하기"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "석유 시추",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "석유 시추"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "아날로그 시계",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "아날로그 시계"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "수레 움직이기",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "수레 움직이기"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "요격 시스템",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "요격 시스템"
    }
   ]
  },
@@ -2005,88 +2005,88 @@
     "title": "디스크 컨트롤러"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "다리를 지나는 트럭",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "다리를 지나는 트럭"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "H-index",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "H-index"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "최소 직사각형",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "최소 직사각형"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "체육복",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "체육복"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "순위",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "순위"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "등대",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "등대"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "인사고과",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "인사고과"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "석유 시추",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "석유 시추"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "수레 움직이기",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "수레 움직이기"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "모의고사 1회 1번",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "모의고사 1회 1번"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "모의고사 1회 2번",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "모의고사 1회 2번"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "모의고사 1회 3번",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "모의고사 1회 3번"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "모의고사 1회 4번",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "모의고사 1회 4번"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "기지국 설치",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "기지국 설치"
    }
   ]
  },
@@ -2148,22 +2148,22 @@
     "title": "기타레슨"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "등대",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "등대"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "리코쳇 로봇",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "리코쳇 로봇"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "부대복귀",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "부대복귀"
    }
   ]
  },
@@ -2201,52 +2201,52 @@
     "title": "번 제출코드"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "순위",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "순위"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "아이템 줍기",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "아이템 줍기"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "요격 시스템",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "요격 시스템"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "유연근무제",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "유연근무제"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "비밀 코드 해독",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "비밀 코드 해독"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "지게차와 크레인",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "지게차와 크레인"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "홀짝트리",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "홀짝트리"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "두 원 사이의 정수 쌍",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "두 원 사이의 정수 쌍"
    }
   ]
  },
@@ -2266,40 +2266,40 @@
     "title": "인사고과"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "수레 움직이기",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "수레 움직이기"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "모의고사 1회 4번",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "모의고사 1회 4번"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "연속된 부분 수열의 합",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "연속된 부분 수열의 합"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "과제 진행하기",
-    "status": "맞음"
+    "site": "BOJ",
+    "status": "맞음",
+    "title": "과제 진행하기"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "광물캐기",
-    "status": "맞음"
+    "site": "BOJ",
+    "status": "맞음",
+    "title": "광물캐기"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "당구연습",
-    "status": "맞음"
+    "site": "BOJ",
+    "status": "맞음",
+    "title": "당구연습"
    }
   ]
  },
@@ -2337,40 +2337,40 @@
     "title": "번 제출코드"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "기지국 설치",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "기지국 설치"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "택배 상자 꺼내기",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "택배 상자 꺼내기"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "서버 증설 횟수",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "서버 증설 횟수"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "완전범죄",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "완전범죄"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "봉인된 주문",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "봉인된 주문"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "혼자서 하는 틱택토",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "혼자서 하는 틱택토"
    }
   ]
  },
@@ -2408,40 +2408,40 @@
     "title": "보석 상자"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "인사고과",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "인사고과"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "수레 움직이기",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "수레 움직이기"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "요격 시스템",
-    "status": "맞음"
+    "site": "BOJ",
+    "status": "맞음",
+    "title": "요격 시스템"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "두 원 사이의 정수 쌍",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "두 원 사이의 정수 쌍"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "연속된 부분 수열의 합",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "연속된 부분 수열의 합"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "미로탈출",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "미로탈출"
    }
   ]
  },
@@ -2526,10 +2526,10 @@
     "title": "톱니바퀴"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "연속 펄스 부분 수열의 합",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "연속 펄스 부분 수열의 합"
    }
   ]
  },
@@ -2561,46 +2561,46 @@
     "title": "전깃줄"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "주식가격",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "주식가격"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "H-index",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "H-index"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "이중우선순위큐",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "이중우선순위큐"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "완전범죄",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "완전범죄"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "바이러스 파이프",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "바이러스 파이프"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "중요한 단어를 스포 방지",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "중요한 단어를 스포 방지"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "노란불 신호등",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "노란불 신호등"
    }
   ]
  },
@@ -2638,52 +2638,52 @@
     "title": ""
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "조이스틱",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "조이스틱"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "인사고과",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "인사고과"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "홀짝트리",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "홀짝트리"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "연속된 부분 수열의 합",
-    "status": "맞음"
+    "site": "BOJ",
+    "status": "맞음",
+    "title": "연속된 부분 수열의 합"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "무인도 여행",
-    "status": "맞음"
+    "site": "BOJ",
+    "status": "맞음",
+    "title": "무인도 여행"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "숫자 변환하기",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "숫자 변환하기"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "시소 짝꿍",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "시소 짝꿍"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "택배 배달과 수거하기",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "택배 배달과 수거하기"
    }
   ]
  },
@@ -2727,34 +2727,34 @@
     "title": "파이프 옮기기1"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "홀짝트리",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "홀짝트리"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "마법의 엘리베이터",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "마법의 엘리베이터"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "디펜스 게임",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "디펜스 게임"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "점 찍기",
-    "status": "품"
+    "site": "BOJ",
+    "status": "품",
+    "title": "점 찍기"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "이모티콘 할인행사",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "이모티콘 할인행사"
    }
   ]
  },
@@ -2774,22 +2774,22 @@
     "title": "최대상금 SW Expert Academy"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "문자열 압축",
-    "status": "맞음"
+    "site": "BOJ",
+    "status": "맞음",
+    "title": "문자열 압축"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "괄호 변환",
-    "status": "틀림"
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "괄호 변환"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "숫자 카드 나누기",
-    "status": "맞음"
+    "site": "BOJ",
+    "status": "맞음",
+    "title": "숫자 카드 나누기"
    }
   ]
  },
@@ -3839,10 +3839,10 @@
     "title_raw": "코디의 향수 공방"
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "자물쇠와 열쇠",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "자물쇠와 열쇠"
    }
   ]
  },
@@ -4000,10 +4000,10 @@
     "title": "자물쇠와 열쇠"
    },
    {
-    "site": "CT",
     "no": "f353",
-    "title": "미생물 연구",
+    "site": "CT",
     "status": "품",
+    "title": "미생물 연구",
     "title_raw": "코드트리 미생물 연구"
    }
   ]
@@ -4157,10 +4157,10 @@
     "title_raw": "코드트리 등산 게임"
    },
    {
-    "site": "CT",
     "no": "f329",
-    "title": "싸움땅",
+    "site": "CT",
     "status": "품",
+    "title": "싸움땅",
     "title_raw": "코드트리 싸움땅"
    }
   ]
@@ -4235,10 +4235,10 @@
     "title": "외벽점검"
    },
    {
-    "site": "CT",
     "no": "f348",
-    "title": "메두사와 전사들",
+    "site": "CT",
     "status": "못품",
+    "title": "메두사와 전사들",
     "title_raw": "메두사와 전사들"
    }
   ]
@@ -4362,10 +4362,10 @@
     "title": ""
    },
    {
-    "site": "BOJ",
     "no": "",
-    "title": "외벽점검",
-    "status": "못품"
+    "site": "BOJ",
+    "status": "못품",
+    "title": "외벽점검"
    }
   ]
  },

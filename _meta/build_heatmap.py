@@ -766,7 +766,11 @@ def main():
     apply_tombstones(data, load_tombstones())
 
     io.open(HIST, "w", encoding="utf-8", newline="").write(
-        json.dumps({k: data[k] for k in sorted(data)}, ensure_ascii=False, indent=1))
+        # sort_keys — 허브(server.save_solution·delete_item)도 키를 정렬해서 쓴다.
+        # 여기만 안 정렬하면 빌드와 저장이 번갈아 파일 전체의 키 순서를 뒤집어서,
+        # 한 문제 저장이 989줄 diff 가 됐다(2026-09-23 E2E 에서 발견 — 실제 변경은 1건).
+        json.dumps({k: data[k] for k in sorted(data)}, ensure_ascii=False, indent=1,
+                   sort_keys=True))
 
     os.makedirs(ASSETS, exist_ok=True)
     svg, total = render_svg(data, year)
