@@ -72,6 +72,12 @@ def main():
                 for k in ("label", "tc", "htc"):
                     if not e[k]:
                         del e[k]
+        if site == "CT" and d.get("tc_generated"):
+            # 기출에 우리가 만들어 붙인 히든 TC(공식 아님) 개수. 트리 '자료' 칸의 🧪 표시용이라
+            # 개수 하나만 남긴다(대시보드에 박히는 색인이 커지지 않게). 0 이면 표시할 것이 없다.
+            n = _num(d.get("private_tc_count")) or len(d.get("private_testcases") or [])
+            if n:
+                e["gen"] = n
         if d.get("locked"):
             # 403 으로 못 연 문제(크롤러가 locked 만 달고 지문·한도를 비워 둔다).
             # 허브 보관소에도 없으니 대시보드가 /prob 를 물어볼 필요가 없다.

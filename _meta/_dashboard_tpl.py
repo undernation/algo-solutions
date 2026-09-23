@@ -67,7 +67,10 @@ header{border-bottom:1px solid var(--bd);background:var(--panel);position:sticky
 .brand{font-weight:800;font-size:17px;color:var(--fg);letter-spacing:-.3px;white-space:nowrap}
 .brand:hover{text-decoration:none}
 nav{display:flex;gap:2px;flex:1}
-nav a{padding:6px 13px;border-radius:6px;font-size:14px;font-weight:600;color:var(--sub)}
+/* 메뉴 이름은 절대 줄을 바꾸지 않는다 — 예전엔 폰에서 "대시/보드", "제출/현황" 처럼 음절마다 끊겨
+   헤더 안에 세 줄로 쌓였다. 짧은 이름(.ns)은 아주 좁은 폰에서만 쓴다(아래 400px). */
+nav a{padding:6px 13px;border-radius:6px;font-size:14px;font-weight:600;color:var(--sub);white-space:nowrap}
+nav a .ns{display:none}
 nav a:hover{background:var(--soft);color:var(--fg);text-decoration:none}
 nav a.on{color:var(--ac);background:var(--navon)}
 .hubbtn{border:1px solid var(--bd);background:var(--panel);color:var(--sub);border-radius:6px;
@@ -78,23 +81,32 @@ nav a.on{color:var(--ac);background:var(--navon)}
 /* 테마 버튼 — 좁은 화면에서는 글자를 접고 아이콘만 남긴다 */
 .thbtn{padding:5px 10px;gap:5px}
 .thbtn .ico{font-size:13.5px;line-height:1}
-/* 헤더에 버튼이 하나 늘었다. 좁은 화면에서는 글자를 접고 간격도 함께 줄여야
-   허브 버튼이 화면 밖으로 밀려나지 않는다(400px 에서 실측하며 맞춘 값). */
-@media(max-width:620px){
+/* 헤더는 어느 폭에서도 한 줄이다. 폭이 줄면 덜 필요한 것부터 접는다(실측: 헤더 전체가 한 줄에
+   들어가려면 데스크톱 모양 그대로는 약 763px 이 필요했다 — 그 아래에선 메뉴 글자가 음절마다 줄을
+   바꿨다). 테마 버튼 글자(760) → 사이트 이름 글자, 🌱 만(620) → 허브 상태 글자, 점만(520 — 자세한
+   상태는 버튼 툴팁에) → 글자·여백 축소(480) → 메뉴 이름을 짧게 "홈·현황"(400) → 여백 한 번 더(340).
+   그래도 모자라면(320px 아래) 메뉴 줄만 가로로 밀린다 — 헤더가 넘쳐 화면 전체가 밀리지는 않는다. */
+@media(max-width:760px){
  .hin{gap:10px;padding:0 12px}
  nav a{padding:6px 9px}
  .thbtn{padding:5px 8px}
  .thbtn .lab{display:none}
 }
-/* 360px(작은 휴대폰)까지 헤더 한 줄에 들어가게 — 여기서 더 줄이면 글자가 뭉갠다 */
+@media(max-width:620px){ .brand .bt{display:none} }
+@media(max-width:520px){ #hs{display:none} }
 @media(max-width:480px){
  .hin{gap:8px;padding:0 10px}
  .brand{font-size:15px}
+ nav{min-width:0;overflow-x:auto;scrollbar-width:none}
+ nav::-webkit-scrollbar{display:none}
  nav a{padding:6px 7px;font-size:13px}
 }
-/* 390px 폰에서 허브 버튼 글자("클라우드만")까지 들어가면 헤더가 17px 넘쳐 모든 화면이 가로로
-   밀렸다(전수 점검에서 2,115 페이지 전부). 좁을 때는 상태 점만 남긴다 — 자세한 상태는 버튼 툴팁에. */
-@media(max-width:430px){ #hs{display:none} }
+@media(max-width:400px){ nav a .nl{display:none} nav a .ns{display:inline} }
+@media(max-width:340px){
+ .hin{gap:6px;padding:0 8px}
+ nav a{padding:6px 5px}
+ .thbtn{padding:5px 6px}
+}
 
 main{max-width:1120px;margin:0 auto;padding:26px 20px 90px}
 h2.t{font-size:19px;font-weight:700;margin:0 0 16px;letter-spacing:-.3px}
@@ -112,6 +124,9 @@ h3.t{font-size:15px;font-weight:700;margin:26px 0 10px}
 .st .v{font-size:25px;font-weight:800;line-height:1.15;letter-spacing:-.5px}
 .st .k{font-size:11.5px;color:var(--sub);margin-top:3px;font-weight:600}
 .st .v.g{color:var(--ok)}.st .v.r{color:var(--no)}
+/* 카드 7장이 한 줄에 다 안 들어가는 폭(929px 이하)에서는 마지막 줄 옆이 빈 회색 칸으로 남았다
+   (폰에서는 '문제 자료' 옆 한 칸). 줄 바꿈 flex 로 바꿔 마지막 줄 카드가 남는 폭을 나눠 갖게 한다. */
+@media(max-width:929px){.stats{display:flex;flex-wrap:wrap}.stats .st{flex:1 1 126px}}
 
 /* ── 잔디 ── */
 .gwrap{overflow-x:auto;padding-bottom:4px}
@@ -139,6 +154,51 @@ tbody tr:hover{background:var(--soft)}
 td.l{text-align:left}
 td.n{font-variant-numeric:tabular-nums;color:var(--sub);font-size:13px}
 .empty{padding:38px;text-align:center;color:var(--sub);font-size:14px}
+.nw{white-space:nowrap}
+/* ── 제출 표(홈 최근 제출·제출 현황, tbl) — 좁은 화면 ──
+   9열 표를 폰에 그대로 두면 제목 칸이 1~2글자 폭으로 눌려 세로로 쪼개지고("햄/버/거"), 표가
+   화면 밖(701px)까지 밀려 페이지 전체가 가로로 움직였다. 760px 이하에서는 한 줄을 두 줄 카드로 접는다:
+     1줄 — 사이트 · 번호 · 제목 ……… 결과      2줄 — 제출일 시각 · TC · 시간 · 코드 ……… 🗑
+   (tr::after 가 두 줄 사이의 줄바꿈이다 — order 5 로 1줄 칸(1)과 2줄 칸(6) 사이에 선다.)
+   빈 값(—)인 칸(.nil)은 카드에선 뺀다. 761px 이상 표는 그대로다. */
+@media(max-width:1000px){.subtbl td.c-ti{word-break:keep-all;min-width:9em}}
+@media(max-width:760px){
+ .subtbl,.subtbl tbody{display:block}
+ .subtbl thead{display:none}
+ .subtbl tr{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;padding:10px 14px;
+  border-bottom:1px solid var(--bd2)}
+ .subtbl tr::after{content:"";order:5;flex-basis:100%}
+ .subtbl td{display:block;padding:0;border:0;text-align:left}
+ .subtbl td.c-site,.subtbl td.c-no,.subtbl td.c-ti,.subtbl td.c-res{order:1}
+ .subtbl td.c-ti{flex:1 1 0;min-width:0;overflow-wrap:anywhere;line-height:1.5}
+ .subtbl td.c-dt,.subtbl td.c-tc,.subtbl td.c-tm,.subtbl td.c-code,.subtbl td.c-del{order:6;font-size:12.5px}
+ .subtbl td.c-del{margin-left:auto}
+ .subtbl td.nil{display:none}
+ .subtbl td.c-tc::before{content:"TC ";color:var(--mute)}
+ /* 제출 현황은 머리글이 정렬 버튼이다 — 폰에서는 정렬되는 것만 작은 칩으로 남긴다 */
+ .subtbl.srt thead{display:block}
+ .subtbl.srt thead tr{padding:10px 14px 9px;gap:6px;background:var(--hdr)}
+ .subtbl.srt thead tr::before{content:"정렬";font-size:12px;color:var(--mute);margin-right:2px}
+ .subtbl.srt thead tr::after{display:none}
+ .subtbl.srt thead th{display:block;border:1px solid var(--bd);border-radius:12px;padding:2px 10px;
+  background:var(--panel)}
+ .subtbl.srt thead th:not(.s){display:none}
+ .subtbl.srt thead th.on{color:var(--ac);border-color:var(--ac)}
+ .subtbl.srt thead th.on::after{content:" ↓"}
+ .subtbl.srt thead th.on.up::after{content:" ↑"}
+}
+/* ── 문제 페이지 제출 이력(histHTML) ── 이 페이지의 모든 줄이 같은 문제라 사이트·번호·제목 열이 없다.
+   (예전엔 홈 표를 그대로 써서 폰에서 제목 "여왕 개미" 가 "여/왕/개/미", 결과 "못품" 이 "못/품" 으로
+   세로로 쪼개졌다.) 폰에서는 제출일 칸만 날짜/시각 두 줄로 접고 나머지는 한 줄로 둔다. */
+.htbl td.hdt{white-space:nowrap}
+.htbl .ths{display:none}
+.phmore{padding:10px 12px;text-align:center}
+@media(max-width:760px){
+ .htbl th,.htbl td{padding:8px 6px;white-space:nowrap}
+ .htbl td.hdt{white-space:normal;line-height:1.45}
+ .htbl .thl{display:none}
+ .htbl .ths{display:inline}
+}
 /* 낡은 탭 알림 — 데이터가 HTML 에 박혀 있어 새로고침 전엔 옛 값이 보인다. */
 #stale{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:60;
   display:none;gap:10px;align-items:center;padding:10px 14px;border-radius:8px;
@@ -161,6 +221,14 @@ td.n{font-variant-numeric:tabular-nums;color:var(--sub);font-size:13px}
          font-variant-numeric:tabular-nums}
 .rq .rqt{color:var(--sub);font-size:12px;min-width:56px;text-align:right}
 @media(max-width:560px){.rq .rqt{display:none}}
+/* 사이트 칩 — 옛 실수노트 기록이 코드트리 번호로 이어지면서 4월 HSAT 기출이 큐 앞을 채웠다.
+   사이트별로 골라 볼 수 있게(고른 것은 이 브라우저에 기억). 칩에는 사이트 이름·개수만 — 유형은 없다. */
+.rqf{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+.rqf button{padding:3px 11px;border-radius:14px;font-size:12.5px;font-weight:600;color:var(--sub)}
+.rqf button i{font-style:normal;font-weight:400;color:var(--mute);margin-left:5px;font-variant-numeric:tabular-nums}
+.rqf button.on{color:var(--ac);border-color:var(--ac);background:var(--navon)}
+.rqf button.on i{color:var(--ac)}
+@media(max-width:480px){.rqf{gap:5px}.rqf button{padding:3px 9px}}   /* 375px 폰에서 칩 네 개가 한 줄에 */
 
 /* ── 배지 ── */
 .b{display:inline-block;padding:1px 8px;border-radius:11px;font-size:11.5px;font-weight:700;white-space:nowrap;line-height:1.6}
@@ -199,8 +267,13 @@ td.n{font-variant-numeric:tabular-nums;color:var(--sub);font-size:13px}
 .leaf .doc{font-size:11px;color:var(--mute);text-align:center;letter-spacing:1px}
 @media(max-width:700px){
  .leafhead{display:none}
- .leaf{grid-template-columns:52px 1fr 44px;grid-auto-rows:min-content}
- .leaf .dt,.leaf .tries{display:none}}
+ /* 번호 · 제목 · 자료 · 결과 네 칸 — 예전엔 3열이라 네 번째(결과)가 다음 줄 번호 밑으로 떨어졌다 */
+ .leaf{grid-template-columns:48px minmax(0,1fr) auto auto;grid-auto-rows:min-content}
+ .leaf .dt,.leaf .tries{display:none}
+ /* 코드트리 배지(오전 1번·챌린지)가 제목을 한 글자("민…")로 누르면 배지를 제목 아래 줄로 내린다 */
+ .leaf .nmw{flex-wrap:wrap;row-gap:1px}}
+/* 폰에서는 폴더 한 겹 들여쓰기(26px)를 반으로 — 코드트리 기출은 세 겹이라 잎 제목 칸이 그만큼 좁아졌다 */
+@media(max-width:480px){.tkids{margin-left:8px;padding-left:7px}}
 /* 코드트리 잎 — 카드 종류(워밍업·챌린지·테스트)·기출 회차·난이도를 제목 옆에 작게 붙인다.
    ⚠️ 유형(태그)·선행 레슨은 일부러 없다(유형 스포 금지). 데이터에도 없다. */
 .leaf .nmw{display:flex;align-items:center;gap:6px;min-width:0}
@@ -319,14 +392,28 @@ button.sm{padding:4px 10px;font-size:12.5px}
 /* 예제 아래 해설 — 지문과 같은 글자(16px) */
 .ctsn{margin:8px 0 4px;padding:6px 14px;border-left:3px solid var(--bd)}
 .ctsn p:last-child{margin-bottom:0}
-/* 코드트리 제한표는 열이 8개라 폰(390px)에서 494px 까지 벌어졌다 — 표만 가로로 밀리게 */
+/* ── 문제 정보표(limHTML) ──
+   넓은 화면은 표 한 줄. 짧은 값(.nw — 메모리·난이도·제출·결과·TC·"열기 ↗")은 칸 안에서 줄을 바꾸지
+   않고, 시간 제한은 ' · ' 에서만, 출처·트레일은 ' › ' 에서만 줄을 바꾼다(nwJoin). 예전엔 1024px 에서
+   "Python3 5초 · C++17 / 1초", "30개 생성 · 공식 아 / 님", "열기 / ↗" 처럼 아무 데서나 끊겼다.
+   폰(700px 이하)에서는 표 대신 같은 값을 2열 카드 격자(.limg)로 그린다 — 8열 표를 가로로 밀어
+   보던 것을 한눈에. 긴 값(출처·트레일, 긴 시간 제한)은 한 줄을 다 쓴다(.w2). */
 .limw{overflow-x:auto;margin-bottom:26px}
 .limw .lim{margin-bottom:0}
-/* 문제 페이지 제출 이력 표(9열)도 폰에서는 칸 안에서만 가로로 밀린다(실측: 390px 에서 604px).
-   제출 현황 화면(#sttbl)은 건드리지 않는다. */
+/* 문제 페이지 제출 이력 표도 아주 좁은 폰(320px)에서는 칸 안에서만 가로로 밀린다. */
 #phist{overflow-x:auto}
 .lim td.ctpath{white-space:normal;line-height:1.5;min-width:9em}
-@media(max-width:700px){.limw .lim th,.limw .lim td{padding:6px 7px}}
+.limg{display:none}
+@media(max-width:700px){
+ .limw{display:none}
+ .limg{display:grid;grid-template-columns:1fr 1fr;grid-auto-flow:row dense;gap:1px;margin:0 0 26px;background:var(--bd);
+  border:1px solid var(--bd);border-radius:8px;overflow:hidden}
+ .limg .kv{background:var(--panel);padding:8px 12px 9px;min-width:0}
+ .limg .kv.w2{grid-column:1/-1}
+ .limg dt{font-size:11.5px;font-weight:700;color:var(--sub);line-height:1.5}
+ .limg dd{margin:1px 0 0;font-size:14px;line-height:1.5;font-variant-numeric:tabular-nums;
+  word-break:keep-all;overflow-wrap:break-word}
+}
 /* 언어 지원 배지 */
 .lang{display:inline-flex;gap:5px;align-items:center;flex-wrap:wrap}
 .lang .lg{border:1px solid var(--bd);border-radius:4px;padding:1px 7px;font-size:12px;
@@ -403,20 +490,23 @@ pre.io{background:var(--soft);border:1px solid var(--bd);border-radius:6px;paddi
 #ptoc a.on .tx{max-width:210px;opacity:1}
 #ptoc:hover{background:var(--panel);border-color:var(--bd);box-shadow:0 10px 30px rgba(0,0,0,.13)}
 #ptoc:hover a .tx{max-width:210px;opacity:1}
-/* 본문(1120px) 바깥에 자리가 남는 넓은 화면에서는 처음부터 펼쳐 둔다 */
-@media(min-width:1500px){#ptoc a .tx{max-width:210px;opacity:1}}
-/* 좁은 화면 — hover 가 없으므로 오른쪽 아래 버튼을 눌러 펼친다 */
-@media(max-width:900px){
- #ptoc{top:auto;bottom:16px;right:12px;transform:none;padding:5px;
-  flex-direction:column-reverse;background:var(--panel);border-color:var(--bd);
-  box-shadow:0 8px 26px rgba(0,0,0,.18)}
- #ptoc .tgl{display:block;border:0;background:transparent;color:var(--sub);
-  font-size:17px;line-height:1;padding:6px 9px;cursor:pointer}
- #ptoc .lst{display:none;max-height:56vh}
- #ptoc.open .lst{display:flex;padding-bottom:4px}
- #ptoc.open a .tx{max-width:52vw;opacity:1}
- #ptoc a{padding:7px 6px}
-}
+/* 펼쳐 둘지·접을지는 본문 오른쪽 빈자리로 정한다(tocFit — 그릴 때와 창 크기가 바뀔 때).
+   예전엔 창 폭 900px 하나로만 갈라서, 1024px 에서는 목차가 본문 오른쪽 끝(989px) 위에 떠
+   제출 이력 표·입력창을 가렸다.
+     .full  — 1500px 이상이고 가장 긴 이름까지 들어가면 처음부터 전부 펼친다
+     .nolab — 켜진 섹션 이름이 빈자리에 안 들어가면 눈금만(마우스를 올리면 그때 펼친다)
+     .fold  — 눈금조차 본문에 닿으면(또는 900px 이하 — 마우스가 없다) 오른쪽 아래 ☰ 버튼으로 접는다 */
+#ptoc.full a .tx{max-width:210px;opacity:1}
+#ptoc:not(:hover) a.on.nolab .tx{max-width:0;opacity:0}
+#ptoc.fold{top:auto;bottom:16px;right:12px;transform:none;padding:5px;
+ flex-direction:column-reverse;background:var(--panel);border-color:var(--bd);
+ box-shadow:0 8px 26px rgba(0,0,0,.18)}
+#ptoc.fold .tgl{display:block;border:0;background:transparent;color:var(--sub);
+ font-size:17px;line-height:1;padding:6px 9px;cursor:pointer}
+#ptoc.fold .lst{display:none;max-height:56vh}
+#ptoc.fold.open .lst{display:flex;padding-bottom:4px}
+#ptoc.fold.open a .tx{max-width:52vw;opacity:1}
+#ptoc.fold a{padding:7px 6px}
 
 /* ── 복기 메모 ── */
 .nfold{border:1px solid var(--bd);border-radius:8px;background:var(--panel)}
@@ -599,11 +689,11 @@ button.danger:hover{opacity:.88;color:#fff;border-color:var(--no)}
 </style>
 
 <header><div class="hin">
- <a class="brand" href="#home">&#127793; 코테 아카이브</a>
+ <a class="brand" href="#home" aria-label="코테 아카이브">&#127793;<span class="bt"> 코테 아카이브</span></a>
  <nav>
-  <a href="#home" data-v="home">대시보드</a>
+  <a href="#home" data-v="home"><span class="nl">대시보드</span><span class="ns">홈</span></a>
   <a href="#problems" data-v="problems">문제</a>
-  <a href="#status" data-v="status">제출 현황</a>
+  <a href="#status" data-v="status"><span class="nl">제출 현황</span><span class="ns">현황</span></a>
   <a href="#run" data-v="run" id="navrun" class="hide">연습장</a>
   <a href="#tools" data-v="tools" id="navtool">도구</a>
  </nav>
@@ -875,6 +965,9 @@ function daysAgo(d,t){
  return Math.round((Date.parse(t+"T00:00:00")-Date.parse(d+"T00:00:00"))/86400000);
 }
 var RQOPEN=false, RQN=8;
+/* 사이트 필터 — 고른 값은 이 브라우저에만 남는다(localStorage 가 막혀 있으면 매번 '전체') */
+var RQSITE=(function(){ try{ return localStorage.getItem("rqSite")||""; }catch(e){ return ""; } })();
+var RQSITES=[["","전체"],["BOJ","백준"],["SWEA","SWEA"],["CT","코드트리"]];
 function reviewQueue(){
  var t=today(),out=[];
  Object.keys(BYPROB).forEach(function(k){
@@ -890,9 +983,18 @@ function reviewQueue(){
  return out;
 }
 function rqHTML(){
- var q=reviewQueue();
- if(!q.length) return '<div class="panel" id="rqbox"><div class="hd">재도전 큐</div>'+
+ var all=reviewQueue();
+ if(!all.length) return '<div class="panel" id="rqbox"><div class="hd">재도전 큐</div>'+
    '<div class="bd"><div class="empty">재도전할 문제가 없습니다.</div></div></div>';
+ var cnt={}; all.forEach(function(x){ cnt[x.site]=(cnt[x.site]||0)+1; });
+ var sites=RQSITES.slice(); if(cnt.PGS) sites.push(["PGS","프로그래머스"]);
+ /* 기억해 둔 사이트가 칩에 없으면(예: 프로그래머스가 전부 졸업) 전체로 본다 */
+ var cur=RQSITE; if(!sites.some(function(s){ return s[0]===cur; })) cur="";
+ var q=cur?all.filter(function(x){ return x.site===cur; }):all;
+ var chips='<div class="rqf">'+sites.map(function(s){
+   return '<button class="'+(s[0]===cur?"on":"")+'" onclick="rqSite(\''+s[0]+'\')">'+s[1]+
+     '<i>'+(s[0]?(cnt[s[0]]||0):all.length)+'</i></button>';
+  }).join("")+'</div>';
  var rows=q.slice(0,RQOPEN?q.length:RQN).map(function(x){
   return '<a class="rq" href="#p/'+encodeURIComponent(x.site)+'/'+encodeURIComponent(x.no)+'">'+
    '<span class="b b-'+esc(x.site)+'">'+esc(x.site)+'</span>'+
@@ -903,14 +1005,21 @@ function rqHTML(){
  }).join("");
  return '<div class="panel" id="rqbox"><div class="hd">재도전 큐'+
   '<span class="r">'+q.length+'문제 · 오래 묵은 순</span></div>'+
-  '<div class="bd"><div class="rqwrap">'+rows+'</div>'+
-  (q.length>RQN?'<button class="sm" style="margin-top:10px" onclick="rqToggle()">'+
+  '<div class="bd">'+chips+
+  (q.length?'<div class="rqwrap">'+rows+'</div>'
+           :'<div class="empty" style="padding:22px">이 사이트에는 재도전할 문제가 없습니다.</div>')+
+  (q.length>RQN?'<button class="sm rqmore" style="margin-top:10px" onclick="rqToggle()">'+
     (RQOPEN?'접기':'전체 '+q.length+'개 보기')+'</button>':'')+
   '<div class="hint" style="margin-top:10px">아직 통과하지 못한 문제, 마지막 시도가 오래된 순. '+
   '<b>제목과 유형은 일부러 감췄다</b> — 무엇을 쓸지 판별하는 것까지가 훈련.</div>'+
   '</div></div>';
 }
 function rqToggle(){ RQOPEN=!RQOPEN; var el=$("rqbox"); if(el) el.outerHTML=rqHTML(); }
+function rqSite(s){
+ RQSITE=s; RQOPEN=false;
+ try{ localStorage.setItem("rqSite",s); }catch(e){}
+ var el=$("rqbox"); if(el) el.outerHTML=rqHTML();
+}
 
 /* ════════ 대시보드 ════════ */
 var homeDone=false;
@@ -983,6 +1092,16 @@ function viewHome(){
   el.onmouseleave=function(){tip.style.display="none";};
   g.appendChild(el);
  });
+ ctPrefetch();
+}
+/* 코드트리 카탈로그(약 700KB) 미리 받기 — 첫 코드트리 문제·트리 진입 때 받느라 늦던 것을, 홈을 다
+   그린 뒤 브라우저가 한가할 때 받아 둔다. 이미 받는 중이면 ctCatalog 가 같은 프라미스를 돌려준다.
+   데이터 절약 모드면 건너뛴다(필요할 때 그 자리에서 받는다). */
+function ctPrefetch(){
+ if(CTP) return;
+ try{ if(navigator.connection&&navigator.connection.saveData) return; }catch(e){}
+ var f=function(){ ctCatalog(); };
+ if(window.requestIdleCallback) requestIdleCallback(f,{timeout:5000}); else setTimeout(f,1200);
 }
 
 /* 채점 결과 셀 — 통과 수/전체를 색으로 구분해 보여준다 */
@@ -991,40 +1110,72 @@ function tcCell(r){
  var all=(r.passed===r.total);
  return '<span class="'+(all?"r-ok":"r-no")+'">'+r.passed+' / '+r.total+'</span>';
 }
-function tbl(rows){
- if(!rows.length) return '<div class="empty">기록이 없습니다.</div>';
- return '<table><thead><tr><th>제출일</th><th>사이트</th><th>번호</th>'+
-  '<th style="text-align:left">문제</th><th>결과</th><th>테스트케이스</th><th>시간</th><th>코드</th><th></th></tr></thead><tbody>'+
-  rows.map(function(r){
-   var k=key(r), t=r.title||bestTitle(k);
-   /* 시각은 허브로 저장한 기록에만 있다. 시:분까지만 보여준다(초는 정렬용). */
-   var hm=(r.at||"").slice(0,5);
-   /* 같은 날 같은 문제를 여러 번 냈으면 회차를 달아 준다.
-      예전엔 재제출이 앞 기록을 덮어써서 이런 줄 자체가 없었다. */
-   var tryb=(r.tries>1)?' <span class="b" style="background:var(--soft);color:var(--sub)">'+
-                        r["try"]+'/'+r.tries+'회</span>':'';
-   /* 저장은 됐는데 Pages 재빌드 전이라 이 브라우저에만 있는 줄 */
-   if(r._pend) tryb+=' <span class="b pend" title="저장 완료 · 사이트 반영 대기 중">반영 대기</span>';
-   return '<tr><td class="n" style="white-space:nowrap">'+r.date+
-     (hm?' <span class="hint">'+hm+'</span>':'')+tryb+'</td>'+
-    '<td><span class="b b-'+r.site+'">'+r.site+'</span></td>'+
-    '<td class="n">'+esc(r.no)+'</td>'+
-    '<td class="l"><a href="#p/'+encodeURIComponent(r.site)+'/'+encodeURIComponent(r.no)+'">'+
-      esc(t||"(제목 없음)")+'</a></td>'+
-    '<td class="'+rc(r.status)+'">'+esc(r.status)+'</td>'+
-    '<td class="n">'+tcCell(r)+'</td>'+
-    '<td class="n">'+(r.elapsed!=null?(+r.elapsed).toFixed(2)+'초':'<span style="color:var(--mute)">—</span>')+'</td>'+
-    /* 진짜 링크로 둔다 — 새 탭으로 열거나 주소를 공유할 수 있다 */
-    /* 회차에 그 시각의 커밋(r.commit)이 붙어 있으면 그 커밋의 파일을 연다. 파일은
-       문제당 하나라 재제출 때 덮어써지므로, 이게 없으면 옛 회차도 최신 코드가 떴다. */
-    '<td>'+(r.file?'<a class="lnk" style="color:var(--ac)" href="#c/'+
+/* 제출 한 줄의 공통 칸(제출일·결과·테스트케이스·시간·코드·삭제) — 홈·현황 표(tbl)와 문제 페이지
+   이력 표(histHTML)가 같이 쓴다. c-* 클래스는 폰에서 표를 카드로 접을 때 칸 자리를 정하는 이름이고,
+   nil 은 값이 없는(—) 칸이다(카드에서는 뺀다). 데스크톱 표 모양에는 영향이 없다.
+   hist=1 이면 제출일 칸을 날짜·시각 조각(.nw)으로 나눠, 폰에서 두 줄로 접히게 한다. */
+function subCells(r,hist){
+ /* 시각은 허브로 저장한 기록에만 있다. 시:분까지만 보여준다(초는 정렬용). */
+ var hm=(r.at||"").slice(0,5);
+ /* 같은 날 같은 문제를 여러 번 냈으면 회차를 달아 준다.
+    예전엔 재제출이 앞 기록을 덮어써서 이런 줄 자체가 없었다. */
+ var tryb=(r.tries>1)?' <span class="b" style="background:var(--soft);color:var(--sub)">'+
+                      r["try"]+'/'+r.tries+'회</span>':'';
+ /* 저장은 됐는데 Pages 재빌드 전이라 이 브라우저에만 있는 줄 */
+ if(r._pend) tryb+=' <span class="b pend" title="저장 완료 · 사이트 반영 대기 중">반영 대기</span>';
+ var none='<span style="color:var(--mute)">—</span>';
+ return {
+  dt: hist ? '<td class="n hdt"><span class="nw">'+r.date+'</span>'+
+             (hm?' <span class="hint nw">'+hm+'</span>':'')+tryb+'</td>'
+           : '<td class="n c-dt" style="white-space:nowrap">'+r.date+
+             (hm?' <span class="hint">'+hm+'</span>':'')+tryb+'</td>',
+  res:'<td class="'+rc(r.status)+' c-res">'+esc(r.status)+'</td>',
+  tc:'<td class="n c-tc'+(r.total==null?' nil':'')+'">'+tcCell(r)+'</td>',
+  tm:'<td class="n c-tm'+(r.elapsed!=null?'':' nil')+'">'+
+     (r.elapsed!=null?(+r.elapsed).toFixed(2)+'초':none)+'</td>',
+  /* 진짜 링크로 둔다 — 새 탭으로 열거나 주소를 공유할 수 있다 */
+  /* 회차에 그 시각의 커밋(r.commit)이 붙어 있으면 그 커밋의 파일을 연다. 파일은
+     문제당 하나라 재제출 때 덮어써지므로, 이게 없으면 옛 회차도 최신 코드가 떴다. */
+  code:'<td class="c-code'+(r.file?'':' nil')+'">'+(r.file?'<a class="lnk" style="color:var(--ac)" href="#c/'+
       encodeURIComponent(r.file)+(r.commit?'@'+r.commit:'')+'" title="'+
       (r.commit?'이 회차 제출 당시 코드 · commit '+r.commit:'현재 파일')+
-      '">보기</a>':'<span style="color:var(--mute)">—</span>')+'</td>'+
-    /* at 을 같이 넘겨 '이 회차만' 지운다. 안 넘기면 그날 제출이 통째로 지워진다. */
-    '<td><span class="del" title="이 제출 기록 삭제" onclick="askDelSub(\''+esc(r.site)+
-      '\',\''+esc(r.no)+'\',\''+esc(r.date)+'\',event,\''+esc(r.at||"")+'\')">&#128465;</span></td></tr>';
+      '">보기</a>':none)+'</td>',
+  /* at 을 같이 넘겨 '이 회차만' 지운다. 안 넘기면 그날 제출이 통째로 지워진다. */
+  del:'<td class="c-del"><span class="del" title="이 제출 기록 삭제" onclick="askDelSub(\''+esc(r.site)+
+      '\',\''+esc(r.no)+'\',\''+esc(r.date)+'\',event,\''+esc(r.at||"")+'\')">&#128465;</span></td>'
+ };
+}
+function tbl(rows){
+ if(!rows.length) return '<div class="empty">기록이 없습니다.</div>';
+ return '<table class="subtbl"><thead><tr><th>제출일</th><th>사이트</th><th>번호</th>'+
+  '<th style="text-align:left">문제</th><th>결과</th><th>테스트케이스</th><th>시간</th><th>코드</th><th></th></tr></thead><tbody>'+
+  rows.map(function(r){
+   var k=key(r), t=r.title||bestTitle(k), c=subCells(r);
+   return '<tr>'+c.dt+
+    '<td class="c-site"><span class="b b-'+r.site+'">'+r.site+'</span></td>'+
+    '<td class="n c-no">'+esc(r.no)+'</td>'+
+    '<td class="l c-ti"><a href="#p/'+encodeURIComponent(r.site)+'/'+encodeURIComponent(r.no)+'">'+
+      esc(t||"(제목 없음)")+'</a></td>'+
+    c.res+c.tc+c.tm+c.code+c.del+'</tr>';
   }).join("")+'</tbody></table>';
+}
+/* 문제 페이지 제출 이력 — 사이트·번호·문제 열은 이 페이지의 모든 줄에서 같아서 뺀다(홈·현황은 tbl 그대로).
+   기록이 많으면 최근 PHN 개만 두고 '전체 n회 보기' 로 편다. 다른 문제로 가면 다시 접힌다(viewProblem). */
+var PHOPEN=false, PHN=5;
+function histHTML(subs){
+ if(!subs.length) return '<div class="empty">제출 기록이 없습니다.</div>';
+ var rows=PHOPEN?subs:subs.slice(0,PHN);
+ return '<table class="htbl"><thead><tr><th>제출일</th><th>결과</th>'+
+  '<th><span class="thl">테스트케이스</span><span class="ths">TC</span></th><th>시간</th><th>코드</th><th></th>'+
+  '</tr></thead><tbody>'+
+  rows.map(function(r){ var c=subCells(r,1); return '<tr>'+c.dt+c.res+c.tc+c.tm+c.code+c.del+'</tr>'; }).join("")+
+  '</tbody></table>'+
+  (subs.length>PHN?'<div class="phmore"><button class="sm" onclick="phToggle()">'+
+    (PHOPEN?'최근 '+PHN+'회만 보기':'전체 '+subs.length+'회 보기')+'</button></div>':'');
+}
+function phToggle(){
+ PHOPEN=!PHOPEN;
+ if($("phist")) $("phist").innerHTML=histHTML(BYPROB[CUR.site+"/"+CUR.no]||[]);
 }
 
 /* ════════ 문제 (폴더 트리) ════════
@@ -1116,6 +1267,8 @@ function leafHTML(it,pl,tail){
  var doc=!it.has ? ''
    : it.priv ? '<span title="공개 자료는 메타데이터뿐 — 지문·예제는 허브에만 보관">&#128274;</span>'
    : '<span title="지문·예제 있음">&#128196;</span>';
+ /* 🧪 코드트리 기출에 우리가 만들어 붙인 히든 TC(공식 채점 데이터가 아님) — 색인의 gen = 개수 */
+ if(it.gen) doc+='<span title="생성 TC '+esc(it.gen)+'개 · 공식 아님">&#129514;</span>';
  return '<div class="leaf"><span class="id">'+esc(it.no)+'</span>'+nm+
   '<span class="doc">'+doc+
    (it.note?'<span title="복기 메모 있음">&#128221;</span>':'')+'</span>'+
@@ -1145,6 +1298,7 @@ function drawTree(){
            sec:c.section||"", ord:ct?ct.ord:(c.ord===undefined?1e9:c.ord), ct:ct,
            last:(last?last.date:""),
            has:!!PIDX[k], note:!!((PIDX[k]||{}).note), priv:!!((PIDX[k]||{}).priv),
+           gen:(PIDX[k]||{}).gen||0,
            status:last?last.status:"", tries:(BYPROB[k]||[]).length};
   }).filter(function(it){
    if(it.site==="CT"&&ctWait){ ctHeld++; return false; }
@@ -1402,14 +1556,15 @@ function drawStatus(){
   if(sortK==="title")return (bestTitle(key(a))||"").localeCompare(bestTitle(key(b))||"","ko")*(asc?1:-1);
   return((a[sortK]||"")+"").localeCompare((b[sortK]||"")+"")*(asc?1:-1);});
  $("cnt").textContent=rs.length+"건";
- $("sttbl").innerHTML=tbl(rs).replace(
+ /* 정렬 머리글. on/up 은 폰에서 정렬 칩으로 접었을 때 지금 기준·방향을 보이는 데만 쓴다 */
+ function sh(k,lab,st){
+  return '<th class="s'+(k===sortK?(asc?' on up':' on'):'')+'"'+(st||'')+' onclick="sortBy(\''+k+'\')">'+lab+'</th>';
+ }
+ $("sttbl").innerHTML=tbl(rs).replace('<table class="subtbl">','<table class="subtbl srt">').replace(
   /<thead><tr>(.*?)<\/tr>/,
-  '<thead><tr><th class="s" onclick="sortBy(\'date\')">제출일</th>'+
-  '<th class="s" onclick="sortBy(\'site\')">사이트</th>'+
-  '<th class="s" onclick="sortBy(\'no\')">번호</th>'+
-  '<th class="s" style="text-align:left" onclick="sortBy(\'title\')">문제</th>'+
-  '<th class="s" onclick="sortBy(\'status\')">결과</th>'+
-  '<th>테스트케이스</th><th class="s" onclick="sortBy(\'elapsed\')">시간</th>'+
+  '<thead><tr>'+sh('date','제출일')+sh('site','사이트')+sh('no','번호')+
+  sh('title','문제',' style="text-align:left"')+sh('status','결과')+
+  '<th>테스트케이스</th>'+sh('elapsed','시간')+
   '<th>코드</th><th></th></tr>');
 }
 function sortBy(k){ asc=(k===sortK)?!asc:false; sortK=k; drawStatus(); }
@@ -2371,6 +2526,7 @@ async function viewProblem(site,no){
  proseFont();                                   /* 지문 글꼴 — 문제 페이지에서만(처음 한 번) */
  var k=site+"/"+no, meta=PIDX[k], subs=BYPROB[k]||[];
  CUR={site:site,no:no,prob:null,verdict:null};
+ PHOPEN=false;                                  /* 제출 이력은 문제마다 최근 5개부터 */
  var title=bestTitle(k);
 
  /* 코드트리는 카탈로그(제목·코스 경로)를 따로 받는다 — 코드 파일·공개 JSON 과 같이 받게 먼저 건다 */
@@ -2380,8 +2536,7 @@ async function viewProblem(site,no){
   '<div class="crumb" id="pcrumb"><a href="#problems">문제</a> › '+esc(SITENM[site]||site)+'</div>'+
   '<div class="ptitle" id="ptitle"><span class="b b-'+site+'">'+esc(site)+'</span>'+esc(no)+
    (title?'&nbsp; '+esc(title):'')+'</div>'+
-  '<div class="sec-h">제출 이력</div><div class="panel" id="phist">'+
-   (subs.length? tbl(subs) : '<div class="empty">제출 기록이 없습니다.</div>')+'</div>'+
+  '<div class="sec-h">제출 이력</div><div class="panel" id="phist">'+histHTML(subs)+'</div>'+
   '<div id="pinfo"></div><div id="pbody"><div class="note">문제 자료를 불러오는 중…</div></div>'+
   '<div class="sec-h">코드 제출</div>'+
   /* B형(Pro)은 Main 과 User Code 두 칸이다. 문제 자료를 받아온 뒤에야 알 수
@@ -2577,8 +2732,38 @@ function buildTOC(){
  });
  b.innerHTML=h+'</div>';
  var as=b.querySelectorAll(".lst a");
- TOCH=hs.map(function(el,i){ return {el:el,a:as[i+1]}; });
+ TOCH=hs.map(function(el,i){ return {el:el,a:as[i+1],w:0}; });
  b.className="";
+ tocMeasure(b);
+ tocFit();
+}
+/* 목차 폭 — 그릴 때 한 번 잰다(접힌 뒤에는 목록이 숨어서 못 잰다). 이름(.tx)은 max-width:0 으로
+   접혀 있어도 scrollWidth 가 글자 폭 그대로라 클래스를 바꾸지 않고 잰다(바꿨다 되돌리면 transition 이
+   한 번 번쩍인다). slim = 이름 없이 눈금만일 때 폭: 테두리·안쪽 여백·줄 여백·이름과 눈금 사이(gap)·
+   켜진 눈금(28px — #ptoc a.on .ln), 목록이 길어 세로 스크롤바가 생기면 그 폭까지. */
+var TOCM={slim:0,max:0,room:0};
+function tocMeasure(b){
+ var lst=b.querySelector(".lst"), a0=lst&&lst.querySelector("a");
+ if(!a0) return;
+ var bs=getComputedStyle(b), as=getComputedStyle(a0);
+ function px(s,k){ return parseFloat(s[k])||0; }
+ TOCM.slim=px(bs,"borderLeftWidth")+px(bs,"borderRightWidth")+px(bs,"paddingLeft")+px(bs,"paddingRight")+
+   (lst.offsetWidth-lst.clientWidth)+px(as,"paddingLeft")+px(as,"paddingRight")+px(as,"columnGap")+28;
+ TOCM.max=0;
+ Array.prototype.forEach.call(lst.querySelectorAll(".tx"),function(t){ TOCM.max=Math.max(TOCM.max,t.scrollWidth); });
+ TOCH.forEach(function(t){ t.w=t.a.querySelector(".tx").scrollWidth; });
+}
+/* 본문 오른쪽 빈자리(room)에 맞춰 펼칠지 접을지. 목차는 창 오른쪽 14px 에 붙고, 본문과는 8px 은 떨어져야
+   한다. 900px 이하는 마우스(hover)가 없다고 보고 늘 접는다. 그릴 때와 창 크기가 바뀔 때 부른다. */
+function tocFit(){
+ var b=$("ptoc"), host=$("v-p");
+ if(!b||!TOCH.length||!host||b.classList.contains("hide")) return;
+ var W=document.documentElement.clientWidth;
+ TOCM.room=W-14-8-host.getBoundingClientRect().right;
+ var fold=(W<=900||TOCM.room<TOCM.slim);
+ b.classList.toggle("fold",fold);
+ b.classList.toggle("full",!fold&&W>=1500&&TOCM.slim+TOCM.max<=TOCM.room);
+ if(!fold) b.classList.remove("open");
  tocSpy();
 }
 function tocToggle(){ var b=$("ptoc"); if(b)b.classList.toggle("open"); }
@@ -2601,36 +2786,74 @@ function tocSpy(){
  }
  if(cur<0) cur=0;
  if((window.innerHeight+window.scrollY)>=document.body.scrollHeight-4) cur=TOCH.length-1;
- TOCH.forEach(function(t,i){ t.a.className=(i===cur?"on":""); });
+ /* 켜진 섹션 이름이 빈자리에 안 들어가면(예: 1440px 의 '생성 히든 TC (공식 아님)') 눈금만 —
+    이름이 본문을 덮지 않게. 접힌(☰) 목록 안에서는 늘 이름을 보인다. */
+ var b=$("ptoc"), fold=!!(b&&b.classList.contains("fold"));
+ TOCH.forEach(function(t,i){
+  t.a.className=(i!==cur)?"":(!fold&&TOCM.slim+t.w>TOCM.room)?"on nolab":"on";
+ });
 }
 window.addEventListener("scroll",function(){
  if(TOCRAF)return;
  TOCRAF=requestAnimationFrame(function(){ TOCRAF=0; tocSpy(); });
 },{passive:true});
-window.addEventListener("resize",function(){ tocSpy(); },{passive:true});
+var TOCFR=0;
+window.addEventListener("resize",function(){
+ if(TOCFR)return;
+ TOCFR=requestAnimationFrame(function(){ TOCFR=0; tocFit(); });
+},{passive:true});
+
+/* 문제 정보표 — cols = [[머리글, 값 HTML, 칸 클래스, 넓게(카드 격자에서 한 줄 전체)], …].
+   넓은 화면용 표(.limw)와 폰용 2열 카드 격자(.limg)를 같은 값으로 함께 그리고 CSS 가 하나만 보인다
+   (700px). 격자는 표와 같은 순서로 두되 긴 값(출처·트레일, 30자 넘는 값 — SWEA 의 서술형 시간 제한)은
+   한 줄을 다 쓴다. 넓은 칸 앞에 생기는 빈 반 칸은 뒤의 짧은 칸이 채우고(grid-auto-flow:dense),
+   짧은 칸이 홀수 개면 마지막 것도 한 줄을 다 써서 빈 칸이 남지 않게 한다. 격자 칸에는 nowrap(nw)을
+   걸지 않는다 — 반 칸(320px 폰에서 110px 남짓)에 안 들어가면 넘친다. */
+function limHTML(cols){
+ var tb='<div class="limw"><table class="lim"><thead><tr>'+
+  cols.map(function(c){ return '<th>'+c[0]+'</th>'; }).join("")+'</tr></thead><tbody><tr>'+
+  cols.map(function(c){ return '<td'+(c[2]?' class="'+c[2]+'"':'')+'>'+c[1]+'</td>'; }).join("")+
+  '</tr></tbody></table></div>';
+ var wide=cols.map(function(c){ return !!c[3]||String(c[1]).replace(/<[^>]*>/g,"").length>30; });
+ var nar=wide.filter(function(w){ return !w; }).length;
+ if(nar%2) wide[wide.lastIndexOf(false)]=true;
+ var gr='<dl class="limg">'+cols.map(function(c,i){
+  var cls=String(c[2]||"").replace(/\b(nw|ctpath)\b/g,"").trim();
+  return '<div class="kv'+(wide[i]?' w2':'')+'"><dt>'+c[0]+'</dt>'+
+   '<dd'+(cls?' class="'+cls+'"':'')+'>'+c[1]+'</dd></div>';
+ }).join("")+'</dl>';
+ return tb+gr;
+}
+/* "Python3 5초 · C++17 1초" → 구분자(' · ', ' › ')에서만 줄이 바뀌게: 조각마다 nowrap, 구분자는 앞
+   조각 끝에 붙인다("Python3 5초 ·" / "C++17 1초"). 24자 넘는 조각(SWEA 의 서술형 제한 등)은
+   그 안에서도 보통처럼 접히게 둔다 — 통째로 nowrap 이면 표가 옆으로 밀린다. */
+function nwJoin(s,sep){
+ var ps=String(s).split(sep), tail=sep.replace(/\s+$/,"");
+ return ps.map(function(x,i){
+  var t=esc(x)+(i<ps.length-1?esc(tail):"");
+  return x.length>24?t:'<span class="nw">'+t+'</span>';
+ }).join(" ");
+}
+function nwIf(s){ return String(s||"").length<=16?"nw":""; }
 
 function renderProblem(p,site,no){
  /* 섹션 구성이 바뀌므로 그림이 끝난 뒤 목차를 다시 만든다 */
  setTimeout(buildTOC,0);
  CUR.prob=p;
  var subs=BYPROB[site+"/"+no]||[];
- if($("phist")) $("phist").innerHTML =
-   subs.length? tbl(subs) : '<div class="empty">제출 기록이 없습니다.</div>';
+ if($("phist")) $("phist").innerHTML=histHTML(subs);
  /* 코드트리는 제한표·지문(마크다운)·힌트 구성이 달라 따로 그린다 */
  if(site==="CT"){ ctRender(p||{site:"CT",no:no},subs); probTail(p); return; }
- var lim=(p&&p.limits)||{};
- /* 폰(390px)에서 이 표가 402px 까지 벌어져 화면이 가로로 밀렸다 — 코드트리 표처럼 칸 안에서만 밀리게 */
- $("pinfo").innerHTML='<div class="limw"><table class="lim"><thead><tr>'+
-  '<th>시간 제한</th><th>메모리 제한</th><th>제출</th><th>최근 결과</th>'+
-  (p&&p.private_tc_count?'<th>테스트케이스</th>':'')+
-  '<th>원문</th></tr></thead><tbody><tr>'+
-  '<td>'+esc(lim.time||"—")+'</td><td>'+esc(lim.memory||"—")+'</td>'+
-  '<td>'+subs.length+'회</td>'+
-  '<td class="'+rc(subs[0]&&subs[0].status)+'">'+esc((subs[0]&&subs[0].status)||"—")+'</td>'+
-  (p&&p.private_tc_count?'<td>'+p.private_tc_count+'개'+
-     ((p.private_testcases||[]).length?' <span style="color:var(--ok)">(수집됨)</span>':'')+'</td>':'')+
-  '<td>'+((p&&(p.source_url||p.url))?'<a href="'+esc(p.source_url||p.url)+'" target="_blank" rel="noopener">열기 ↗</a>':"—")+'</td>'+
-  '</tr></tbody></table></div>';
+ var lim=(p&&p.limits)||{}, last=subs[0], cols=[
+  ["시간 제한",nwJoin(lim.time||"—"," · ")],
+  ["메모리 제한",esc(lim.memory||"—"),nwIf(lim.memory)],
+  ["제출",subs.length+"회","nw"],
+  ["최근 결과",esc((last&&last.status)||"—"),rc(last&&last.status)+" nw"]];
+ if(p&&p.private_tc_count)
+  cols.push(["테스트케이스",p.private_tc_count+'개'+
+     ((p.private_testcases||[]).length?' <span class="nw" style="color:var(--ok)">(수집됨)</span>':''),"nw"]);
+ cols.push(["원문",(p&&(p.source_url||p.url))?'<a href="'+esc(p.source_url||p.url)+'" target="_blank" rel="noopener">열기 ↗</a>':"—","nw"]);
+ $("pinfo").innerHTML=limHTML(cols);
 
  if(!p){
   $("pbody").innerHTML='<div class="note">아직 이 문제의 자료가 없습니다. '+
@@ -2822,20 +3045,18 @@ function ctRender(p,subs){
  var acc=st.accept_rate!=null&&st.accept_rate!==""?String(st.accept_rate).replace(/%$/,"")+"%":"";
  /* 히든 TC 칸 — 코드트리 공식 데이터가 아니라 우리가 만든 것(tc_generated)이면 그렇다고 적는다 */
  var tcc=p.private_tc_count?(esc(p.private_tc_count)+'개'+(p.tc_generated
-   ?' <span style="color:var(--wr);font-weight:700">생성 · 공식 아님</span>'
-   :((p.private_testcases||[]).length?' <span style="color:var(--ok)">(수집됨)</span>':''))):"";
- $("pinfo").innerHTML='<div class="limw"><table class="lim"><thead><tr>'+
-  '<th>시간 제한</th><th>메모리 제한</th><th>난이도</th>'+(acc?'<th>정답률</th>':'')+
-  '<th>제출</th><th>최근 결과</th>'+(tcc?'<th>테스트케이스</th>':'')+
-  '<th>'+(freq?'출처':'트레일')+'</th><th>원문</th></tr></thead><tbody><tr>'+
-  '<td>'+esc(lim.time||"—")+'</td><td>'+esc(lim.memory||"—")+'</td>'+
-  '<td>'+esc(ctLevel(p.level)||"—")+'</td>'+(acc?'<td>'+esc(acc)+'</td>':'')+
-  '<td>'+subs.length+'회</td>'+
-  '<td class="'+rc(last&&last.status)+'">'+esc((last&&last.status)||"—")+'</td>'+
-  (tcc?'<td>'+tcc+'</td>':'')+
-  '<td class="ctpath">'+esc(ctPath(p)||"—")+'</td>'+
-  '<td>'+(p.url?'<a href="'+esc(p.url)+'" target="_blank" rel="noopener">열기 ↗</a>':'—')+'</td>'+
-  '</tr></tbody></table></div>';
+   ?' <span class="nw" style="color:var(--wr);font-weight:700">생성 · 공식 아님</span>'
+   :((p.private_testcases||[]).length?' <span class="nw" style="color:var(--ok)">(수집됨)</span>':''))):"";
+ var cols=[["시간 제한",nwJoin(lim.time||"—"," · ")],
+  ["메모리 제한",esc(lim.memory||"—"),nwIf(lim.memory)],
+  ["난이도",esc(ctLevel(p.level)||"—"),"nw"]];
+ if(acc) cols.push(["정답률",esc(acc),"nw"]);
+ cols.push(["제출",subs.length+"회","nw"],
+  ["최근 결과",esc((last&&last.status)||"—"),rc(last&&last.status)+" nw"]);
+ if(tcc) cols.push(["테스트케이스",tcc,"nw"]);
+ cols.push([freq?"출처":"트레일",nwJoin(ctPath(p)||"—"," › "),"ctpath",1],
+  ["원문",p.url?'<a href="'+esc(p.url)+'" target="_blank" rel="noopener">열기 ↗</a>':'—',"nw"]);
+ $("pinfo").innerHTML=limHTML(cols);
  $("pbody").innerHTML=ctBody(p);
  ctMath($("pbody"));
 }
@@ -3945,15 +4166,15 @@ def _slim_probs(probs):
 
     코드트리는 1,451문제라 색인을 통째로 박으면 index.html 이 320KB 늘어난다
     (실데이터 실측: 554KB → 932KB). 대시보드가 코드트리 항목에서 쓰는 건 '있다'(자료 아이콘·
-    필터)·note·priv 뿐이고, 제목은 카탈로그(codetree_list.json)에, 경로는
-    problems/codetree/<no>.json 으로 정해져 있다. 색인 파일(problems/index.json) 자체는 그대로다.
+    필터)·note·priv·gen(생성 TC 개수 — 트리의 🧪) 뿐이고, 제목은 카탈로그(codetree_list.json)에,
+    경로는 problems/codetree/<no>.json 으로 정해져 있다. 색인 파일(problems/index.json) 자체는 그대로다.
     """
     if not probs or not isinstance(probs.get("items"), dict):
         return probs
     items = {}
     for k, v in probs["items"].items():
         if k.startswith("CT/") and isinstance(v, dict):
-            items[k] = {f: v[f] for f in ("note", "priv") if v.get(f)}
+            items[k] = {f: v[f] for f in ("note", "priv", "gen") if v.get(f)}
         else:
             items[k] = v
     out = dict(probs)

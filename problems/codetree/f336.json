@@ -34,5 +34,130 @@
  ],
  "sample_notes": [
   "위의 예제를 나타내면 다음과 같이 표현됩니다.\n<p align=\"center\">\n  <img width=\"350\" src=\"https://contents.codetree.ai/problems/3508/images/27c6877e-3080-469a-b365-11fe4815ea06.png\" >\n</p>\n\n### 1초 - 참가자 이동 (총 이동 횟수: $0$)\n모든 참가자는 출구와 가까워지는 방향에 대해서 모두 벽이 존재하기 때문에, 이동하지 못합니다.\n<p align=\"center\">\n  <img width=\"350\" src=\"https://contents.codetree.ai/problems/3508/images/20be374a-1403-4ed8-b6e2-15074d65fa64.png\" >\n\n### 1초 - 회전\n출구와 참가자 최소 1명을 포함한 가장 작은 정사각형을 구해보면 다음과 같습니다.\n<p align=\"center\">\n  <img width=\"350\" src=\"https://contents.codetree.ai/problems/3508/images/7c772b91-bdfd-4bcb-ba59-8029708d6f5a.png\" >\n</p>\n\n위의 정사각형을 시계 방향으로 90도 회전하면 아래 그림과 같습니다.\n<p align=\"center\">\n  <img width=\"350\" src=\"https://contents.codetree.ai/problems/3508/images/4698bebe-973a-443d-9515-98d227e7f684.png\" >\n</p>\n\n### 1초 후 최종 결과\n<p align=\"center\">\n  <img width=\"350\" src=\"https://contents.codetree.ai/problems/3508/images/97390b05-fbed-47e7-965e-5a5ac511db62.png\" >\n\n### 2초 - 이동 (총 이동 횟수: $1(=0 + 1)$)\n</p>\n<p align=\"center\">\n  <img width=\"350\" src=\"https://contents.codetree.ai/problems/3508/images/cf9d777f-6a74-4fab-8051-884b60c66c14.png\" >\n</p>\n\n### 2초 - 회전\n<p align=\"center\">\n  <img width=\"350\" src=\"https://contents.codetree.ai/problems/3508/images/b40ba8c7-bd2c-4d44-9c88-1152d94fa0d3.png\" >\n</p>\n\n<p align=\"center\">\n  <img width=\"350\" src=\"https://contents.codetree.ai/problems/3508/images/b4606477-a1d4-4cee-992e-50b0d65f29a9.png\" >\n</p>\n\n### 2초 후 최종 결과\n<p align=\"center\">\n  <img width=\"350\" src=\"https://contents.codetree.ai/problems/3508/images/a68e780e-49c7-4160-9d25-5356ae72ea2a.png\" >\n</p>\n\n### 3초 - 이동 (총 이동 횟수: $4(=1+3)$)\n<p align=\"center\">\n  <img width=\"350\" src=\"https://contents.codetree.ai/problems/3508/images/9424bf35-fa65-4473-b4c1-8c1d1e33ec55.png\" >\n</p>\n\n### 3초 - 회전\n<p align=\"center\">\n  <img width=\"350\" src=\"https://contents.codetree.ai/problems/3508/images/e4ab74af-a417-47cf-bdd5-15d6e430c862.png\" >\n</p>\n\n<p align=\"center\">\n  <img width=\"350\" src=\"https://contents.codetree.ai/problems/3508/images/0f79d9cb-97d3-446d-891a-b1d9f3807b45.png\" >\n</p>\n\n### 3초 후 최종 결과\n<p align=\"center\">\n  <img width=\"350\" src=\"https://contents.codetree.ai/problems/3508/images/8cc47b00-ade3-4839-8a8b-7139876fea88.png\" >\n</p>\n\n### 4초 - 이동 (총 이동 횟수: $6(=4+2)$)\n<p align=\"center\">\n  <img width=\"350\" src=\"https://contents.codetree.ai/problems/3508/images/2647581d-0c36-4d52-ad05-8873ff5ab332.png\" >\n</p>\n\n### 4초 - 회전\n<p align=\"center\">\n  <img width=\"350\" src=\"https://contents.codetree.ai/problems/3508/images/bd318e69-b850-4035-a30e-8af9468e58e5.png\" >\n</p>\n\n<p align=\"center\">\n  <img width=\"350\" src=\"https://contents.codetree.ai/problems/3508/images/271716b2-f696-4cdc-9580-fbe8c8c8a983.png\" >\n</p>\n\n### 4초 후 최종 결과\n<p align=\"center\">\n  <img width=\"350\" src=\"https://contents.codetree.ai/problems/3508/images/b5279e47-95df-431d-8ef5-db53b98ea3b0.png\" >\n</p>\n\n### 5초 - 이동 (총 이동 횟수: $7(=6+1)$)\n<p align=\"center\">\n  <img width=\"350\" src=\"https://contents.codetree.ai/problems/3508/images/fcb565b0-4d10-4319-b5a2-d755586732fa.png\" >\n</p>\n\n### 5초 - 회전\n<p align=\"center\">\n  <img width=\"350\" src=\"https://contents.codetree.ai/problems/3508/images/de8aa6f1-a34c-438b-9dd6-cc86e7dedc2a.png\" >\n</p>\n<p align=\"center\">\n  <img width=\"350\" src=\"https://contents.codetree.ai/problems/3508/images/4c53dc50-53ac-4c47-9013-b80a8b720484.png\" >\n</p>\n\n### 5초 후 최종 결과\n<p align=\"center\">\n  <img width=\"350\" src=\"https://contents.codetree.ai/problems/3508/images/8005d508-c965-47d0-86a3-c71f3da63be6.png\" >\n</p>\n\n### 6초 - 이동 (총 이동 횟수: $7(=7+0)$)\n<p align=\"center\">\n  <img width=\"350\" src=\"https://contents.codetree.ai/problems/3508/images/c5d2dc28-403e-4e03-9dac-b9547e5b8b0c.png\" >\n</p>\n\n### 6초 - 회전\n<p align=\"center\">\n  <img width=\"350\" src=\"https://contents.codetree.ai/problems/3508/images/3920cf7f-79a5-4234-8953-432001b666eb.png\" >\n</p>\n\n<p align=\"center\">\n  <img width=\"350\" src=\"https://contents.codetree.ai/problems/3508/images/493f67ad-f022-4709-a886-e09c13e81c3e.png\" >\n</p>\n\n### 7초 - 회전\n<p align=\"center\">\n  <img width=\"350\" src=\"https://contents.codetree.ai/problems/3508/images/9a252ba1-aa48-4866-94d2-c8ea79f08247.png\" >\n</p>\n\n### 8초 - 회전\n<p align=\"center\">\n  <img width=\"350\" src=\"https://contents.codetree.ai/problems/3508/images/6cb246c0-6f22-4ce2-9abb-5e1216ee3cd0.png\" >\n</p>"
- ]
+ ],
+ "private_tc_count": 30,
+ "private_testcases": [
+  {
+   "in": "4 2 8\n0 0 0 0\n0 0 0 0\n0 0 0 0\n0 0 0 0\n2 4\n4 1\n4 2\n",
+   "out": "5\n2 2\n"
+  },
+  {
+   "in": "4 1 3\n0 0 1 0\n0 0 0 5\n5 7 8 4\n6 0 0 0\n2 1\n2 2\n",
+   "out": "1\n2 2\n"
+  },
+  {
+   "in": "4 2 1\n0 0 0 0\n0 0 0 0\n0 0 0 0\n0 0 0 0\n1 3\n2 1\n2 2\n",
+   "out": "2\n1 2\n"
+  },
+  {
+   "in": "4 3 12\n0 0 0 0\n0 0 0 0\n0 0 0 0\n0 0 0 0\n2 4\n1 3\n2 4\n2 2\n",
+   "out": "6\n1 2\n"
+  },
+  {
+   "in": "5 3 7\n0 0 0 0 0\n0 0 0 0 0\n0 0 0 0 0\n0 0 0 0 0\n0 0 0 0 0\n2 5\n2 3\n4 3\n2 4\n",
+   "out": "5\n3 3\n"
+  },
+  {
+   "in": "5 1 15\n2 6 1 6 2\n4 9 9 8 7\n2 4 9 8 9\n6 7 2 9 1\n0 0 1 7 9\n5 2\n5 1\n",
+   "out": "1\n5 1\n"
+  },
+  {
+   "in": "4 3 2\n0 0 0 0\n0 0 0 0\n0 0 0 0\n0 0 0 0\n4 4\n1 2\n4 3\n3 3\n",
+   "out": "5\n2 2\n"
+  },
+  {
+   "in": "4 1 2\n9 4 7 2\n0 1 7 0\n3 9 5 9\n2 8 5 2\n2 1\n2 4\n",
+   "out": "1\n4 1\n"
+  },
+  {
+   "in": "6 2 34\n5 0 5 6 7 0\n1 3 0 1 4 1\n0 7 0 0 1 4\n9 1 0 3 8 8\n7 5 4 4 0 4\n1 7 1 4 5 8\n3 4\n3 3\n5 5\n",
+   "out": "11\n2 1\n"
+  },
+  {
+   "in": "8 6 17\n7 3 0 9 0 4 0 7\n0 5 3 5 3 3 4 2\n0 7 6 0 0 8 0 0\n3 3 0 2 0 0 0 5\n1 0 7 3 0 8 3 1\n1 4 5 0 7 7 1 5\n2 2 9 0 0 5 0 6\n8 6 0 3 0 6 1 7\n3 1\n5 5\n3 7\n3 5\n2 1\n6 4\n4 6\n",
+   "out": "24\n2 3\n"
+  },
+  {
+   "in": "7 2 43\n0 0 5 0 6 9 0\n7 0 3 8 0 0 5\n3 3 0 4 7 3 0\n0 6 0 0 0 3 7\n1 7 0 2 0 6 5\n3 0 0 0 0 4 2\n5 0 0 2 0 9 6\n4 5\n3 7\n1 1\n",
+   "out": "11\n2 1\n"
+  },
+  {
+   "in": "5 6 23\n0 0 0 0 0\n2 2 0 0 3\n0 7 0 0 0\n0 0 5 0 9\n0 0 0 6 0\n4 4\n1 3\n4 1\n5 3\n1 2\n1 4\n3 5\n",
+   "out": "20\n2 2\n"
+  },
+  {
+   "in": "6 5 25\n0 0 0 0 0 0\n0 3 0 6 0 0\n0 1 0 4 5 0\n0 3 0 9 0 0\n0 0 0 0 4 1\n3 3 0 0 4 3\n1 1\n2 1\n1 2\n1 2\n1 2\n3 1\n",
+   "out": "9\n2 1\n"
+  },
+  {
+   "in": "6 4 36\n0 0 7 0 0 0\n0 0 0 0 5 0\n0 0 0 0 0 0\n1 0 0 0 0 0\n0 0 0 0 0 0\n5 0 0 0 0 0\n1 5\n1 5\n1 5\n2 4\n1 4\n",
+   "out": "4\n1 4\n"
+  },
+  {
+   "in": "8 7 15\n7 3 5 0 0 5 0 2\n1 7 0 0 9 0 7 1\n0 0 7 4 0 0 1 0\n0 2 0 8 2 9 0 0\n0 5 0 0 0 3 0 0\n0 4 0 0 0 0 3 0\n0 5 5 0 0 0 8 2\n0 0 0 0 1 0 5 3\n8 6\n2 6\n7 5\n3 8\n3 2\n5 1\n5 3\n4 8\n",
+   "out": "30\n3 1\n"
+  },
+  {
+   "in": "7 3 34\n0 0 9 5 0 0 5\n0 8 5 1 8 3 6\n5 9 0 0 0 0 0\n0 0 0 0 3 0 1\n0 0 7 0 0 2 0\n0 0 0 6 0 0 0\n8 0 0 4 0 0 3\n5 7\n6 7\n6 7\n4 6\n",
+   "out": "8\n5 7\n"
+  },
+  {
+   "in": "6 3 44\n0 0 0 0 0 0\n0 0 0 3 0 0\n0 0 0 7 0 0\n0 7 4 0 0 8\n0 0 0 0 0 0\n2 0 0 0 0 0\n4 4\n1 5\n1 6\n6 6\n",
+   "out": "14\n3 4\n"
+  },
+  {
+   "in": "6 4 26\n0 0 0 0 0 0\n0 0 0 0 0 0\n0 0 0 0 0 0\n0 0 0 0 0 0\n0 0 0 0 0 0\n0 0 1 0 0 0\n5 1\n2 2\n1 5\n4 2\n2 5\n",
+   "out": "11\n3 2\n"
+  },
+  {
+   "in": "8 9 91\n4 9 0 6 9 4 8 0\n6 0 3 6 1 5 6 2\n0 7 0 0 0 3 0 2\n0 1 1 0 6 0 0 0\n0 7 6 0 0 5 9 0\n1 8 0 3 0 9 6 5\n0 0 0 2 0 0 0 7\n6 8 1 0 0 7 0 1\n7 7\n4 7\n3 7\n3 3\n7 5\n3 4\n3 4\n3 5\n3 3\n5 5\n",
+   "out": "38\n2 2\n"
+  },
+  {
+   "in": "8 8 64\n5 2 7 0 0 0 0 7\n0 7 4 2 0 0 0 0\n4 6 0 0 7 6 0 0\n4 1 9 0 9 0 0 2\n0 3 2 1 8 2 1 2\n2 9 4 0 0 0 7 4\n5 0 7 7 3 0 0 4\n0 0 0 2 9 5 8 0\n2 8\n5 1\n2 7\n3 7\n1 6\n7 2\n1 5\n3 8\n1 4\n",
+   "out": "27\n3 2\n"
+  },
+  {
+   "in": "8 9 63\n0 0 0 0 0 0 8 0\n0 0 0 0 0 0 0 0\n0 9 8 0 8 0 0 7\n0 0 0 0 0 0 0 0\n0 0 0 0 0 9 0 1\n1 0 0 0 0 5 0 0\n0 5 0 0 0 0 2 0\n0 0 0 0 0 6 0 0\n1 3\n2 6\n1 8\n5 4\n2 4\n3 4\n2 3\n4 2\n4 7\n1 5\n",
+   "out": "35\n2 6\n"
+  },
+  {
+   "in": "10 9 94\n0 5 4 8 0 5 3 4 3 0\n0 7 4 0 0 1 7 8 9 0\n3 9 7 8 4 4 8 9 3 9\n4 3 1 9 2 0 0 7 3 3\n9 2 4 3 9 2 5 9 5 4\n6 4 4 7 4 4 3 1 0 9\n3 1 9 7 8 0 5 0 9 0\n1 0 9 8 2 4 4 6 0 0\n8 2 0 6 1 7 8 8 3 9\n2 3 5 6 1 9 9 0 7 4\n2 10\n10 8\n7 6\n2 5\n4 6\n1 1\n4 7\n7 10\n2 4\n8 2\n",
+   "out": "43\n2 1\n"
+  },
+  {
+   "in": "8 7 86\n0 4 6 5 2 0 5 1\n7 2 9 2 2 8 2 0\n2 3 4 6 4 8 9 1\n1 5 3 1 3 2 2 3\n0 6 9 0 0 3 0 4\n0 8 4 8 8 7 2 5\n0 5 1 3 0 5 3 3\n6 3 9 7 0 7 0 6\n7 1\n7 5\n5 1\n1 6\n2 8\n6 1\n8 7\n5 4\n",
+   "out": "38\n2 2\n"
+  },
+  {
+   "in": "10 6 81\n9 0 0 0 0 9 0 2 0 8\n0 7 0 0 0 0 5 2 0 1\n0 0 0 5 0 0 0 7 3 0\n0 0 0 0 7 9 0 0 0 6\n0 0 1 9 2 6 1 3 0 0\n2 0 9 0 0 0 0 7 0 0\n3 0 6 0 0 0 0 8 5 0\n0 1 0 0 0 0 0 0 0 0\n0 9 5 0 0 0 2 0 6 0\n6 0 6 0 0 6 6 0 0 1\n8 7\n6 2\n7 10\n1 2\n8 10\n2 4\n10 2\n",
+   "out": "60\n2 1\n"
+  },
+  {
+   "in": "9 10 82\n8 0 0 8 8 0 0 0 0\n2 0 0 0 8 0 4 0 3\n4 0 0 6 8 2 0 0 0\n0 0 4 0 9 6 0 0 5\n2 0 0 0 0 0 0 0 1\n6 7 1 6 3 3 9 0 2\n0 9 8 0 7 6 9 1 0\n8 0 0 5 0 0 0 6 0\n2 7 5 2 0 1 0 5 7\n1 9\n8 5\n1 7\n4 4\n5 7\n8 6\n1 6\n1 3\n4 8\n5 3\n7 1\n",
+   "out": "88\n3 1\n"
+  },
+  {
+   "in": "10 10 100\n9 9 9 0 0 7 0 7 7 7\n7 4 9 9 7 0 9 1 4 6\n5 8 4 2 0 0 4 9 9 4\n9 0 0 0 0 0 5 0 0 0\n0 0 5 3 1 0 5 0 0 4\n0 0 4 0 0 8 6 0 3 8\n5 8 5 0 0 6 7 4 1 7\n9 3 6 5 0 8 0 9 1 6\n1 2 0 6 3 1 4 2 0 0\n0 0 8 0 5 0 0 1 3 0\n4 5\n5 9\n1 4\n2 6\n6 1\n5 6\n8 5\n1 7\n4 10\n10 7\n5 1\n",
+   "out": "43\n5 1\n"
+  },
+  {
+   "in": "10 10 100\n0 0 0 2 4 0 0 0 0 0\n0 0 0 3 4 2 2 3 0 0\n0 0 0 0 0 6 0 4 0 0\n7 0 0 0 0 3 0 0 0 7\n0 0 0 0 0 0 5 5 0 0\n0 0 4 0 0 4 0 0 0 0\n0 0 0 0 2 0 0 0 0 0\n0 0 8 0 0 5 0 6 2 0\n7 3 2 0 0 0 0 0 0 0\n5 0 7 7 1 6 0 0 0 5\n7 4\n7 7\n4 4\n10 7\n1 8\n7 8\n1 9\n6 8\n2 10\n2 9\n3 3\n",
+   "out": "73\n4 1\n"
+  },
+  {
+   "in": "10 10 100\n0 4 1 6 1 0 7 2 3 3\n4 6 3 4 8 7 7 2 2 6\n2 6 9 1 0 0 9 4 9 7\n9 8 6 8 4 1 0 9 9 7\n5 3 2 9 8 5 2 0 2 7\n7 2 8 7 0 3 0 5 2 0\n0 1 3 4 7 9 0 2 0 0\n2 0 4 0 3 4 2 1 4 4\n4 3 9 7 4 4 3 7 9 2\n4 6 3 6 0 3 4 5 2 7\n7 10\n6 5\n6 10\n7 7\n6 7\n8 2\n4 7\n10 5\n1 1\n7 1\n7 9\n",
+   "out": "48\n2 2\n"
+  },
+  {
+   "in": "10 10 100\n3 0 0 4 0 6 9 0 7 8\n0 0 0 0 0 0 0 0 0 0\n0 9 0 0 6 0 0 0 9 0\n8 7 0 0 0 1 0 3 0 4\n1 9 6 2 0 0 5 0 0 0\n5 0 0 5 0 0 0 9 0 0\n0 0 0 3 0 0 0 0 0 0\n0 0 0 5 4 0 4 0 2 0\n0 0 0 0 0 0 4 0 6 1\n3 4 0 0 0 0 0 0 0 8\n6 7\n4 7\n2 9\n6 6\n3 1\n6 10\n10 6\n9 1\n3 6\n7 3\n8 6\n",
+   "out": "56\n3 1\n"
+  },
+  {
+   "in": "10 10 100\n4 8 1 5 0 0 9 0 0 1\n0 6 3 0 0 0 0 0 1 0\n0 0 1 2 4 6 3 0 0 0\n6 0 6 7 0 0 0 0 6 5\n0 0 0 1 0 4 4 0 0 0\n0 0 5 0 0 0 3 7 0 1\n0 0 0 0 0 0 0 2 0 0\n2 9 3 0 3 0 0 0 1 0\n5 0 0 0 0 0 0 8 0 0\n4 6 0 0 0 4 0 6 0 8\n5 10\n7 9\n4 7\n8 8\n1 8\n9 7\n7 6\n9 5\n10 4\n9 3\n4 6\n",
+   "out": "65\n4 5\n"
+  }
+ ],
+ "tc_generated": true,
+ "tc_note": "생성 TC 30개 (작은 8 · 중간 10 · 큰 7 · 최대 5) — 서로 독립으로 짠 풀이 2개가 랜덤 입력 375개에서 모두 일치했고, 입력은 제약 검증기를 통과했으며, 두 풀이 모두 공식 예제를 통과했다. 코드트리 공식 히든 TC 가 아니므로 여기서 맞아도 실제 채점과 다를 수 있다. (2026-09-23)"
 }
