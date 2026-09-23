@@ -78,5 +78,8 @@
   }
  ],
  "fetched_at": "2026-08-12",
- "private_tc_omitted": 3
+ "private_tc_omitted": 3,
+ "image_widths": [
+  495
+ ]
 }

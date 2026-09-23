@@ -96,6 +96,21 @@
 > 테마에는 반영되지 않는다** — 색은 `:root` 변수로 추가할 것.
 > 첫 그림이 번쩍이지 않게 `<head>` 맨 위 스크립트가 `data-theme` 를 미리 붙인다.
 
+#### 🔤 문제 지문 가독성 규칙 (2026-09-23)
+
+코드트리·코딩살구 실측(둘 다 Pretendard 16px)에 맞춰 **문제 페이지 지문 영역만** 통일했다(홈·트리·현황 글꼴은 그대로).
+
+| | 규칙 |
+|---|---|
+| 글자 | Pretendard 16px(웹폰트는 문제 페이지에서만 jsdelivr 동적 서브셋, 막히면 기존 글꼴), 줄간격 1.7, **글 칸 최대 800px** |
+| 코드·예제·히든 TC 패널 | 14px |
+| CT 그림 | `width` 적힌 HTML 그림은 그 폭 / 폭 없는 그림은 **원본폭÷3.75 를 240~520px** 로(코드트리가 보여 주는 크기와 거의 같다) |
+| BOJ 그림 | `image_widths`(코딩살구가 보여 주는 폭, `_meta/crawl_img_widths.py`) → 없으면 640px 상한 |
+| SWEA 그림 | 원본 크기, 640px 상한 |
+
+- 어떤 그림도 원본보다 크게 늘리지 않는다. 클릭 확대는 그대로.
+- 예전엔 마크다운 그림이 칸 폭(1,080px)까지 커져 "그림이 너무 크다"는 지적을 받았다(1800px 원본이 1,080px로 떴다).
+
 ### 🖥️ 허브 서버 2개 — 역할이 다르다
 
 | | 어디 | 무엇 | 켜져 있나 |
@@ -316,6 +331,7 @@ python _meta/sync_tc.py --site CT                      # VM 보관소로(큰 케
 | `_meta/fetch_problem.py` | URL/번호 하나로 **단건 크롤링** (4개 사이트 — 코드트리는 crawl_codetree 로 넘긴다) |
 | `_meta/crawl_codetree.py` | 코드트리 **목록·지문·예제** (트레일 6 + 기출 3, `list/fetch/all/rebuild-public`) |
 | `_meta/ct_tcgen.py` | 코드트리 기출 **생성 테스트케이스** (`prep/check/cross/emit/status`) |
+| `_meta/crawl_img_widths.py` | 코딩살구가 **그림을 보여 주는 폭**을 모아 `problems/boj/<no>.json` 의 `image_widths` 로 (그림 순서 = `[[IMG:n]]`). 새로 받는 문제는 `fetch_problem.py` 가 알아서 넣는다 |
 | `_meta/map_swea_ids.py` | SWEA 번호 → `contestProbId` 매핑 |
 | `_meta/sync_tc.py` | 전체 테스트케이스를 **채점 서버로 업로드** |
 | `_meta/build_probindex.py` | 문제 **색인** → `problems/index.json` |

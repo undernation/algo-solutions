@@ -36,6 +36,11 @@ try{var _t=localStorage.getItem("theme");
  --pendfg:#b26a00;              /* '반영 대기' 배지 글자 */
  --tcnumbg:rgba(0,118,192,.12); /* 테스트케이스 번호 */
  --lpabg:rgba(0,118,192,.07);   /* 복기 메모에서 편집 중인 줄 */
+ --prose:#34383c;               /* 문제 지문 글자 — 제목(--fg)보다 한 톤 부드럽게(코드트리 #3f3f3f) */
+ /* 문제 지문 글꼴. 코드트리·코딩살구 모두 Pretendard 16px 이다. 웹폰트(문제 페이지에서만
+    받는다)가 막히면 다음 글꼴로 그대로 떨어진다 — 예전 화면과 같은 글꼴이다. */
+ --prose-font:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",
+   "Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
  --t-kw:#cf222e; --t-bi:#6639ba; --t-fn:#8250df; --t-str:#0a3069;
  --t-num:#0550ae; --t-cm:#6e7781; --t-dec:#953800; --t-op:#0550ae;
 }
@@ -87,6 +92,9 @@ nav a.on{color:var(--ac);background:var(--navon)}
  .brand{font-size:15px}
  nav a{padding:6px 7px;font-size:13px}
 }
+/* 390px 폰에서 허브 버튼 글자("클라우드만")까지 들어가면 헤더가 17px 넘쳐 모든 화면이 가로로
+   밀렸다(전수 점검에서 2,115 페이지 전부). 좁을 때는 상태 점만 남긴다 — 자세한 상태는 버튼 툴팁에. */
+@media(max-width:430px){ #hs{display:none} }
 
 main{max-width:1120px;margin:0 auto;padding:26px 20px 90px}
 h2.t{font-size:19px;font-weight:700;margin:0 0 16px;letter-spacing:-.3px}
@@ -230,64 +238,93 @@ button.sm{padding:4px 10px;font-size:12.5px}
  color:var(--sub);font-size:12.5px;text-align:center}
 .lim td{border:1px solid var(--bd);padding:8px 10px;text-align:center;font-variant-numeric:tabular-nums}
 .sec-h{font-size:19px;font-weight:800;margin:30px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--bd);letter-spacing:-.3px}
-.body{font-size:15.5px;line-height:1.85;white-space:pre-wrap;word-break:break-word}
+/* ── 지문 글 (문제 페이지의 지문·입력·출력·제한·힌트·예제 설명만 — 홈·트리·현황 글꼴은 그대로) ──
+   코드트리(16/24px)·코딩살구(16/26.4px) 모두 Pretendard 16px 이라 거기에 맞춘다. 예전 15.5px ·
+   줄간격 1.85 는 글자는 작고 줄 사이는 성겼다. 한 줄이 1,080px 까지 늘어나면 눈이 다음 줄
+   머리를 놓치므로 글 칸은 800px 에서 멈춘다(왼쪽 정렬 그대로). 한글은 어절 단위로 줄을
+   바꾸고(keep-all), 띄어쓰기 없는 긴 글자열만 칸 끝에서 끊는다.
+   백준·SWEA 지문(.body)은 크롤러가 줄글로 저장한 pre-wrap 이라 줄바꿈은 그대로 둔다. */
+.body{font-family:var(--prose-font);font-size:16px;line-height:1.7;color:var(--prose);max-width:800px;
+ white-space:pre-wrap;word-break:keep-all;overflow-wrap:break-word}
 .smp{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
 @media(max-width:700px){.smp{grid-template-columns:1fr}}
 .smp .t{font-size:14px;font-weight:700;margin-bottom:6px}
-.body img{max-width:100%;height:auto;display:block;margin:14px 0;border:1px solid var(--bd);
+/* 백준·SWEA 그림 — 원본 그대로면 BOJ 는 중앙값 752px(199개 중 125개가 640px 초과), SWEA 는
+   601px(402개 중 186개)이라 글보다 그림이 화면을 먹었다. 코딩살구가 실제로 보여 주는 폭
+   (problems/boj/<no>.json 의 image_widths, 81문제)이 있으면 그 폭(.iw — 글 칸 800px 에서 멈춘다),
+   없으면 640px 에서 멈춘다. 둘 다 원본보다 크게 늘리지는 않는다(max-width 만 건다). */
+.body img{max-width:min(100%,640px);height:auto;display:block;margin:14px 0;border:1px solid var(--bd);
  border-radius:6px;background:#fff;cursor:zoom-in}
+.body img.iw{max-width:100%}
 .body img:hover{border-color:var(--ac)}
 /* 지문 속 표 — SWEA B형은 API 호출 순서를 표로 준다. pre-wrap 안이라
    white-space 를 되돌려야 셀이 제 모양으로 접힌다. */
-.body .mdt{border-collapse:collapse;margin:14px 0;font-size:14px;
- white-space:normal;display:block;overflow-x:auto;max-width:100%}
+.body .mdt{border-collapse:collapse;margin:14px 0;font-size:15px;
+ white-space:normal;word-break:normal;display:block;overflow-x:auto;max-width:100%}
 .body .mdt th,.body .mdt td{border:1px solid var(--bd);padding:7px 11px;
  text-align:left;vertical-align:top;line-height:1.6}
 .body .mdt th{background:var(--hdr);font-weight:700;white-space:nowrap}
 .body .mdt tbody tr:nth-child(2n){background:var(--soft)}
-.body .mdt td{font-family:ui-monospace,Consolas,monospace;font-size:13px}
+.body .mdt td{font-family:ui-monospace,Consolas,monospace;font-size:14px}
 .body .mdt td:first-child{text-align:right;color:var(--sub);width:1%;white-space:nowrap}
 /* ── 코드트리 지문(마크다운) ──
    다른 사이트 지문(.body)은 크롤러가 줄글로 저장해 pre-wrap 으로 보여주지만, 코드트리는
    원문이 마크다운이라 문단·목록·표·수식을 진짜 태그로 그린다. pre-wrap 을 걸면 태그 사이
    개행이 빈 줄로 드러나므로 .body 를 쓰지 않고 따로 둔다. */
-.ctmd{font-size:15.5px;line-height:1.85;word-break:break-word}
+.ctmd{font-family:var(--prose-font);font-size:16px;line-height:1.7;color:var(--prose);max-width:800px;
+ word-break:keep-all;overflow-wrap:break-word}
 .ctmd>:first-child{margin-top:0}
-.ctmd p{margin:0 0 12px}
-.ctmd .cth{font-size:16.5px;font-weight:800;margin:20px 0 8px;letter-spacing:-.2px}
-.ctmd ul,.ctmd ol{margin:4px 0 12px;padding-left:24px}
-.ctmd li{margin:3px 0}
-.ctmd li>ul,.ctmd li>ol{margin:3px 0}
-.ctmd code{background:var(--soft);border:1px solid var(--bd2);border-radius:4px;padding:1px 5px;font-size:13px}
+.ctmd p{margin:0 0 14px}
+.ctmd .cth{font-size:18px;font-weight:800;margin:22px 0 8px;letter-spacing:-.2px;color:var(--fg)}
+.ctmd ul,.ctmd ol{margin:6px 0 14px;padding-left:26px}
+.ctmd li{margin:4px 0}
+.ctmd li>ul,.ctmd li>ol{margin:4px 0}
+.ctmd code{background:var(--soft);border:1px solid var(--bd2);border-radius:4px;padding:1px 5px;font-size:14px}
 .ctmd pre{background:var(--soft);border:1px solid var(--bd);border-radius:6px;padding:12px 14px;
- margin:10px 0 14px;overflow-x:auto;font-size:13px;line-height:1.6;white-space:pre}
+ margin:10px 0 14px;overflow-x:auto;font-size:14px;line-height:1.55;white-space:pre;word-break:normal}
 .ctmd pre code{background:none;border:0;padding:0;font-size:inherit}
 /* 코드트리는 그림을 가운데 정렬로 싣는다(<p align="center">) — 원문 폭(width)이 작으면 가운데에 선다 */
 .ctmd img{max-width:100%;height:auto;display:block;margin:14px auto;border:1px solid var(--bd);
  border-radius:6px;background:#fff;cursor:zoom-in}
 .ctmd img:hover{border-color:var(--ac)}
-/* 원문 <p align=…> 틀 — 그림은 기본이 가운데라 왼쪽·오른쪽일 때만 여백을 바꾼다 */
-.ctmd .al-center{text-align:center}.ctmd .al-left{text-align:left}.ctmd .al-right{text-align:right}
-.ctmd .al-left img{margin-left:0}.ctmd .al-right img{margin-right:0}
+/* 폭이 안 적힌 그림(마크다운 ![]() · width 없는 <img>) — 원본이 1800px 이라 칸 폭(1,080px)까지
+   늘어나 글보다 컸다. 받은 뒤 ctImgFit 이 원본/3.75 를 240~520px 로 잘라 폭을 정한다(코드트리 실측과
+   같은 비율). 받기 전에는 가장 흔한 꼴(1800×1200 → 480×320, 실데이터 635개 중 618개가 3:2)로
+   자리를 잡아 두어 다 받은 뒤 화면이 출렁이지 않게 한다. */
+.ctmd img.fitimg{width:480px;aspect-ratio:3/2}
+/* 원문 <p align=left|right> 안의 그림(가운데가 기본이라 이때만 여백을 바꾼다) */
+.ctmd img.al-left{margin-left:0}.ctmd img.al-right{margin-right:0}
 .ctmd blockquote{margin:8px 0 12px;padding:6px 14px;border-left:3px solid var(--bd);color:var(--sub)}
 .ctmd blockquote>:last-child,.ctmd li>p:last-child{margin-bottom:0}
 .ctmd hr{border:0;border-top:1px solid var(--bd);margin:16px 0}
 .ctmd .cttw{overflow-x:auto;margin:10px 0 14px}
-.ctmd table{width:auto;border-collapse:collapse;font-size:14px}
+.ctmd table{width:auto;border-collapse:collapse;font-size:15px;line-height:1.6;word-break:normal}
 .ctmd th,.ctmd td{border:1px solid var(--bd);padding:6px 12px;text-align:left;vertical-align:top}
-.ctmd thead th{background:var(--hdr);color:var(--fg);font-size:13.5px;white-space:nowrap}
+.ctmd thead th{background:var(--hdr);color:var(--fg);font-size:14.5px;white-space:nowrap}
 .ctmd tbody tr:hover{background:transparent}
 /* 수식 — KaTeX 가 오기 전(또는 CDN 이 막혀 못 받았을 때)에는 기호만 바꾼 원문을 보여준다 */
+/* position:relative — KaTeX 의 숨은 MathML 조각(.katex-mathml)은 position:absolute 라, 위치 잡힌 조상이
+   없으면 페이지 기준으로 놓여 표 스크롤 칸(.cttw) 밖으로 새어 폰에서 화면이 가로로 밀렸다(CT 1981 은 891px). */
 .ctm{font-family:"Cambria Math","STIX Two Math","Latin Modern Math","Times New Roman",serif;
- font-size:1.06em;white-space:nowrap}
+ font-size:1.06em;white-space:nowrap;position:relative}
 .ctm.dsp{display:block;text-align:center;margin:12px 0;overflow-x:auto;overflow-y:hidden;white-space:normal}
 .ctm.ktx{font-family:inherit;font-size:inherit}
-/* 예제 아래 해설 */
-.ctsn{margin:8px 0 4px;padding:6px 14px;border-left:3px solid var(--bd);font-size:14.5px}
+/* 줄 수식은 기본적으로 끊지 않는다("N ×" / "N" 처럼 짧은 수식이 줄 끝에서 갈라지면 읽기 나쁘다).
+   글 칸보다 넓은 것만 ctMathWide 가 골라 — .brk: KaTeX 가 허용하는 등호·연산자 뒤에서 줄을 바꾸고,
+   그래도 한 덩어리가 칸보다 넓으면 .wide: 그 자리에서 가로로 밀린다. 예전(nowrap 그대로)엔 폰(390px)
+   에서 36곳이 글 칸 밖으로 튀어나갔다. 모든 수식을 inline-block 으로 두면 기준선이 틀어져서
+   넘치는 것에만 건다. */
+.ctm.ktx.brk{white-space:normal}
+.ctm.ktx.wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle}
+/* 예제 아래 해설 — 지문과 같은 글자(16px) */
+.ctsn{margin:8px 0 4px;padding:6px 14px;border-left:3px solid var(--bd)}
 .ctsn p:last-child{margin-bottom:0}
 /* 코드트리 제한표는 열이 8개라 폰(390px)에서 494px 까지 벌어졌다 — 표만 가로로 밀리게 */
 .limw{overflow-x:auto;margin-bottom:26px}
 .limw .lim{margin-bottom:0}
+/* 문제 페이지 제출 이력 표(9열)도 폰에서는 칸 안에서만 가로로 밀린다(실측: 390px 에서 604px).
+   제출 현황 화면(#sttbl)은 건드리지 않는다. */
+#phist{overflow-x:auto}
 .lim td.ctpath{white-space:normal;line-height:1.5;min-width:9em}
 @media(max-width:700px){.limw .lim th,.limw .lim td{padding:6px 7px}}
 /* 언어 지원 배지 */
@@ -296,7 +333,7 @@ button.sm{padding:4px 10px;font-size:12.5px}
  color:var(--sub);background:var(--soft)}
 .lang .lg.no{border-color:var(--no);color:var(--no);background:rgba(221,65,36,.08)}
 pre.io{background:var(--soft);border:1px solid var(--bd);border-radius:6px;padding:12px 14px;
- margin:0;font-size:13.5px;line-height:1.65;overflow-x:auto;white-space:pre;max-height:340px}
+ margin:0;font-size:14px;line-height:1.6;overflow-x:auto;white-space:pre;max-height:340px}
 .crumb{font-size:13px;color:var(--sub);margin-bottom:10px}
 #ed{width:100%;min-height:340px;font-size:13.5px;line-height:1.6;white-space:pre;resize:vertical;tab-size:4}
 /* 연습장 — 코드와 입력을 나란히. 좁은 화면에서는 위아래로 쌓인다 */
@@ -331,8 +368,9 @@ pre.io{background:var(--soft);border:1px solid var(--bd);border-radius:6px;paddi
 .tcp .head .cp{margin-left:auto;border:1px solid var(--bd);background:var(--panel);color:var(--sub);
  border-radius:5px;padding:2px 9px;font-size:11.5px;font-weight:600;cursor:pointer}
 .tcp .head .cp:hover{border-color:var(--ac);color:var(--ac)}
-.tcp pre{margin:0;padding:11px 13px;font-family:ui-monospace,Consolas,monospace;font-size:12.5px;
- line-height:1.6;white-space:pre;overflow:auto;max-height:260px}
+/* 예제·히든 TC 패널 — 지문 속 코드(14px)와 같은 크기. 12.5px 은 16px 본문 옆에서 너무 작았다. */
+.tcp pre{margin:0;padding:11px 13px;font-family:ui-monospace,Consolas,monospace;font-size:14px;
+ line-height:1.55;white-space:pre;overflow:auto;max-height:300px}
 .tcgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:760px){.tcgrid{grid-template-columns:1fr}}
 .tcnum{display:inline-block;background:var(--tcnumbg);color:var(--ac);font-weight:800;
@@ -2298,6 +2336,31 @@ function copyCode(){
  },function(){ $("cvcp").textContent="복사 실패"; });
 }
 
+/* ════════ 지문 글꼴·그림 폭 ════════
+   지문 글꼴(Pretendard)은 문제 페이지를 처음 열 때 한 번만 받는다(홈·트리·현황엔 안 쓴다).
+   dynamic-subset 이라 그 페이지에 나온 글자 조각만 내려받고, 스타일시트가 font-display:swap 이라
+   받는 동안이나 못 받았을 때(사내망 CDN 차단)는 다음 글꼴(예전 화면과 같은 글꼴)로 그대로 보인다.
+   SRI 를 거는 이유는 KaTeX 와 같다 — 이 페이지 localStorage 에 허브 토큰이 있다. 버전을 올리면 해시도. */
+var PFONT="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css",
+    PFONTSRI="sha384-/uC/GIvKJ/9RN6i1izHoBY9ubYo60OAsQRNQ3NRFiNsN+N/MVQJHD5OYcZz6wvwn", PFONTON=false;
+function proseFont(){
+ if(PFONTON) return;
+ PFONTON=true;
+ var l=document.createElement("link");
+ l.rel="stylesheet"; l.href=PFONT; l.crossOrigin="anonymous"; l.integrity=PFONTSRI;
+ document.head.appendChild(l);
+}
+/* 폭이 안 적힌 코드트리 그림(마크다운 ![]() · width 없는 <img>)의 표시 폭 — 그림을 받은 뒤 정한다.
+   코드트리 실측: 1800×1200 → 480×320, 800×280 → 224×78 (대략 원본/3.75). 같은 비율로 줄이되
+   240~520px 로 자르고 원본보다 크게는 늘리지 않는다. 칸보다 넓으면 CSS max-width:100% 가 또 줄인다.
+   못 받은 그림은 자리(480×320)를 풀어 깨진 그림 표시만 남긴다. */
+function ctImgFit(im,bad){
+ if(!im) return;
+ var n=bad?0:(im.naturalWidth||0);
+ im.style.aspectRatio="auto";
+ im.style.width=n?Math.min(n,Math.max(240,Math.min(520,Math.round(n/3.75))))+"px":"auto";
+}
+
 /* ════════ 문제 페이지 ════════ */
 var CUR={};
 async function viewProblem(site,no){
@@ -2305,6 +2368,7 @@ async function viewProblem(site,no){
     직접 치거나 북마크하면 색인에도 안 잡히고 추측 경로도 boj 로 떨어져
     "자료 없음" 이 조용히 뜬다. 들어오자마자 맞춰 준다. */
  site=decodeURIComponent(site||"").toUpperCase(); no=decodeURIComponent(no||"");
+ proseFont();                                   /* 지문 글꼴 — 문제 페이지에서만(처음 한 번) */
  var k=site+"/"+no, meta=PIDX[k], subs=BYPROB[k]||[];
  CUR={site:site,no:no,prob:null,verdict:null};
  var title=bestTitle(k);
@@ -2420,10 +2484,15 @@ function withImages(text,p){
     빌드 시각(D.stamp)을 쿼리로 붙여 '빌드가 바뀌면 새로 받도록' 한다.
     같은 빌드 안에서는 값이 같으므로 캐시는 정상적으로 재사용된다. */
  var ver=encodeURIComponent((D&&D.stamp)||"");
+ /* image_widths[n-1] = 코딩살구가 [[IMG:n]] 을 실제로 보여 주는 폭(원본보다 크지 않다).
+    있으면 그 폭으로 두고(.iw — 글 칸 800px 에서 멈춘다), 없으면 CSS 가 640px 에서 멈춘다. */
+ var iw=(p&&p.image_widths)||[];
  var h=esc(text).replace(/\[\[IMG:(\d+)\]\]/g, function(_,k){
    var src=imgs[parseInt(k,10)-1];
    if(!src) return "";
+   var w=parseInt(iw[parseInt(k,10)-1],10);
    return '<img src="./'+esc(src)+(ver?"?v="+ver:"")+'" alt="그림 '+esc(k)+'" '+
+          (w>0?'class="iw" style="width:'+w+'px" ':'')+
           'loading="lazy" onclick="openImg(this.src)">';
  });
  return mdTables(h);
@@ -2550,7 +2619,8 @@ function renderProblem(p,site,no){
  /* 코드트리는 제한표·지문(마크다운)·힌트 구성이 달라 따로 그린다 */
  if(site==="CT"){ ctRender(p||{site:"CT",no:no},subs); probTail(p); return; }
  var lim=(p&&p.limits)||{};
- $("pinfo").innerHTML='<table class="lim"><thead><tr>'+
+ /* 폰(390px)에서 이 표가 402px 까지 벌어져 화면이 가로로 밀렸다 — 코드트리 표처럼 칸 안에서만 밀리게 */
+ $("pinfo").innerHTML='<div class="limw"><table class="lim"><thead><tr>'+
   '<th>시간 제한</th><th>메모리 제한</th><th>제출</th><th>최근 결과</th>'+
   (p&&p.private_tc_count?'<th>테스트케이스</th>':'')+
   '<th>원문</th></tr></thead><tbody><tr>'+
@@ -2560,7 +2630,7 @@ function renderProblem(p,site,no){
   (p&&p.private_tc_count?'<td>'+p.private_tc_count+'개'+
      ((p.private_testcases||[]).length?' <span style="color:var(--ok)">(수집됨)</span>':'')+'</td>':'')+
   '<td>'+((p&&(p.source_url||p.url))?'<a href="'+esc(p.source_url||p.url)+'" target="_blank" rel="noopener">열기 ↗</a>':"—")+'</td>'+
-  '</tr></tbody></table>';
+  '</tr></tbody></table></div>';
 
  if(!p){
   $("pbody").innerHTML='<div class="note">아직 이 문제의 자료가 없습니다. '+
@@ -2906,22 +2976,27 @@ function ctmd(src){
   o.push(keep('<pre><code>'+(/^(py|python|python3)$/i.test(f[2])?hlOnly(raw):esc(raw))+'</code></pre>',raw,true));
  }
  s=o.join("\n");
- /* ② 인라인 코드 */
- s=s.replace(/``([^\n]+?)``|`([^`\n]+)`/g,function(_,a,b){ var c=a!=null?a:b;
-      return keep('<code>'+esc(c)+'</code>',c); });
- /* ③ 블록 수식 $$…$$ ④ \$ (그냥 달러) ⑤ 인라인 수식 $…$ */
- s=s.replace(/\$\$([\s\S]+?)\$\$/g,function(_,t){ return keep(ctMathHTML(t,true),t,true); })
-    .replace(/\\\$/g,function(){ return keep("$","$"); })
-    .replace(/\$((?:\\[\s\S]|[^\\$])+?)\$/g,function(m,t){
-      if(!t.trim()||/\n\s*\n/.test(t)) return m;            /* 빈 수식·문단을 넘는 것은 수식이 아니다 */
-      return keep(ctMathHTML(t,false),t); });
+ /* ②~⑤ 인라인 코드 · 블록 수식 $$…$$ · \$(그냥 달러) · 인라인 수식 $…$ 를 한 번에, 왼쪽부터 뗀다.
+    먼저 시작한 쪽이 이긴다(마크다운 수식 파서와 같은 규칙). 예전엔 코드(``)를 먼저 떼어 냈더니
+    수식 안의 TeX 따옴표($``COW"$)가 다음 수식의 `` 와 짝을 지어 두 수식 사이 글까지 코드로
+    삼켰다(CT 782 — 전수 점검의 KaTeX 오류로 드러남). */
+ s=s.replace(/(``[^\n]+?``|`[^`\n]+`)|\$\$([\s\S]+?)\$\$|(\\\$)|\$((?:\\[\s\S]|[^\\$])+?)\$/g,
+   function(m,code,disp,dol,t){
+    if(code!=null){ var c=code.charAt(1)==="`"?code.slice(2,-2):code.slice(1,-1);
+      return keep('<code>'+esc(c)+'</code>',c); }
+    if(disp!=null) return keep(ctMathHTML(disp,true),disp,true);
+    if(dol!=null) return keep("$","$");
+    if(!t.trim()||/\n\s*\n/.test(t)) return m;             /* 빈 수식·문단을 넘는 것은 수식이 아니다 */
+    return keep(ctMathHTML(t,false),t);
+   });
  /* ⑥ 원문 HTML — 실제 지문 1,451개 중 88개가 그림을 마크다운 대신 HTML 로 넣었다.
     쓰인 태그는 <p align='center'>…</p>(1,088회) · <img src=… width=… height=… style=…>(575회) ·
     <br>(158회) · <hr/>(1회) 뿐이라 이것만 허용 목록으로 되살린다. 코드·수식은 이미 떼어 냈으므로
     그 안의 것은 여기 안 걸린다. 나머지 <…>(예: 본문의 "<Figure 3>", "a < b")는 ⑦에서 글자가 된다.
     - img: 주소가 https://contents.codetree.ai/ 로 시작할 때만. 폭·높이는 숫자만, style·on* 은 버리고
-      우리 <img> 로 다시 만든다(클릭 확대). 조건이 안 맞으면 태그를 글자 그대로 둔다.
-    - p: align(center/left/right)만 살린 블록 틀. </p> 가 없으면 그 문단 끝(빈 줄)에서 닫는다. */
+      우리 <img> 로 다시 만든다(클릭 확대). 폭이 적혀 있으면 그 폭, 없으면 마크다운 그림처럼
+      ctImgFit 이 정한다. 조건이 안 맞으면 태그를 글자 그대로 둔다.
+    - p: 틀은 벗기고 align(left/right)만 그 안 그림에 옮긴다(아래 ⑥-p). */
  s=s.replace(/<img\b([^>]*)>/gi,function(m,a){
       /* 닫는 따옴표가 빠진 값도 받는다 — 실제 지문(f5)에 src="…png> 처럼 끝 따옴표 없는 그림이 있다 */
       var at={}, re=/([a-zA-Z-]+)\s*=\s*(?:"([^"]*)"?|'([^']*)'?|([^\s"'>]+))/g, x;
@@ -2931,13 +3006,22 @@ function ctmd(src){
       var w=/^\d{1,4}$/.test(at.width||"")?at.width:"", hh=/^\d{1,4}$/.test(at.height||"")?at.height:"";
       var alt=unesc(String(at.alt||"그림"));
       return keep('<img src="'+esc(src)+'" alt="'+esc(alt)+'"'+(w?' width="'+w+'"':'')+(hh?' height="'+hh+'"':'')+
+                  (w?'':' class="fitimg" onload="ctImgFit(this)" onerror="ctImgFit(this,1)"')+
                   ' loading="lazy" referrerpolicy="no-referrer" onclick="openImg(this.src)">',alt); });
- for(var pg=0;pg<3&&/<p\b/i.test(s);pg++)        /* 겹친 <p> 는 한 번 더 돈다 */
-  s=s.replace(/<p\b([^>]*)>([\s\S]*?)(?:<\/p\s*>|(?=\n[ \t]*\n)|$)/gi,function(m,a,inner){
-      var al=(a.match(/\balign\s*=\s*["']?(center|left|right)\b/i)||[])[1];
-      return "\n"+keep('<div class="al'+(al?" al-"+al.toLowerCase():"")+'">',"",true)+"\n"+inner+
-             "\n"+keep("</div>","",true)+"\n"; });
- s=s.replace(/<\/p\s*>/gi,"");                   /* 짝 없는 </p> */
+ /* ⑥-p 원문 <p> 틀은 벗긴다. 실데이터 394개 중 386개가 align=center, 8개는 속성 없음이고 전부 그림
+    하나만 싼다(글을 싼 것은 없다) — 그림은 기본이 가운데라 틀이 할 일이 없다. left/right 만 그 안
+    그림에 클래스로 옮긴다. 예전엔 <div> 틀로 되살렸는데, 보기 목록("1. <p align='center'>⏎   <img>⏎
+    </p>")에서 목록이 </p> 앞에서 끝나 여는 틀은 <li> 안, 닫는 </div> 는 밖에 떨어졌고, 그 </div> 가
+    지문 칸(.ctmd)을 일찍 닫아 뒤쪽 보기 그림이 원본 1800px 로 튀어나갔다(1988·542 등 38문제). */
+ s=s.replace(/<p\b([^>]*)>([\s\S]*?)(?:<\/\s*p\s*>|(?=\n[ \t]*\n)|$)/gi,function(m,a,inner){
+      var al=(a.match(/\balign\s*=\s*["']?(left|right)\b/i)||[])[1];
+      if(al) inner.replace(/\uE000(\d+)\uE001/g,function(ph,n){
+        var k=S[+n], c="al-"+al.toLowerCase();
+        if(k&&/^<img /.test(k.h))
+          k.h=/ class="/.test(k.h)?k.h.replace(' class="',' class="'+c+' '):k.h.replace("<img ",'<img class="'+c+'" ');
+        return ph; });
+      return inner; })
+    .replace(/<\/?\s*p\s*>/gi,"");                /* 짝 없는 <p>·</p>·</ p>(f348 에 있다) */
  /* ⑦ 나머지는 전부 이스케이프 — 여기서부터 원문 속 < > " 는 글자일 뿐이다 */
  s=esc(s);
 
@@ -2945,7 +3029,9 @@ function ctmd(src){
  function inl(t){
   return fmt(t
    .replace(/!\[([^\]]*)\]\((https?:\/\/[^\s)]+)(?:\s+&quot;[\s\S]*?&quot;)?\)/g,function(_,a,u){
-     return keep('<img src="'+plain(u)+'" alt="'+plain(a)+'" loading="lazy" referrerpolicy="no-referrer" '+
+     /* 마크다운 그림엔 폭이 없다 — 받은 뒤 ctImgFit 이 폭을 정한다 */
+     return keep('<img src="'+plain(u)+'" alt="'+plain(a)+'" class="fitimg" onload="ctImgFit(this)" '+
+                 'onerror="ctImgFit(this,1)" loading="lazy" referrerpolicy="no-referrer" '+
                  'onclick="openImg(this.src)">',unesc(plain(a))); })
    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)(?:\s+&quot;[\s\S]*?&quot;)?\)/g,function(_,a,u){
      return keep('<a href="'+plain(u)+'" target="_blank" rel="noopener noreferrer">'+fmt(a)+'</a>',
@@ -3004,7 +3090,8 @@ function ctmd(src){
     h+=(typ==="ol"&&n0!==1?'<ol start="'+n0+'">':"<"+typ+">");
     st.push({ind:ind,typ:typ});
    }
-   h+="<li>"+inl(m[3]); lastb=false; i++;
+   /* 글 없는 항목("1. " 다음 줄에 그림만)은 첫 이어짐 줄 앞에 <br> 을 넣지 않는다 — 빈 줄처럼 벌어진다 */
+   h+="<li>"+inl(m[3]); lastb=!m[3].trim(); i++;
   }
   while(st.length) h+="</li></"+st.pop().typ+">";
   return {h:h,i:i};
@@ -3115,8 +3202,33 @@ function ctMath(root){
     el.classList.add("ktx"); el.removeAttribute("title");
    }catch(e){}
   });
+  ctMathWide(root);
+  /* KaTeX·Pretendard 글꼴이 아직 내려오는 중이면 폭이 달라진다 — 다 받은 뒤 한 번 더 잰다 */
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(function(){ ctMathWide(root); });
  },function(){});
 }
+/* 글 칸보다 넓은 줄 수식만 고른다: 먼저 .brk(연산자 뒤 줄바꿈 허용), 그래도 넓으면 .wide(가로 스크롤).
+   넓은지는 창 폭에 달려 있어 창 크기가 바뀔 때(폰 회전 등) 다시 잰다. */
+function ctMathWide(root){
+ root=root||$("pbody");
+ if(!root) return;
+ Array.prototype.forEach.call(root.querySelectorAll(".ctm.ktx:not(.dsp)"),function(el){
+  el.classList.remove("wide","brk");
+  var box=el.parentElement;
+  while(box&&getComputedStyle(box).display.indexOf("inline")===0) box=box.parentElement;
+  if(!box) return;
+  var cw=box.clientWidth+1;
+  if(el.getBoundingClientRect().width<=cw) return;
+  el.classList.add("brk");
+  if(el.getBoundingClientRect().width>cw){ el.classList.remove("brk"); el.classList.add("wide"); }
+ });
+}
+var CTMW=0;
+window.addEventListener("resize",function(){
+ if(CUR.site!=="CT"||location.hash.indexOf("#p/")!==0) return;
+ clearTimeout(CTMW);
+ CTMW=setTimeout(function(){ ctMathWide(); },150);
+},{passive:true});
 
 /* 소스코드 초기화 — 에디터를 '원본'으로 되돌린다.
    B형(api_style)은 template.user 의 빈 함수 골격, 그 외 문제는 빈 에디터가 원본이다.
@@ -3821,6 +3933,7 @@ _DARK = (
     "--hdr:#161b22;"
     "--navon:rgba(88,166,255,.13);--pendfg:#e8a33d;"
     "--tcnumbg:rgba(88,166,255,.15);--lpabg:rgba(88,166,255,.13);"
+    "--prose:#d6dde5;"
     "--t-kw:#ff7b72;--t-bi:#d2a8ff;--t-fn:#d2a8ff;--t-str:#a5d6ff;"
     "--t-num:#79c0ff;--t-cm:#8b949e;--t-dec:#ffa657;--t-op:#79c0ff;"
 )

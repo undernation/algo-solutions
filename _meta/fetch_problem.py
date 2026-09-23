@@ -103,7 +103,11 @@ WALK_JS = r"""(sel) => {
       // 통째로 버려진다(SWEA 25003 이 3장을 그렇게 잃었다).
       if (!src.startsWith("data:") &&
           /profileImage|avatar|icon|logo/i.test(src)) return "";
-      imgs.push({src: src, w: w, h: h});
+      // dw: 원문이 보여 주는 폭. width 속성이 있으면 그 값, 없으면 지금 렌더된 폭(원본 이하).
+      // 원본만 받으면 대시보드에서 칸 폭까지 커진다(2026-09-23 — 17143 이 1660px 로 떴다).
+      const aw = parseInt(n.getAttribute("width") || "0", 10) || 0;
+      const rw = Math.round(n.getBoundingClientRect().width) || 0;
+      imgs.push({src: src, w: w, h: h, dw: aw || Math.min(rw || w, w)});
       return "\n[[IMG:" + imgs.length + "]]\n";
     }
     let s = "";
@@ -156,7 +160,7 @@ LOAD_IMGS_JS = r"""async () => {
 def collect_images(pg, site, no):
     """본문을 [[IMG:n]] 마커가 박힌 텍스트로 만들고 이미지 파일을 저장.
 
-    반환 (text, [상대경로...]). 컨테이너를 못 찾으면 ("", []).
+    반환 (text, [상대경로...], [보여 줄 폭...]). 컨테이너를 못 찾으면 ("", [], []).
     """
     try:
         pg.evaluate(LOAD_IMGS_JS)          # lazy 이미지 전부 로드될 때까지
@@ -176,11 +180,12 @@ def collect_images(pg, site, no):
             got = g
             text = clean(re.sub(r"[ \t]+\n", "\n", g.get("text") or ""))
     if not imgs:
-        return text, []
+        return text, [], []
+    widths = [int(i.get("dw") or 0) for i in imgs]
     try:
         datas = json.loads(pg.evaluate(GRAB_JS, [i["src"] for i in imgs]))
     except Exception:
-        return text, []
+        return text, [], []
 
     sub = {"BOJ": "boj", "SWEA": "swea", "PGS": "programmers", "CT": "codetree"}.get(site, "boj")
     outdir = os.path.join(PROB, sub, "img")
@@ -201,7 +206,7 @@ def collect_images(pg, site, no):
             paths.append(rel)
         except Exception:
             paths.append("")
-    return text, paths
+    return text, paths, widths
 
 
 # ── 히든(프라이빗) 테스트케이스 ──────────────────────────────
@@ -304,10 +309,14 @@ def apply_images(pg, d):
     """수집한 이미지·마커 지문을 문제 dict 에 반영(그림이 없으면 아무것도 안 함)."""
     if not d.get("no"):
         return
-    txt, paths = collect_images(pg, d.get("site", ""), str(d["no"]))
+    txt, paths, widths = collect_images(pg, d.get("site", ""), str(d["no"]))
     if not any(paths):
         return
     d["images"] = paths
+    # 원문이 보여 주는 폭(대시보드가 그림을 이 폭 이하로 줄인다). 하나라도 모르면 통째로 생략 —
+    # 일부만 있으면 [[IMG:n]] 과 순서가 어긋나 엉뚱한 그림이 줄어든다.
+    if widths and len(widths) == len(paths) and all(w > 0 for w in widths):
+        d["image_widths"] = widths
     # 마커가 박힌 본문에서 지문 구간만 다시 잘라 쓴다(입력/출력 설명은 기존 값 유지).
     body = sect(txt, "", "[제약사항]", "[입력]", "\n입력\n") or txt
     if body and "[[IMG:" in body:

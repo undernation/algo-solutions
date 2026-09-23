@@ -89,5 +89,8 @@
    "out": "rww\nrww\nrww\nwww\nwww\nwww\nwww\nwww\nwww\nwww\nwww\nwww\nwwr\nwwr\nwwr\nwww\nwww\nwww\noww\noww\noww\nwww\nwww\nwww\noww\noww\noww"
   }
  ],
- "fetched_at": "2026-08-12"
+ "fetched_at": "2026-08-12",
+ "image_widths": [
+  319
+ ]
 }
