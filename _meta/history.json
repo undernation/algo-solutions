@@ -7775,7 +7775,7 @@
   ]
  },
  "2026-09-24": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "10:28:18",
@@ -7797,6 +7797,29 @@
     "site": "CT",
     "status": "품",
     "title": "컨베이어 벨트",
+    "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "10:28:58",
+    "attempts": [
+     {
+      "at": "10:28:58",
+      "elapsed": 0.592,
+      "file": "codetree/82_삼각형컨베이어벨트.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.592,
+    "file": "codetree/82_삼각형컨베이어벨트.py",
+    "no": "82",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "삼각형 컨베이어 벨트",
     "total": 2,
     "verdict": "accepted"
    }
