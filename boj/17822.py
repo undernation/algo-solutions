@@ -2,7 +2,7 @@
 BOJ 17822  원판 돌리기
 https://cosal.aviss.kr/problems/detail/17822
 
-풀이일 : 2026-09-22   결과: 못품
+풀이일 : 2026-09-25   결과: 못품
 한도   : time 1 초 / memory 512 MB
 
 [문제]
