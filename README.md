@@ -138,10 +138,10 @@ python _meta/fetch_swea.py <contestProbId> --json
 
 | | |
 |---|---|
-| 총 풀이 | 84 |
+| 총 풀이 | 85 |
 | BOJ | 27 |
 | SWEA | 49 |
-| CT | 8 |
+| CT | 9 |
 
 <!-- INDEX_START -->
 | 사이트 | 번호 | 제목 | 결과 | 풀이일 | 분류 |
@@ -151,6 +151,7 @@ python _meta/fetch_swea.py <contestProbId> --json
 | CT | [84](codetree/84_최단RunLength인코딩.py) | 최단 Run Length 인코딩 | 품 | 2026-09-25 |  |
 | CT | [83](codetree/83_기울어진직사각형의회전.py) | 기울어진 직사각형의 회전 | 품 | 2026-09-25 |  |
 | BOJ | [17822](boj/17822.py) | 원판 돌리기 | 못품 | 2026-09-25 |  |
+| CT | [17](codetree/17_1차원폭발게임.py) | 1차원 폭발 게임 | 품 | 2026-09-25 |  |
 | BOJ | [14002](boj/14002.py) | 가장 긴 증가하는 부분 수열 4 | 못품 | 2026-09-25 |  |
 | CT | [82](codetree/82_삼각형컨베이어벨트.py) | 삼각형 컨베이어 벨트 | 품 | 2026-09-24 |  |
 | CT | [81](codetree/81_컨베이어벨트.py) | 컨베이어 벨트 | 품 | 2026-09-24 |  |
