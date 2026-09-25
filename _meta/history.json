@@ -7856,7 +7856,7 @@
   ]
  },
  "2026-09-25": {
-  "count": 4,
+  "count": 5,
   "items": [
    {
     "at": "16:50:24",
@@ -7933,6 +7933,21 @@
     "site": "CT",
     "status": "품",
     "title": "최단 Run Length 인코딩"
+   },
+   {
+    "at": "17:45:30",
+    "attempts": [
+     {
+      "at": "17:45:30",
+      "file": "codetree/85_1차원젠가.py",
+      "status": "품"
+     }
+    ],
+    "file": "codetree/85_1차원젠가.py",
+    "no": "85",
+    "site": "CT",
+    "status": "품",
+    "title": "1차원 젠가"
    }
   ]
  }
