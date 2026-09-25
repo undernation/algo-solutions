@@ -7856,7 +7856,7 @@
   ]
  },
  "2026-09-25": {
-  "count": 2,
+  "count": 3,
   "items": [
    {
     "at": "16:50:24",
@@ -7895,6 +7895,29 @@
     "site": "BOJ",
     "status": "못품",
     "title": "원판 돌리기"
+   },
+   {
+    "at": "17:44:29",
+    "attempts": [
+     {
+      "at": "17:44:29",
+      "elapsed": 0.559,
+      "file": "codetree/83_기울어진직사각형의회전.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.559,
+    "file": "codetree/83_기울어진직사각형의회전.py",
+    "no": "83",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "기울어진 직사각형의 회전",
+    "total": 2,
+    "verdict": "accepted"
    }
   ]
  }
