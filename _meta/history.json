@@ -7982,7 +7982,7 @@
   ]
  },
  "2026-09-26": {
-  "count": 3,
+  "count": 4,
   "items": [
    {
     "at": "11:19:47",
@@ -8051,6 +8051,29 @@
     "status": "품",
     "title": "2차원 폭발 게임",
     "total": 4,
+    "verdict": "accepted"
+   },
+   {
+    "at": "13:36:57",
+    "attempts": [
+     {
+      "at": "13:36:57",
+      "elapsed": 0.517,
+      "file": "codetree/89_최적의십자모양폭발.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.517,
+    "file": "codetree/89_최적의십자모양폭발.py",
+    "no": "89",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "최적의 십자 모양 폭발",
+    "total": 2,
     "verdict": "accepted"
    }
   ]
