@@ -7982,7 +7982,7 @@
   ]
  },
  "2026-09-26": {
-  "count": 5,
+  "count": 6,
   "items": [
    {
     "at": "11:19:47",
@@ -8097,6 +8097,29 @@
     "status": "품",
     "title": "연속부분최대곱",
     "total": 27,
+    "verdict": "accepted"
+   },
+   {
+    "at": "14:45:43",
+    "attempts": [
+     {
+      "at": "14:45:43",
+      "elapsed": 1.216,
+      "file": "swea/99998_[SSAFYA형2번복원]농지이동과수확(2026-09-15).py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 1.216,
+    "file": "swea/99998_[SSAFYA형2번복원]농지이동과수확(2026-09-15).py",
+    "no": "99998",
+    "passed": 2,
+    "site": "SWEA",
+    "status": "품",
+    "title": "[SSAFY A형 2번 복원] 농지 이동과 수확 (2026-09-15)",
+    "total": 2,
     "verdict": "accepted"
    }
   ]
