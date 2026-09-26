@@ -7982,7 +7982,7 @@
   ]
  },
  "2026-09-26": {
-  "count": 4,
+  "count": 5,
   "items": [
    {
     "at": "11:19:47",
@@ -8074,6 +8074,29 @@
     "status": "품",
     "title": "최적의 십자 모양 폭발",
     "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "13:51:39",
+    "attempts": [
+     {
+      "at": "13:51:39",
+      "elapsed": 7.425,
+      "file": "boj/2670.py",
+      "passed": 27,
+      "status": "품",
+      "total": 27,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 7.425,
+    "file": "boj/2670.py",
+    "no": "2670",
+    "passed": 27,
+    "site": "BOJ",
+    "status": "품",
+    "title": "연속부분최대곱",
+    "total": 27,
     "verdict": "accepted"
    }
   ]
