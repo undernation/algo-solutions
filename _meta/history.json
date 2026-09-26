@@ -7982,7 +7982,7 @@
   ]
  },
  "2026-09-26": {
-  "count": 2,
+  "count": 3,
   "items": [
    {
     "at": "11:19:47",
@@ -8028,6 +8028,29 @@
     "status": "품",
     "title": "십자 모양의 지속적 폭발",
     "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "13:06:00",
+    "attempts": [
+     {
+      "at": "13:06:00",
+      "elapsed": 1.074,
+      "file": "codetree/18_2차원폭발게임.py",
+      "passed": 4,
+      "status": "품",
+      "total": 4,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 1.074,
+    "file": "codetree/18_2차원폭발게임.py",
+    "no": "18",
+    "passed": 4,
+    "site": "CT",
+    "status": "품",
+    "title": "2차원 폭발 게임",
+    "total": 4,
     "verdict": "accepted"
    }
   ]
