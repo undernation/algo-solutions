@@ -7982,7 +7982,7 @@
   ]
  },
  "2026-09-26": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "11:19:47",
@@ -8004,6 +8004,29 @@
     "site": "CT",
     "status": "못품",
     "title": "단 한 번의 2048 시도",
+    "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "11:43:34",
+    "attempts": [
+     {
+      "at": "11:43:34",
+      "elapsed": 0.519,
+      "file": "codetree/88_십자모양의지속적폭발.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.519,
+    "file": "codetree/88_십자모양의지속적폭발.py",
+    "no": "88",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "십자 모양의 지속적 폭발",
     "total": 2,
     "verdict": "accepted"
    }
