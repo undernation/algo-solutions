@@ -7980,5 +7980,33 @@
     "title": "1차원 폭발 게임"
    }
   ]
+ },
+ "2026-09-26": {
+  "count": 1,
+  "items": [
+   {
+    "at": "11:19:47",
+    "attempts": [
+     {
+      "at": "11:19:47",
+      "elapsed": 0.571,
+      "file": "codetree/87_단한번의2048시도.py",
+      "passed": 2,
+      "status": "못품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.571,
+    "file": "codetree/87_단한번의2048시도.py",
+    "no": "87",
+    "passed": 2,
+    "site": "CT",
+    "status": "못품",
+    "title": "단 한 번의 2048 시도",
+    "total": 2,
+    "verdict": "accepted"
+   }
+  ]
  }
 }
