@@ -8121,7 +8121,7 @@
   ]
  },
  "2026-09-27": {
-  "count": 2,
+  "count": 3,
   "items": [
    {
     "at": "13:59:47",
@@ -8158,6 +8158,29 @@
     "site": "CT",
     "status": "품",
     "title": "정수가 더 큰 인접한 곳으로 이동",
+    "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "14:41:21",
+    "attempts": [
+     {
+      "at": "14:41:21",
+      "elapsed": 0.502,
+      "file": "codetree/91_떨어지는1자블록.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.502,
+    "file": "codetree/91_떨어지는1자블록.py",
+    "no": "91",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "떨어지는 1자 블록",
     "total": 2,
     "verdict": "accepted"
    }
