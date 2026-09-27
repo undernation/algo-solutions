@@ -8121,7 +8121,7 @@
   ]
  },
  "2026-09-27": {
-  "count": 3,
+  "count": 4,
   "items": [
    {
     "at": "13:59:47",
@@ -8183,6 +8183,21 @@
     "title": "떨어지는 1자 블록",
     "total": 2,
     "verdict": "accepted"
+   },
+   {
+    "at": "14:42:46",
+    "attempts": [
+     {
+      "at": "14:42:46",
+      "file": "codetree/93_대폭발.py",
+      "status": "품"
+     }
+    ],
+    "file": "codetree/93_대폭발.py",
+    "no": "93",
+    "site": "CT",
+    "status": "품",
+    "title": "대폭발"
    }
   ]
  }
