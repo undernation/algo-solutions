@@ -8121,7 +8121,7 @@
   ]
  },
  "2026-09-27": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "13:59:47",
@@ -8137,6 +8137,29 @@
     "site": "CT",
     "status": "틀림",
     "title": "벽 짚고 미로 탈출하기"
+   },
+   {
+    "at": "14:40:35",
+    "attempts": [
+     {
+      "at": "14:40:35",
+      "elapsed": 0.51,
+      "file": "codetree/90_정수가더큰인접한곳으로이동.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.51,
+    "file": "codetree/90_정수가더큰인접한곳으로이동.py",
+    "no": "90",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "정수가 더 큰 인접한 곳으로 이동",
+    "total": 2,
+    "verdict": "accepted"
    }
   ]
  }
