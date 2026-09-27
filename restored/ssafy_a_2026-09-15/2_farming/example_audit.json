@@ -1,0 +1,476 @@
+{
+  "result": "PASS: no numeric correction required",
+  "official_outputs_available": false,
+  "rule_evidence": {
+    "reference_image_sha256": "29feba91ad19f60be97c909bea79fe9255f884e3aca25ecbe4ecfc2c0094d7c1",
+    "image_confirmed": [
+      "seed sprouts the next day",
+      "kth sprout ripens after 3+k days",
+      "morning work then afternoon move",
+      "right/front/left/back priority"
+    ],
+    "derived_maturity_day": "planting day p + 1 day to sprout + (3+k) days = p+4+k",
+    "code_reconstructed": [
+      "maximize over all farmland starts and four facings",
+      "face the chosen movement direction"
+    ],
+    "unknown": [
+      "full official statement and diagrams",
+      "official outputs",
+      "full input bounds"
+    ]
+  },
+  "oracle": "explicit seed/sprout/ripe phases; sprout age increments each morning",
+  "sample_answers": [
+    4,
+    0,
+    10,
+    11,
+    16,
+    14,
+    20,
+    18,
+    15,
+    22
+  ],
+  "generated_answers": [
+    0,
+    0,
+    5,
+    3,
+    6,
+    7,
+    15,
+    3,
+    22,
+    10,
+    10,
+    21,
+    1,
+    1,
+    2,
+    2,
+    3,
+    3,
+    4,
+    7,
+    0,
+    4,
+    9,
+    18,
+    7,
+    3,
+    6,
+    11,
+    0,
+    22,
+    4,
+    8,
+    0,
+    13,
+    15,
+    24,
+    24,
+    24,
+    24,
+    24,
+    24,
+    24,
+    23,
+    23,
+    23,
+    24,
+    24,
+    23,
+    24,
+    23
+  ],
+  "stored_case_count": 60,
+  "stored_start_states_checked": 5396,
+  "stores": {
+    "public_problem": {
+      "samples": {
+        "batches": 1,
+        "cases_per_batch": [
+          10
+        ]
+      },
+      "private_testcases": {
+        "batches": 1,
+        "cases_per_batch": [
+          50
+        ]
+      }
+    }
+  },
+  "local_private_store": {
+    "path": "_meta/tc_store/swea/99998.json",
+    "exists": false,
+    "modified": false
+  },
+  "remote_private_store_checked": false,
+  "generator_inputs_and_case_reasons_reproduced": true,
+  "first_sample_table": {
+    "rows_checked": 11,
+    "start_one_based": [
+      2,
+      4
+    ],
+    "facing": "N",
+    "harvest_days": [
+      7,
+      8,
+      9,
+      10
+    ],
+    "answer": 4,
+    "trace_zero_based": [
+      {
+        "day": 1,
+        "position": [
+          1,
+          3
+        ],
+        "action": "plant",
+        "planting_number": 1,
+        "next": [
+          1,
+          4
+        ],
+        "facing_after_move": "E",
+        "harvest": 0,
+        "growth": []
+      },
+      {
+        "day": 2,
+        "position": [
+          1,
+          4
+        ],
+        "action": "plant",
+        "planting_number": 1,
+        "next": [
+          2,
+          4
+        ],
+        "facing_after_move": "S",
+        "harvest": 0,
+        "growth": [
+          {
+            "position": [
+              1,
+              3
+            ],
+            "phase": "sprout"
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "position": [
+          2,
+          4
+        ],
+        "action": "plant",
+        "planting_number": 1,
+        "next": [
+          2,
+          3
+        ],
+        "facing_after_move": "W",
+        "harvest": 0,
+        "growth": [
+          {
+            "position": [
+              1,
+              4
+            ],
+            "phase": "sprout"
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "position": [
+          2,
+          3
+        ],
+        "action": "plant",
+        "planting_number": 1,
+        "next": [
+          2,
+          2
+        ],
+        "facing_after_move": "W",
+        "harvest": 0,
+        "growth": [
+          {
+            "position": [
+              2,
+              4
+            ],
+            "phase": "sprout"
+          }
+        ]
+      },
+      {
+        "day": 5,
+        "position": [
+          2,
+          2
+        ],
+        "action": "plant",
+        "planting_number": 1,
+        "next": [
+          1,
+          2
+        ],
+        "facing_after_move": "N",
+        "harvest": 0,
+        "growth": [
+          {
+            "position": [
+              2,
+              3
+            ],
+            "phase": "sprout"
+          }
+        ]
+      },
+      {
+        "day": 6,
+        "position": [
+          1,
+          2
+        ],
+        "action": "plant",
+        "planting_number": 1,
+        "next": [
+          1,
+          3
+        ],
+        "facing_after_move": "E",
+        "harvest": 0,
+        "growth": [
+          {
+            "position": [
+              1,
+              3
+            ],
+            "phase": "ripe"
+          },
+          {
+            "position": [
+              2,
+              2
+            ],
+            "phase": "sprout"
+          }
+        ]
+      },
+      {
+        "day": 7,
+        "position": [
+          1,
+          3
+        ],
+        "action": "harvest",
+        "planting_number": null,
+        "next": [
+          1,
+          4
+        ],
+        "facing_after_move": "E",
+        "harvest": 1,
+        "growth": [
+          {
+            "position": [
+              1,
+              4
+            ],
+            "phase": "ripe"
+          },
+          {
+            "position": [
+              1,
+              2
+            ],
+            "phase": "sprout"
+          }
+        ]
+      },
+      {
+        "day": 8,
+        "position": [
+          1,
+          4
+        ],
+        "action": "harvest",
+        "planting_number": null,
+        "next": [
+          2,
+          4
+        ],
+        "facing_after_move": "S",
+        "harvest": 2,
+        "growth": [
+          {
+            "position": [
+              2,
+              4
+            ],
+            "phase": "ripe"
+          }
+        ]
+      },
+      {
+        "day": 9,
+        "position": [
+          2,
+          4
+        ],
+        "action": "harvest",
+        "planting_number": null,
+        "next": [
+          2,
+          3
+        ],
+        "facing_after_move": "W",
+        "harvest": 3,
+        "growth": [
+          {
+            "position": [
+              2,
+              3
+            ],
+            "phase": "ripe"
+          }
+        ]
+      },
+      {
+        "day": 10,
+        "position": [
+          2,
+          3
+        ],
+        "action": "harvest",
+        "planting_number": null,
+        "next": [
+          1,
+          3
+        ],
+        "facing_after_move": "N",
+        "harvest": 4,
+        "growth": [
+          {
+            "position": [
+              2,
+              2
+            ],
+            "phase": "ripe"
+          }
+        ]
+      },
+      {
+        "day": 11,
+        "position": [
+          1,
+          3
+        ],
+        "action": "plant",
+        "planting_number": 2,
+        "next": [
+          1,
+          4
+        ],
+        "facing_after_move": "E",
+        "harvest": 4,
+        "growth": [
+          {
+            "position": [
+              1,
+              2
+            ],
+            "phase": "ripe"
+          }
+        ]
+      }
+    ]
+  },
+  "two_field_harvest_days": [
+    7,
+    12,
+    18,
+    24,
+    31,
+    38,
+    46
+  ],
+  "two_field_boundary_answers": {
+    "1": 0,
+    "5": 0,
+    "6": 0,
+    "7": 1,
+    "10": 1,
+    "11": 1,
+    "12": 2,
+    "17": 2,
+    "18": 3,
+    "23": 3,
+    "24": 4,
+    "30": 4,
+    "31": 5,
+    "37": 5,
+    "38": 6,
+    "45": 6,
+    "46": 7,
+    "50": 7
+  },
+  "synthetic_logic_checks": {
+    "exhaustive_2x2_case_count": 560,
+    "random_cases": 250,
+    "random_seed": 2026092702,
+    "claims_official_input_validity": false
+  },
+  "unique_cases_checked": 857,
+  "total_start_states_checked": 20220,
+  "cli_batch_checks": {
+    "sample": {
+      "cases": 10,
+      "programs_passed": 3
+    },
+    "generated": {
+      "cases": 50,
+      "programs_passed": 3
+    }
+  },
+  "cli_runner": "Python 3.7.10 (51efa818fd9b, Apr 04 2021, 12:09:32)\r\n[PyPy 7.3.4 with MSC v.1927 64 bit (AMD64)]",
+  "audited_source_hashes_unchanged": {
+    "problems/swea/99998.json": "231599a2b3643668501d01b83b461d99aaa2f913ce3f432160c6138912623ce1",
+    "swea/99998_[SSAFYA형2번복원]농지이동과수확(2026-09-15).py": "de3aa324e4cd8e72b315e1d5a6512d25ea0db3c35b2ec7b93c74baa001327e0e",
+    "_meta/history.json": "8aaa307327a58968c911fc2c617b63095c7b4a9bda050a7d02ea7e77f8b51eac",
+    "restored/ssafy_a_2026-09-15/2_farming/README.md": "7150b57b0af8372d80a0d3dbb79df512b3e95e038ad1fc088c76b3798202d6a7",
+    "restored/ssafy_a_2026-09-15/2_farming/reference_statement.png": "29feba91ad19f60be97c909bea79fe9255f884e3aca25ecbe4ecfc2c0094d7c1",
+    "restored/ssafy_a_2026-09-15/2_farming/solution.py": "68f382a00c069ecd45d26291e0d3fdf96f55e83c5991efb4347c3f6138a30725",
+    "restored/ssafy_a_2026-09-15/2_farming/generate_cases.py": "96d05af73ae015e760cbfee0b67ab5e9b16edea08d24b702a79bd5ed138768d4",
+    "restored/ssafy_a_2026-09-15/2_farming/sample_input.txt": "3b55845556910640e63e2daa16d89172f6ba84ad1d272f7319a1d05b22f8dde1",
+    "restored/ssafy_a_2026-09-15/2_farming/sample_output.txt": "6eacbdc3c6e3dc7218bd88db930394c6f9c06e50c7d0285d906125c1a0a979e0",
+    "restored/ssafy_a_2026-09-15/2_farming/generated_input.txt": "86475271626a9ba3c78fa7569218f2e7add10ee801834e07b032a88f634b22f2",
+    "restored/ssafy_a_2026-09-15/2_farming/generated_output.txt": "105708cf77ff069d0f7d5de822cbe2ca2b9539bfa8284a22721b4fb9728e977a",
+    "restored/ssafy_a_2026-09-15/2_farming/generated_cases.json": "545c390d52827d6503e461141e0ca30136f2c713d44953221098671ef7d38814",
+    "restored/ssafy_a_2026-09-15/2_farming/original/input.txt": "3b55845556910640e63e2daa16d89172f6ba84ad1d272f7319a1d05b22f8dde1",
+    "restored/ssafy_a_2026-09-15/2_farming/original/output.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "restored/ssafy_a_2026-09-15/2_farming/original/sol.py": "8a825539003681887297f2304ce711c576b1fc43aef2919e57a0f0f41bab8bc4"
+  },
+  "metadata_for_parent": {
+    "sample_batch_count": 1,
+    "sample_case_count": 10,
+    "generated_batch_count": 1,
+    "generated_case_count": 50,
+    "generated_flag": true,
+    "generated_source": "reconstructed_rules",
+    "generated_official": false,
+    "public_private_tc_omitted": 0,
+    "public_tc_stored": false
+  }
+}

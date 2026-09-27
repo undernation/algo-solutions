@@ -456,6 +456,11 @@ def main():
             continue
         if not (d.get("statement") or "").strip():
             bad("%s 지문 없음" % rel)
+        # 본문 속 '테스트 케이스'를 섹션 제목으로 오인하면 입력이 잘리고 출력이 사라진다.
+        if sub == "boj" and not d.get("ptype"):
+            for field in ("input_spec", "output_spec"):
+                if not (d.get(field) or "").strip():
+                    bad("%s %s 없음 — 원본 입출력 설명 확인 필요" % (rel, field))
         # 코드트리의 객관식·서술형(ptype)은 채점 스펙도 예제도 원래 없다(283문제).
         if not d.get("ptype") and not (d.get("limits") or {}).get("time"):
             warn("%s 시간 제한 없음" % rel)
@@ -477,6 +482,8 @@ def main():
         empty_in_ok = sub == "codetree"
         for s in ss:
             blob = (s.get("in") or "") + (s.get("out") or "")
+            if re.search(r"(?:\.{2,}\s*\(?생략\)?|\(생략\))", s.get("out") or ""):
+                bad("%s 생략된 예제 출력을 채점 정답으로 사용 중" % rel)
             if "예제" in blob or "댓글" in blob or "다운로드" in blob:
                 bad("%s 예제 오염" % rel)
             if (not (s.get("in") or "").strip() and not empty_in_ok) \

@@ -123,17 +123,33 @@ def paren_status(text: str) -> str:
     return ""
 
 
+def problem_site(site, no, title):
+    """번호만으로 사이트를 바꾸지 않는다. 확인된 번호+제목 조합만 보정한다.
+
+    실수노트 5215 헤딩에는 SWEA 표기가 없지만 2026-05-23 데일리와
+    problems/swea/5215.json은 '햄버거 다이어트'를 SWEA로 명시한다.
+    같은 번호의 다른 BOJ 문제에는 이 보정을 적용하지 않는다.
+    """
+    name = re.sub(r"\s*D[1-8]\s*$", "", title).replace(" ", "")
+    if site == "BOJ" and str(no) == "5215" and name == "햄버거다이어트":
+        return "SWEA"
+    return site
+
+
 def from_vault() -> dict:
     """실수노트 → 날짜별 {count, items}."""
     path = next((p for p in VAULT_CANDIDATES if os.path.exists(p)), None)
     if not path:
         return {}
     L = io.open(path, encoding="utf-8").read().split("\n")
-    heads = [i for i, l in enumerate(L) if l.startswith("## ")]
     # 날짜만 있는 줄과 "2026-04-06 (틀림)" 처럼 괄호 상태가 붙은 줄 둘 다 받는다.
     # (#### 없이 날짜만 적어 둔 초기 기록이 많다)
     DATEL = re.compile(r"^\s*(\d{4}-\d{2}-\d{2})\s*(?:\(([^)]*)\))?\s*$")
     REC = re.compile(r"^####\s+(\d{4}-\d{2}-\d{2})\s*(?:\(([^)]*)\))?")
+    # 1912의 재풀이 날짜가 '## 2026-05-17 (품)'으로 적혀 있다.
+    # 날짜만 있는 헤딩은 앞 문제에 속한다. '## 2026 소풍'은 문제 그대로다.
+    DATE_HEAD = re.compile(r"^##\s+(\d{4}-\d{2}-\d{2})\s*(?:\(([^)]*)\))?\s*$")
+    heads = [i for i, l in enumerate(L) if l.startswith("## ") and not DATE_HEAD.match(l)]
     STAT = re.compile(r"(못품|시간초과|틀림|맞음|품)")
     out = {}
     for n, s in enumerate(heads):
@@ -159,7 +175,7 @@ def from_vault() -> dict:
                 if not t:
                     continue
                 if t.startswith("```") or t.startswith("## ") or \
-                        REC.match(L[j - 1]) or DATEL.match(L[j - 1]):
+                        REC.match(L[j - 1]) or DATE_HEAD.match(L[j - 1]) or DATEL.match(L[j - 1]):
                     break
                 got.append(t)
             return " ".join(got)
@@ -172,7 +188,7 @@ def from_vault() -> dict:
                 continue
             if fence:
                 continue
-            m = REC.match(x) or DATEL.match(x)
+            m = REC.match(x) or DATE_HEAD.match(x) or DATEL.match(x)
             if not m:
                 continue
             # 신뢰 순서: 날짜 줄 괄호(3) > 헤딩 괄호(2) > 다음 줄 자유 문장(1).
@@ -189,8 +205,11 @@ def from_vault() -> dict:
             d0 = m.group(1)
             if d0 not in seen or rank > seen[d0][1]:
                 seen[d0] = (st, rank)
-        m = re.match(r"(\d+)\s*\.?\s*(.*)", title)
+        # '1번 제출코드'는 모의고사 기록의 제목이지 BOJ 1번이 아니다.
+        # 숫자 바로 뒤가 공백/마침표/끝인 경우에만 문제 번호로 읽는다.
+        m = re.match(r"(\d+)(?=\s|\.|$)\s*\.?\s*(.*)", title)
         no, nm = (m.group(1), m.group(2).strip()) if m else ("", title)
+        site = problem_site(site, no, nm)
         for d, (st, _rank) in seen.items():
             rec = out.setdefault(d, {"count": 0, "items": []})
             rec["count"] += 1
@@ -229,9 +248,14 @@ def from_repo() -> dict:
                 "title": t.group(3).strip() if t else base,
                 "status": st.group(1) if st else "?",
                 "file": os.path.relpath(f, ROOT).replace(os.sep, "/")}
+        item["site"] = problem_site(item["site"], item["no"], item["title"])
         rec = out.setdefault(d, {"count": 0, "items": []})
         rec["count"] += 1
         rec["items"].append(item)
+    # 같은 날 같은 문제의 별도 보존 파일은 문제 수를 늘리지 않는다.
+    # 파일 항목은 그대로 남겨 merge()가 메타데이터를 합치도록 한다.
+    for rec in out.values():
+        rec["count"] = len({_ikey(it) for it in rec["items"]})
     return out
 
 

@@ -9,7 +9,7 @@
 | `로봇이동_문제지.pdf` | 문제지 (풀이 힌트 없음) |
 | `solution.py` | **여기를 채운다** — `init` / `build` / `move` |
 | `main.py` | 채점기. **수정하지 않는다** |
-| `sample_input.txt` | 입력 (테스트 케이스 5개) |
+| `sample_input.txt` | 입력 (테스트 케이스 25개) |
 | `sample_output.txt` | 다 맞았을 때의 출력 |
 
 ## 푸는 법
@@ -39,6 +39,8 @@ python main.py < 다른입력.txt      (리다이렉트도 됨)
 #3 100
 #4 100
 #5 100
+...
+#25 100
 ```
 
 그 테스트 케이스의 `move` 중 **하나라도 틀리면 그 케이스는 0점**이다.
@@ -70,11 +72,20 @@ move(start=1 end=4 via=[2]) -> got=51 expected=44  MISMATCH
 
 ```
 T MARK              테스트 케이스 수, 배점
-Q                   그 케이스의 명령 수 (25개)
+Q                   그 케이스의 명령 수 (케이스마다 다름)
 100 N                             init(N)
 200 mID mX mY mW mH mDoorX mDoorY build(...)
 300 mStart mEnd M (mID x M) 정답  move(...) 결과가 '정답' 과 같아야 한다
 ```
+
+현재 연습 입력은 **T=25, MARK=100**이며, `sample_output.txt`에는 `#1 100`부터 `#25 100`까지 25줄이 있다. `tc_valid.txt`는 `sample_input.txt`와 같은 입력이다.
+
+- 1~22번: Q=20~35, N=22~38.
+- 23번: Q=181, N=55, build 150회, move 30회.
+- 24번: Q=391, N=80, build 350회, move 40회.
+- 25번: Q=1,061, N=130, build 1,000회, move 60회.
+
+각 케이스는 init 1회로 시작한다. 위 범위는 이 연습 파일의 실제 값이며 원문의 전체 제약을 뜻하지 않는다.
 
 ## 막히면
 

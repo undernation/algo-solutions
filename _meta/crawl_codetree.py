@@ -597,6 +597,66 @@ def choices_md(pt, mc):
                      ["%d. %s" % (i, q) for i, q in enumerate(qs, 1)])
 
 
+NINETEEN_SAMPLE_NOTE = (
+    "**로컬 복원 출력 · 공식 원본 전체 출력 아님.** 원본 예제는 `....(생략)....`으로 "
+    "일부 줄을 생략한 미리보기입니다. 이 예제의 전체 190줄 출력은 지문의 규칙(1~19단, "
+    "한 줄에 곱셈 두 개를 ` / `로 구분하고 각 단의 19번째 곱셈만 단독 출력)으로 "
+    "이 아카이브에서 복원했습니다. 생략 표식은 실제로 출력할 문자가 아닙니다."
+)
+
+
+def normalize_sample_preview(full):
+    """CT 트레일 1의 알려진 축약 예제만 복원한다. 바뀌면 True, 다른 문제/완전한 출력은 그대로.
+
+    공식 전체 정답을 받은 것이 아니다. 지문에서 유도한 출력임을 예제의 출처 필드와
+    sample_notes 양쪽에 남기며, 원본 미리보기(공백·개행 포함)도 보존한다.
+    """
+    if not (full.get("site") == SITE and str(full.get("no")) == "1"
+            and full.get("kind") == "trail" and full.get("alias") == "nineteen-times-table"
+            and full.get("statement")):
+        return False
+    samples = full.get("samples") or []
+    if not samples or not isinstance(samples[0], dict):
+        return False
+    sample = samples[0]
+    preview = sample.get("out")
+    marker = "....(생략)...."
+    if (sample.get("in") not in (None, "") or not isinstance(preview, str)
+            or marker not in [line.strip() for line in preview.splitlines()]):
+        return False
+    lines = []
+    for dan in range(1, 20):
+        for start in range(1, 20, 2):
+            lines.append(" / ".join("%d * %d = %d" % (dan, n, dan * n)
+                                    for n in range(start, min(start + 2, 20))))
+    # 같은 별칭이어도 미리보기의 보이는 줄이 규칙과 달라졌다면 추측해서 고치지 않는다.
+    pos = 0
+    for line in preview.splitlines():
+        if line.strip() == marker:
+            continue
+        try:
+            pos = lines.index(line.rstrip(), pos) + 1
+        except ValueError:
+            return False
+    repaired = dict(sample)
+    repaired["out"] = "\n".join(lines) + "\n"
+    repaired["original_output_preview"] = preview
+    repaired["output_provenance"] = {
+        "kind": "local_reconstruction", "basis": "statement_rule",
+        "official_full_output_available": False, "line_count": len(lines),
+        "rule": "1~19단, 곱셈 두 개씩 한 줄에 ' / '로 구분, 각 단의 19번째는 단독 출력",
+    }
+    full["samples"] = [repaired] + samples[1:]
+    notes = list(full.get("sample_notes") or [])
+    if not notes:
+        notes.append("")
+    note = notes[0] or ""
+    if NINETEEN_SAMPLE_NOTE not in note:
+        notes[0] = (note + "\n\n" if note else "") + NINETEEN_SAMPLE_NOTE
+    full["sample_notes"] = notes
+    return True
+
+
 def build_full(it, body, day=None):
     """본문 응답 → 화면용 전체 dict(메타 + 지문·예제). 파일로는 write_problem 이 나눠 쓴다."""
     cb = body.get("code_block") or {}
@@ -627,6 +687,7 @@ def build_full(it, body, day=None):
               "hint": _md(body.get("hint")),
               "samples": samples,
               "sample_notes": notes if any(notes) else []})
+    normalize_sample_preview(d)
     return d
 
 
@@ -1221,6 +1282,11 @@ def rebuild_public(nos=None, log=_out):
             log("   ⚠️ %s — 건너뜀" % e)
             continue
         full = full_from_files(pub, store)
+        if normalize_sample_preview(full):
+            # 공개본만 고치면 보관소 기반 채점/다음 rebuild 에서 축약 출력이 되살아난다.
+            store = store_doc(full, store)
+            _write_json(store_path(no), store, indent=None)
+            cnt["normalized"] += 1
         if (store or {}).get("private"):
             cnt["tc"] += 1
         if not (full.get("statement") or "").strip():
@@ -1236,8 +1302,9 @@ def rebuild_public(nos=None, log=_out):
         if write_public(full, store):
             cnt["changed"] += 1
         cnt["ok"] += 1
-    log("완료: 지문 있음 %d · 잠김 %d · 지문 없음(잠김 아님) %d · 생성TC 반영 %d · 바뀐 파일 %d%s%s"
+    log("완료: 지문 있음 %d · 잠김 %d · 지문 없음(잠김 아님) %d · 생성TC 반영 %d · 바뀐 파일 %d%s%s%s"
         % (cnt["ok"], cnt["locked"], cnt["nostmt"], cnt["tc"], cnt["changed"],
+           (" · 축약 예제 복원 %d" % cnt["normalized"]) if cnt["normalized"] else "",
            (" · 보관소 채움 %d" % cnt["backfill"]) if cnt["backfill"] else "",
            (" · 건너뜀 %d" % cnt["bad"]) if cnt["bad"] else ""))
     return cnt

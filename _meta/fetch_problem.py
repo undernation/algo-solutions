@@ -48,6 +48,48 @@ def clean(s):
     return re.sub(r"\n{3,}", "\n\n", s or "").strip()
 
 
+def line_section(text, start, *ends):
+    """정규식으로 지정한 독립된 제목 줄 사이만 반환한다.
+
+    본문의 '각 테스트 케이스마다' 같은 문장은 섹션 경계가 아니다.
+    가로 공백과 CRLF 는 허용하되, 앞뒤 본문 줄까지 공백으로 삼키지 않는다.
+    """
+    def heading(pattern):
+        return re.compile(r"^[^\S\n]*(?:" + pattern + r")[^\S\n]*$", re.M)
+
+    begin = 0
+    if start:
+        match = heading(start).search(text)
+        if not match:
+            return ""
+        begin = match.end()
+    end = len(text)
+    for pattern in ends:
+        match = heading(pattern).search(text, begin)
+        if match:
+            end = min(end, match.start())
+    return text[begin:end].strip()
+
+
+def strip_swea_footer(text):
+    """SWEA 댓글/Talk/사이트 하단 UI만 제거하고 앞의 설명·예제는 보존한다."""
+    text = (text or "").replace("\r\n", "\n")
+    footer = re.search(
+        r"(?m)^[^\S\n]*(?:연관Talk[^\n]*|댓글[^\S\n]*\(\d+\)|"
+        r"About(?=\n[^\S\n]*SW Expert Academy(?:\n|$)))[^\S\n]*$", text)
+    if not footer:
+        return text
+    body = text[:footer.start()].rstrip()
+    # 다운로드 뒤, 댓글 바로 앞의 추천 수. 본문의 마지막 숫자는 건드리지 않는다.
+    return re.sub(r"(?m)(^[^\S\n]*다운로드[^\S\n]*)\n"
+                  r"(?:[^\S\n]*\n)*[^\S\n]*\d+[^\S\n]*$", r"\1", body)
+
+
+SWEA_INPUT = r"\[[^\S\n]*입력(?:[^\S\n]*(?:형식|설명))?[^\S\n]*\]"
+SWEA_OUTPUT = r"\[[^\S\n]*출력(?:[^\S\n]*(?:형식|설명))?[^\S\n]*\]"
+SWEA_CONSTRAINTS = r"\[[^\S\n]*제약[^\S\n]*사항[^\S\n]*\]"
+
+
 def parse_samples(tc):
     """'예제 입력 1 … 예제 출력 1 … 예제 입력 2 …' 블록을 쌍으로 분리.
 
@@ -318,7 +360,12 @@ def apply_images(pg, d):
     if widths and len(widths) == len(paths) and all(w > 0 for w in widths):
         d["image_widths"] = widths
     # 마커가 박힌 본문에서 지문 구간만 다시 잘라 쓴다(입력/출력 설명은 기존 값 유지).
-    body = sect(txt, "", "[제약사항]", "[입력]", "\n입력\n") or txt
+    if d.get("site") == "SWEA":
+        txt = strip_swea_footer(txt)
+        body = line_section(txt, "", SWEA_CONSTRAINTS, SWEA_INPUT, SWEA_OUTPUT)
+    else:
+        body = line_section(txt, "", "입력", "출력", r"테스트[^\S\n]+케이스",
+                            r"코드[^\S\n]+제출")
     if body and "[[IMG:" in body:
         d["statement"] = clean(body)
 
@@ -336,6 +383,7 @@ def open_page(url, wait=2600):
 
 # ── 코딩살구 (BOJ) ─────────────────────────────────────────────
 def parse_cosal(t, url):
+    t = t.replace("\r\n", "\n")
     d = {"site": "BOJ", "platform": "코딩살구", "url": url}
 
     m = re.search(r"^(.+?)\n+\s*([\d\-\sA-Z]*·\s*BOJ\s*(\d+).*)$", t, re.M)
@@ -366,14 +414,17 @@ def parse_cosal(t, url):
     ml = re.search(r"\n([^\n]{0,40}목록)\n", t)
     anchor = ml.group(1) if ml else "주차 목록"
     d["solved"] = "해결" in sect(t, meta_line, anchor)[:40]
-    body = sect(t, anchor, "테스트 케이스", "코드 제출")
+    tc_heading = r"테스트[^\S\n]+케이스"
+    submit_heading = r"코드[^\S\n]+제출"
+    private_heading = r"프라이빗[^\S\n]+테스트케이스"
+    body = line_section(t, re.escape(anchor), tc_heading, submit_heading, private_heading)
     # ⚠️ 경계는 반드시 "입력" 만 있는 줄이어야 한다. 그냥 "입력" 으로 자르면
     # 본문의 "…을 입력받아" 같은 표현에서 끊긴다(10828·10845·2675 등 9건 실제 사고).
-    d["statement"] = clean(sect(body, "", "\n입력\n") or body)
-    d["input_spec"] = clean(sect(body, "\n입력\n", "\n출력\n"))
-    d["output_spec"] = clean(sect(body, "\n출력\n", "테스트 케이스"))
+    d["statement"] = clean(line_section(body, "", "입력", "출력"))
+    d["input_spec"] = clean(line_section(body, "입력", "출력"))
+    d["output_spec"] = clean(line_section(body, "출력"))
 
-    tc = sect(t, "테스트 케이스", "프라이빗 테스트케이스", "코드 제출")
+    tc = line_section(t, tc_heading, private_heading, submit_heading)
     d["samples"] = parse_samples(tc)
 
     mp = re.search(r"프라이빗 테스트케이스\s*\n?\s*(\d+)\s*개", t)
@@ -384,6 +435,7 @@ def parse_cosal(t, url):
 
 # ── SWEA ──────────────────────────────────────────────────────
 def parse_swea(t, url):
+    t = strip_swea_footer(t)
     d = {"site": "SWEA", "platform": "SW Expert Academy", "url": url}
     m = re.search(r"^\s*(\d{3,5})\.\s*(.+?)\s*$", t, re.M)
     if m:
@@ -409,19 +461,23 @@ def parse_swea(t, url):
     if mm:
         lim["memory"] = mm.group(1).strip()
     d["limits"] = lim
-    mm = re.search(r"\[제약사항\](.*?)(?:\[입력\]|\Z)", t, re.S)
-    if mm:
-        d["constraints"] = [x.strip() for x in mm.group(1).split("\n") if x.strip()]
+    constraints = line_section(t, SWEA_CONSTRAINTS, SWEA_INPUT, SWEA_OUTPUT,
+                               "입력", "출력")
+    if constraints:
+        d["constraints"] = [x.strip() for x in constraints.split("\n") if x.strip()]
     # 지문 시작 앵커: 저작권 고지가 있는 페이지도 없는 페이지도 있다.
     # 없으면 "메모리 : …" 줄 다음부터를 본문으로 본다.
-    st = clean(sect(t, "무단 복제하는 것을 금지합니다.", "[제약사항]", "[입력]"))
-    if not st:
+    body = sect(t, "무단 복제하는 것을 금지합니다.")
+    if not body:
         mm = re.search(r"메모리\s*:\s*[^\n]*\n", t)
         if mm:
-            st = clean(sect(t[mm.end():], "", "[제약사항]", "[입력]"))
-    d["statement"] = st
-    d["input_spec"] = clean(sect(t, "[입력]", "[출력]"))
-    d["output_spec"] = clean(sect(t, "[출력]", "입력\n", "sample_input"))
+            body = t[mm.end():]
+    # 대괄호 없는 본문은 원문 그대로 둔다. '입력/출력'은 설명 제목과 예제 패널에
+    # 모두 쓰이므로, 둘을 추측해서 자르면 20728의 예제 해설 같은 내용을 잃는다.
+    d["statement"] = clean(line_section(body, "", SWEA_CONSTRAINTS, SWEA_INPUT,
+                                       SWEA_OUTPUT))
+    d["input_spec"] = clean(line_section(body, SWEA_INPUT, SWEA_OUTPUT, "입력", "출력"))
+    d["output_spec"] = clean(line_section(body, SWEA_OUTPUT, "입력", "출력"))
     # 페이지에 보이는 예제는 "…" 로 잘린 미리보기이고, 뒤에 주석·다운로드 버튼·
     # 댓글까지 딸려온다. 실제 테스트케이스는 contestProbDown.do 로 받는다.
     d["samples"] = []

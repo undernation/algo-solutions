@@ -208,18 +208,28 @@ td.n{font-variant-numeric:tabular-nums;color:var(--sub);font-size:13px}
 /* .hint 는 여러 곳에서 쓰이는데 정의가 없어 본문 크기로 나오고 있었다. */
 .hint{font-size:12.5px;color:var(--sub);line-height:1.7}
 .kbd{margin-left:auto;align-self:center;white-space:nowrap}
+@media(max-width:430px){.kbd{margin-left:0;max-width:100%;white-space:normal;line-height:1.5}}
 
 /* ── 재도전 큐 ──
-   ⚠️ 제목·유형을 일부러 감춘다. 무엇을 쓸 문제인지 판별하는 것까지가 훈련이다. */
+   코드트리는 번호와 제목을 함께 표시한다. 다른 사이트의 제목·모든 사이트의 유형은 감춘다. */
 .rqwrap{display:flex;flex-direction:column;gap:2px}
-.rq{display:flex;align-items:center;gap:10px;padding:7px 10px;border-radius:6px;
+.rq{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:10px;
+    padding:7px 10px;border-radius:6px;
     text-decoration:none;color:var(--fg);font-size:13.5px}
 .rq:hover{background:var(--bd2)}
-.rq b{font-variant-numeric:tabular-nums;min-width:62px}
+.rqname{display:flex;align-items:baseline;gap:8px;min-width:0}
+.rqname b{font-variant-numeric:tabular-nums;min-width:62px;flex:none}
+.rqtitle{min-width:0;word-break:keep-all;overflow-wrap:anywhere;line-height:1.5}
+.rqmeta{display:flex;align-items:center;gap:10px;white-space:nowrap}
 .rq .rqd{color:var(--sub);font-size:12.5px;font-variant-numeric:tabular-nums}
-.rq .rqg{margin-left:auto;color:var(--wr);font-weight:700;font-size:12.5px;
+.rq .rqg{color:var(--wr);font-weight:700;font-size:12.5px;
          font-variant-numeric:tabular-nums}
 .rq .rqt{color:var(--sub);font-size:12px;min-width:56px;text-align:right}
+/* 긴 제목은 생략하지 않고 접는다. 폰에서는 날짜·시도 횟수를 제목 아래 줄에 둔다. */
+@media(max-width:700px){
+ .rq-ct{grid-template-columns:auto minmax(0,1fr);align-items:start;row-gap:3px}
+ .rq-ct .rqmeta{grid-column:2;flex-wrap:wrap;gap:2px 10px}
+}
 @media(max-width:560px){.rq .rqt{display:none}}
 /* 사이트 칩 — 옛 실수노트 기록이 코드트리 번호로 이어지면서 4월 HSAT 기출이 큐 앞을 채웠다.
    사이트별로 골라 볼 수 있게(고른 것은 이 브라우저에 기억). 칩에는 사이트 이름·개수만 — 유형은 없다. */
@@ -780,6 +790,7 @@ function ctIndex(j){
   if(it.lesson!=null&&it.lesson_no!=null) c.LS[it.group+"|"+it.chapter+"|"+it.lesson]=it.lesson_no;
  });
  CTCAT=c;
+ rqTitles();                                     /* 먼저 그린 큐에도 정식 제목을 반영 */
  return c;
 }
 var SC={"품":"ok","맞음":"ok","못품":"no","틀림":"wr","시간초과":"tl"};
@@ -934,6 +945,8 @@ function setupHub(){
 function go(){
  var h=(location.hash||"#home").slice(1);
  var v=h.split("/")[0]||"home";
+ var section={problems:"문제",status:"제출 현황",run:"연습장",c:"코드",tools:"도구"}[v];
+ document.title=(section?section+" · ":"")+"코테 아카이브";
  ["home","problems","status","p","run","c","tools"].forEach(function(x){ $("v-"+x).className = (x===v?"":"hide"); });
  if(v!=="p") tocHide();
  Array.prototype.forEach.call(document.querySelectorAll("nav a"),function(a){
@@ -958,9 +971,8 @@ window.addEventListener("hashchange",go);
 /* ════════ 재도전 큐 ════════
    "오늘 뭐 복기하지"를 옵시디언 없이 브라우저에서 바로 잡기 위한 것.
 
-   🚩 유형 스포 금지 — 번호와 마지막 시도일만 보여준다. **제목도 감춘다**:
-   "가장 긴 증가하는 부분 수열" 같은 제목은 그 자체로 답을 알려주기 때문이다.
-   무엇을 쓸 문제인지 판별하는 것까지가 훈련이다. */
+   코드트리는 사용자가 번호로 문제를 식별하기 어려워 제목도 표시한다.
+   다른 사이트의 제목 숨김은 유지하며, 유형·알고리즘 태그는 모든 사이트에서 감춘다. */
 function daysAgo(d,t){
  return Math.round((Date.parse(t+"T00:00:00")-Date.parse(d+"T00:00:00"))/86400000);
 }
@@ -996,12 +1008,14 @@ function rqHTML(){
      '<i>'+(s[0]?(cnt[s[0]]||0):all.length)+'</i></button>';
   }).join("")+'</div>';
  var rows=q.slice(0,RQOPEN?q.length:RQN).map(function(x){
-  return '<a class="rq" href="#p/'+encodeURIComponent(x.site)+'/'+encodeURIComponent(x.no)+'">'+
+  var ct=x.site==="CT", k=key(x);
+  return '<a class="rq'+(ct?' rq-ct':'')+'" href="#p/'+encodeURIComponent(x.site)+'/'+encodeURIComponent(x.no)+'">'+
    '<span class="b b-'+esc(x.site)+'">'+esc(x.site)+'</span>'+
-   '<b>'+esc(x.no)+'</b>'+
-   '<span class="rqd">'+esc(x.date)+'</span>'+
-   '<span class="rqg">'+x.days+'일 전</span>'+
-   '<span class="rqt">'+x.tries+'회</span></a>';
+   '<span class="rqname"><b>'+esc(x.no)+'</b>'+
+    (ct?' <span class="rqtitle" data-key="'+esc(k)+'">'+esc(bestTitle(k)||"(제목 없음)")+'</span>':'')+'</span>'+
+   '<span class="rqmeta"><span class="rqd">'+esc(x.date)+'</span>'+
+   '<span class="rqg">'+esc(x.days)+'일 전</span>'+
+   '<span class="rqt">'+esc(x.tries)+'회</span></span></a>';
  }).join("");
  return '<div class="panel" id="rqbox"><div class="hd">재도전 큐'+
   '<span class="r">'+q.length+'문제 · 오래 묵은 순</span></div>'+
@@ -1011,8 +1025,13 @@ function rqHTML(){
   (q.length>RQN?'<button class="sm rqmore" style="margin-top:10px" onclick="rqToggle()">'+
     (RQOPEN?'접기':'전체 '+q.length+'개 보기')+'</button>':'')+
   '<div class="hint" style="margin-top:10px">아직 통과하지 못한 문제, 마지막 시도가 오래된 순. '+
-  '<b>제목과 유형은 일부러 감췄다</b> — 무엇을 쓸지 판별하는 것까지가 훈련.</div>'+
+  '<b>코드트리는 번호와 제목을 함께 표시</b>합니다. 다른 사이트의 제목과 모든 문제의 유형·알고리즘 태그는 숨깁니다.</div>'+
   '</div></div>';
+}
+function rqTitles(){
+ document.querySelectorAll("#rqbox .rqtitle").forEach(function(el){
+  el.textContent=bestTitle(el.getAttribute("data-key"))||"(제목 없음)";
+ });
 }
 function rqToggle(){ RQOPEN=!RQOPEN; var el=$("rqbox"); if(el) el.outerHTML=rqHTML(); }
 function rqSite(s){
@@ -2518,6 +2537,11 @@ function ctImgFit(im,bad){
 
 /* ════════ 문제 페이지 ════════ */
 var CUR={};
+function setProblemTitle(site,no,title){
+ /* 자료가 늦게 도착해도 이미 떠난 문제의 이름으로 탭 제목을 되돌리지 않는다. */
+ if(location.hash.indexOf("#p/")!==0||CUR.site!==site||CUR.no!==String(no)) return;
+ document.title=site+" "+no+(title?" "+title:"")+" · 코테 아카이브";
+}
 async function viewProblem(site,no){
  /* 색인 키는 "SWEA/25007" 처럼 사이트가 대문자다. 소문자 URL(#p/swea/25007)을
     직접 치거나 북마크하면 색인에도 안 잡히고 추측 경로도 boj 로 떨어져
@@ -2528,6 +2552,7 @@ async function viewProblem(site,no){
  CUR={site:site,no:no,prob:null,verdict:null};
  PHOPEN=false;                                  /* 제출 이력은 문제마다 최근 5개부터 */
  var title=bestTitle(k);
+ setProblemTitle(site,no,title);
 
  /* 코드트리는 카탈로그(제목·코스 경로)를 따로 받는다 — 코드 파일·공개 JSON 과 같이 받게 먼저 건다 */
  if(site==="CT") ctCatalog();
@@ -2595,7 +2620,6 @@ async function viewProblem(site,no){
   await ctCatalog();
   if(CUR.site!==site||CUR.no!==no||location.hash.indexOf("#p/")!==0) return;
   p=ctMeta(p,no);
-  ctHead(p);
  }
  renderProblem(p, site, no);
  loadNote(site, no);
@@ -2836,7 +2860,24 @@ function nwJoin(s,sep){
 }
 function nwIf(s){ return String(s||"").length<=16?"nw":""; }
 
+/* 복원 문제는 T개를 한 입력에 묶는다. 실행 파일 수와 실제 케이스 수를 구분한다. */
+function tcCountLabel(cases,total){
+ cases=cases||[];
+ total=Math.max(cases.length,Number(total)||0);
+ var count=0,bundled=false;
+ cases.forEach(function(s){
+  var n=Number(s.case_count);
+  if(!Number.isInteger(n)||n<1) n=1;
+  count+=n; if(n>1) bundled=true;
+ });
+ return bundled&&total===cases.length ? count+'개 · '+total+'묶음' : total+'개';
+}
+function generatedTC(p){
+ var cases=(p&&p.private_testcases)||[];
+ return !!(p&&(p.tc_generated||(cases.length&&cases.every(function(s){return s.generated===true;}))));
+}
 function renderProblem(p,site,no){
+ setProblemTitle(site,no,(p&&p.title)||bestTitle(site+"/"+no));
  /* 섹션 구성이 바뀌므로 그림이 끝난 뒤 목차를 다시 만든다 */
  setTimeout(buildTOC,0);
  CUR.prob=p;
@@ -2850,8 +2891,9 @@ function renderProblem(p,site,no){
   ["제출",subs.length+"회","nw"],
   ["최근 결과",esc((last&&last.status)||"—"),rc(last&&last.status)+" nw"]];
  if(p&&p.private_tc_count)
-  cols.push(["테스트케이스",p.private_tc_count+'개'+
-     ((p.private_testcases||[]).length?' <span class="nw" style="color:var(--ok)">(수집됨)</span>':''),"nw"]);
+  cols.push(["테스트케이스",esc(tcCountLabel(p.private_testcases,p.private_tc_count))+
+     (generatedTC(p)?' <span class="nw" style="color:var(--wr)">생성 · 공식 아님</span>':
+      (p.private_testcases||[]).length?' <span class="nw" style="color:var(--ok)">(수집됨)</span>':''),""]);
  cols.push(["원문",(p&&(p.source_url||p.url))?'<a href="'+esc(p.source_url||p.url)+'" target="_blank" rel="noopener">열기 ↗</a>':"—","nw"]);
  $("pinfo").innerHTML=limHTML(cols);
 
@@ -2885,7 +2927,9 @@ function renderProblem(p,site,no){
  if(p.input_spec)  h+='<div class="sec-h">입력</div><div class="body">'+esc(p.input_spec)+'</div>';
  if(p.output_spec) h+='<div class="sec-h">출력</div><div class="body">'+esc(p.output_spec)+'</div>';
  (p.samples||[]).forEach(function(s,i){
-  h+='<div class="sec-h">예제 '+(i+1)+'</div>'+tcPanel("예제", i+1, s);
+  var count=s.case_count||((p.samples.length===1&&p.sample_case_count)||0);
+  h+='<div class="sec-h">예제 '+(i+1)+
+     (count>1?' · '+esc(count)+'개 테스트케이스':'')+'</div>'+tcPanel("예제", i+1, s);
  });
  h+=htcHTML(p);
  if(p.constraints&&p.constraints.length)
@@ -2901,16 +2945,16 @@ function renderProblem(p,site,no){
 function htcHTML(p){
  var htc=p.private_testcases||[];
  if(!htc.length) return "";
- var gen=!!p.tc_generated;
+ var gen=generatedTC(p);
  return '<div class="sec-h">'+(gen?'생성 히든 TC (공식 아님)':'히든 테스트케이스')+'</div>'+
      '<details class="nfold"><summary><span class="ar">▶</span>'+
-     (gen?'생성 히든 TC '+htc.length+'개 · <span style="color:var(--wr)">공식 아님</span>'
-         :'히든 테스트케이스 '+htc.length+'개')+
+     (gen?'생성 히든 TC '+esc(tcCountLabel(htc,p.private_tc_count))+' · <span style="color:var(--wr)">공식 아님</span>'
+         :'히든 테스트케이스 '+esc(tcCountLabel(htc,p.private_tc_count)))+
      ' <span class="sp">클릭해서 펼치기</span></summary>'+
      '<div style="padding:14px 16px">'+
      '<div class="hint" style="margin:0 0 10px">'+
-      (gen?'<b>코드트리 공식 채점 데이터가 아니라</b> 이 아카이브에서 만든 케이스입니다. '+
-           '여기서 통과해도 코드트리 공식 채점 통과와 같지 않습니다. 풀기 전에 보면 스포가 될 수 있어요.'
+      (gen?'<b>공식 채점 데이터가 아니라</b> 이 아카이브에서 만든 연습 케이스입니다. '+
+           '여기서 통과해도 원 사이트의 공식 채점 통과와 같지 않습니다. 풀기 전에 보면 스포가 될 수 있어요.'
           :'실제 채점에 쓰이는 케이스입니다. 풀기 전에 보면 스포가 될 수 있어요.')+
       (p.private_tc_omitted
         ? '<br>용량이 큰 '+p.private_tc_omitted+'개는 여기 싣지 않았습니다'+
@@ -3037,9 +3081,11 @@ function ctHead(p){
  else if(p.chapter) a.push(esc((p.chapter_no!=null?p.chapter_no+". ":"")+p.chapter));
  if($("pcrumb")) $("pcrumb").innerHTML=a.join(" › ");
  var t=p.title||bestTitle("CT/"+p.no);
+ setProblemTitle("CT",p.no,t);
  if($("ptitle")) $("ptitle").innerHTML='<span class="b b-CT">CT</span>'+esc(p.no)+(t?'&nbsp; '+esc(t):'');
 }
 function ctRender(p,subs){
+ ctHead(p);
  var lim=p.limits||{}, st=p.stats||{}, last=subs[0];
  var freq=(p.kind==="frequent")||!!p.origin;
  var acc=st.accept_rate!=null&&st.accept_rate!==""?String(st.accept_rate).replace(/%$/,"")+"%":"";
@@ -3517,7 +3563,6 @@ async function doFetch(){
    CTPROB[CUR.no]={problem:np,samples:np.samples||[]};
    np=ctMeta(np,CUR.no);
    if(priv) np.private_content=true;
-   ctHead(np);
   }
   renderProblem(np,CUR.site,CUR.no);
   var sl=syncLine(j);
