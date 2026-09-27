@@ -8119,5 +8119,25 @@
     "verdict": "accepted"
    }
   ]
+ },
+ "2026-09-27": {
+  "count": 1,
+  "items": [
+   {
+    "at": "13:59:47",
+    "attempts": [
+     {
+      "at": "13:59:47",
+      "file": "codetree/12_벽짚고미로탈출하기.py",
+      "status": "틀림"
+     }
+    ],
+    "file": "codetree/12_벽짚고미로탈출하기.py",
+    "no": "12",
+    "site": "CT",
+    "status": "틀림",
+    "title": "벽 짚고 미로 탈출하기"
+   }
+  ]
  }
 }
