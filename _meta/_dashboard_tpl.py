@@ -844,14 +844,21 @@ function pendDrop(pred){ pendSave(pendLoad().filter(function(x){ return !pred(x)
 function pendMerge(){
  var a=pendLoad();
  if(!a.length) return 0;
- var have={};
- D.rows.forEach(function(r){ have[pendKey(r)]=1; });
+ var have={}, receipts={};
+ function receipt(r){ return r.file&&r.at ? r.file+"|"+r.date+"|"+r.at : ""; }
+ D.rows.forEach(function(r){
+  have[pendKey(r)]=1;
+  if(receipt(r)) receipts[receipt(r)]=1;
+ });
  /* at 이 없던 옛 저장분을 위해 (문제,날짜)까지만 맞는 경우도 반영으로 본다 */
  var haveDay={};
  D.rows.forEach(function(r){ haveDay[key(r)+"|"+r.date]=1; });
  var WEEK=7*24*3600*1000, keep=[];
  a.forEach(function(x){
   if(have[pendKey(x)]) return;                       /* 진짜 데이터에 도착 */
+  /* 옛 저장 응답이 다른 문제 화면에 도착하면 번호만 잘못 붙은 대기 행이 생겼다.
+     파일·날짜·초 단위 시각이 서버 기록과 일치할 때만 그 중복 표시를 걷어낸다. */
+  if(receipt(x) && receipts[receipt(x)]) return;
   if(!x.at && haveDay[key(x)+"|"+x.date]) return;
   if(x._ts && Date.now()-x._ts>WEEK) return;         /* 유령 방지 */
   keep.push(x);
@@ -2537,6 +2544,7 @@ function ctImgFit(im,bad){
 
 /* ════════ 문제 페이지 ════════ */
 var CUR={};
+function problemActive(ctx){ return CUR===ctx&&location.hash.indexOf("#p/")===0; }
 function setProblemTitle(site,no,title){
  /* 자료가 늦게 도착해도 이미 떠난 문제의 이름으로 탭 제목을 되돌리지 않는다. */
  if(location.hash.indexOf("#p/")!==0||CUR.site!==site||CUR.no!==String(no)) return;
@@ -2581,7 +2589,7 @@ async function viewProblem(site,no){
      '<input id="tmar" type="number" min="0.5" max="5" step="0.1" value="1.5" '+
      'style="width:64px;flex:0 0 64px;padding:4px 6px"></label>'+
    '<button class="p" id="jbtn" onclick="doJudge()" title="Ctrl+Enter">채점</button>'+
-   '<button onclick="doSave()" title="Ctrl+S">저장 &amp; 커밋</button>'+
+   '<button id="sbtn" onclick="doSave()" title="Ctrl+S">저장 &amp; 커밋</button>'+
    '<button onclick="resetCode()" title="에디터를 원본(빈 골격)으로 되돌립니다">소스코드 초기화</button>'+
    '<span class="hint kbd">Ctrl+Enter 채점 · Ctrl+S 저장 · Tab / Shift+Tab 들여쓰기</span>'+
    '<button class="sm" style="margin-left:auto" onclick="doFetch()" id="rf">문제 다시 가져오기</button>'+
@@ -3530,9 +3538,9 @@ function mergeB(p, user){
 function cmsg(j){ return j.committed ? "완료"
  : (j.commitError ? "실패 — "+esc(String(j.commitError).slice(-300)) : "변경 없음"); }
 function say(html,cls){var v=$("pv");v.className="vd "+(cls||"info");v.style.display="block";v.innerHTML=html;}
-function needHub(w){
+function needHub(w,notify){
  var h=hubFor(w); if(h)return h;
- say(w==="fetch"
+ (notify||say)(w==="fetch"
   ? "문제 크롤링은 <b>로그인된 내 PC의 로컬 허브</b>가 필요합니다.<div class='d'>내 PC에서:\npython judge/server.py</div>"
   : "허브가 꺼져 있습니다. 우측 상단 <b>허브 버튼</b>에서 토큰·주소를 확인하세요.","ng");
  return null;
@@ -3951,13 +3959,16 @@ async function doExec(){
 }
 
 async function doJudge(){
+ var ctx=CUR;
  /* 코드트리 퀴즈 카드(ptype)는 코드 채점이 없다 — 버튼은 숨겼지만 Ctrl+Enter 로도 들어온다 */
  if(CUR.site==="CT"&&(CUR.prob||{}).ptype)
   return say("퀴즈 문제는 채점하지 않습니다 — 코드트리에서 풀어 주세요.","info");
- await hubReady();
- var h=needHub("judge"); if(!h)return;
  var code=$("ed").value;
  if(!code.trim())return say("코드를 입력하세요.","ng");
+ var rawCode=code, seq=(ctx.judgeSeq||0)+1;
+ ctx.judgeSeq=seq;
+ ctx.verdict=null; ctx.verdictCode=null;
+ function active(){ return problemActive(ctx)&&ctx.judgeSeq===seq; }
  /* B형은 User Code 만 적는다 — Main 을 붙여 한 파일로 만들어 보낸다. */
  if((CUR.prob||{}).api_style && (CUR.prob||{}).template) code=mergeB(CUR.prob, code);
  /* 히든 테스트케이스가 있으면 예제 + 히든 전부로 채점한다(실제 제출에 가깝다). */
@@ -3982,36 +3993,41 @@ async function doJudge(){
     (genUsed: 이번 채점에 생성 TC 가 실제로 들어갔는가 — 체크를 끄면 예제만이라 안 붙인다) */
  var gen=!!P.tc_generated;
  var genUsed=gen && (hid.length>0 || (useStored && useH && (P.private_tc_count||0)>0));
+ var nm=parseFloat(($("tmar")||{}).value);
+ var la=probLangAdjusted(), limit=probTL();
+ await hubReady();
+ if(!active()) return;
+ var h=needHub("judge"); if(!h)return;
  var sf=(h.info&&h.info.speedFactor)||1;
  var pm=(h.info&&h.info.pyMult)||2, pa=(h.info&&h.info.pyAdd)||0;
- var nm=parseFloat(($("tmar")||{}).value);
  if(!(nm>0)) nm=(h.info&&h.info.nativeMargin)||1;
- var la=probLangAdjusted();
  /* 언어별 제한이 명시된 문제라도 그 값은 그 사이트 채점기 기준이라, 이 VM 에서는
     여유(nativeMargin)를 곱한다 — 서버의 allowed_time 과 같은 식이다. */
- var allow=(la?probTL()*nm:(probTL()*pm+pa))*sf;
+ var allow=(la?limit*nm:(limit*pm+pa))*sf;
  say("채점 중… "+((isCT&&useStored&&!(useH&&P.private_tc_count))?("서버 보관 예제 "+(P.sample_count||"?")+"개")
        :useStored?("서버 보관 전체 TC ("+(P.private_tc_count||"?")+"개"+(gen?" · 생성 TC, 공식 아님":"")+")")
        :(cases.length+"케이스"+(hid.length?" (예제 "+pub.length+" + "+(gen?"생성 히든 ":"히든 ")+hid.length+
                                   (gen?" · 공식 아님":"")+")":"")))+
-     " · 제한 "+probTL()+"초 → 허용 "+allow.toFixed(1)+"초"+
+     " · 제한 "+limit+"초 → 허용 "+allow.toFixed(1)+"초"+
      (la?" (Python 기준 명시 x"+nm+" 여유 · 기기보정 x"+sf.toFixed(2)+")"
         :" (x"+pm+"+"+pa+" · 기기보정 x"+sf.toFixed(2)+")"));
  try{
   var r=await fetch(h.url+"/judge",{method:"POST",headers:H(),
-   body:JSON.stringify({problemId:CUR.no,site:CUR.site,sourceCode:code,
+   body:JSON.stringify({problemId:ctx.no,site:ctx.site,sourceCode:code,
     testCases:useStored?[]:cases, useStoredTC:useStored,
-    publicTestCaseCount:pub.length,timeLimit:probTL(),
-    langAdjusted:probLangAdjusted(),timeMargin:nm})});
+    publicTestCaseCount:pub.length,timeLimit:limit,
+    langAdjusted:la,timeMargin:nm})});
+  if(!active()) return;
   if(r.status===401)return say("인증 실패 — 허브 버튼에서 토큰을 확인하세요.","ng");
   var j=await r.json()||{};
+  if(!active()) return;
   /* 허브가 채점 자체를 못 한 경우(케이스 0개 = no_testcases, 서버 오류 등). 판정이 아니므로
      메모 상태(nst)를 '틀림'으로 돌리지 않고, 저장에 실릴 CUR.verdict 도 비운다.
      예전 허브는 보관본이 없으면 '맞았습니다 0/0' 을 돌려줬다 — 코드트리는 그것도 같은 뜻으로 본다
      (그대로 두면 채점 안 된 코드가 품으로 저장될 수 있다). */
   var nocase=(isCT && j.summary && !j.summary.total && j.verdict!=="compile_error");
   if(j.ok===false || nocase){
-   CUR.verdict=null;
+   ctx.verdict=null;
    var why=j.ok===false ? esc(j.error||j.verdict||"원인 불명")
                         : "허브에 이 문제의 예제가 없습니다.";
    return say("⚠️ 채점하지 못했습니다 — "+why+
@@ -4019,7 +4035,7 @@ async function doJudge(){
        ?"<div class='d'>이 코드트리 문제의 예제를 아직 못 받았습니다. 내 PC 로컬 허브를 켜고 "+
         "'문제 다시 가져오기'로 받아 두세요.</div>":""),"ng");
   }
-  CUR.verdict=j;
+  ctx.verdict=j; ctx.verdictCode=rawCode;
   var s=j.summary||{}, ok=j.verdict==="accepted";
   var d=(j.detail||[]).filter(function(x){return x.status!=="passed";}).slice(0,3).map(function(x){
    return "#"+(x.index+1)+(x.kind==="private"?(gen?"(생성 히든)":"(히든)"):"")+"  "+x.status+
@@ -4039,7 +4055,7 @@ async function doJudge(){
    /* 이 VM 은 SWEA 채점기보다 느려서 허용시간에 여유를 준다. 그래서 여기서
       통과해도 원래 제한은 넘겼을 수 있다 — 문제에 적힌 제한을 같이 띄운다.
       안 그러면 "여기선 붙었는데 실제 시험에서 떨어지는" 것을 모른다. */
-   var raw=probTL();
+   var raw=limit;
    var over=(raw&&j.elapsedSec>raw);
    tstr="<span"+(w1?" style='color:var(--wr);font-weight:700'":"")+">합계 "+j.elapsedSec+"초</span>"
         +(tl?" / 허용 "+tl+"초":"")
@@ -4063,40 +4079,48 @@ async function doJudge(){
     var st=$("nst");
     if(st) st.value = (j.verdict==="time_limit_exceeded")?"시간초과":"틀림";
     var nb=$("nbody");
-    if(nb&&!nb.value.trim()) setTimeout(function(){ nb.focus(); }, 200);
+    if(nb&&!nb.value.trim()) setTimeout(function(){ if(active()) nb.focus(); }, 200);
   }
- }catch(e){say("오류: "+esc(e.message),"ng");}
+ }catch(e){if(active()) say("오류: "+esc(e.message),"ng");}
 }
 async function doSave(){
- await hubReady();
- var h=needHub("save"); if(!h)return;
+ var ctx=CUR;
+ if(ctx.saving) return;
  var code=$("ed").value;
  if(!code.trim())return say("코드를 입력하세요.","ng");
+ var verdict=ctx.verdictCode===code ? ctx.verdict : null;
  /* 저장도 합쳐서 남긴다 — 그래야 '내 코드 보기' 에서 User 와 Main 이
     구분선과 함께 그대로 보이고, 그 파일 하나로 다시 돌려볼 수도 있다. */
- if((CUR.prob||{}).api_style && (CUR.prob||{}).template) code=mergeB(CUR.prob, code);
- say("저장 중…");
+ if((ctx.prob||{}).api_style && (ctx.prob||{}).template) code=mergeB(ctx.prob, code);
  /* 코드트리 — 화면용 내부 값은 늘 빼고, 🔒 비공개 모드(private_content)면 지문·예제·제약·힌트까지
     빼고 메타데이터만 보낸다(허브가 한 번 더 거르지만 공개 repo 로 가는 길이라 여기서부터 막는다).
     그때는 채점 상세도 예제 기대 출력을 담고 있어 뺀다. 공개 모드는 백준·SWEA 와 같다. */
- var isCT=(CUR.site==="CT"), priv=isCT&&!!(CUR.prob||{}).private_content;
+ var isCT=(ctx.site==="CT"), priv=isCT&&!!(ctx.prob||{}).private_content;
+ /* 첫 await 전에 요청 전체를 복사한다. 이후 이동·편집·채점이 있어도 이 제출은 그대로다. */
+ var body=JSON.stringify({site:ctx.site,no:ctx.no,
+   title:bestTitle(ctx.site+"/"+ctx.no)||(ctx.prob||{}).title||"",
+   url:(ctx.prob||{}).url||"",code:code,status:$("pst").value,date:$("pd").value,
+   problem:isCT?ctPublic(ctx.prob,priv):ctx.prob,
+   verdict:priv?ctVerdict(verdict):verdict});
+ var submitted=JSON.parse(body);
+ function notify(html,cls){ if(problemActive(ctx)) say(html,cls); }
+ ctx.saving=true;
+ var button=$("sbtn"); if(button) button.disabled=true;
+ notify("저장 중…");
  try{
+  await hubReady();
+  var h=needHub("save",notify); if(!h)return;
   var r=await fetch(h.url+"/save",{method:"POST",headers:H(),
-   body:JSON.stringify({site:CUR.site,no:CUR.no,
-    /* 코드트리는 색인에 제목을 안 박는다 — 카탈로그를 못 받았으면 문제 JSON 의 제목으로 */
-    title:bestTitle(CUR.site+"/"+CUR.no)||(CUR.prob||{}).title||"",
-    url:(CUR.prob||{}).url||"",code:code,status:$("pst").value,date:$("pd").value,
-    problem:isCT?ctPublic(CUR.prob,priv):CUR.prob,
-    verdict:priv?ctVerdict(CUR.verdict):CUR.verdict})});
-  if(r.status===401)return say("인증 실패 — 허브 버튼에서 토큰을 확인하세요.","ng");
+   body:body});
+  if(r.status===401)return notify("인증 실패 — 허브 버튼에서 토큰을 확인하세요.","ng");
   var j=await r.json();
-  if(!j.ok)return say("실패: "+esc(j.error),"ng");
+  if(!j.ok)return notify("실패: "+esc(j.error),"ng");
   /* 낙관적 갱신 — Pages 재배포를 기다리지 않고 화면에 먼저 반영한다.
      ⚠️ 화면에만 얹으면 새로고침하는 순간 사라진다(Pages 가 아직 옛 빌드를
      내주기 때문). 그래서 아래에서 pendAdd 로 localStorage 에도 남긴다. */
-  var vv=CUR.verdict||{}, vs=vv.summary||{};
- var nr={date:$("pd").value,site:CUR.site,no:CUR.no,
-         title:bestTitle(CUR.site+"/"+CUR.no),status:$("pst").value,file:j.file||"",
+  var vv=submitted.verdict||{}, vs=vv.summary||{};
+  var nr={date:submitted.date,site:submitted.site,no:submitted.no,
+         title:submitted.title,status:submitted.status,file:j.file||"",
          passed:vs.passed,total:vs.total,elapsed:vv.elapsedSec,verdict:vv.verdict||"",
          /* 서버가 기록한 제출 시각. 없으면 지금 시각으로 대신 채운다. */
          at:j.at||new Date().toTimeString().slice(0,8)};
@@ -4119,16 +4143,17 @@ async function doSave(){
   (byDate[nr.date]=byDate[nr.date]||[]).unshift(nr);
   stDone=false; treeDone=false; homeDone=false;   /* 다음 진입 시 다시 그림 */
   codeCur="";                                     /* 코드 페이지도 다시 받게 */
-  renderProblem(CUR.prob,CUR.site,CUR.no);        /* 제출 이력 즉시 갱신 */
+  if(problemActive(ctx)) renderProblem(ctx.prob,ctx.site,ctx.no);
 
-  say((j.pushed?"✅ 저장 + 푸시 완료":"⚠️ 저장은 됐지만 푸시 실패")+" <code>"+esc(j.file)+"</code>"+
+  notify((j.pushed?"✅ 저장 + 푸시 완료":"⚠️ 저장은 됐지만 푸시 실패")+" <code>"+esc(j.file)+"</code>"+
       "<div class='d'>commit "+cmsg(j)+
       "  ·  push "+(j.pushed?"완료":"실패")+
       (j.pushed ? "\n\nGitHub Pages 배포에 1~2분 걸립니다. 새로고침하면 반영됩니다."
                 : "\n\n"+esc(j.pushError||"원인 불명")+
                   "\n코드는 허브에 커밋돼 있어 유실되지 않습니다.")+
       "</div>", j.pushed?"ok":"ng");
- }catch(e){say("오류: "+esc(e.message),"ng");}
+ }catch(e){notify("오류: "+esc(e.message),"ng");}
+ finally{ ctx.saving=false; if(button) button.disabled=false; }
 }
 
 document.addEventListener("keydown",function(e){
