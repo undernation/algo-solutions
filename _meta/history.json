@@ -8121,7 +8121,7 @@
   ]
  },
  "2026-09-27": {
-  "count": 5,
+  "count": 6,
   "items": [
    {
     "at": "13:59:47",
@@ -8213,6 +8213,29 @@
     "site": "SWEA",
     "status": "못품",
     "title": "햄버거 다이어트 D3"
+   },
+   {
+    "at": "15:34:42",
+    "attempts": [
+     {
+      "at": "15:34:42",
+      "elapsed": 6.205,
+      "file": "boj/2170.py",
+      "passed": 17,
+      "status": "틀림",
+      "total": 17,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 6.205,
+    "file": "boj/2170.py",
+    "no": "2170",
+    "passed": 17,
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "선 긋기",
+    "total": 17,
+    "verdict": "accepted"
    }
   ]
  }
