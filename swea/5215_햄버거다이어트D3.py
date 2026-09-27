@@ -2,11 +2,9 @@
 SWEA 5215  햄버거 다이어트 D3
 https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWT-lPB6dHUDFAVT
 
-풀이일 : 2026-09-23   결과: 못품
+풀이일 : 2026-09-27   결과: 못품
 한도   : time 20개 테스트케이스를 합쳐서 C의 경우 5초 / C++의 경우 5초 / Java의 경우 8초 / Python의 경우 16초 / memory 힙, 정적 메모리 합쳐서 256MB 이내, 스택 메모리 1MB 이내 / time_sec 16
 난이도 : Master  |  정답률 52.39%
-
-[채점] accepted  1/1  (0.232s)
 
 [문제]
 평소 햄버거를 좋아하던 민기는 최근 부쩍 늘어난 살 때문에 걱정이 많다.
@@ -39,19 +37,4 @@ https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWT
 #1 750
 """
 
-
-T = int(input())
-for tc in range(1, T + 1):
-    N, L = map(int, input().split())
-
-    dp = [0] * (L + 1)
-
-    for _ in range(N):
-        taste, calorie = map(int, input().split())
-
-        for c in range(L, calorie - 1, -1):
-            dp[c] = max(
-                dp[c],
-                dp[c - calorie] + taste
-            )
-    print(f"#{tc} {dp[L]}")
+.
