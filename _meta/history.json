@@ -8240,7 +8240,7 @@
   ]
  },
  "2026-09-28": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "14:01:27",
@@ -8263,6 +8263,29 @@
     "status": "틀림",
     "title": "뱀은 사과를 좋아해",
     "total": 3,
+    "verdict": "accepted"
+   },
+   {
+    "at": "14:34:15",
+    "attempts": [
+     {
+      "at": "14:34:15",
+      "elapsed": 0.507,
+      "file": "codetree/94_핀볼게임.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.507,
+    "file": "codetree/94_핀볼게임.py",
+    "no": "94",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "핀볼게임",
+    "total": 2,
     "verdict": "accepted"
    }
   ]
