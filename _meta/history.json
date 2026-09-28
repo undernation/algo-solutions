@@ -8240,7 +8240,7 @@
   ]
  },
  "2026-09-28": {
-  "count": 3,
+  "count": 4,
   "items": [
    {
     "at": "14:01:27",
@@ -8308,6 +8308,29 @@
     "site": "CT",
     "status": "품",
     "title": "정수가 가장 큰 인접한 곳으로 동시에 이동",
+    "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "15:37:24",
+    "attempts": [
+     {
+      "at": "15:37:24",
+      "elapsed": 0.507,
+      "file": "codetree/96_수의순차적이동.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.507,
+    "file": "codetree/96_수의순차적이동.py",
+    "no": "96",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "수의 순차적 이동",
     "total": 2,
     "verdict": "accepted"
    }
