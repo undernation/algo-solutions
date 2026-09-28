@@ -8240,7 +8240,7 @@
   ]
  },
  "2026-09-28": {
-  "count": 4,
+  "count": 5,
   "items": [
    {
     "at": "14:01:27",
@@ -8331,6 +8331,29 @@
     "site": "CT",
     "status": "품",
     "title": "수의 순차적 이동",
+    "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "17:11:46",
+    "attempts": [
+     {
+      "at": "17:11:46",
+      "elapsed": 0.566,
+      "file": "codetree/13_벽이있는충돌실험.py",
+      "passed": 2,
+      "status": "시간초과",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.566,
+    "file": "codetree/13_벽이있는충돌실험.py",
+    "no": "13",
+    "passed": 2,
+    "site": "CT",
+    "status": "시간초과",
+    "title": "벽이 있는 충돌 실험",
     "total": 2,
     "verdict": "accepted"
    }
