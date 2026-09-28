@@ -8238,5 +8238,33 @@
     "verdict": "accepted"
    }
   ]
+ },
+ "2026-09-28": {
+  "count": 1,
+  "items": [
+   {
+    "at": "14:01:27",
+    "attempts": [
+     {
+      "at": "14:01:27",
+      "elapsed": 1.007,
+      "file": "codetree/11_뱀은사과를좋아해.py",
+      "passed": 3,
+      "status": "틀림",
+      "total": 3,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 1.007,
+    "file": "codetree/11_뱀은사과를좋아해.py",
+    "no": "11",
+    "passed": 3,
+    "site": "CT",
+    "status": "틀림",
+    "title": "뱀은 사과를 좋아해",
+    "total": 3,
+    "verdict": "accepted"
+   }
+  ]
  }
 }
