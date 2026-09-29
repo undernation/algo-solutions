@@ -8360,7 +8360,7 @@
   ]
  },
  "2026-09-29": {
-  "count": 3,
+  "count": 4,
   "items": [
    {
     "at": "10:35:14",
@@ -8428,6 +8428,29 @@
     "site": "CT",
     "status": "시간초과",
     "title": "벽이 없는 충돌 실험",
+    "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "16:22:47",
+    "attempts": [
+     {
+      "at": "16:22:47",
+      "elapsed": 0.687,
+      "file": "codetree/99_합쳐지는구슬들.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.687,
+    "file": "codetree/99_합쳐지는구슬들.py",
+    "no": "99",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "합쳐지는 구슬들",
     "total": 2,
     "verdict": "accepted"
    }

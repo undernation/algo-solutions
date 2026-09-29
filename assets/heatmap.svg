@@ -1200,10 +1200,11 @@
 · CT 95 정수가 가장 큰 인접한 곳으로 동시에 이동 (품)
 · CT 96 수의 순차적 이동 (품)
 · CT 13 벽이 있는 충돌 실험 (시간초과)</title></rect>
-<rect class="l3" x="576" y="48" width="11" height="11" rx="2"><title>2026-09-29 (화) — 3문제
+<rect class="l4" x="576" y="48" width="11" height="11" rx="2"><title>2026-09-29 (화) — 4문제
 · CT 97 쌓인 수들의 순차적 이동 (품)
 · CT 98 구슬의 이동 (품)
-· CT 14 벽이 없는 충돌 실험 (시간초과)</title></rect>
+· CT 14 벽이 없는 충돌 실험 (시간초과)
+· CT 99 합쳐지는 구슬들 (품)</title></rect>
 <rect class="l0" x="576" y="62" width="11" height="11" rx="2"><title>2026-09-30 (수) — 0문제</title></rect>
 <rect class="l0" x="576" y="76" width="11" height="11" rx="2"><title>2026-10-01 (목) — 0문제</title></rect>
 <rect class="l0" x="576" y="90" width="11" height="11" rx="2"><title>2026-10-02 (금) — 0문제</title></rect>
