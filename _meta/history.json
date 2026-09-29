@@ -8358,5 +8358,33 @@
     "verdict": "accepted"
    }
   ]
+ },
+ "2026-09-29": {
+  "count": 1,
+  "items": [
+   {
+    "at": "10:35:14",
+    "attempts": [
+     {
+      "at": "10:35:14",
+      "elapsed": 0.512,
+      "file": "codetree/97_쌓인수들의순차적이동.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.512,
+    "file": "codetree/97_쌓인수들의순차적이동.py",
+    "no": "97",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "쌓인 수들의 순차적 이동",
+    "total": 2,
+    "verdict": "accepted"
+   }
+  ]
  }
 }
