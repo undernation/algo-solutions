@@ -8544,10 +8544,19 @@
     "title": "겹치지 않게 선분 고르기"
    },
    {
-    "at": "11:23:54",
+    "at": "11:24:26",
     "attempts": [
      {
       "at": "11:23:54",
+      "elapsed": 6.044,
+      "file": "boj/2170.py",
+      "passed": 17,
+      "status": "틀림",
+      "total": 17,
+      "verdict": "accepted"
+     },
+     {
+      "at": "11:24:26",
       "elapsed": 6.044,
       "file": "boj/2170.py",
       "passed": 17,
