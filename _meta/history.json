@@ -8457,7 +8457,7 @@
   ]
  },
  "2026-09-30": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "09:25:08",
@@ -8479,6 +8479,29 @@
     "site": "CT",
     "status": "품",
     "title": "K개 중에 1개를 N번 뽑기",
+    "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "09:40:11",
+    "attempts": [
+     {
+      "at": "09:40:11",
+      "elapsed": 0.51,
+      "file": "codetree/103_아름다운수.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.51,
+    "file": "codetree/103_아름다운수.py",
+    "no": "103",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "아름다운 수",
     "total": 2,
     "verdict": "accepted"
    }
