@@ -8457,7 +8457,7 @@
   ]
  },
  "2026-09-30": {
-  "count": 4,
+  "count": 5,
   "items": [
    {
     "at": "09:25:08",
@@ -8542,6 +8542,29 @@
     "site": "CT",
     "status": "틀림",
     "title": "겹치지 않게 선분 고르기"
+   },
+   {
+    "at": "11:23:54",
+    "attempts": [
+     {
+      "at": "11:23:54",
+      "elapsed": 6.044,
+      "file": "boj/2170.py",
+      "passed": 17,
+      "status": "틀림",
+      "total": 17,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 6.044,
+    "file": "boj/2170.py",
+    "no": "2170",
+    "passed": 17,
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "선 긋기",
+    "total": 17,
+    "verdict": "accepted"
    }
   ]
  }

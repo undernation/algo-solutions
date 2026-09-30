@@ -2,10 +2,10 @@
 BOJ 2170  선 긋기
 https://cosal.aviss.kr/problems/detail/2170
 
-풀이일 : 2026-09-27   결과: 틀림
+풀이일 : 2026-09-30   결과: 틀림
 한도   : time 1 초 / memory 192 MB
 
-[채점] accepted  17/17  (6.205s)
+[채점] accepted  17/17  (6.044s)
 
 [문제]
 매우 큰 도화지에 자를 대고 선을 그으려고 한다. 선을 그을 때에는 자의 한 점에서 다른 한 점까지 긋게 된다. 선을 그을 때에는 이미 선이 있는 위치에 겹쳐서 그릴 수도 있는데, 여러 번 그은 곳과 한 번 그은 곳의 차이를 구별할 수 없다고 하자.
@@ -23,30 +23,28 @@ https://cosal.aviss.kr/problems/detail/2170
 5
 """
 
-
 N = int(input())
-
 lines = []
 
 for n in range(N):
-    x, y = map(int, input().split())
-    lines.append([x, y])
+    a, b = map(int, input().split())
+    lines.append((a, b))
 
 lines.sort(key=lambda x: (x[0], x[1]))
-# print(lines)
 
-start = lines[0][0]
-end = lines[0][1]
 answer = 0
-for idx in range(1, N):
-    new_start, new_end = lines[idx]
 
-    if new_start > end:
+start, end = lines[0]
+
+for n in range(1, N):
+    cur_start, cur_end = lines[n]
+
+    if end < cur_start:
+        # 새로 시작
         answer += end - start
-        start = new_start
-        end = new_end
+        start, end = cur_start, cur_end
     else:
-        end = max(end, new_end)
+        end = max(end, cur_end)
 
 answer += end - start
 print(answer)
