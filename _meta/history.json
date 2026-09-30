@@ -8457,7 +8457,7 @@
   ]
  },
  "2026-09-30": {
-  "count": 8,
+  "count": 9,
   "items": [
    {
     "at": "09:25:08",
@@ -8633,6 +8633,29 @@
     "status": "품",
     "title": "햄버거 다이어트 D3",
     "total": 1,
+    "verdict": "accepted"
+   },
+   {
+    "at": "18:36:10",
+    "attempts": [
+     {
+      "at": "18:36:10",
+      "elapsed": 0.52,
+      "file": "codetree/16_2차원바람.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.52,
+    "file": "codetree/16_2차원바람.py",
+    "no": "16",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "2차원 바람",
+    "total": 2,
     "verdict": "accepted"
    }
   ]

@@ -2,7 +2,7 @@
 CT 16  2차원 바람
 https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-The-2D-wind-blows/description
 
-풀이일 : 2026-09-24   결과: 못품
+풀이일 : 2026-09-30   결과: 품
 한도   : time Python3 1초 · C++17 0.5초 / memory 128 MB / time_sec 1
 난이도 : Medium  |  정답률 71.1%
 제약   : - $2 \le N \le 100$
@@ -11,6 +11,8 @@ https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-The-2D-wind-b
 제약   : - $0 \le A_{i,j} \le 9$ $(1 \le i \le N,\ 1 \le j \le M)$
 제약   : - $1 \le r_1 < r_2 \le N$
 제약   : - $1 \le c_1 < c_2 \le M$
+
+[채점] accepted  2/2  (0.52s)
 
 [문제]
 $0$이상 $9$이하의 정수로만 이루어진 $N \times M$ 행렬 모양의 건물에 총 $Q$번의 바람이 붑니다.
@@ -75,73 +77,70 @@ $(4,\ 6)$ 위치에 있던 원소는 인접한 정수가 $2$개밖에 없으므�
 
 N, M, Q = map(int, input().split())
 
-# Create 2D array for building state
+# Create 2D array for building state  
 arr = [list(map(int, input().split())) for _ in range(N)]
 
-# Process wind queries
+# Process wind queries  
 winds = [tuple(map(int, input().split())) for _ in range(Q)]
+
 
 # Please write your code here.
 
-def rotate(y1, x1, y2, x2):
-    temp = arr[y1 + 1][x1]
-    temp_arr = []
-    # 윗변
-    i = y1
-    for j in range(x1, x2 + 1):
-        temp_arr.append((i, j))
-    j = x2
-    for i in range(y1 + 1, y2 + 1):
-        temp_arr.append((i, j))
+def rotate(r1, c1, r2, c2):
+    temp = arr[r1 + 1][c1]
 
-    # 아랫변
-    i = y2
-    for j in range(x2 - 1, x1 - 1, -1):
-        temp_arr.append((i, j))
+    cands = []
+    i = r1
+    for j in range(c1, c2 + 1):
+        cands.append((i, j))
+    j = c2
+    for i in range(r1 + 1, r2 + 1):
+        cands.append((i, j))
+    i = r2
+    for j in range(c2 - 1, c1 - 1, -1):
+        cands.append((i, j))
+    j = c1
+    for i in range(r2 - 1, r1, -1):
+        cands.append((i, j))
 
-    j = x1
-    for i in range(y2 - 1, y1, -1):
-        temp_arr.append((i, j))
+    cur_N = len(cands)
 
-    len_arr = len(temp_arr)
-    # 거꾸로
-    for i in range(len_arr - 1, 0, -1):
-        cy, cx = temp_arr[i]
-        ny, nx = temp_arr[i - 1]
-        # print(ny, nx)
+    for idx in range(cur_N - 1, 0, -1):
+        cur = cands[idx]
+        nxt = cands[idx - 1]
+        cy, cx = cur
+        ny, nx = nxt
+        # print("debug", cy, cx, ny, nx)  
         arr[cy][cx] = arr[ny][nx]
-    arr[y1][x1] = temp
 
-masks = [[-1, 0], [0, -1], [1, 0], [0, 1]]
+    arr[r1][c1] = temp
 
-def change_block(y, x, arr, new_arr):
-    cnt = 1
-    total = arr[y][x]
 
-    for dy, dx in masks:
-        ny = y + dy
-        nx = x + dx
+def calc(cy, cx, cur_arr, new_arr):
+    cands = [[0, 0], [1, 0], [-1, 0], [0, 1], [0, -1]]
+    cnt = 0
+    total = 0
+    for dy, dx in cands:
+
+        ny = cy + dy
+        nx = cx + dx
         if not (0 <= ny < N and 0 <= nx < M):
             continue
         cnt += 1
-        total += arr[ny][nx]
-    
-    new_arr[y][x] = total // cnt
-
-def change(y1, x1, y2, x2, arr):
-    new_arr = [row[:] for row in arr]
-    for i in range(y1, y2 + 1):
-        for j in range(x1, x2 + 1):
-            change_block(i, j, arr, new_arr)
-
-    arr[:] = new_arr
+        total += cur_arr[ny][nx]
+    new_arr[cy][cx] = total // cnt
 
 
 for q in range(Q):
-    y1, x1, y2, x2 = winds[q]
-    # print("debug",y1, x1, y2, x2, q)
-    rotate(y1 - 1, x1 - 1, y2 - 1, x2 - 1)
-    change(y1 - 1, x1 - 1, y2 - 1, x2 - 1, arr)
+    r1, c1, r2, c2 = winds[q]
+    rotate(r1 - 1, c1 - 1, r2 - 1, c2 - 1)
+    new_arr = [row[:] for row in arr]
+    for i in range(r1 - 1, r2):
+        for j in range(c1 - 1, c2):
+            calc(i, j, arr, new_arr)
+
+    arr = new_arr
+
 
 for i in arr:
     print(*i)
