@@ -8455,5 +8455,33 @@
     "verdict": "accepted"
    }
   ]
+ },
+ "2026-09-30": {
+  "count": 1,
+  "items": [
+   {
+    "at": "09:25:08",
+    "attempts": [
+     {
+      "at": "09:25:08",
+      "elapsed": 0.567,
+      "file": "codetree/24_K개중에1개를N번뽑기.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.567,
+    "file": "codetree/24_K개중에1개를N번뽑기.py",
+    "no": "24",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "K개 중에 1개를 N번 뽑기",
+    "total": 2,
+    "verdict": "accepted"
+   }
+  ]
  }
 }
