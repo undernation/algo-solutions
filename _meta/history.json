@@ -8457,7 +8457,7 @@
   ]
  },
  "2026-09-30": {
-  "count": 2,
+  "count": 3,
   "items": [
    {
     "at": "09:25:08",
@@ -8502,6 +8502,29 @@
     "site": "CT",
     "status": "품",
     "title": "아름다운 수",
+    "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "10:13:38",
+    "attempts": [
+     {
+      "at": "10:13:38",
+      "elapsed": 0.583,
+      "file": "codetree/104_강력한폭발.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.583,
+    "file": "codetree/104_강력한폭발.py",
+    "no": "104",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "강력한 폭발",
     "total": 2,
     "verdict": "accepted"
    }
