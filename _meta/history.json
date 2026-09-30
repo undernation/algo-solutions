@@ -8457,7 +8457,7 @@
   ]
  },
  "2026-09-30": {
-  "count": 7,
+  "count": 8,
   "items": [
    {
     "at": "09:25:08",
@@ -8610,6 +8610,29 @@
     "status": "품",
     "title": "단 한 번의 2048 시도",
     "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "17:23:56",
+    "attempts": [
+     {
+      "at": "17:23:56",
+      "elapsed": 0.288,
+      "file": "swea/5215_햄버거다이어트D3.py",
+      "passed": 1,
+      "status": "품",
+      "total": 1,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.288,
+    "file": "swea/5215_햄버거다이어트D3.py",
+    "no": "5215",
+    "passed": 1,
+    "site": "SWEA",
+    "status": "품",
+    "title": "햄버거 다이어트 D3",
+    "total": 1,
     "verdict": "accepted"
    }
   ]
