@@ -8457,7 +8457,7 @@
   ]
  },
  "2026-09-30": {
-  "count": 5,
+  "count": 6,
   "items": [
    {
     "at": "09:25:08",
@@ -8564,6 +8564,29 @@
     "status": "틀림",
     "title": "선 긋기",
     "total": 17,
+    "verdict": "accepted"
+   },
+   {
+    "at": "12:19:39",
+    "attempts": [
+     {
+      "at": "12:19:39",
+      "elapsed": 1.031,
+      "file": "codetree/12_벽짚고미로탈출하기.py",
+      "passed": 4,
+      "status": "품",
+      "total": 4,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 1.031,
+    "file": "codetree/12_벽짚고미로탈출하기.py",
+    "no": "12",
+    "passed": 4,
+    "site": "CT",
+    "status": "품",
+    "title": "벽 짚고 미로 탈출하기",
+    "total": 4,
     "verdict": "accepted"
    }
   ]

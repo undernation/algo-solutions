@@ -2,12 +2,14 @@
 CT 12  벽 짚고 미로 탈출하기
 https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-escape-maze-with-wall-following/description
 
-풀이일 : 2026-09-27   결과: 틀림
+풀이일 : 2026-09-30   결과: 품
 한도   : time Python3 1초 · C++17 0.5초 / memory 128 MB / time_sec 1
 난이도 : Medium  |  정답률 30.7%
 제약   : - $1 \le x < N$
 제약   : - $1 \le y \le N$
 제약   : - $2 \le N \le 100$
+
+[채점] accepted  4/4  (1.031s)
 
 [문제]
 $N \times N$ 크기의 격자 안에서 주어진 위치에서 우측 방향을 바라보고 시작하여 오른쪽 벽을 짚고 쭉 따라가는 방식으로 미로를 탈출하는 프로그램을 작성해보세요. 규칙에 맞게 이동하다 격자 밖을 벗어났을 때 미로를 탈출 한 것으로 봅니다.
@@ -110,98 +112,100 @@ for i in range(N):
 
 # Please write your code here.
 
-x -= 1
-y -= 1
-visited = set()
-DIR = [[1, 0], [-1, 0], [0, 1], [0, -1]]
-visited.add((y, x, 2))
+sx = x - 1
+sy = y - 1
 
-DIR_DICT2 = {
-    0: 2,
-    1: 3,
-    2: 1,
+# 동 남 서 북
+directions = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+
+right_directions = {
+    0: 1,
+    1: 2,
+    2: 3,
     3: 0
 }
 
-DIR_DICT = {
-    0: 3,
-    1: 2,
-    2: 0,
-    3: 1
-}
 
-
-# 현재 방향으로 이동 가능한지 확인
-def check(cy, cx, cur_direction):
-    dy, dx = DIR[cur_direction]
-    ny = cy + dy
+# 이동가능한지 확인
+def check(cx, cy, cd):
+    dx, dy = directions[cd]
     nx = cx + dx
+    ny = cy + dy
 
-    if not (0 <= ny < N and 0 <= nx < N):
+    if not (0 <= nx < N and 0 <= ny < N):
         return "escaped"
-    elif grid[ny][nx] == "#":
-        return "no"
-    elif grid[ny][nx] == ".":
-        return "yes"
+
+    if grid[nx][ny] == "#":
+        return "imp"
+    else:
+        return "pos"
 
 
+def check_right(cx, cy, cd):
+    nd = right_directions[cd]
+
+    dx, dy = directions[nd]
+
+    nx = cx + dx
+    ny = cy + dy
+
+    if grid[nx][ny] == "#":
+        return True
+    else:
+        return False
+
+
+cx, cy = sx, sy
+cd = 0
+
+start_check = (cx, cy, cd)
 time = 0
 
 
-# 이동 후에 오른쪽에 벽 있는지 확인, 벽없으면 90도 틀어서 한칸 전진
-def after_moved(cy, cx, cur_direction):
-    global time
-    right_dir = DIR_DICT[cur_direction]
-    dy, dx = DIR[right_dir]
-
-    ny = cy + dy
-    nx = cx + dx
-    if grid[ny][nx] == "#":
-        return cy, cx, cur_direction
+def visited_check(cx, cy, cd):
+    global start_check, time
+    if (cx, cy, cd) == start_check:
+        time = -1
+        return True
     else:
-        time += 1
-        return ny, nx, right_dir
+        return False
 
 
-cy, cx = y, x
-cd = 2
-# print("start", cy, cx)
+
+
 while True:
-    # print("debug", cy, cx)
-    ret = check(cy, cx, cd)
+    ret = check(cx, cy, cd)
+    # print(cx, cy)
     if ret == "escaped":
         time += 1
         break
-    elif ret == "yes":
-        dy, dx = DIR[cd]
-        cy = cy + dy
-        cx = cx + dx
-        if (cy, cx, cd) in visited:
-            time = -1
+    elif ret == "imp":
+        cd = (cd + 3) % 4
+        if visited_check(cx, cy, cd):
             break
-        time += 1
-        visited.add((cy, cx, cd))
-    elif ret == "no":
-        cd = DIR_DICT2[cd]
-        if (cy, cx, cd) in visited:
-            time = -1
-            break
-        visited.add((cy, cx, cd))
         continue
+    else:
+        dx, dy = directions[cd]
+        nx = cx + dx
+        ny = cy + dy
+        time += 1
+        cx = nx
+        cy = ny
 
-    if ret == "yes":
-        # print("yes", cy, cx)
-        ny, nx, nd = after_moved(cy, cx, cd)
-        if (cy, cx, cd) != (ny, nx, nd):
-            if (ny, nx, nd) in visited:
-                time = -1
-                break
-
-        if not (0 <= ny < N and 0 <= nx < N):
+        if visited_check(cx, cy, cd):
             break
 
-        cy, cx, cd = ny, nx, nd
+        # 이동 후 오른쪽 확인
+        if not check_right(cx, cy, cd):
+            time += 1
+            cd = (cd + 1) % 4
+            dx, dy = directions[cd]
+            nx = cx + dx
+            ny = cy + dy
+            cx = nx
+            cy = ny
 
-        visited.add((cy, cx, cd))
+            if visited_check(cx, cy, cd):
+                break
 
 print(time)
