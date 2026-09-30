@@ -8457,7 +8457,7 @@
   ]
  },
  "2026-09-30": {
-  "count": 6,
+  "count": 7,
   "items": [
    {
     "at": "09:25:08",
@@ -8587,6 +8587,29 @@
     "status": "품",
     "title": "벽 짚고 미로 탈출하기",
     "total": 4,
+    "verdict": "accepted"
+   },
+   {
+    "at": "17:03:42",
+    "attempts": [
+     {
+      "at": "17:03:42",
+      "elapsed": 0.524,
+      "file": "codetree/87_단한번의2048시도.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.524,
+    "file": "codetree/87_단한번의2048시도.py",
+    "no": "87",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "단 한 번의 2048 시도",
+    "total": 2,
     "verdict": "accepted"
    }
   ]

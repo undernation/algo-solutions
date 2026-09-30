@@ -2,13 +2,13 @@
 CT 87  단 한 번의 2048 시도
 https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-one-trial-of-2048-game/description
 
-풀이일 : 2026-09-26   결과: 못품
+풀이일 : 2026-09-30   결과: 품
 한도   : time Python3 1초 · C++17 0.5초 / memory 64 MB / time_sec 1
 난이도 : Medium  |  정답률 59.4%
 제약   : - 격자에 주어진 값은 $0$ 또는 $2$ 이상 $2048$ 이하의 $2$의 거듭제곱입니다.
 제약   : - $dir$은 `L`, `R`, `U`, `D` 중 하나입니다.
 
-[채점] accepted  2/2  (0.571s)
+[채점] accepted  2/2  (0.524s)
 
 [문제]
 $2048$게임은 $4 \times 4$ 격자 안에서 이루어지는 게임입니다. 이 $2048$ 게임에서는 상하좌우 중 한 방향을 정하게 되면, 모든 값들이 해당 방향으로 전부 밀리게 됩니다.
@@ -66,57 +66,102 @@ L
 
 """
 
+# Read 4x4 grid
 grid = [list(map(int, input().split())) for _ in range(4)]
-direction = input()
 
-N = 4
+# Read direction
+dir = input()
 
+# Please write your code here.
 
-def merge(line):
-    nums = [x for x in line if x != 0]
+def change(num_list):
+    new_list = []
 
-    result = []
-    i = 0
+    # 0 아닌것만 모으기
+    for num in num_list:
+        if num != 0:
+            new_list.append(num)
 
-    while i < len(nums):
-        if i + 1 < len(nums) and nums[i] == nums[i + 1]:
-            result.append(nums[i] * 2)
-            i += 2
+    calced_list = []
+    N = len(new_list)
+    if len(new_list) == 0:
+        return [0, 0, 0, 0]
+    cur_num = new_list[0]
+    cnt = 1
+
+    for idx in range(1, N):
+        nxt_num = new_list[idx]
+
+        if cur_num != nxt_num:
+            calced_list.append((cur_num, cnt))
+            cur_num = nxt_num
+            cnt = 1
         else:
-            result.append(nums[i])
-            i += 1
+            cnt += 1
 
-    result += [0] * (N - len(result))
-    return result
+    calced_list.append((cur_num, cnt))
 
+    final_list = []
+    # print("calced list", calced_list)
+    for num, cnt in calced_list:
+        mok = cnt // 2
+        rest = cnt % 2
 
-new_grid = [[0] * N for _ in range(N)]
+        for i in range(mok):
+            final_list.append(num * 2)
 
-if direction == "L":
-    for i in range(N):
-        new_grid[i] = merge(grid[i])
+        for i in range(rest):
+            final_list.append(num)
 
-elif direction == "R":
-    for i in range(N):
-        line = grid[i][::-1]
-        new_grid[i] = merge(line)[::-1]
-
-elif direction == "U":
-    for j in range(N):
-        line = [grid[i][j] for i in range(N)]
-        merged = merge(line)
-
-        for i in range(N):
-            new_grid[i][j] = merged[i]
-
-elif direction == "D":
-    for j in range(N):
-        line = [grid[i][j] for i in range(N - 1, -1, -1)]
-        merged = merge(line)
-
-        for i in range(N):
-            new_grid[N - 1 - i][j] = merged[i]
+    final_ret = final_list + [0] * (4 - len(final_list))
+    # print("final_ret", final_ret)
+    return final_ret
 
 
-for row in new_grid:
-    print(*row)
+def calc(direction):
+    if direction == "L":
+        for i in range(4):
+            cur_list = []
+            for j in range(4):
+                cur_list.append(grid[i][j])
+            ret = change(cur_list)
+
+            for j in range(4):
+                grid[i][j] = ret[j]
+
+    elif direction == "R":
+        for i in range(4):
+            cur_list = []
+            for j in range(3, -1, -1):
+                cur_list.append(grid[i][j])
+            ret = change(cur_list)
+            ret.reverse()
+            for j in range(3, -1, -1):
+                grid[i][j] = ret[j]
+
+    elif direction == "U":
+        # print("wow")
+        for j in range(4):
+            cur_list = []
+            for i in range(4):
+                cur_list.append(grid[i][j])
+            # print(cur_list)
+            ret = change(cur_list)
+
+            for i in range(4):
+                grid[i][j] = ret[i]
+
+    else:
+        for j in range(4):
+            cur_list = []
+            for i in range(3, -1, -1):
+                cur_list.append(grid[i][j])
+            ret = change(cur_list)
+            ret.reverse()
+            for i in range(3, -1, -1):
+                grid[i][j] = ret[i]
+
+
+calc(dir)
+for i in grid:
+    print(*i)
