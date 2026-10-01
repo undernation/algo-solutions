@@ -8661,7 +8661,7 @@
   ]
  },
  "2026-10-01": {
-  "count": 3,
+  "count": 4,
   "items": [
    {
     "at": "14:38:56",
@@ -8731,6 +8731,21 @@
     "title": "알파벳과 사칙연산",
     "total": 3,
     "verdict": "accepted"
+   },
+   {
+    "at": "17:48:23",
+    "attempts": [
+     {
+      "at": "17:48:23",
+      "file": "codetree/13_벽이있는충돌실험.py",
+      "status": "못품"
+     }
+    ],
+    "file": "codetree/13_벽이있는충돌실험.py",
+    "no": "13",
+    "site": "CT",
+    "status": "못품",
+    "title": "벽이 있는 충돌 실험"
    }
   ]
  }

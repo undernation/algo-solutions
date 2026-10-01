@@ -2,7 +2,7 @@
 CT 13  벽이 있는 충돌 실험
 https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-collision-experiment-with-wall/description
 
-풀이일 : 2026-09-28   결과: 시간초과
+풀이일 : 2026-10-01   결과: 못품
 한도   : time Python3 7초 · C++17 1초 / memory 128 MB / time_sec 7
 난이도 : Medium  |  정답률 36.6%
 제약   : - $1 \le T \le 100$
@@ -11,8 +11,6 @@ https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-collision-exp
 제약   : - $1 \le x \le N$
 제약   : - $1  \le y \le N$
 제약   : - 처음부터 구슬이 겹쳐져 주어지는 경우는 없다고 가정해도 좋습니다.
-
-[채점] accepted  2/2  (0.566s)
 
 [문제]
 $M$개의 구슬이 $N \times N$ 격자 안에 놓여져 있고, 격자는 벽으로 둘러싸여 있습니다.
