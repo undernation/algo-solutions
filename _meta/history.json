@@ -8661,7 +8661,7 @@
   ]
  },
  "2026-10-01": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "14:38:56",
@@ -8683,6 +8683,29 @@
     "site": "CT",
     "status": "품",
     "title": "사다리 타기",
+    "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "15:34:34",
+    "attempts": [
+     {
+      "at": "15:34:34",
+      "elapsed": 0.598,
+      "file": "codetree/25_2명의도둑.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.598,
+    "file": "codetree/25_2명의도둑.py",
+    "no": "25",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "2명의 도둑",
     "total": 2,
     "verdict": "accepted"
    }
