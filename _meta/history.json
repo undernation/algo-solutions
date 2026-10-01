@@ -8661,7 +8661,7 @@
   ]
  },
  "2026-10-01": {
-  "count": 2,
+  "count": 3,
   "items": [
    {
     "at": "14:38:56",
@@ -8707,6 +8707,29 @@
     "status": "품",
     "title": "2명의 도둑",
     "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "16:38:31",
+    "attempts": [
+     {
+      "at": "16:38:31",
+      "elapsed": 1.081,
+      "file": "codetree/106_알파벳과사칙연산.py",
+      "passed": 3,
+      "status": "틀림",
+      "total": 3,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 1.081,
+    "file": "codetree/106_알파벳과사칙연산.py",
+    "no": "106",
+    "passed": 3,
+    "site": "CT",
+    "status": "틀림",
+    "title": "알파벳과 사칙연산",
+    "total": 3,
     "verdict": "accepted"
    }
   ]
