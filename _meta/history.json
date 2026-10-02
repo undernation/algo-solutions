@@ -8748,5 +8748,33 @@
     "title": "벽이 있는 충돌 실험"
    }
   ]
+ },
+ "2026-10-02": {
+  "count": 1,
+  "items": [
+   {
+    "at": "09:32:15",
+    "attempts": [
+     {
+      "at": "09:32:15",
+      "elapsed": 0.599,
+      "file": "codetree/28_특정조건에맞게K개중에1개를N번뽑기.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.599,
+    "file": "codetree/28_특정조건에맞게K개중에1개를N번뽑기.py",
+    "no": "28",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "특정 조건에 맞게 K개 중에 1개를 N번 뽑기",
+    "total": 2,
+    "verdict": "accepted"
+   }
+  ]
  }
 }
