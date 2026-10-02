@@ -8750,7 +8750,7 @@
   ]
  },
  "2026-10-02": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "09:32:15",
@@ -8772,6 +8772,29 @@
     "site": "CT",
     "status": "품",
     "title": "특정 조건에 맞게 K개 중에 1개를 N번 뽑기",
+    "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "09:56:17",
+    "attempts": [
+     {
+      "at": "09:56:17",
+      "elapsed": 0.63,
+      "file": "codetree/107_1차원윷놀이.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.63,
+    "file": "codetree/107_1차원윷놀이.py",
+    "no": "107",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "1차원 윷놀이",
     "total": 2,
     "verdict": "accepted"
    }
