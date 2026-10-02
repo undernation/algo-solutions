@@ -8750,7 +8750,7 @@
   ]
  },
  "2026-10-02": {
-  "count": 2,
+  "count": 3,
   "items": [
    {
     "at": "09:32:15",
@@ -8795,6 +8795,29 @@
     "site": "CT",
     "status": "품",
     "title": "1차원 윷놀이",
+    "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "16:17:41",
+    "attempts": [
+     {
+      "at": "16:17:41",
+      "elapsed": 0.602,
+      "file": "codetree/109_방향에맞춰최대로움직이기.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.602,
+    "file": "codetree/109_방향에맞춰최대로움직이기.py",
+    "no": "109",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "방향에 맞춰 최대로 움직이기",
     "total": 2,
     "verdict": "accepted"
    }
