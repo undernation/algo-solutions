@@ -8839,7 +8839,7 @@
   ]
  },
  "2026-10-03": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "10:01:11",
@@ -8861,6 +8861,29 @@
     "site": "CT",
     "status": "품",
     "title": "최소 점프 횟수",
+    "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "10:28:11",
+    "attempts": [
+     {
+      "at": "10:28:11",
+      "elapsed": 0.52,
+      "file": "codetree/21_N개중에M개뽑기.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.52,
+    "file": "codetree/21_N개중에M개뽑기.py",
+    "no": "21",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "N개 중에 M개 뽑기",
     "total": 2,
     "verdict": "accepted"
    }
