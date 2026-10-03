@@ -8839,7 +8839,7 @@
   ]
  },
  "2026-10-03": {
-  "count": 4,
+  "count": 5,
   "items": [
    {
     "at": "10:01:11",
@@ -8930,6 +8930,29 @@
     "site": "CT",
     "status": "품",
     "title": "단순한 동전 챙기기",
+    "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "11:31:26",
+    "attempts": [
+     {
+      "at": "11:31:26",
+      "elapsed": 0.525,
+      "file": "codetree/101_2N개중에N개의정수를적절하게고르기.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.525,
+    "file": "codetree/101_2N개중에N개의정수를적절하게고르기.py",
+    "no": "101",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "2N개 중에 N개의 정수를 적절하게 고르기",
     "total": 2,
     "verdict": "accepted"
    }
