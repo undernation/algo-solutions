@@ -8839,7 +8839,7 @@
   ]
  },
  "2026-10-03": {
-  "count": 2,
+  "count": 3,
   "items": [
    {
     "at": "10:01:11",
@@ -8885,6 +8885,29 @@
     "status": "품",
     "title": "N개 중에 M개 뽑기",
     "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "10:46:00",
+    "attempts": [
+     {
+      "at": "10:46:00",
+      "elapsed": 0.231,
+      "file": "codetree/22_XOR결과최대만들기.py",
+      "passed": 1,
+      "status": "품",
+      "total": 1,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.231,
+    "file": "codetree/22_XOR결과최대만들기.py",
+    "no": "22",
+    "passed": 1,
+    "site": "CT",
+    "status": "품",
+    "title": "XOR 결과 최대 만들기",
+    "total": 1,
     "verdict": "accepted"
    }
   ]
