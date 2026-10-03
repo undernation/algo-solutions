@@ -8839,7 +8839,7 @@
   ]
  },
  "2026-10-03": {
-  "count": 3,
+  "count": 4,
   "items": [
    {
     "at": "10:01:11",
@@ -8908,6 +8908,29 @@
     "status": "품",
     "title": "XOR 결과 최대 만들기",
     "total": 1,
+    "verdict": "accepted"
+   },
+   {
+    "at": "11:19:18",
+    "attempts": [
+     {
+      "at": "11:19:18",
+      "elapsed": 0.511,
+      "file": "codetree/100_단순한동전챙기기.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.511,
+    "file": "codetree/100_단순한동전챙기기.py",
+    "no": "100",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "단순한 동전 챙기기",
+    "total": 2,
     "verdict": "accepted"
    }
   ]
