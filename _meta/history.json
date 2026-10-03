@@ -8837,5 +8837,33 @@
     "title": "가능한 수열 중 최솟값 구하기"
    }
   ]
+ },
+ "2026-10-03": {
+  "count": 1,
+  "items": [
+   {
+    "at": "10:01:11",
+    "attempts": [
+     {
+      "at": "10:01:11",
+      "elapsed": 0.543,
+      "file": "codetree/110_최소점프횟수.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.543,
+    "file": "codetree/110_최소점프횟수.py",
+    "no": "110",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "최소 점프 횟수",
+    "total": 2,
+    "verdict": "accepted"
+   }
+  ]
  }
 }
