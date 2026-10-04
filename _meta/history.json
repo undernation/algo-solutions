@@ -8959,7 +8959,7 @@
   ]
  },
  "2026-10-04": {
-  "count": 2,
+  "count": 3,
   "items": [
    {
     "at": "11:20:37",
@@ -9004,6 +9004,29 @@
     "site": "CT",
     "status": "품",
     "title": "크기가 N인 순열",
+    "total": 1,
+    "verdict": "accepted"
+   },
+   {
+    "at": "11:51:05",
+    "attempts": [
+     {
+      "at": "11:51:05",
+      "elapsed": 0.28,
+      "file": "codetree/2427_거꾸로순열.py",
+      "passed": 1,
+      "status": "품",
+      "total": 1,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.28,
+    "file": "codetree/2427_거꾸로순열.py",
+    "no": "2427",
+    "passed": 1,
+    "site": "CT",
+    "status": "품",
+    "title": "거꾸로 순열",
     "total": 1,
     "verdict": "accepted"
    }
