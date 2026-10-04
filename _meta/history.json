@@ -8959,7 +8959,7 @@
   ]
  },
  "2026-10-04": {
-  "count": 6,
+  "count": 7,
   "items": [
    {
     "at": "11:20:37",
@@ -9082,6 +9082,29 @@
     "site": "CT",
     "status": "시간초과",
     "title": "수들 중 최솟값 최대화하기"
+   },
+   {
+    "at": "13:52:17",
+    "attempts": [
+     {
+      "at": "13:52:17",
+      "elapsed": 0.507,
+      "file": "codetree/13_벽이있는충돌실험.py",
+      "passed": 2,
+      "status": "시간초과",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.507,
+    "file": "codetree/13_벽이있는충돌실험.py",
+    "no": "13",
+    "passed": 2,
+    "site": "CT",
+    "status": "시간초과",
+    "title": "벽이 있는 충돌 실험",
+    "total": 2,
+    "verdict": "accepted"
    }
   ]
  }
