@@ -8959,7 +8959,7 @@
   ]
  },
  "2026-10-04": {
-  "count": 4,
+  "count": 5,
   "items": [
    {
     "at": "11:20:37",
@@ -9052,6 +9052,21 @@
     "title": "수들의 합 최대화하기",
     "total": 1,
     "verdict": "accepted"
+   },
+   {
+    "at": "12:31:49",
+    "attempts": [
+     {
+      "at": "12:31:49",
+      "file": "codetree/1665_외판원순회.py",
+      "status": "틀림"
+     }
+    ],
+    "file": "codetree/1665_외판원순회.py",
+    "no": "1665",
+    "site": "CT",
+    "status": "틀림",
+    "title": "외판원 순회"
    }
   ]
  }

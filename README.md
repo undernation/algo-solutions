@@ -138,10 +138,10 @@ python _meta/fetch_swea.py <contestProbId> --json
 
 | | |
 |---|---|
-| 총 풀이 | 122 |
+| 총 풀이 | 123 |
 | BOJ | 26 |
 | SWEA | 50 |
-| CT | 46 |
+| CT | 47 |
 
 <!-- INDEX_START -->
 | 사이트 | 번호 | 제목 | 결과 | 풀이일 | 분류 |
@@ -149,6 +149,7 @@ python _meta/fetch_swea.py <contestProbId> --json
 | CT | [2491](codetree/2491_수들의합최대화하기.py) | 수들의 합 최대화하기 | 품 | 2026-10-04 |  |
 | CT | [2490](codetree/2490_크기가N인순열.py) | 크기가 N인 순열 | 품 | 2026-10-04 |  |
 | CT | [2427](codetree/2427_거꾸로순열.py) | 거꾸로 순열 | 품 | 2026-10-04 |  |
+| CT | [1665](codetree/1665_외판원순회.py) | 외판원 순회 | 틀림 | 2026-10-04 |  |
 | CT | [102](codetree/102_N개의점중M개고르기.py) | N개의 점 중 M개 고르기 | 품 | 2026-10-04 |  |
 | CT | [22](codetree/22_XOR결과최대만들기.py) | XOR 결과 최대 만들기 | 품 | 2026-10-03 |  |
 | CT | [21](codetree/21_N개중에M개뽑기.py) | N개 중에 M개 뽑기 | 품 | 2026-10-03 |  |
