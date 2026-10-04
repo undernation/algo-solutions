@@ -2,14 +2,14 @@
 CT 106  알파벳과 사칙연산
 https://www.codetree.ai/ko/trails/complete/curated-cards/test-calculations-with-alphabet/description
 
-풀이일 : 2026-10-01   결과: 틀림
+풀이일 : 2026-10-04   결과: 품
 한도   : time Python3 1초 · C++17 0.5초 / memory 128 MB / time_sec 1
 난이도 : Medium  |  정답률 44.6%
 제약   : - $1 \le N \le 200$
 제약   : - 계산 도중 값이 항상 $-2^{31}$이상 $2^{31} - 1$이하를 벗어나지 않음을 가정해도 좋습니다.
 제약   : - 식은 `a`에서 `f`까지의 소문자 알파벳과 $+$, $-$, $*$ 기호만으로 이루어져 있습니다. 알파벳이나 연산자가 연속하여 $2$번 이상 나타나는 경우 없이 항상 번갈아가며 주어지며, 식의 시작과 마지막에는 반드시 알파벳이 입력된다고 가정해도 좋습니다.
 
-[채점] accepted  3/3  (1.081s)
+[채점] accepted  3/3  (1.083s)
 
 [문제]
 `a`에서 `f`까지의 소문자 알파벳과 $+$, $-$, $*$ 기호만으로 이루어져 있는 길이가 $N$인 식이 하나 주어집니다. 
@@ -45,55 +45,43 @@ a+e
 
 expression = input()
 
-
 # Please write your code here.
 
 def calc(num1, method, num2):
     if method == "+":
-        return int(num1) + int(num2)
+        return num1 + num2
     elif method == "-":
-        return int(num1) - int(num2)
-    elif method == "*":
-        return int(num1) * int(num2)
+        return num1 - num2
+    else:
+        return num1 * num2
 
+def decoder(ch):
+    return ord(ch) - ord("a")
 
-def decode(alpha):
-    return ord(alpha) - ord("a")
-
-
-def calc_total(exp):
-    global numbers
+def calc_total(exp, num_list):
     if len(exp) == 1:
-        return numbers[decode(exp[0])]
-    first_ret = calc(numbers[decode(exp[0])], exp[1], numbers[decode(exp[2])])
+        return num_list[decoder(exp)]
 
-    for idx in range(2, len(exp) - 2, 2):
-        ret = calc(first_ret, exp[idx + 1], numbers[decode(exp[idx + 2])])
-        first_ret = ret
-
-    return first_ret
+    first_val = calc(num_list[decoder(exp[0])], exp[1], num_list[decoder(exp[2])])
+    for idx in range(2, len(exp) - 1, 2):
+        first_val = calc(first_val, exp[idx + 1], num_list[decoder(exp[idx + 2])])
+    return first_val
 
 
 answer = -10 ** 18
-numbers = []
 
-
+num_list = []
 
 def dfs(idx):
-    global answer, numbers
+    global answer
     if idx == 6:
-        # 알파벳 계산 연산
-        answer = max(answer, calc_total(expression))
+        answer = max(answer, calc_total(expression, num_list))
+        # print("wow")
         return
 
-    for i in range(1, 5):
-        numbers.append(i)
-
+    for num in range(1, 5):
+        num_list.append(num)
         dfs(idx + 1)
-
-        numbers.pop()
-
-
+        num_list.pop()
 dfs(0)
-
 print(answer)
