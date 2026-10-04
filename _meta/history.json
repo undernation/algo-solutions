@@ -8959,7 +8959,7 @@
   ]
  },
  "2026-10-04": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "11:20:37",
@@ -8982,6 +8982,29 @@
     "status": "품",
     "title": "N개의 점 중 M개 고르기",
     "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "11:47:55",
+    "attempts": [
+     {
+      "at": "11:47:55",
+      "elapsed": 0.278,
+      "file": "codetree/2490_크기가N인순열.py",
+      "passed": 1,
+      "status": "품",
+      "total": 1,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.278,
+    "file": "codetree/2490_크기가N인순열.py",
+    "no": "2490",
+    "passed": 1,
+    "site": "CT",
+    "status": "품",
+    "title": "크기가 N인 순열",
+    "total": 1,
     "verdict": "accepted"
    }
   ]
