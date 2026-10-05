@@ -9132,7 +9132,7 @@
   ]
  },
  "2026-10-05": {
-  "count": 6,
+  "count": 7,
   "items": [
    {
     "at": "11:34:00",
@@ -9270,6 +9270,29 @@
     "status": "품",
     "title": "네 방향 탈출 가능 여부 판별하기",
     "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "13:14:40",
+    "attempts": [
+     {
+      "at": "13:14:40",
+      "elapsed": 0.796,
+      "file": "codetree/29_가능한수열중최솟값구하기.py",
+      "passed": 3,
+      "status": "품",
+      "total": 3,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.796,
+    "file": "codetree/29_가능한수열중최솟값구하기.py",
+    "no": "29",
+    "passed": 3,
+    "site": "CT",
+    "status": "품",
+    "title": "가능한 수열 중 최솟값 구하기",
+    "total": 3,
     "verdict": "accepted"
    }
   ]
