@@ -9132,7 +9132,7 @@
   ]
  },
  "2026-10-05": {
-  "count": 5,
+  "count": 6,
   "items": [
    {
     "at": "11:34:00",
@@ -9247,6 +9247,29 @@
     "status": "품",
     "title": "뿌요뿌요",
     "total": 3,
+    "verdict": "accepted"
+   },
+   {
+    "at": "12:53:05",
+    "attempts": [
+     {
+      "at": "12:53:05",
+      "elapsed": 0.711,
+      "file": "codetree/33_네방향탈출가능여부판별하기.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.711,
+    "file": "codetree/33_네방향탈출가능여부판별하기.py",
+    "no": "33",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "네 방향 탈출 가능 여부 판별하기",
+    "total": 2,
     "verdict": "accepted"
    }
   ]
