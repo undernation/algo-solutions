@@ -9132,7 +9132,7 @@
   ]
  },
  "2026-10-05": {
-  "count": 4,
+  "count": 5,
   "items": [
    {
     "at": "11:34:00",
@@ -9224,6 +9224,29 @@
     "status": "품",
     "title": "안전 지대",
     "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "12:43:04",
+    "attempts": [
+     {
+      "at": "12:43:04",
+      "elapsed": 0.807,
+      "file": "codetree/111_뿌요뿌요.py",
+      "passed": 3,
+      "status": "품",
+      "total": 3,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.807,
+    "file": "codetree/111_뿌요뿌요.py",
+    "no": "111",
+    "passed": 3,
+    "site": "CT",
+    "status": "품",
+    "title": "뿌요뿌요",
+    "total": 3,
     "verdict": "accepted"
    }
   ]
