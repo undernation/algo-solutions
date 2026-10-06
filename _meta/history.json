@@ -9298,7 +9298,7 @@
   ]
  },
  "2026-10-06": {
-  "count": 3,
+  "count": 4,
   "items": [
    {
     "at": "10:39:21",
@@ -9366,6 +9366,29 @@
     "site": "CT",
     "status": "품",
     "title": "돌 잘 치우기",
+    "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "13:33:18",
+    "attempts": [
+     {
+      "at": "13:33:18",
+      "elapsed": 0.696,
+      "file": "codetree/55_빙하.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.696,
+    "file": "codetree/55_빙하.py",
+    "no": "55",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "빙하",
     "total": 2,
     "verdict": "accepted"
    }
