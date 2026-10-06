@@ -9298,7 +9298,7 @@
   ]
  },
  "2026-10-06": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "10:39:21",
@@ -9320,6 +9320,29 @@
     "site": "CT",
     "status": "품",
     "title": "갈 수 있는 곳들",
+    "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "11:13:49",
+    "attempts": [
+     {
+      "at": "11:13:49",
+      "elapsed": 0.759,
+      "file": "codetree/113_K번최댓값으로이동하기.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.759,
+    "file": "codetree/113_K번최댓값으로이동하기.py",
+    "no": "113",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "K번 최댓값으로 이동하기",
     "total": 2,
     "verdict": "accepted"
    }
