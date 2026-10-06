@@ -9296,5 +9296,33 @@
     "verdict": "accepted"
    }
   ]
+ },
+ "2026-10-06": {
+  "count": 1,
+  "items": [
+   {
+    "at": "10:39:21",
+    "attempts": [
+     {
+      "at": "10:39:21",
+      "elapsed": 0.697,
+      "file": "codetree/112_갈수있는곳들.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.697,
+    "file": "codetree/112_갈수있는곳들.py",
+    "no": "112",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "갈 수 있는 곳들",
+    "total": 2,
+    "verdict": "accepted"
+   }
+  ]
  }
 }
