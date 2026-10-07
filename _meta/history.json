@@ -9418,7 +9418,7 @@
   ]
  },
  "2026-10-07": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "15:35:36",
@@ -9440,6 +9440,29 @@
     "site": "CT",
     "status": "품",
     "title": "최소 경로로 탈출하기",
+    "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "15:53:15",
+    "attempts": [
+     {
+      "at": "15:53:15",
+      "elapsed": 0.709,
+      "file": "codetree/116_나이트.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.709,
+    "file": "codetree/116_나이트.py",
+    "no": "116",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "나이트",
     "total": 2,
     "verdict": "accepted"
    }
