@@ -9418,7 +9418,7 @@
   ]
  },
  "2026-10-07": {
-  "count": 2,
+  "count": 3,
   "items": [
    {
     "at": "15:35:36",
@@ -9463,6 +9463,29 @@
     "site": "CT",
     "status": "품",
     "title": "나이트",
+    "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "16:23:40",
+    "attempts": [
+     {
+      "at": "16:23:40",
+      "elapsed": 0.693,
+      "file": "codetree/118_비를피하기.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.693,
+    "file": "codetree/118_비를피하기.py",
+    "no": "118",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "비를 피하기",
     "total": 2,
     "verdict": "accepted"
    }
