@@ -9536,5 +9536,33 @@
     "verdict": "accepted"
    }
   ]
+ },
+ "2026-10-08": {
+  "count": 1,
+  "items": [
+   {
+    "at": "21:27:58",
+    "attempts": [
+     {
+      "at": "21:27:58",
+      "elapsed": 0.697,
+      "file": "codetree/119_상한귤.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.697,
+    "file": "codetree/119_상한귤.py",
+    "no": "119",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "상한 귤",
+    "total": 2,
+    "verdict": "accepted"
+   }
+  ]
  }
 }
