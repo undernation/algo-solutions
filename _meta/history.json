@@ -9538,7 +9538,7 @@
   ]
  },
  "2026-10-08": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "21:27:58",
@@ -9560,6 +9560,29 @@
     "site": "CT",
     "status": "품",
     "title": "상한 귤",
+    "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "21:50:26",
+    "attempts": [
+     {
+      "at": "21:50:26",
+      "elapsed": 0.51,
+      "file": "codetree/2494_계단오르기.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.51,
+    "file": "codetree/2494_계단오르기.py",
+    "no": "2494",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "계단 오르기",
     "total": 2,
     "verdict": "accepted"
    }
