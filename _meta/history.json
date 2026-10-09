@@ -9627,7 +9627,7 @@
   ]
  },
  "2026-10-09": {
-  "count": 3,
+  "count": 4,
   "items": [
    {
     "at": "10:21:10",
@@ -9687,6 +9687,29 @@
     "site": "CT",
     "status": "품",
     "title": "정수 사각형 최대 합",
+    "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "11:41:23",
+    "attempts": [
+     {
+      "at": "11:41:23",
+      "elapsed": 0.503,
+      "file": "codetree/2495_정수사각형최소합.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.503,
+    "file": "codetree/2495_정수사각형최소합.py",
+    "no": "2495",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "정수 사각형 최소 합",
     "total": 2,
     "verdict": "accepted"
    }
