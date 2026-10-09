@@ -2,7 +2,7 @@
 CT 13  벽이 있는 충돌 실험
 https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-collision-experiment-with-wall/description
 
-풀이일 : 2026-10-04   결과: 시간초과
+풀이일 : 2026-10-09   결과: 품
 한도   : time Python3 7초 · C++17 1초 / memory 128 MB / time_sec 7
 난이도 : Medium  |  정답률 36.6%
 제약   : - $1 \le T \le 100$
@@ -12,7 +12,7 @@ https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-collision-exp
 제약   : - $1  \le y \le N$
 제약   : - 처음부터 구슬이 겹쳐져 주어지는 경우는 없다고 가정해도 좋습니다.
 
-[채점] accepted  2/2  (0.507s)
+[채점] accepted  2/2  (0.517s)
 
 [문제]
 $M$개의 구슬이 $N \times N$ 격자 안에 놓여져 있고, 격자는 벽으로 둘러싸여 있습니다.
@@ -73,20 +73,16 @@ $M$개의 구슬이 $N \times N$ 격자 안에 놓여져 있고, 격자는 벽�
 
 """
 
-import sys
-
-input = sys.stdin.readline
-
 T = int(input())
 
-dir_dict = {
+DIR = {
     "U": (-1, 0),
     "D": (1, 0),
     "R": (0, 1),
-    "L": (0, -1),
+    "L": (0, -1)
 }
 
-reverse_dict = {
+REVERSED_DIR = {
     "U": "D",
     "D": "U",
     "R": "L",
@@ -96,46 +92,40 @@ reverse_dict = {
 for _ in range(T):
     N, M = map(int, input().split())
 
-    marbles = []
-
+    marvels = []
     for _ in range(M):
-        x, y, d = input().split()
-        marbles.append((int(x), int(y), d))
+        xi, yi, di = input().split()
+        xi = int(xi)
+        yi = int(yi)
+        xi -= 1
+        yi -= 1
+        marvels.append((int(xi), int(yi), di))
 
-    for _ in range(2 * N):
+    # Please write your code here.
 
-        cnt_dict = {}
-        new_marbles = []
+    for time in range(1, 2 * N + 1):
+        cnt_board = dict()
 
-        for x, y, d in marbles:
-            dx, dy = dir_dict[d]
+        new_marvels = []
 
-            nx = x + dx
+        for y, x, direction in marvels:
+            dy, dx = DIR[direction]
             ny = y + dy
-
-            if not (1 <= nx <= N and 1 <= ny <= N):
-                nx = x
+            nx = x + dx
+            nd = direction
+            if not (0 <= ny < N and 0 <= nx < N):
                 ny = y
-                nd = reverse_dict[d]
+                nx = x
+                nd = REVERSED_DIR[direction]
+
+            new_marvels.append((ny, nx, nd))
+            key = (ny, nx)
+            if key not in cnt_board:
+                cnt_board[key] = 1
             else:
-                nd = d
+                cnt_board[key] += 1
 
-            key = (nx, ny)
-
-            if key not in cnt_dict:
-                cnt_dict[key] = 1
-            else:
-                cnt_dict[key] += 1
-
-            new_marbles.append((nx, ny, nd))
-
-        marbles = [
-            (x, y, d)
-            for x, y, d in new_marbles
-            if cnt_dict[(x, y)] == 1
-        ]
-
-        if len(marbles) <= 1:
+        marvels = [(y, x, d) for y, x, d in new_marvels if cnt_board[(y, x)] == 1]
+        if len(marvels) == 0:
             break
-
-    print(len(marbles))
+    print(len(marvels))

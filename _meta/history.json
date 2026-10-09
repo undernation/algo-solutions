@@ -9627,7 +9627,7 @@
   ]
  },
  "2026-10-09": {
-  "count": 6,
+  "count": 7,
   "items": [
    {
     "at": "10:21:10",
@@ -9750,6 +9750,29 @@
     "site": "CT",
     "status": "틀림",
     "title": "외판원 순회"
+   },
+   {
+    "at": "12:45:08",
+    "attempts": [
+     {
+      "at": "12:45:08",
+      "elapsed": 0.517,
+      "file": "codetree/13_벽이있는충돌실험.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.517,
+    "file": "codetree/13_벽이있는충돌실험.py",
+    "no": "13",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "벽이 있는 충돌 실험",
+    "total": 2,
+    "verdict": "accepted"
    }
   ]
  }
