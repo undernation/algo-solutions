@@ -9627,7 +9627,7 @@
   ]
  },
  "2026-10-09": {
-  "count": 2,
+  "count": 3,
   "items": [
    {
     "at": "10:21:10",
@@ -9664,6 +9664,29 @@
     "site": "CT",
     "status": "품",
     "title": "사각형 채우기 2",
+    "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "11:02:24",
+    "attempts": [
+     {
+      "at": "11:02:24",
+      "elapsed": 0.501,
+      "file": "codetree/39_정수사각형최대합.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.501,
+    "file": "codetree/39_정수사각형최대합.py",
+    "no": "39",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "정수 사각형 최대 합",
     "total": 2,
     "verdict": "accepted"
    }
