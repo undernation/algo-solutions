@@ -9627,7 +9627,7 @@
   ]
  },
  "2026-10-09": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "10:21:10",
@@ -9643,6 +9643,29 @@
     "site": "CT",
     "status": "못품",
     "title": "서로 다른 BST 개수 세기"
+   },
+   {
+    "at": "10:40:53",
+    "attempts": [
+     {
+      "at": "10:40:53",
+      "elapsed": 0.568,
+      "file": "codetree/1156_사각형채우기2.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.568,
+    "file": "codetree/1156_사각형채우기2.py",
+    "no": "1156",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "사각형 채우기 2",
+    "total": 2,
+    "verdict": "accepted"
    }
   ]
  }
