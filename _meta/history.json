@@ -9627,7 +9627,7 @@
   ]
  },
  "2026-10-09": {
-  "count": 4,
+  "count": 5,
   "items": [
    {
     "at": "10:21:10",
@@ -9710,6 +9710,29 @@
     "site": "CT",
     "status": "품",
     "title": "정수 사각형 최소 합",
+    "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "12:12:08",
+    "attempts": [
+     {
+      "at": "12:12:08",
+      "elapsed": 0.507,
+      "file": "codetree/40_정수사각형최솟값의최대.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.507,
+    "file": "codetree/40_정수사각형최솟값의최대.py",
+    "no": "40",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "정수 사각형 최솟값의 최대",
     "total": 2,
     "verdict": "accepted"
    }
