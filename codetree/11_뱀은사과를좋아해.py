@@ -2,7 +2,7 @@
 CT 11  뱀은 사과를 좋아해
 https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-snake-loves-apples/description
 
-풀이일 : 2026-09-28   결과: 틀림
+풀이일 : 2026-10-09   결과: 품
 한도   : time Python3 1.5초 · C++17 1초 / memory 128 MB / time_sec 1.5
 난이도 : Hard  |  정답률 41.9%
 제약   : - $1 \le N \le 100$
@@ -12,7 +12,7 @@ https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-snake-loves-a
 제약   : - $1 \le y \le N$
 제약   : - $1 \le  p \le 100$
 
-[채점] accepted  3/3  (1.007s)
+[채점] accepted  3/3  (1.01s)
 
 [문제]
 $N \times N$ 크기의 격자 안에서 사과들의 위치와 뱀의 움직임이 주어졌을 때, 게임이 끝나는데 몇 초가 걸리는지를 구하는 프로그램을 작성해보세요.
@@ -73,76 +73,77 @@ L 2
 
 """
 
-
+from collections import deque
 
 N, M, K = map(int, input().split())
+board = [[0] * N for _ in range(N)]
 
-x, y = [], []
+DIR = {
+    "U": (-1, 0),
+    "D": (1, 0),
+    "R": (0, 1),
+    "L": (0, -1)
+}
+
+
 for _ in range(M):
     xi, yi = map(int, input().split())
-    x.append(xi)
-    y.append(yi)
+    xi -= 1
+    yi -= 1
+    board[xi][yi] = 2
 
-d, p = [], []
+commands = []
 for _ in range(K):
     di, pi = input().split()
-    d.append(di)
-    p.append(int(pi))
+    commands.append((di, int(pi)))
 
 # Please write your code here.
 
-from collections import deque
+board[0][0] = 1
+snake = deque()
+snake.append((0, 0))
 
-DIR_DICT = {
-    "U": [-1, 0],
-    "D": [1, 0],
-    "R": [0, 1],
-    "L": [0, -1]
-}
+def move(direction):
+    hy, hx = snake[0]
+    is_over = False
 
-apples = set()
+    ty, tx = snake[-1]
 
-for i in range(M):
-    apples.add((x[i], y[i]))
+    dy, dx = DIR[direction]
+    ny = hy + dy
+    nx = hx + dx
 
-cy = 1
-cx = 1
+    board[ty][tx] = 0
+
+    # 밖으로 나간 경우
+    if not (0 <= ny < N and 0 <= nx < N):
+        return True
+    # 몸통인경우
+    if board[ny][nx] == 1:
+        return True
+    # 사과 인 경우
+    elif board[ny][nx] == 2:
+        # 꼬리 다시 붙여주기
+        board[ty][tx] = 1
+        snake.appendleft((ny, nx))
+        board[ny][nx] = 1
+        return False
+    else:
+        snake.appendleft((ny, nx))
+        board[ny][nx] = 1
+        snake.pop()
+        return False
+is_over = False
 time = 0
-is_end = False
-snake_body = deque()
-snake_head = (cy, cx)
+for direction, num in commands:
 
-for k in range(K):
-    cur_direction = d[k]
-    cur_point = p[k]
-    dy, dx = DIR_DICT[cur_direction]
-
-    for point in range(cur_point):
-        ny = cy + dy
-        nx = cx + dx
+    for n in range(num):
         time += 1
-        # 다음 칸이 바깥인 경우
-        if not (1 <= ny <= N and 1 <= nx <= N):
-            is_end = True
+        ret = move(direction)
+        if ret:
+            is_over = True
             break
-        # 다음 칸이 사과인 경우
-        elif (ny, nx) in apples:
-            snake_body.appendleft((snake_head[0], snake_head[1]))
-            snake_head = (ny, nx)
-            apples.discard((ny, nx))
-        # 다음칸이 그냥 공백인 경우
-        else:
-            snake_body.appendleft((snake_head[0], snake_head[1]))
-            snake_body.pop()
-            snake_head = (ny, nx)
 
-        if snake_head in snake_body:
-            is_end = True
-            break
-        cy = ny
-        cx = nx
-
-    if is_end:
+    if is_over:
         break
-
 print(time)

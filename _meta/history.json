@@ -9627,7 +9627,7 @@
   ]
  },
  "2026-10-09": {
-  "count": 7,
+  "count": 8,
   "items": [
    {
     "at": "10:21:10",
@@ -9772,6 +9772,29 @@
     "status": "품",
     "title": "벽이 있는 충돌 실험",
     "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "13:29:30",
+    "attempts": [
+     {
+      "at": "13:29:30",
+      "elapsed": 1.01,
+      "file": "codetree/11_뱀은사과를좋아해.py",
+      "passed": 3,
+      "status": "품",
+      "total": 3,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 1.01,
+    "file": "codetree/11_뱀은사과를좋아해.py",
+    "no": "11",
+    "passed": 3,
+    "site": "CT",
+    "status": "품",
+    "title": "뱀은 사과를 좋아해",
+    "total": 3,
     "verdict": "accepted"
    }
   ]
