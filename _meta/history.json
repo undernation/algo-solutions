@@ -9627,7 +9627,7 @@
   ]
  },
  "2026-10-09": {
-  "count": 5,
+  "count": 6,
   "items": [
    {
     "at": "10:21:10",
@@ -9735,6 +9735,21 @@
     "title": "정수 사각형 최솟값의 최대",
     "total": 2,
     "verdict": "accepted"
+   },
+   {
+    "at": "12:29:48",
+    "attempts": [
+     {
+      "at": "12:29:48",
+      "file": "codetree/1665_외판원순회.py",
+      "status": "틀림"
+     }
+    ],
+    "file": "codetree/1665_외판원순회.py",
+    "no": "1665",
+    "site": "CT",
+    "status": "틀림",
+    "title": "외판원 순회"
    }
   ]
  }

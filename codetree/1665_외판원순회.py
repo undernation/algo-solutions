@@ -2,7 +2,7 @@
 CT 1665  외판원 순회
 https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-traveling-salesman-problem/description
 
-풀이일 : 2026-10-04   결과: 틀림
+풀이일 : 2026-10-09   결과: 틀림
 한도   : time Python3 1초 · C++17 0.5초 / memory 128 MB / time_sec 1
 난이도 : Medium  |  정답률 43.2%
 제약   : - $2 \le N \le 10$
@@ -28,27 +28,31 @@ $1$번 지점에서 출발하여 모든 지점을 정확히 딱 한 번씩만 �
 """
 
 N = int(input())
-A = [list(map(int, input().split())) for _ in range(N)]
+arr = [list(map(int, input().split())) for _ in range(N)]
 
 # Please write your code here.
 
-MAX = (1 << N) - 1
+visited = [False] * N
 answer = 10 ** 18
-
-def dfs(last_node, cost, mask):
+visited[0] = True
+def dfs(idx, last_node, total):
     global answer
-    if mask == MAX:
-        if A[last_node][0] == 0:
+    if idx == N - 1:
+        if arr[last_node][0] == 0:
             return
-        answer = min(answer, cost + A[last_node][0])
+        answer = min(answer, total + arr[last_node][0])
         return
 
-    for node in range(N):
-        if mask & (1 << node):
-            continue
-        if A[last_node][node] == 0:
-            continue
-        dfs(node, cost + A[last_node][node], mask | (1 << node))
 
-dfs(0, 0, 1)
+    for i in range(N):
+        if visited[i]:
+            continue
+        if arr[last_node][i] == 0:
+            continue
+
+        visited[i] = True
+        dfs(idx + 1, i, total + arr[last_node][i])
+        visited[i] = False
+
+dfs(0, 0, 0)
 print(answer)
