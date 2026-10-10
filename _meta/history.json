@@ -9798,5 +9798,25 @@
     "verdict": "accepted"
    }
   ]
+ },
+ "2026-10-10": {
+  "count": 1,
+  "items": [
+   {
+    "at": "11:23:02",
+    "attempts": [
+     {
+      "at": "11:23:02",
+      "file": "codetree/2504_정수사각형최장증가수열.py",
+      "status": "틀림"
+     }
+    ],
+    "file": "codetree/2504_정수사각형최장증가수열.py",
+    "no": "2504",
+    "site": "CT",
+    "status": "틀림",
+    "title": "정수 사각형 최장 증가 수열"
+   }
+  ]
  }
 }
