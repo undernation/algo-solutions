@@ -9835,7 +9835,7 @@
   ]
  },
  "2026-10-11": {
-  "count": 3,
+  "count": 4,
   "items": [
    {
     "at": "10:18:38",
@@ -9903,6 +9903,29 @@
     "site": "CT",
     "status": "품",
     "title": "최대 감소 부분 수열",
+    "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "10:55:21",
+    "attempts": [
+     {
+      "at": "10:55:21",
+      "elapsed": 0.514,
+      "file": "codetree/2586_최대점프횟수.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.514,
+    "file": "codetree/2586_최대점프횟수.py",
+    "no": "2586",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "최대 점프 횟수",
     "total": 2,
     "verdict": "accepted"
    }
