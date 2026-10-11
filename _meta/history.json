@@ -9835,7 +9835,7 @@
   ]
  },
  "2026-10-11": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "10:18:38",
@@ -9857,6 +9857,29 @@
     "site": "CT",
     "status": "품",
     "title": "정수 사각형 최댓값의 최소",
+    "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "10:39:27",
+    "attempts": [
+     {
+      "at": "10:39:27",
+      "elapsed": 0.517,
+      "file": "codetree/47_최대증가부분수열.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.517,
+    "file": "codetree/47_최대증가부분수열.py",
+    "no": "47",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "최대 증가 부분 수열",
     "total": 2,
     "verdict": "accepted"
    }
