@@ -9993,7 +9993,7 @@
   ]
  },
  "2026-10-12": {
-  "count": 2,
+  "count": 3,
   "items": [
    {
     "at": "12:10:14",
@@ -10032,6 +10032,29 @@
     "site": "CT",
     "status": "못품",
     "title": "알바로 부자 되기"
+   },
+   {
+    "at": "14:03:52",
+    "attempts": [
+     {
+      "at": "14:03:52",
+      "elapsed": 0.587,
+      "file": "codetree/49_동전거슬러주기.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.587,
+    "file": "codetree/49_동전거슬러주기.py",
+    "no": "49",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "동전 거슬러주기",
+    "total": 2,
+    "verdict": "accepted"
    }
   ]
  }
