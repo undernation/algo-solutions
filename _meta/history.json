@@ -9991,5 +9991,33 @@
     "verdict": "accepted"
    }
   ]
+ },
+ "2026-10-12": {
+  "count": 1,
+  "items": [
+   {
+    "at": "12:10:14",
+    "attempts": [
+     {
+      "at": "12:10:14",
+      "elapsed": 0.509,
+      "file": "codetree/2588_증가했다가감소하는부분수열.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.509,
+    "file": "codetree/2588_증가했다가감소하는부분수열.py",
+    "no": "2588",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "증가했다가 감소하는 부분 수열",
+    "total": 2,
+    "verdict": "accepted"
+   }
+  ]
  }
 }
