@@ -9993,7 +9993,7 @@
   ]
  },
  "2026-10-12": {
-  "count": 3,
+  "count": 4,
   "items": [
    {
     "at": "12:10:14",
@@ -10053,6 +10053,29 @@
     "site": "CT",
     "status": "품",
     "title": "동전 거슬러주기",
+    "total": 2,
+    "verdict": "accepted"
+   },
+   {
+    "at": "14:38:16",
+    "attempts": [
+     {
+      "at": "14:38:16",
+      "elapsed": 0.517,
+      "file": "codetree/2590_부분수열의합이M.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.517,
+    "file": "codetree/2590_부분수열의합이M.py",
+    "no": "2590",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "부분 수열의 합이 M",
     "total": 2,
     "verdict": "accepted"
    }
