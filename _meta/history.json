@@ -10105,7 +10105,7 @@
   ]
  },
  "2026-10-13": {
-  "count": 2,
+  "count": 3,
   "items": [
    {
     "at": "09:44:22",
@@ -10144,6 +10144,21 @@
     "title": "부분 수열의 합",
     "total": 2,
     "verdict": "accepted"
+   },
+   {
+    "at": "10:33:52",
+    "attempts": [
+     {
+      "at": "10:33:52",
+      "file": "codetree/50_배낭채우기.py",
+      "status": "틀림"
+     }
+    ],
+    "file": "codetree/50_배낭채우기.py",
+    "no": "50",
+    "site": "CT",
+    "status": "틀림",
+    "title": "배낭 채우기"
    }
   ]
  }
