@@ -10105,7 +10105,7 @@
   ]
  },
  "2026-10-13": {
-  "count": 3,
+  "count": 4,
   "items": [
    {
     "at": "09:44:22",
@@ -10159,6 +10159,29 @@
     "site": "CT",
     "status": "틀림",
     "title": "배낭 채우기"
+   },
+   {
+    "at": "10:52:59",
+    "attempts": [
+     {
+      "at": "10:52:59",
+      "elapsed": 0.514,
+      "file": "codetree/2594_막대기나누기.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.514,
+    "file": "codetree/2594_막대기나누기.py",
+    "no": "2594",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "막대기 나누기",
+    "total": 2,
+    "verdict": "accepted"
    }
   ]
  }
