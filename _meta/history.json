@@ -10105,7 +10105,7 @@
   ]
  },
  "2026-10-13": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "09:44:22",
@@ -10121,6 +10121,29 @@
     "site": "CT",
     "status": "틀림",
     "title": "최대 동전 거슬러주기"
+   },
+   {
+    "at": "10:15:23",
+    "attempts": [
+     {
+      "at": "10:15:23",
+      "elapsed": 0.527,
+      "file": "codetree/2593_부분수열의합.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.527,
+    "file": "codetree/2593_부분수열의합.py",
+    "no": "2593",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "부분 수열의 합",
+    "total": 2,
+    "verdict": "accepted"
    }
   ]
  }
