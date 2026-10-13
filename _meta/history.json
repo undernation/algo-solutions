@@ -10103,5 +10103,25 @@
     "verdict": "accepted"
    }
   ]
+ },
+ "2026-10-13": {
+  "count": 1,
+  "items": [
+   {
+    "at": "09:44:22",
+    "attempts": [
+     {
+      "at": "09:44:22",
+      "file": "codetree/2592_최대동전거슬러주기.py",
+      "status": "틀림"
+     }
+    ],
+    "file": "codetree/2592_최대동전거슬러주기.py",
+    "no": "2592",
+    "site": "CT",
+    "status": "틀림",
+    "title": "최대 동전 거슬러주기"
+   }
+  ]
  }
 }
