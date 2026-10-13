@@ -10222,7 +10222,7 @@
     "title": "벽이 없는 충돌 실험"
    },
    {
-    "at": "13:30:10",
+    "at": "13:30:51",
     "attempts": [
      {
       "at": "13:30:10",
@@ -10232,9 +10232,18 @@
       "status": "품",
       "total": 1,
       "verdict": "accepted"
+     },
+     {
+      "at": "13:30:51",
+      "elapsed": 0.297,
+      "file": "codetree/2492_수들중최솟값최대화하기.py",
+      "passed": 1,
+      "status": "품",
+      "total": 1,
+      "verdict": "accepted"
      }
     ],
-    "elapsed": 0.281,
+    "elapsed": 0.297,
     "file": "codetree/2492_수들중최솟값최대화하기.py",
     "no": "2492",
     "passed": 1,

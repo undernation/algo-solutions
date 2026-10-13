@@ -8,7 +8,7 @@ https://www.codetree.ai/ko/trails/complete/curated-cards/test-maximin-of-numbers
 제약   : - $1 \le N \le 10$
 제약   : - $1 \le \texttt{주어지는 정수} \le 10\,000$
 
-[채점] accepted  1/1  (0.281s)
+[채점] accepted  1/1  (0.297s)
 
 [문제]
 크기가 $N \times N$인 이차원 격자 내 각 칸에 정수값이 적혀 있습니다.
@@ -32,26 +32,26 @@ grid = [list(map(int, input().split())) for _ in range(N)]
 
 # Please write your code here.
 
-visited = [False] * N
-
+def get_min_val(num_list):
+    return min(num_list)
 answer = 0
-def dfs(idx, cur_min):
+visited = set()
+col_list = []
+def dfs(row_idx, total):
     global answer
-    if idx == N:
-        answer = max(answer, cur_min)
+    if row_idx == N:
+
+        answer = max(answer, min(total))
         return
 
     for col in range(N):
-        if visited[col]:
+        if col in col_list:
             continue
+        col_list.append(col)
+        total.append(grid[row_idx][col])
+        dfs(row_idx + 1, total)
+        total.remove(grid[row_idx][col])
+        col_list.pop()
 
-        cur_num = grid[idx][col]
-        visited[col] = True
-        dfs(idx + 1, min(cur_min, cur_num))
-        visited[col] = False
-
-INF = 10 ** 18
-
-dfs(0, INF)
-
+dfs(0, [])
 print(answer)
