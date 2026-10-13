@@ -2,7 +2,7 @@
 CT 14  벽이 없는 충돌 실험
 https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-collision-experiment-without-wall/description
 
-풀이일 : 2026-09-29   결과: 시간초과
+풀이일 : 2026-10-13   결과: 시간초과
 한도   : time Python3 3.5초 · C++17 2초 / memory 512 MB / time_sec 3.5
 난이도 : Hard  |  정답률 31.7%
 제약   : - $1 \le T \le 100$
@@ -11,8 +11,6 @@ https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-collision-exp
 제약   : - $-1000 \le y \le 1000$
 제약   : - $1 \le w \le 1000$
 제약   : - $d \in \{\texttt{U}, \texttt{D}, \texttt{R}, \texttt{L}\}$
-
-[채점] accepted  2/2  (1.272s)
 
 [문제]
 $N$개의 구슬이 좌표 평면 위에 놓여져 있습니다. 각 구슬은 무게를 갖고 있습니다
@@ -75,16 +73,15 @@ $N$개의 구슬이 좌표 평면 위에 놓여져 있습니다. 각 구슬은 �
 
 """
 
-from collections import defaultdict
 T = int(input())
 
-directions = {
+DIR = {
     "U": (0, 1),
     "D": (0, -1),
-    "L": (-1, 0),
-    "R": (1, 0)
+    "R": (1, 0),
+    "L": (-1, 0)
 }
-
+board = [[-1] * 4001 for _ in range(4001)]
 for _ in range(T):
     N = int(input())
     x, y, w, d = [], [], [], []
@@ -95,8 +92,6 @@ for _ in range(T):
         y.append(int(yi) * 2)
         w.append(int(wi))
         d.append(di)
-
-    # Please write your code here.
 
     marbles = []
 
@@ -111,17 +106,15 @@ for _ in range(T):
     last_collision = -1
 
     def move(cx, cy, cur_direction):
-
-        dx, dy = directions[cur_direction]
+        dx, dy = DIR[cur_direction]
 
         return cx + dx, cy + dy
 
-
     for time in range(1, 4001):
-        cnt_board = defaultdict(list)
         is_collision = False
 
         new_marbles = []
+        used_pos = []
 
         for idx in range(len(marbles)):
             cur_id, cur_x, cur_y, cur_w, cur_direction = marbles[idx]
@@ -129,22 +122,34 @@ for _ in range(T):
             nx, ny = move(cur_x, cur_y, cur_direction)
             if not (-2000 <= nx <= 2000 and -2000 <= ny <= 2000):
                 continue
-            marbles[idx] = [cur_id, nx, ny, cur_w, cur_direction]
-            cnt_board[(nx, ny)].append([-cur_w, -cur_id])
-        survived = set()
-        # 충돌 처리해주기
-        for pos, marble_list in cnt_board.items():
-            marble_list.sort()
-            final_id = -marble_list[0][1]
-            survived.add(final_id)
-            if len(marble_list) >= 2:
-                last_collision = time
 
-        for idx in range(len(marbles)):
-            cur_id, cur_x, cur_y, cur_w, cur_direction = marbles[idx]
-            if cur_id in survived:
-                new_marbles.append([cur_id, cur_x, cur_y, cur_w, cur_direction])
+            by = ny + 2000
+            bx = nx + 2000
 
+            if board[by][bx] == -1:
+                board[by][bx] = len(new_marbles)
+                new_marbles.append(
+                    [cur_id, nx, ny, cur_w, cur_direction]
+                )
+                used_pos.append((by, bx))
+            else:
+                is_collision = True
+
+                prev_idx = board[by][bx]
+                prev_id, prev_x, prev_y, prev_w, prev_direction = new_marbles[prev_idx]
+
+                if cur_w > prev_w:
+                    new_marbles[prev_idx] = [
+                        cur_id, nx, ny, cur_w, cur_direction
+                    ]
+                elif cur_w == prev_w and cur_id > prev_id:
+                    new_marbles[prev_idx] = [
+                        cur_id, nx, ny, cur_w, cur_direction
+                    ]
+
+        if is_collision:
+            last_collision = time
+        for by, bx in used_pos:
+            board[by][bx] = -1
         marbles = new_marbles
-
     print(last_collision)
