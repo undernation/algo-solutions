@@ -10254,5 +10254,25 @@
     "verdict": "accepted"
    }
   ]
+ },
+ "2026-10-14": {
+  "count": 1,
+  "items": [
+   {
+    "at": "10:10:47",
+    "attempts": [
+     {
+      "at": "10:10:47",
+      "file": "codetree/2596_최소차분할.py",
+      "status": "못품"
+     }
+    ],
+    "file": "codetree/2596_최소차분할.py",
+    "no": "2596",
+    "site": "CT",
+    "status": "못품",
+    "title": "최소 차 분할"
+   }
+  ]
  }
 }
