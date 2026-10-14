@@ -2,7 +2,7 @@
 CT 1199  사각형 채우기 3
 https://www.codetree.ai/ko/trails/complete/curated-cards/challenge-rectangle-fill-3/description
 
-풀이일 : 2026-10-08   결과: 못품
+풀이일 : 2026-10-14   결과: 틀림
 한도   : time Python3 1초 · C++17 0.5초 / memory 64 MB / time_sec 1
 난이도 : Medium  |  정답률 31.7%
 제약   : - $1 \le N \le 1\,000$
