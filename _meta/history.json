@@ -10609,5 +10609,33 @@
     "verdict": "accepted"
    }
   ]
+ },
+ "2026-10-20": {
+  "count": 1,
+  "items": [
+   {
+    "at": "11:24:54",
+    "attempts": [
+     {
+      "at": "11:24:54",
+      "elapsed": 0.296,
+      "file": "codetree/4094_수정수집하기.py",
+      "passed": 1,
+      "status": "품",
+      "total": 1,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.296,
+    "file": "codetree/4094_수정수집하기.py",
+    "no": "4094",
+    "passed": 1,
+    "site": "CT",
+    "status": "품",
+    "title": "수정 수집하기",
+    "total": 1,
+    "verdict": "accepted"
+   }
+  ]
  }
 }
