@@ -1,0 +1,27 @@
+{
+  "repository": "https://lab.ssafy.com/s16/b06/lectures",
+  "commit": "2fdc0ae590f6731564ff0014568d70833c474f2a",
+  "registered_on": "2026-10-21",
+  "files": [
+    {
+      "source": "99_exam/A/최소점수/최소점수.md",
+      "archive": "restored/ssafy_a_lecture_2026-10-21/99994/최소점수.md",
+      "sha256": "191e6994a0b4ced9e246e1c3a70ced13f55e6a30bddc7ea1ca56bd471edea238"
+    },
+    {
+      "source": "99_exam/A/최소점수/Sample_input.txt",
+      "archive": "restored/ssafy_a_lecture_2026-10-21/99994/source_input.txt",
+      "sha256": "004e33a8893b64be2f1cd72ced54e9cd33dc781ba51b5a7f31e12b9a717d8d99"
+    },
+    {
+      "source": "99_exam/A/산악구조로봇/산악구조로봇.md",
+      "archive": "restored/ssafy_a_lecture_2026-10-21/99995/산악구조로봇.md",
+      "sha256": "bb5343be78e9b9e69bb3b95082bbac5ef05016e8e5bc0359f94ba8dbfd36510b"
+    },
+    {
+      "source": "99_exam/A/산악구조로봇/sample_input2.txt",
+      "archive": "restored/ssafy_a_lecture_2026-10-21/99995/sample_input2.txt",
+      "sha256": "92071f93711698335ba841bd3fdb2c6f3e4a93fca805e5bf7b9e8a1f3f99ba74"
+    }
+  ]
+}
