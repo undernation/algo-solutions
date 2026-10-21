@@ -1,0 +1,43 @@
+{
+  "source_commit": "2fdc0ae590f6731564ff0014568d70833c474f2a",
+  "source_unmodified": true,
+  "score": {
+    "source_declared_case_count": 30,
+    "source_actual_case_count": 31,
+    "sample_cases": 3,
+    "additional_cases": 28,
+    "provided_implementations_compared": 2,
+    "exhaustive_parameter_checks": 328,
+    "md_sample_outputs_matched": true
+  },
+  "robot": {
+    "source_case_count": 5,
+    "sample_cases": 2,
+    "additional_cases": 3,
+    "independent_and_provided_results_matched": true,
+    "random_cross_checks": 150,
+    "md_sample_outputs_matched": true,
+    "verification_adapter": "제공 코드의 heapq import 오타와 로컬 입력 파일 열기를 검증용 사본에서만 수정"
+  },
+  "new_generated_cases_published": false,
+  "solution_code_published": false,
+  "elapsed_seconds": 1.217,
+  "archive_judge": {
+    "99994": {
+      "correct_code": "accepted",
+      "wrong_code": "wrong_answer",
+      "bundles": 2,
+      "cases": 31,
+      "time_total": true,
+      "elapsed": 0.056
+    },
+    "99995": {
+      "correct_code": "accepted",
+      "wrong_code": "wrong_answer",
+      "bundles": 2,
+      "cases": 5,
+      "time_total": true,
+      "elapsed": 0.107
+    }
+  }
+}
