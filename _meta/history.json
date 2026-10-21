@@ -10662,7 +10662,7 @@
   ]
  },
  "2026-10-21": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "14:30:30",
@@ -10678,6 +10678,29 @@
     "site": "BOJ",
     "status": "품",
     "title": "프로그래머스 퍼즐조각 채우기"
+   },
+   {
+    "at": "16:54:48",
+    "attempts": [
+     {
+      "at": "16:54:48",
+      "elapsed": 0.707,
+      "file": "swea/99995_[SSAFYA형]산악구조로봇.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.707,
+    "file": "swea/99995_[SSAFYA형]산악구조로봇.py",
+    "no": "99995",
+    "passed": 2,
+    "site": "SWEA",
+    "status": "품",
+    "title": "[SSAFY A형] 산악 구조 로봇",
+    "total": 2,
+    "verdict": "accepted"
    }
   ]
  }
