@@ -10662,7 +10662,7 @@
   ]
  },
  "2026-10-21": {
-  "count": 2,
+  "count": 3,
   "items": [
    {
     "at": "14:30:30",
@@ -10701,6 +10701,29 @@
     "title": "[SSAFY A형] 산악 구조 로봇",
     "total": 2,
     "verdict": "accepted"
+   },
+   {
+    "at": "16:56:24",
+    "attempts": [
+     {
+      "at": "16:56:24",
+      "elapsed": 8.081,
+      "file": "swea/99994_[SSAFYA형]면접최소점수.py",
+      "passed": 0,
+      "status": "품",
+      "total": 2,
+      "verdict": "wrong_answer"
+     }
+    ],
+    "elapsed": 8.081,
+    "file": "swea/99994_[SSAFYA형]면접최소점수.py",
+    "no": "99994",
+    "passed": 0,
+    "site": "SWEA",
+    "status": "품",
+    "title": "[SSAFY A형] 면접 최소 점수",
+    "total": 2,
+    "verdict": "wrong_answer"
    }
   ]
  }
