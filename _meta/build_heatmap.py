@@ -226,6 +226,7 @@ def from_vault() -> dict:
 SOL_DIRS = ("boj", "swea", "codetree")
 _SOL_HEAD = re.compile(r"^\s*(BOJ|SWEA)\s+(\d+)\s+(.*)$", re.M)
 _CT_HEAD = re.compile(r"^\s*(CT)\s+([A-Za-z0-9_-]{1,12})\s+(.*)$", re.M)
+_TITLE_HEAD = re.compile(r"^[ \t]*(BOJ|SWEA|PGS|CT)[ \t]{2,}(\S[^\n]*)$", re.M)
 
 
 def from_repo() -> dict:
@@ -238,14 +239,19 @@ def from_repo() -> dict:
         d = m.group(1)
         ct_dir = os.path.basename(os.path.dirname(f)) == "codetree"
         t = (_CT_HEAD if ct_dir else _SOL_HEAD).search(src)
+        # save_solution의 번호 없는 헤더("BOJ   제목")를 파일명으로 대신 읽으면
+        # 공백 제거된 제목·.py가 붙어 별개 문제로 다시 생긴다. 원래 제목을 유지한다.
+        title_only = _TITLE_HEAD.search(src) if not t else None
         st = re.search(r"결과\s*:\s*(\S+)", src)
         base = os.path.basename(f)
         # 헤더를 못 읽으면 예전처럼 BOJ 로 둔다. 코드트리 폴더만은 폴더가 곧 사이트이고
         # 파일명 앞부분이 번호라서 그걸 쓴다 — BOJ 로 두면 엉뚱한 백준 문제가 된다.
         fm = re.match(r"([A-Za-z0-9-]{1,12})_", base) if (ct_dir and not t) else None
-        item = {"site": t.group(1) if t else ("CT" if ct_dir else "BOJ"),
+        item = {"site": t.group(1) if t else (title_only.group(1) if title_only else
+                                           ("CT" if ct_dir else "BOJ")),
                 "no": t.group(2) if t else (fm.group(1) if fm else ""),
-                "title": t.group(3).strip() if t else base,
+                "title": t.group(3).strip() if t else
+                         (title_only.group(2).strip() if title_only else base),
                 "status": st.group(1) if st else "?",
                 "file": os.path.relpath(f, ROOT).replace(os.sep, "/")}
         item["site"] = problem_site(item["site"], item["no"], item["title"])

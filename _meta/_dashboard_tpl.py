@@ -4097,8 +4097,13 @@ async function doSave(){
     그때는 채점 상세도 예제 기대 출력을 담고 있어 뺀다. 공개 모드는 백준·SWEA 와 같다. */
  var isCT=(ctx.site==="CT"), priv=isCT&&!!(ctx.prob||{}).private_content;
  /* 첫 await 전에 요청 전체를 복사한다. 이후 이동·편집·채점이 있어도 이 제출은 그대로다. */
- var body=JSON.stringify({site:ctx.site,no:ctx.no,
-   title:bestTitle(ctx.site+"/"+ctx.no)||(ctx.prob||{}).title||"",
+ /* ~제목은 번호 없는 옛 기록의 화면 키다. 실제 번호로 저장하면 허브가 거절한다.
+    CUR.no는 그대로 두어 화면·이전 회차의 키를 유지하고, 전송할 값만 나눈다. */
+ var titleOnly=String(ctx.no||"").charAt(0)==="~";
+ var submittedTitle=bestTitle(ctx.site+"/"+ctx.no)||(ctx.prob||{}).title||
+   (titleOnly?String(ctx.no).slice(1):"");
+ var body=JSON.stringify({site:ctx.site,no:titleOnly?"":ctx.no,
+   title:submittedTitle,
    url:(ctx.prob||{}).url||"",code:code,status:$("pst").value,date:$("pd").value,
    problem:isCT?ctPublic(ctx.prob,priv):ctx.prob,
    verdict:priv?ctVerdict(verdict):verdict});
