@@ -61,6 +61,35 @@ const receipt = (no,at='14:40:35') => ({site:'CT',no,title:'problem '+no,
 const tests=[];
 function test(name,fn){tests.push([name,fn]);}
 
+test('title-only problem saves an empty number and keeps its route and old attempts',async()=>{
+  const title='프로그래머스 퍼즐조각 채우기';
+  const old={site:'BOJ',no:'',title,date:'2026-05-01',status:'못품',file:''};
+  const s=setup([old]);
+  const routeNo='~'+title;
+  s.c.location.hash='#p/BOJ/'+encodeURIComponent(routeNo);
+  s.c.CUR={site:'BOJ',no:routeNo,prob:null,verdict:null};
+  s.nodes.get('ed').value='def solution(game_board, table):\n    return 0';
+  const wait=s.c.doSave(); await tick();
+  assert.equal(s.requests[0].body.no,'');
+  assert.equal(s.requests[0].body.title,title);
+  s.reply(0,{ok:true,pushed:true,committed:true,
+    file:'boj/프로그래머스퍼즐조각채우기.py',at:'14:40:35'});
+  await wait;
+  assert.equal(s.c.CUR.no,routeNo);
+  assert.equal(s.c.BYPROB['BOJ/'+routeNo].length,2);
+  assert.equal(JSON.parse(s.storage.get('pendingSubs'))[0].no,'');
+  assert(s.notices.some(n=>n.html.includes('푸시 완료')));
+});
+test('title-only route supplies the title even before history metadata is loaded',async()=>{
+  const s=setup(); const title='번호 없는 문제';
+  s.c.CUR={site:'BOJ',no:'~'+title,prob:null,verdict:null};
+  s.c.location.hash='#p/BOJ/'+encodeURIComponent('~'+title);
+  const wait=s.c.doSave(); await tick();
+  assert.equal(s.requests[0].body.no,'');
+  assert.equal(s.requests[0].body.title,title);
+  s.reply(0,{ok:false,error:'test response'}); await wait;
+});
+
 test('save response after navigation keeps the requested problem, verdict, date and status',async()=>{
   const s=setup([receipt('91','14:41:21')]); s.judged();
   const wait=s.c.doSave(); await tick();

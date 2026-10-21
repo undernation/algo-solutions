@@ -597,6 +597,13 @@ def git(*args, check=False):
 HIST_REL = "_meta/history.json"
 
 
+def solution_key(item):
+    """번호 없는 기록도 제목별로 구분한다(대시보드 key와 같은 형식)."""
+    no = str(item.get("no") or "").strip()
+    return "%s/%s" % (item.get("site"), no or "~" +
+                       (item.get("title") or "이름없음").strip())
+
+
 def sync_before_write():
     """저장을 시작하기 전에 원격을 따라잡는다.
 
@@ -625,7 +632,7 @@ def union_history(ours_text, theirs_text):
         seen = {}
         order = []
         for it in list(cur.get("items") or []) + list(v.get("items") or []):
-            k = it if isinstance(it, str) else "%s/%s" % (it.get("site"), it.get("no"))
+            k = it if isinstance(it, str) else solution_key(it)
             if k not in seen:
                 seen[k] = it
                 order.append(k)
@@ -725,10 +732,15 @@ def save_solution(d):
     site = (d.get("site") or "BOJ").upper()
     sub = SUB.get(site, "boj")
     no = str(d.get("no") or "").strip()
-    title = d.get("title") or ""
+    title = (d.get("title") or "").strip()
     code = d.get("code") or ""
     if not code.strip():
         return {"ok": False, "error": "코드가 비어 있음"}
+    # 이미 열려 있던 대시보드도 지원한다. ~제목은 화면에서만 쓰는 키이며,
+    # 실제 제목과 일치할 때만 번호 없는 저장으로 해석한다. 경로 검사는 유지한다.
+    if no.startswith("~") and no[1:].strip() == title:
+        no = ""
+    d = dict(d, site=site, no=no, title=title)
     # 번호·제목이 둘 다 없으면 boj/.py 같은 이름 없는 파일이 만들어져 커밋된다.
     if not no and not (title or "").strip():
         return {"ok": False, "error": "문제 번호나 제목이 필요합니다"}
@@ -781,7 +793,8 @@ def save_solution(d):
         tp = os.path.join(ROOT, "_meta", "deleted.json")
         if os.path.exists(tp):
             tomb = json.load(io.open(tp, encoding="utf-8")) or []
-            k = "%s|%s|%s" % (d.get("date") or today_kst(), site, no)
+            k = "%s|%s" % (d.get("date") or today_kst(),
+                            solution_key(d).replace("/", "|", 1))
             if k in tomb:
                 tomb = [x for x in tomb if x != k]
                 io.open(tp, "w", encoding="utf-8", newline="").write(
@@ -812,7 +825,7 @@ def save_solution(d):
         # 흔적 없이 사라졌다(잔디 count 는 '그날 시도한 문제 수'라 묶음은 유지해야 한다).
         prev = None
         for x in rec["items"]:
-            if isinstance(x, dict) and x.get("site") == site and str(x.get("no")) == no:
+            if isinstance(x, dict) and solution_key(x) == solution_key(item):
                 prev = x
                 break
         att = {"at": at, "status": item["status"], "file": rel}
