@@ -223,8 +223,8 @@ def from_vault() -> dict:
 # (342 = 트레일 '직사각형 별표 출력하기' = 기출 '고대 문명 유적 탐사') 기출은 "f"+id 를 쓴다.
 # 서버가 받는 번호 형식은 [A-Za-z0-9_-]{1,12}. BOJ/SWEA 정규식은 예전 그대로 둔다
 # (codetree/ 폴더 파일에만 CT 정규식을 쓴다).
-SOL_DIRS = ("boj", "swea", "codetree")
-_SOL_HEAD = re.compile(r"^\s*(BOJ|SWEA)\s+(\d+)\s+(.*)$", re.M)
+SOL_DIRS = ("boj", "swea", "programmers", "codetree")
+_SOL_HEAD = re.compile(r"^\s*(BOJ|SWEA|PGS)\s+(\d+)\s+(.*)$", re.M)
 _CT_HEAD = re.compile(r"^\s*(CT)\s+([A-Za-z0-9_-]{1,12})\s+(.*)$", re.M)
 _TITLE_HEAD = re.compile(r"^[ \t]*(BOJ|SWEA|PGS|CT)[ \t]{2,}(\S[^\n]*)$", re.M)
 

@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-22",
+  "problem": "PGS/154538",
+  "oracle": "independent breadth-first search",
+  "official_samples": {
+    "passed": 3,
+    "total": 3
+  },
+  "crosscheck_total": 46650,
+  "original_mismatches": 824,
+  "counterexample": {
+    "args": [
+      2,
+      4,
+      3
+    ],
+    "actual": -1,
+    "expected": 1
+  },
+  "corrected_mismatches": 0,
+  "large_cases": [
+    {
+      "args": [
+        1,
+        1000000,
+        1
+      ],
+      "result": 19,
+      "seconds": 0.113871
+    },
+    {
+      "args": [
+        1,
+        1000000,
+        999999
+      ],
+      "result": 1,
+      "seconds": 0.019343
+    },
+    {
+      "args": [
+        500000,
+        1000000,
+        999999
+      ],
+      "result": 1,
+      "seconds": 0.010499
+    }
+  ],
+  "correction": "range(x, y - n + 1) -> range(x, y + 1)",
+  "platform_verdict": "user_reported_pass; not independently observed"
+}
