@@ -138,8 +138,8 @@ python _meta/fetch_swea.py <contestProbId> --json
 
 | | |
 |---|---|
-| 총 풀이 | 191 |
-| BOJ | 27 |
+| 총 풀이 | 192 |
+| BOJ | 28 |
 | SWEA | 52 |
 | PGS | 1 |
 | CT | 111 |
@@ -147,6 +147,7 @@ python _meta/fetch_swea.py <contestProbId> --json
 <!-- INDEX_START -->
 | 사이트 | 번호 | 제목 | 결과 | 풀이일 | 분류 |
 |---|---|---|---|---|---|
+| BOJ | [1726](boj/1726.py) | 로봇 (정올 1006) | 품 | 2026-10-23 |  |
 | PGS | [154538](programmers/154538_숫자변환하기.py) | 숫자 변환하기 | 틀림 | 2026-10-22 |  |
 | BOJ | [프로그래머스퍼즐조각채우기](boj/프로그래머스퍼즐조각채우기.py) |  | 품 | 2026-10-21 |  |
 | SWEA | [99995](swea/99995_[SSAFYA형]산악구조로봇.py) | [SSAFY A형] 산악 구조 로봇 | 품 | 2026-10-21 |  |

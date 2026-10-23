@@ -10738,5 +10738,33 @@
     "title": "숫자 변환하기"
    }
   ]
+ },
+ "2026-10-23": {
+  "count": 1,
+  "items": [
+   {
+    "at": "11:49:42",
+    "attempts": [
+     {
+      "at": "11:49:42",
+      "elapsed": 6.055,
+      "file": "boj/1726.py",
+      "passed": 250,
+      "status": "품",
+      "total": 250,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 6.055,
+    "file": "boj/1726.py",
+    "no": "1726",
+    "passed": 250,
+    "site": "BOJ",
+    "status": "품",
+    "title": "로봇 (정올 1006)",
+    "total": 250,
+    "verdict": "accepted"
+   }
+  ]
  }
 }
