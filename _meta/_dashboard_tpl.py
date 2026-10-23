@@ -211,7 +211,7 @@ td.n{font-variant-numeric:tabular-nums;color:var(--sub);font-size:13px}
 @media(max-width:430px){.kbd{margin-left:0;max-width:100%;white-space:normal;line-height:1.5}}
 
 /* ── 재도전 큐 ──
-   코드트리는 번호와 제목을 함께 표시한다. 다른 사이트의 제목·모든 사이트의 유형은 감춘다. */
+   SWEA와 코드트리는 번호와 제목을 함께 표시한다. 다른 사이트의 제목·모든 사이트의 유형은 감춘다. */
 .rqwrap{display:flex;flex-direction:column;gap:2px}
 .rq{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:10px;
     padding:7px 10px;border-radius:6px;
@@ -227,8 +227,8 @@ td.n{font-variant-numeric:tabular-nums;color:var(--sub);font-size:13px}
 .rq .rqt{color:var(--sub);font-size:12px;min-width:56px;text-align:right}
 /* 긴 제목은 생략하지 않고 접는다. 폰에서는 날짜·시도 횟수를 제목 아래 줄에 둔다. */
 @media(max-width:700px){
- .rq-ct{grid-template-columns:auto minmax(0,1fr);align-items:start;row-gap:3px}
- .rq-ct .rqmeta{grid-column:2;flex-wrap:wrap;gap:2px 10px}
+ .rq-titled{grid-template-columns:auto minmax(0,1fr);align-items:start;row-gap:3px}
+ .rq-titled .rqmeta{grid-column:2;flex-wrap:wrap;gap:2px 10px}
 }
 @media(max-width:560px){.rq .rqt{display:none}}
 /* 사이트 칩 — 옛 실수노트 기록이 코드트리 번호로 이어지면서 4월 HSAT 기출이 큐 앞을 채웠다.
@@ -978,7 +978,7 @@ window.addEventListener("hashchange",go);
 /* ════════ 재도전 큐 ════════
    "오늘 뭐 복기하지"를 옵시디언 없이 브라우저에서 바로 잡기 위한 것.
 
-   코드트리는 사용자가 번호로 문제를 식별하기 어려워 제목도 표시한다.
+   SWEA와 코드트리는 사용자가 번호로 문제를 식별하기 어려워 제목도 표시한다.
    다른 사이트의 제목 숨김은 유지하며, 유형·알고리즘 태그는 모든 사이트에서 감춘다. */
 function daysAgo(d,t){
  return Math.round((Date.parse(t+"T00:00:00")-Date.parse(d+"T00:00:00"))/86400000);
@@ -1015,11 +1015,11 @@ function rqHTML(){
      '<i>'+(s[0]?(cnt[s[0]]||0):all.length)+'</i></button>';
   }).join("")+'</div>';
  var rows=q.slice(0,RQOPEN?q.length:RQN).map(function(x){
-  var ct=x.site==="CT", k=key(x);
-  return '<a class="rq'+(ct?' rq-ct':'')+'" href="#p/'+encodeURIComponent(x.site)+'/'+encodeURIComponent(x.no)+'">'+
+  var titled=x.site==="CT"||x.site==="SWEA", k=key(x);
+  return '<a class="rq'+(titled?' rq-titled':'')+'" href="#p/'+encodeURIComponent(x.site)+'/'+encodeURIComponent(x.no)+'">'+
    '<span class="b b-'+esc(x.site)+'">'+esc(x.site)+'</span>'+
    '<span class="rqname"><b>'+esc(x.no)+'</b>'+
-    (ct?' <span class="rqtitle" data-key="'+esc(k)+'">'+esc(bestTitle(k)||"(제목 없음)")+'</span>':'')+'</span>'+
+    (titled?' <span class="rqtitle" data-key="'+esc(k)+'">'+esc(bestTitle(k)||"(제목 없음)")+'</span>':'')+'</span>'+
    '<span class="rqmeta"><span class="rqd">'+esc(x.date)+'</span>'+
    '<span class="rqg">'+esc(x.days)+'일 전</span>'+
    '<span class="rqt">'+esc(x.tries)+'회</span></span></a>';
@@ -1032,7 +1032,7 @@ function rqHTML(){
   (q.length>RQN?'<button class="sm rqmore" style="margin-top:10px" onclick="rqToggle()">'+
     (RQOPEN?'접기':'전체 '+q.length+'개 보기')+'</button>':'')+
   '<div class="hint" style="margin-top:10px">아직 통과하지 못한 문제, 마지막 시도가 오래된 순. '+
-  '<b>코드트리는 번호와 제목을 함께 표시</b>합니다. 다른 사이트의 제목과 모든 문제의 유형·알고리즘 태그는 숨깁니다.</div>'+
+  '<b>SWEA와 코드트리는 번호와 제목을 함께 표시</b>합니다. 다른 사이트의 제목과 모든 문제의 유형·알고리즘 태그는 숨깁니다.</div>'+
   '</div></div>';
 }
 function rqTitles(){
