@@ -10740,7 +10740,7 @@
   ]
  },
  "2026-10-23": {
-  "count": 2,
+  "count": 3,
   "items": [
    {
     "at": "11:49:42",
@@ -10787,6 +10787,29 @@
     "title": "[S/W 문제해결 응용] 10일차 - 작업순서 D6",
     "total": 1,
     "verdict": "wrong_answer"
+   },
+   {
+    "at": "14:10:25",
+    "attempts": [
+     {
+      "at": "14:10:25",
+      "elapsed": 5.52,
+      "file": "boj/16948.py",
+      "passed": 17,
+      "status": "품",
+      "total": 17,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 5.52,
+    "file": "boj/16948.py",
+    "no": "16948",
+    "passed": 17,
+    "site": "BOJ",
+    "status": "품",
+    "title": "데스 나이트",
+    "total": 17,
+    "verdict": "accepted"
    }
   ]
  }
