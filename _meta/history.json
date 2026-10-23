@@ -10740,7 +10740,7 @@
   ]
  },
  "2026-10-23": {
-  "count": 3,
+  "count": 4,
   "items": [
    {
     "at": "11:49:42",
@@ -10809,6 +10809,29 @@
     "status": "품",
     "title": "데스 나이트",
     "total": 17,
+    "verdict": "accepted"
+   },
+   {
+    "at": "14:44:15",
+    "attempts": [
+     {
+      "at": "14:44:15",
+      "elapsed": 8.183,
+      "file": "boj/2206.py",
+      "passed": 16,
+      "status": "품",
+      "total": 16,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 8.183,
+    "file": "boj/2206.py",
+    "no": "2206",
+    "passed": 16,
+    "site": "BOJ",
+    "status": "품",
+    "title": "벽 부수고 이동하기",
+    "total": 16,
     "verdict": "accepted"
    }
   ]
