@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-24",
+  "problem": "PGS/67259",
+  "status": "품",
+  "status_basis": "user_reported_solved_and_requested_status",
+  "platform_verdict": "not_independently_observed",
+  "source_sha256": "6fc7a39d19f119a61f56c8942054dc6fb0a4a07f93d03237c07fddf6b91af972",
+  "oracles": [
+    "simple-path exhaustive search for N=3,4",
+    "heap Dijkstra with two orientation axes"
+  ],
+  "official_samples": {
+    "passed": 4,
+    "total": 4
+  },
+  "exhaustive": [
+    {
+      "n": 3,
+      "all_wall_patterns": 128,
+      "valid_boards_checked": 51,
+      "unreachable_excluded": 77
+    },
+    {
+      "n": 4,
+      "all_wall_patterns": 16384,
+      "valid_boards_checked": 3828,
+      "unreachable_excluded": 12556
+    }
+  ],
+  "random_seed": 20261024,
+  "random_cases": 3000,
+  "crosscheck_total": 6887,
+  "mismatches": 0,
+  "large_cases": [
+    {
+      "name": "open",
+      "n": 25,
+      "result": 5300,
+      "seconds": 0.00364
+    },
+    {
+      "name": "right_only",
+      "n": 25,
+      "result": 5300,
+      "seconds": 0.005217
+    },
+    {
+      "name": "down_only",
+      "n": 25,
+      "result": 5300,
+      "seconds": 0.002921
+    },
+    {
+      "name": "snake_corridor",
+      "n": 25,
+      "result": 45600,
+      "seconds": 0.000721
+    }
+  ],
+  "active_debug_prints": 0,
+  "input_mutation": false,
+  "normalization": "Restored pasted line breaks/indentation and Markdown escapes; algorithm unchanged."
+}

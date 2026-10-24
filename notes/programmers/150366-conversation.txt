@@ -1,0 +1,781 @@
+맞아 ㅋㅋ. 정확히 그게 Union-Find로 이 문제를 풀 때 가장 까다로운 부분이야.
+
+parent는 자식 → 부모 방향으로만 연결되어 있으니까, 특정 부모에서 모든 자식을 찾아 내려갈 수는 없지.
+
+그런데 해결 방법은 의외로 간단해.
+
+모든 셀을 순회하면서 find() 결과가 같은 셀을 찾으면 돼.
+
+1. UNMERGE의 핵심 아이디어
+
+예를 들어 다음과 같이 병합되어 있다고 해보자.
+
+       (1,1) = "A"
+       /       \
+    (1,2)     (1,3)
+                 |
+               (2,3)
+
+여기서 UNMERGE 1 3 명령이 들어오면?
+
+먼저 (1,3)의 대표를 찾으면 돼.
+
+root = find((1, 3))  # (1, 1)
+
+그다음 전체 셀을 순회하면서 같은 대표를 가진 셀들을 찾는 거야.
+
+members = []
+
+for pos in parent:
+    if find(pos) == root:
+        members.append(pos)
+
+이렇게 하면 다음 결과를 얻겠지.
+
+members = [
+    (1, 1),
+    (1, 2),
+    (1, 3),
+    (2, 3)
+]
+
+이제 이 셀들을 모두 분리하면 돼.
+
+2. UNMERGE 전체 코드
+
+네 코드에 그대로 추가할 수 있는 형태야.
+
+elif command[0] == "UNMERGE":
+    r = int(command[1])
+    c = int(command[2])
+
+    target = (r, c)
+
+    # 1. 현재 그룹의 대표 찾기
+    root = find(target)
+
+    # 2. 병합된 그룹의 값 저장
+    saved_value = value[root]
+
+    # 3. 같은 그룹에 속한 모든 셀 찾기
+    members = []
+
+    for pos in parent:
+        if find(pos) == root:
+            members.append(pos)
+
+    # 4. 모든 셀의 병합 해제 및 값 초기화
+    for pos in members:
+        parent[pos] = pos
+        value[pos] = None
+
+    # 5. 지정한 셀에만 기존 값 복원
+    value[target] = saved_value
+
+여기서 중요한 부분이 두 개 있어.
+
+⭐ ① 반드시 members를 먼저 찾아야 해
+
+다음처럼 하면 문제가 생길 수 있어.
+
+# 잘못된 방식
+for pos in parent:
+    if find(pos) == root:
+        parent[pos] = pos
+
+왜냐하면 parent를 순회하는 도중에 부모 관계를 변경하면, 아직 확인하지 않은 셀의 find() 결과까지 바뀔 수 있기 때문이야.
+
+따라서 반드시 다음 순서를 지켜야 해.
+
+# 먼저 대상 수집
+members = [pos for pos in parent if find(pos) == root]
+
+# 이후 부모 관계 초기화
+for pos in members:
+    parent[pos] = pos
+⭐ ② 기존 값은 지정한 셀에만 남겨야 해
+
+예를 들어 다음 명령을 실행하면
+
+UPDATE 1 1 A
+MERGE 1 1 1 2
+MERGE 1 2 1 3
+UNMERGE 1 2
+
+최종 결과는 다음과 같아.
+
+좌표	값
+(1,1)	None
+(1,2)	A
+(1,3)	None
+
+여기서 중요한 건 기존 대표인 (1,1)이 아니라 UNMERGE에 지정한 (1,2)가 값을 유지한다는 점이야.
+
+그래서 다음 코드가 필요해.
+
+saved_value = value[root]
+
+# 병합 해제
+...
+
+value[target] = saved_value
+3. 그런데 모든 셀을 순회하면 비효율적이지 않나?
+
+좋은 의문이야.
+
+일반적으로 Union-Find에서 전체 노드를 매번 순회하는 건 비효율적인 방법이 맞아.
+
+그런데 이 문제의 조건을 생각해 보자.
+
+셀 개수: 50 × 50 = 2,500개
+명령어 개수: 최대 1,000개
+
+극단적으로 모든 명령어가 UNMERGE라고 해도 확인할 셀은 최대 250만 개야.
+
+경로 압축이 적용된 find()를 사용하면 이 정도는 Python으로 충분히 처리할 수 있어.
+
+따라서 이 문제에서는 child 딕셔너리를 별도로 관리할 이유가 크지 않아.
+
+4. 여기서 배우면 좋은 알고리즘 개념
+
+Union-Find는 기본적으로 그룹을 합치는 데 특화된 자료구조이지, 그룹을 분리하는 데 특화된 자료구조가 아니야.
+
+연산	Union-Find
+같은 그룹인지 확인	매우 효율적
+두 그룹 병합	매우 효율적
+특정 그룹의 모든 구성원 조회	별도 작업 필요
+그룹 분리	직접 구현 필요
+
+실제로 그룹 분리 연산이 빈번하고 노드가 수백만 개라면 다른 자료구조까지 고민해야 해.
+
+하지만 프로그래머스 표 병합에서는 전체 순회가 가장 구현하기 쉽고 실용적인 방법 중 하나야.
+
+참고로 네 코드 맨 위의 from collection import defaultdict는 from collections import defaultdict로 고쳐야 실행돼.
+
+🎯 결론
+
+네가 처음에 생각했던 parent + child 방식이 잘못된 건 아니야.
+
+오히려 구조적으로 정확한 고민을 한 거지.
+
+하지만 이 문제에서는 다음 한 줄로 자식 목록을 대체할 수 있어.
+
+members = [pos for pos in parent if find(pos) == root]
+
+이 문제의 핵심은 Union-Find를 복잡하게 만드는 게 아니라, 데이터 크기가 작다는 조건을 활용해서 단순하게 해결하는 거야.
+
+from collections import defaultdict 
+ 
+ 
+parent = dict() 
+value = dict() 
+ 
+def find(pos): 
+    global parent 
+    while parent[pos] != pos: 
+        parent[pos] = parent[parent[pos]] 
+        pos = parent[pos] 
+ 
+    return pos 
+ 
+ 
+def solution(commands): 
+    global parent, value 
+    answer = [] 
+     
+    for i in range(1, 51): 
+        for j in range(1, 51): 
+            parent[(i, j)] = (i, j) 
+            value[(i, j)] = None 
+ 
+     
+     
+    for command in commands: 
+        command = command.split() 
+         
+        if command[0] == "UPDATE": 
+             
+            if len(command) == 4: 
+                r = int(command[1]) 
+                c = int(command[2]) 
+                cur_value = command[3] 
+                 
+                root = find((r, c)) 
+                value[root] = cur_value 
+                 
+                 
+            elif len(command) == 3: 
+                value1 = command[1] 
+                 
+                value2 = command[2] 
+                 
+                 
+                 
+                 
+             
+        elif command[0] == "MERGE": 
+            r1 = int(command[1]) 
+            c1 = int(command[2]) 
+             
+            r2 = int(command[3]) 
+            c2 = int(command[4]) 
+             
+            root1 = find((r1, c1)) 
+             
+            root2 = find((r2, c2)) 
+             
+            value1 = value[root1] 
+             
+            value2 = value[root2] 
+            if value1 is not None: 
+                merged_value = value1 
+            else: 
+                merge_value = value2 
+                 
+            parent[root2] = root1 
+             
+            value[root1] = merged_value 
+            value[root2] = None 
+                 
+                 
+                 
+             
+             
+        elif command[0] == "UNMERGE": 
+            r = int(command[1]) 
+            c = int(command[2]) 
+             
+            target = (r, c) 
+             
+            root = find(target) 
+             
+            saved_value = value[root] 
+             
+            members = [] 
+             
+            for pos in parent: 
+                if find(pos) == root: 
+                    members.append(pos) 
+                     
+                     
+            for pos in members: 
+                parent[pos] = pos 
+                value[pos] = None 
+                 
+            value[target] = saved_value 
+             
+             
+             
+             
+        else: 
+            r = int(command[1]) 
+            c = int(command[2]) 
+            root = parent((r, c)) 
+             
+            if value[root] is None: 
+                answer.append("EMPTY") 
+            else: 
+                answer.append(value[root]) 
+             
+    return answer 뭐지 왜 에러뜨찌??
+
+ㅋㅋ 거의 다 왔어. 지금 코드에서 실제로 에러를 발생시키는 부분은 2곳이고, 논리적으로 잘못된 부분이 1곳 있어.
+
+그리고 UPDATE value1 value2가 아직 구현되지 않았어.
+
+1. ❌ merged_value 변수 오타
+
+현재 코드:
+
+if value1 is not None:
+    merged_value = value1
+else:
+    merge_value = value2  # 오타!
+
+parent[root2] = root1
+
+value[root1] = merged_value
+
+merge_value와 merged_value는 서로 다른 변수야.
+
+따라서 value1이 None이면 merged_value가 생성되지 않아서 UnboundLocalError가 발생해.
+
+✅ 수정:
+
+merged_value = value1 if value1 is not None else value2
+2. ❌ PRINT에서 dict를 함수처럼 호출하고 있음
+
+현재 코드:
+
+else:
+    r = int(command[1])
+    c = int(command[2])
+    root = parent((r, c))
+
+여기서 parent는 딕셔너리야.
+
+parent((r, c))  # ❌ TypeError: 'dict' object is not callable
+
+✅ 수정:
+
+root = find((r, c))
+
+왜 parent[(r, c)]가 아니라 find((r, c))일까?
+
+병합을 여러 번 수행하면 다음과 같은 구조가 생길 수 있기 때문이야.
+
+(1, 3) → (1, 2) → (1, 1)
+
+parent[(1, 3)]은 (1, 2)를 반환하지만, 실제 대표는 (1, 1)이지.
+
+따라서 반드시 find()를 이용해야 해.
+
+3. ⭐ MERGE에서 같은 그룹인지 확인해야 함
+
+이건 에러보다 더 중요한 논리적 문제야.
+
+현재 코드:
+
+root1 = find((r1, c1))
+root2 = find((r2, c2))
+
+# ...
+
+parent[root2] = root1
+
+value[root1] = merged_value
+value[root2] = None
+
+그런데 이미 병합된 셀끼리 다시 MERGE하면?
+
+root1 == root2
+
+이런 상황이 발생할 수 있어.
+
+그런데 아래 코드를 실행하면
+
+value[root1] = merged_value
+value[root2] = None
+
+같은 셀의 값을 변경했다가 다시 None으로 초기화해 버리는 거야!
+
+따라서 반드시 다음 조건이 필요해.
+
+root1 = find((r1, c1))
+root2 = find((r2, c2))
+
+if root1 == root2:
+    continue
+4. UPDATE value1 value2도 완성하자
+
+이 부분은 아직 비어 있지?
+
+elif len(command) == 3:
+    value1 = command[1]
+    value2 = command[2]
+
+이렇게 작성하면 돼.
+
+elif len(command) == 3:
+    value1 = command[1]
+    value2 = command[2]
+
+    for pos in parent:
+        # 대표 셀만 확인
+        if parent[pos] != pos:
+            continue
+
+        if value[pos] == value1:
+            value[pos] = value2
+
+병합된 셀들의 값은 대표 셀에서 관리하니까 모든 셀의 값을 갱신할 필요는 없어.
+
+5. 수정한 전체 코드
+
+네가 작성한 구조를 최대한 유지하면서 수정하면 다음과 같아.
+
+parent = {}
+value = {}
+
+def find(pos):
+    while parent[pos] != pos:
+        parent[pos] = parent[parent[pos]]
+        pos = parent[pos]
+
+    return pos
+
+
+def solution(commands):
+    global parent, value
+
+    parent = {}
+    value = {}
+    answer = []
+
+    for i in range(1, 51):
+        for j in range(1, 51):
+            parent[(i, j)] = (i, j)
+            value[(i, j)] = None
+
+    for command in commands:
+        command = command.split()
+
+        if command[0] == "UPDATE":
+
+            if len(command) == 4:
+                r = int(command[1])
+                c = int(command[2])
+                cur_value = command[3]
+
+                root = find((r, c))
+                value[root] = cur_value
+
+            elif len(command) == 3:
+                value1 = command[1]
+                value2 = command[2]
+
+                for pos in parent:
+                    if parent[pos] != pos:
+                        continue
+
+                    if value[pos] == value1:
+                        value[pos] = value2
+
+        elif command[0] == "MERGE":
+            r1 = int(command[1])
+            c1 = int(command[2])
+            r2 = int(command[3])
+            c2 = int(command[4])
+
+            root1 = find((r1, c1))
+            root2 = find((r2, c2))
+
+            # 이미 같은 그룹
+            if root1 == root2:
+                continue
+
+            value1 = value[root1]
+            value2 = value[root2]
+
+            merged_value = value1 if value1 is not None else value2
+
+            parent[root2] = root1
+
+            value[root1] = merged_value
+            value[root2] = None
+
+        elif command[0] == "UNMERGE":
+            r = int(command[1])
+            c = int(command[2])
+
+            target = (r, c)
+            root = find(target)
+
+            saved_value = value[root]
+
+            members = []
+
+            for pos in parent:
+                if find(pos) == root:
+                    members.append(pos)
+
+            for pos in members:
+                parent[pos] = pos
+                value[pos] = None
+
+            value[target] = saved_value
+
+        else:
+            r = int(command[1])
+            c = int(command[2])
+
+            root = find((r, c))
+
+            if value[root] is None:
+                answer.append("EMPTY")
+            else:
+                answer.append(value[root])
+
+    return answer
+🎯 코딩테스트 관점에서 한 가지 피드백
+
+이번 문제에서 네가 가장 잘 설계한 부분은 다음 두 가지야.
+
+parent[(i, j)] = (i, j)
+value[(i, j)] = None
+
+그룹 구조와 그룹의 데이터를 분리해서 관리했다는 점이 중요해.
+
+다만 코딩테스트에서는 MERGE를 구현했을 때 다음 반례를 반드시 확인해 보는 게 좋아.
+
+commands = [
+    "UPDATE 1 1 A",
+    "MERGE 1 1 1 2",
+    "MERGE 1 1 1 2",
+    "PRINT 1 1",
+    "PRINT 1 2"
+]
+
+정답:
+
+["A", "A"]
+
+이 테스트를 통과하지 못하는 코드가 생각보다 많아.
+
+특히 Union-Find 문제에서는 root1 == root2를 확인하는 습관을 들이면 좋아. 이미 같은 그룹인 원소를 병합하려 할 때 발생하는 버그를 예방할 수 있거든.
+
+from collections import defaultdict 
+ 
+ 
+parent = dict() 
+value = dict() 
+ 
+def find(pos): 
+    global parent 
+    while parent[pos] != pos: 
+        parent[pos] = parent[parent[pos]] 
+        pos = parent[pos] 
+ 
+    return pos 
+ 
+ 
+def solution(commands): 
+    global parent, value 
+    answer = [] 
+     
+    for i in range(1, 51): 
+        for j in range(1, 51): 
+            parent[(i, j)] = (i, j) 
+            value[(i, j)] = None 
+ 
+     
+     
+    for command in commands: 
+        command = command.split() 
+         
+        if command[0] == "UPDATE": 
+             
+            if len(command) == 4: 
+                r = int(command[1]) 
+                c = int(command[2]) 
+                cur_value = command[3] 
+                 
+                root = find((r, c)) 
+                value[root] = cur_value 
+                 
+                 
+            elif len(command) == 3: 
+                value1 = command[1] 
+                 
+                value2 = command[2] 
+                 
+                 
+                 
+                 
+             
+        elif command[0] == "MERGE": 
+            r1 = int(command[1]) 
+            c1 = int(command[2]) 
+             
+            r2 = int(command[3]) 
+            c2 = int(command[4]) 
+             
+            root1 = find((r1, c1)) 
+             
+            root2 = find((r2, c2)) 
+            if root1 == root2: 
+                continue 
+            value1 = value[root1] 
+             
+            value2 = value[root2] 
+             
+             
+             
+            if value1 is not None: 
+                merged_value = value1 
+            else: 
+                merged_value = value2 
+                 
+            parent[root2] = root1 
+             
+            value[root1] = merged_value 
+            value[root2] = None 
+                 
+                 
+                 
+             
+             
+        elif command[0] == "UNMERGE": 
+            r = int(command[1]) 
+            c = int(command[2]) 
+             
+            target = (r, c) 
+             
+            root = find(target) 
+             
+            saved_value = value[root] 
+             
+            members = [] 
+             
+            for pos in parent: 
+                if find(pos) == root: 
+                    members.append(pos) 
+                     
+                     
+            for pos in members: 
+                parent[pos] = pos 
+                value[pos] = None 
+                 
+            value[target] = saved_value 
+             
+             
+             
+             
+        else: 
+            r = int(command[1]) 
+            c = int(command[2]) 
+            root = parent[(r, c)] 
+             
+            if value[root] is None: 
+                answer.append("EMPTY") 
+            else: 
+                answer.append(value[root]) 
+             
+    return answer 이거 뭐가문제지?
+
+거의 다 풀었어. 지금 코드에서 정답이 안 나오는 원인은 크게 2개야. 특히 두 번째는 Union-Find에서 자주 발생하는 실수야.
+
+1. ❌ UPDATE value1 value2가 구현되지 않음
+
+현재 코드:
+
+elif len(command) == 3:
+    value1 = command[1]
+    value2 = command[2]
+
+이 명령어는 표 전체에서 value1인 값을 value2로 변경해야 해.
+
+다음 코드를 추가하면 돼.
+
+elif len(command) == 3:
+    value1 = command[1]
+    value2 = command[2]
+
+    for pos in parent:
+        if parent[pos] != pos:
+            continue
+
+        if value[pos] == value1:
+            value[pos] = value2
+
+여기서는 대표 노드만 검사해도 충분해.
+
+2. ❌ PRINT에서 실제 root를 찾지 않고 있음 ⭐⭐⭐⭐⭐
+
+현재 코드:
+
+else:
+    r = int(command[1])
+    c = int(command[2])
+
+    root = parent[(r, c)]  # 문제!
+
+이게 가장 중요한 문제야.
+
+parent[pos]와 find(pos)는 반드시 같은 값을 반환하는 게 아니야.
+
+예를 들어 다음 명령어를 생각해 보자.
+
+commands = [
+    "UPDATE 1 1 A",
+    "MERGE 1 1 1 2",
+    "MERGE 1 3 1 1",
+    "PRINT 1 2"
+]
+
+병합을 진행하면 부모 관계가 다음과 같이 만들어질 수 있어.
+
+(1,2) → (1,1) → (1,3)
+                   ↑
+                 root
+
+이때 실제 값 "A"는 (1,3)에 저장돼.
+
+그런데 네 코드에서는
+
+root = parent[(1, 2)]
+
+print(root)  # (1, 1)
+
+직접적인 부모만 가져오기 때문에 실제 대표를 찾지 못해.
+
+따라서 다음과 같이 수정해야 해.
+
+root = find((r, c))
+
+이렇게 하면
+
+root = find((1, 2))
+
+print(root)  # (1, 3)
+
+최종 대표를 정확하게 찾을 수 있어.
+
+3. 수정해야 하는 부분만 정리
+UPDATE 수정
+elif len(command) == 3:
+    value1 = command[1]
+    value2 = command[2]
+
+    for pos in parent:
+        if parent[pos] != pos:
+            continue
+
+        if value[pos] == value1:
+            value[pos] = value2
+PRINT 수정
+else:
+    r = int(command[1])
+    c = int(command[2])
+
+    root = find((r, c))
+
+    if value[root] is None:
+        answer.append("EMPTY")
+    else:
+        answer.append(value[root])
+
+나머지 MERGE와 UNMERGE 로직은 현재 구현대로면 올바르게 동작해.
+
+다만 안정성을 위해 parent와 value를 전역 변수가 아닌 solution() 내부에 선언하고, find()도 내부 함수로 작성하는 편이 좋아. 현재 코드는 호출마다 모든 좌표를 다시 초기화하므로 일반적인 채점에서는 문제가 되지 않지만, 전역 상태를 없애면 코드 관리가 쉬워져.
+
+4. Union-Find에서 기억해야 할 핵심
+
+이 차이는 꼭 기억해 둬.
+
+코드	의미
+parent[pos]	바로 위 부모
+find(pos)	최종 대표 노드
+parent[root2] = root1	두 그룹 병합
+value[find(pos)]	해당 셀이 속한 그룹의 값
+
+그리고 네 find()는 이미 경로 압축을 구현했어.
+
+def find(pos):
+    while parent[pos] != pos:
+        parent[pos] = parent[parent[pos]]
+        pos = parent[pos]
+
+    return pos
+
+이 코드도 제대로 작성했어.
+
+🎯 결론
+
+지금은 알고리즘 설계가 잘못된 게 아니라, 구현상 두 부분을 놓친 거야.
+
+특히 PRINT에서 parent[pos]를 사용한 건 꽤 중요한 실수인데, 앞으로 Union-Find 문제를 풀 때는 다음 원칙을 기억하면 돼.
+
+그룹의 대표가 필요하다면 항상 find()를 호출하자.
+
+이 두 부분만 수정하면 현재 풀이로 정답을 받을 수 있어.

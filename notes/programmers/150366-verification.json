@@ -1,0 +1,102 @@
+{
+  "date": "2026-10-24",
+  "problem": "PGS/150366",
+  "status": "못품",
+  "status_basis": "user_reported_unsolved; reference viewed; no independent re-solve",
+  "source_sha256": "e88d44efa4bd7e584d27882596607f585173189fc2fc8ff417f6fa3c38b6407f",
+  "reference_sha256": "802f379c30058c0e0a20c9a3a2b55df8c30a1058370cb9bee749e81c584d502f",
+  "oracle": "explicit group member sets and per-cell values; no Union-Find",
+  "official_samples": {
+    "reference_passed": 2,
+    "total": 2,
+    "original_results": [
+      {
+        "actual": [
+          "EMPTY",
+          "group"
+        ],
+        "expected": [
+          "EMPTY",
+          "group"
+        ],
+        "passed": true
+      },
+      {
+        "actual": [
+          "d",
+          "EMPTY"
+        ],
+        "expected": [
+          "d",
+          "EMPTY"
+        ],
+        "passed": true
+      }
+    ]
+  },
+  "counterexamples": [
+    {
+      "name": "bulk_update_missing",
+      "commands": [
+        "UPDATE 1 1 a",
+        "UPDATE a b",
+        "PRINT 1 1"
+      ],
+      "actual": [
+        "a"
+      ],
+      "expected": [
+        "b"
+      ]
+    },
+    {
+      "name": "immediate_parent_is_not_root",
+      "commands": [
+        "UPDATE 1 1 a",
+        "MERGE 1 1 1 2",
+        "MERGE 1 3 1 1",
+        "PRINT 1 2"
+      ],
+      "actual": [
+        "EMPTY"
+      ],
+      "expected": [
+        "a"
+      ]
+    }
+  ],
+  "targeted_reference_cases": 7,
+  "random_seed": 15036620261024,
+  "random_cases": 2000,
+  "original_random_mismatches": 1719,
+  "reference_mismatches": 0,
+  "large_cases": [
+    {
+      "name": "deep_merge_chain",
+      "command_count": 1000,
+      "result": [
+        "a"
+      ],
+      "seconds": 0.001693
+    },
+    {
+      "name": "repeated_unmerge",
+      "command_count": 1000,
+      "result": [
+        "EMPTY"
+      ],
+      "seconds": 0.29329
+    },
+    {
+      "name": "repeated_bulk_update",
+      "command_count": 1000,
+      "result": [
+        "a"
+      ],
+      "seconds": 0.278779
+    }
+  ],
+  "active_debug_prints": 0,
+  "platform_verdict": "not_observed; local verification only",
+  "normalization": "Removed trailing chat question and trailing spaces only; own code errors preserved."
+}

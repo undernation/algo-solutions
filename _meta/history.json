@@ -10850,5 +10850,24 @@
     "title": "두 배열의 합"
    }
   ]
+ },
+ "2026-10-24": {
+  "count": 2,
+  "items": [
+   {
+    "file": "programmers/150366_표병합.py",
+    "no": "150366",
+    "site": "PGS",
+    "status": "못품",
+    "title": "표 병합"
+   },
+   {
+    "file": "programmers/67259_경주로건설.py",
+    "no": "67259",
+    "site": "PGS",
+    "status": "품",
+    "title": "경주로 건설"
+   }
+  ]
  }
 }
