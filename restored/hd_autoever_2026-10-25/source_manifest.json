@@ -1,0 +1,38 @@
+{
+  "source_filename": "HDautoever_codetest.zip",
+  "source_sha256": "f350fc11cc429d7701289874d48b8bf1351200219e26c97ec89a4ce6f0084934",
+  "exam_date": "2026-10-25",
+  "source_type": "user_provided_reconstruction",
+  "files": [
+    {
+      "source_path": "skeleton1.py",
+      "archive_path": "original/skeleton1.py",
+      "sha256": "c98a68e8e33dc4b03d05811e2f07ffdcff7566c7a91afef2afba9853edb537b1"
+    },
+    {
+      "source_path": "skeleton2.py",
+      "archive_path": "original/skeleton2.py",
+      "sha256": "1f22aa3bae484ca9dc1d77a15844678a67ee856441ac1f774e927be5853500ec"
+    },
+    {
+      "source_path": "test1.py",
+      "archive_path": "original/test1.py",
+      "sha256": "1bc9cd1c1d7f822fd1c235eb2c0174916349a97137a697e8cbaa385b2e2cba26"
+    },
+    {
+      "source_path": "test2.py",
+      "archive_path": "original/test2.py",
+      "sha256": "c49b23f2210ef0107c84c745f0d97d52c83b229c1f3f01e3b8a97fa017dfcc6f"
+    },
+    {
+      "source_path": "HDautoever1.md",
+      "archive_path": "original/HDautoever1.md",
+      "sha256": "962af75dcbe34fce70104a07c0702a6fb94caee7faf418dbf18a10effeb1a1b4"
+    },
+    {
+      "source_path": "HDautoever2.md",
+      "archive_path": "original/HDautoever2.md",
+      "sha256": "b728f4bfd616080bd0e5e82fdb8c384dd04b5690fe1fdc0d6de060c2f868770b"
+    }
+  ]
+}

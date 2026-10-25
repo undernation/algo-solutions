@@ -34,6 +34,7 @@ _meta/             도구 · 색인 · 대시보드 템플릿
 
 ### 복원 문제
 
+- 2026-10-25 현대오토에버: [1번 정사각형 숫자 뭉치 찾기 · 품](https://undernation.github.io/algo-solutions/#p/PGS/2026102501) · [2번 스마트 티켓 교환 · 못품](https://undernation.github.io/algo-solutions/#p/PGS/2026102502) · [원본 자료](restored/hd_autoever_2026-10-25/README.md)
 - 2026-09-15 SSAFY A형: [1번 충전소 설치](https://undernation.github.io/algo-solutions/#p/SWEA/99997) · [2번 농지 이동과 수확](https://undernation.github.io/algo-solutions/#p/SWEA/99998)
 - [복원 지문·원본 코드·입출력·검증 결과](restored/ssafy_a_2026-09-15/README.md)
 
