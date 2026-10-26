@@ -6,8 +6,6 @@ https://school.programmers.co.kr/learn/courses/30/lessons/154538
 제약   : 1 ≤ x ≤ y ≤ 1,000,000
 제약   : 1 ≤ n < y
 
-[채점] wrong_answer  0/3  (0.814s)
-
 [문제]
 자연수 `x`를 `y`로 변환하려고 합니다. 사용할 수 있는 연산은 다음과 같습니다.
 
@@ -74,28 +72,31 @@ https://school.programmers.co.kr/learn/courses/30/lessons/154538
 
 def solution(x, y, n):
     answer = 0
-    
     INF = 10 ** 18
     dp = [INF] * (y + 1)
+
     dp[x] = 0
-    for i in range(x, y + 1):
-        cur_num = dp[i]
-        if cur_num == INF:
+
+    for i in range(x, y - n + 1):
+
+        if dp[i] == INF:
             continue
-            
+
+        cur_cnt = dp[i]
+
         nxt_num = i + n
+
         if nxt_num <= y:
-            dp[nxt_num] = min(dp[nxt_num], cur_num + 1)
-            
+            dp[nxt_num] = min(dp[nxt_num], cur_cnt + 1)
+
         nxt_num = i * 2
         if nxt_num <= y:
-            dp[nxt_num] = min(dp[nxt_num], cur_num + 1)
-            
+            dp[nxt_num] = min(dp[nxt_num], cur_cnt + 1)
+
         nxt_num = i * 3
         if nxt_num <= y:
-            dp[nxt_num] = min(dp[nxt_num], cur_num + 1)
-            
-            
+            dp[nxt_num] = min(dp[nxt_num], cur_cnt + 1)
+
     if dp[y] == INF:
         return -1
     else:
