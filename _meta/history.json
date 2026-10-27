@@ -10925,7 +10925,7 @@
   ]
  },
  "2026-10-27": {
-  "count": 3,
+  "count": 4,
   "items": [
    {
     "at": "13:59:57",
@@ -10994,6 +10994,29 @@
     "status": "품",
     "title": "네트워크 연결",
     "total": 15,
+    "verdict": "accepted"
+   },
+   {
+    "at": "16:39:12",
+    "attempts": [
+     {
+      "at": "16:39:12",
+      "elapsed": 5.602,
+      "file": "boj/11724.py",
+      "passed": 16,
+      "status": "품",
+      "total": 16,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 5.602,
+    "file": "boj/11724.py",
+    "no": "11724",
+    "passed": 16,
+    "site": "BOJ",
+    "status": "품",
+    "title": "연결 요소의 개수",
+    "total": 16,
     "verdict": "accepted"
    }
   ]
