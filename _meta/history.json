@@ -10925,7 +10925,7 @@
   ]
  },
  "2026-10-27": {
-  "count": 2,
+  "count": 3,
   "items": [
    {
     "at": "13:59:57",
@@ -10970,6 +10970,29 @@
     "site": "BOJ",
     "status": "품",
     "title": "트리 순회",
+    "total": 15,
+    "verdict": "accepted"
+   },
+   {
+    "at": "16:05:04",
+    "attempts": [
+     {
+      "at": "16:05:04",
+      "elapsed": 7.435,
+      "file": "boj/1922.py",
+      "passed": 15,
+      "status": "품",
+      "total": 15,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 7.435,
+    "file": "boj/1922.py",
+    "no": "1922",
+    "passed": 15,
+    "site": "BOJ",
+    "status": "품",
+    "title": "네트워크 연결",
     "total": 15,
     "verdict": "accepted"
    }
