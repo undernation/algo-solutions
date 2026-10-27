@@ -10925,7 +10925,7 @@
   ]
  },
  "2026-10-27": {
-  "count": 4,
+  "count": 5,
   "items": [
    {
     "at": "13:59:57",
@@ -11016,6 +11016,29 @@
     "site": "BOJ",
     "status": "품",
     "title": "연결 요소의 개수",
+    "total": 16,
+    "verdict": "accepted"
+   },
+   {
+    "at": "17:00:15",
+    "attempts": [
+     {
+      "at": "17:00:15",
+      "elapsed": 11.81,
+      "file": "boj/11725.py",
+      "passed": 16,
+      "status": "품",
+      "total": 16,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 11.81,
+    "file": "boj/11725.py",
+    "no": "11725",
+    "passed": 16,
+    "site": "BOJ",
+    "status": "품",
+    "title": "트리의 부모 찾기",
     "total": 16,
     "verdict": "accepted"
    }
