@@ -139,8 +139,8 @@ python _meta/fetch_swea.py <contestProbId> --json
 
 | | |
 |---|---|
-| 총 풀이 | 198 |
-| BOJ | 32 |
+| 총 풀이 | 199 |
+| BOJ | 33 |
 | SWEA | 52 |
 | PGS | 3 |
 | CT | 111 |
@@ -148,6 +148,7 @@ python _meta/fetch_swea.py <contestProbId> --json
 <!-- INDEX_START -->
 | 사이트 | 번호 | 제목 | 결과 | 풀이일 | 분류 |
 |---|---|---|---|---|---|
+| BOJ | [1991](boj/1991.py) | 트리 순회 | 품 | 2026-10-27 |  |
 | BOJ | [10813](boj/10813.py) | 공 바꾸기 | 품 | 2026-10-27 |  |
 | PGS | [154538](programmers/154538_숫자변환하기.py) | 숫자 변환하기 | 품 | 2026-10-26 |  |
 | PGS | [67259](programmers/67259_경주로건설.py) | 경주로 건설 | 품 | 2026-10-24 |  |
