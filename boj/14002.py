@@ -2,10 +2,10 @@
 BOJ 14002  가장 긴 증가하는 부분 수열 4
 https://cosal.aviss.kr/problems/detail/14002
 
-풀이일 : 2026-09-25   결과: 못품
+풀이일 : 2026-10-27   결과: 품
 한도   : time 1 초 / memory 256 MB
 
-[채점] accepted  17/17  (4.672s)
+[채점] accepted  17/17  (4.293s)
 
 [문제]
 수열 A가 주어졌을 때, 가장 긴 증가하는 부분 수열을 구하는 프로그램을 작성하시오.
@@ -23,27 +23,33 @@ https://cosal.aviss.kr/problems/detail/14002
 
 
 N = int(input())
+
 num_list = list(map(int, input().split()))
-parent = [-1] * N
+
+last_idx = [-1] * N
+
 dp = [1] * N
 
 for i in range(N):
 
     for j in range(i):
-        if num_list[j] < num_list[i]:
+
+        # 새로 시작하는 경우
+        if num_list[i] > num_list[j]:
+
             if dp[i] < dp[j] + 1:
-                dp[i] = max(dp[j] + 1, dp[i])
-                parent[i] = j
+                dp[i] = dp[j] + 1
+                last_idx[i] = j
 
-# print(dp)
-# print(parent)
+max_val = max(dp)
+max_idx = dp.index(max_val)
+print(max_val)
+temp = []
+cur_num = max_idx
+while cur_num != -1:
+    temp.append(num_list[cur_num])
+    cur_num = last_idx[cur_num]
 
-max_idx = dp.index(max(dp))
-
-ret = []
-while max_idx != -1:
-    ret.append(num_list[max_idx])
-    max_idx = parent[max_idx]
-print(max(dp))
-ret.reverse()
-print(*ret)
+# print(temp)
+temp.reverse()
+print(*temp)

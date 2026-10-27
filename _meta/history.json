@@ -10925,7 +10925,7 @@
   ]
  },
  "2026-10-27": {
-  "count": 5,
+  "count": 6,
   "items": [
    {
     "at": "13:59:57",
@@ -11040,6 +11040,29 @@
     "status": "품",
     "title": "트리의 부모 찾기",
     "total": 16,
+    "verdict": "accepted"
+   },
+   {
+    "at": "17:12:44",
+    "attempts": [
+     {
+      "at": "17:12:44",
+      "elapsed": 4.293,
+      "file": "boj/14002.py",
+      "passed": 17,
+      "status": "품",
+      "total": 17,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 4.293,
+    "file": "boj/14002.py",
+    "no": "14002",
+    "passed": 17,
+    "site": "BOJ",
+    "status": "품",
+    "title": "가장 긴 증가하는 부분 수열 4",
+    "total": 17,
     "verdict": "accepted"
    }
   ]
