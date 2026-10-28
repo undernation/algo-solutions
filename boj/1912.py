@@ -2,8 +2,10 @@
 BOJ 1912  연속합
 https://cosal.aviss.kr/problems/detail/1912
 
-풀이일 : 2026-08-16   결과: 못품
+풀이일 : 2026-10-28   결과: 품
 한도   : time 1 초 / memory 128 MB
+
+[채점] accepted  29/29  (7.509s)
 
 [문제]
 n개의 정수로 이루어진 임의의 수열이 주어진다. 우리는 이 중 연속된 몇 개의 수를 선택해서 구할 수 있는 합 중 가장 큰 합을 구하려고 한다. 단, 수는 한 개 이상 선택해야 한다.
@@ -32,4 +34,17 @@ n개의 정수로 이루어진 임의의 수열이 주어진다. 우리는 이 �
 -1
 """
 
-.
+
+
+N = int(input())
+
+num_list = list(map(int, input().split()))
+
+dp = num_list.copy()
+
+for i in range(1, N):
+    dp[i] = max(dp[i], dp[i - 1] + num_list[i])
+
+# print(dp)
+
+print(max(dp))
