@@ -11066,5 +11066,33 @@
     "verdict": "accepted"
    }
   ]
+ },
+ "2026-10-28": {
+  "count": 1,
+  "items": [
+   {
+    "at": "10:39:26",
+    "attempts": [
+     {
+      "at": "10:39:26",
+      "elapsed": 5.698,
+      "file": "boj/20922.py",
+      "passed": 16,
+      "status": "품",
+      "total": 16,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 5.698,
+    "file": "boj/20922.py",
+    "no": "20922",
+    "passed": 16,
+    "site": "BOJ",
+    "status": "품",
+    "title": "겹치는 건 싫어",
+    "total": 16,
+    "verdict": "accepted"
+   }
+  ]
  }
 }
