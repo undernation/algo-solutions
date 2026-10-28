@@ -11068,7 +11068,7 @@
   ]
  },
  "2026-10-28": {
-  "count": 3,
+  "count": 4,
   "items": [
    {
     "at": "10:39:26",
@@ -11129,6 +11129,29 @@
     "status": "틀림",
     "title": "최소비용 구하기",
     "total": 15,
+    "verdict": "accepted"
+   },
+   {
+    "at": "13:23:08",
+    "attempts": [
+     {
+      "at": "13:23:08",
+      "elapsed": 15.712,
+      "file": "boj/22251.py",
+      "passed": 16,
+      "status": "못품",
+      "total": 16,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 15.712,
+    "file": "boj/22251.py",
+    "no": "22251",
+    "passed": 16,
+    "site": "BOJ",
+    "status": "못품",
+    "title": "빌런 호석",
+    "total": 16,
     "verdict": "accepted"
    }
   ]
