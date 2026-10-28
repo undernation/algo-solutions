@@ -11068,7 +11068,7 @@
   ]
  },
  "2026-10-28": {
-  "count": 2,
+  "count": 3,
   "items": [
    {
     "at": "10:39:26",
@@ -11107,6 +11107,29 @@
     "site": "BOJ",
     "status": "못품",
     "title": "포도주 시식"
+   },
+   {
+    "at": "11:34:15",
+    "attempts": [
+     {
+      "at": "11:34:15",
+      "elapsed": 5.687,
+      "file": "boj/1916.py",
+      "passed": 15,
+      "status": "틀림",
+      "total": 15,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 5.687,
+    "file": "boj/1916.py",
+    "no": "1916",
+    "passed": 15,
+    "site": "BOJ",
+    "status": "틀림",
+    "title": "최소비용 구하기",
+    "total": 15,
+    "verdict": "accepted"
    }
   ]
  }
