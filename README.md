@@ -139,8 +139,8 @@ python _meta/fetch_swea.py <contestProbId> --json
 
 | | |
 |---|---|
-| 총 풀이 | 206 |
-| BOJ | 40 |
+| 총 풀이 | 207 |
+| BOJ | 41 |
 | SWEA | 52 |
 | PGS | 3 |
 | CT | 111 |
@@ -148,6 +148,7 @@ python _meta/fetch_swea.py <contestProbId> --json
 <!-- INDEX_START -->
 | 사이트 | 번호 | 제목 | 결과 | 풀이일 | 분류 |
 |---|---|---|---|---|---|
+| BOJ | [1149](boj/1149.py) | RGB거리 | 품 | 2026-10-29 |  |
 | BOJ | [22251](boj/22251.py) | 빌런 호석 | 못품 | 2026-10-28 |  |
 | BOJ | [2156](boj/2156.py) | 포도주 시식 | 못품 | 2026-10-28 |  |
 | BOJ | [20922](boj/20922.py) | 겹치는 건 싫어 | 품 | 2026-10-28 |  |

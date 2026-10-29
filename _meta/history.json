@@ -11178,5 +11178,33 @@
     "verdict": "accepted"
    }
   ]
+ },
+ "2026-10-29": {
+  "count": 1,
+  "items": [
+   {
+    "at": "11:40:51",
+    "attempts": [
+     {
+      "at": "11:40:51",
+      "elapsed": 6.001,
+      "file": "boj/1149.py",
+      "passed": 19,
+      "status": "품",
+      "total": 19,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 6.001,
+    "file": "boj/1149.py",
+    "no": "1149",
+    "passed": 19,
+    "site": "BOJ",
+    "status": "품",
+    "title": "RGB거리",
+    "total": 19,
+    "verdict": "accepted"
+   }
+  ]
  }
 }
