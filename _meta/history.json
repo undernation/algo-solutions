@@ -11180,7 +11180,7 @@
   ]
  },
  "2026-10-29": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "11:40:51",
@@ -11203,6 +11203,29 @@
     "status": "품",
     "title": "RGB거리",
     "total": 19,
+    "verdict": "accepted"
+   },
+   {
+    "at": "11:44:40",
+    "attempts": [
+     {
+      "at": "11:44:40",
+      "elapsed": 0.248,
+      "file": "codetree/4097_신전탐험하기3.py",
+      "passed": 1,
+      "status": "품",
+      "total": 1,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.248,
+    "file": "codetree/4097_신전탐험하기3.py",
+    "no": "4097",
+    "passed": 1,
+    "site": "CT",
+    "status": "품",
+    "title": "신전 탐험하기 3",
+    "total": 1,
     "verdict": "accepted"
    }
   ]
