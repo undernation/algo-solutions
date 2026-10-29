@@ -11180,7 +11180,7 @@
   ]
  },
  "2026-10-29": {
-  "count": 5,
+  "count": 6,
   "items": [
    {
     "at": "11:40:51",
@@ -11295,6 +11295,29 @@
     "status": "품",
     "title": "가장 많은 데이터",
     "total": 1,
+    "verdict": "accepted"
+   },
+   {
+    "at": "13:33:34",
+    "attempts": [
+     {
+      "at": "13:33:34",
+      "elapsed": 5.396,
+      "file": "boj/2143.py",
+      "passed": 15,
+      "status": "못품",
+      "total": 15,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 5.396,
+    "file": "boj/2143.py",
+    "no": "2143",
+    "passed": 15,
+    "site": "BOJ",
+    "status": "못품",
+    "title": "두 배열의 합",
+    "total": 15,
     "verdict": "accepted"
    }
   ]
