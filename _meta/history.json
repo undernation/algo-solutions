@@ -11323,7 +11323,7 @@
   ]
  },
  "2026-10-30": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "16:18:22",
@@ -11347,6 +11347,21 @@
     "title": "대응되는 수와 문자",
     "total": 2,
     "verdict": "accepted"
+   },
+   {
+    "at": "16:55:00",
+    "attempts": [
+     {
+      "at": "16:55:00",
+      "file": "codetree/2026_두수의합.py",
+      "status": "틀림"
+     }
+    ],
+    "file": "codetree/2026_두수의합.py",
+    "no": "2026",
+    "site": "CT",
+    "status": "틀림",
+    "title": "두 수의 합"
    }
   ]
  }
