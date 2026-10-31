@@ -1370,10 +1370,11 @@
 <rect class="l2" x="632" y="90" width="11" height="11" rx="2"><title>2026-10-30 (금) — 2문제
 · CT 992 대응되는 수와 문자 (품)
 · CT 2026 두 수의 합 (틀림)</title></rect>
-<rect class="l3" x="632" y="104" width="11" height="11" rx="2"><title>2026-10-31 (토) — 3문제
+<rect class="l4" x="632" y="104" width="11" height="11" rx="2"><title>2026-10-31 (토) — 4문제
 · CT 2027 세 수의 합 (못품)
 · CT 2030 자주 등장한 top K 숫자 (품)
-· CT 1314 원소의 합이 0 (품)</title></rect>
+· CT 1314 원소의 합이 0 (품)
+· CT 2025 순서를 바꾸었을 때 같은 단어 그룹화하기 (품)</title></rect>
 <rect class="l0" x="646" y="20" width="11" height="11" rx="2"><title>2026-11-01 (일) — 0문제</title></rect>
 <rect class="l0" x="646" y="34" width="11" height="11" rx="2"><title>2026-11-02 (월) — 0문제</title></rect>
 <rect class="l0" x="646" y="48" width="11" height="11" rx="2"><title>2026-11-03 (화) — 0문제</title></rect>

@@ -11366,7 +11366,7 @@
   ]
  },
  "2026-10-31": {
-  "count": 3,
+  "count": 4,
   "items": [
    {
     "at": "23:15:53",
@@ -11427,6 +11427,29 @@
     "status": "품",
     "title": "원소의 합이 0",
     "total": 1,
+    "verdict": "accepted"
+   },
+   {
+    "at": "23:49:48",
+    "attempts": [
+     {
+      "at": "23:49:48",
+      "elapsed": 0.69,
+      "file": "codetree/2025_순서를바꾸었을때같은단어그룹화하기.py",
+      "passed": 2,
+      "status": "품",
+      "total": 2,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.69,
+    "file": "codetree/2025_순서를바꾸었을때같은단어그룹화하기.py",
+    "no": "2025",
+    "passed": 2,
+    "site": "CT",
+    "status": "품",
+    "title": "순서를 바꾸었을 때 같은 단어 그룹화하기",
+    "total": 2,
     "verdict": "accepted"
    }
   ]
