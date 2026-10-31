@@ -1,4 +1,32 @@
-# algo-solutions
+# Algorithm Practice & Review
+
+**Python · Data Structures · Algorithms · Learning Dashboard**
+
+BOJ·SWEA·Programmers·CodeTree 풀이 코드와 복기 기록을 정리하고, 브라우저 대시보드에서 문제·제출 현황을 확인하는 개인 학습 프로젝트입니다.  
+An algorithm practice archive with a web dashboard and a personal judging workflow.
+
+### [학습 대시보드 열기 ↗](https://undernation.github.io/algo-solutions/)
+
+## 주요 구성
+
+- **풀이 아카이브** — 문제별 Python 코드와 제출·복기 기록
+- **웹 대시보드** — 학습 현황, 문제 탐색, 제출 상태 조회
+- **개인 채점 도구** — 코드 실행·예제 비교·풀이 저장을 연결하는 Python 허브
+- **학습 자동화** — 문제 색인·대시보드 생성과 저장소 자체 점검
+
+## 구조
+
+| 경로 | 역할 |
+| --- | --- |
+| [boj](boj) · [swea](swea) · [programmers](programmers) · [codetree](codetree) | 풀이 코드 |
+| [notes](notes) | 복기 메모 |
+| [judge](judge) | Python 채점·저장 허브 |
+| [_meta](_meta) | 색인·대시보드 생성·점검 도구 |
+
+## 개발·운영 가이드
+
+<details>
+<summary>개인 허브 연결, 문제 추가, 새 PC 설정, 파일 형식 보기</summary>
 
 코딩테스트 풀이 아카이브 — 개인 학습용
 
@@ -134,6 +162,8 @@ python _meta/fetch_swea.py <contestProbId> --json
 ```
 
 ---
+
+</details>
 
 ## 📊 현황
 
