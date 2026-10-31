@@ -11366,7 +11366,7 @@
   ]
  },
  "2026-10-31": {
-  "count": 1,
+  "count": 2,
   "items": [
    {
     "at": "23:15:53",
@@ -11382,6 +11382,29 @@
     "site": "CT",
     "status": "못품",
     "title": "세 수의 합"
+   },
+   {
+    "at": "23:22:30",
+    "attempts": [
+     {
+      "at": "23:22:30",
+      "elapsed": 0.369,
+      "file": "codetree/2030_자주등장한topK숫자.py",
+      "passed": 1,
+      "status": "품",
+      "total": 1,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.369,
+    "file": "codetree/2030_자주등장한topK숫자.py",
+    "no": "2030",
+    "passed": 1,
+    "site": "CT",
+    "status": "품",
+    "title": "자주 등장한 top K 숫자",
+    "total": 1,
+    "verdict": "accepted"
    }
   ]
  }
