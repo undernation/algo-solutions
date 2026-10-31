@@ -11366,7 +11366,7 @@
   ]
  },
  "2026-10-31": {
-  "count": 2,
+  "count": 3,
   "items": [
    {
     "at": "23:15:53",
@@ -11403,6 +11403,29 @@
     "site": "CT",
     "status": "품",
     "title": "자주 등장한 top K 숫자",
+    "total": 1,
+    "verdict": "accepted"
+   },
+   {
+    "at": "23:32:29",
+    "attempts": [
+     {
+      "at": "23:32:29",
+      "elapsed": 0.348,
+      "file": "codetree/1314_원소의합이0.py",
+      "passed": 1,
+      "status": "품",
+      "total": 1,
+      "verdict": "accepted"
+     }
+    ],
+    "elapsed": 0.348,
+    "file": "codetree/1314_원소의합이0.py",
+    "no": "1314",
+    "passed": 1,
+    "site": "CT",
+    "status": "품",
+    "title": "원소의 합이 0",
     "total": 1,
     "verdict": "accepted"
    }
